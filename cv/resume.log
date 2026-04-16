@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  16 APR 2026 08:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  16 APR 2026 10:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -214,11 +214,11 @@ Package hyperref Info: Link coloring OFF on input line 20.
 \MACboxA=\box53
 \MACdimenA=\dimen152
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 186.
+(Font)              <7> on input line 187.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 186.
+(Font)              <5> on input line 187.
 
-Underfull \hbox (badness 10000) in paragraph at lines 186--186
+Underfull \hbox (badness 10000) in paragraph at lines 187--187
 
  []
 
@@ -246,7 +246,7 @@ Here is how much of TeX's memory you used:
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></
 usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></u
 sr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on resume.pdf (1 page, 84605 bytes).
+Output written on resume.pdf (1 page, 84637 bytes).
 PDF statistics:
  44 PDF objects out of 1000 (max. 8388607)
  28 compressed objects within 1 object stream

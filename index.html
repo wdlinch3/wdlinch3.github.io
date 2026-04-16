@@ -1,79 +1,205 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta name="color-scheme" content="dark">  
+  <meta name="color-scheme" content="dark">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>William D. Linch</title>
+
   <style>
+    :root {
+      --bg: #111;
+      --text: #ddd;
+      --muted: #aaa;
+      --link: #8ab4ff;
+      --border: #333;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      max-width: 850px;
-      margin: 40px auto;
-      padding: 0 20px;
+      margin: 0;
       font: 18px/1.6 Georgia, serif;
-      color: #111;
+      background: var(--bg);
+      color: var(--text);
     }
-    nav a {
-      margin-right: 16px;
-      text-decoration: none;
+
+    .page {
+      max-width: 1150px;
+      margin: 40px auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 48px;
     }
-    h1, h2 {
+
+    .sidebar {
+      position: sticky;
+      top: 30px;
+      align-self: start;
+      font-size: 16px;
+      border-right: 1px solid var(--border);
+      padding-right: 24px;
+    }
+
+    .sidebar h2 {
+      font-size: 1.05em;
+      margin: 0 0 0.5em 0;
       line-height: 1.2;
     }
+
+    .sidebar section {
+      margin-bottom: 1.75em;
+    }
+
+    .content {
+      min-width: 0;
+      max-width: 850px;
+    }
+
+    h1 {
+      margin-top: 0;
+      margin-bottom: 0.2em;
+      line-height: 1.15;
+      font-size: 2.2em;
+    }
+
+    h2 {
+      margin-top: 1.8em;
+      margin-bottom: 0.5em;
+      line-height: 1.2;
+    }
+
+    p {
+      margin-top: 0;
+      margin-bottom: 1em;
+    }
+
+    ul {
+      margin-top: 0.4em;
+      margin-bottom: 1em;
+      padding-left: 1.2em;
+    }
+
+    .linklist,
+    .sidebar ul {
+      list-style: none;
+      padding-left: 0;
+      margin-left: 0;
+    }
+
+    .linklist li,
+    .sidebar li {
+      margin-bottom: 0.4em;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
     .small {
-      color: #555;
+      color: var(--muted);
+      margin-bottom: 1.5em;
+    }
+
+    @media (max-width: 900px) {
+      .page {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .sidebar {
+        position: static;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding-right: 0;
+        padding-bottom: 1em;
+      }
     }
   </style>
 </head>
+
 <body>
-  <h1>William D. Linch</h1>
-  <p class="small">Astronomy and Astrophysics • Physics • Teaching • Research</p>
+  <div class="page">
+    <aside class="sidebar">
+      <section>
+        <h2>Navigate</h2>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#cv">CV</a></li>
+          <li><a href="#research">Research</a></li>
+          <li><a href="#teaching">Teaching</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </section>
 
-  <nav>
-    <a href="#about">About</a>
-    <a href="#cv">CV</a>
-    <a href="#research">Research</a>
-    <a href="#teaching">Teaching</a>
-    <a href="#contact">Contact</a>
-  </nav>
+      <section>
+        <h2>External</h2>
+        <ul>
+          <li><a href="https://inspirehep.net/authors/1019804" target="_blank">INSPIRE</a></li>
+          <li><a href="https://arxiv.org" target="_blank">arXiv</a></li>
+          <li><a href="https://orcid.org/0000-0003-2631-4465" target="_blank">ORCID</a></li>
+          <li><a href="https://github.com/wdlinch3" target="_blank">GitHub</a></li>
+          <li><a href="https://chatgpt.com" target="_blank">ChatGPT</a></li>
+          <li><a href="https://www.desmos.com" target="_blank">Desmos</a></li>
+        </ul>
+      </section>
+    </aside>
 
-  <h2 id="about">About</h2>
-  <p>
-    I am a theoretical/mathematical physicist by training and have was in academia for 15 years before switching to teaching. 
-    I currently hold the position of Director of Astronomy and Astrophysics at Thomas Jefferson High School for Science and Technology.
-  </p>
+    <main class="content">
+      <h1>William D. Linch</h1>
+      <p class="small">Astronomy and Astrophysics • Physics • Teaching • Research</p>
 
-  <h2 id="cv">CV</h2>
-  <ul style="list-style-type: none; padding-left: 0;">
-    <li><a href="/cv/resume.pdf" target="_blank">Résumé</a></li>
-    <li><a href="https://orcid.org/0000-0003-2631-4465">ORCiD</a></li>
-    <li><a href="https://inspirehep.net/authors/1019804">iNSPIRE</a></li>
-    <li><a href="https://arxiv.org/search/?searchtype=author&query=Linch%2C+W+D">arXiv</a></li>
-  </ul>
+      <h2 id="about">About</h2>
+      <p>
+        I am a theoretical/mathematical physicist by training and was in academia for 15 years before switching to teaching.
+        I currently serve as Director of Astronomy and Astrophysics at Thomas Jefferson High School for Science and Technology.
+      </p>
 
-  <h2 id="research">Research</h2>
-  <p>
-    My research interests can be roughly grouped as
-    <ul>
-      <li>A-theory: Attempts to formulate a quantizable description of the worldvolumes of M-theory/F-theory branes</li>
-      <li>M-theory Low-energy Effective Action (LEEA): Attemps to construct the complete effective action for M-theory by expoiting off-shell superspaces with fractional supersymmetry</li>
-      <li>Mathematical supersymmetry: Attempts to formulate a more rigorous description of superfields as sheaves and superspaces as their algebro-geometric spectra</li>
-      <li>Astrophysics: My students and I are currently working an a variety of astrophysics projects ranging from searches for Long-period Transients in VLITE data to constructing (GR)MHD simulations</li>
-    </ul>
-  </p>
+      <h2 id="cv">CV</h2>
+      <ul class="linklist">
+        <li><a href="/cv/resume.pdf" target="_blank">Résumé</a></li>
+        <li><a href="https://orcid.org/0000-0003-2631-4465" target="_blank">ORCID</a></li>
+        <li><a href="https://inspirehep.net/authors/1019804" target="_blank">INSPIRE</a></li>
+        <li><a href="https://arxiv.org/search/?searchtype=author&amp;query=Linch%2C+W+D" target="_blank">arXiv author search</a></li>
+      </ul>
 
-  <h2 id="teaching">Teaching</h2>
-  <p>
-    As Director of Astronomy and Astrophysics, I teach
-    <ul>
-      <li>Advanced Astronomy: Solar System (AA:SS)</li>
-      <li>Advanced Astronomy: Universe (AA:U)</li>
-      <li>Senior Research in Astronomy and Astrophysics</li>
-    </ul>
-    In the first two, students are required to work through astrophysics problems using LaTeX and Python in Jupyter Notebooks. These classes serve as prerequisites for the senior research lab, in which students learn how to navigate and use the astrophysical research literature. They then formulate a research proposal of their own, and undertake that research with the goal of completing their proposed project within their senior year. 
-  </p>
+      <h2 id="research">Research</h2>
+      <p>My research interests can be roughly grouped as:</p>
+      <ul>
+        <li>A-theory: attempts to formulate a quantizable description of the worldvolumes of M-theory/F-theory branes.</li>
+        <li>M-theory low-energy effective action: attempts to construct the complete effective action for M-theory by exploiting off-shell superspaces with fractional supersymmetry.</li>
+        <li>Mathematical supersymmetry: attempts to formulate a more rigorous description of superfields as sheaves and superspaces as their algebro-geometric spectra.</li>
+        <li>Astrophysics: my students and I are currently working on projects ranging from searches for long-period transients in VLITE data to constructing (GR)MHD simulations.</li>
+      </ul>
 
-  <h2 id="contact">Contact</h2>
-  <p>email: wdlinch3@gmail.com</p>
+      <h2 id="teaching">Teaching</h2>
+      <p>As Director of Astronomy and Astrophysics, I teach:</p>
+      <ul>
+        <li>Advanced Astronomy: Solar System (<a href="/aa/ss_emphasis.pdf" target="_blank">AA:SS</a>)</li>
+        <li>Advanced Astronomy: Universe (<a href="/aa/u_emphasis.pdf" target="_blank">AA:U</a>)</li>
+        <li>Senior Research in Astronomy and Astrophysics</li>
+      </ul>
+      <p>
+        In the first two, students work through astrophysics problems using LaTeX and Python in Jupyter notebooks.
+        These classes serve as prerequisites for the senior research lab, in which students learn how to navigate and use the astrophysical research literature.
+        They then formulate a research proposal of their own and undertake that research with the goal of completing the project within their senior year.
+      </p>
+
+      <h2 id="contact">Contact</h2>
+      <p>Email: <a href="mailto:wdlinch3@gmail.com">wdlinch3@gmail.com</a></p>
+    </main>
+  </div>
 </body>
 </html>
