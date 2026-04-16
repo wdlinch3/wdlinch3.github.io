@@ -1,0 +1,193 @@
+%%%%%%%
+%%%%%%%  MODIFIED 15 Octoper, 2015
+%%%%%%%  see also: http://www.careercup.com/resume
+%%%%%%%  and: http://www.rpi.edu/dept/arc/training/latex/resumes/
+%%%%%%%
+
+% LaTeX file for resume 
+% This file uses the resume document class (res.cls)
+
+\documentclass{res}
+\newsectionwidth{0pt}  % So the text is not indented under section headings
+\setlength{\textheight}{11.2in}%{10.2in} % set text height big enough for box
+%\setlength{\textwidth}{7in}%
+\topmargin=-10mm       % to start box .5in from top of page
+\oddsidemargin=-13mm   % to start box .5in from left of page
+
+\usepackage{hyperref}
+\renewcommand{\labelitemi}{$\cdot$}
+    
+\begin{document}
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The following lines define \boxaround, used to draw a box on the page.
+% The parameter is the entire text of the resume. Must fit on one page!
+%
+% \boxaroundhmargin is the left & right margin around the text inside the box.
+% \boxaroundvmargin is the top & bottom margin around the text inside the box.
+% \boxrulethickness controls thickness of line used to draw the box.
+% You can change these 3 things in the lines below:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newdimen\boxrulethickness\newdimen\boxaroundhmargin\newdimen\boxaroundvmargin
+\boxrulethickness = 0.0pt%.5pt        %controls thickness of line 
+\boxaroundhmargin=35pt        % about a half inch
+\boxaroundvmargin=40pt        % to fit more text on page, make this smaller
+%%%%%%%%%%%%%%%%%%%%%%%%% Don't read this stuff %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hsize=7.5in% \vsize=10.5in    % use bigger dimensions for box
+\newbox\MACboxA  \newdimen\MACdimenA
+% \borderandboxit is used inside \boxaround:
+\def\borderandboxit#1#2#3{\vbox{\hrule height#2\hbox{\vrule width#2\hskip#1\hskip-#2%
+  \vbox{\vskip#1\relax#3\vskip#1}\hskip#1\hskip-#2\vrule width#2}\hrule height#2}}
+%
+\long\def\boxaround#1{\vskip6pt
+  {\MACdimenA=\hsize \advance\MACdimenA by-\boxaroundhmargin
+   \advance\MACdimenA by-\boxaroundhmargin   % once for each side
+   \setbox\MACboxA=\hbox to \hsize{\hskip\boxaroundhmargin%\hss
+                     \vbox{\hsize=\MACdimenA
+                           \vskip\boxaroundvmargin #1
+                           \vskip\boxaroundvmargin}\hss}%
+   \borderandboxit{0pt}\boxrulethickness{\box\MACboxA}}%
+  \vskip2pt plus0pt minus0pt
+}
+%%%%%%%%%%%%%%%%%%%  End of \boxaround macro %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+\boxaround{ % put the text on the page inside a box  
+
+%~\vspace{-8mm}
+\name{ \Large{William Divine Linch {\sc iii}}\\[14pt]}
+\address{
+%2131 Tannin Place Apt 406\\ 
+%Vienna VA 22182 
+6560 Braddock Road Alexandria,\\
+Virginia 22312
+}
+\address{	Phone: +1 443 846-2614\\
+	Email:  \href{mailto:wdlinch3@gmail.com}{wdlinch3@gmail.com} \\
+%	Web:  \href{http://people.tamu.edu/~wdlinch3}{people.tamu.edu/$\sim$wdlinch3}
+%\vspace{5mm}
+~
+}
+
+\begin{resume}
+%~%\vspace{-5mm}  
+\section{\bf Education}
+~\\
+Ph.~D. in Physics from the University of Maryland at College Park (21 December, 2005)\\
+B.~Sc. in Physics from the University of Maryland at College Park (20 August, 1999)\\
+  
+ ~\vspace{-1cm} 
+\section{\bf Employment}
+~\\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{ncolumn}{2}
+{\it Directory for Astronomy and Astrophysics}  &   August 2023 -- present
+\end{ncolumn}\\
+Thomas Jefferson High School for Science and Technology
+\begin{itemize} \itemsep1pt \parskip0pt \parsep0pt
+\item Physics Teacher: Honors Physics
+\item Astronomy Teacher: Advanced Astronomy 
+\item Director: Astronomy and Astrophysics Senior Research
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{ncolumn}{2}
+%{\it Assistant Director}  &   June 2023 
+%\end{ncolumn}\\
+%Mercersburg Academy Summer Programs
+%\begin{itemize} \itemsep1pt \parskip0pt \parsep0pt
+%\item Assistant Director for STEAM Camp
+%\item Assistant Director for Robotics Camp 
+%\end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{ncolumn}{2}
+{\it Science and Mathematics Faculty}  &   August 2021 -- June 2023
+\end{ncolumn}\\
+Mercersburg Academy
+\begin{itemize} \itemsep1pt \parskip0pt \parsep0pt
+\item Physics Teacher: Physics, Honors Physics, AP Physics
+\item Mathematics Teacher: Algebra II
+\item Robotics Teacher: Robotics I, II, III
+\item Assistant Director: STEAM Camp, Robotics Camp
+%\begin{itemize}
+%\item STEAM Camp
+%\item Robotics Camp
+%\end{itemize}
+%\item Physics Teacher for (regular) Physics, Honors Physics, and Advanced Studies Physics: Mechanics	
+%\item Mathematics Teacher for Algebra II 
+%\item Robotics Teacher for Robotics I, II, and III
+%\item Robotics Coach for Robotics Team
+%\item Faculty Mentor for Research Club and Computer Programming Club
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{ncolumn}{2}
+{\it Senior Research Scientist}  &   September 2015 -- July 2021
+\end{ncolumn}\\
+Texas A\&M University
+\begin{itemize} \itemsep1pt \parskip0pt \parsep0pt
+\item Instructor: String Theory, miscellaneous lectures, mini-courses, and seminars
+\item Graduate Research Mentor
+%\item Coauthor successful proposal for supplemental funding for N{\sc sf} grant 1521099 ``\href{https://nsf.gov/awardsearch/showAward?AWD_ID=1521099&HistoricalAwards=false}{Strings, Branes, and Higher Spin Theories}''
+%\item Coauthor N{\sc sf} grant 1620742 ``\href{https://www.nsf.gov/awardsearch/showAward?AWD_ID=1620742&HistoricalAwards=false}{Fundamental Aspects of M-theory and Superspace''}
+%\item Coauthor N{\sc sf} grant 1820921 ``\href{https://www.nsf.gov/awardsearch/showAward?AWD_ID=1820921}{M-theory, Superspace and Higher Spin Theories}''
+%\item Coauthored successful proposals for N{\sc sf} grants 1820921, 1620742, 1521099 (supplemental).
+%\item Opponent on the Ph.D.\ Defense Committee of Pavel Ko\v{c}\'i at Masaryk University (Czech Republic)
+%, October 2019)
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{ncolumn}{2}
+{\it Visiting Assistant Professor}  &   May 2012 -- August 2015
+\end{ncolumn}\\
+University of Maryland at College Park
+\begin{itemize} \itemsep1pt \parskip0pt \parsep0pt
+\item Instructor: String Theory, Group Theory, Quantum Mechanics, 
+\item Organizer: Mathematics/Physics Research Interaction Team in Geometry and Physics 
+\item Mentor: Master of Science graduate and undergraduate researchers (awarded 2015 Winston Family Honors ``Faculty Mentor of the Year'' Award)
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{ncolumn}{2} 
+{\it Assistant Professor} &  November 2009 -- May 2012
+\end{ncolumn}\\
+Universidad Andr\'es Bello (U{\sc nab}) in Santiago, Chile 
+\begin{itemize} \itemsep1pt \parskip0pt \parsep0pt
+\item Principal Investigator: F{\sc ondecyt}/D{\sc gid-unab} grants on {\it Superstrings in Flux Backgrounds} 
+\item Instructor: Quantum Mechanics, Statistical Mechanics, Thermodynamics
+\item Co-organizer:Third South Pacific Coast Gravity Meeting in Vi\~na del Mar, Chile (January, 2011)
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{ncolumn}{2}
+{\it RTG Fellow and Simons Fellow} & September 2005 -- September 2009
+\end{ncolumn}\\  
+C.~N.~Yang Institute for Theoretical Physics, Department of Mathematics, and Simons Center for Geometry and Physics at Stony Brook University 
+\begin{itemize} \itemsep1pt \parskip0pt \parsep0pt
+\item Project lead: ``{Research Training Groups}'' program in Geometry and Physics
+\item Instructor: Theoretical Physics for Mathematicians 
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{resume}
+
+\vfill
+%~
+} %    end the material being boxed.
+
+
+
+
+\end{document}
+
+
