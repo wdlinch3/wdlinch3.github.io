@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta name="color-scheme" content="dark">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Effective Actions — William D. Linch</title>
+  <style>
+    :root {
+      --bg: #111;
+      --panel: #181818;
+      --text: #ddd;
+      --muted: #aaa;
+      --link: #8ab4ff;
+      --border: #333;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 18px/1.65 Georgia, serif;
+    }
+
+    .page {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 24px 48px;
+    }
+
+    .back {
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    h1 {
+      line-height: 1.15;
+      margin: 0 0 0.3em 0;
+      font-size: 2.2rem;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      margin-bottom: 0.45rem;
+      line-height: 1.2;
+      font-size: 1.35rem;
+    }
+
+    p {
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+
+    .lede {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 1rem 1.15rem;
+      border-radius: 8px;
+      margin: 1.25rem 0;
+    }
+
+    ul {
+      margin-top: 0.35rem;
+      margin-bottom: 1rem;
+      padding-left: 1.2rem;
+    }
+
+    li {
+      margin-bottom: 0.45rem;
+    }
+
+    .refs {
+      font-size: 0.96rem;
+    }
+
+    .refs li {
+      margin-bottom: 0.8rem;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-nav {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <p class="back"><a href="/">&larr; Back to home</a></p>
+
+    <h1>Effective Actions</h1>
+    <p class="lede">
+      A brief overview of my work on supersymmetry, supergravity, and the low-energy effective action of M-theory,
+      adapted from NSF proposal material.
+    </p>
+
+    <div class="panel">
+      <p>
+        The broad goal is to understand how a fundamental theory such as string/M-theory gives rise, at low energies,
+        to the spacetime physics we actually observe. In practice, this means asking whether symmetry—especially
+        supersymmetry—can be strong enough to reconstruct an effective action containing infinitely many
+        higher-derivative corrections.
+      </p>
+    </div>
+
+    <h2>Why effective actions?</h2>
+    <p>
+      A complete quantum theory of gravity should ultimately explain such questions as the origin of spacetime,
+      the fate of singularities, and the physics of the early universe. We do not yet have a background-independent,
+      directly usable formulation of M-theory that answers these questions in a transparent way. A more practical route
+      is therefore to understand its low-energy effective action: the organized expansion that encodes the leading
+      corrections to ordinary supergravity.
+    </p>
+    <p>
+      The model example is Born-Infeld theory. In open-string theory, the effective dynamics of an abelian gauge field
+      are governed by the Born-Infeld action, a non-linear extension of Maxwell theory. That result suggests a broader
+      strategy: rather than deriving every correction term directly from first principles, one can try to determine the
+      effective action from a combination of symmetry, supersymmetry, and consistency conditions.
+    </p>
+
+    <h2>Supersymmetry as a reconstruction principle</h2>
+    <p>
+      One of the central lessons of supersymmetric field theory is that the right combination of manifest and hidden
+      supersymmetries can be astonishingly restrictive. In four dimensions, the work of Bagger and Galperin showed that
+      the Born-Infeld action is singled out by a partial breaking of extended supersymmetry. Put differently: start from
+      supersymmetric Maxwell theory, deform it by the leading higher-derivative term, and require invariance under an
+      additional non-manifest supersymmetry. The result is not an arbitrary deformation, but the full Born-Infeld theory.
+    </p>
+    <p>
+      My work asks whether a similar mechanism can be used in supergravity and M-theory. If so, then supersymmetry would
+      not merely constrain the effective action; it could provide a practical method for reconstructing it.
+    </p>
+
+    <h2>11D supergravity and the M-theory effective action</h2>
+    <p>
+      The most immediate target is the leading low-energy effective action of M-theory, which is expected to begin with
+      higher-derivative corrections built from curvature, especially terms schematically of the form
+      (Riemann)<sup>4</sup>. The difficulty is that there is no known fully off-shell superspace preserving the full
+      eleven-dimensional super-Poincaré symmetry in a form suitable for this construction.
+    </p>
+    <p>
+      To get around this, I have worked on an eleven-dimensional off-shell superspace with reduced structure group
+      <em>SL</em>(2, <strong>C</strong>) × <em>G</em><sub>2</sub>. In this framework, four supersymmetries are manifest and off-shell,
+      while the remaining twenty-eight are realized linearly but close only on-shell. This allows the full set of
+      constraints to be solved in terms of a finite set of eleven-dimensional superfields. The hope is that this is
+      the right setting in which to construct the (Riemann)<sup>4</sup> deformation and then determine how much of the full
+      infinite higher-derivative series it generates.
+    </p>
+    <p>
+      A key technical issue is the auxiliary-field sector. Once the deformation is introduced, the auxiliary fields must
+      be re-diagonalized or integrated out. That step is expected to generate an infinite tower of additional terms and is
+      therefore one of the main places where the effective action becomes genuinely non-trivial.
+    </p>
+
+    <h2>Simpler laboratories: Born-Infeld and chiral 2-forms</h2>
+    <p>
+      Because the auxiliary-field problem may be difficult to solve directly in eleven dimensions, part of the program is
+      to study simpler non-polynomial theories that appear to realize the same mechanisms in a more manageable form.
+    </p>
+    <ul>
+      <li>
+        <strong>Ten-dimensional super-Born-Infeld theory.</strong> The goal here is to construct the 10D, <em>N</em> = 1
+        supersymmetric Born-Infeld action in a reduced superspace with only four manifest supercharges. In lower-dimensional
+        analogues this structure can already be seen, but in ten dimensions additional representation-theoretic complications
+        appear that are likely to illuminate the corresponding eleven-dimensional problem.
+      </li>
+      <li>
+        <strong>The self-interacting chiral 2-form in six dimensions.</strong> The Perry-Schwarz model provides a non-linear
+        theory for a self-dual 2-form, one of the key ingredients of the M5-brane worldvolume theory. This system is the
+        tensor-field analogue of Born-Infeld theory and may offer a cleaner setting in which to understand how reduced
+        structure groups, hidden symmetries, and non-linear effective actions fit together.
+      </li>
+    </ul>
+
+    <h2>Longer-term aim</h2>
+    <p>
+      The longer-term aim is to understand whether these reduced-superspace constructions can reveal a general mechanism
+      by which the low-energy effective action of M-theory is determined. Even partial success would be valuable: obtaining
+      controlled sectors of the effective action, clarifying the role of auxiliary fields, and understanding how hidden
+      supersymmetries organize the infinite higher-derivative expansion would all sharpen our picture of quantum gravity.
+    </p>
+
+    <h2>Selected references</h2>
+    <ol class="refs">
+      <li>
+        R. R. Metsaev, Malik Rakhmanov, and Arkady A. Tseytlin,
+        <em>The Born-Infeld Action as the Effective Action in the Open Superstring Theory</em>,
+        Phys. Lett. B193:207–212 (1987).
+      </li>
+      <li>
+        M. Born and L. Infeld,
+        <em>Foundations of the new field theory</em>, Nature 132(3348):1004.1 (1933).
+      </li>
+      <li>
+        J. Bagger and A. Galperin,
+        <em>A New Goldstone multiplet for partially broken supersymmetry</em>, Phys. Rev. D55:1091–1098 (1997),
+        <a href="https://arxiv.org/abs/hep-th/9608177" target="_blank">arXiv:hep-th/9608177</a>.
+      </li>
+      <li>
+        S. Cecotti and S. Ferrara,
+        <em>Supersymmetric Born-Infeld Lagrangians</em>, Phys. Lett. B187:335–339 (1987).
+      </li>
+      <li>
+        Katrin Becker, Melanie Becker, Daniel Butter, William D. Linch, and Stephen Randall,
+        <em>Five-dimensional Supergravity in N = 1/2 Superspace</em>, JHEP 03:098 (2020),
+        <a href="https://arxiv.org/abs/1909.09208" target="_blank">arXiv:1909.09208</a>.
+      </li>
+      <li>
+        Malcolm Perry and John H. Schwarz,
+        <em>Interacting chiral gauge fields in six-dimensions and Born-Infeld theory</em>, Nucl. Phys. B489:47–64 (1997),
+        <a href="http://arxiv.org/abs/hep-th/9611065" target="_blank">hep-th/9611065</a>.
+      </li>
+      <li>
+        Neil Marcus, Augusto Sagnotti, and Warren Siegel,
+        <em>Ten-dimensional Supersymmetric Yang-Mills Theory in Terms of Four-dimensional Superfields</em>, Nucl. Phys. B224:159 (1983),
+        <a href="http://inspirehep.net/record/189742" target="_blank">INSPIRE entry</a>.
+      </li>
+      <li>
+        Nima Arkani-Hamed, Thomas Gregoire, and Jay G. Wacker,
+        <em>Higher dimensional supersymmetry in 4-D superspace</em>, JHEP 03:055 (2002),
+        <a href="http://arxiv.org/abs/hep-th/0101233" target="_blank">hep-th/0101233</a>.
+      </li>
+    </ol>
+
+    <div class="footer-nav">
+      <a href="/">&larr; Back to home</a>
+    </div>
+  </main>
+</body>
+</html>
