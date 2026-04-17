@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Effective Actions — Original Proposal Text</title>
+  <style>
+    :root {
+      --bg: #111;
+      --text: #ddd;
+      --muted: #aaa;
+      --link: #8ab4ff;
+      --border: #333;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font: 18px/1.65 Georgia, serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    main {
+      max-width: 920px;
+      margin: 40px auto;
+      padding: 0 24px 48px;
+    }
+    h1, h2, h3 { line-height: 1.2; }
+    h1 { margin-bottom: 0.2em; }
+    h2 { margin-top: 1.6em; }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .topnav {
+      color: var(--muted);
+      margin-bottom: 1.1em;
+      font-size: 0.98em;
+    }
+    .cite {
+      font-size: 0.82em;
+      vertical-align: super;
+      margin-left: 0.08em;
+    }
+    .refs {
+      margin-top: 2em;
+      padding-top: 1em;
+      border-top: 1px solid var(--border);
+      font-size: 0.96em;
+    }
+    .refs li { margin-bottom: 0.8em; }
+    code {
+      font-size: 0.92em;
+      background: #1a1a1a;
+      padding: 0.1em 0.3em;
+      border-radius: 4px;
+    }
+    .muted { color: var(--muted); }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="topnav"><a href="/">&#8592; Back to home</a> &nbsp;|&nbsp; <a href="/effective-actions.html">Back to overview</a></div>
+
+    <h1>Effective Actions — Original Proposal Text</h1>
+    <p class="muted">HTML reproduction of the uploaded NSF proposal section, preserving the original structure and in-line citations as closely as possible.</p>
+
+    <p>
+      The goals of a quantum theory of gravity include the origin story of spacetime and matter.
+      Basic questions such as the existence and nature of spacetime singularities and the big bang are still out of reach with our current understanding of string/M-theory.
+      A manifestly background-independent formulation describing the low-energy physics would provide answers to these key questions, but it is currently not clear how one should construct such a description.
+      We propose to investigate to what extent the interplay between manifest off-shell supersymmetry, linearly-realized on-shell supersymmetry, and non-linearly realized supersymmetry can be exploited to reconstruct infinitely many higher-derivative corrections to supergravity and potentially even a low-energy effective action.
+    </p>
+
+    <p>
+      For open bosonic string theory the exact answer to this question was shown by Metsaev and Tseytlin to be the non-linear electrodynamics theory of Born and Infeld<a class="cite" href="#ref-metsaev">[1]</a><a class="cite" href="#ref-born">[2]</a>.
+      This is a remarkable situation because the latter was constructed half a century before the theory for which it is the effective action!
+      We currently find ourselves in a situation similar to that of Born and Infeld just before their discovery:
+      We know there is a fundamental theory we call M with certain very specific properties, but we do not understand the quantum degrees of freedom defining it.
+      Can we draw from our experience with strings and the Born–Infeld (BI) theory to understand the leading low-energy effective action (LEEA) of M-theory?
+    </p>
+
+    <p>
+      An immediate problem is that the BI action has so many nice properties that it is not obvious which one(s) to adopt in the generalization to quantum gravity.
+      For example, an attractive feature of the BI theory is that the Coulomb singularities of the Maxwell field are no longer solutions.
+      Perhaps a generalization to gravity should disallow the Schwarzschild singularity, maybe replacing it with a smooth Bardeen-like black hole<a class="cite" href="#ref-bardeen">[3]</a>.
+      Such a criterion is very difficult to use to construct an effective action, although many attempts have been made<a class="cite" href="#ref-beltran">[4]</a>.
+      Another property of BI theory is that it is invariant under electromagnetic “duality” transformations<a class="cite" href="#ref-schrodinger">[5]</a>.
+      Such a criterion would be much easier to apply, but it is not strong enough to fix the BI Lagrangian:
+      there are infinitely many non-linear electrodynamics theories that are similarly invariant.
+    </p>
+
+    <p>
+      In a remarkable paper, Bagger and Galperin showed that the BI theory is singled out by partially breaking extended supersymmetry from 4D, N=2 to N=1 if the Goldstino is the gaugino of an abelian vector multiplet<a class="cite" href="#ref-bagger">[6]</a>.
+      This theorem, as it were, can be rephrased as follows:
+      starting with 4D, N=1 manifestly supersymmetric Maxwell theory, deforming it with the leading higher-derivative correction and requiring invariance under a second non-manifest supersymmetry uniquely leads to the 4D, N=1 BI Lagrangian.
+      In a component formulation, supersymmetrizing the deformation would be carried out painstakingly order by order, but using off-shell N=1 superspace, Bagger and Galperin <em>derive</em> the Cecotti–Ferrara<a class="cite" href="#ref-cecotti">[7]</a> Lagrangian analytically.
+    </p>
+
+    <h2>(Riemann)<sup>2</sup> and (Riemann)<sup>4</sup> invariants in 11D, N=1/8 superspace</h2>
+
+    <p>
+      We submit that there is an analogous potential for M-theory.
+      Here, too, the leading LEEA effective action is believed to result from supersymmetrizing the (Riemann)<sup>4</sup> corrections to the eleven-dimensional supergravity action.
+      In this case, however, there is no (known) off-shell superspace with eleven-dimensional super-Poincar&#233; symmetry in which to construct the effective action.
+      To circumvent this problem, we have constructed a suitable eleven-dimensional off-shell superspace with a reduced structure group SL(2, C) × G<sub>2</sub>.
+      In this formulation, 4 of the supersymmetries are off shell and manifest and the remaining 28 are realized linearly but close only on shell.
+      Such a separation has several advantages over the alternatives, with the most important one being that all the constraints of the theory are solved in terms of a finite number of eleven-dimensional superfields that are irreducible representations of the ISO(4|4) × ISO(7) subalgebra of the full Poincar&#233; superalgebra.
+      It is in this superspace that we propose to construct the (Riemann)<sup>4</sup> deformation.
+    </p>
+
+    <p>
+      The (Riemann)<sup>4</sup> invariant deforms the auxiliary-field terms of the eleven-dimensional supergravity action.
+      This deforms the supersymmetry transformations with curvature terms.
+      Re-diagonalizing the auxiliary fields in the component action (equivalently, integrating out the auxiliary fields) is expected to generate an infinite series of higher-derivative corrections to the 2- and 8-derivative terms so that the resulting effective action is invariant under the deformed supersymmetry transformations.
+      Determining how much (if not all) of the leading LEEA of M-theory this infinite series of terms describes would then be a matter of checking the resulting action against known higher-derivative terms available in the literature.
+    </p>
+
+    <h2>Leading higher-derivative deformation</h2>
+
+    <p>
+      In our most recent work, we have computed the supergeometry of eleven-dimensional supergravity needed to build the (Riemann)<sup>4</sup> invariant<a class="cite" href="#ref-wip">[WIP]</a>.
+      As a proof of principle, we also constructed the analogous leading deformation for five-dimensional supergravity in<a class="cite" href="#ref-becker">[8]</a>, and—as luck would have it—this invariant can be continued to 11D.
+      We therefore propose to carry out this extension.
+    </p>
+
+    <p>
+      Once the invariant is obtained, we still face the problem of diagonalizing the auxiliary-field sector and solving the resulting equations explicitly.
+      This step may not be straightforward and could even be impossible in closed form.
+      This is because, in principle, we could face unsolvable algebraic equations for these fields (for example, coupled quartics) or even find that the equations are differential.
+      In order to prepare for potential complications, we propose to investigate the auxiliary-field mechanisms in simpler theories with non-polynomial effective actions.
+      Examples include the Born–Infeld action in superspaces of dimension D&gt;4 and the supersymmetric extension of the model of Perry and Schwarz for the interacting chiral 2-form on an M5-brane<a class="cite" href="#ref-perry">[9]</a>.
+      To date, neither of these theories has been constructed in superspace.
+      Besides shedding light on the auxiliary-field problem for higher-derivative theories, these models are interesting in their own right as they describe D-branes and M-branes in various dimensions.
+      Specifically, we would construct a formulation of the space-filling D9-brane of type I superstrings and the M5-brane, both in superspaces with 4 of the 16 supercharges off shell and manifest.
+    </p>
+
+    <h2>Ten-dimensional Born–Infeld action</h2>
+
+    <p>
+      The goal is to describe the ten-dimensional N=1 super-Born–Infeld action in terms of off-shell superfields.
+      As before, no off-shell superspace formulation exists preserving the 10D, N=1 super-Poincar&#233; symmetries, so we attempt to describe the theory in the superspace R<sup>10|4</sup> with only 4 of the 16 supercharges manifest.
+      In such a description, the Maxwell field is represented by a real unconstrained superfield V(x, θ, θ&#772;; y) and three chiral superfields Φ<sub>i</sub>(x, θ; y), where i=1,2,3 is an SU(3) index, x and y are the 4+6 bosonic coordinates of 10D Minkowski space, and {θ, θ&#772;} are the 4 odd coordinates for the manifest N=1/4 of the supersymmetries.
+      The Maxwell theory has two known deformations of its abelian gauge transformation:
+      the non-abelian deformation gives 10D super-Yang–Mills as formulated in this superspace by Marcus, Sagnotti, and Siegel<a class="cite" href="#ref-marcus">[10]</a> (and rediscovered by the phenomenology community much later in<a class="cite" href="#ref-arkani">[11]</a>).
+      The other known deformation is the higher-derivative deformation that should lead to the 10D, N=1 Born–Infeld theory, which we propose to construct.
+    </p>
+
+    <p>
+      In preliminary work, we have already demonstrated the appropriate action for D=6.
+      Due to the low complex “co-dimension” (D−4)/2 = 1, this action is a relatively straightforward modification of the 4D, N=1 action constructed by Cecotti and Ferrara<a class="cite" href="#ref-cecotti">[7]</a>.
+      In this case, there is a Fayet–Iliopoulos-type modification of the auxiliary-field interactions that correctly reproduces the additional √(1+F) factor.
+    </p>
+
+    <p>
+      The higher co-dimension cases are all essentially equivalent to 10D.
+      In this language, there are new contributions to the bosonic field strength corresponding to the SU(3) ⊂ Spin(6) representations of dimensions 1, 3, 3&#772;, and 8.
+      The first of these is the trace of the (1,1) part of the field strength extending the contribution found already in D=6, but to account for the others, a new auxiliary-field mechanism is needed.
+      Especially the proper accounting of the 8 is mysterious, as there is no auxiliary field corresponding to such a representation.
+      It is important to the M-theory project to understand in detail how this works out correctly, because a similar situation there involves the part of the Weyl tensor in the 70′ representation of G<sub>2</sub>.
+    </p>
+
+    <h2>Self-interacting 6D, N=(2,0) tensor multiplet</h2>
+
+    <p>
+      A potentially simpler example of an exact leading LEEA is the model of Perry and Schwarz for the chiral gauge 2-form, that is, a gauge 2-form in 6D with a self-dual field strength<a class="cite" href="#ref-perry">[9]</a>.
+      Such a field is the primary ingredient of the 6D, N=(2,0) tensor multiplet living on the world-volume of the M5-brane, so the non-linear theory is the 2-form analog of the Born–Infeld theory.
+      In the approach of Perry and Schwarz, the chirality constraint is solved by reducing the structure group from SO(5,1) → SO(4,1).
+      The chirality equation separates in such a way that it can be solved in terms of an unconstrained 6D field that is a 2-form of the Lorentz subgroup.
+      A non-linear action for this field is then constructed by demanding that it realize the full 6D Poincar&#233; symmetry non-linearly.
+      We note that this approach is more than similar to the superspace approach advocated throughout this proposal, as both solve a constraint that is apparently only possible by reducing the structure group.
+    </p>
+
+    <p>
+      We would like to understand this model in superspace, not only because it is an effective action of the type central to this proposal, but also because it is the non-linear “electro-dynamics” of the single M5-brane.
+      The appropriate superspace for this is R<sup>6|4</sup> with 6D bosonic coordinates and 4 odd coordinates, because analogously to the bosonic situation, we need to split the 6D spinor in half, so that we can solve one half in terms of the other.
+    </p>
+
+    <p>
+      In preliminary work in this direction, we have constructed an action analogous to that of Cecotti and Ferrara that reduces in the 2-form sector to the action of Perry and Schwarz.
+      There is no interesting auxiliary-field mechanism analogous to that of super-Born–Infeld theory; however, there is a curious normal-ordering ambiguity that affects the precise form of the fermionic sector and that we do not currently understand.
+      We expect that this ambiguity is fixed by a proper accounting of the isometries of the theory.
+      These isometries appear to be very closely related to the non-manifest symmetries in the off-shell superspace construction of eleven-dimensional supergravity described previously.
+      If this connection can be made precise, it would essentially amount to a coupling of the super-Perry–Schwarz theory to eleven-dimensional supergravity.
+      Reversing this procedure suggests that it may be possible to understand the Perry–Schwarz model for the chiral 2-form directly as a decoupling limit of eleven-dimensional supergravity in M-theory.
+    </p>
+
+    <p>
+      Finally, we note that this tensor multiplet is one of the main ingredients in the 6D, N=(1,0) non-anomalous matter–gravity systems.
+      As such, its coupling to 6D, N=(1,0) supergravity and the construction of the latter in our reduced superspaces may be facilitated by the observations made here, or <em>vice versa</em>.
+    </p>
+
+    <div class="refs">
+      <h2>References</h2>
+      <ol>
+        <li id="ref-metsaev">R. R. Metsaev, Malik Rakhmanov, and Arkady A. Tseytlin, <em>The Born-Infeld Action as the Effective Action in the Open Superstring Theory</em>, <em>Phys. Lett.</em> B193 (1987) 207–212.</li>
+        <li id="ref-born">M. Born and L. Infeld, <em>Foundations of the new field theory</em>, <em>Nature</em> 132 (1933) 1004.1.</li>
+        <li id="ref-bardeen"><em>Non-singular general relativistic gravitational collapse</em> (Bardeen, 1968).</li>
+        <li id="ref-beltran">Jose Beltran Jimenez, Lavinia Heisenberg, Gonzalo J. Olmo, and Diego Rubiera-Garcia, <em>Born–Infeld inspired modifications of gravity</em>, <em>Phys. Rept.</em> 727 (2018) 1–129.</li>
+        <li id="ref-schrodinger">E. Schr&#246;dinger, <em>Contributions to Born’s new theory of the electromagnetic field</em>, <em>Proc. Roy. Soc. Lond.</em> A150 (1935) 465–477.</li>
+        <li id="ref-bagger">Jonathan Bagger and Alexander Galperin, <em>A New Goldstone multiplet for partially broken supersymmetry</em>, <em>Phys. Rev.</em> D55 (1997) 1091–1098. <a href="https://arxiv.org/abs/hep-th/9608177" target="_blank">arXiv:hep-th/9608177</a>.</li>
+        <li id="ref-cecotti">S. Cecotti and S. Ferrara, <em>Supersymmetric Born-Infeld Lagrangians</em>, <em>Phys. Lett.</em> B187 (1987) 335–339.</li>
+        <li id="ref-becker">Katrin Becker, Melanie Becker, Daniel Butter, William D. Linch, and Stephen Randall, <em>Five-dimensional Supergravity in N = 1/2 Superspace</em>, <em>JHEP</em> 03 (2020) 098. <a href="https://arxiv.org/abs/1909.09208" target="_blank">arXiv:1909.09208</a>.</li>
+        <li id="ref-wip"><em>Work in progress.</em> The uploaded TeX contains <code>\cite{WorkInProgress}</code>, but no corresponding bibliography entry was included.</li>
+        <li id="ref-perry">Malcolm Perry and John H. Schwarz, <em>Interacting chiral gauge fields in six-dimensions and Born-Infeld theory</em>, <em>Nucl. Phys.</em> B489 (1997) 47–64. <a href="http://arxiv.org/abs/hep-th/9611065" target="_blank">hep-th/9611065</a>.</li>
+        <li id="ref-marcus">Neil Marcus, Augusto Sagnotti, and Warren Siegel, <em>Ten-dimensional Supersymmetric Yang-Mills Theory in Terms of Four-dimensional Superfields</em>, <em>Nucl. Phys.</em> B224 (1983) 159. <a href="http://inspirehep.net/record/189742" target="_blank">INSPIRE entry</a>.</li>
+        <li id="ref-arkani">Nima Arkani-Hamed, Thomas Gregoire, and Jay G. Wacker, <em>Higher dimensional supersymmetry in 4-D superspace</em>, <em>JHEP</em> 03 (2002) 055. <a href="http://arxiv.org/abs/hep-th/0101233" target="_blank">hep-th/0101233</a>.</li>
+      </ol>
+    </div>
+  </main>
+</body>
+</html>
