@@ -1,0 +1,173 @@
+% !TEX encoding = UTF-8 Unicode
+% !TEX program = lualatexmk
+% was lualatex
+% don't forget Edit > Substitutions > Text Replacement
+% needs file combining_preprocessor.lua, & BibTex.bib (e.g.) for \bibliography
+
+\documentclass[12pt]{article}
+
+% packages
+
+\usepackage{amsmath}		% needed for align & subeqs; must load before unicode-math
+\usepackage{bm}			% for bold math symbols
+
+% LuaLaTeχ
+\usepackage[math-style=ISO,colon=literal]{unicode-math}	% "italic" capital Greek, math colon = text colon
+%	\setmathfont{XITS Math}					% has subscript kerning bug
+	\setmathfont{STIX Two Math}					% best; Times-like; in TeXLive 2018
+	\setmainfont{XITS}
+%	\setmainfont{STIX Two Text}[FakeStretch=0.95]	%[OpticalSize=12]
+	\setsansfont{TEX Gyre Heros}
+%	\setmonofont{Consolas}
+\AtBeginDocument{\directlua{require("combining_preprocessor.lua")}}	% combining characters
+
+\usepackage{microtype}		% fewer hyphens, etc.
+
+%\usepackage{graphicx}
+\def\fig#1{\saveimageresource {#1}\useimageresource\lastsavedimageresourceindex}
+\def\figscale#1#2{\saveimageresource width#2 {#1}\useimageresource\lastsavedimageresourceindex}
+
+\def\rgboo#1{\pdfextension literal{#1 rg #1 RG}}
+\def\rgbo#1#2{\rgboo{#1}#2\rgboo{0 0 0}}
+\def\rgb#1#2{\mark{#1}\rgbo{#1}{#2}\mark{0 0 0}}
+
+\usepackage{slashed}		% Feynman: see  ̸ below
+\usepackage{cite}			% for hyphenated citations
+\usepackage{hyperref}
+\hypersetup{
+	bookmarksnumbered,
+	unicode,			% use with \texorpdfstring
+	colorlinks,			% avoid stupid boxes
+%	citecolor=[rgb]{.9,0,.5},	% \cite
+	urlcolor=[rgb]{0,0,1},	% \href
+%	linkcolor=[rgb]{0,.7,0}	% \ref , toc
+	}
+
+% fancy boxes for eqs
+\usepackage{empheq}
+\usepackage[most]{tcolorbox}					% messes up syncing for title page
+\definecolor{realcyan}{rgb}{0,1,1}
+\definecolor{realyellow}{rgb}{1,1,0}
+\newtcbox{\mymath}[1][]{%
+    nobeforeafter, math upper, tcbox raise base,
+    enhanced, colframe=realcyan!50!white,
+    colback=realyellow!5!white, boxrule=1pt, drop lifted shadow, sharp corners
+    #1}
+
+% text style parameters		textile?
+
+\textheight=9in						% height of body
+\textwidth=6.5in						% width of body
+\topmargin=-.5in						% top margin (less 1")
+\oddsidemargin=0in \evensidemargin=0in	% centered margins (less 1")
+\def\baselinestretch{1.2}				% magnification for line spacing
+\parskip=\medskipamount				% space between paragraphs
+
+% text
+
+%% to get equations numbered by subsection
+%\catcode`@=11
+%\@addtoreset{equation}{section}
+%\catcode`@=12
+%\numberwithin{equation}{subsection}
+% to get equations numbered by section
+\numberwithin{equation}{section}
+
+\def\hang{\hangindent\parindent}
+\def\bitem{\par\hang\textindent}
+\def\bitemitem{\par\indent \hangindent2\parindent \textindent}
+\def\textindent#1{\indent\llap{#1\enspace}\ignorespaces}
+
+% math
+
+\mathcode`\*="702A                  	% * now always complex conjugate
+\def\f#1#2{{\textstyle{#1\over#2}}}	% fraction
+
+% stop amsmath whining about \over
+\catcode`@=11
+\let\over\@@over
+\catcode`@=12
+
+% accent over:
+\def\on#1#2{{\buildrel{{\mkern2.5mu\raise-.1em\hbox{$\scriptstyle#1$}\mkern-2.5mu}}\over{#2}}}
+\def\ron#1#2{{\buildrel{{\raise-.1em\hbox{$\scriptstyle#1$}}}\over{#2}}}	% for unitalicized
+\def\dt#1{\on{\hbox{\bf .}}{#1}}								% (big) dot over: see  ̇  below  
+\def\ddt#1{\on{\hbox{\bf .\kern-1pt.}}#1}							% double dot: see ¨ below
+\def\under#1#2{\mathop{\null#2}\limits_{#1}}						% accent under
+
+% nachos
+%\def\dd{\hbox{\,\Large$\triangleright$}}
+%\def\dd{\hbox{\scriptsize$\triangleright$}}
+\def\dd{\hbox{\large$\smalltriangleright$}}
+
+% Die, gamma!
+\def\dig#1{\setbox0=\hbox{$#1M$}
+	\hskip.06\wd0 \vrule width.07\wd0 height.63\wd0 depth.01\wd0 
+	\vrule width.37\wd0 height.63\wd0 depth-.56\wd0 \hskip-.4\wd0
+	\vrule width.25\wd0 height.35\wd0 depth-.28\wd0 
+	\vrule width.07\wd0 height.35\wd0 depth-.17\wd0 \hskip.14\wd0}
+\def\digamma{{\mathpalette\dig{}}}
+
+% otherwise undefined utf-8
+%\catcode`∙=13	\def ∙{\cdot}		% Option-*
+\catcode`‹=13	\def ‹{\langle}		% Option-[
+\catcode`›=13	\def ›{\rangle}		% Option-]
+\catcode`❴=13	\def ❴{\{}			% Option-{
+\catcode`❵=13	\def ❵{\}}			% Option-}
+\catcode`√=13	\def √{\sqrt}		% Option-M
+\catcode`§=13	\def §{\section}		% Option-i
+\catcode`¶=13	\def ¶{\subsection}	% Option-I
+\catcode`▷=13	\def ▷{\dd}
+\catcode`𐊥=13	\def 𐊥{\digamma}
+% spaces
+\catcode`⎵=13	\def ⎵{\nobreak\ }				% Option-0
+\catcode`⸏=13	\def ⸏{\quad}					% Option-)
+%\catcode`␣=13	\def ␣{\TextOrMath{\thinspace}{\,}}		% (open box)
+\catcode`˽=13	\def ˽{\TextOrMath{\thinspace}{\,}}		% Option-space (modifier letter shelf)
+\catcode`ī=13 \def ī{{\bar\imath}}	%to correct for i with dot and bar
+%\catcode`j̄=13 \def j̄{{\bar\jmath}}	%to correct for j with dot and bar
+\catcode`・=13 \def・{\bullet}
+
+% combining characters
+\def\̂#1{\TextOrMath{{#1̂}}{{\hat{#1}}}}		% Option-6
+\def\̌#1{\TextOrMath{#1̌}{\check{#1}}}	% Option-V
+\def\̃#1{\TextOrMath{#1̃}{\tilde{#1}}}	% Option-n
+\def\́#1{\TextOrMath{#1́}{\acute{#1}}}	% Option-~
+\def\̀#1{\TextOrMath{#1̀}{\grave{#1}}}	% Option-`
+\def\̇#1{\TextOrMath{#1̇}{\dt{#1}}}		% Option-;
+\def\̈#1{\TextOrMath{#1̈}{\ddt{#1}}}		% Option-:
+\def\̆#1{\TextOrMath{#1̆}{\breve{#1}}}
+\def\̄#1{\TextOrMath{#1̄}{\bar{#1}}}		% Option--
+\def\̊#1{\TextOrMath{#1̊}{\mathring{#1}}}	% Option-A
+\def\̧#1{\TextOrMath{#1̧}{\c{#1}}}	% Option-A
+\def\⃗#1{\vec{#1}}					% Option-R
+\def\⃡#1{\overleftrightarrow{#1}}		% Option-E
+\def\⃖#1{\overleftarrow{#1}}			% Option-W
+\def\̸#1{\slashed{#1}}				% Option-/
+\def\̵#1{\slashed{#1}}				% Option-/
+% with single character only
+%\def\͞#1{\overline{#1}}				% (combining double macron)
+\def\̅#1{\overline{#1}}				% Option-? (combining overline)
+%\def\̱#1{\underline{#1}}			% (combining macron below)
+\def\̲#1{\underline{#1}}				% Option-_ (combining lowline)
+\def\̱#1{{\underline{#1}}}				% shift+option+h
+%\def\͡#1{\widehat{#1}}				% (combining double inverted breve)
+\def\᷍#1{\widehat{#1}}				% Option-^ (combining double circumflex above)
+\def\͠#1{\widetilde{#1}}				% Option-N
+
+
+% environments
+\def\eq#1{\begin{equation}#1\end{equation}}
+\def\al#1{\begin{align}#1\nonumber\end{align}}
+\def\ga#1{\begin{gather}#1\nonumber\end{gather}}
+\def\li#1{\begin{itemize}#1\end{itemize}}
+\def\se#1{\begin{subequations}\begin{align}#1\end{align}\end{subequations}}
+\def\ox#1{\begin{empheq}[box=\mymath]{equation}#1\end{empheq}}
+\def\ma#1{\begin{pmatrix}#1\end{pmatrix}}
+\def\ar#1{\begin{matrix}#1\end{matrix}}
+
+\def\rm{\mathrm}	% but use as \rm{ }, not {\rm }
+\def~{\sim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
