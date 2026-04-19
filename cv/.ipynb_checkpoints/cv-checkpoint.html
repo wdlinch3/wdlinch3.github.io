@@ -6,13 +6,13 @@
   <title>William Divine Linch III — Curriculum Vitae</title>
   <style>
     :root {
-      --bg: #f7f8fa;
-      --card: #ffffff;
-      --text: #1f2937;
-      --muted: #4b5563;
-      --rule: #d1d5db;
-      --link: #0f4c81;
-      --link-hover: #0b3558;
+      --bg: #0b0f14;
+      --card: #111827;
+      --text: #e6edf3;
+      --muted: #9ca3af;
+      --rule: #2a3441;
+      --link: #8ab4f8;
+      --link-hover: #a8c7fa;
     }
 
     * { box-sizing: border-box; }
@@ -36,7 +36,7 @@
       border: 1px solid var(--rule);
       border-radius: 14px;
       padding: 2rem;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
     }
 
     nav {
@@ -53,7 +53,10 @@
       text-decoration: none;
     }
 
-    a:hover { color: var(--link-hover); text-decoration: underline; }
+    a:hover {
+      color: var(--link-hover);
+      text-decoration: underline;
+    }
 
     header {
       border-bottom: 2px solid var(--rule);
@@ -67,6 +70,7 @@
       line-height: 1.15;
       font-weight: 700;
       letter-spacing: 0.01em;
+      color: #f3f4f6;
     }
 
     .subtitle {
@@ -95,6 +99,7 @@
       border-bottom: 1px solid var(--rule);
       padding-bottom: 0.35rem;
       letter-spacing: 0.02em;
+      color: #f3f4f6;
     }
 
     .entry {
@@ -134,13 +139,6 @@
 
     li { margin: 0.18rem 0; }
 
-    .note {
-      margin-top: 1.5rem;
-      color: var(--muted);
-      font-size: 0.9rem;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
     @media (max-width: 640px) {
       .card { padding: 1.2rem; }
       .topline { grid-template-columns: 1fr; }
@@ -148,16 +146,18 @@
     }
 
     @media print {
-      body { background: #fff; }
+      body { background: #fff; color: #000; }
       .wrap { padding: 0; max-width: none; }
       .card {
+        background: #fff;
         border: none;
         box-shadow: none;
         border-radius: 0;
         padding: 0;
       }
-      nav, .note { display: none; }
+      nav { display: none; }
       a { color: inherit; text-decoration: none; }
+      h1, h2 { color: #000; }
     }
   </style>
 </head>
@@ -187,7 +187,7 @@
             <div class="role">Ph.D. in Physics</div>
             <div class="dates">21 December 2005</div>
           </div>
-          <div class="org"><a href="https://umd.edu/" target="_blank" rel="noopener noreferrer">University of Maryland, College Park</a></div>
+          <div class="org"><a href="https://en.wikipedia.org/wiki/University_of_Maryland,_College_Park">University of Maryland, College Park</a></div>
         </div>
 
         <div class="entry">
@@ -195,7 +195,7 @@
             <div class="role">B.Sc. in Physics</div>
             <div class="dates">20 August 1999</div>
           </div>
-          <div class="org"><a href="https://umd.edu/" target="_blank" rel="noopener noreferrer">University of Maryland, College Park</a></div>
+          <div class="org"><a href="https://en.wikipedia.org/wiki/University_of_Maryland,_College_Park">University of Maryland, College Park</a></div>
         </div>
       </section>
 
@@ -207,7 +207,7 @@
             <div class="role">Director for Astronomy and Astrophysics Research</div>
             <div class="dates">August 2023 – present</div>
           </div>
-          <div class="org"><a href="https://tjhsst.fcps.edu/thomas-jefferson-high-school-science-and-technology-fairfax-county-public-schools" target="_blank" rel="noopener noreferrer">Thomas Jefferson High School for Science and Technology</a></div>
+          <div class="org"><a href="https://en.wikipedia.org/wiki/Thomas_Jefferson_High_School_for_Science_and_Technology">Thomas Jefferson High School for Science and Technology</a></div>
           <ul>
             <li>Advanced Astronomy: Solar System</li>
             <li>Advanced Astronomy: Universe</li>
@@ -221,7 +221,7 @@
             <div class="role">Science and Mathematics Faculty</div>
             <div class="dates">August 2021 – June 2023</div>
           </div>
-          <div class="org"><a href="https://www.mercersburg.edu/" target="_blank" rel="noopener noreferrer">Mercersburg Academy</a></div>
+          <div class="org"><a href="https://en.wikipedia.org/wiki/Mercersburg_Academy">Mercersburg Academy</a></div>
           <ul>
             <li>Physics Teacher: Physics, Honors Physics, AP Physics</li>
             <li>Mathematics Teacher: Algebra II</li>
@@ -235,7 +235,7 @@
             <div class="role">Senior Research Scientist</div>
             <div class="dates">September 2015 – July 2021</div>
           </div>
-          <div class="org"><a href="https://www.tamu.edu/index.html" target="_blank" rel="noopener noreferrer">Texas A&amp;M University</a></div>
+          <div class="org"><a href="https://en.wikipedia.org/wiki/Texas_A&M_University">Texas A&amp;M University</a></div>
           <ul>
             <li>Instructor: String Theory, miscellaneous lectures, mini-courses, and seminars</li>
             <li>Graduate Research Mentor</li>
@@ -247,7 +247,7 @@
             <div class="role">Visiting Assistant Professor</div>
             <div class="dates">May 2012 – August 2015</div>
           </div>
-          <div class="org"><a href="https://umd.edu/" target="_blank" rel="noopener noreferrer">University of Maryland, College Park</a></div>
+          <div class="org"><a href="https://en.wikipedia.org/wiki/Maryland_Center_for_Fundamental_Physics">University of Maryland, College Park</a></div>
           <ul>
             <li>Instructor: String Theory, Group Theory, Quantum Mechanics</li>
             <li>Organizer: Mathematics/Physics Research Interaction Team in Geometry and Physics</li>
@@ -260,7 +260,7 @@
             <div class="role">Assistant Professor</div>
             <div class="dates">November 2009 – May 2012</div>
           </div>
-          <div class="org"><a href="https://www.unab.cl/en/" target="_blank" rel="noopener noreferrer">Universidad Andrés Bello</a>, Santiago, Chile</div>
+          <div class="org"><a href="https://en.wikipedia.org/wiki/Andr%C3%A9s_Bello_National_University">Universidad Andrés Bello</a>, Santiago, Chile</div>
           <ul>
             <li>Principal Investigator: Fondecyt/Dgid-unab grants on Superstrings in Flux Backgrounds</li>
             <li>Instructor: Quantum Mechanics, Statistical Mechanics, Thermodynamics</li>
@@ -273,14 +273,13 @@
             <div class="role">RTG Fellow and Simons Fellow</div>
             <div class="dates">September 2005 – September 2009</div>
           </div>
-          <div class="org"><a href="https://www.stonybrook.edu/" target="_blank" rel="noopener noreferrer">Stony Brook University</a> — <a href="https://insti.physics.sunysb.edu/" target="_blank" rel="noopener noreferrer">C. N. Yang Institute for Theoretical Physics</a>, Department of Mathematics, and <a href="https://scgp.stonybrook.edu/" target="_blank" rel="noopener noreferrer">Simons Center for Geometry and Physics</a></div>
+          <div class="org"><a href="https://en.wikipedia.org/wiki/Stony_Brook_University">Stony Brook University</a> — <a href="https://insti.physics.sunysb.edu/">C. N. Yang Institute for Theoretical Physics</a>, Department of Mathematics, and <a href="https://scgp.stonybrook.edu/">Simons Center for Geometry and Physics</a></div>
           <ul>
             <li>Project lead: “Research Training Groups” program in Geometry and Physics</li>
             <li>Instructor: Theoretical Physics for Mathematicians</li>
           </ul>
         </div>
       </section>
-
     </div>
   </div>
 </body>
