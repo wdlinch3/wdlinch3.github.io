@@ -1,4 +1,343 @@
 ---
-title: Something
+title: Jupyter, Python, and LaTeX
 ---
 
+<style>
+  .jp-subnav,
+  .jp-grid,
+  .jp-steps {
+    margin: 1.5rem 0;
+  }
+
+  .jp-subnav {
+    color: var(--muted);
+    font-size: 0.98em;
+  }
+
+  .jp-subnav a {
+    white-space: nowrap;
+  }
+
+  .jp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+
+  .jp-card,
+  .jp-callout {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: rgba(255,255,255,0.02);
+  }
+
+  .jp-card {
+    padding: 1rem 1.1rem;
+  }
+
+  .jp-card h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .jp-callout {
+    padding: 1rem 1.1rem;
+    margin: 1.2rem 0;
+  }
+
+  .jp-callout strong {
+    color: #f3f4f6;
+  }
+
+  .jp-steps {
+    counter-reset: step;
+    padding-left: 0;
+  }
+
+  .jp-steps li {
+    list-style: none;
+    position: relative;
+    padding-left: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .jp-steps li::before {
+    counter-increment: step;
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 0.05rem;
+    width: 1.8rem;
+    height: 1.8rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f3f4f6;
+    background: rgba(255,255,255,0.03);
+    font-weight: 700;
+  }
+
+  .jp-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .jp-gallery figure {
+    margin: 0;
+    padding: 0.8rem;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: rgba(255,255,255,0.02);
+  }
+
+  .jp-gallery img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 6px;
+    background: #fff;
+  }
+
+  .jp-gallery figcaption {
+    margin-top: 0.65rem;
+    font-size: 0.95rem;
+    color: var(--muted);
+  }
+
+  .jp-code {
+    margin: 1rem 0;
+  }
+
+  .jp-code pre {
+    margin: 0;
+  }
+
+  .jp-note {
+    color: var(--muted);
+  }
+
+  .jp-inline-list li {
+    margin-bottom: 0.4rem;
+  }
+</style>
+
+<div class="topnav"><a href="/aa/x/">&#8592; Back to AA:X</a></div>
+
+<div class="jp-subnav">
+  <a href="/aa/x/">AA:X</a> ·
+  <a href="/aa/x/orientation.html">Orientation</a> ·
+  <a href="/aa/x/jupyter-python-latex.html">Jupyter + Python + LaTeX</a>
+</div>
+
+<h1>Jupyter, Python, and LaTeX for Advanced Astronomy</h1>
+
+<p class="small">
+  A practical introduction to the notebook workflow used in Advanced Astronomy.
+</p>
+
+<p>
+  In Advanced Astronomy, many packets live in <strong>Jupyter notebooks</strong>. That means the work is not divided into separate places for writing, equations, and computation. Instead, a notebook combines three things in one document:
+</p>
+
+<div class="jp-grid">
+  <section class="jp-card">
+    <h3>Markdown</h3>
+    <p>
+      For ordinary writing, headings, lists, emphasis, and scientific explanation.
+    </p>
+  </section>
+
+  <section class="jp-card">
+    <h3>LaTeX / MathJax</h3>
+    <p>
+      For equations and symbols written in the standard notation used in science and mathematics.
+    </p>
+  </section>
+
+  <section class="jp-card">
+    <h3>Python</h3>
+    <p>
+      For calculations, plotting, quick models, numerical checks, and reusable scientific tools.
+    </p>
+  </section>
+</div>
+
+<p>
+  The point is not to turn every astronomy student into a software engineer. The point is to give students one place where they can
+  <em>explain</em>, <em>calculate</em>, and <em>typeset</em> clearly.
+</p>
+
+<h2>Why we use notebooks in AA</h2>
+
+<p>
+  Jupyter is a better fit for this course than trying to split the work across ordinary word processors, equation editors, separate calculators, and plotting tools. Markdown is fast to write, LaTeX-style math looks the way scientific notation is supposed to look, and Python gives you a calculator, a plotter, and a scientific workbench in the same file.
+</p>
+
+<p>
+  No prior experience with Jupyter, Python, or LaTeX is assumed. You are not expected to arrive already knowing these tools.
+</p>
+
+<div class="jp-callout">
+  <strong>First troubleshooting check:</strong> if something that used to work suddenly fails - especially imports - first check whether the notebook is connected to the <code>aa_class</code> kernel.
+</div>
+
+<h2>How to get started on ION</h2>
+
+<ol class="jp-steps">
+  <li>Log in to ION and open the applications menu (the “waffle”).</li>
+  <li>Select <strong>OnDemand</strong>.</li>
+  <li>From the interactive applications, choose <strong>Jupyter</strong>.</li>
+  <li>Launch a session. For ordinary work, one hour is often enough to start.</li>
+  <li>Wait for the session to become available, then click <strong>Connect to Jupyter</strong>.</li>
+  <li>When JupyterLab opens, select the <strong>aa_class</strong> kernel.</li>
+</ol>
+
+<div class="jp-gallery">
+  <figure>
+    <img src="images/ion-apps-menu.png" alt="ION applications menu showing OnDemand">
+    <figcaption>From ION, open the applications menu and choose OnDemand.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="images/ondemand-cluster-home.png" alt="OnDemand cluster home page">
+    <figcaption>OnDemand gives access to interactive applications such as Jupyter.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="images/ondemand-jupyter-launch.png" alt="OnDemand Jupyter launch form">
+    <figcaption>Launch a Jupyter session from the interactive applications page.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="images/jupyter-session-ready.png" alt="OnDemand session ready page with Connect to Jupyter button">
+    <figcaption>Once the session is ready, use “Connect to Jupyter”.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="images/jupyterlab-select-kernel.png" alt="JupyterLab launcher showing kernel selection">
+    <figcaption>When JupyterLab opens, choose the <code>aa_class</code> kernel.</figcaption>
+  </figure>
+</div>
+
+<h2>Your first notebook actions</h2>
+
+<p>
+  Once the notebook is open, there are two very basic things to know:
+</p>
+
+<ul class="jp-inline-list">
+  <li><strong>Code cells</strong> run Python.</li>
+  <li><strong>Markdown cells</strong> hold ordinary writing and equations.</li>
+</ul>
+
+<p>
+  A simple first code cell is:
+</p>
+
+<div class="jp-code">
+<pre><code>print("Hello World!")</code></pre>
+</div>
+
+<p>
+  Press <strong>Shift+Enter</strong> to run the cell.
+</p>
+
+<p>
+  Then switch a cell from <strong>Code</strong> to <strong>Markdown</strong> and try something like this:
+</p>
+
+<div class="jp-code">
+<pre><code># This is a section heading
+
+This is normal text, *italic text*, and **bold text**.
+
+## This is a subheading
+
+This markup supports $\LaTeX$ so you can write inline equations like
+$P \neq NP$
+
+or stand-alone equations like
+
+$$
+\int_{-\infty}^{\infty} e^{-x^2}\,dx = \sqrt{\pi}
+$$</code></pre>
+</div>
+
+<div class="jp-gallery">
+  <figure>
+    <img src="images/switch-cell-to-markdown.png" alt="JupyterLab interface showing code cell menu switched to Markdown">
+    <figcaption>Change a cell from Code to Markdown when you want writing rather than Python.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="images/markdown-rendered-example.png" alt="Rendered Markdown showing headings and mathematical notation">
+    <figcaption>After <strong>Shift+Enter</strong>, the Markdown cell renders as formatted text and equations.</figcaption>
+  </figure>
+</div>
+
+<h2>What students are expected to do in these notebooks</h2>
+
+<p>
+  In a typical AA notebook, students are expected to do some mixture of the following:
+</p>
+
+<ul>
+  <li>write clear scientific explanations in Markdown</li>
+  <li>typeset equations cleanly using LaTeX notation</li>
+  <li>perform calculations in Python rather than by repeatedly typing everything into a separate calculator</li>
+  <li>reuse earlier work when it is sensible, such as constants, simple helper functions, or plotting code</li>
+  <li>show reasoning, not just final numbers</li>
+</ul>
+
+<p>
+  The notebook is meant to become a scientific workspace, not just a place to dump answers.
+</p>
+
+<h2>Common beginner mistakes</h2>
+
+<ul>
+  <li>Forgetting to switch to the <code>aa_class</code> kernel.</li>
+  <li>Typing Markdown into a code cell and then wondering why Python throws an error.</li>
+  <li>Typing Python into a Markdown cell and wondering why nothing runs.</li>
+  <li>Forgetting that <strong>Shift+Enter</strong> both runs the current cell and moves onward.</li>
+  <li>Forgetting to save after making progress.</li>
+  <li>Trying to do every calculation by hand when a short Python cell would be clearer and easier to check.</li>
+  <li>Using the notebook as a final-answer sheet instead of as a record of reasoning.</li>
+</ul>
+
+<h2>What to try first when something breaks</h2>
+
+<ul>
+  <li>Check the kernel: is it really <code>aa_class</code>?</li>
+  <li>Read the exact error message rather than guessing.</li>
+  <li>Make sure the current cell type is correct: Code or Markdown.</li>
+  <li>Run the earlier cells that define imports, constants, or helper functions.</li>
+  <li>Save the notebook, then restart and rerun if the state seems confused.</li>
+  <li>If a file is missing, make sure you actually uploaded it to the correct folder in JupyterLab.</li>
+</ul>
+
+<div class="jp-callout">
+  <strong>Good rule of thumb:</strong> when something fails, do not immediately rewrite everything. First check the kernel, the cell type, and whether the notebook has been run in a sensible order.
+</div>
+
+<h2>Why this becomes useful very quickly</h2>
+
+<p>
+  At first, a notebook can feel like one more thing to learn. Very quickly, however, it usually becomes easier than bouncing back and forth between a word processor, an equation editor, a plotting website, and a calculator. Once you have a few useful notebook habits, each packet becomes less tedious and easier to revise.
+</p>
+
+<p>
+  You are also building a transferable workflow: the same general notebook habits are useful well beyond this course.
+</p>
+
+<h2>Where to go next</h2>
+
+<ul>
+  <li><a href="/aa/x/orientation.html">AA:X orientation</a></li>
+  <li><a href="/aa/x/packets/">AA:X packet hub</a> <span class="small">(to be added)</span></li>
+  <li>Future help pages: Markdown/LaTeX cheat sheet, Python basics, and notebook troubleshooting</li>
+</ul>
