@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>William Divine Linch III — Curriculum Vitae</title>
+  <style>
+    :root {
+      --bg: #f7f8fa;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #4b5563;
+      --rule: #d1d5db;
+      --link: #0f4c81;
+      --link-hover: #0b3558;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    .wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1rem 4rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--rule);
+      border-radius: 14px;
+      padding: 2rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+    }
+
+    nav {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.25rem;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.95rem;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    a:hover { color: var(--link-hover); text-decoration: underline; }
+
+    header {
+      border-bottom: 2px solid var(--rule);
+      padding-bottom: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 {
+      margin: 0 0 0.35rem;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      line-height: 1.15;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    .subtitle {
+      margin: 0.25rem 0 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .contact {
+      margin-top: 0.9rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 1.2rem;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.98rem;
+    }
+
+    section {
+      margin-top: 2rem;
+    }
+
+    h2 {
+      margin: 0 0 0.8rem;
+      font-size: 1.35rem;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 0.35rem;
+      letter-spacing: 0.02em;
+    }
+
+    .entry {
+      margin-bottom: 1.4rem;
+    }
+
+    .entry:last-child { margin-bottom: 0; }
+
+    .topline {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.5rem 1rem;
+      align-items: baseline;
+    }
+
+    .role {
+      font-weight: 700;
+      font-size: 1.06rem;
+    }
+
+    .dates {
+      white-space: nowrap;
+      color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.96rem;
+    }
+
+    .org {
+      margin: 0.2rem 0 0.35rem;
+      font-style: italic;
+    }
+
+    ul {
+      margin: 0.35rem 0 0 1.15rem;
+      padding: 0;
+    }
+
+    li { margin: 0.18rem 0; }
+
+    .note {
+      margin-top: 1.5rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    @media (max-width: 640px) {
+      .card { padding: 1.2rem; }
+      .topline { grid-template-columns: 1fr; }
+      .dates { white-space: normal; }
+    }
+
+    @media print {
+      body { background: #fff; }
+      .wrap { padding: 0; max-width: none; }
+      .card {
+        border: none;
+        box-shadow: none;
+        border-radius: 0;
+        padding: 0;
+      }
+      nav, .note { display: none; }
+      a { color: inherit; text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <nav>
+        <a href="index.html">← Back to home</a>
+        <a href="resume.pdf">PDF version</a>
+      </nav>
+
+      <header>
+        <h1>William Divine Linch III</h1>
+        <p class="subtitle">Curriculum Vitae</p>
+        <div class="contact">
+          <span>6560 Braddock Road, Alexandria, Virginia 22312</span>
+          <span><a href="tel:+14438462614">+1 443&nbsp;846&nbsp;2614</a></span>
+          <span><a href="mailto:wdlinch3@gmail.com">wdlinch3@gmail.com</a></span>
+        </div>
+      </header>
+
+      <section>
+        <h2>Education</h2>
+
+        <div class="entry">
+          <div class="topline">
+            <div class="role">Ph.D. in Physics</div>
+            <div class="dates">21 December 2005</div>
+          </div>
+          <div class="org"><a href="https://umd.edu/" target="_blank" rel="noopener noreferrer">University of Maryland, College Park</a></div>
+        </div>
+
+        <div class="entry">
+          <div class="topline">
+            <div class="role">B.Sc. in Physics</div>
+            <div class="dates">20 August 1999</div>
+          </div>
+          <div class="org"><a href="https://umd.edu/" target="_blank" rel="noopener noreferrer">University of Maryland, College Park</a></div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Employment</h2>
+
+        <div class="entry">
+          <div class="topline">
+            <div class="role">Director for Astronomy and Astrophysics Research</div>
+            <div class="dates">August 2023 – present</div>
+          </div>
+          <div class="org"><a href="https://tjhsst.fcps.edu/thomas-jefferson-high-school-science-and-technology-fairfax-county-public-schools" target="_blank" rel="noopener noreferrer">Thomas Jefferson High School for Science and Technology</a></div>
+          <ul>
+            <li>Advanced Astronomy: Solar System</li>
+            <li>Advanced Astronomy: Universe</li>
+            <li>Astronomy and Astrophysics Senior Research</li>
+            <li>Young Scholars Outreach Program</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="topline">
+            <div class="role">Science and Mathematics Faculty</div>
+            <div class="dates">August 2021 – June 2023</div>
+          </div>
+          <div class="org"><a href="https://www.mercersburg.edu/" target="_blank" rel="noopener noreferrer">Mercersburg Academy</a></div>
+          <ul>
+            <li>Physics Teacher: Physics, Honors Physics, AP Physics</li>
+            <li>Mathematics Teacher: Algebra II</li>
+            <li>Robotics Teacher: Robotics I, II, III</li>
+            <li>Assistant Director: STEAM Camp, Robotics Camp</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="topline">
+            <div class="role">Senior Research Scientist</div>
+            <div class="dates">September 2015 – July 2021</div>
+          </div>
+          <div class="org"><a href="https://www.tamu.edu/index.html" target="_blank" rel="noopener noreferrer">Texas A&amp;M University</a></div>
+          <ul>
+            <li>Instructor: String Theory, miscellaneous lectures, mini-courses, and seminars</li>
+            <li>Graduate Research Mentor</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="topline">
+            <div class="role">Visiting Assistant Professor</div>
+            <div class="dates">May 2012 – August 2015</div>
+          </div>
+          <div class="org"><a href="https://umd.edu/" target="_blank" rel="noopener noreferrer">University of Maryland, College Park</a></div>
+          <ul>
+            <li>Instructor: String Theory, Group Theory, Quantum Mechanics</li>
+            <li>Organizer: Mathematics/Physics Research Interaction Team in Geometry and Physics</li>
+            <li>Mentor: Master of Science graduate and undergraduate researchers (awarded 2015 Winston Family Honors “Faculty Mentor of the Year” Award)</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="topline">
+            <div class="role">Assistant Professor</div>
+            <div class="dates">November 2009 – May 2012</div>
+          </div>
+          <div class="org"><a href="https://www.unab.cl/en/" target="_blank" rel="noopener noreferrer">Universidad Andrés Bello</a>, Santiago, Chile</div>
+          <ul>
+            <li>Principal Investigator: Fondecyt/Dgid-unab grants on Superstrings in Flux Backgrounds</li>
+            <li>Instructor: Quantum Mechanics, Statistical Mechanics, Thermodynamics</li>
+            <li>Co-organizer: Third South Pacific Coast Gravity Meeting in Viña del Mar, Chile (January 2011)</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="topline">
+            <div class="role">RTG Fellow and Simons Fellow</div>
+            <div class="dates">September 2005 – September 2009</div>
+          </div>
+          <div class="org"><a href="https://www.stonybrook.edu/" target="_blank" rel="noopener noreferrer">Stony Brook University</a> — <a href="https://insti.physics.sunysb.edu/" target="_blank" rel="noopener noreferrer">C. N. Yang Institute for Theoretical Physics</a>, Department of Mathematics, and <a href="https://scgp.stonybrook.edu/" target="_blank" rel="noopener noreferrer">Simons Center for Geometry and Physics</a></div>
+          <ul>
+            <li>Project lead: “Research Training Groups” program in Geometry and Physics</li>
+            <li>Instructor: Theoretical Physics for Mathematicians</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</body>
+</html>
