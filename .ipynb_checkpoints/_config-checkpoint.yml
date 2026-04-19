@@ -1,0 +1,6 @@
+title: William D. Linch III
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default

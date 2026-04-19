@@ -1,217 +1,93 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta name="color-scheme" content="dark">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>William D. Linch</title>
+---
+title: Home
+---
 
-  <style>
-    :root {
-      --bg: #111;
-      --text: #ddd;
-      --muted: #aaa;
-      --link: #8ab4ff;
-      --border: #333;
-    }
+<aside class="sidebar">
+  <section>
+    <h2>Navigate</h2>
+    <ul>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#cv">CV</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#teaching">Teaching</a></li>
+    </ul>
+  </section>
 
-    * {
-      box-sizing: border-box;
-    }
+  <section>
+    <h2>External</h2>
+    <ul>
+      <li><a href="https://inspirehep.net/">iNSPIRE</a></li>
+      <li><a href="https://arxiv.org">arXiv</a></li>
+      <li><a href="https://orcid.org/0000-0003-2631-4465">ORCiD</a></li>
+      <li><a href="https://github.com/wdlinch3">GitHub</a></li>
+      <li><a href="https://chatgpt.com">ChatGPT</a></li>
+      <li><a href="https://www.desmos.com">Desmos</a></li>
+    </ul>
+  </section>
+</aside>
 
-    html {
-      scroll-behavior: smooth;
-    }
+<section class="content">
+  <h1 style="text-align: center;">William D. Linch III</h1>
+  <p class="small" style="text-align: center;">
+    Astronomy and Astrophysics • Theoretical and Mathematical Physics <br>
+    Research • Teaching
+  </p>
 
-    body {
-      margin: 0;
-      font: 18px/1.6 Georgia, serif;
-      background: var(--bg);
-      color: var(--text);
-    }
+  <h2 id="contact">Contact</h2>
+  <p>Email: <a href="mailto:wdlinch3@gmail.com">wdlinch3@gmail.com</a></p>
 
-    .page {
-      max-width: 1150px;
-      margin: 40px auto;
-      padding: 0 24px;
-      display: grid;
-      grid-template-columns: 240px 1fr;
-      gap: 48px;
-    }
+  <h2 id="about">About</h2>
+  <p>
+    I am a theoretical/mathematical physicist by training and was in academia for 15 years before switching to teaching.
+    I currently serve as Director of Astronomy and Astrophysics at
+    <a href="https://en.wikipedia.org/wiki/Thomas_Jefferson_High_School_for_Science_and_Technology">Thomas Jefferson High School for Science and Technology</a>.
+  </p>
 
-    .sidebar {
-      position: sticky;
-      top: 30px;
-      align-self: start;
-      font-size: 16px;
-      border-right: 1px solid var(--border);
-      padding-right: 24px;
-    }
+  <h2 id="cv">CV</h2>
+  <ul class="linklist">
+    <li><a href="/cv/cv.html">Résumé</a> (<a href="/cv/resume.pdf">pdf</a>)</li>
+    <li><a href="https://orcid.org/0000-0003-2631-4465" target="_blank">ORCID</a></li>
+    <li><a href="https://inspirehep.net/authors/1019804" target="_blank">INSPIRE</a></li>
+    <li><a href="https://arxiv.org/search/?searchtype=author&amp;query=Linch%2C+W+D" target="_blank">arXiv</a></li>
+  </ul>
 
-    .sidebar h2 {
-      font-size: 1.05em;
-      margin: 0 0 0.5em 0;
-      line-height: 1.2;
-    }
+  <h2 id="research">Research</h2>
+  <p>My research interests can be roughly grouped as:</p>
+  <ul>
+    <li><a href="/research/a_theory.html">A-theory</a>: attempts to formulate a quantizable description of the worldvolumes of M-theory/F-theory branes.</li>
+    <li><a href="/research/leea.html">M-theory low-energy effective action</a>: attempts to construct the complete effective action for M-theory by exploiting off-shell superspaces with fractional supersymmetry.</li>
+    <li>Mathematical supersymmetry: attempts to formulate a more rigorous description of superfields as sheaves and superspaces as their algebro-geometric spectra.</li>
+    <li>Astrophysics: my students and I are currently working on projects ranging from searches for long-period transients in VLITE data to constructing (GR)MHD simulations.</li>
+  </ul>
 
-    .sidebar section {
-      margin-bottom: 1.75em;
-    }
+  <h2 id="teaching">Teaching</h2>
+  <p>As Director of Astronomy and Astrophysics, I teach:</p>
+  <ul>
+    <li>Advanced Astronomy: Solar System (<a href="/aa/ss_emphasis.pdf" target="_blank">AA:SS</a>)</li>
+    <li>Advanced Astronomy: Universe (<a href="/aa/u_emphasis.pdf" target="_blank">AA:U</a>)</li>
+    <li>Senior Research in Astronomy and Astrophysics</li>
+  </ul>
 
-    .content {
-      min-width: 0;
-      max-width: 850px;
-    }
+  <p>
+    In the first two, students work through astrophysics problems using LaTeX and Python in
+    <a href="https://github.com/wdlinch3/aa_assignments">Jupyter notebooks</a>.
+    These classes serve as prerequisites for the senior research lab, in which students learn how to navigate and use the astrophysical research literature.
+    They then formulate a research proposal of their own and undertake that research with the goal of completing the project within their senior year.
+  </p>
 
-    h1 {
-      margin-top: 0;
-      margin-bottom: 0.2em;
-      line-height: 1.15;
-      font-size: 2.2em;
-    }
+  <h3 id="for_students">For students</h3>
+  <p>
+    Over the years, I have developed a few guided-study packets designed to help interested students go beyond the usual curriculum in the direction of their particular interests.
+    Since the packets were entirely designed for specific students' interests and dedication, the topic list is not entirely coherent, and some packets are incomplete.
+  </p>
+  <ul>
+    <li><a href="https://github.com/wdlinch3/minicourses_release/blob/main/groups/Groups.pdf">Rotations and Lie groups</a></li>
+    <li><a href="https://github.com/wdlinch3/minicourses_release/blob/main/linear_algebra/SturmLiouville.pdf">Linear algebra and Sturm-Liouville</a></li>
+    <li><a href="https://github.com/wdlinch3/minicourses_release/blob/main/relativity/em_forms/EM.pdf">Electromagnetism and differential forms</a></li>
+    <li><a href="https://github.com/wdlinch3/minicourses_release/blob/main/relativity/gr/GR.pdf">Coordinate-independence, manifolds, and General Relativity</a></li>
+  </ul>
 
-    h2 {
-      margin-top: 1.8em;
-      margin-bottom: 0.5em;
-      line-height: 1.2;
-    }
-
-    p {
-      margin-top: 0;
-      margin-bottom: 1em;
-    }
-
-    ul {
-      margin-top: 0.4em;
-      margin-bottom: 1em;
-      padding-left: 1.2em;
-    }
-
-    .linklist,
-    .sidebar ul {
-      list-style: none;
-      padding-left: 0;
-      margin-left: 0;
-    }
-
-    .linklist li,
-    .sidebar li {
-      margin-bottom: 0.4em;
-    }
-
-    a {
-      color: var(--link);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .small {
-      color: var(--muted);
-      margin-bottom: 1.5em;
-    }
-
-    @media (max-width: 900px) {
-      .page {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-
-      .sidebar {
-        position: static;
-        border-right: none;
-        border-bottom: 1px solid var(--border);
-        padding-right: 0;
-        padding-bottom: 1em;
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <div class="page">
-    <aside class="sidebar">
-      <section>
-        <h2>Navigate</h2>
-        <ul>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#cv">CV</a></li>
-          <li><a href="#research">Research</a></li>
-          <li><a href="#teaching">Teaching</a></li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>External</h2>
-        <ul>
-          <li><a href="https://inspirehep.net/">iNSPIRE</a></li>
-          <li><a href="https://arxiv.org"">arXiv</a></li>
-          <li><a href="https://orcid.org/0000-0003-2631-4465">ORCiD</a></li>
-          <li><a href="https://github.com/wdlinch3">GitHub</a></li>
-          <li><a href="https://chatgpt.com">ChatGPT</a></li>
-          <li><a href="https://www.desmos.com">Desmos</a></li>
-        </ul>
-      </section>
-    </aside>
-
-    <main class="content">
-      <h1 style="text-align: center;">William D. Linch III</h1>
-      <p class="small" style="text-align: center;">Astronomy and Astrophysics • Theoretical and Mathematical Physics <br> 
-          Research • Teaching</p>  
-
-      <h2 id="contact">Contact</h2>
-      <p>Email: <a href="mailto:wdlinch3@gmail.com">wdlinch3@gmail.com</a></p>
-      <h2 id="about">About</h2>
-      <p>
-        I am a theoretical/mathematical physicist by training and was in academia for 15 years before switching to teaching.
-        I currently serve as Director of Astronomy and Astrophysics at <a href="https://en.wikipedia.org/wiki/Thomas_Jefferson_High_School_for_Science_and_Technology">Thomas Jefferson High School for Science and Technology</a>.
-      </p>
-
-      <h2 id="cv">CV</h2>
-      <ul class="linklist">
-        <li><a href="./cv/cv.html">Résumé</a>(<a href="/cv/resume.pdf">pdf</a>)</li>
-        <li><a href="https://orcid.org/0000-0003-2631-4465" target="_blank">ORCID</a></li>
-        <li><a href="https://inspirehep.net/authors/1019804" target="_blank">INSPIRE</a></li>
-        <li><a href="https://arxiv.org/search/?searchtype=author&amp;query=Linch%2C+W+D" target="_blank">arXiv</a></li>
-      </ul>
-
-      <h2 id="research">Research</h2>
-      <p>My research interests can be roughly grouped as:</p>
-      <ul>
-        <li><a href="/research/a_theory.html">A-theory</a>: attempts to formulate a quantizable description of the worldvolumes of M-theory/F-theory branes.</li>
-        <li><a href="/research/leea.html">M-theory low-energy effective action</a>: attempts to construct the complete effective action for M-theory by exploiting off-shell superspaces with fractional supersymmetry.</li>
-        <li>Mathematical supersymmetry: attempts to formulate a more rigorous description of superfields as sheaves and superspaces as their algebro-geometric spectra.</li>
-        <li>Astrophysics: my students and I are currently working on projects ranging from searches for long-period transients in VLITE data to constructing (GR)MHD simulations.</li>
-      </ul>
-
-      <h2 id="teaching">Teaching</h2>
-      <p>As Director of Astronomy and Astrophysics, I teach:</p>
-      <ul>
-        <li>Advanced Astronomy: Solar System (<a href="/aa/ss_emphasis.pdf" target="_blank">AA:SS</a>)</li>
-        <li>Advanced Astronomy: Universe (<a href="/aa/u_emphasis.pdf" target="_blank">AA:U</a>)</li>
-        <li>Senior Research in Astronomy and Astrophysics</li>
-      </ul>
-      <p>
-        In the first two, students work through astrophysics problems using LaTeX and Python in <a href="https://github.com/wdlinch3/aa_assignments">Jupyter notebooks</a>.
-        These classes serve as prerequisites for the senior research lab, in which students learn how to navigate and use the astrophysical research literature.
-        They then formulate a research proposal of their own and undertake that research with the goal of completing the project within their senior year.
-      </p>
-        <h3 id="for_students">For students</h2>
-          <p> Over the years, I have developed a few guided-study packets designed to help interested student go beyond the usual curriculum in the direction of their particular interests. Since the packets were entirely designed for specific students' interests and dedication, the topic list is not entirely coherent, and some packets are incomplete. </p>
-        <ul>
-            <li><a href="https://github.com/wdlinch3/minicourses_release/blob/main/groups/Groups.pdf">Rotations and Lie groups</a></li>
-            <li><a href="https://github.com/wdlinch3/minicourses_release/blob/main/linear_algebra/SturmLiouville.pdf">Linear algebra and Sturm-Liouville</a></li>
-            <li><a href="https://github.com/wdlinch3/minicourses_release/blob/main/relativity/em_forms/EM.pdf">Electromagnetism and differential forms</a></li>
-            <li><a href="https://github.com/wdlinch3/minicourses_release/blob/main/relativity/gr/GR.pdf">Coordinate-independence, manifolds, and General Relativity</a></li>
-        </ul>
-
-        <h3 id="other">Other materials</h2>
-          <p> ... </p>
-        
-    </main>
-  </div>
-</body>
-</html>
+  <h3 id="other">Other materials</h3>
+  <p>...</p>
+</section>

@@ -1,0 +1,160 @@
+:root {
+  color-scheme: dark;
+  --bg: #111;
+  --text: #ddd;
+  --muted: #aaa;
+  --link: #8ab4ff;
+  --border: #333;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font: 18px/1.6 Georgia, serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.page {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 24px;
+}
+
+.page:has(> .sidebar) {
+  max-width: 1150px;
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 48px;
+}
+
+.sidebar {
+  position: sticky;
+  top: 30px;
+  align-self: start;
+  font-size: 16px;
+  border-right: 1px solid var(--border);
+  padding-right: 24px;
+}
+
+.sidebar h2 {
+  font-size: 1.05em;
+  margin: 0 0 0.5em 0;
+  line-height: 1.2;
+}
+
+.sidebar section {
+  margin-bottom: 1.75em;
+}
+
+.content {
+  min-width: 0;
+  max-width: 850px;
+}
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 0.2em;
+  line-height: 1.15;
+  font-size: 2.2em;
+}
+
+h2 {
+  margin-top: 1.8em;
+  margin-bottom: 0.5em;
+  line-height: 1.2;
+}
+
+h3 {
+  margin-top: 1.4em;
+  margin-bottom: 0.5em;
+  line-height: 1.2;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+ul {
+  margin-top: 0.4em;
+  margin-bottom: 1em;
+  padding-left: 1.2em;
+}
+
+.linklist,
+.sidebar ul {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.linklist li,
+.sidebar li {
+  margin-bottom: 0.4em;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.small {
+  color: var(--muted);
+  margin-bottom: 1.5em;
+}
+
+code {
+  background: #161b22;
+  padding: 0.15rem 0.35rem;
+  border-radius: 4px;
+}
+
+pre {
+  background: #161b22;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+img,
+video,
+iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+mjx-container {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+@media (max-width: 900px) {
+  .page:has(> .sidebar) {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .sidebar {
+    position: static;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding-right: 0;
+    padding-bottom: 1em;
+  }
+
+  .content {
+    max-width: none;
+  }
+}
