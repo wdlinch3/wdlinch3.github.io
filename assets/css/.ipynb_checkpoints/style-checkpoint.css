@@ -16,12 +16,33 @@ html {
 }
 
 body {
-  margin: 0;
-  font: 18px/1.6 Georgia, serif;
-  background: var(--bg);
-  color: var(--text);
+  position: relative;
+  min-height: 100vh;
 }
 
+.has-page-bg .page-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-image: var(--page-bg-image);
+  background-position: var(--page-bg-position);
+  background-size: var(--page-bg-size);
+  background-repeat: no-repeat;
+  opacity: var(--page-bg-opacity);
+}
+
+.has-page-bg .page-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--page-bg-overlay);
+}
+
+.page,
+.aa-page {
+  position: relative;
+  z-index: 1;
+}
 .page {
   max-width: 900px;
   margin: 40px auto;
