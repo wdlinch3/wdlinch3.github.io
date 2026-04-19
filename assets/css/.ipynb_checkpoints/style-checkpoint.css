@@ -16,6 +16,10 @@ html {
 }
 
 body {
+  margin: 0;
+  font: 18px/1.6 Georgia, serif;
+  background: var(--bg);
+  color: var(--text);
   position: relative;
   min-height: 100vh;
 }
@@ -23,7 +27,8 @@ body {
 .has-page-bg .page-bg {
   position: fixed;
   inset: 0;
-  z-index: -2;
+  z-index: 0;
+  pointer-events: none;
   background-image: var(--page-bg-image);
   background-position: var(--page-bg-position);
   background-size: var(--page-bg-size);
@@ -43,6 +48,7 @@ body {
   position: relative;
   z-index: 1;
 }
+
 .page {
   max-width: 900px;
   margin: 40px auto;
