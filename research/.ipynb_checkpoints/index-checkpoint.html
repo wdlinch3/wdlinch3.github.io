@@ -1,98 +1,145 @@
 ---
 title: Research
-bg_image: /assets/images/backgrounds/EagleIR.jpeg
-bg_overlay: 0.80
-bg_opacity: 0.60
-bg_position: center center
-bg_size: cover
 ---
 
-<aside class="sidebar">
-  <section>
-    <h2>Navigate</h2>
-    <ul>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#cv">CV</a></li>
-      <li><a href="#research">Research</a></li>
-      <li><a href="#teaching">Teaching</a></li>
-    </ul>
+<style>
+  .research-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .research-card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+    background: rgba(255,255,255,0.02);
+  }
+
+  .research-card h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .research-note {
+    color: var(--muted);
+  }
+</style>
+
+<h1>Research</h1>
+
+<p class="small">
+  Fundamental physics, mathematical structure, and the search for logically coherent descriptions of nature
+</p>
+
+<p>
+  My research is guided by a simple conviction: when a physical theory breaks down in a serious way,
+  that breakdown is not merely an inconvenience. It is a clue. Singularities, inconsistencies, and
+  unexplained structures are signs that a description of nature is incomplete, and that a deeper,
+  more coherent framework is needed.
+</p>
+
+<p>
+  I am especially interested in places where our best theories become conceptually unstable:
+  where gravity and quantum theory resist unification, where singularities indicate that observables
+  have become unbounded, and where apparently successful formalisms remain too incomplete,
+  too ad hoc, or too difficult to use as genuine foundations.
+</p>
+
+<h2>How I think about fundamental physics</h2>
+
+<p>
+  I see mathematics as the logical language of natural philosophy. Physics earns our trust because
+  it explains things, and the deepest explanations in physics are almost always mathematical.
+  For that reason, I am interested not only in what a theory predicts, but in why earlier theories fail,
+  what consistency problem forced a new framework into existence, and whether the new framework
+  truly resolves the problem or merely postpones it.
+</p>
+
+<p>
+  This way of thinking leads naturally toward supersymmetry, supergravity, effective actions,
+  string/M-theory, and modern geometry. It also makes me skeptical of approaches that rely too heavily
+  on heuristic or magical thinking while ignoring known conceptual defects.
+</p>
+
+<h2>Main themes</h2>
+
+<div class="research-grid">
+  <section class="research-card">
+    <h3><a href="/research/effective-actions.html">Singularities and effective actions</a></h3>
+    <p>
+      Singularities often signal that a theory has been pushed beyond the regime in which it makes sense.
+      One recurring theme in my work is that Born–Infeld-type effective actions may encode logically controlled
+      ways of softening such pathologies.
+    </p>
   </section>
 
-  <section>
-    <h2>External</h2>
-    <ul>
-      <li><a href="https://inspirehep.net/">iNSPIRE</a></li>
-      <li><a href="https://arxiv.org">arXiv</a></li>
-      <li><a href="https://orcid.org/0000-0003-2631-4465">ORCiD</a></li>
-      <li><a href="https://github.com/wdlinch3">GitHub</a></li>
-      <li><a href="https://chatgpt.com">ChatGPT</a></li>
-      <li><a href="https://www.desmos.com">Desmos</a></li>
-    </ul>
+  <section class="research-card">
+    <h3><a href="/research/a-theory.html">Worldvolume approaches to M-theory</a></h3>
+    <p>
+      Rather than treating M-theory as an invitation to speculative handwaving, I am interested in
+      worldvolume formulations that remain logically disciplined while still reproducing genuinely
+      interesting higher-dimensional behavior.
+    </p>
   </section>
-</aside>
 
-<section class="content">
-  <h1 style="text-align: center;">William D. Linch III</h1>
-  <p class="small" style="text-align: center;">
-    Astronomy and Astrophysics • Theoretical and Mathematical Physics <br>
-    Research • Teaching
-  </p>
+  <section class="research-card">
+    <h3><a href="/research/off-shell-supersymmetry.html">Off-shell supersymmetry and fractional superspace</a></h3>
+    <p>
+      Off-shell supersymmetry is one of the most structurally revealing ideas in the subject, but it appears
+      to run into severe limits at high numbers of supercharges. That tension motivates work on fractional
+      superspace, where only a proper subgroup of spacetime symmetry is manifest.
+    </p>
+  </section>
 
-  <h2 id="contact">Contact</h2>
-  <p>Email: <a href="mailto:wdlinch3@gmail.com">wdlinch3@gmail.com</a></p>
+  <section class="research-card">
+    <h3><a href="/research/geometry-and-logic.html">Geometry, algebra, and the language of physics</a></h3>
+    <p>
+      Modern algebraic geometry, sheaf-theoretic thinking, and related mathematical structures provide
+      a natural language for fields, defects, and supersymmetric spaces. I am interested in these ideas
+      not as ornament, but as part of the underlying logic of the subject.
+    </p>
+  </section>
+</div>
 
-  <h2 id="about">About</h2>
-  <p>
-    I am a theoretical/mathematical physicist by training and was in academia for 15 years before switching to teaching.
-    I currently serve as Director of Astronomy and Astrophysics at
-    <a href="https://en.wikipedia.org/wiki/Thomas_Jefferson_High_School_for_Science_and_Technology">Thomas Jefferson High School for Science and Technology</a>.
-  </p>
+<h2>From broad ideas to technical details</h2>
 
-  <h2 id="cv">CV</h2>
-  <ul class="linklist">
-    <li><a href="/cv/cv.html">Résumé</a> (<a href="/cv/resume.pdf">pdf</a>)</li>
-    <li><a href="https://orcid.org/0000-0003-2631-4465">ORCID</a></li>
-    <li><a href="https://inspirehep.net/authors/1019804">INSPIRE</a></li>
-    <li><a href="https://arxiv.org/search/?searchtype=author&amp;query=Linch%2C+W+D">arXiv</a></li>
-  </ul>
+<p>
+  This section of the site is organized as a gradual descent from accessible motivation to increasingly
+  technical discussion. The goal is not to maintain several parallel versions of the same material at
+  different levels, but to let a reader go deeper step by step.
+</p>
 
-  <h2 id="research">Research</h2>
-  <p>My research interests can be roughly grouped as:</p>
-  <ul>
-    <li><a href="/research/a_theory.html">A-theory</a>: attempts to formulate a quantizable description of the worldvolumes of M-theory/F-theory branes.</li>
-    <li><a href="/research/leea.html">M-theory low-energy effective action</a>: attempts to construct the complete effective action for M-theory by exploiting off-shell superspaces with fractional supersymmetry.</li>
-    <li>Mathematical supersymmetry: attempts to formulate a more rigorous description of superfields as sheaves and superspaces as their algebro-geometric spectra.</li>
-    <li>Astrophysics: my students and I are currently working on projects ranging from searches for long-period transients in VLITE data to constructing (GR)MHD simulations.</li>
-  </ul>
+<p>
+  A general reader can stop after the opening sections of a topic page. A student can continue into the
+  conceptual and mathematical structure. A specialist can follow the thread all the way down to the
+  technical problems, references, and original papers.
+</p>
 
-  <h2 id="teaching">Teaching</h2>
-  <p>As Director of Astronomy and Astrophysics, I teach:</p>
-  <ul>
-    <li><a href="./aa/index.html">Advanced Astronomy</a>: <a href="./aa/ss/index.html">Solar System</a> (<a href="/aa/ss_emphasis.pdf">AA:SS</a>)</li>
-    <li><a href="./aa/index.html">Advanced Astronomy</a>: <a href="./aa/u/index.html">Universe</a> (<a href="/aa/u_emphasis.pdf">AA:U</a>)</li>
-    <li>Senior Research in Astronomy and Astrophysics</li>
-  </ul>
+<h2>Research areas</h2>
 
-  <p>
-    In the first two, students work through astrophysics problems using LaTeX and Python in
-    <a href="https://github.com/wdlinch3/aa_assignments">Jupyter notebooks</a>.
-    These classes serve as prerequisites for the senior research lab, in which students learn how to navigate and use the astrophysical research literature.
-    They then formulate a research proposal of their own and undertake that research with the goal of completing the project within their senior year.
-  </p>
+<ul>
+  <li><a href="/research/effective-actions.html">Effective actions, Born–Infeld structure, and singularities</a></li>
+  <li><a href="/research/a-theory.html">A-theory, branes, and worldvolume-first approaches to M-theory</a></li>
+  <li><a href="/research/off-shell-supersymmetry.html">Off-shell supersymmetry, fractional superspace, and related structures</a></li>
+  <li><a href="/research/geometry-and-logic.html">Geometry, sheaves, spectra, and the mathematical language of supersymmetric physics</a></li>
+  <li><a href="/research/publications.html">Publications and technical papers</a></li>
+</ul>
 
-  <h3 id="for_students">For students</h3>
-  <p>
-    Over the years, I have developed a few guided-study packets designed to help interested students go beyond the usual curriculum in the direction of their particular interests.
-    Since the packets were entirely designed for specific students' interests and dedication, the topic list is not entirely coherent, and some packets are incomplete.
-  </p>
-  <ul>
-    <li><a href="https://github.com/wdlinch3/minicourses_release/blob/main/groups/Groups.pdf">Rotations and Lie groups</a></li>
-    <li><a href="https://github.com/wdlinch3/minicourses_release/blob/main/linear_algebra/SturmLiouville.pdf">Linear algebra and Sturm-Liouville</a></li>
-    <li><a href="https://github.com/wdlinch3/minicourses_release/blob/main/relativity/em_forms/EM.pdf">Electromagnetism and differential forms</a></li>
-    <li><a href="https://github.com/wdlinch3/minicourses_release/blob/main/relativity/gr/GR.pdf">Coordinate-independence, manifolds, and General Relativity</a></li>
-  </ul>
+<h2>For students and curious readers</h2>
 
-  <h3 id="other">Other materials</h3>
-  <p>...</p>
-</section>
+<p>
+  Some pages in this section are written with students in mind. They begin with the physical question first,
+  then explain why the mathematics appears, and only later move into technical terminology. The guiding idea
+  throughout is that the mathematics is not decoration: it is the sharpened form of the logic that makes
+  the physics intelligible.
+</p>
+
+<h2>Further reading</h2>
+
+<ul>
+  <li><a href="/cv/cv.html">Curriculum Vitae</a></li>
+  <li><a href="https://arxiv.org/search/?searchtype=author&amp;query=Linch%2C+W+D">arXiv papers</a></li>
+  <li><a href="https://inspirehep.net/authors/1019804">INSPIRE profile</a></li>
+</ul>
