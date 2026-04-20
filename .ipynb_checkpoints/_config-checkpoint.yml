@@ -1,6 +1,17 @@
 title: William D. Linch III
+
 defaults:
   - scope:
       path: ""
     values:
       layout: default
+
+  - scope:
+      path: "research"
+    values:
+      layout: research
+      bg_image: /assets/images/backgrounds/blackboard.png
+      bg_overlay: 0.25
+      bg_opacity: 0.65
+      bg_position: center center
+      bg_size: cover
