@@ -44,7 +44,8 @@ body {
 }
 
 .page,
-.aa-page {
+.aa-page,
+.research-page {
   position: relative;
   z-index: 1;
 }
