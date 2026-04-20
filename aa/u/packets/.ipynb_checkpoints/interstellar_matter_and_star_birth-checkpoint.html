@@ -1,0 +1,256 @@
+---
+title: Interstellar Matter and Star Birth
+layout: aa
+---
+
+<style>
+  .topic-page {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 240px;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .topic-rail {
+    position: sticky;
+    top: 30px;
+    align-self: start;
+    border-left: 1px solid var(--border);
+    padding-left: 1rem;
+  }
+
+  .topic-rail h2 {
+    margin-top: 0;
+    font-size: 1.05em;
+  }
+
+  .topic-rail ul {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+  }
+
+  .topic-rail li {
+    margin-bottom: 0.45rem;
+  }
+
+  .packet-block {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .packet-block:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .topic-note {
+    color: var(--muted);
+  }
+
+  .topic-box {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+    background: rgba(255,255,255,0.02);
+    margin: 1rem 0 1.25rem 0;
+  }
+
+  .topic-box h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  @media (max-width: 1000px) {
+    .topic-page {
+      grid-template-columns: 1fr;
+    }
+
+    .topic-rail {
+      position: static;
+      border-left: none;
+      border-top: 1px solid var(--border);
+      padding-left: 0;
+      padding-top: 1rem;
+    }
+  }
+</style>
+
+<h1>Interstellar Matter and Star Birth</h1>
+
+<p class="small">
+  AA:U packet family page · nebulae, clouds, time scales, and the physics of forming stars
+</p>
+
+<p>
+  This page collects the interstellar-matter and star-birth material into one topic page rather than splitting it
+  into too many smaller pages. The goal is to give students one place to return to as the topic develops from
+  identifying different kinds of gas and nebulae, to understanding the relevant time scales, and finally to
+  following collapse through the earliest stellar phases.
+</p>
+
+<p>
+  This topic sits between basic stellar properties and full stellar evolution. It explains where stars come from,
+  what the interstellar medium is made of, how we learn about it spectroscopically, and why only some clouds
+  actually collapse into stars.
+</p>
+
+<div class="topic-page">
+  <section class="topic-main">
+    <h2>How this topic is split across the packet family</h2>
+
+    <div class="topic-box">
+      <h3>Part I: Interstellar matter</h3>
+      <p>
+        Nebulae, hydrogen regions, tracers, forbidden lines, and the observational logic of identifying what kind of
+        gas is present and what it is doing.
+      </p>
+    </div>
+
+    <div class="topic-box">
+      <h3>Part II: Time scales and instability</h3>
+      <p>
+        Free-fall, thermal, Kelvin–Helmholtz, and nuclear time scales, plus the physical question of when clouds remain
+        stable and when they collapse.
+      </p>
+    </div>
+
+    <div class="topic-box">
+      <h3>Part III: Collapse and protostellar evolution</h3>
+      <p>
+        Kelvin–Helmholtz contraction, Hayashi and Henyey tracks, T-Tauri stars, Herbig–Haro objects, hydrostatic equilibrium,
+        and the meaning of ZAMS.
+      </p>
+    </div>
+
+    <h2 id="part_1">Part I: Interstellar Matter</h2>
+
+    <section class="packet-block">
+      <h3>What this part is about</h3>
+      <p>
+        This part is about learning to distinguish the major environments of the interstellar medium and to understand
+        what their light is telling us. The central question is not just “what kind of cloud is this?” but “what
+        physical conditions make it look this way?”
+      </p>
+
+      <h3>Key ideas</h3>
+      <ul>
+        <li>Reflection, emission, and absorption nebulae</li>
+        <li>H I, H II, H2, and the photodissociation region (PDR)</li>
+        <li>The 21-cm line and why it is useful</li>
+        <li>Molecular tracers and forbidden transitions</li>
+        <li>Doppler shifts and the motion of interstellar gas</li>
+      </ul>
+
+      <h3>Common stumbling blocks</h3>
+      <ul>
+        <li>Confusing the different hydrogen regions with one another</li>
+        <li>Forgetting that a tracer is often used because the main constituent is difficult to observe directly</li>
+        <li>Treating spectral lines as labels rather than physical clues about density, temperature, ionization, and motion</li>
+        <li>Mixing up reflection and emission processes</li>
+      </ul>
+
+      <h3>Notes / reminders</h3>
+      <ul>
+        <li>Ask what is heating the gas and what is cooling it.</li>
+        <li>Ask what kind of transition is producing the observed radiation.</li>
+        <li>Be precise about whether a region is atomic, ionized, molecular, or being dissociated.</li>
+      </ul>
+    </section>
+
+    <h2 id="part_2">Part II: Time Scales and Instability</h2>
+
+    <section class="packet-block">
+      <h3>What this part is about</h3>
+      <p>
+        This part is about the physical clocks that govern star formation and the conditions under which a cloud remains
+        supported or begins to collapse. A major theme is that different processes have different characteristic time scales,
+        and that the competition among them determines what happens next.
+      </p>
+
+      <h3>Key ideas</h3>
+      <ul>
+        <li>Free-fall, thermal, Kelvin–Helmholtz, and nuclear time scales</li>
+        <li>When a self-gravitating cloud is stable and when it is not</li>
+        <li>The role of radiative cooling in allowing collapse</li>
+        <li>Jeans-type reasoning about instability and fragmentation</li>
+      </ul>
+
+      <h3>Common stumbling blocks</h3>
+      <ul>
+        <li>Memorizing names of time scales without remembering what each one measures</li>
+        <li>Forgetting that instability is about the competition between support and gravity</li>
+        <li>Not distinguishing clearly between dynamical collapse and slower thermal evolution</li>
+        <li>Losing track of which assumptions go into simple cloud models</li>
+      </ul>
+
+      <h3>Notes / reminders</h3>
+      <ul>
+        <li>Always ask what is supporting the cloud against gravity.</li>
+        <li>Cooling matters because hot gas resists collapse more effectively than cool gas.</li>
+        <li>When comparing time scales, ask which process has time to act first.</li>
+      </ul>
+    </section>
+
+    <h2 id="part_3">Part III: Collapse and Protostellar Evolution</h2>
+
+    <section class="packet-block">
+      <h3>What this part is about</h3>
+      <p>
+        This part follows the collapse of a cloud fragment into the protostellar phases and toward the zero-age main sequence.
+        The focus is on what changes physically during the contraction, how that appears on an HR diagram, and what counts
+        as a genuinely formed star.
+      </p>
+
+      <h3>Key ideas</h3>
+      <ul>
+        <li>Kelvin–Helmholtz contraction</li>
+        <li>Hayashi and Henyey tracks</li>
+        <li>T-Tauri stars and Herbig–Haro objects</li>
+        <li>Hydrostatic equilibrium and the meaning of ZAMS</li>
+      </ul>
+
+      <h3>Common stumbling blocks</h3>
+      <ul>
+        <li>Confusing collapse stages with later stellar-evolution stages</li>
+        <li>Not understanding what makes the Hayashi and Henyey tracks physically different</li>
+        <li>Treating ZAMS as just a point on a diagram instead of a physical threshold</li>
+        <li>Forgetting that hydrostatic equilibrium is one of the defining features of a mature star</li>
+      </ul>
+
+      <h3>Notes / reminders</h3>
+      <ul>
+        <li>Ask what has changed in the core and envelope at each stage.</li>
+        <li>When using an HR diagram, connect the motion on the diagram to a physical change in the object.</li>
+        <li>ZAMS is not merely “a young star”; it marks the onset of sustained core hydrogen burning in hydrostatic equilibrium.</li>
+      </ul>
+    </section>
+
+    <h2>How to use this page</h2>
+
+    <p>
+      For now, this page is meant to be a running support page for the packet family. Over time it can accumulate
+      diagrams, quick formulas, worked reminders, common misconceptions, and links to prerequisite material from
+      AA:X and neighboring AA:U topics.
+    </p>
+
+    <h2>Related pages</h2>
+
+    <ul>
+      <li><a href="/aa/u/packets/">Back to the AA:U packet hub</a></li>
+      <li><a href="/aa/u/packets/stars_1.html">Stars I</a> <span class="small">(to be added)</span></li>
+      <li><a href="/aa/u/packets/stellar_evolution.html">Stellar Evolution</a></li>
+      <li><a href="/aa/x/packets/spectroscopy.html">AA:X Spectroscopy</a> <span class="small">(to be added)</span></li>
+    </ul>
+  </section>
+
+  <aside class="topic-rail">
+    <h2>Quick jump</h2>
+    <ul>
+      <li><a href="#part_1">Interstellar Matter</a></li>
+      <li><a href="#part_2">Time Scales and Instability</a></li>
+      <li><a href="#part_3">Collapse and Protostellar Evolution</a></li>
+    </ul>
+  </aside>
+</div>
