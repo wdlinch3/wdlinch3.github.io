@@ -14,19 +14,20 @@ layout: aa
 
   .topic-page {
     display: grid;
-    grid-template-columns: 580px 300px;
+    grid-template-columns: minmax(0, 680px) minmax(280px, 1fr);
     gap: 1.5rem;
     align-items: start;
-    width: fit-content;
-    max-width: 100%;
+    width: 100%;
   }
 
   .topic-main {
     min-width: 0;
+    max-width: 680px;
   }
 
   .topic-rail {
-    width: 300px;
+    width: 100%;
+    min-width: 280px;
     position: sticky;
     top: 30px;
     align-self: start;
@@ -73,12 +74,16 @@ layout: aa
 
     .topic-page {
       grid-template-columns: 1fr;
-      width: auto;
+      gap: 1.25rem;
+    }
+
+    .topic-main {
       max-width: none;
     }
 
     .topic-rail {
       width: auto;
+      min-width: 0;
       position: static;
       border-left: none;
       border-top: 1px solid var(--border);
@@ -94,21 +99,21 @@ layout: aa
   AA:U topic page · nebulae, clouds, instability, and the earliest stages of stellar formation
 </p>
 
-<p>
-  This page collects the interstellar-matter and star-birth material into one topic page rather than splitting it
-  into too many smaller pages. The goal is to give students one place to return to as the topic develops from
-  identifying different kinds of gas and nebulae, to understanding the relevant time scales, and finally to
-  following collapse through the earliest stellar phases.
-</p>
-
-<p>
-  This topic sits between basic stellar properties and full stellar evolution. It explains where stars come from,
-  what the interstellar medium is made of, how we learn about it spectroscopically, and why only some clouds
-  actually collapse into stars.
-</p>
-
 <div class="topic-page">
   <section class="topic-main">
+    <p>
+      This page collects the interstellar-matter and star-birth material into one topic page rather than splitting it
+      into too many smaller pages. The goal is to give students one place to return to as the topic develops from
+      identifying different kinds of gas and nebulae, to understanding the relevant time scales, and finally to
+      following collapse through the earliest stellar phases.
+    </p>
+
+    <p>
+      This topic sits between basic stellar properties and full stellar evolution. It explains where stars come from,
+      what the interstellar medium is made of, how we learn about it spectroscopically, and why only some clouds
+      actually collapse into stars.
+    </p>
+
     <h2>How this topic is organized</h2>
 
     <div class="topic-box">
