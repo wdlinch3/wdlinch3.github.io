@@ -11,50 +11,61 @@
     <ul>
       <li>
         ss_geometry
-        ({% if include.current == "ss_kepler" %}<strong>here</strong>{% else %}<a href="/aa/ss/help/geometry_euclidean.html">help</a>{% endif %})
+        ({% if include.current == "ss_geometry" %}<a href="/aa/ss/help/geometry_euclidean.html">here</a>{% else %}<a href="/aa/ss/help/geometry_euclidean.html">help</a>{% endif %})
       </li>
       <li>
         ss_celestial_sphere
-        ({% if include.current == "ss_celestial_sphere" %}<strong>here</strong>{% else %}<a href="/aa/ss/help/celestial_sphere.html">help</a>{% endif %})
+        ({% if include.current == "ss_celestial_sphere" %}<a href="/aa/ss/help/celestial_sphere.html">here</a>{% else %}<a href="/aa/ss/help/celestial_sphere.html">help</a>{% endif %})
+      </li>
       <li>
         ss_aristarchus
         (<a href="https://github.com/wdlinch3/aa_assignments/blob/main/aa_ss/ss_aristarchus/ss_aristarchus.ipynb">preview</a> |
-        {% if include.current == "ss_aristarchus" %}<strong>here</strong>{% else %}<a href="/aa/ss/help/aristarchus.html">help</a>{% endif %})
+        {% if include.current == "ss_aristarchus" %}<a href="/aa/ss/help/aristarchus.html">here</a>{% else %}<a href="/aa/ss/help/aristarchus.html">help</a>{% endif %})
       </li>
       <li>
         ss_kepler
-        ({% if include.current == "ss_kepler" %}<strong>here</strong>{% else %}<a href="/aa/ss/help/kepler_and_orbits.html">help</a>{% endif %})
+        ({% if include.current == "ss_kepler" %}<a href="/aa/ss/help/kepler_and_orbits.html">here</a>{% else %}<a href="/aa/ss/help/kepler_and_orbits.html">help</a>{% endif %})
       </li>
       <li>
-        ss_solar_system_1
-        (<a href="https://github.com/wdlinch3/aa_assignments/blob/main/aa_ss/ss_solar_system_1/ss_solar_system_1.ipynb">preview</a> |
-        {% if include.current == "ss_solar_system_1" %}<strong>here</strong>{% else %}<a href="/aa/ss/help/solar_system.html">help</a>{% endif %})
+        ss_solar_system
+        <ul>
+          <li>
+            part i
+            (<a href="https://github.com/wdlinch3/aa_assignments/blob/main/aa_ss/ss_solar_system_1/ss_solar_system_1.ipynb">preview</a> |
+            {% if include.current == "ss_solar_system" or include.current == "ss_solar_system_1" %}<a href="/aa/ss/help/solar_system.html">here</a>{% else %}<a href="/aa/ss/help/solar_system.html#part_1">help</a>{% endif %})
+          </li>
+          <li>
+            part ii
+            (<a href="https://github.com/wdlinch3/aa_assignments/blob/main/aa_ss/ss_solar_system_2/ss_solar_system_2_clean.ipynb">preview</a> |
+            {% if include.current == "ss_solar_system" or include.current == "ss_solar_system_2" %}<a href="/aa/ss/help/solar_system.html">here</a>{% else %}<a href="/aa/ss/help/solar_system.html#part_2">help</a>{% endif %})
+          </li>
+          <li>
+            part iii
+            (<a href="https://github.com/wdlinch3/aa_assignments/blob/main/aa_ss/ss_solar_system_3/ss_solar_system_3.ipynb">preview</a> |
+            {% if include.current == "ss_solar_system" or include.current == "ss_solar_system_3" %}<a href="/aa/ss/help/solar_system.html">here</a>{% else %}<a href="/aa/ss/help/solar_system.html#part_3">help</a>{% endif %})
+          </li>
+        </ul>
       </li>
       <li>
-        ss_solar_system_2
-        (<a href="https://github.com/wdlinch3/aa_assignments/blob/main/aa_ss/ss_solar_system_2/ss_solar_system_2_clean.ipynb">preview</a> |
-        {% if include.current == "ss_solar_system_2" %}<strong>here</strong>{% else %}<a href="/aa/ss/help/solar_system.html">help</a>{% endif %})
-      </li>
-      <li>
-        ss_solar_system_3
-        (<a href="https://github.com/wdlinch3/aa_assignments/blob/main/aa_ss/ss_solar_system_3/ss_solar_system_3.ipynb">preview</a> |
-        {% if include.current == "ss_solar_system_3" %}<strong>here</strong>{% else %}<a href="/aa/ss/help/solar_system.html">help</a>{% endif %})
-        </li>
-        <li>
         ss_sol
         (<a href="https://github.com/wdlinch3/aa_assignments/blob/main/aa_ss/ss_sol/ss_sol.ipynb">preview</a> |
-        {% if include.current == "ss_sun_1" %}<strong>here</strong>{% else %}<a href="/aa/ss/help/sun.html">help</a>{% endif %})
+        {% if include.current == "ss_sol" %}<a href="/aa/ss/help/sun.html">here</a>{% else %}<a href="/aa/ss/help/sun.html">help</a>{% endif %})
       </li>
       <li>
-        ss_jupiter_1
-        (<a href="https://github.com/wdlinch3/aa_assignments/blob/main/aa_ss/ss_jupiter_1/ss_jupiter_1.ipynb">preview</a> |
-        {% if include.current == "ss_jupiter_1" %}<strong>here</strong>{% else %}<a href="/aa/ss/help/jupiter.html">help</a>{% endif %})
+        ss_jupiter
+        <ul>
+          <li>
+            part i
+            (<a href="https://github.com/wdlinch3/aa_assignments/blob/main/aa_ss/ss_jupiter_1/ss_jupiter_1.ipynb">preview</a> |
+            {% if include.current == "ss_jupiter" or include.current == "ss_jupiter_1" %}<a href="/aa/ss/help/jupiter.html">here</a>{% else %}<a href="/aa/ss/help/jupiter.html#part_1">help</a>{% endif %})
+          </li>
+          <li>
+            part ii
+            (<a href="https://github.com/wdlinch3/aa_assignments/blob/main/aa_ss/ss_jupiter_2/ss_jupiter_2.ipynb">preview</a> |
+            {% if include.current == "ss_jupiter" or include.current == "ss_jupiter_2" %}<a href="/aa/ss/help/jupiter.html">here</a>{% else %}<a href="/aa/ss/help/jupiter.html#part_2">help</a>{% endif %})
+          </li>
+        </ul>
       </li>
-      <li>
-        ss_jupiter_2
-        (<a href="https://github.com/wdlinch3/aa_assignments/blob/main/aa_ss/ss_jupiter_2/ss_jupiter_2.ipynb">preview</a> |
-        {% if include.current == "ss_jupiter_1" %}<strong>here</strong>{% else %}<a href="/aa/ss/help/jupiter.html">help</a>{% endif %})
-    </li>
     </ul>
   </section>
 
@@ -64,12 +75,12 @@
       <li>
         u_stars_1
         (<a href="https://github.com/wdlinch3/aa_assignments/blob/main/aa_u/u_stars_1/u_stars_1.ipynb">preview</a> |
-        {% if include.current == "u_stars_1" %}<strong>here</strong>{% else %}<a href="/aa/u/help/stars_1.html">help</a>{% endif %})
+        {% if include.current == "u_stars_1" %}<a href="/aa/u/help/stars_1.html">here</a>{% else %}<a href="/aa/u/help/stars_1.html">help</a>{% endif %})
       </li>
       <li>
         u_ism_and_star_birth
         (<a href="https://github.com/wdlinch3/aa_assignments/blob/main/aa_u/u_ism_and_star_birth/u_ism_and_star_birth.ipynb">preview</a> |
-        {% if include.current == "u_ism_and_star_birth" %}<strong>here</strong>{% else %}<a href="/aa/u/help/interstellar_matter_and_star_birth.html">help</a>{% endif %})
+        {% if include.current == "u_ism_and_star_birth" %}<a href="/aa/u/help/interstellar_matter_and_star_birth.html">here</a>{% else %}<a href="/aa/u/help/interstellar_matter_and_star_birth.html">help</a>{% endif %})
       </li>
       <li>
         u_stellar_evolution
@@ -77,29 +88,29 @@
           <li>
             part i
             (<a href="https://github.com/wdlinch3/aa_assignments/blob/main/aa_u/u_stellar_evolution_1/u_stellar_evolution_1.ipynb">preview</a> |
-            {% if include.current == "u_stellar_evolution_1" %}<strong>here</strong>{% else %}<a href="/aa/u/help/stellar_evolution.html#packet_1">help</a>{% endif %})
+            {% if include.current == "u_stellar_evolution" or include.current == "u_stellar_evolution_1" %}<a href="/aa/u/help/stellar_evolution.html">here</a>{% else %}<a href="/aa/u/help/stellar_evolution.html#packet_1">help</a>{% endif %})
           </li>
           <li>
             part ii
             (<a href="https://github.com/wdlinch3/aa_assignments/blob/main/aa_u/u_stellar_evolution_2/u_stellar_evolution_2.ipynb">preview</a> |
-            {% if include.current == "u_stellar_evolution_2" %}<strong>here</strong>{% else %}<a href="/aa/u/help/stellar_evolution.html#packet_2">help</a>{% endif %})
+            {% if include.current == "u_stellar_evolution" or include.current == "u_stellar_evolution_2" %}<a href="/aa/u/help/stellar_evolution.html">here</a>{% else %}<a href="/aa/u/help/stellar_evolution.html#packet_2">help</a>{% endif %})
           </li>
           <li>
             part iii
             (<a href="https://github.com/wdlinch3/aa_assignments/blob/main/aa_u/u_stellar_evolution_3/u_stellar_evolution_3.ipynb">preview</a> |
-            {% if include.current == "u_stellar_evolution_3" %}<strong>here</strong>{% else %}<a href="/aa/u/help/stellar_evolution.html#packet_3">help</a>{% endif %})
+            {% if include.current == "u_stellar_evolution" or include.current == "u_stellar_evolution_3" %}<a href="/aa/u/help/stellar_evolution.html">here</a>{% else %}<a href="/aa/u/help/stellar_evolution.html#packet_3">help</a>{% endif %})
           </li>
         </ul>
       </li>
       <li>
         u_galaxies
         (<a href="https://github.com/wdlinch3/aa_assignments/blob/main/aa_u/u_galaxies_1/u_galaxies.ipynb">preview</a> |
-        {% if include.current == "u_galaxies" %}<strong>here</strong>{% else %}<a href="/aa/u/help/galaxies.html">help</a>{% endif %})
+        {% if include.current == "u_galaxies" %}<a href="/aa/u/help/galaxies.html">here</a>{% else %}<a href="/aa/u/help/galaxies.html">help</a>{% endif %})
       </li>
       <li>
         u_cosmology
         (<a href="https://github.com/wdlinch3/aa_assignments/blob/main/aa_u/u_cosmology_1/u_cosmology.ipynb">preview</a> |
-        {% if include.current == "u_cosmology" %}<strong>here</strong>{% else %}<a href="/aa/u/help/cosmology.html">help</a>{% endif %})
+        {% if include.current == "u_cosmology" %}<a href="/aa/u/help/cosmology.html">here</a>{% else %}<a href="/aa/u/help/cosmology.html">help</a>{% endif %})
       </li>
     </ul>
   </section>
@@ -110,32 +121,42 @@
       <li>
         x_dimensional_analysis
         (<a href="https://github.com/wdlinch3/aa_assignments/blob/main/aa_x/x_dimensional_analysis/x_dimensional_analysis.ipynb">preview</a> |
-        {% if include.current == "x_dimensional_analysis" %}<strong>here</strong>{% else %}<a href="/aa/x/help/dimensional_analysis.html">help</a>{% endif %})
+        {% if include.current == "x_dimensional_analysis" %}<a href="/aa/x/help/dimensional_analysis.html">here</a>{% else %}<a href="/aa/x/help/dimensional_analysis.html">help</a>{% endif %})
       </li>
       <li>
-        x_astrodynamics_1
-        (<a href="https://github.com/wdlinch3/aa_assignments/blob/main/aa_x/x_astrodynamics_1/x_astrodynamics_1.ipynb">preview</a> |
-        {% if include.current == "x_astrodynamics_1" %}<strong>here</strong>{% else %}<a href="/aa/x/help/astrodynamics.html">help</a>{% endif %})
+        x_astrodynamics
+        <ul>
+          <li>
+            part i
+            (<a href="https://github.com/wdlinch3/aa_assignments/blob/main/aa_x/x_astrodynamics_1/x_astrodynamics_1.ipynb">preview</a> |
+            {% if include.current == "x_astrodynamics" or include.current == "x_astrodynamics_1" %}<a href="/aa/x/help/astrodynamics.html">here</a>{% else %}<a href="/aa/x/help/astrodynamics.html#part_1">help</a>{% endif %})
+          </li>
+          <li>
+            part ii
+            (<a href="https://github.com/wdlinch3/aa_assignments/blob/main/aa_x/x_astrodynamics_2/x_astrodynamics_2.ipynb">preview</a> |
+            {% if include.current == "x_astrodynamics" or include.current == "x_astrodynamics_2" %}<a href="/aa/x/help/astrodynamics.html">here</a>{% else %}<a href="/aa/x/help/astrodynamics.html#part_2">help</a>{% endif %})
+          </li>
+        </ul>
       </li>
       <li>
-        x_astrodynamics_2
-        (<a href="https://github.com/wdlinch3/aa_assignments/blob/main/aa_x/x_astrodynamics_2/x_astrodynamics_2.ipynb">preview</a> |
-        {% if include.current == "x_astrodynamics_1" %}<strong>here</strong>{% else %}<a href="/aa/x/help/astrodynamics.html">help</a>{% endif %})
-      </li>
-      <li>
-        x_waves_and_light_1
-        (<a href="https://github.com/wdlinch3/aa_assignments/blob/main/aa_x/x_waves_and_light_1/x_waves_and_light_1.ipynb">preview</a> |
-        {% if include.current == "x_waves_and_light" %}<strong>here</strong>{% else %}<a href="/aa/x/help/waves_and_light.html">help</a>{% endif %})
-      </li>
-      <li>
-        x_waves_and_light_2
-        (<a href="https://github.com/wdlinch3/aa_assignments/blob/main/aa_x/x_waves_and_light_2/x_waves_and_light_2.ipynb">preview</a> |
-        {% if include.current == "x_waves_and_light" %}<strong>here</strong>{% else %}<a href="/aa/x/help/waves_and_light.html">help</a>{% endif %})
+        x_waves_and_light
+        <ul>
+          <li>
+            part i
+            (<a href="https://github.com/wdlinch3/aa_assignments/blob/main/aa_x/x_waves_and_light_1/x_waves_and_light_1.ipynb">preview</a> |
+            {% if include.current == "x_waves_and_light" or include.current == "x_waves_and_light_1" %}<a href="/aa/x/help/waves_and_light.html">here</a>{% else %}<a href="/aa/x/help/waves_and_light.html#part_1">help</a>{% endif %})
+          </li>
+          <li>
+            part ii
+            (<a href="https://github.com/wdlinch3/aa_assignments/blob/main/aa_x/x_waves_and_light_2/x_waves_and_light_2.ipynb">preview</a> |
+            {% if include.current == "x_waves_and_light" or include.current == "x_waves_and_light_2" %}<a href="/aa/x/help/waves_and_light.html">here</a>{% else %}<a href="/aa/x/help/waves_and_light.html#part_2">help</a>{% endif %})
+          </li>
+        </ul>
       </li>
       <li>
         x_spectroscopy
         (<a href="https://github.com/wdlinch3/aa_assignments/blob/main/aa_x/x_spectroscopy/x_spectroscopy.ipynb">preview</a> |
-        {% if include.current == "x_spectroscopy" %}<strong>here</strong>{% else %}<a href="/aa/x/help/spectroscopy.html">help</a>{% endif %})
+        {% if include.current == "x_spectroscopy" %}<a href="/aa/x/help/spectroscopy.html">here</a>{% else %}<a href="/aa/x/help/spectroscopy.html">help</a>{% endif %})
       </li>
     </ul>
   </section>
