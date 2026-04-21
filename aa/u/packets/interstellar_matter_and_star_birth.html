@@ -34,19 +34,27 @@ layout: aa
     margin-bottom: 0.45rem;
   }
 
-  .packet-block {
-    margin-bottom: 2.5rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid var(--border);
+  .topic-rail ul ul {
+    margin-top: 0.35rem;
+    margin-left: 0.9rem;
   }
 
-  .packet-block:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
+  .topic-rail ul ul li {
+    margin-bottom: 0.3rem;
   }
 
-  .topic-note {
+  .packet-links {
+    margin-bottom: 1.25rem;
+    font-size: 0.96em;
+  }
+
+  .packet-links a {
+    white-space: nowrap;
+  }
+
+  .packet-links .sep {
     color: var(--muted);
+    margin: 0 0.25rem;
   }
 
   .topic-box {
@@ -60,6 +68,21 @@ layout: aa
   .topic-box h3 {
     margin-top: 0;
     margin-bottom: 0.5rem;
+  }
+
+  .packet-block {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .packet-block:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .topic-note {
+    color: var(--muted);
   }
 
   @media (max-width: 1000px) {
@@ -80,20 +103,8 @@ layout: aa
 <h1>Interstellar Matter and Star Birth</h1>
 
 <p class="small">
-  AA:U packet family page · nebulae, clouds, time scales, and the physics of forming stars
+  AA:U topic page · nebulae, clouds, instability, and the earliest stages of stellar formation
 </p>
-
-<div class="topic-box">
-  <h3>Get the packet</h3>
-  <ul>
-    <li><a href="https://github.com/wdlinch3/aa_assignments/tree/main/aa_u/u_ism_and_star_birth">Open packet folder on GitHub</a></li>
-    <li><a href="https://github.com/wdlinch3/aa_assignments/blob/main/aa_u/u_ism_and_star_birth/u_ism_and_star_birth.ipynb">Open notebook on GitHub</a></li>
-    <li><a href="https://raw.githubusercontent.com/wdlinch3/aa_assignments/main/aa_u/u_ism_and_star_birth/u_ism_and_star_birth.ipynb">Download notebook (.ipynb)</a></li>
-  </ul>
-  <p class="small">
-    PDF preview will appear here once a PDF version is published in the public assignments repository.
-  </p>
-</div>
 
 <p>
   This page collects the interstellar-matter and star-birth material into one topic page rather than splitting it
@@ -110,10 +121,10 @@ layout: aa
 
 <div class="topic-page">
   <section class="topic-main">
-    <h2>How this topic is split across the packet family</h2>
+    <h2>How this topic is organized</h2>
 
     <div class="topic-box">
-      <h3>Part I: Interstellar matter</h3>
+      <h3>Interstellar matter</h3>
       <p>
         Nebulae, hydrogen regions, tracers, forbidden lines, and the observational logic of identifying what kind of
         gas is present and what it is doing.
@@ -121,7 +132,7 @@ layout: aa
     </div>
 
     <div class="topic-box">
-      <h3>Part II: Time scales and instability</h3>
+      <h3>Time scales and instability</h3>
       <p>
         Free-fall, thermal, Kelvin–Helmholtz, and nuclear time scales, plus the physical question of when clouds remain
         stable and when they collapse.
@@ -129,14 +140,14 @@ layout: aa
     </div>
 
     <div class="topic-box">
-      <h3>Part III: Collapse and protostellar evolution</h3>
+      <h3>Collapse and protostellar evolution</h3>
       <p>
         Kelvin–Helmholtz contraction, Hayashi and Henyey tracks, T-Tauri stars, Herbig–Haro objects, hydrostatic equilibrium,
         and the meaning of ZAMS.
       </p>
     </div>
 
-    <h2 id="part_1">Part I: Interstellar Matter</h2>
+    <h2>Interstellar Matter</h2>
 
     <section class="packet-block">
       <h3>What this part is about</h3>
@@ -149,7 +160,7 @@ layout: aa
       <h3>Key ideas</h3>
       <ul>
         <li>Reflection, emission, and absorption nebulae</li>
-        <li>H I, H II, H2, and the photodissociation region (PDR)</li>
+        <li>H I, H II, H<sub>2</sub>, and the photodissociation region (PDR)</li>
         <li>The 21-cm line and why it is useful</li>
         <li>Molecular tracers and forbidden transitions</li>
         <li>Doppler shifts and the motion of interstellar gas</li>
@@ -171,7 +182,7 @@ layout: aa
       </ul>
     </section>
 
-    <h2 id="part_2">Part II: Time Scales and Instability</h2>
+    <h2>Time Scales and Instability</h2>
 
     <section class="packet-block">
       <h3>What this part is about</h3>
@@ -205,7 +216,7 @@ layout: aa
       </ul>
     </section>
 
-    <h2 id="part_3">Part III: Collapse and Protostellar Evolution</h2>
+    <h2>Collapse and Protostellar Evolution</h2>
 
     <section class="packet-block">
       <h3>What this part is about</h3>
@@ -242,7 +253,7 @@ layout: aa
     <h2>How to use this page</h2>
 
     <p>
-      For now, this page is meant to be a running support page for the packet family. Over time it can accumulate
+      For now, this page is meant to be a running support page for the topic. Over time it can accumulate
       diagrams, quick formulas, worked reminders, common misconceptions, and links to prerequisite material from
       AA:X and neighboring AA:U topics.
     </p>
@@ -258,11 +269,32 @@ layout: aa
   </section>
 
   <aside class="topic-rail">
+    <div class="packet-links">
+      <a href="https://github.com/wdlinch3/aa_assignments/tree/main/aa_u/u_ism_and_star_birth">Folder</a>
+      <span class="sep">·</span>
+      <a href="https://github.com/wdlinch3/aa_assignments/blob/main/aa_u/u_ism_and_star_birth/u_ism_and_star_birth.ipynb">GitHub</a>
+      <span class="sep">·</span>
+      <a href="https://raw.githubusercontent.com/wdlinch3/aa_assignments/main/aa_u/u_ism_and_star_birth/u_ism_and_star_birth.ipynb">.ipynb</a>
+    </div>
+
     <h2>Quick jump</h2>
     <ul>
-      <li><a href="#part_1">Interstellar Matter</a></li>
-      <li><a href="#part_2">Time Scales and Instability</a></li>
-      <li><a href="#part_3">Collapse and Protostellar Evolution</a></li>
+      <li><a href="/aa/u/packets/stars_1.html">Stars I</a></li>
+      <li><a href="/aa/u/packets/interstellar_matter_and_star_birth.html">Interstellar Matter and Star Birth</a></li>
+      <li>
+        <a href="/aa/u/packets/stellar_evolution.html">Stellar Evolution</a>
+        <ul>
+          <li><a href="/aa/u/packets/stellar_evolution.html#packet_1">Part I</a></li>
+          <li><a href="/aa/u/packets/stellar_evolution.html#packet_2">Part II</a></li>
+          <li><a href="/aa/u/packets/stellar_evolution.html#packet_3">Part III</a></li>
+        </ul>
+      </li>
+      <li><a href="/aa/u/packets/galaxies.html">Galaxies</a> <span class="small">(to be added)</span></li>
+      <li><a href="/aa/u/packets/cosmology.html">Cosmology</a> <span class="small">(to be added)</span></li>
     </ul>
+
+    <p class="small">
+      PDF preview link can be added here once a public PDF is published alongside the notebook.
+    </p>
   </aside>
 </div>
