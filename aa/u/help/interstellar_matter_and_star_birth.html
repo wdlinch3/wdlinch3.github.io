@@ -4,14 +4,29 @@ layout: aa
 ---
 
 <style>
+  .aa-page {
+    max-width: 1360px;
+  }
+
+  .aa-content {
+    max-width: none;
+  }
+
   .topic-page {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 240px;
-    gap: 2rem;
+    grid-template-columns: 580px 300px;
+    gap: 1.5rem;
     align-items: start;
+    width: fit-content;
+    max-width: 100%;
+  }
+
+  .topic-main {
+    min-width: 0;
   }
 
   .topic-rail {
+    width: 300px;
     position: sticky;
     top: 30px;
     align-self: start;
@@ -48,11 +63,22 @@ layout: aa
   }
 
   @media (max-width: 1000px) {
+    .aa-page {
+      max-width: none;
+    }
+
+    .aa-content {
+      max-width: none;
+    }
+
     .topic-page {
       grid-template-columns: 1fr;
+      width: auto;
+      max-width: none;
     }
 
     .topic-rail {
+      width: auto;
       position: static;
       border-left: none;
       border-top: 1px solid var(--border);
