@@ -19,44 +19,6 @@ layout: aa
     padding-left: 1rem;
   }
 
-  .topic-rail h2 {
-    margin-top: 0;
-    font-size: 1.05em;
-  }
-
-  .topic-rail ul {
-    list-style: none;
-    padding-left: 0;
-    margin-left: 0;
-  }
-
-  .topic-rail li {
-    margin-bottom: 0.45rem;
-  }
-
-  .topic-rail ul ul {
-    margin-top: 0.35rem;
-    margin-left: 0.9rem;
-  }
-
-  .topic-rail ul ul li {
-    margin-bottom: 0.3rem;
-  }
-
-  .packet-links {
-    margin-bottom: 1.25rem;
-    font-size: 0.96em;
-  }
-
-  .packet-links a {
-    white-space: nowrap;
-  }
-
-  .packet-links .sep {
-    color: var(--muted);
-    margin: 0 0.25rem;
-  }
-
   .topic-box {
     border: 1px solid var(--border);
     border-radius: 10px;
@@ -83,6 +45,36 @@ layout: aa
 
   .topic-note {
     color: var(--muted);
+  }
+
+  .topic-rail .packet-tree section {
+    margin-bottom: 1.25rem;
+  }
+
+  .topic-rail .packet-tree h2 {
+    margin-top: 0;
+    margin-bottom: 0.45rem;
+    font-size: 1.05em;
+    line-height: 1.2;
+  }
+
+  .topic-rail .packet-tree ul {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+  }
+
+  .topic-rail .packet-tree li {
+    margin-bottom: 0.45rem;
+  }
+
+  .topic-rail .packet-tree ul ul {
+    margin-top: 0.35rem;
+    margin-left: 0.9rem;
+  }
+
+  .topic-rail .packet-tree ul ul li {
+    margin-bottom: 0.3rem;
   }
 
   @media (max-width: 1000px) {
@@ -261,40 +253,14 @@ layout: aa
     <h2>Related pages</h2>
 
     <ul>
-      <li><a href="/aa/u/packets/">Back to the AA:U packet hub</a></li>
-      <li><a href="/aa/u/packets/stars_1.html">Stars I</a> <span class="small">(to be added)</span></li>
-      <li><a href="/aa/u/packets/stellar_evolution.html">Stellar Evolution</a></li>
-      <li><a href="/aa/x/packets/spectroscopy.html">AA:X Spectroscopy</a> <span class="small">(to be added)</span></li>
+      <li><a href="/aa/packets/">All packets</a></li>
+      <li><a href="/aa/u/help/stars_1.html">Stars I</a> <span class="small">(to be added)</span></li>
+      <li><a href="/aa/u/help/stellar_evolution.html">Stellar Evolution</a></li>
+      <li><a href="/aa/x/help/spectroscopy.html">AA:X Spectroscopy</a> <span class="small">(to be added)</span></li>
     </ul>
   </section>
 
   <aside class="topic-rail">
-    <div class="packet-links">
-      <a href="https://github.com/wdlinch3/aa_assignments/tree/main/aa_u/u_ism_and_star_birth">Folder</a>
-      <span class="sep">·</span>
-      <a href="https://github.com/wdlinch3/aa_assignments/blob/main/aa_u/u_ism_and_star_birth/u_ism_and_star_birth.ipynb">GitHub</a>
-      <span class="sep">·</span>
-      <a href="https://raw.githubusercontent.com/wdlinch3/aa_assignments/main/aa_u/u_ism_and_star_birth/u_ism_and_star_birth.ipynb">.ipynb</a>
-    </div>
-
-    <h2>Quick jump</h2>
-    <ul>
-      <li><a href="/aa/u/packets/stars_1.html">Stars I</a></li>
-      <li><a href="/aa/u/packets/interstellar_matter_and_star_birth.html">Interstellar Matter and Star Birth</a></li>
-      <li>
-        <a href="/aa/u/packets/stellar_evolution.html">Stellar Evolution</a>
-        <ul>
-          <li><a href="/aa/u/packets/stellar_evolution.html#packet_1">Part I</a></li>
-          <li><a href="/aa/u/packets/stellar_evolution.html#packet_2">Part II</a></li>
-          <li><a href="/aa/u/packets/stellar_evolution.html#packet_3">Part III</a></li>
-        </ul>
-      </li>
-      <li><a href="/aa/u/packets/galaxies.html">Galaxies</a> <span class="small">(to be added)</span></li>
-      <li><a href="/aa/u/packets/cosmology.html">Cosmology</a> <span class="small">(to be added)</span></li>
-    </ul>
-
-    <p class="small">
-      PDF preview link can be added here once a public PDF is published alongside the notebook.
-    </p>
+    {% include packet_tree.html current="u_ism_and_star_birth" %}
   </aside>
 </div>
