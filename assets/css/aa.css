@@ -1,10 +1,10 @@
 .aa-page {
   max-width: 1150px;
   margin: 40px auto;
-  padding: 0 24px;
+  padding: 0 20px;
   display: grid;
-  grid-template-columns: 240px minmax(0, 1fr);
-  gap: 48px;
+  grid-template-columns: 190px minmax(0, 1fr);
+  gap: 28px;
 }
 
 .aa-sidebar {
