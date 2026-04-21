@@ -61,9 +61,8 @@
 }
 
 .packet-tree > section > ul {
-  margin-left: 0.9rem;
+  margin-left: 1rem;
   padding-left: 0.9rem;
-  border-left: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .packet-tree li {
@@ -72,9 +71,8 @@
 
 .packet-tree ul ul {
   margin-top: 0.35rem;
-  margin-left: 0.85rem;
-  padding-left: 0.85rem;
-  border-left: 1px solid rgba(255, 255, 255, 0.06);
+  margin-left: 1rem;
+  padding-left: 0.9rem;
 }
 
 .packet-tree ul ul li {
