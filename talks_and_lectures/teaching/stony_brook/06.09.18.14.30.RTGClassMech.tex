@@ -1,0 +1,375 @@
+\documentclass[12pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{latexsym}
+\usepackage[all]{xy}
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{Introduction to the fundamental elements of classical mechanics}
+\author{William D. Linch, {\sc iii}}
+\date{September 18, 2006}                                           % Activate to display a given date or no date
+
+\begin{document}
+
+\maketitle
+
+\abstract{Talk given for the Stony Brook RTG seminar series on Geometry and Physics.}
+
+\section{Newtonian approach}
+
+\subsection{Configuration space, Newton's Laws, and Conservative Forces}
+
+Configuration space of a single particle is the Euclidean space $(\mathbb R^d, \delta)$ with coordinates
+\begin{eqnarray}
+\{x^1, \dots , x^d\}
+\end{eqnarray}
+and $d$ the number of spacial dimensions. For a system of $N$ particles we will have $N$ copies of this space. The dimension $Nd$ of this space is called the number of {\em degrees of freedom} of the system. We will concentrate on the case of the single particle in $d=3$ dimensions.
+
+Particle trajectories are maps from ``word line'' time $t\in \mathbb R$ into the configuration space
+\begin{eqnarray}
+x^i(t)~.
+\end{eqnarray}
+The (linear) momentum vector is the tangent to the world line
+\begin{eqnarray}
+p^i=m \dot x^i(t)~\mathrm{where}~\dot {\mathscr O}\equiv {\mathrm d \mathscr O \over \mathrm d t}~.
+\end{eqnarray}
+Physical trajectories are those which obey Newton's $2^\mathrm{nd}$ law
+\begin{eqnarray}
+F^i=\dot p^i~.
+\end{eqnarray}
+We say that the particle has (inertial) mass $m=\mathrm{constant}$ if its momentum can be expressed in terms of the coordinate velocity as $p^i=m \dot x^i$. This is the case of physical interest microscopically and Newton's $2^\mathrm{nd}$ law takes the familiar form
+\begin{eqnarray}
+F^i=m\ddot x^i~.
+\end{eqnarray}
+
+A force (field) $\mathbf F(\mathbf x)$ is defined to be conservative it the {\em work} around any closed circuit is 0:
+\begin{eqnarray}
+\oint \mathbf F \cdot \mathrm d \mathbf x =0\Rightarrow 
+\nabla\times \mathbf F=0\Rightarrow 
+\mathbf F=-\nabla V(\mathbf x)+\mathrm{constant}
+%\mathrm{curl}\mathbf F=0\Rightarrow 
+%\mathbf F=-\mathrm {grad} V(\mathbf x)+\mathrm{constant}
+\end{eqnarray}
+A counter example to this is a velocity-dependent force like friction. However, in most cases of physical interest such ``dissipative'' forces are macroscopic effects. We therefore ignore such forces and pass freely between a force $\mathbf F(\mathbf x)$ and its {\em potential} $V(\mathbf x)$. 
+
+With this understood, the equation of motion becomes
+\begin{eqnarray}
+m\ddot x^i+\partial^i V=0
+\end{eqnarray}
+were the partial derivative in the $i^\mathrm{th}$ coordinate direction is abbreviated as $\partial_i\equiv{\partial \over \partial x^i}$.
+
+\paragraph{Example: Harmonic Oscillator} The harmonic oscillator is an approximation for a mass on a spring. The spring is ``ideal'' if the restoring force $F$ it generates is linear in its displacement $x$ with constant of proportionality (``stiffness'') $k$. This is the content of Hook's law $F=-k x$. Note that the stiffness has units $[k]=MT^{-2}$.
+
+The equation of motion for a particle of mass $m$ on the end of such a spring is given by 
+\begin{eqnarray}
+\left({\mathrm d^2\over \mathrm d t^2}+\omega_0^2\right)x=0
+\end{eqnarray}
+where we have defined $\omega_0=\sqrt{k\over m}$ which has units $[\omega_0]=T^{-1}$ of frequency. Let us expand $x(t)$ in harmonics (Fourier modes)
+\begin{eqnarray}
+x(t)=%\frac1{2\pi i \sqrt{2m}\omega_0}
+\int_{0}^{\infty} \left\{A_\omega \mathrm e^{i\omega t}+A^*_\omega \mathrm e^{-i\omega t}\right\}\mathrm d\omega~.
+\end{eqnarray}
+Substituting this into the equation of motion gives
+\begin{eqnarray}
+0=%\frac1{2\pi i \sqrt{2m}\omega_0}
+\int_{0}^{\infty}(-\omega^2+\omega_0^2) %\left\{
+A_\omega\mathrm e^{i\omega t}
+%+A^*_\omega\mathrm e^{-i\omega t}\right\}
+\mathrm d \omega  +\mathrm{h.c.}
+\end{eqnarray}
+which implies that 
+\begin{eqnarray}
+A_\omega=\frac12 A_0 \delta(\omega-\omega_0)
+\end{eqnarray}
+ where $A_0$ is a complex constant with dimensions of length. This says that of the infinitely many harmonics $\omega$ only the one with frequency $\omega_0$ is excited. Substituting our finding into the expansion we get the explicit form for $x(t)$ in terms of $A_0$ 
+\begin{eqnarray}
+x(t)=A_0 \mathrm e^{i\omega_0 t}+A_0^* \mathrm e^{-i\omega_0 t}~.
+\end{eqnarray} 
+However, the initial conditions of the motion must still be imposed. Let $x_0=x(0)$ and $p_0=m\dot x(0)$  denote the initial position and momentum of the particle. Then we find that 
+\begin{eqnarray}
+\label{A0}
+%a_0={1\over \sqrt{2m}} p_0+i\sqrt\frac m2 \omega_0 x_0
+A_0=x_0-i{1\over m \omega_0}p_0
+\end{eqnarray} 
+so in all
+\begin{eqnarray}
+x(t)=x_0 \cos(\omega_0 t)+{p_0\over m \omega_0}\sin(\omega_0 t)~.
+\end{eqnarray}
+We will refer to $A_0$ as the complexified amplitude of the harmonic motion. 
+
+\subsection{Energies}
+The potential for the force is called the {\em potential energy}
+\begin{eqnarray}
+V(\mathbf x)~.
+\end{eqnarray}
+Something with the same dimension as the potential energy but depending on the velocity is the {\em kinetic energy}
+\begin{eqnarray}
+T=\frac 12 m \dot {\mathbf x}^2
+\end{eqnarray}
+which is, furthermore, a scalar quantity which is conserved in the absence of force $\dot T=\dot x_i F^i$.\\
+Together they form the total energy 
+\begin{eqnarray}
+E=T+V
+\end{eqnarray}
+which is conserved in the presence of conservative forces $\dot E=\dot x_i (F^i+\partial^i V)=0$.\\
+The {\em ground state} $\mathbf x(t)=\mathbf x_*$ is defined to be the lowest energy state. This requires zero kinetic energy $\dot{\mathbf x}_*=0$ and lowest possible potential energy
+\begin{eqnarray}
+\partial_i V|_{\mathbf x(t)=\mathbf x_*}=0~.
+\end{eqnarray}
+Forces act to reduce the potential energy and particle motion behaves accordingly.
+
+\paragraph{Example:} The potential energy for the harmonic oscillator is $V(x)=\frac 12 k x^2=\frac 12 m (\omega_0 x)^2$ and the kinetic energy is the usual $T=\frac12 m\dot x^2=\frac 1{2m}p^2$. Of course the ground state has $\dot x_*=0$ and $x_*=0$ and we have calibrated $V$ so that $V(x_*)=0$.
+
+\section{Lagrangian approach}
+
+\subsection{Action}
+
+Can we find a scalar quantity depending on the particle trajectories $\mathbf x(t)$ whose minima coincide with the physical trajectories? Let us call this hypothetical quantity {\em action} and try to guess the answer. First, it is not the total energy since this is bounded below and extremization will put us in the ground state which is a very special class of physical paths. On the other hand, we do want the ground states to minimize the action. Let us therefore try the following {\em Lagrangian}
+\begin{eqnarray}
+L(\mathbf x, \dot {\mathbf x})=T(\dot {\mathbf x})-V(\mathbf x)~.
+\end{eqnarray}
+This is still a function of $t$. What we are looking for, however, is a scalar quantity whose variation gives extrema on physical paths for all $t$. We therefore attempt to define the action $S$ to be
+\begin{eqnarray}
+S[\mathbf x(t)]=\int_{t_i}^{t_f} L(\mathbf x, \dot{\mathbf x}) \mathrm d t~.
+\end{eqnarray}
+In practice, we are only interested in motion which evolves over a finite time interval $[t_i,t_f]$, which we take to be the domain of integration. 
+
+How to vary such an action with respect to $\mathbf x(t)$? We proceed with the na\"ive thing and leave the rigor to our mathematical colleagues. Consider a reference path $\bar {\mathbf x}(t)$ and a path $\mathbf x(t)$ near to it in the sense that $|\bar {\mathbf x}-\mathbf x|< \epsilon\forall t\in[t_i,t_f]$ for some $\epsilon>0$. Define the variation $\delta \mathbf x(t)$ around the path $\bar {\mathbf x}(t)$ by $\mathbf x(t)=\bar {\mathbf x}(t)+\delta \mathbf x(t)$. Now formally expand the action $S$ around the path $\bar {\mathbf x}(t)$ to linear order in the variation $S[\mathbf x]=S[\bar{\mathbf x}]+\delta S[\bar {\mathbf x}]$. 
+\begin{eqnarray}
+\delta S[\mathbf x(t)]&=&\int_{t_i}^{t_f} \delta L(\mathbf x, \dot {\mathbf x}) \mathrm d t\cr
+&=&\int_{t_i}^{t_f} \left\{  {\partial L\over \partial x^i}\delta x^i+{\partial L\over \partial \dot x^i}\delta \dot x^i\right\} \mathrm d t\cr
+&=&\int_{t_i}^{t_f} \left\{  {\partial L\over \partial x^i}-{\mathrm d\over \mathrm d t} {\partial L\over \partial \dot x^i}\right\} \delta x^i(t) \mathrm d t~.
+\end{eqnarray}
+We want $\delta S=0$ for stationarity for any variation $\delta \mathbf x(t)$. This gives the {\em Euler-Lagrange equations}
+\begin{eqnarray}
+{\partial L\over \partial x^i}-{\mathrm d\over \mathrm d t} {\partial L\over \partial \dot x^i}=0~.
+\end{eqnarray}
+Plugging in our supposed form $L=T-V=\frac m2 \dot {\mathbf x}^2+V(\mathbf x)$ for the Lagrangian, we find Newton's $2^\mathrm{nd}$ law. More generally, defining
+\begin{eqnarray}
+F_i={\partial L\over \partial x^i}~~~,~~~
+p_i={\partial L\over \partial \dot x^i}
+\end{eqnarray}
+to be, respectively, the {\em force} and the {\em momentum conjugate to the coordinate $x^i$}, we recover Newton's second law for a general Lagrangian. Furthermore, we see that if the Lagrangian is independent of the coordinate $x^i$ (no force in that component direction), its conjugate momentum is conserved $\dot p_i=0$. Note that in the Lagrangian formalism forces and momenta are 1-forms instead of vectors. 
+
+%In conclusion, we note that the action has units of angular momentum $[S]=ML^2T^{-1}=[\mathbf x\times \mathbf p]$. For future convenience, we introduce a scale of angular momentum. That is, we introduce a constant $\hbar$ which carries the units $[\hbar]=ML^2T^{-1}$. This could be anything with the correct units which can be constructed from the parameters characterizing the problem under study. For example, if we are studying something related to earth's orbit around the sun the characteristic angular momentum scale of the problem would be $\hbar = m r^2/t$ where $m$ is the mass of the earth, $r$ is the distance to the sun and $t$ is the period it takes to make one orbit.
+
+\paragraph{Example:} The Lagrangian for the harmonic oscillator is given by $L=\frac 12 m \dot x^2-\frac 12 k x^2$. 
+The momentum conjugate to $x$ is the expected $p=m\dot x$ and the Euler-Lagrange equation is just $\dot p=-kx$. 
+The action can be written
+\begin{eqnarray}
+S[x(t)]=-{m\over 2} \int_{t_i}^{t_f} \mathrm d t  \left(x{\mathrm d^2\over \mathrm d t^2}x+\omega_0^2 x^2\right) 
+\end{eqnarray}
+from which we trivially derive the equation of motion in the form
+\begin{eqnarray}
+\ddot x+\omega_0^2x=0~. 
+\end{eqnarray}
+%In this case there is no natural unit of angular momentum since there is no length scale in the problem.
+
+
+\subsection{Symmetries}
+
+Consider a physical transformation on the configuration space $\mathbf x(t)\mapsto \tilde{\mathbf x}(\tilde t)$. Suppose that under this transformation $S\to \tilde S=S$ is {\em invariant}. Then the transformation cannot affect the dynamics of the theory which $S$ determines. 
+%Furthermore, such a symmetry cannot affect any physical quantity as long as we define the latter to be functions of the positions and momenta which are invariant under these symmetries. 
+
+Consider an infinitesimal symmetry under which the configuration changes by $\delta x^i=\epsilon^i$. If $\epsilon$ is independent of the time parameter, {\it id est} constant, the symmetry is called {\em global} (in time) because it acts the same at all points in time while if it depends on $t$ it is called {\em local}. We focus on a global infinitesimal symmetry of our system. Then the kinetic term in the action is invariant. The potential term will be invariant iff we can find a coordinate system in which the $x^i$ coordinate does not appear in $V$. But then we are in the situation discussed above and the momentum $p_i$ conjugate to this coordinate is conserved. 
+
+Note the important fact that this discussion does not depend on whether $x^i$ is a Cartesian coordinate. In particular, it could be an angular coordinate $\theta$ in which case the conjugate momentum $p_\theta$ would be an angular (vs. linear) momentum. Such {\em generalized coordinates} are often denoted by $q^i$ instead of $x^i$ and their conjugate momenta generally do not carry the units of linear momentum. These conserved generalized momenta are called
+%, somewhat redundantly, conserved 
+{\em charges}. This is essentially Noether's theorem as it applies to classical mechanics: 
+
+{\bf Noether's Theorem:} {\em For every global symmetry of the action $S$ there is a conserved charge.}
+
+In this sense, an action principle with specified Lagrangian defines the system, that is, it is a ``theory'' in the jargon. The (equivalence class of the) coordinates and momenta must be specified from the outset (to define the Lagrangian). The symmetries of the theory are encoded in the action as is the dynamics. %The physical quantities are the functions of the coordinates and the momenta which are invariant under these symmetries.
+
+Note that this construction is very general. Having obtained all the ingredients, we can forget all about the specific forms of the Lagrangians we used. For example, we can have higher-derivative ``effective theories'' with Lagrangian $L=L(x, \dot x, \ddot x, \dots)$ or ``non-local'' theories where the lagrangian depends on more than one instant in time and the action takes the form $S=\int \dots \int  L \mathrm d t\mathrm dt^\prime\dots$ Of course such generalizations have serious consequences for the physics they imply and generically give rise to pathologies. Nevertheless, there are physical theories of interest for which a local Lagrangian description does not exist either in principle or in practice. 
+
+\paragraph{Example:} There is no obvious continuous symmetry for the harmonic oscillator. However, if we generalize slightly from 1 dimension to 2, then rotations of the coordinates leave the action invariant. The potential $V(\mathbf x)\sim \mathbf x\cdot \mathbf x$ when written in polar coordinates $(q^1, q^2)=(r, \theta)$, is independent of $q^2=\theta$ and therefore invariant under the shifts $\delta \theta = \epsilon$. The momentum $p_\theta$ conjugate to $\theta$ can be shown to be $p_\theta= mr^2 \dot \theta$ and is conserved $\dot p_\theta=0$ by the Euler-Lagrange equations. This statement is a variant of Kepler's (second) law of planetary motion: The radius vector sweeps out equal areas in equal times. This happens because $\dot A=\frac12 r^2 \dot \theta=\frac 1{2m} p_\theta$ is constant and is a general feature of potentials $V(r)$ depending only on the radial coordinate.
+
+
+\section{Hamiltonian approach}
+
+\subsection{Phase space}
+
+We start all over again but this time, instead of considering functions of the particle coordinates and velocities, we start from the coordinates and their momenta. The transformation which changes $(x^i, \dot x^i)\mapsto (x^i, p_i)$ is the Legendre transformation. In fact, note that for a system with kinetic energy $T=\frac m2 \dot x^2$ and momentum/velocity relation $p_i=m\dot x^i$ we can re-write the action 
+\begin{eqnarray}
+S=\int_{t_i}^{t_f} \Big[(p_i \dot  x^i-H(x^i, p_i)\Big]\mathrm d t~
+\end{eqnarray}
+where the {\em Hamiltonian function}
+\begin{eqnarray}
+H(x^i, p_i)=\frac 1{2m}p^2+V(x^i)
+\end{eqnarray}
+is the Legendre transform of the Lagrangian. Note that the Hamiltonian is equivalent to the total energy function defined above.
+
+In the Hamiltonian framework, the dynamical setting is the {\em phase space} which we loosely define to be the space of (generalized) coordinates and momenta. On this phase space is a natural {\em Poincar\'e 1-form} $p_i \mathrm d x^i$ and its exterior derivative $\omega=\mathrm d p_i\wedge \mathrm d x^i$. We work, as physicists, in local coordinates adapted to the symplectic form so that it becomes constant 
+\begin{eqnarray}
+(\omega_{ij})=\left(   \begin{array}{cc} % brackets may be (...), [...], \{...\}, or left out
+      0 &  \mathbf 1  \\
+      -\mathbf 1 & 0 \\
+   \end{array}
+   \right)~.
+\end{eqnarray} 
+This form induces a {\em Poisson bracket} on functions: Take two test functions $f$ and $g$ and define the bracket $\{f, g\}=\frac{\partial f}{\partial z^i}\omega^{ij} \frac{\partial g}{\partial z^j}$ where $\omega^{ij}$ is the ``inverse'' of $\omega_{ij}$. The local coordinates are ``adapted to $\omega$'' in the sense that $x^i=z^i$ and $p_i=z^{i+3}$ for $i=1,2,3$. Then we have the formula commonly encountered in physics texts:
+\begin{eqnarray}
+\left\{ f, g\right\}={\partial f\over \partial x^i}{\partial g\over \partial p_i}-{\partial g\over \partial x^i}{\partial f\over \partial p_i}=-\left\{ g, f\right\}~.
+\end{eqnarray}
+Note that for the particular choices of $f, g=x, p$ we get the {\em polarization conditions}
+\begin{eqnarray}
+\{x^i, x^j\}=0~,~\{x^j, p_i\}=\delta_i^j=-\{p_i, x^j\}~,~\{p_i, p_j\}=0~.
+\end{eqnarray}
+Furthermore, if we take the Poisson bracket of the phase space coordinates with the Hamiltonian function we obtain 
+\begin{eqnarray}
+\{x^i,H\}=\dot x^i~,~\{p_i,H\}=\dot p_i~.
+\end{eqnarray}
+Here we have used the relation $p^i=m\dot x^i$ in the first equation and the Euler-Lagrange equation for the second. Written out explicitly we find Hamilton's equations
+\begin{eqnarray}
+\dot x^i={\partial H\over \partial p_i}~,~\dot p_i=-{\partial H\over \partial x^i}~.
+\end{eqnarray}
+
+Since the physical quantities are smooth functions on phase space, this gives for any such observable $\mathscr O(x^i, p_i;t)$ the {\em evolution equation}
+\begin{eqnarray}
+{\mathrm d \mathscr O\over\mathrm d t}=\{ H, \mathscr O\}+{\partial \mathscr O\over \partial t}~.
+\end{eqnarray}
+The important statement then becomes that: 
+
+{\em Any observable which ``commutes'' with the Hamiltonian is conserved in time} \\
+unless it depends explicitly on time. We will generally ignore the last term in this equation. This statement is the analogue of Noether's theorem in Lagrangian dynamics. 
+
+%Lastly, we note that the Poisson bracket carries units of inverse action. Defining $[\cdot,\cdot]=i\hbar \{\cdot,\cdot\}$ gives a new dimensionless bracket.
+
+\paragraph{Example:} Legendre transforming the Lagrangian for the harmonic oscillator gives
+\begin{eqnarray}
+p\dot x-L=p\dot x-\frac m2 \dot x^2+\frac 12 kx^2=\frac 1{2m}p^2+\frac k2 x^2
+\end{eqnarray}
+which is indeed the Hamiltonian for the harmonic oscillator. Hamilton's equations give 
+\begin{eqnarray}
+\dot x=\frac 1{m} p~,~\dot p=-k x
+\end{eqnarray}
+as they should. 
+
+Recall the complex amplitude $A_0$ defined in equation (\ref{A0}). We can define the related function on phase space $A$
+%$  a(t)=\pi i \sqrt{2m}\omega_0A_0$ 
+by replacing $x_0\to x(t)$ and $p_0\to p(t)$. Actually it is more convenient to define a normalized form of $A$ by $a^*=i\sqrt\frac k2 A$. This gives explicitly
+\begin{eqnarray}
+a^*={1\over \sqrt{2m}} \left( p+i m \omega_0 x\right)~.
+%{1\over 2}x-i{1\over 2m \omega_0}p
+\end{eqnarray} 
+It is trivial to see that the Hamiltonian function can be expressed in terms of this and its conjugate as
+\begin{eqnarray}
+H=  a^*   a~.
+\end{eqnarray}
+As an application of the Poisson bracket, we calculate
+\begin{eqnarray}
+\{  a,   a\}=0~,~\{  a,   a^*\}=-i\omega_0~,~\{  a^*,   a^*\}=0~.
+\end{eqnarray}
+These equations, rather than the equation of motion to which they are equivalent, are often referred to as the harmonic oscillator equations. 
+%For the dimensionless bracket the non-trivial equation becomes $[a,a^*]=\hbar \omega$. 
+Using these equations we find that 
+\begin{eqnarray}
+\{ H, a\}=i \omega_0 a~,~\{ H, a^*\}=-i \omega_0 a^*~
+\end{eqnarray}
+so that the time evolution of $a$ is given by $\dot a =i\omega_0 a$ or $a(t)=a_0 \mathrm e^{i\omega_0 t}$.
+Note that the ground state of the harmonic oscillator is given by
+\begin{eqnarray}
+a=0~.
+\end{eqnarray}
+Due to the form of the Hamiltonian $H=a^*a$ the ground state obviously has energy $E=0$. Furthermore, when the oscillator is in its ground state, it will remain there for all time (unless it is perturbed) since
+\begin{eqnarray}
+{\mathrm d a\over \mathrm dt}=\{H, a\}=i\omega_0 a=0~.
+\end{eqnarray}
+
+\subsection{Canonical transformations}\footnote{Most of this section and the following one are taken from Goldstein \cite{Goldstein}.}
+
+A transformation $(q,p)\mapsto (Q(q,p,t), P(q,p,t))$ of the extended phase space is called a {\em canonical transformation} if it preserves the Poisson bracket. Alternate names are {\em contact transformation} and {\em symplectomorphism}. Such transformations preserve the form of Hamilton's equations in the sense that there is a function $K(Q,P)$ such that
+\begin{eqnarray}
+\dot Q^i={\partial K\over \partial P_i}~,~\dot P_i=-{\partial K\over \partial Q^i}~.
+\end{eqnarray}
+The new Hamiltonian $K$ is equal to the old Hamiltonian $H$ up to a total derivative
+\begin{eqnarray}
+\label{Eqn:GeneratingFunction}
+K(Q,P,t)=H(q,p,t)+\dot F(q,p,Q,P,t)~
+\end{eqnarray}
+for some function $F$, which ensures that their action principles agree
+\begin{eqnarray}
+\delta \int_{t_i}^{t_f} \left(p_i\dot q^i-H(q,p,t) \right)\mathrm dt=
+\delta \int_{t_i}^{t_f} \left( P_i\dot Q^i-K(Q,P,t)\right)\mathrm dt~.
+\end{eqnarray}
+The function $F$ depends (in addition to time) on the 4 phase space coordinates. Of these only 2 are independent. There are therefore 4 different forms for $F$
+\begin{eqnarray}
+F\rightarrow \left\{    \begin{array}{c} % brackets may be (...), [...], \{...\}, or left out
+      F_1(q,Q,t) \\
+      F_2 (q,P,t)\\
+      F_3(p,Q,t)\\
+      F_4(p,P,t)\\
+   \end{array}
+\right.
+\end{eqnarray}
+The time derivative of $F_1$ is given by
+\begin{eqnarray}
+\dot F_1(q,Q,t)={\partial F_1\over \partial q^i}\dot q^i+{\partial F_1\over \partial Q^i}\dot Q^i+{\partial F_1\over \partial t}
+\end{eqnarray}
+which upon substitution into the defining relation (\ref{Eqn:GeneratingFunction}) implies that
+\begin{eqnarray}
+\label{Eqn:F1}
+p_i={\partial F_1\over \partial q^i}~,~P_i=-{\partial F_1\over \partial Q^i}~,~K=H+{\partial F_1\over \partial t}~.
+\end{eqnarray}
+Once the function $F_1(q,Q,t)$ is specified, the new coordinates are related to the old by these equations. It is in this sense that the functions $F_1,\dots F_4$ are ``generating'' the canonical transformation and there are therefore called {\em generating functions} for the transformation. 
+
+The canonical transformation generated by $F_1$ cannot be used to describe the simplest class of canonical transformations -- the {\em point transformations} $q\mapsto Q$. Let us therefore consider the related function $P_i Q^i+F_1(q, Q, t)$. Due to the second relation in (\ref{Eqn:F1}), this function is independent of $Q^i$. Indeed, it is the second generating function $F_2(q,P,t)=P_iQ^i+F_1(q,Q,t)$. Repeating the calculation above for this function gives the relations
+\begin{eqnarray}
+\label{Eqn:F2}
+Q^i={\partial F_2\over \partial P_i}~,~p_i={\partial F_2\over \partial q^i}~,~K=H+{\partial F_2\over \partial t}~.
+\end{eqnarray}
+
+The specific choice $F_2=P_iq^i$ generates the identity transformation. An infinitesimal canonical transformation is therefore of the form
+\begin{eqnarray}
+F_2(q,P,t)=P_iq^i+\epsilon G(q,P,t)
+\end{eqnarray}
+for some function $G$ and a(n infinitesimal) constant transformation parameter $\epsilon$. The infinitesimal change of coordinates takes the form 
+\begin{eqnarray}
+\delta q^i=\epsilon \frac{\partial G}{\partial P_i}~,~\delta p_i=-\epsilon \frac{\partial G}{\partial q^i}~.
+\end{eqnarray}
+This gives for any function $u(q,p)$ on phase space 
+\begin{eqnarray}
+\delta u =\epsilon \{u ,G\}~.
+\end{eqnarray}
+In this sense $G$ generates the canonical transformation and is therefore also called the generator of the transformation. Now suppose that the generator does not depend explicitly on the time $t$. Then taking $u=H$ the Hamiltonian, we obtain $\delta H=\epsilon\{H, G\}=\epsilon \dot G$ which is the important statement that 
+
+{\em $G$ generates a symmetry of the Hamiltonian system iff $G$ is conserved.}
+
+%\paragraph{Example} 
+
+\subsection{Hamilton-Jacobi theory}
+
+In the previous section we used a contact transformation to go to a system of coordinates and momenta in which some coordinates become cyclic. In this section we go further and try to find a contact transformation for which the new coordinates and momenta are all {\em constant}. That this should be possible theoretically is obvious since the evolution is defined by the initial values $x_0$ and $p_0$ which are constants. 
+
+The new coordinates and momenta will clearly be constant if the new Hamiltonian $K\equiv 0$. We take the generating function to be of the second type and rename it $F_2(q,P,t)=S$. From the relation between the old and new Hamiltonians and the generating function (\ref{Eqn:GeneratingFunction}) we find that this requires the {\em Hamilton-Jacobi equation}
+\begin{eqnarray}
+H\left(q^i, {\partial S\over \partial q^i}, t\right)+{\partial S\over \partial t}=0~.
+\end{eqnarray}
+Here we have used the relation (\ref{Eqn:F2}) to rewrite the old momenta $p_i$ in terms of the generating function $S$. The Hamilton-Jacobi equation then becomes a partial differential equation for $S$ in $n+1$ variables where $n$ denotes the number of degrees of freedom of the system. For the simple case of the single particle ($N=1$) in one dimension ($d=1$) these are just the position $q$ and time $t$. 
+
+The solution $S$ to the Hamilton-Jacobi equation is called {\em Hamilton's principle function}. It depends on $n+1$ constants of integration $\{\alpha_I\}_{I=1}^{n+1}$. One of them is immaterial due to the shift ambiguity $S\to S+\alpha$. We take the remaining $n$ constants to be the new momenta $P_i=\alpha_i$. The relation (\ref{Eqn:F2}) for the old momenta $p_i=\frac{\partial S}{\partial q^i}$ at the initial time $t=t_0$ becomes a relation between the initial coordinates%\footnote{Apologies for the unfortunate choice of notation.} 
+$(q_0)^i$ and $(p_0)_i$ and the constants $\alpha_I$. 
+
+Now consider the time derivative of Hamilton's principal function
+\begin{eqnarray}
+\dot S={\partial S\over \partial q^i}\dot q^i+{\partial S\over \partial t}=p_i \dot q^i-H(q^i, p_i, t)=L(q^i, \dot q^i, t)~.
+\end{eqnarray}
+Whence it follows that Hamilton's principle function is related to the action in indefinite form $S=\int^t L(q(t^\prime), \dot q(t^\prime), t^\prime)\mathrm d t^\prime+\mathrm {constant}.$
+
+%\paragraph{Example}
+
+\begin{thebibliography}{9}
+\bibitem{Goldstein} H. Goldstein, ``Classical Mechanics,'' {\it Addison-Wesley Publishing Company, Inc. (1959) 399pp}
+\end{thebibliography}
+
+\end{document}  

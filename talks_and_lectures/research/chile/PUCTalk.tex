@@ -1,0 +1,908 @@
+\documentclass[9pt]{beamer}
+
+\usecolortheme[RGB={205,173,0}]{structure} 
+\usefonttheme{serif} 
+
+\usepackage{amssymb}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%  Typesetting conventions  %%%%%%%%%%%%%%%%%%%
+
+%doublebar
+\def\double #1{#1{\hbox{\kern-2pt $#1$}}}
+%Bras and kets
+\def\ket#1{\left| #1\right>}
+\def\bra#1{\left< #1\right|}
+\def\braket#1#2{\left< #1\right|\left.#2\right>}
+%For twistors
+\def\kra#1{\left[ #1\right|}
+\def\bet#1{\left| #1\right]}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%  Jim Gates and Marc Grisaru MACROS   %%%%%%%%%%%%%%%%
+\def\pp{{\mathchoice
+            %{general format
+               %[w] = length of horizontal bars
+               %[t] = thickness of the lines
+               %[h] = length of the vertical line
+               %[s] = spacing around the symbol
+              %
+              %\kern [s] pt%
+              %\raise 1pt
+              %\vbox{\hrule width [w] pt height [t] pt depth0pt
+              %      \kern -([h]/3) pt
+              %      \hbox{\kern ([w]-[t])/2 pt
+              %            \vrule width [t] pt height [h] pt depth0pt
+              %            }
+              %      \kern -([h]/3) pt
+              %      \hrule width [w] pt height [t] pt depth0pt}%
+              %      \kern [s] pt
+          {%displaystyle
+              \kern 1pt%
+              \raise 1pt
+              \vbox{\hrule width5pt height0.4pt depth0pt
+                    \kern -2pt
+                    \hbox{\kern 2.3pt
+                          \vrule width0.4pt height6pt depth0pt
+                          }
+                    \kern -2pt
+                    \hrule width5pt height0.4pt depth0pt}%
+                    \kern 1pt
+           }
+            {%textstyle
+              \kern 1pt%
+              \raise 1pt
+              \vbox{\hrule width4.3pt height0.4pt depth0pt
+                    \kern -1.8pt
+                    \hbox{\kern 1.95pt
+                          \vrule width0.4pt height5.4pt depth0pt
+                          }
+                    \kern -1.8pt
+                    \hrule width4.3pt height0.4pt depth0pt}%
+                    \kern 1pt
+            }
+            {%scriptstyle
+              \kern 0.5pt%
+              \raise 1pt
+              \vbox{\hrule width4.0pt height0.3pt depth0pt
+                    \kern -1.9pt  %[e]=0.15pt
+                    \hbox{\kern 1.85pt
+                          \vrule width0.3pt height5.7pt depth0pt
+                          }
+                    \kern -1.9pt
+                    \hrule width4.0pt height0.3pt depth0pt}%
+                    \kern 0.5pt
+            }
+            {%scriptscriptstyle
+              \kern 0.5pt%
+              \raise 1pt
+              \vbox{\hrule width3.6pt height0.3pt depth0pt
+                    \kern -1.5pt
+                    \hbox{\kern 1.65pt
+                          \vrule width0.3pt height4.5pt depth0pt
+                          }
+                    \kern -1.5pt
+                    \hrule width3.6pt height0.3pt depth0pt}%
+                    \kern 0.5pt%}
+            }
+        }}
+
+\def\mm{{\mathchoice
+                      %{general format %[w] = length of bars
+                                       %[t] = thickness of bars
+                                       %[g] = gap between bars
+                                       %[s] = space around symbol
+   %[w], [t], [s], [h]=3([g]) are taken from corresponding definitions of \pp
+   %
+                      %       \kern [s] pt
+               %\raise 1pt    \vbox{\hrule width [w] pt height [t] pt depth0pt
+               %                   \kern [g] pt
+               %                   \hrule width [w] pt height[t] depth0pt}
+               %              \kern [s] pt}
+                  %
+                       {%displaystyle
+                             \kern 1pt
+               \raise 1pt    \vbox{\hrule width5pt height0.4pt depth0pt
+                                  \kern 2pt
+                                  \hrule width5pt height0.4pt depth0pt}
+                             \kern 1pt}
+                       {%textstyle
+                            \kern 1pt
+               \raise 1pt \vbox{\hrule width4.3pt height0.4pt depth0pt
+                                  \kern 1.8pt
+                                  \hrule width4.3pt height0.4pt depth0pt}
+                             \kern 1pt}
+                       {%scriptstyle
+                            \kern 0.5pt
+               \raise 1pt
+                            \vbox{\hrule width4.0pt height0.3pt depth0pt
+                                  \kern 1.9pt
+                                  \hrule width4.0pt height0.3pt depth0pt}
+                            \kern 1pt}
+                       {%scriptscriptstyle
+                           \kern 0.5pt
+             \raise 1pt  \vbox{\hrule width3.6pt height0.3pt depth0pt
+                                  \kern 1.5pt
+                                  \hrule width3.6pt height0.3pt depth0pt}
+                           \kern 0.5pt}
+                       }}
+
+\def\ad{{\kern0.5pt
+                   \alpha \kern-5.05pt
+\raise5.8pt\hbox{$\textstyle.$}\kern 0.5pt}}
+
+\def\bd{{\kern0.5pt
+                   \beta \kern-5.05pt \raise5.8pt\hbox{$\textstyle.$}\kern 0.5pt}}
+
+\def\qd{{\kern0.5pt
+                   q \kern-5.05pt \raise5.8pt\hbox{$\textstyle.$}\kern 0.5pt}}
+\def\Dot#1{{\kern0.5pt
+     {#1} \kern-5.05pt \raise5.8pt\hbox{$\textstyle.$}\kern 0.5pt}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage{beamerthemesplit}
+
+\title{Covariant superstrings and compactification}
+\author{William D. Linch, III}
+\date{Overview of covariant string theory prepared for the High-energy Theory Group at Pontificia Universidad Cat\'olica de Chile.\\27 October, 2010}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section[Outline]{}
+\frame{\tableofcontents}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+\subsection{The role of string theory}
+\frame{
+\frametitle{Tools {\it versus} Physics}
+The role of string theory is as a calculational tool for quantum field theories coupled to gravity.
+\begin{eqnarray}
+\begin{array}{ccc}
+\textrm{TOOL}&\longleftrightarrow &\textrm{PHYSICS}\\
+\textrm{Calculus}&&\textrm{classical mechanics}\\
+\textrm{Functional Analysis}& &\textrm{quantum mechanics}\\
+\textrm{QFT}& &\textrm{Fundamental fields with spin}\leq 1\\
+\textrm{Strings}& &\textrm{Fundamental fields with spin}\leq2\\
+\vdots & & \vdots
+\end{array}
+\nonumber
+\end{eqnarray}
+Note increasing symmetry and decreasing generality.
+}
+%%%%%%%%%%%
+\subsection{How to use it?}
+\frame
+{
+  \frametitle{Compactification and Holography}
+\begin{itemize}
+  \item<1-> Critical superstrings live in 10 flat dimensions
+  \item<2-> We live in 4 (almost flat) dimensions
+  \item<3-> To use our tool, we need to reduce $10\to 4$ 
+  \item<4->Two complementary possibilities:
+  \item<5-> Compactification  
+  \item<6-> Holography
+  \end{itemize}
+}
+
+%%%%%%%%%%
+\subsection{The need for covariant superstrings}
+\frame{
+\frametitle{Fluxes and branes}
+Both approaches to dimensional reduction require analogue of electrons and/or background electromagnetic flux.
+
+\pause
+{\bf Compactification}
+\pause
+\begin{itemize}
+ \item<1-> Compactifications on good string backgrounds without flux have moduli.
+ \pause
+ \item<2-> Example: Heterotic string on Calabi-Yau 3-fold has $N=1$ supersymmetry $\Rightarrow$ flat directions.
+\end{itemize}
+
+\pause
+{\bf Holography}
+\pause
+\begin{itemize}
+ \item<1-> Holographic construction: Branes $\rightarrow$ Flux.
+ \pause
+ \item<2-> Example: To get $N=4$ super-Yang-Mills we start with a stack of many D3-branes at weak string coupling. Increasing the coupling gives $AdS_5\times S^5$ with 5-form flux on the $S^5$.
+\end{itemize}
+}
+
+
+%\subsection{Other applications}
+%\frame{
+%\frametitle{Current work}
+%
+%\begin{itemize}
+% \item<1-> 
+% \item<2-> 
+% \item<3-> 
+% \item<4-> 
+%\end{itemize}
+%}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Superstrings}
+\frame{
+\frametitle{Superstrings}
+Superstring = Bosonic string + SUSY
+\pause
+
+Bosonic string $x:\Sigma \to M$
+\begin{eqnarray}
+S \sim \int ( \partial x)^2
+\nonumber
+\end{eqnarray}
+\pause
+Supersymmetry in field theory
+\begin{eqnarray}
+\left.
+\begin{array}{c}
+\delta \phi  = \epsilon \psi  \\ 
+\delta \psi =  \bar \epsilon\slash\!\!\! \partial \phi
+\end{array}
+\right\}
+[\delta , \delta] \sim \bar \epsilon \gamma^m\epsilon \partial_m
+\nonumber
+\end{eqnarray}
+}
+\frame{
+\frametitle{Superstrings}
+Supersymmetry in string theory
+\begin{eqnarray}
+\begin{array}{cc}
+\textrm {world-sheet} &\textrm {space-time} \\ 
+\delta x^m = \epsilon \psi^m  &  \delta x^m = i\epsilon \gamma^m \theta \\ 
+\delta \psi^m = \bar \epsilon \partial x^m & \delta \theta = \epsilon
+\end{array}
+\nonumber
+\end{eqnarray}
+\pause
+Open superstrings
+\begin{eqnarray}
+\begin{array}{cc}
+\textrm {RNS$\pm$ spin structure:} &\textrm {GS$\pm$ spin structure:}\\
+\textrm{(anti-)periodic B.C.} &\textrm {space-time (anti-)Weyl} \\ \\
+S\sim \int (\partial x)^2 + \psi \partial \psi &  S\sim \int \Pi^2 +S_\mathrm{WZ} \\ 
+			& \Pi^m = \mathrm d x^m +i \theta \gamma^m \mathrm d \theta
+\end{array}
+\nonumber
+\end{eqnarray}
+}
+\frame{
+\frametitle{Superstrings}
+Closed superstrings
+\begin{eqnarray}
+\begin{array}{cccc}
+	&\textrm {left-moving} &\textrm {right-moving}& \\ 
+	& 1\pm &0& \textrm{Heterotic O/E}\\
+\textrm{SUSY} &&\\	
+	& 1\pm &1\pm &\textrm{Type II A/B}
+\end{array}
+\nonumber
+\end{eqnarray}
+}
+\frame{
+\frametitle{Superstrings}
+Hidden symmetries
+\begin{eqnarray}
+\begin{array}{cc}
+\textrm {RNS} &\textrm {GS} \\ \\
+\textrm{Spacetime SUSY} & \textrm{Worldsheet Siegel symmetry} \\ \\
+\left\{ \psi_0^m , \psi_0^n \right\} = 2g^{mn} & \delta \Pi^m = \mathrm d \bar \theta \gamma^m \delta \theta\\
+	& \delta \theta = \slash\!\!\!\! \Pi \kappa \\ \\
+\textrm{vacuum: spacetime spinor} & \textrm{generated by } \slash\!\!\!\! \Pi d \\ 
+%\textrm{Bosonization } \bar \psi \psi \sim i\partial H & \textrm{Light-cone gauge} \\ 
+%\left(\psi_0^m \pm J^m{}_n \psi_0^n\right) = \mathrm e^{i( \pm H_0\pm \dots \pm H_4)} & \gamma^+ \theta = 0 \\ 
+%\downarrow \textrm{GSO-projection} & \Downarrow  \\ 
+%\Theta_{\mathbf s} = \mathrm e^{i \sum_a s_a H_a} & x^i ~,~ S^a~~(\textrm{triality}) \\ 
+%\textrm{Super-Virasoro} 	& \textrm{Unitary gauge} \\ 
+%\psi \Theta \sim \frac1{\sqrt{z}} \dots 	& p_\theta = {\delta S\over \delta \Dot{ \theta}} \sim i \bar \theta \gamma^m \partial x_m+\dots
+\end{array}
+\nonumber
+\end{eqnarray}
+}
+\frame{
+\frametitle{Superstrings}
+Hidden symmetries
+\begin{eqnarray}
+\begin{array}{cc}
+\textrm {RNS} &\textrm {GS} \\ \\
+%\textrm{Spacetime SUSY} & \textrm{Worldsheet Siegel symmetry} \\ 
+%\left\{ \psi_0^m , \psi_0^n \right\} = 2g^{mn} & \delta \Pi^m = \mathrm d \bar \theta \gamma^m \delta \theta\\
+%	& \delta \theta = \slash\!\!\!\! \Pi \kappa \\ 
+%\textrm{vacuum: spacetime spinor} & \textrm{generated by } \slash\!\!\!\! \Pi d \\ 
+\textrm{Bosonization } \bar \psi \psi \sim i\partial H & \textrm{Light-cone gauge} \\ 
+\left(\psi_0^m \pm J^m{}_n \psi_0^n\right) = \mathrm e^{i( \pm H_0\pm \dots \pm H_4)} & \gamma^+ \theta = 0 \\ \\
+\downarrow \textrm{GSO-projection} & \Downarrow  \\ \\
+\Theta_{\mathbf s} = \mathrm e^{i \sum_a s_a H_a} & x^i ~,~ S^a~~(\textrm{triality}) \\ 
+%\textrm{Super-Virasoro} 	& \textrm{Unitary gauge} \\ 
+%\psi \Theta \sim \frac1{\sqrt{z}} \dots 	& p_\theta = {\delta S\over \delta \Dot{ \theta}} \sim i \bar \theta \gamma^m \partial x_m+\dots
+\end{array}
+\nonumber
+\end{eqnarray}
+}
+\frame{
+\frametitle{Superstrings}
+Benefits/drawbacks
+\begin{eqnarray}
+\begin{array}{cc}
+\textrm {RNS} &\textrm {GS} \\ \\
+%\textrm{Spacetime SUSY} & \textrm{Worldsheet Siegel symmetry} \\ 
+%\left\{ \psi_0^m , \psi_0^n \right\} = 2g^{mn} & \delta \Pi^m = \mathrm d \bar \theta \gamma^m \delta \theta\\
+%	& \delta \theta = \slash\!\!\!\! \Pi \kappa \\ 
+%\textrm{vacuum: spacetime spinor} & \textrm{generated by } \slash\!\!\!\! \Pi d \\ 
+%\textrm{Bosonization } \bar \psi \psi \sim i\partial H & \textrm{Light-cone gauge} \\ 
+%\left(\psi_0^m \pm J^m{}_n \psi_0^n\right) = \mathrm e^{i( \pm H_0\pm \dots \pm H_4)} & \gamma^+ \theta = 0 \\ \\
+%\downarrow \textrm{GSO-projection} & \Downarrow  \\ \\
+%\Theta_{\mathbf s} = \mathrm e^{i \sum_a s_a H_a} & x^i ~,~ S^a~~(\textrm{triality}) \\ 
+\textrm{Super-Virasoro} 	& \textrm{Unitary gauge} \\ \\
+\psi \Theta \sim \frac1{\sqrt{z}} \dots 	& p_\theta = {\delta S\over \delta {\dot \theta}} \sim i \bar \theta \gamma^m \partial x_m+\dots
+\end{array}
+\nonumber
+\end{eqnarray}
+}
+\frame{
+\frametitle{Superstrings}
+Quantization 
+\begin{eqnarray}
+\begin{array}{cc}
+\textrm {RNS} &\textrm {GS} \\ 
+\textrm{Super-Virasoro constraints }1^\mathrm{st}\textrm{ class} & \textrm{Mixed }1^\mathrm{st}\textrm{ and }2^\mathrm{nd}\textrm{ class} \\ 
+\textrm{Covariant quantization}  & \textrm{Non-covariant quantization}\\
+\textrm{Trivial Ramond backgrounds}&\textrm{Trivial NS backgrounds}
+\end{array}
+\nonumber
+\end{eqnarray}
+{\em Neither possible for mixed backgrounds.}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Covariant superstrings}
+\frame{
+\frametitle{Covariant superstrings}
+%\subsection{Siegel strings} 
+Origin of problem in covariant quantization of GS string: 
+\pause 
+
+$2^\mathrm{nd}$ class constraints from composite $\theta$-momentum
+\pause
+
+Siegel ``solution'': Include fundamental $\theta$-momentum
+\begin{eqnarray}
+\int (\partial x)^2  &\to &\int (\partial x)^2 + p_\theta \partial \theta
+\nonumber
+\end{eqnarray}
+\pause
+Manifestly spacetime supersymmetric form
+\begin{eqnarray}
+S_\mathrm {Siegel} = S_\mathrm {GS}+ \int d \partial \theta 
+\nonumber
+\end{eqnarray}
+\pause
+Siegel constraints ~~~~~$d =  p_\theta + i \bar \theta \gamma^m \partial x_m + \theta \theta \partial \theta\textrm{-term}$
+}
+
+\frame{
+\frametitle{Covariant superstrings}
+Operator products ~~~~~$d_\alpha (z)d_\beta(0) \sim \frac 1z (\gamma^m)_{\alpha \beta}\Pi_m(0)$
+\pause
+
+~~~\\
+Still mixed $1^\mathrm{st}$ and $2^\mathrm{nd}$ class since $T = \Pi^m \Pi_{m}+\dots$ is $1^\mathrm{st}$ class.
+\pause
+
+~~~\\
+Two solutions to the problem of separating constraints due to Berkovits:
+\begin{enumerate}
+\pause
+\item<1-> Hybrid strings
+\pause
+\item <2->Pure spinor strings
+\end{enumerate}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Hybrid strings}
+\frame{
+\frametitle{Hybrid strings}
+Consider RNS in $M = \mathbb R^4 \times \mathbb C^3$ background
+\pause
+\begin{eqnarray}
+\begin{array}{lcc}
+	&\textrm{``spacetime''}& \textrm{``internal''}\\\\
+\textrm{matter}&x^m , \psi^m & y^i , \bar y^{\bar \imath}, \psi^i, \bar \psi^{\bar \imath}\\
+\textrm{ghost} & b,c,\beta,\gamma &\\
+%	&\downarrow&\downarrow\\
+%\textrm{Berkovits variables}&x^m ,p_\alpha, \theta^\alpha,\bar p_{\dot \alpha}, \bar \theta^{\dot \alpha} ,\rho & y^i , \bar y^{\bar \imath}, \psi^i, \bar \psi^{\bar \imath}\\
+\end{array}
+\nonumber
+\end{eqnarray}
+\pause
+\begin{eqnarray}
+\begin{array}{lcc}
+%	&\textrm{``spacetime''}& \textrm{``internal''}\\\\
+%\textrm{matter}&x^m , \psi^m & y^i , \bar y^{\bar \imath}, \psi^i, \bar \psi^{\bar \imath}\\
+%\textrm{ghost} & b,c,\beta,\gamma &\\
+\textrm{Berkovits}	&\downarrow&\downarrow\\
+\textrm{variables}&x^m ,p_\alpha, \theta^\alpha,\bar p_{\dot \alpha}, \bar \theta^{\dot \alpha} ,\rho & y^i , \bar y^{\bar \imath}, \psi^i, \bar \psi^{\bar \imath}\\
+\end{array}
+\nonumber
+\end{eqnarray}
+\pause
+Examples
+\begin{eqnarray}
+(\theta^\alpha) &\sim& \exp \frac i2\left( -i \phi \pm (H_0+H_1)-H\right) \cr
+(\bar \theta^{\dot \alpha})&\sim& c\xi \exp \frac i2 \left( 3 i \phi \pm (H_0-H_1) +H\right)
+\nonumber
+\end{eqnarray}
+}
+\frame{
+\frametitle{Hybrid strings}
+Canonical operator products
+\pause
+\begin{eqnarray}
+y^i(z,\bar z) \bar y^{\bar \jmath}(0) \sim \delta^{i\bar \jmath}\log|z|^2 
+~,~ \psi^i(z) \bar \psi^{\bar \jmath}(0) \sim {\delta^{i \bar \jmath}\over z}
+~,~ \rho(z)\rho(0) \sim -\log z
+\cr
+x^m(z,\bar z) x^n(0)\sim \log |z|^2
+~,~p_\alpha (z) \theta^\beta(0) \sim {\delta_\alpha^\beta\over z} 
+~,~\bar p_{\dot \alpha} (z) \bar \theta^{\dot \beta} (0) \sim {\delta_{\dot \alpha}^{\dot \beta}\over z}
+\nonumber
+\end{eqnarray}
+\pause
+Super-Virasoro constraints
+\pause
+\begin{eqnarray}
+T& =& \Pi^m \Pi_m + d\partial \theta +\bar d \partial \bar \theta 
+	+\delta_{i\bar \jmath} \partial y^i \partial \bar y^{\bar \jmath}
+	+ \delta_{i\bar \jmath} \psi^i \stackrel{\leftrightarrow}{\partial} \bar \psi^{\bar \jmath}\cr
+G^+&=& \mathrm e^{\rho} d^2 + i \delta_{i \bar \jmath}  \psi^i \partial \bar y^{\bar \jmath}\cr
+G^{-}&=& \mathrm e^{-\rho} \bar d^2 + i \delta_{i \bar \jmath} \bar \psi^{\bar \jmath} \partial y^i\cr
+J&=&-\partial \rho -\delta_{i \bar \jmath} \bar \psi^{\bar \jmath} \psi^i
+\nonumber
+\end{eqnarray}
+}
+%%%%%%%%%%%%
+\frame{
+\frametitle{Hybrid strings}
+All constraints first class with commuting factors
+\pause
+\begin{eqnarray}
+\textrm{SCA}_{10} = \textrm{SCA}_4 \oplus \textrm{SCA}_6 &\Rightarrow& \textrm{Rep}_{10} = \textrm{Rep}_{4}\otimes \textrm{Rep}_{6}
+\nonumber
+\end{eqnarray}
+\pause
+\begin{eqnarray}
+\textrm{Rep}_{4} &\Leftrightarrow& \Phi (x, \theta, \bar \theta, p, \bar p, \rho)\cr\cr
+\textrm{Rep}_{6} &\Leftrightarrow& \sum \Omega_{i_1 \dots i_p \bar \jmath_1\dots \bar \jmath_q}(y,\bar y) \psi^{i_1}\dots\psi^{i_p} \bar \psi^{\bar \jmath_1} \dots \bar \psi^{\bar \jmath_q}
+\nonumber
+\end{eqnarray}
+}
+
+\frame{
+\frametitle{Physical state conditions}
+Physical state conditions for unintegrated vertex operators are the usual RNS conditions. 
+\pause
+%: 
+%\begin{enumerate}
+%\item No double poles with Virasoro 
+%\item No single pole with $J$
+%\end{enumerate}
+No double poles with Virasoro implies conformal weight 0. 
+\pause
+First possibility: $\Omega$ has weight 0 
+\pause
+$\Rightarrow$ $\Omega =1$ 
+\pause
+$\Rightarrow$ $\Phi$ function of 0-modes of $x,\theta, \bar \theta$ only 
+\pause
+$\Rightarrow$ $\Phi$ is a {\em superfield} and 
+\pause
+\begin{eqnarray}
+d (z) \Phi  \sim \frac1z D \Phi &,& \bar d (z) \Phi  \sim \frac1z \bar D \Phi\cr\cr
+D = {\partial\over \partial \theta} + i (\bar \theta \sigma^m){\partial \over \partial x^m}&,&
+\bar D = -{\partial\over \partial \theta} - i (\sigma^m\theta){\partial \over \partial x^m}
+\nonumber
+\end{eqnarray}
+Superspace covariant derivatives
+\pause
+with algebra
+\begin{eqnarray}
+%d (z) \Phi  = \frac1z D \Phi && \bar d (z) \Phi  = \frac1z \bar D \Phi\cr\cr
+\left\{D , D\right\}=0 ~,~\left\{D , \bar D\right\}=-2i \sigma^m \partial_m~,~ \left\{\bar D, \bar D\right\}=0
+\nonumber
+\end{eqnarray}
+}
+
+\frame{
+\frametitle{(Anti-)chiral fields}
+(Anti-)chiral fields: 
+
+~~~\\
+\pause
+No single pole with ($G^+$) $G^-$:
+\pause
+
+~~~\\
+$0 = \oint G^{-}U$
+\pause$
+= \left(\oint \mathrm e^{-\rho} \bar d^2(z) \Phi(0)\right)\Omega(0)+ \Phi(0) \left( \oint \bar \psi \partial y(z) \Omega(0)\right)$
+\pause
+$
+= \left(\mathrm e^{-\rho} \bar d\bar D\Phi\right)\Omega+\Phi\left( \bar \psi {\partial \Omega\over \partial \bar y} +\partial y {\delta \Omega\over \delta  \psi}\right)
+$
+\pause
+
+~~~\\
+$\Rightarrow$ $\Phi$ is a chiral superfield and $\Omega$ is independent of $\psi$.
+
+\pause
+$\Rightarrow \Omega = \omega(y, \bar y)_{\bar \imath_1\dots \bar \imath_q} \bar \psi^{\bar \imath_1}\dots \bar \psi^{\bar \imath_q}$ 
+and 
+$\bar \partial \Omega=0$ 
+
+\pause 
+$\Rightarrow$ $\Omega$ holomorphic $(0,q)$-form!
+\pause
+ 
+ ~~~\\
+{\em ``Chiral ring'' of ``internal'' space $\Leftrightarrow$ cohomology ring}.
+}
+
+\frame{
+\frametitle{(Anti-)chiral fields}
+Spin-$\frac32$ generators 
+\pause
+\begin{eqnarray}
+\begin{array}{lllcl}
+\textrm{Correlated}&G^+ = G^+_4 +G^+_6,&G^- = G^-_4 +G^-_6 &\textrm{and}& J = J_4+J_6\\
+\textrm{or}&&&& \\
+\textrm{Anti-corr.}&G^+ = G^+_4 +G^-_6,&G^- = G^-_4 +G^+_6 &\textrm{and}& J = J_4-J_6
+\end{array}
+\nonumber 
+\end{eqnarray}
+\pause
+Spacetime chiral superfields correlated with internal chiral ring 
+
+{\em or} 
+
+spacetime anti-chiral superfield correlated with chiral ring and 
+
+{\it vice versa}.
+}
+
+
+%%%%%%%%%%%%%%
+\subsection{Flux deformed Calabi-Yau compactification}
+\frame{
+\frametitle{Calabi-Yau compactification}
+
+Type IIB string on Calabi-Yau $X$ 
+
+\pause
+Left- and right-moving SCAs (Type II) 
+\pause
+
+Both correlated (Type B)
+\pause
+\begin{eqnarray}
+\begin{array}{ccc}
+	&(\textrm{chiral,chiral}) & (\textrm{chiral,anti-chiral})\\\\
+\textrm{spacetime} & N=2\textrm{~chiral} &	N=2\textrm{~twisted-chiral}\\\\
+\textrm{multiplet} & \textrm{vector} &\textrm{hyper}\\\\
+\textrm{cohomology} & H^{2,1}_{\bar \partial}(X) & H^{1,1}_{\bar \partial}(X)\\\\
+\textrm{deformation} &\mathbb C\textrm{-structure} &	\textrm{K\"ahler-structure}
+\end{array}
+\nonumber 
+\end{eqnarray}
+}
+
+\frame{
+\frametitle{Calabi-Yau compactification}
+
+{\bf Vector-multiplets} (chiral,chiral) 
+\pause
+$M = \sum_{p=1}^{h^{2,1}} M^p \Omega^p_{(-1,-1)}$
+\pause
+
+\begin{eqnarray}
+M^p = \phi^p + \theta_L^2 D^p_{++} + \theta_R^2 D_{--}^p + \theta_L\theta_R D_{+-}^p +\theta_L \sigma^{mn} \theta_R F^p_{mn}%+\theta_L^2\theta_R^2 \Box \bar \phi^p
++\dots 
+\nonumber
+\end{eqnarray}
+\pause
+
+Integrated vertex operator 
+\pause
+
+\begin{eqnarray}
+I^p = \int G_L^+(G_R^+(M^p))+\mathrm {h.c.}= \int \mathrm e^{\rho_L +\rho_R} (d_{L} d_{R})D_{+-}^p+\mathrm {h.c.}+\dots
+\nonumber
+\end{eqnarray}
+}
+
+\frame{
+\frametitle{Flux deformation}
+D3-brane background preserves $\theta^{+} = \theta_L+i \theta_R$ spacetime supersymmetry
+\pause
+\begin{eqnarray}
+M^p = \phi^p + (\theta^+)^2 X^p_{++} + (\theta^-)^2 X_{--}^p + (\theta^+\theta^-) X_{+-}^p +\dots 
+\nonumber
+\end{eqnarray}
+\pause
+Flux deformed background preserving D3 symmetry (Klebanov-Strassler)\pause
+\begin{eqnarray}
+X^p_{--} =0=X_{+-}^p &&  X_{++}^p \sim g_s \bar G^p ~~~(\textrm{ISD flux})
+\nonumber
+\end{eqnarray}
+}
+
+\frame{
+\frametitle{Flux deformation}
+
+Vertex operator for flux deformation 
+\pause
+\begin{eqnarray}
+I_{\mathrm D3}=\sum_{p=1}^{h^{2,1}} I^p\Omega^p = \int G_L^+(G_R^+(M^p))+\mathrm {h.c.}\cr
+\sim g_s \int \mathrm e^{\rho_L +\rho_R} (d_{L} d_{R})\bar G^p\Omega^p +\mathrm{h.c.}
+\nonumber
+\end{eqnarray}
+\pause
+%\begin{eqnarray}
+%%I_{D3}=\sum_{p=1}^{h^{2,1}} I^p\Omega^p = \int G_L^+(G_R^+(M^p))+\mathrm {h.c.}
+%\sim g_s \int \mathrm e^{\rho_L +\rho_R} (d_{L} d_{R})\bar G^p\Omega^p +\mathrm{h.c.}
+%\nonumber
+%\end{eqnarray}
+%\pause
+Conformal symmetry breaking divergence
+\pause
+\begin{eqnarray}
+I_{\mathrm D3}I_{\mathrm D3} \sim g_s^2  \log\Lambda  \int \Pi_L\Pi_R|G|^2
+\nonumber
+\end{eqnarray}
+\pause
+Cancel with {\em spacetime} gravitational vertex operator. 
+}
+
+\frame{
+\frametitle{Warping}
+In flat space
+\pause
+\begin{eqnarray}
+U_1 \sim (\theta_L\theta_R)(\bar\theta_L \bar \theta_R) A+\dots &\Rightarrow& I_1 = \int \Pi_L\Pi_R A+\dots
+\nonumber
+\end{eqnarray}
+
+\pause
+Background field expansion 
+\pause
+\begin{eqnarray}
+I_1\to \int \Pi_L\Pi_R y^i \bar y^{\bar \jmath} \nabla_i \bar \nabla_{\bar \jmath} A \sim \log \Lambda \int \Pi_L\Pi_R \Delta A
+\nonumber
+\end{eqnarray}
+\pause
+At 1-loop therefore 
+\pause 
+~~~~~~~~~\fbox{$\Delta A \sim g_s^2 |G|^2$}
+
+\vspace{.3cm}
+{\em Warp factor of the spacetime metric} (\cite{Linch:2008nt} with Brenno Carlini Vallilo).
+}
+
+\frame{
+\frametitle{Significance}
+The results of the work with Brenno Carlini Vallilo have many implications:
+\begin{itemize}
+\item <1->This approach allows a worldsheet ({\it i.e.} string-theoretic) derivation of many spacetime effects of background fluxes
+\pause
+\item<2-> Can in principle be used to find all effects such as torsion, non-commutativity, {\it et cetera}
+\pause
+\item<3-> Suggests the validity of the flux background as a string background due to existence of worldsheet SCA (no breaking of worldsheet supersymmetry)
+\pause
+\item<4-> Allows computation of scattering amplitudes in non-trivial backgrounds
+\pause
+\item<5-> Existence of new type of mirror symmetry for heterotic strings?
+\end{itemize}
+\pause
+Unfortunately, ``picture-changing problem'' persists... 
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Pure spinor strings}
+\frame{
+\frametitle{Pure spinor strings}
+In ten dimensions we can introduce spinor harmonics to separate constraints 
+\begin{eqnarray}
+\left\{d_\alpha , d_\beta\right\} = -2i (\gamma^m)_{\alpha \beta}\Pi_m &\to& 
+	\left\{ \lambda^\alpha d_\alpha , \lambda^\beta d_\beta\right\} = -2i \, (\lambda \gamma^m \lambda)\,  \Pi_m
+\nonumber
+\end{eqnarray}
+\pause
+%\begin{eqnarray}
+%\left\{ \lambda^\alpha d_\alpha , \lambda^\beta d_\beta\right\} = 0 &\Leftrightarrow& \lambda \gamma^m \lambda = 0
+%\nonumber
+%\end{eqnarray}
+Can be chosen to vanish ~~~ $\Leftrightarrow$ ~~~ $\lambda \gamma^m \lambda = 0$
+\pause
+
+Fierz identity
+\begin{eqnarray}
+\lambda^\alpha \lambda^\beta = \sum_{p\mathrm{~odd}} (\gamma_{[p]})^{\alpha \beta} ( \lambda\gamma^{[p]}\lambda)= (\gamma_{m_1\dots m_5})^{\alpha \beta} (\lambda \gamma^{m_1\dots m_5}\lambda)
+\nonumber
+\end{eqnarray}
+
+\pause
+defines self-dual 5-plane 
+
+\pause
+$\Leftrightarrow$ Lagrangian sub-bundle of $T^\mathbb C M$ 
+
+\pause
+
+$\Leftrightarrow$ ``pure spinor''
+}
+
+\frame{
+\frametitle{Pure spinor strings}
+Berkovits operator 
+\begin{eqnarray}
+Q=\oint \lambda^\alpha d_\alpha &\Rightarrow& Q^2=0
+\nonumber
+\end{eqnarray}
+\pause 
+Cohomology at ghost number 1
+\pause
+\begin{eqnarray}
+U=\lambda^\alpha A_\alpha(x,\theta) \in H^1_Q &\Rightarrow& U = \Gamma^m A_m +\Gamma_\alpha \chi^\alpha - Q(G)
+\nonumber
+\end{eqnarray}
+where
+$
+\Gamma^m =\lambda\gamma^m \theta$ and $\Gamma_\alpha =-\frac12 (\theta\gamma^{mpq}\theta) (\lambda \gamma_{mnq})_\alpha$ span the 0-momentum cohomology at ghost number 1.
+
+\pause
+Cohomology corresponds to a photon $A_m$ and photino $\chi^\alpha$.
+}
+
+\frame{
+\frametitle{Pure spinor strings}
+Applications 
+\pause
+\begin{itemize}
+\item<1-> Compactification and relation to hybrid
+\pause
+\item<2-> Holographic backgrounds
+\item \dots
+\end{itemize}
+\pause
+Open problems
+\pause
+\begin{itemize}
+\item<1-> Looks like gauge fixing of a superstring with some fermionic symmetry. {\em Which string ??}
+\pause
+\item<2-> Spectrum
+\item \dots
+\end{itemize}
+
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusion}
+\frame{
+\frametitle{In other news...}
+{\bf Hybrid}
+\begin{itemize}
+\item Compactification on $K3$, $K3\times T^2$ \cite{Linch:2006sh}, $CY_3$, $CY_4$, ...
+\item Flux compactification on $CY$ \cite{Linch:2006ig,Linch:2008rw}, superpotentials, non-commutativity, ...
+\item Superstring field theory, black holes, amplitudes, \dots
+\end{itemize}
+
+{\bf Pure spinor}
+\begin{itemize}
+\item Compactification on $CY$ \cite{Chandia:2009it}
+\item $AdS_5 \times S^5$ background and possible proof of Maldacena duality
+\item Integrability in the $AdS_5\times S^5$ sigma model \cite{Linch:2008nt}
+\end{itemize}
+
+%
+%\begin{itemize}
+%\item<1-> Superpotentials, non-commutativity, {\it et cetera}
+%\item<2->
+%\end{itemize}
+
+
+}
+
+\frame{
+\frametitle{Fin}
+\begin{centering}
+{\Huge Thank you!}
+\end{centering}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{thebibliography}{99}
+
+%\bibitem{AP13}
+%\cite{Linch:2006ig}
+\bibitem{Linch:2006ig}
+  Wm~D.~Linch, III and B.~C.~Vallilo,
+  ``Hybrid formalism, supersymmetry reduction, and Ramond-Ramond fluxes,''
+  JHEP {\bf 0701}, 099 (2007)
+  [arXiv:hep-th/0607122].
+  %%CITATION = JHEPA,0701,099;%%
+  
+%%\cite{Berkovits:1999du}
+%\bibitem{Berkovits:1999du}
+%  N.~Berkovits,
+%  ``Quantization of the type II superstring in a curved six-dimensional
+%  background,''
+%  Nucl.\ Phys.\  B {\bf 565}, 333 (2000)
+%  [arXiv:hep-th/9908041].
+%  %%CITATION = NUPHA,B565,333;%%
+
+%\cite{Linch:2006sh}
+\bibitem{Linch:2006sh}
+  Wm~D.~Linch, III and B.~C.~Vallilo,
+  ``Covariant N = 2 heterotic string in four dimensions,''
+  JHEP {\bf 0703}, 082 (2007)
+  [arXiv:hep-th/0611105].
+  %%CITATION = JHEPA,0703,082;%%
+
+%%\cite{Berkovits:1994wr}
+%\bibitem{Berkovits:1994wr}
+%  N.~Berkovits,
+%  ``Covariant quantization of the Green-Schwarz superstring in a Calabi-Yau
+%  background,''
+%  Nucl.\ Phys.\  B {\bf 431}, 258 (1994)
+%  [arXiv:hep-th/9404162].
+%  %%CITATION = NUPHA,B431,258;%%
+  
+%\cite{Linch:2008rw}
+\bibitem{Linch:2008rw}
+  Wm~D.~Linch, III, J.~McOrist and B.~C.~Vallilo,
+  ``Type IIB Flux Vacua from the String Worldsheet,''
+  JHEP {\bf 0809}, 042 (2008)
+  [arXiv:0804.0613 [hep-th]].
+  %%CITATION = JHEPA,0809,042;%% 
+
+%%\cite{Berkovits:2001tg}
+%\bibitem{Berkovits:2001tg}
+%  N.~Berkovits, S.~Gukov and B.~C.~Vallilo,
+%  ``Superstrings in 2D backgrounds with R-R flux and new extremal black
+%  holes,''
+%  Nucl.\ Phys.\  B {\bf 614}, 195 (2001)
+%  [arXiv:hep-th/0107140].
+%  %%CITATION = NUPHA,B614,195;%%
+
+%\cite{Chandia:2009it}
+\bibitem{Chandia:2009it}
+  O.~Chandia, Wm~D.~Linch, III and B.~C.~Vallilo,
+  ``Compactification of the Heterotic Pure Spinor Superstring I,''
+  JHEP {\bf 0910}, 060 (2009)
+  [arXiv:0907.2247 [hep-th]].
+  %%CITATION = JHEPA,0910,060;%%
+
+%\cite{Linch:2008nt}
+\bibitem{Linch:2008nt}
+  Wm~D.~Linch, III and B.~C.~Vallilo,
+  ``Integrability of the Gauged Linear Sigma Model for $AdS_5\times S^5$''
+  JHEP {\bf 0911}, 007 (2009)
+  [arXiv:0804.4507 [hep-th]].
+  %%CITATION = JHEPA,0911,007;%%
+
+
+\end{thebibliography}
+
+
+\end{document}

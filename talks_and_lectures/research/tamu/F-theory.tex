@@ -1,0 +1,896 @@
+\documentclass[12pt]{article} %[twocolumn]
+% page formatting %%%%%%%%%%%%%%%%%%%%%
+%\usepackage{geometry}
+%\usepackage[top=20mm, bottom=30mm, left=15mm, right=15mm]{geometry}
+%\usepackage[top=30mm, bottom=40mm, left=25mm, right=25mm]{geometry}
+
+\usepackage{graphicx}
+\usepackage{textcomp} % for \textinterrobang
+\usepackage{mathtools}
+
+\usepackage{epstopdf}
+
+\usepackage{latexsym}
+
+\usepackage[mathcal]{euscript}
+\usepackage{slashed}
+
+\usepackage{epic}
+
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+%To get equations numbered by section
+%\numberwithin{equation}{subsection}
+\numberwithin{equation}{section}
+
+
+\usepackage{/Users/wdlinch3/Dropbox/Rashoumon/LaTeX/macros/WDL3mod}
+
+%%%%% Local stuff %%%%
+\def\S{{\cal S}}
+\def\T{{\cal T}}
+\def\U{{\cal U}}
+\def\V{{\cal V}}
+\def\W{{\cal W}}
+
+%
+%%%
+%%%%%
+%%%%%%%%%
+%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%UMDEPP-014-026
+
+\title{
+%M-theory from Quantizable Five-branes
+Quantizable Models for M-theory
+}
+
+\author{William D. Linch \textsc{iii}$^\text{\Pisces}$
+%and Warren Siegel$^\text{\Scorpio}$
+}
+\date{7 September, 2015.\footnote{Prepared for 
+Theory Group in the 
+George P. and Cynthia W. Mitchell Institute for Fundamental Physics and Astronomy at 
+Texas A\&{}M University.
+Based on work in collaboration with Warren Siegel \cite{Linch:2015lwa,Linch:2015fya,Linch:2015qva,Linch:2015fca}.
+}
+} % Activate to display a given date or no date
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\maketitle
+
+%\begin{picture}(0,0)%
+%\put(-20,-330){${}^{\small \mbox\Pisces}$ \href{mailto:wdlinch3@gmail.com}{wdlinch3@gmail.com}}
+%%{\fbox{A LOGO HERE}}%
+%%\put(-10,-200){\framebox(150,200)[tl]{}}%
+%\end{picture}\hfill
+
+\begin{center}
+%\vskip 0.2in
+{\em
+${}^{\small \mbox\Pisces}$
+%Center for String and Particle Theory\\
+%Department of Physics,
+%University of Maryland at College Park,\\
+%College Park, MD 20742-4111 USA.
+George P. and Cynthia W. Mitchell Institute for\\
+Fundamental Physics and Astronomy, \\
+Texas A\&{}M University.\\
+College Station, TX 77843 USA.
+}\\
+%(Starting tomorrow!)
+\end{center} 
+
+%\vspace{10pt}
+
+\begin{abstract}
+%The hidden exceptional symmetries $E_{n(n)}$ of eleven-dimensional supergravity that emerge upon compactification on tori $T^n$ are believed to provide important hints to the formulation of M-theory as it results from the quantization of some yet unknown fundamental objects generalizing strings.
+%%M-theory is believed to provide important hints to its fundamental formulation as a theory arising from the quantization of some yet unknown extended objects generalizing strings. 
+%In 1985, former Aggie Michael Duff conjectured that this theory should have the full exceptional symmetry present as a spacetime symmetry already in eleven dimensions. 
+%In this talk I will present models with the property that their canonical quantization gives rise to current algebras on extended objects with these exceptional symmetries. In particular, truncation of the bracket of two vector field currents to the massless level reproduces the so-called ``exceptional Courant bracket'' of the $E_{n(n)}$ exceptional/generalized geometry for ranks $n\leq 7$. 
+%Such geometries come with a ``strong constraint'' or ``section condition'' on their momenta which arises from a Virasoro constraint in these models.\footnote{
+%Based on work in collaboration with Warren Siegel \cite{Linch:2015lwa,Linch:2015fya,Linch:2015qva,Linch:2015fca}.}
+The hidden exceptional symmetries of eleven-dimensional supergravity that emerge upon compactification on tori are believed to provide important hints to the formulation of M-theory as it results from the quantization of some yet unknown fundamental objects generalizing strings. In 1985, former Aggie Michael Duff conjectured that this theory should have the full exceptional symmetry present as a spacetime symmetry already in eleven dimensions. In this talk I will present models with the property that their canonical quantization gives rise to current algebras on extended objects with these exceptional global symmetries. (These are known for ranks up to and including seven.) In particular, truncation of the bracket of two vector field currents to the massless level reproduces the ``exceptional Courant bracket'' of the exceptional/generalized geometry. Such geometries come with a ``section condition'' on their momenta which arises in these models from a Virasoro constraint.
+\end{abstract}
+
+%email addresses
+%\vspace*{.5cm}
+\begin{flushleft}
+~\\
+{${}^{\small \mbox\Pisces}$ \href{mailto:wdlinch3@gmail.com}{wdlinch3@gmail.com}}\\
+%\makebox[0pt][t]
+%{$^\text{\Scorpio}$ \href{mailto:siegel@insti.physics.sunysb.edu}{siegel@insti.physics.sunysb.edu}}
+%\makebox[0pt][t]
+\end{flushleft}
+
+\thispagestyle{empty}
+
+\newpage
+
+\tableofcontents
+\setcounter{page}0
+\thispagestyle{empty}
+
+\newpage
+
+%\setcounter{page}0
+%\thispagestyle{empty}
+
+%\tableofcontents
+
+%\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Review}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{S-theory}
+
+%%%
+\paragraph{
+	Pre-1984:
+}
+There is a unique 11D supergravity and there are five 10D supergravities 
+%``$S(X)$'' on spacetime $X$ 
+of types I, II{\sc a/b}, H{\sc e/o}.
+
+%%%%
+%\paragraph{
+%	Cremmer, Julia, \& Scherk (1978) \cite{Cremmer:1978km}:
+%}
+%Construction of eleven-dimensional supergravity.
+
+
+%%%
+\paragraph{
+	Green \&{} Schwarz (1984) \cite{Green:1984sg}:
+}
+10D supergravities ``$S(X)$'' on spacetime $X$ 
+%of types I, II{\sc a/b}, H{\sc e/o} 
+originate from quantization of fundamental strings ``$\mathbf S(X)$'' with target $X$. \\
+
+\noindent
+Moduli space of Type-II supergravity $S(X)$ on $X \to X\times T^n$:
+\begin{align*}
+{O(n,n) \over O(n)\times O(n)} 
+\end{align*}
+due to the symmetry between momentum modes (one copy of $n$) and winding modes 
+%of the type-II string theory 
+(the other copy of $n$).
+
+%%%
+\paragraph{
+	Narain (1986) \cite{Narain:1985jj}:
+} 
+$O(n,n)$ symmetry of $S(X)$ broken to $O(n,n;\mathbf Z)$ ``T-duality'' of the superstring $\mathbf S(X)$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{T-theory}
+%%%
+\paragraph{
+	Duff (1989) \cite{Duff:1989tf}:
+}
+String theories have a generalization that manifests T-duality at the cost of doubling the spacetime dimension $x \to (x, \tilde x)$ for winding 0-modes.\footnote{Go Aggies!} 
+%%%
+\paragraph{
+	Siegel (1993) \cite{Siegel:1993bj,Siegel:1993th,Siegel:1993xq}: 
+}
+Doubled spacetime is reduced by a section condition on the momenta
+\begin{align*}
+(\partial_M) := \left(\begin{array}{c} \partial_\mu \\ \tilde \partial^\mu \end{array}\right)
+~~~
+\eta := \left(\begin{array}{cc} 0 & \delta_\mu^\nu \\ \delta^\mu_\nu & 0\end{array}\right)
+~~~
+\partial^M \partial_M = 0 
+~~~\Rightarrow~~~\mathrm{e.g.} ~~~
+\tilde \partial^m = 0.
+\end{align*}
+Extension to a string theory ${\bf T}(X)$ with manifest T-duality symmetry.\\
+New Lie derivative (D-bracket) and commutator (C-bracket) described by current algebra of generalized momenta $\Pi_M = P_M + \eta_{MN}X^{\prime N}$ with quantum bracket 
+\begin{align*}
+[\Pi_M(\sigma_1) , \Pi_N(\sigma_2) ] = 2i \eta_{MN} \delta'(\sigma_1-\sigma_2).
+\end{align*}
+Section condition arises dynamically as a new Virasoro constraint
+\begin{align*}
+L = \tfrac12 \eta^{MN} \Pi_M \Pi_N
+~~~\Rightarrow~~~
+\partial^M \partial_M = 0 .
+\end{align*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Generalized/Doubled Geometry}
+
+%%%
+\paragraph{
+	Hitchin \& Gualtieri (2003) \cite{Hitchin:2004ut,Gualtieri:2003dx}:
+}
+Generalized geometry $T\oplus T^\ast$ as the massless $T(X)$ and further truncated (does not include winding 0-modes).\\
+Dorfman bracket is generalized Lie derivative and Courant bracket is the generalized Lie bracket.
+
+%%%
+\paragraph{
+	Hull \& Zwiebach (2009) \cite{Hull:2009mi}: 
+}
+``Doubled geometries'' $T(X)$ include coordinates for the winding modes. (Simplification of the manifestly T-dual ``stringy geometry'' $\mathbf T(X)$ of $X$ by Siegel.)\\ 
+%which includes massive string modes and predates all the other geometry references.) \\
+\begin{displaymath}
+\xymatrix{
+	&\textrm{Doubled } T(X)  %\ar[r]^{\textrm{\cite{Linch:2015lwa,Linch:2015fya,Linch:2015qva,Linch:2015fca}}} &\textrm{F-theory } F(X)\\
+	&&(T\oplus T*)(X\times  X) \\ %\ar[r] & (T \oplus \Lambda^\bullet )(X\times  X^\bullet) \\
+\textrm{Geometry }X \ar[r]_{\textrm{\cite{Hitchin:2004ut,Gualtieri:2003dx}}} \ar@{.>}[ur]^{\textrm{\cite{Siegel:1993xq,Siegel:1993th,Siegel:1993bj,Hull:2009mi}}~~~}&
+	\textrm{Generalized} \ar[u] %\ar[r]_{\textrm{\cite{Berman:2010is}}} & \textrm{Exceptional} \ar[u] 
+	& 
+	X \ar[r] \ar@{.>}[ur]&
+	TX \oplus T*X  \ar[u] %\ar[r] & TX \oplus \Lambda^\bullet X \ar[u] 
+}
+\end{displaymath}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{M-theory} 
+%%%
+\paragraph{
+	Cremmer, Julia, \& Scherk (1978) \cite{Cremmer:1978km}:
+}
+Construction of eleven-dimensional supergravity.
+%%%
+\paragraph{
+	Bergshoeff, Sezgin, \& Townsend (1987) \cite{Bergshoeff:1987cm,Bergshoeff:1987qx}:
+}
+No strings in 11D but super-membranes.
+%%%
+\paragraph{
+	Witten (1995) \cite{Witten:1995ex}: 
+}
+S-duality of the type-II{\sc a} $\bf S$tring theory has 11-dimensional supergravity as its massless truncation.
+%
+\begin{displaymath}
+\xymatrix@=10pt{ 
+&\ar@{-}@/^1pc/[dl]
+	{\begin{array}{c}11\textrm{\sc d}\\ \textrm{{\sc sugra}}\end{array}} 
+	\ar@{-}@/_1pc/[dr]& \\
+\mathbf {II}\textrm{\sc a}\ar@{-}@/^1pc/[dd]&&\mathbf {H}\textrm{\sc e}\ar@{-}@/_1pc/[dd]\\
+&\mathbf M&\\
+\mathbf {II}\textrm{\sc b}&&\mathbf {H}\textrm{\sc o}\\
+&\ar@{-}@/_1pc/[ul]{\mathbf I}\ar@{-}@/^1pc/[ur]&
+}
+\end{displaymath}
+%
+
+%%%
+\paragraph{
+	Cremmer \&{} Julia (1979) \cite{Cremmer:1979up} 
+	and 
+	Hull \&{} Townsend \cite{Hull:1994ys}:
+}
+Analogously to the moduli space of compactifications of the type-II string theories on $n$-tori, hidden {\em exceptional} ``U-duality'' symmetry $E_{n(n)}$ of (gauged) 11D supergravity manifested by compactification on $T^n$.
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|c|cccc|ccc}
+\hline
+$n$ &  $E_{n(n)}$  & $H_n$ & \# vectors & \# scalars \\
+\hline
+3 & $\sl2R \times \sl3R$ & $SO(2) \times SO(3)$ & 6 & 7 \\
+4 & \sl5R & $SO(5)$  & 10 & 14\\
+5 & \spin{5,5} & $SO(5)\times SO(5)$ & 16 & 25 \\
+6 & $E_{6(6)}$ & $Sp(4)$ & 27 & 42 \\
+7 & $E_{7(7)}$  & $SU(8)$ & 28 & 70\\
+8 & $E_{8(8)}$ &  $SO(16)$ & 0 & 128 \\
+\hline
+\end{tabular} 
+\end{center}
+\begin{caption}{Structure of compactifications  of 11-dimensional supergravity on an $n$-torus.}
+\label{T:11DonTn}
+\end{caption}
+\end{table}
+
+%%%
+\paragraph{
+	Duff (1985) \cite{Duff:1985bv} (see also \cite{Duff:1986ne,Duff:1989tf}): 
+}
+``Either the $E_8\times SO(16)$ structure appears only in $d=3$ as an \underline{internal} symmetry, or else it is really present at every $d\leq 11$ as a \underline{spacetime} symmetry which transforms states of different spin into each other, in particular transforming [the frame field] into [the 3-form] in $d=11$. We emphasize that we are advocating the latter.'' 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{F-theory}
+%%%
+\paragraph{
+	Vafa (1996) \cite{Vafa:1996xn}: 
+}	
+$\sl2Z$ S-duality of the type-II{\sc b} $\bf S$tring may be realized geometrically in ``12D'' theory $F$ defined by
+\begin{enumerate}
+\item Geometrically realized (S(trong/weak) part of) U-duality
+\item Not really 12D: Type-II{\sc b} $\bf S$tring with axio-dilaton profile determined by elliptically-fibered Calabi-Yau 4-fold $T^2 \rightarrow \widehat X\rightarrow X$
+\item Related by compactification to M-theory
+\end{enumerate}
+\begin{align*}
+\xymatrix{
+	&F(\widehat X) \ar[dd] &\cr
+	M( X\times S^1 )\ar@{<.}[ur] \ar[dr]&& \cr % T(X)\ar@{<.}[ul]_{\mathrm{reduction}}\ar[dl] 
+	&S(X) &
+	}
+\end{align*}
+%For any target $X$ of dimension $D$, we can define an ``F-gravity'' $F(X)$ by completing diagram.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Exceptional/Extended Geometry}
+%%%
+\paragraph{
+	Berman \& Perry (2010) \cite{Berman:2010is}: 
+}
+Extension of generalized geometry to ``exceptional geometry''
+%\vspace{-2mm}
+\begin{displaymath}
+\xymatrix{
+	&\textrm{Doubled } T(X) \ar[r]^{\textrm{\cite{Linch:2015lwa,Linch:2015fya,Linch:2015qva,Linch:2015fca}}~} &\textrm{F-theory } F(X)\\
+\textrm{Geometry } S(X) \ar[r]_{\textrm{\cite{Hitchin:2004ut,Gualtieri:2003dx}}} \ar@{.>}[ur]^{\textrm{\cite{Siegel:1993xq,Siegel:1993th,Siegel:1993bj,Hull:2009mi}}~~~}&
+	\textrm{Generalized} \ar[r]_{\textrm{\cite{Berman:2010is}~~~~~}} \ar[u] &
+	\textrm{Exceptional } M(X)\ar[u] 
+}
+\end{displaymath}
+corresponding to
+\begin{displaymath}
+\xymatrix{
+			&(T\oplus T*)(X\times  X) \ar[r] & (T \oplus \Lambda^\bullet )(X\times  X^\bullet) \\
+X \ar[r] \ar@{.>}[ur]&
+	TX \oplus T*X \ar[r] \ar[u] &
+	TX \oplus \Lambda^\bullet X \ar[u] 
+}
+\end{displaymath}
+
+%%%
+\paragraph{
+	Goal: 
+}
+Provide a fundamental brane description of the ultra-violet completion of these theories analogous to fundamental strings  $\mathbf S(X)$ for supergravity $S(X)$. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Definition of the fundamental theory $\mathbf F(X)$}
+\subsubsection{F-gravity} 
+%%%
+\paragraph{
+	Definition of F-gravity $F(X)$:
+} 
+We generalize the definition of F-theory by using both doubled and exceptional geometry: 
+For any $X$, define $F(X)$ to make the following diagram commute ($n:=D+1$)
+\begin{align*}
+\xymatrix{
+	&{\stack{F(X)\vspace{1mm}}{E_{n(n)}/H_{n(n)} }} \ar[dl]_{\textrm{section~~~}} 
+		\ar[dr]^{\textrm{~~~reduction}} &\cr
+{\stack{M(X)\vspace{1mm}}{ {GL({D+1},\mathbf R) \over O({D,1})} } }\ar[dr]_{\textrm{reduction~~~}}&& {\stack{T(X)\vspace{1mm}}{O({D,D})\over O(D)\times O(D) }}\ar[dl]^{\textrm{~~~section}}  \cr
+	&{\stack{S(X)\vspace{1mm}}{GL({D},\mathbf R) \over O({D-1,1})}} &
+}
+%\xymatrix{
+%	&F(X) \ar[dl]_{\textrm{section~~~}} 
+%		\ar[dr]^{\textrm{~~~reduction}} &\cr
+%M(X) \ar[dr]&& T(X)\ar[dl] \cr
+%	&S(X)&
+%}
+\end{align*}
+%It is {\em a priori} unclear whether this problem (existence of ${\bf F}$) has a solution. 
+%In fact, we have the following \cite{Linch:2015fya,Linch:2015qva}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Extension to $\mathbf F(X)$} 
+%%%
+\paragraph{Goal: Extend to {\em fundamental} theories.} 
+For each rank $n:=D+1$ find brane theory (generalizing the string), the (first-)quantization of which gives the theory $\mathbf F(X)$ that
+% such that the massless limit is $F(X)$. If it exists, it 
+completes the diagram
+\begin{align*}
+%\xymatrix{
+%	&{\stack{\mathbf F(X)\vspace{1mm}}{E_{n(n)}/H_{n(n)} }} \ar[dl]_{\textrm{section~~~}} 
+%		\ar[dr]^{\textrm{~~~reduction}} &\cr
+%{\stack{\mathbf M(X)\vspace{1mm}}{ {GL({D+1},\mathbf R) \over O({D,1})} } }\ar[dr]&& {\stack{\mathbf T(X)\vspace{1mm}}{O({D,D})\over O(D)\times O(D) }}\ar[dl] \cr
+%	&{\stack{\mathbf S(X)\vspace{1mm}}{GL({D},\mathbf R) \over O({D-1,1})}} &
+%}
+\xymatrix{
+	&\mathbf F(X) \ar[dl]_{\textrm{section~~~}} 
+		\ar[dr]^{\textrm{~~~reduction}} &\cr
+\mathbf M(X) \ar[dr]&& \mathbf T(X)\ar[dl] \cr
+	&\mathbf S(X)&
+}
+%\xymatrix{
+%	&{\stack{E_{n(n)}/H_{n(n)} \vspace{3mm}}{\mathbf F(X)}} \ar[dl]_{\textrm{section~~~}} 
+%		\ar[dr]^{\textrm{~~~reduction}} &\cr
+%{ {GL({D+1},\mathbf R) \over O({D,1})} }~~~{\mathbf M(X)}\ar[dr]&& {\mathbf T(X)}~~~{O({D,D})\over O(D)\times O(D) } \ar[dl] \cr
+%	&{\stack{\mathbf S(X) \vspace{3mm}}{GL({D},\mathbf R) \over O({D-1,1})}} &
+%}
+\end{align*}
+It is {\em a priori} unclear whether this problem (existence of ${\bf F}$) has a solution. \\
+%\pause
+In fact, we have the following 
+
+
+
+
+
+
+%\paragraph{Goal:} Extend to {\em fundamental} theories: For each rank $n$ find brane theory (generalizing string), the (first-)quantization of which gives $\mathbf F(X)$ such that the massless limit is $F(X)$. If it exists, it completes the diagram
+%%\begin{displaymath}
+%%\xymatrix{
+%%	&{\bf F}(X) \ar[dl] \ar[dr]&\\
+%%{\bf M}(X)\ar[dr]&~& {\bf T}(X)\ar[dl] \\
+%%	&{\bf S}(X) &
+%%}
+%%\end{displaymath}
+%%
+%{\hfuzz=1000pt
+%$$
+%%\hspace{-1.5cm} 
+%\vcenter{\openup.5\jot\halign{\hfil#\hfil&\quad\quad\quad\hfil#\hfil\cr
+%	G/H\span\omit\cr
+%	{\bf F}-theory\span\omit\cr
+%	bispinor coordinate\span\omit\cr
+%	\phantom{$\swarrow$}$\swarrow$&$\searrow$\phantom{$\searrow$}\cr
+%	GL(D+1)/O(D,1)&O(D,D)/O(D$-$1,1)$^2$\cr
+%	{\bf M}-theory& {\bf T}-dual theory\cr
+%	D+1&2D\cr
+%	\phantom{$\searrow$}\quad$\searrow$&$\swarrow$\quad\phantom{$\swarrow$}\cr
+%	GL(D)/O(D$-$1,1)\span\omit\cr
+%	{\bf S}tring (II)\span\omit\cr
+%	D\span\omit\cr}}
+%\qquad\qquad
+%\vcenter{\openup1\jot\halign{ # & \hfil#\hfil & \ \hfil#\hfil & \ #\hfil \cr
+%	D & G & H & bispinor (dimension)\cr
+%	3 & SL(5;\,$\mathbf R$) & Sp(4;\,$\mathbf R$) & symmetric (10)\cr
+%	4 & O(5,5) & Sp(4;\,$\mathbf C$) & hermitian (16)\cr
+%	6 & E$_{7(+7)}$ & SU*(8) & antisymmetric (28)\cr}
+%\vskip.4in\hskip-.5in $\swarrow$ sectioning \qquad $\searrow$ dimensional reduction} $$
+%}%
+%It is {\em a priori} unclear whether this problem (existence of ${\bf F}$) has a solution. 
+%In fact, we have the following \cite{Linch:2015fya,Linch:2015qva}
+
+\begin{result*}[\cite{Linch:2015fya,Linch:2015qva,Linch:2015fca}]
+Let $D= \mathrm{dim}(X)\leq 6$. %and let $n:=D+1$. 
+Then ${\bf F}(X)$ exists in the form of a current algebra with exceptional global symmetry $G= E_{n(n)}$ of rank $n=D+1$. 
+This current algebra arises from the quantization of a free theory with Hamiltonian symmetry $H_{n(n)}$ the (split form of the) maximal compact subgroup of $E_{n(n)}$.
+%\footnote{Confer reference \cite{Hull:1998br}.}
+When a Lagrangian formulation is known ($D\leq 6$), the symmetry is enhanced to $L_{n(n)}$ and the theory is the Hamiltonian quantization of a free self-dual form on a brane of split signature.
+%it is given by the ``free'' theory of self-dual forms on branes of split signature. Its Hamiltonian quantization 
+%and a (first) quantization of it is given by the Hamiltonian formulation of a system with symmetry $H_{n(n)}$. 
+%In its Lagrangian formulation, the symmetry is enhanced to $L_{n(n)}$ (cf. table \ref{T:HEL}).
+%There is a proper subalgebra of the first-class constraints that describes the kinematics and has manifest $E_{n(n)}$ symmetry. 
+\end{result*}
+{\renewcommand{\arraystretch}{1.3} %adds some padding
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|c|ccc|}
+\hline
+$n$ 	& Lagrangian $L_{n(n)}$ & Hamiltonian $H_{n(n)}$ & Current Algebra $E_{n(n)}$ \\
+\hline 
+2	& \sl2R 	& \so{1,1} 	& \gl2R \\
+3 	& $\sl2R^2\times\so2$ & $\sl2R\times\so2$ & $\sl3R\times\sl2R$\\
+4 	& $\sl4R \simeq \spin{3,3}$ & $\sp4R\simeq\spin{3,2}$ & \sl5R \\
+5 	& $\sl4C \simeq \mathrm{Spin(6;{\bf C})}$	& \sp4C & \spin{5,5} \\
+6 	& \sp8C & \usp{4,4} & $E_{6(6)}$ \\
+7 & ${SU}^\ast(8)$ & \sl4H & $E_{7(7)}$\\
+\hline
+\end{tabular}
+\end{center}
+%\begin{caption}{Symmetry groups of the fundamental theories ${\bf F}(X)$.}
+%\label{T:HEL}
+%\end{caption}
+\end{table}
+} %end arraystretch
+
+
+%\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Case Study: $\mathbf F(X)$ for the 3D String}
+\noindent
+%Focus on case $D=\mathrm{dim}(X)=3$: 
+%	Supergravity $S(X)$ is 3D, $N=2$ supergravity; Lorentz group \so{2,1}.\\
+%Manifestly T-dual 3D, $N=2$ SG has T-duality group $\so{2,2} \sim \so{2,1}^2$.\\
+%M-gravity $M(X)$ is 4D, $N=1$ ``old-minimal'' with real prepotential \cite{Polacek:2013nla, Linch:2015lwa}.\\
+%F-gravity $F(X)$ has global exceptional U-duality symmetry of rank 4: $G=E_{4(4)}\simeq \sl5R$.\\
+%Coordinates $X^{mn}$ in the $\bf 10$ (signature 4+6).
+%But solution of strong constraint
+%\begin{align*}
+%\varepsilon^{mnpqr}\partial_{mn} \partial_{pq} = 0
+%~~~\Rightarrow ~~~
+%(\partial_{mn}) = (\partial_{-1\mu}, \partial_{\mu \nu}) \to (\partial_\mu, 0)
+%\end{align*}
+%reduces this to $(3+1)$-dimensional $M(X)$ breaking $\sl5R \to \gl4R$ spontaneously.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{F-gravity}
+\begin{itemize}
+\item Focus on case with $X$ modeled on $\mathbf R^{2,1}$. %$D=\mathrm{dim}(X)=3$:\\
+\item Supergravity $S(X)$ is 3D, $N=2$ supergravity; Lorentz group is \so{2,1}.
+\item Manifestly T-dual 3D, $N=2$ SG has T-duality group $\so{2,2} \sim \so{2,1}^2$.
+\item M-gravity $M(X)$ is 4D, $N=1$ ``old-minimal supergravity'' (but with real prepotential for the conformal compensator) \cite{Polacek:2013nla, Linch:2015lwa}.
+%\footnote{Modified so that the chiral compensator has a real prepotential.} 
+\item F-gravity $F(X)$ has global exceptional U-duality symmetry of rank 4: $G=E_{4(4)}\simeq \sl5R$.
+\item Coordinates $X^{mn}$ in the $\bf 10$ (signature 4+6).
+But solution of strong constraint
+\begin{align*}
+\varepsilon^{mnpqr}\partial_{mn} \partial_{pq} = 0
+~~~\Rightarrow ~~~
+(\partial_{mn}) = (\partial_{-1\mu}, \partial_{\mu \nu}) \to (\partial_\mu, 0)
+\end{align*}
+reduces this to $(3+1)$-dimensional $M(X)$ breaking $\sl5R \to \gl4R$ spontaneously \cite{Berman:2012vc}.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Virasoro algebra}
+%%%
+\paragraph{
+	Strategy:
+} 
+Attempt to interpret strong constraint as a Virasoro-type constraint for some worldvolume theory.
+In $\mathbf T(X)$ we saw the left-moving worldsheet current 
+\begin{align*}
+\Pi_M(\sigma) = P_M + \eta_{MN}X'^N
+~~~\mathrm{with}~~~
+[P_M(\sigma_1), X^N(\sigma_2)] = -i \delta_M^N \delta(\sigma_1-\sigma_2) 
+\end{align*}
+%\begin{displaymath}
+%\xymatrix{
+%	\Pi_\mu(\sigma)=&P_\mu(\sigma)+X'_\mu(\sigma) &;~~~ [P_\mu(\sigma_1), X^\nu(\sigma_2)] = -i \delta_\mu^\nu \delta(\sigma_1-\sigma_2) .\\
+%\textrm{momentum} \ar[ur]  && \textrm{winding} \ar[ul]  &
+%}
+%\end{displaymath}
+and Virasoro constraint $L =\tfrac12 \eta^{MN}\Pi_M\Pi_N$ giving strong constraint $\partial^M\partial_M=0$.\\
+So we postulate for $\mathbf F(X)$ a wordvolume with 5 coordinates $\sigma^m$ (in addition to the $\tau$ coordinate associated to the Hamiltonian vector field) and $G = \sl5R$- covariant current
+\begin{align*}
+\Pi_{mn} = P_{mn} + \tfrac12 \varepsilon_{mnpqr} \partial^r X^{pq}.
+\end{align*}
+Virasoro-type generator for strong constraint on string fields:
+\begin{align*}
+\S^r := \tfrac1{16} \varepsilon^{mnpqr} \Pi_{mn}\Pi_{pq}  .
+\end{align*}
+Implies $\varepsilon^{mnpqr}(\partial_{mn}\, f)(\partial_{pq}\, g) = 0$ for all functions $f$ and $g$ on $F(X)$.
+
+But now algebra does not close:
+\begin{align*}
+[\S^m , \S^n] =   \S^{(m} \, \partial^{n)}\delta + \partial^{[m}\S^{n]} \,\delta + \varepsilon^{mnpqr} \Pi_{pq} \U_r \, \delta
+~~~\mathrm{with}~~~
+\U_r := \partial^s \Pi_{rs}.
+\end{align*}
+Must interpret $\U$ as new constraint. It is central and reduces to 
+\begin{align*}
+\U_m = \partial^n P_{mn} 
+%~~~...
+\end{align*} 
+... but this is a Gau\ss{} law constraint! 
+Analogously to the first-quantization of Maxwell theory \cite{dirac2001lectures}, first-quantize a 6D gauge 2-form $X_{MN}$:
+{\renewcommand{\arraystretch}{1.3} %adds some padding
+\begin{align*}
+\hspace{-5mm}
+\begin{array}{c|ccccccc}
+	&\stack{\textrm{gauge}}{\textrm{field}} 
+	&\stack{ \textrm{Lagrange} }{ \textrm{multiplier} } 	
+	&\stack{\textrm{dynamical}}{\textrm{components}}
+	&\stack{ \textrm{conjugate} }{ \textrm{momentum} }
+	&\stack{\textrm{Gau\ss{}'s}}{\textrm{law}}
+%		&\stack{L\textrm{(agrangian)}}{\textrm{symmetry}}&\stack{H\textrm{(amiltonian)}}{\textrm{symmetry}}
+\\ \hline
+\textrm{Maxwell} & A_\mu & A^\tau & A^i & E^i & \partial^i E_i
+%& $\so{3,1}$\sim \sl2C & $\so3$\sim \usp2
+\\
+\mathbf F(X) &X_{MN} & X^{\tau m} & X^{mn} & P_{mn} & \partial^nP_{mn} 
+%& $\so{3,3}$\sim \sl4R & $\so{3,2}$\sim \sp4R
+\end{array}
+\end{align*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Chiral forms}
+%%%
+\paragraph{
+	Siegel (1983) \cite{Siegel:1983es}: 
+}
+By analogy with string action for chiral scalar fields, 
+action for gauge 2-form with self-dual fieldstrength $F_{MNP}$:
+\begin{align*}
+S_{iegel} &= \int 
+	\left(
+	\tfrac 1{12} F^{MNP} F_{MNP} + \tfrac14 \lambda^{MN} F_M^{(-)PQ}F^{(-)}_{NPQ}
+	\right)\,d^6\sigma  .	
+\end{align*}
+The equation of motion for $\lambda$
+\begin{align*}
+F_M^{(-)PQ}F^{(-)}_{NPQ} = 0
+~~~\Rightarrow~~~
+F^{(-)}_{MNP} = 0	
+\end{align*}
+implies the fieldstrength of $X$ is self-dual whereas the gauge transformations
+\begin{align*}
+\delta X_{MN} &= \alpha^P F^{(-)}_{MNP} + \tfrac1{12} \alpha^P \lambda_{[M}{}^QF{(-)}_{NPQ]} 
+	+\mathcal O (\lambda^2) 
+\cr
+\delta \lambda^{MN} &= \partial^{(M} \alpha^{N)}
+	+ \alpha^P\partial_P \lambda^{MN}
+	+ \tfrac12 \lambda_P{}^{(M} \left(
+		\partial^{N)} \alpha^P - \partial^P \alpha^{N)} 
+		\right)
+-\textrm{trace}		
++\mathcal O (\lambda^2) 
+\nonumber	
+\end{align*}
+imply $\lambda$ is pure gauge.
+
+%%%
+\paragraph{
+	Canonical analysis
+}
+In  $\lambda \to 0$ gauge the Hamiltonian action becomes
+\begin{align*}
+S &= 
+	-\int  \tfrac12 \dt X{}^{mn} P_{mn} \,d^5\sigma d\tau
+	+\int  H \, d\tau
+\cr
+H&= \int 
+	\left(
+	\tfrac14 P^{mn} P_{mn} 
+	+ \tfrac1{12} F^{mnp}F_{mnp}
+	+ X^{\tau m} \U_m 
+	\right) \, d^5 \sigma .	
+\end{align*}
+Stress-energy tensor for selfdual field with $\Pi_{mn} := F^{(+)}_{\tau mn} = P_{mn} +\tfrac12 \varepsilon_{mnpqr} \partial^r X^{pq}$
+\begin{align*}
+\T_{mn} = \eta_{mn} \T - \tfrac12 \eta^{pq}\Pi_{mp}\Pi_{nq}
+~~~
+\boxed{\S^r = \tfrac1{16} \epsilon^{mnpqr} \Pi_{mn} \Pi_{pq}}
+~~~
+\T = \tfrac18 \eta^{mp}\eta^{nq} \Pi_{mn}\Pi_{pq}
+\end{align*}
+Free quantum brackets $[P_{mn}(\sigma_1) , X^{pq}(\sigma_2) ] = -i \delta_{[m}^{[p}\delta_{n]}^{q]} \delta(\sigma_1 - \sigma_2)$ imply
+\begin{align*}
+\boxed{[\Pi_{mn}(\sigma_1) , \Pi_{pq}(\sigma_2) ] = 2i \epsilon_{mnpqr} \partial^r \delta(\sigma_1 - \sigma_2) }
+\end{align*}
+guaranteeing enhanced symmetry: $E_{4(4)} = \sl5R$-covariant $\S\U$ algebra above.
+
+%%%
+\paragraph{
+	Courant bracket
+}
+The algebra of spacetime gauge transformations generated by $\Lambda_i := \tfrac i2 \int  \lambda_i^{mn}(X(\sigma)) \Pi_{mn}(\sigma) \,d^5\sigma$
+\begin{align*}
+[\Lambda_1, \Lambda_2 ] = \Lambda_{12}
+~~~\mathrm{with}~~~
+\lambda_{12}^{mn} 
+%	&= \tfrac12 \lambda_{[1}^{pq}\partial_{pq} \lambda_{2]}^{mn} 
+%	- \tfrac1{16} \lambda_{[1}^{[mn}\partial_{pq} \lambda_{2]}^{pq]}
+%\cr
+	&= \tfrac14 \lambda_{[1}^{pq}\partial_{pq} \lambda_{2]}^{mn}
+	-\tfrac12 \lambda_{[1}^{p[m}\partial_{pq} \lambda_{2]}^{n]q}
+	-\tfrac14 \lambda_{[1}^{mn}\partial_{pq} \lambda_{2]}^{pq} 
+\end{align*}
+reproduces the ``exceptional extended Courant bracket'' of $E_{4(4)}$ computed by
+Berman, Godazgar,${}^2$ and Perry \cite{Berman:2011cg}.
+
+%%%
+\paragraph{
+	Conclusions:
+}
+\begin{enumerate}
+\item Quantization of the chiral 2-form on a 5-brane with split signature gives rise to a current algebra with $E_{4(4)}$ symmetry. 
+\item Solution of the constraints reduces the current algebra to that of the three-dimensional bosonic string. 
+\item The massless truncation of its C-bracket reproduces the ``exceptional Courant bracket'' of local symmetries of the M-gravity appropriate to this case.
+\end{enumerate}
+
+
+%\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Extensions}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{More U-duality} 
+The U-duality $E_{4(4)}$ can be enlarged to $G=E_{n(n)}$. \\
+Let ${\bf m}=1, \dots, \mathrm{dim}(R_1)$ where $R_1=(0,\dots,1,0)$ is the representation of $G$ corresponding to the left-most node in the Dynkin diagram arranged as
+%\begin{align*}
+%\put(40,20){\circle{6}}
+%\put(40,3){\line(0,1){14}}
+%\put(-20,-3){$R_2$}
+%\multiput(0,0)(20,0){3}{\circle{6}}
+%\multiput(3,0)(20,0){2}{\line(1,0){14}}
+%\put(46,0){\dots}
+%\multiput(65,0)(20,0){2}{\circle{6}}
+%\put(68,0){\line(1,0){14}}
+%\put(93,-3){$R_1$}
+%\end{align*}
+%\begin{align*}
+%\put(-60,-3){$R_1$}
+%\multiput(-40,0)(20,0){5}{\circle{6}}
+%\put(-37,0){\line(1,0){14}}
+%\put(-15,0){\dots}
+%\multiput(3,0)(20,0){2}{\line(1,0){14}}
+%\put(0,20){\circle{6}}
+%\put(0,3){\line(0,1){14}}
+%\put(50,-3){$R_2$}
+%\end{align*}
+\begin{align*}
+\put(-60,-3){$R_2$}
+\multiput(-40,0)(20,0){5}{\circle{6}}
+\multiput(-37,0)(20,0){2}{\line(1,0){14}}
+\put(5,-0.5){...}
+\put(23,0){\line(1,0){14}}
+%\multiput(3,0)(20,0){2}{\line(1,0){14}}
+\put(0,20){\circle{6}}
+\put(-5,27){$R_3$}
+\put(0,3){\line(0,1){14}}
+\put(47,-3){$R_1$}
+\end{align*}
+(This corresponds to $R_1 = \mathbf{10}^\prime$, $R_2 = \bf 5$, and $R_3 = \bf 5'$ for $E_{4(4)}= \sl5R$).
+Similarly, we let $m$ run over $R_2 = (1,0,\dots,0)$. ($R_3=(0,\dots,0,1)$ but in \sl5R this is conjugate to $R_1$.)\footnote{These representations $R_p$ correspond to the number of $p$-forms in the supergravity tensor hierarchy of de Wit, Nicolai, and Samtleben \cite{deWit:2008ta}.
+}
+
+Introduce the $(R_1 \otimes R_1)_{sym} \supset R_2$ Clebsch-Gordan coefficients $\eta_{{\bf mn}p}$ and $\eta^{{\bf mn}p}$ and write the generalization of the current algebra 
+\begin{align*}
+[\Pi_{\bf m}(\sigma_1) , \Pi_{\bf n}(\sigma_2) ] = 2i \eta_{{\bf mn} p} \partial^p \delta(\sigma_1, \sigma_2)
+\end{align*}
+and Virasoro constraint
+\begin{align*}
+\S^p= \tfrac14 \eta^{{\bf mn} p} \Pi_{\bf m}\Pi_{\bf n} .
+\end{align*}
+
+Constraints in the diagram
+%\begin{align*}
+%\put(-43,-15){$\mathcal S$}
+%\put(-5,27){$\mathcal U$}
+%\put(37,-15){$P$}
+%\multiput(-40,0)(20,0){5}{\circle{6}}
+%\multiput(-37,0)(20,0){2}{\line(1,0){14}}
+%\put(5,-0.5){...}
+%\put(23,0){\line(1,0){14}}
+%%\multiput(3,0)(20,0){2}{\line(1,0){14}}
+%\put(0,20){\circle{6}}
+%\put(0,3){\line(0,1){14}}
+%\end{align*}
+\begin{align*}
+\put(-55,-3){$\mathcal S$}
+\multiput(-40,0)(20,0){5}{\circle{6}}
+\multiput(-37,0)(20,0){2}{\line(1,0){14}}
+\put(5,-0.5){...}
+\put(23,0){\line(1,0){14}}
+%\multiput(3,0)(20,0){2}{\line(1,0){14}}
+\put(0,20){\circle{6}}
+\put(-5,27){$\mathcal U$}
+\put(0,3){\line(0,1){14}}
+\put(47,-3){$P$}
+\end{align*}
+
+
+Then the C-bracket of two vector fields is\footnote{Fields and operators on the right are evaluated at the midpoint $\tfrac12 ({\sigma_1+\sigma_2})$.}
+\begin{align*}
+[V_1^{\bf m} \Pi_{\bf m}(\sigma_1) , V_2^{\bf n} \Pi_{\bf n}(\sigma_1) ]
+	&=
+	2i \eta_{{\bf mn}p}\partial^p \delta(\sigma_1-\sigma_2) V_1^{\bf m}V_2^{\bf n}
+\cr
+	&-i \delta(\sigma_1-\sigma_2) 
+		\left[
+			V_{[1}^{\bf m}\partial_{\bf m}V_{2]}^{\bf n}
+			- \tfrac12 \eta^{{\bf mn}r}\eta_{{\bf pq}r} V_1^{\bf p}\partial_{\bf m}V_2^{\bf q}
+		\right] \Pi_{\bf n} .
+\end{align*}
+Truncation to 0-modes should reproduce the $E_{n(n)}$ ``Courant brackets'' 
+computed by
+Berman, Cederwall, Kleinschmidt, and Thompson \cite{Berman:2012vc}.
+Therefore, the projector $(R_1 \otimes R_1)_{sym}\to R_2$ is identified with the Clebch-Gordan coefficients
+\begin{align*}
+Y^{\bf mn}{}_{\bf pq} \leftrightarrow \eta^{{\bf mn}r}\eta_{{\bf pq}r} 
+\end{align*}
+up to constraints.\\ 
+This $Y$ projector factorizes for all ranks $n\leq 6$ and factorizes up to a new constraint for $E_{7(7)}$ (corresponding to the 6D string).\\
+Ultimate goal is 10-dimensional Lorentz invariance for $X$ corresponding to $E_{11}$ U-duality conjectured by West (2001) \cite{West:2001as}.\\
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Fermions and critical superstrings} 
+
+Critical superstrings can be constructed by adding in $10-D$ scalars $Y$ (and their duals $\Tilde Y$) in the ``ordinary string way''. The Hamiltonian actions will have symmetry $H \times H'$ with $H'=\so{10-D}$. \\
+Fermions are added for supersymmetry which still looks like 
+\begin{align*}
+\{ D_{\bm \alpha}(\sigma_1) , D_{\bm \beta}(\sigma_2) \} = 2 (\gamma^{\hat {\bf m}})_{\bm \alpha \bm \beta} \Pi_{\hat {\bf m}} \delta(\sigma_1-\sigma_2)
+\end{align*}
+but now the Clifford algebra is deformed to a Clifford-ish algebra
+\begin{align*}
+\gamma^{\hat {\bf m}}\gamma^{\hat {\bf n}} + \gamma^{\hat {\bf n}}\gamma^{\hat {\bf m}}
+= 2 \eta^{\hat {\bf m} \hat{\bf n}} {\bf 1} + 2 \eta^{\hat {\bf m} \hat{\bf n} p} \gamma_p.
+\end{align*}
+Jacobi identities require the Fierz-ish identity
+\begin{align*}
+\eta_{\hat {\bf m} \hat{\bf n} p } (\gamma^{\hat {\bf m}})_{(\bm \alpha \bm \beta} (\gamma^{\hat {\bf n}})_{\bm \gamma) \bm \delta} = 0
+\end{align*}
+restricting $D+D' = 3, 4, 6, 10$.\footnote{Also provides twistor solution $p_{\bf m} = \lambda \gamma_{\bf m} \lambda$ to the section condition $\S=0$ modulo ``pure spinors'' $\lambda \gamma_{\bf m} \lambda = 0$.
+} %end footnote
+
+
+%\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\section{Relation to Dirac-Born-Infeld Branes}
+%\paragraph{
+%	Dirac-Born-Infeld current algebra
+%}
+%\begin{enumerate}
+%\item Pasti, Sorokin, \& Tonin (1997) \cite{Pasti:1997gx}: Standard immersion $\phi: \Sigma \to X$ of probe M2 and M5 into 11D target space.
+%\item Hatsuda \& Kamimura (2012): ``Exceptional'' symmetry $E_{4(4)}$ \cite{Hatsuda:2012vm} and $E_{5(5)}$ \cite{Hatsuda:2013dya} from M2 and M5 DBI actions in with target with dimension $\mathrm{dim}(R_2)$.
+%\end{enumerate}
+%}
+
+
+%\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Retrospective}
+Why no quantizable membrane/higher-brane theories?\\
+Either gapless \cite{Polyakov:1986cs,Curtright:1982gt,Lovelace:1971fa} or no massless states at all \cite{deWit:1988ig,Mezincescu:1987kj}. \\
+Novelties and possible advantages of this version of $\bf F$:
+\begin{enumerate}
+\item Extended geometry of target $F(X)$ allows for more manifest U-duality.
+\item Manifest U-duality grows as we increase the Lorentz invariance of $X$ (Duff's conjecture).
+%\item Reduction of na\"ive target space dimension of $F(X)$ to $M(X)$ is dynamical, not a by-hand truncation
+\item Reduction to the {\em stable} (critical super)string is {\em dynamical} instead of a by-hand truncation (same degrees of freedom as usual strings, just more 0-modes for ``winding'').
+\item Extended geometry allows for conformal worldvolume theory: Instead of worldvolume scalar ``immersion map'' $\phi : \Sigma \to X$ with complicated dynamics, worldvolume field is a free self-dual $p$-form.
+\end{enumerate}
+
+
+%\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Open Questions}
+\begin{enumerate}
+\item More U-duality? (Can we use Palmkvist \cite{Palmkvist:2015dea} and related work to get $E_{>7}$?)
+\item Relation to 
+%immersion $\phi: \Sigma \to X$ of 
+M2 and M5 in 11D target space of
+%Dirac-Born-Infeld Branes? 
+Bergshoeff, Sezgin, \& Townsend (1987) \cite{Bergshoeff:1987cm,Bergshoeff:1987qx} and
+Howe \& Sezgin (1996) \cite{Howe:1996mx,Howe:1996yn}?\\
+%Pasti, Sorokin, \& Tonin (1997) \cite{Pasti:1997gx}: 
+%Standard immersion $\phi: \Sigma \to X$ of probe M2 and M5 into 11D target space.\\
+%(Can we use Hatsuda \& Kamimura (2012): ``Exceptional'' symmetry $E_{4(4)}$ \cite{Hatsuda:2012vm} and $E_{5(5)}$ \cite{Hatsuda:2013dya} from M2 and M5 actions in with target space of dimension $\mathrm{dim}(R_2)$?)
+\item Relation to gravitational tensor hierarchy? 
+\item Narian-type description in terms of exceptional Borcherds algebras? 
+\item Quantization?
+\item Worldvolume gravity? 
+\end{enumerate}
+
+
+
+
+%\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\section{Prospectives}
+
+%Can we use \cite{Palmkvist:2015dea} to get $\mathrm E_{>7}$? Ultimate goal is 10-dimensional Lorentz invariance for $X$ corresponding to $E_{11}$ U-duality \cite{West:2001as}.
+
+%\begin{enumerate}
+%\item[7/26/2015] Patrick Jackson: What is the fate of the 5-brane when you solve the constraint to get to $\bm S$ theory?
+%\item[7/28/2015] Kristan Jensen: How does the fact that $p$-forms have non-vanishing dimension for $p>0$ affect the deformations of the theory? For example, the metric for the string sigma model can depend on the 0-modes of $X$ because $X$ has dimension = 0 and this gives the Einstein equation for $g(X)$. How are we reproducing these equations?
+%\item[7/30/2015] Simeon Hellerman: $G(\mathbf R)$ is not a symmetry of string/M-theory. How does it get broken to $G(\mathbf Z)$?
+%\item[8/1/2015] Machiko Hatsuda: Any relation to \cite{Hatsuda:2012uk,Hatsuda:2012vm,Hatsuda:2013dya}?
+%\item[8/3/2015] Can we use \cite{Palmkvist:2015dea} to get $\mathrm E_{>7}$?
+%\end{enumerate}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\newpage
+
+{\footnotesize
+\bibliography{/Users/wdlinch3/Dropbox/Rashoumon/LaTeX/BibTex/BibTex}
+\bibliographystyle{unsrt}
+%\bibliographystyle{amsplain}
+%\bibliographystyle{amsalpha}
+}
+
+\end{document}  
+
+

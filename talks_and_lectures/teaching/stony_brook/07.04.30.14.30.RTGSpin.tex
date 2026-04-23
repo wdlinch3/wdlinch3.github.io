@@ -1,0 +1,342 @@
+\documentclass[12pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{latexsym}
+\usepackage[all]{xy}
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\def\ket#1{\left| #1\rangle\right.}
+\def\bra#1{\left.\langle #1\right|}
+\def\braket#1#2{\left.\langle #1\right|#2\rangle}
+
+\title{Spinors in physics}
+\author{William D. Linch, {\sc iii}}
+\date{April 30, 2007}                                           % Activate to display a given date or no date
+
+\begin{document}
+
+\maketitle
+
+\abstract{Talk given for the Stony Brook RTG seminar series on Geometry and Physics.}
+
+\section{Angular momentum and spin in 3-space}
+
+Angular momentum in three dimensions is given by the (pseudo-)vector
+\begin{eqnarray}
+\label{L}
+\mathbf L=\mathbf x \times \mathbf p~.
+\end{eqnarray}
+In the Hamiltonian formulation of classical mechanics the positions $x^i=(\mathbf x)^i$ and momenta $p_i =(\mathbf p)_i$ have non-vanishing Poisson brackets given by
+\begin{eqnarray}
+\label{Poisson}
+\{ x^i , p_j\}=\delta_j^i~.
+\end{eqnarray}
+This induces Poisson brackets for smooth functions on the phase space coordinatized by the positions and momenta. In quantum mechanics the phase space coordinates and momenta are replaced by Hermitian operators $\hat {\mathbf x}$ and $\hat {\mathbf p}$ acting on a Hilbert space $\mathcal H$. We want to replace the Poisson bracket  $\{\cdot, \cdot \}$ with the commutator $[\cdot, \cdot]$ but there are two problems: The commutator of two Hermitian operators is anti-Hermitian and the Poisson bracket carries units of $1/\mathrm{angular~momentum}$ (compare equations (\ref{Poisson}) and (\ref{L})). The first is easily fixed with a factor of $i=\sqrt{-1}$ but the latter requires the introduction of a fundamental new constant $\hbar$ with units of angular momentum. The replacement is then
+\begin{eqnarray}
+\{\cdot , \cdot \}\to \frac 1{i\hbar} [\cdot, \cdot]
+\end{eqnarray}
+and the {\em fundamental commutation relations} are 
+\begin{eqnarray}
+[ x^i , p_j]=i\hbar \delta_j^i~.
+\end{eqnarray}
+For example, in the {\em position space representation} we take (roughly) $\mathcal H=L^2(\mathbb R^3)$. The operator $\hat {\mathbf x}$ becomes multiplication by the coordinate $\mathbf x$ and the momentum operator is realized by $\hat {\mathbf p}\to -i\hbar \nabla$.
+
+We assume henceforth that we are talking about quantum mechanical operators and drop the $\hat{~}$s. The angular momentum operators satisfy the commutation relations 
+\begin{eqnarray}
+[L^i, L^j]=i\hbar \epsilon^{ijk}L^k
+\end{eqnarray}
+where repeated indices are summed. This indicates that the 3 operators $\{ L^i\}$ cannot be simultaneously diagonalized. We work in a basis in which the 3- or z-component of $\mathbf L$ is diagonal. States can therefore be labeled by the eigenvalue of $L_z$ but this does not suffice to identify the state. On the other hand the square of the angular momentum generator is a scalar, i.e. rotationally invariant:
+\begin{eqnarray}
+[L^2, L_z]=0~.
+\end{eqnarray}
+We therefore introduce the complete set of commuting operators $\{L^2 , L_z\}$ and use their eigenvalues to label the states. Let $\ket{\lambda, \mu}$ denote a simultaneous eigenvector with $L^2$ eigenvalue $\lambda \hbar^2$ and $L_z$ eigenvalue $\mu \hbar$: 
+\begin{eqnarray}
+L^2\ket {\lambda, \mu}=\lambda \hbar^2\ket {\lambda, \mu}~,~L_z\ket {\lambda, \mu}=\mu \hbar \ket {\lambda, \mu}~.
+\end{eqnarray}
+We further define the operators $L_\pm=L_x\pm i L_y$ and note that 
+\begin{eqnarray}
+[L_z, L_\pm]= \pm \hbar L_\pm~.
+\end{eqnarray}
+This means that the vector $L_\pm \ket {\lambda, \mu}$ has $L_z$ eigenvalue $(\mu\pm 1)\hbar$. Thus for every $\lambda$ we get a tower of states with different $L_z$ eigenvalues. Since the $L_z$ component of the angular momentum is bounded by the total angular momentum of the state there is a lowest state $\ket{\lambda,\mu_-}$ and highest state $\ket{\lambda,\mu_+}$ such that
+\begin{eqnarray}
+L_\pm \ket{\lambda,\mu_\pm} =0~.
+\end{eqnarray}
+Since
+\begin{eqnarray}
+L^2=L_\pm L_\mp+L_z^2\mp \hbar L_z~,
+\end{eqnarray}
+we get from the highest state $\lambda =\mu_+(\mu_++1)$. Similarly, the lowest state gives $\lambda=\mu_-(\mu_--1)$ which, taken together, imply that either $\mu_-=\mu_+ +1$ or $\mu_-=-\mu_+$. The first cannot be since by assumption $\mu_-\leq \mu_+$. The $L_z$ eigenvalue of a state with $L^2$ eigenvalue equal to $\lambda$ goes under the action of $L_+$ from $-\mu_+$ to $\mu_+$ in $n$ integer steps for some $n$. Therefore, $\mu_+=\frac n2$ is either integer or half-integer. Switching to more standard notation, we take $\mu_+ = \ell$ and label the $L_z$ eigenvalues by $m$:
+\begin{eqnarray}
+L^2\ket{\ell, m}=\hbar^2 \ell(\ell+1)\ket{\ell, m}~,~L_z\ket{\ell, m}=\hbar m \ket{\ell,m}~.
+\end{eqnarray}
+Normalization of the state gives
+\begin{eqnarray}
+L_\pm\ket{\ell, m}=\hbar \sqrt{\ell(\ell+1)-m(m\pm1)}\ket{\ell, m\pm1}~.
+\end{eqnarray}
+Note that this means that $L_\pm\ket{\ell, \pm\ell}=0$.
+
+The value $\ell$ of the state is called the {\em angular momentum} or {\em spin}. In the algebraic determination of the allowed values we find that $2\ell$ is an integer. When realized on a function space, however, only the states with integer $\ell$ are recovered. This is the case of {\em orbital angular momentum} with generator (\ref{L}). The algebraic realization implies that we can consider also {\em internal angular momentum} which is what is usually meant by the term {\em spin}. To distinguish these cases, we reserve the symbol $\mathbf L$ for the orbital part and write $\mathbf S$ for the internal part. We also change the notation $\ell \to s$ but keep $m$. Henceforth, we will consider only internal angular momentum. 
+
+\paragraph{Spin-$\frac12$} By far the most important fractional-spin particles are the spin-$\frac 12$ particles with $S^2=\frac 34 \hbar$. Examples include all of what we call ``matter'' in the standard model of particle physics.\footnote{The standard model also uses a spin-0 particle called the Higgs boson which should probably also be considered matter. As of this presentation, the Higgs has yet to be observed.} Let us label the states $\ket{{\frac12},{\pm \frac12}}$ by `spin up' $\ket{\uparrow}$ and `spin down' $\ket{\downarrow}$. A matrix realization of the angular momentum operators is $S^i=\frac \hbar2 \sigma^i$ where $\sigma^i$ are the {\em Pauli spin matrices}
+\begin{eqnarray}
+\sigma^x= 
+   \begin{pmatrix} % or pmatrix or bmatrix or Bmatrix or ...
+      0 & 1 \\
+      1 & 0 \\
+   \end{pmatrix}
+~,~
+\sigma^y= 
+   \begin{pmatrix} % or pmatrix or bmatrix or Bmatrix or ...
+      0 & -i \\
+      i & 0 \\
+   \end{pmatrix}
+~,~
+\sigma^z= 
+   \begin{pmatrix} % or pmatrix or bmatrix or Bmatrix or ...
+      1 & 0 \\
+      0 & -1 \\
+   \end{pmatrix}
+~.
+\end{eqnarray}
+The spin states are represented by 
+\begin{eqnarray}
+\ket{\uparrow}=\left(\begin{matrix}1\\0\\ \end{matrix}\right)~,~
+\ket{\downarrow}=\left(\begin{matrix}0\\1\\ \end{matrix}\right)~.
+\end{eqnarray}
+Indeed, $S_z \ket \downarrow =-\frac \hbar2 \ket \downarrow$ and $S_z \ket \uparrow =+\frac \hbar2 \ket \uparrow$. Furthermore, it is easy to see that 
+\begin{eqnarray}
+S_+ = \hbar \left(\begin{matrix} 0&1\\0&0\\ \end{matrix}\right)~,~
+S_- = \hbar \left(\begin{matrix} 0&0\\1&0\\ \end{matrix}\right)
+\end{eqnarray}
+are nilpotent of order 2 and map $\ket \downarrow \leftrightarrow \ket \uparrow$.
+
+The Pauli matrices are Clifford matrices: Setting $\gamma^i=i\sigma^i$ we find the relations
+\begin{eqnarray}
+\{ \gamma^i, \gamma^j\}=-2\delta^{ij} \mathbf 1~.
+\end{eqnarray}
+It follows from these relations that the rotations generators 
+\begin{eqnarray}
+\label{generator}
+\Sigma^{ij}=-\frac i4 [ \gamma^i, \gamma^j]
+\end{eqnarray}
+satisfy the $\mathfrak {so}(3)$ relations
+\begin{eqnarray}
+[\Sigma^{ij}, \Sigma^{kl}]=i \delta^{k[i}\Sigma^{j]l}-i \delta^{l[i}\Sigma^{j]k}~.
+\end{eqnarray}
+Of course, in the special case of $\mathfrak {so}(3)$, $\Sigma^{ij}=\frac12 \epsilon^{ijk} \sigma^k$ so that$S^i\propto \epsilon^{ijk}\Sigma^{jk}$. 
+
+
+\section{Relativistic spin}
+In $\mathbb {R}^{3,1}$ the Clifford relations become 
+\begin{eqnarray}
+\label{clifford}
+\{ \gamma^a, \gamma^b\}=-2\eta^{ab} \mathbf 1~
+\end{eqnarray}
+where $a,b=0,1,2,3$ and $\eta=\mathrm{diag}(-1,1,1,1,)$ is the Minkowski metric. This algebra cannot be realized by $2\times 2$ matrices with complex entries. Indeed the smallest representation is 4-dimensional. An explicit example of such a representation is given in the {\em Weyl} or {\em chiral basis} by
+\begin{eqnarray}
+\label{basis}
+\gamma^0&=&\mathbf 1\,\otimes \sigma^1\cr
+\gamma^1&=&i\sigma^1\otimes \sigma^2\cr
+\gamma^2&=&i\sigma^2\otimes \sigma^2\cr
+\gamma^3&=&i\sigma^3\otimes \sigma^2
+\end{eqnarray}
+Note that $\gamma^0$ is Hermitian while the $\gamma^i$ are anti-Hermitian. 
+
+The $\mathfrak{so}(3,1)$ generators $\Sigma^{ab}$ are obtained by the obvious replacement $i\to a$ in equation (\ref{generator}) and the Lorentz algebra is given by
+\begin{eqnarray}
+[\Sigma^{ab},\Sigma^{cd}]=i \eta^{d[a}\Sigma^{b]d}-i \eta^{d[a}\Sigma^{b]c}~.
+\end{eqnarray}
+These $4\times 4$ {\em Dirac matrices} act on the space of {\em Dirac spinors} $\Psi$. The infinitesimal Lorentz transformations with parameters $\omega_{ab}$ are realized on the space of Dirac spinors by
+\begin{eqnarray}
+\delta \Psi= \frac i2 \omega_{ab}\Sigma^{ab} \Psi~.
+\end{eqnarray}
+The Dirac conjugate spinor is defined as
+\begin{eqnarray}
+\label{DiracConj}
+\bar \Psi=\Psi^\dagger \gamma^0
+\end{eqnarray}
+where $\Psi^\dagger=(\Psi^*)^\mathrm T$ is the conjugate transpose. The $\gamma^0$ is necessary to obtain the transformation law
+\begin{eqnarray}
+\delta \bar \Psi=-\frac i2 \omega_{ab} \bar \Psi \Sigma^{ab}
+\end{eqnarray}
+from which it follows that the quantity $\bar \Psi_1 \Psi_2$ is a scalar for any two Dirac spinors $\Psi_{1,2}$. In particular, $\Psi_1^\dagger \Psi_2$ is not invariant since $\Sigma^{0i}$ is not Hermitian.
+
+The {\em chirality matrix}
+\begin{eqnarray}
+\gamma^5=i \gamma^0 \gamma^1\gamma^2\gamma^3
+\end{eqnarray}
+is Hermitian, anti-commutes with the Dirac matrices, squares to the identity and in the basis (\ref{basis}) takes the form
+\begin{eqnarray}
+\gamma^5=\begin{pmatrix} \bf 1&0\\0&-\bf 1\end{pmatrix}
+\end{eqnarray}
+giving the chiral basis its name. Since $\{\gamma^5, \gamma^a\}=0$, the chirality matrix commutes with the rotation generators. Indeed, in the chiral representation it is easily checked that the rotation generators are block-diagonal. The Dirac representation is therefore not irreducible. The projections 
+\begin{eqnarray}
+\Psi_L = \frac 12(1+\gamma^5)\Psi ~,~ \Psi_R = \frac 12( 1-\gamma^5)\Psi
+\end{eqnarray}
+are called {\em left-} and {\em right-handed Weyl spinors} respectively. 
+
+Finally, let $C$ be a unitary matrix satisfying 
+\begin{eqnarray}
+\label{C}
+C^{-1} \gamma^a C=-(\gamma^a)^\mathrm T~.
+\end{eqnarray}
+In the Weyl basis such a matrix is given by $C=i\sigma^2\otimes \mathbf 1$ as is easily checked. We define the {\em charge conjugate} of a Dirac spinor by
+\begin{eqnarray}
+\Psi^c= C \Psi^*~.
+\end{eqnarray}
+Due to the defining relation (\ref{C}), $C(\Sigma^{ab})^\mathrm T C^{-1}=-\Sigma^{ab}$ and therefore the charge-congugate spinor transforms as a Dirac spinor
+\begin{eqnarray}
+\delta \Psi^c=\frac i2 \omega_{ab}\Sigma^{ab}\Psi^c~.
+\end{eqnarray}
+This observation allows us to impose a type of reality condition: The {\em Majorana spinor} is a Dirac spinor $\Psi_M$ which satisfies the constraint 
+\begin{eqnarray}
+(\Psi_M)^c=\Psi_M~.
+\end{eqnarray}
+
+\paragraph{Massive and massless representations} The Poincar\'e group is generated by translations in space and time $p_a$, rotations $\Sigma^{ij}$, and {\em boosts} $\Sigma^{0i}$. The irreducible representations of the Poincar\'e group with mass-squared $p^2=-m^2$ split up into various types. On physical grounds we restrict to the time-like ($p^2<0$) or null representations ($p^2=0$) with positive energy $E=p^0>0$. 
+
+Let us first consider the massive case. Here we can boost to the rest frame in which the momentum takes the form $p^a=(m, \mathbf 0)$. The subgroup of the Lorentz group which preserves this frame is called {\em the little group} and consists of the rotations. The representations of this group were classified in the section above with the result that they can be labeled by their spin $s$ and the projection of the spin onto the $z$-axis.
+
+In the massless case we cannot go to the rest frame as this would require boosting up to warp 1. We can however always rotate to to the frame in which the massless state of energy $E$ is traveling in the positive $z$-direction. In this case the momentum takes the form $p^a=(E,0,0,E)$. The little group is now the subgroup of rotations preserving the positive $z$-axis. But this is just the $S_z$ eigenvalue. As the representation is supposed to be irreducible, it must be one-dimensional. In this case, the eigenvalue of $S_z$ (again half-integer) called the {\em helicity} and there are only two of them: The massless state is making either a left-handed corkscrew around its axis of propagation or a right-handed one. Note that helicity is a good quantum number in the massless case because we cannot change the handedness of the screw unless we boost past the state. 
+
+\paragraph{Dirac equations} The Dirac equation is the equation of motion for a Dirac spinor which is linear in derivatives. Since the Klein-Gordon equation $\Box=m^2$ is simply the relativistic energy-momentum relation $E^2=\mathbf p^2+m^2$, the Dirac equation should ``square'' to the Klein-Gordon equation. The simplest equation which does this is
+\begin{eqnarray}
+\label{DiracEq}
+(i\slash\!\!\! \partial -m)\Psi=0~.
+\end{eqnarray}
+In this (Feynman) notation, when a (co-)vector $v_a$ has a slash through it, this means that it has been contracted with the Dirac matrices: $\slash \!\!\! v=\gamma^a v_a$. Due to the Clifford relations (\ref{clifford}), 
+%\begin{eqnarray}
+$(i\slash\!\!\! \partial +m)(i\slash\!\!\! \partial -m)= \Box-m^2$.
+%\end{eqnarray}
+Thanks to the introduction of Dirac conjugate (\ref{DiracConj}), the Dirac equation (\ref{DiracEq}) can be obtained from the variational principle with Lagrangian density
+\begin{eqnarray}
+\mathcal L= \bar \Psi (i \slash\!\!\! \partial -m) \Psi~.
+\end{eqnarray}
+
+\paragraph{Two-component notation} We use the reducibility of the Dirac representation to write in the chiral basis
+\begin{eqnarray}
+\label{2comp}
+(\Psi_{\hat \alpha})=\begin{pmatrix} \psi_\alpha \\ \bar \chi^{\dot \alpha}\end{pmatrix}~.
+\end{eqnarray}
+Here the undotted index $\alpha=1,2$ is a {\em chiral index}, the dotted index $\dot \alpha=\dot 1,\dot 2$ is an {\em anti-chiral index} and the Dirac index $\hat \alpha=1, 2,\dot 1, \dot 2$. The dotted spinor $\bar \chi^{\dot \alpha}=(\chi^{\alpha})^*$ is the complex conjugate of a chiral spinor $\chi$. 
+Evidently 
+\begin{eqnarray}
+\Psi_L=\begin{pmatrix} \psi \\ 0\end{pmatrix}~\mathrm{and}~
+\Psi_R=\begin{pmatrix} 0\\ \bar \chi \end{pmatrix}~, 
+\end{eqnarray}
+that is, the 2-component spinors $\psi$ and $\bar \chi$ are the left- and right-handed parts of the original Dirac spinor. In this notation, the Dirac conjugate of a Dirac spinor is given by 
+\begin{eqnarray}
+(\bar \Psi^{\hat \alpha})=\begin{pmatrix} \chi^\alpha& \bar \psi_{\dot \alpha}\end{pmatrix}~.
+\end{eqnarray}
+From the definition and the transformation properties, the charge conjugate of a Dirac spinor can only be
+\begin{eqnarray}
+(\Psi^c_{\hat \alpha})=\begin{pmatrix} \chi_\alpha\\ \bar \psi^{\dot \alpha}\end{pmatrix}~.
+\end{eqnarray}
+It follows that a Majorana spinor takes the form of a Dirac spinor (\ref{2comp}) with $\chi=\psi$, that is, 
+\begin{eqnarray}
+\Psi_M=\begin{pmatrix} \psi_\alpha \\ \bar \psi^{\dot \alpha}\end{pmatrix}~.
+\end{eqnarray}
+For this to work it is evident that we need a spinor ``metric'' to raise the index on $\bar \psi_{\dot \alpha}$. The charge conjugation matrix gives just such metric. In 2-component form in the Weyl basis
+\begin{eqnarray}
+(C^{\hat \alpha \hat \beta})= \begin{pmatrix} 
+\varepsilon^{\alpha \beta} &0\\
+0& \varepsilon_{\dot \alpha \dot \beta}\\
+\end{pmatrix}~.
+\end{eqnarray}
+The Dirac matrices can be written in off-diagonal form as
+\begin{eqnarray}
+\gamma^a=\begin{pmatrix} 0& \sigma^a\\ \tilde \sigma^a&0\\ \end{pmatrix}
+\end{eqnarray}
+where $\sigma^a=(\mathbf 1, \sigma^i)$ and $\tilde \sigma^a=(\mathbf 1, -\sigma^i)$. Note that this means the index structure $(\sigma^a)_{\alpha \dot \alpha}$ and $(\tilde \sigma^a)^{\dot \alpha \alpha}$.\footnote{On the other hand, $\mathrm{SL}_2(\mathbb C)$ leaves invariant the tensors $\varepsilon_{\alpha \beta}$ and $\varepsilon_{\dot \alpha \dot \beta}$ and their inverses which can be used to raise and lower spinor indices.} Similarly to the Feynman ``slash'' notation above, we freely interchange the vector indices on tensors for bi-spinor indices $a\leftrightarrow \alpha \dot \alpha$. Thus, the Dirac equation can be written as a pair of coupled equations for their Weyl components:
+\begin{eqnarray}
+i\partial_{\alpha \dot \alpha}\bar \chi^{\dot \alpha}-m \psi_\alpha&=&0\cr
+i \partial^{\dot \alpha \alpha} \psi_\alpha-m \bar \chi^{\dot \alpha}&=&0~.
+\end{eqnarray}
+Here we see clearly that in the case of a massless Dirac spinor, the two chiral fermions decouple to give two Weyl equations. In other words, mass terms mix left- and right-handed components of a spinor. The Dirac Lagrangian becomes
+\begin{eqnarray}
+\mathcal L=  
+\bar \psi_{\dot \alpha}i \partial^{\dot \alpha \alpha} \psi_\alpha
++ \chi ^\alpha i \partial_{\alpha \dot \alpha} \bar \chi^{\dot \alpha}
+-m (\psi^\alpha\chi_\alpha+\bar \psi_{\dot \alpha}\bar \chi^{\dot \alpha})
+\end{eqnarray}
+
+
+\section{Supersymmetry}
+
+Note that in order to write a Lagrangian for a Majorana fermion, we need to have $\psi^\alpha \psi_\alpha=\varepsilon^{\alpha \beta}\psi_{\beta}\psi_\alpha \neq0$. If the components $\psi_\alpha$ are commuting variables, this will clearly not work. On the other hand, we might consider {\em anti-commuting variables}
+\begin{eqnarray}
+\psi_{\alpha} \psi_\beta+ \psi_\beta\psi_{\alpha}=0~.
+\end{eqnarray}
+Such variables are called {\em Gra\ss man}, {\em odd}, or {\em fermionic variables}. They can be used to construct {\em superspace} $\mathbb R^{4|4N}$ extending Minkowski space coordinatized by $\{x^a\}_{a=0}^3$ with $4N$ odd variables $\{\theta^{i\alpha}, \bar \theta_i^{\dot \alpha}\}_{i=1}^N$. {\em Superfields} are generalizations of functions on superspace. An expansion of such a superfield in the odd variables terminates at order $4N$. Each component in the expansion is a field in the ordinary sense. For example, consider a complex field depending only on bosonic coordinates and half of the odd variables in $N=1$ superspace:
+\begin{eqnarray}
+\Phi(x, \theta)=\varphi(x)+\theta^\alpha \psi_\alpha(x)+\theta^2 F(x)~.
+\end{eqnarray}
+Here the components consist of two complex scalar fields $\varphi$ and $F$ and one chiral fermion $\psi$.
+
+Surprisingly, generalizations of differentiation and integration can be defined so as to extend analysis to superspace and therefore supermanifolds. The momenta $(p_\alpha, \bar p^{\dot \alpha})$ conjugate to $\theta^\alpha$ and $\bar \theta_{\dot \alpha}$ can be used to define the {\em supercharges}
+\begin{eqnarray}
+Q_\alpha=-p_\alpha+i \bar \theta^{\dot \alpha} p_{\alpha \dot \alpha}~,~
+\bar Q_{\dot \alpha}=\bar p_{\dot \alpha}-i \theta^{\alpha} p_{\alpha \dot \alpha}~,
+\end{eqnarray} 
+the defining property of of which is that they satisfy the graded Poisson brackets
+\begin{eqnarray}
+\{Q_\alpha, \bar Q_{\dot \alpha}\}=2i p_{\alpha\dot \alpha}
+\end{eqnarray}
+with all other brackets vanishing. A supersymmetry transformation with (fermionic) parameters $(\epsilon^\alpha, \bar \epsilon^{\dot \alpha})$ is generated by 
+\begin{eqnarray}
+\delta = \epsilon^\alpha Q_\alpha+\bar \epsilon_{\dot \alpha} \bar Q^{\dot \alpha}
+\end{eqnarray}
+When realized on the components of a chiral field, it induces the transformation
+\begin{eqnarray}
+\delta \varphi&=&\epsilon^\alpha \psi_\alpha\cr
+\delta \psi_\alpha&=&\bar \epsilon^{\dot \alpha}\partial_{\alpha \dot \alpha} \varphi+\epsilon_{\alpha} F\cr
+\delta F&=&\bar \epsilon^{\dot \alpha}\partial_{\alpha \dot \alpha} \psi^\alpha~.
+\end{eqnarray}
+
+
+%\paragraph{Special geometry}
+%Supersymmetric field theories called $\Sigma$-models have intimate connections to special geometry. Consider the set of $d$ holomorphic maps $\{\varphi^i\}_{i=1}^d$ from Minkowski space into some target space $X$ with complex dimension $d$. We can extend the domain from $N=0$ to $N=1$ superspace. What does this mean for $X$? 
+
+%Consider the action functional 
+%\begin{eqnarray}
+%\int \mathrm d^4x \mathrm d^4 \theta \, K[\bar \Phi, \Phi]
+%\end{eqnarray}
+%From the rules 
+
+%\paragraph{Spinors and strings}
+%Recently Berkovits has managed to quantize the superstrings covariantly using an auxiliary variable which is a pure spinor in 
+
+%\paragraph{Spinors and calibrations}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%\begin{thebibliography}{9}
+%\bibitem{Goldstein} H. Goldstein, ``Classical Mechanics,'' {\it Addison-Wesley Publishing Company, Inc. (1959) 399pp}
+%\end{thebibliography}
+
+\end{document}  

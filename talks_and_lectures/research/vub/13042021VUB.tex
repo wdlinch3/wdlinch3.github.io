@@ -1,0 +1,377 @@
+% !TEX encoding = UTF-8 Unicode
+% !TEX program = lualatex
+% was lualatexmk
+% don't forget Edit > Substitutions > Text Replacement
+% needs file combining_preprocessor.lua, & BibTex.bib (e.g.) for \bibliography
+
+\input{header}
+
+\usepackage{placeins}
+%\usepackage{eufrak}
+%\usepackage{/Users/wdlinch3/Dropbox/Rashoumon/LaTeX/macros/WDL3}
+
+\begin{document}
+%\hfill YITP-SB-2020-35
+%\vskip-.1in
+%\hfill another \#
+
+{\center
+{\color{violet}\fontsize{28pt}{34pt}\bf\sffamily A Worldvolume Perspective on M-theory\\[.5in]
+
+}
+
+%\href{mailto:somebody@somewhere.dom}{1st author} \\[.1in]
+%{\it 
+%Institution\\
+%Place \\[.1in]
+%}
+%and \\[.1in]
+%\href{mailto:another@elsewhere.arg}{2nd author} \\[.1in]
+%{\it 
+%\href{http://link.html}{Institute}\\
+%University}\\[.3in]
+
+\href{mailto:wdlinch3@gmail.com}{Wm.\ D.\ Linch,\ III} \\[.1in]
+{\it 
+\href{http://people.tamu.edu/~wdlinch3/}{
+Mitchell Institute for Fundamental Physics and Astronomy}\\
+Texas A\&M University\\[.1in]
+}
+prepared for \\[.1in]
+{\it 
+Vrije Universiteit Brussel\\
+(Based on work with Warren Siegel)
+}\\[.3in]
+
+
+{\color[rgb]{0,.7,1}April 13, 2021}\\[.5in]}
+
+{\abstract
+This is a brief introduction to work \cite{Linch:2015lwa, Linch:2015fya, Linch:2015qva, Linch:2015fca, Linch:2016ipx, Linch:2017eru} in collaboration with Warren Siegel on the worldvolume structure of theories with the U-duality symmetries of string/M-theory. 
+%Talk given at the Journal Club of Vrije Universiteit Brussel April 13, 2021
+}
+
+\vfill
+
+\thispagestyle{empty}
+%\newpage
+
+{
+%\linespread{1.1}
+%\linespread{1}
+%\linespread{.9}
+%\linespread{.8}
+%\small
+\tableofcontents
+}
+
+\newpage
+
+%§{Introduction}
+
+§{Origin story: $E₄ = SL(5,\bf R)$} \label{sec:2}
+
+
+3D, N=2 non-critical $𝐒$(tring)-theory ⇒ 3D, N=2 superspace “S-gravity”
+\bitem{∙} Supersymmetric (4 real supercharges)
+\bitem{∙} Covariant under T-duality: IIA ↔︎ IIB
+
+
+\noindent Siegel 1993: T-duality-covariant string (field) theory
+ 
+\begin{center}
+	$𝐓$-theory ⇒ $O(3,3)$ supergeometry “T-gravity” (a.k.a.\ DFT)
+\end{center}	
+
+\bitem{∙} New Virasoro constraint ⇒ “sectioning condition“
+\bitem{∙} D-bracket (=Poisson bracket with 1 v.f.) ⇒ Dorfman bracket 
+\bitem{∙} C-bracket (=Poisson bracket of 2 v.f.s) ⇒ Courant bracket 
+\bitem{∙} Backgrounds ⇒ supergravity
+\bitem{∙} Bianchi identity ⇒ supergravity EoM
+
+\begin{center}
+	$𝐌$-theory ⇒ 4D, N=1 superspace “M-gravity”
+\end{center}
+
+\bitem{∙} Worldvolume unknown
+\bitem{∙} Exceptional symmetry $E₄ = SL(5,𝐑)$
+
+\begin{center}
+\bf Can we make this manifest? 
+\end{center}
+\noindent Duff 1985 \cite{Duff:1985bv}: proto-$𝐅$-theory
+
+	“Either the [exceptional] structure appears only […] as an internal symmetry, or else it is really present at every d ≤ 11 as a spacetime symmetry which transforms states of different spin into each other, in particular transforming [the frame field] into [the 3-form] in d = 11. We emphasize that we are advocating the latter.” 
+
+\noindent Vafa 1996 \cite{Vafa:1996xn}: $𝐅$-theory conjecture
+
+	“Thus we are naturally led to a 4 dimensional worldvolume theory. Moreover in the N = 2 string the signature is dictated by the fact that the target has signature (2, 2). In the case at hand we also have a U(1) current algebra and the geometrization naturally suggests a (2,2) reformulation of the theory. This will also ‘explain’ why we have no oscillatory modes in the compactified (1,1) part of the (10,2) space.”
+
+\bitem{∙} Want worldvolume theory $𝐅$ analogous to $𝐓$-theory with current algebra manifesting U-duality symmetry and reducing to $𝐒$-theory.
+\bitem{∙} Worldvolume is probably not 2-dimensional 
+
+$$
+\vcenter{\halign{$#$⎵&&⎵$#$⎵\cr
+	& & & SL(5, 𝐑 ) \over O(3,2) & & \cr
+	\cr
+	& & & 𝐅 & & \cr
+	& & \swarrow & & \searrow & \cr
+	GL(4, 𝐑 ) \over O(3,1) &𝐌  & & & & 𝐓 & O(3,3) \over O(2,1)²  \cr
+	& & \searrow & & \swarrow & \cr
+	& & & 𝐒  & & \cr
+	& & & GL(3, 𝐑 ) \over O(2,1) & &\cr
+	}}
+$$
+
+¶{Properties of F}\label{sec:2-1}
+~
+\bitem{∙} $SL(5,𝐑)$ F-gravity has coordinates $x^{mn}$ and momenta $p_{mn}$
+\bitem{∙} Worldvolume fields contain $X^{mn}(σ)$ with conjugate current $P_{mn}(σ)$
+\bitem{∙} Worldvolume currents $𝒫_{mn}(σ) =  P_{mn}(σ) + …$  generate target space translations
+\bitem{∙}  Current algebra should manifest SL(5,R) in Schwinger term (analogously to T)
+
+$$ 
+[ 𝒫_{mn}(σ₁) , 𝒫_{mn}(σ₂) ] = 2i ε_{mnpqr} ∂^r δ(σ₁ - σ₂)
+$$
+
+Note that this implies there are 5 σs! Additionally there is τ: Worldvolume dimension d=6.
+
+\bitem{∙} sectioning comes from Virasoro: 
+
+$$
+𝒮^r = {}¹⁄₁₆  ε^{mnpqr} 𝒫_{mn} 𝒫_{pq}
+$$
+But this does not close:
+$$
+[ 𝒮^m(σ₁) , 𝒮^n (σ₂) ] = i 𝒮^{(m} ∂^{n)} δ(σ₁ - σ₂) - i⁄₂ [∂^{[m} 𝒮^{n]} - U^{mn} ] δ(σ₁ - σ₂) 
+$$
+The junk term $U^{mn}$ cancels in string theory because there is only one σ direction.
+\bitem{∙} $U^{mn} = ε^{mnpqr} 𝒫_{pq} 𝒰_r$ and 
+%$[ 𝒰 , 𝒮 ] = 0$ and $[ 𝒰 , 𝒰 ] = 0$ ⇒ first-class constraint?
+$$
+[ 𝒰 , 𝒮 ] = 0 ~~~\mathrm{and}~~~ 
+[ 𝒰 , 𝒰 ] = 0 ⇒ \textrm{first-class constraint?}
+$$
+
+
+But then it becomes clear what the world-volume is! 
+\bitem{∙} Explicitly $𝒰_m = ∂^n P_{mn}$  ...   this is Gauß’s law!
+\bitem{∙} 6D wv with coordinates $σ^μ  = τ$ and $σ^m ∈ 5$
+\bitem{∙} The Lagrangian is that of the Maxwell theory
+$$
+S = \tfrac1{12} ∫ d⁶σ ~ F^{μ ν ρ} F_{μ ν ρ}
+~~~\textrm{with}~~~
+F_{μ ν ρ} = ∂_{[ρ} X_{μν] }
+$$
+\bitem{∙} $X^{μ ν } → X^{mn}$ and $X^{τm}$:
+	\bitem{∙} $X^{mn}$ “vector potential” 
+%	\bitem{∙} $P_{mn}$ “electric field strength”
+	\bitem{∙} $X^{τm}$ Lagrange muliplier for Gauß $𝒰_m ≈ 0$
+\bitem{∙} The momentum conjugate to $X^{mn}$ is $P_{mn} = F_{τmn}$
+\bitem{∙} There is a second-class constraint enforcing self-duality 
+$$
+F^-_{μ ν ρ} ≈ 0
+$$
+\bitem{∙} The current is the self-dual part
+$$
+𝒫_{mn} = F^+_{τmn} = P_{mn} + {}¹/₂ \, ε_{mnpqr} ∂^r X^{pq}
+$$
+
+¶{String Analogy}
+Recall the analogous interpretation of string theory:
+\bitem{∙} The action is 
+$$
+S ∝ ∫ d²σ ~ η_{mn} F^{μ m} F_μ^n  
+~~~\textrm{with}~~~
+F_μ^m = ∂_μ X^m
+$$
+\bitem{∙} The momentum conjugate to $X^m$ is $P_m= η_{mn} F_{τ}^n$
+\bitem{∙} There is a second-class constraint: $F^-_μ ≈ 0$ 
+\bitem{∙} The current is $𝒫_m = η_m F^{+ m}_τ = P_m + η_{mn} ∂_σ X^n$ with algebra
+$$ 
+[ 𝒫_m(σ₁) , 𝒫_n(σ₂) ] = i η_{mn} ∂_σ δ(σ₁ - σ₂) 
+$$
+\bitem{∙} The Virasoro generators $𝒯 = {}¹⁄₂ η^{mn} 𝒫_m 𝒫_n$ satisfy 
+$$
+[ 𝒯(σ₁), 𝒯( σ₂ ) ] =i 𝒯 δ' 
+$$
+
+¶{Brackets}
+
+$𝒫$ is also the current associated to a target vector field: 
+\bitem{∙} Target vector field $V^{mn}(x) ∂_{mn} $
+\bitem{∙} Worldvolume analog is $V(σ) := V^{mn}(X(σ)) 𝒫_{mn}(σ) $
+\bitem{∙} C-bracket:
+$$
+[ V₁(σ₁) , V₂(σ₂) ]   =   2i V₁^{mn} V₂^{pq} ε_{mnpqr} ∂^r δ (σ₁ - σ₂) 
+- i [ V₁^{mn} ∂_{mn} V₂^{pq} - {}¹/₈  V₁^{[mn} ∂_{mn} V₂^{pq]}] 
+	- (1↔︎2) ]  𝒫_{pq}δ (σ₁ - σ₂)
+$$
+up to second-class constraints and Gauß’s law
+
+\bitem{∙} Integrating once gives the D-bracket: Define $Λ := i/₂ ∫ λ^M 𝒫_M$. Then $[ Λ , V^M 𝒫_M ] = δV^M 𝒫_M$
+$$
+δV^M  =  λ^N ∂_N V^M - (∂_N λ^N) V^M + Y^{MN}{}_{PQ} (∂_N λ^P) V^Q
+$$
+with 
+$
+Y^{[mn][pq]}{}_{[rs][tu]} = ε^{[mn][pq]v} ε_{[rs][tu]v}
+$
+\bitem{∙} ⇒ SL(5,R) Dorfman bracket on {\em massless states}
+\bitem{∙} Integrating twice: $[ Λ₁ , Λ₂ ] = Λ₁₂$ with  
+$$
+λ₁₂^M = - ( δ^M_P δ^N_Q - {}¹⁄₂ Y^{MN}{}_{PQ} ) \,  λ₁^P \stackrel{↔︎}{∂}_N λ₂^Q 
+$$
+gives SL(5,R) Courant bracket
+
+§{Generalization}
+
+Most of this approach generalizes:
+\bitem{∙} Replace $ε_{[mn][pq]r} → η_{ABc}$ and $ε^{[mn][pq]r} → η^{ABc} : R_n ⊗ R_n → R₁$ 
+\bitem{∙} $Y^{AB}{}_{CD} = η^{ABc} η_{CDc}$
+\bitem{∙} $𝒫_A = P_A + η_{ABc} ∂^c X^B$
+$$
+[ 𝒫_A(σ₁) , 𝒫_B(σ₂) ] = 2i η_{ABc} ∂^c δ(σ₁ - σ₂)
+$$
+\bitem{∙} $𝒮^c = {}¹/₄ 𝒫_A η^{ABc} 𝒫_B$
+$$
+[ 𝒮 , 𝒮 ] = i 𝒮 k ∂δ - i⁄₂ ∂𝒮 δ - i⁄₄ 𝒰 η 𝒫 δ - i⁄₄ η X 𝒱 η 𝒫 δ 
+$$
+$$
+[ 𝒰 , 𝒮 ] = i 𝒱 δ \quad \textrm{and}\quad [ 𝒱 , anything ] = 0 
+$$
+Schwinger $k ∝ tr( η^a η_c η^b η_d )$
+$$
+k^{ab}_{cd} ∝ η^{AB(a} η_{BCc} η^{b)CD} η_{DAd}\\
+$$
+Gauß $𝒰 \sim ∂P$:  
+$$
+𝒰^a_B = U^{aA}_{bB} ∂^b P_A
+\quad \textrm{with}\quad
+U^{aA}_{bB} := δ^a_b δ_B^A - η^{CAa} η_{CBb}
+$$
+$U² ∝ U$ defines a projector $R_n ⊗ R₁ → R₂$
+Laplace $𝒱 \sim ∂∂$:  
+$$
+𝒱^c_{AB} = {}¹⁄₂ V^c_{abAB} ∂^a ∂^b 	
+\quad \textrm{with}\quad 
+V^c_{abAB} = U^{cC}_{(aA} η_{CBb)}
+$$
+\bitem{∙} Target supersymmetry and critical dimension (classically)
+\bitem{∙} Worldvolume supersymmetry
+
+
+§{Backgrounds}
+Supergravity fields are introduced as usual: $𝒫_A= E_A{}^M 𝒫_M$ 
+\bitem{∙} but now with worldvolume gravity $𝒟^a = ℰ^a_m ∂^m$ 
+\bitem{} $ℰ \in G/H$: $G$ acts only on $m$ and $H$ on $a$ and superspace
+\bitem{∙} Current algebra:
+$$
+i [ 𝒫_A(σ₁) , 𝒫_B(σ₂) ] = T_{AB}{}^C 𝒫_C δ(σ₁ - σ₂) - G_{ABc} [ 𝒟^c(σ₁) - 𝒟^c(σ₂) ] δ(σ₁ - σ₂)
+$$
+\bitem{∙} Torsion 
+$$
+T_{AB}{}^C = EE f E + ( δ δ - GG ) (∇E) E 
+$$ curves structure constants $f_{AB}{}^C$ ($∇ = E D$)
+\bitem{∙} Group metric $G_{AB c} = E_A{}^M E_B{}^N η_{MNp} ℰ_a{}^p$ 
+\bitem{∙} $G_{ABc}𝒟^c$, $T_{AB}{}^C ∇_C$, {\it et cetera} are only invariant under gauge transformations modulo $𝒰$ \cite{Siegel:2019wrr}
+\bitem{∙} Bianchi identities ⇒ supergravity: In particular 3D \cite{Siegel:2019wrr}: $𝐅$-theory ⇒ $F$-gravity ⇒ $F$-theory superspace \cite{Linch:2015lwa}.
+
+
+§{Worldvolume F-orms}
+
+$𝒮$-section ⇒ generalization of target $p$-forms \cite{Linch:2015lwa}:
+$$
+∂_{[mn} ∂_{pq]}=0 
+	⇒ ∂_{m[n} ∂_{pq] }=0 
+	⇒ \textrm{new kernels of } d = {}¹/₂ dx^{mn} ∂_{mn}
+$$
+
+¶{$H$ Symmetry}
+
+Up to Gauß law sectioning
+$$
+[𝒮^a - 𝒮̃^a, f ] = - i ∂^a f δ 
+$$
+generates wv diffeos\\
+The field strengths 
+$$
+F^± := P ± η_c ∂^c X =: η₀ F_τ ± F_σ 
+$$
+come with gauge transformations generated by $𝒰^a ⇒$ wv differential forms.\\
+Define
+$$
+... ⟶ λ_a^A \stackrel{d^a}⟶ X^A  \stackrel{d}⟶ F_{σA} \stackrel{d^{Ta}}⟶ B^a_A ⟶ ... 
+$$
+by
+$$
+d= η_a ∂^a
+~,~~
+d^a= dη^a 
+~,~~
+d^{T a} = η^a d
+$$
+(Explicitly, $d_B^{aA} = U^{T aA}_{bB} ∂^b$, $d_{AB} = η_{ABc} ∂^c$, $d^{T aA}_B = ∂^b U^{aA}_{bB}$.)\\
+Then $dd^a = 𝒱^a = d^{Ta} d$ defines a differential when $𝒱 ≈ 0$.
+
+The $H$-action is $S_H = ∫ L_H$ with $L_H = -ẊP + H$ and 
+$$
+H = -X_a 𝒰^a + ¹⁄₂ ℓ₀ (𝒯+ 𝒯̃) + ¹⁄₂ ℓ_a (𝒮^a - 𝒮̃^a)
+$$
+
+
+¶{$L$ Symmetry}
+
+$$
+\delta \ma{X \\ X^a} = \ma{d^a  \\ ∂₀ } λ_a
+~~~,~~~
+\ma{F_σ  \\ F_τ } = \ma{d & 0  \\ ∂₀ & -d_a } \ma{X \\ X^a}
+$$
+$$
+\ma{ B  \\ B^a } = \ma{ -∂₀ & d  \\  d^{Ta} & 0 } \ma{F_σ  \\ F_τ }
+~~~,~~~
+B B^a  = \ma{ d^{Ta}  & ∂₀ } \ma{ B  \\ B^a } 
+$$
+
+The $L$-action is $S_L = ∫ L$ with 
+$$
+L = {}¹ ⁄ ₂  √{-g} ~ ( F̂_σ η⁰ F̂_σ - F̂_τ η₀ F̂_τ )
+$$
+Here
+$$
+√{-g} = ℓ₀ 
+~,~~
+F̂_σ = F_σ 
+~,~~
+F̂_τ = - ~{}¹/{ℓ₀} ~ ( F_τ - ℓ_m η^m F_σ  )
+$$
+This is given in terms of a frame $e_μ^𝛼 = δ_μ^𝛼 $ and $e_μ^a = {}¹/{ℓ₀} ~ (1, - ℓ_m)$.
+
+
+
+
+\small
+%\footnotesize
+\linespread{1.1}\selectfont
+\raggedright
+
+%{\footnotesize
+\bibliography{/Users/wdlinch3/Dropbox/Rashoumon/LaTeX/BibTex/BibTex}
+%%\bibliography{./Simple5Draftv1.bbl}
+\bibliographystyle{unsrt}
+%%\bibliographystyle{amsplain}
+%%\bibliographystyle{amsalpha}
+%}
+
+
+%\bibliography{Bibtex}
+%\bibliography{Warren,others}
+%\bibliographystyle{unsrt}
+%\bibliographystyle{utphys}
+%\bibliographystyle{hephys}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}  
+ 

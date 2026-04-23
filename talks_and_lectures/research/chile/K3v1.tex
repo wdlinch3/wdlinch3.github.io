@@ -1,0 +1,764 @@
+\documentclass[9pt]{beamer}
+
+\usecolortheme[RGB={205,173,0}]{structure} 
+\usefonttheme{serif} 
+
+\usepackage{amssymb}
+
+%Typesetting conventions
+\def\K3{\mathrm K3}
+\def\CY#1{\mathrm{CY}_{#1}}
+%\def\SU2{\mathrm{SU}(2)}
+\def\SU#1{SU({#1})}
+%\def\U1{\mathrm U(1)}
+\def\U#1{U({#1})}
+\def\SO#1{SO({#1})}
+\def\O#1{O({#1})}
+%multiplet and dimension
+\def\mult #1#2{\mathrm{#1}[\![ {#2}]\!]}
+%normal ordering
+\def\normal#1{\,\!:\! #1 \!:\! \,}
+%doublebar
+\def\double #1{#1{\hbox{\kern-2pt $#1$}}}
+%underline
+\def\un#1{\underline #1}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%  Typesetting conventions  %%%%%%%%%%%%%%%%%%%
+
+%doublebar
+\def\double #1{#1{\hbox{\kern-2pt $#1$}}}
+%Bras and kets
+\def\ket#1{\left| #1\right>}
+\def\bra#1{\left< #1\right|}
+\def\braket#1#2{\left< #1\right|\left.#2\right>}
+%For twistors
+\def\kra#1{\left[ #1\right|}
+\def\bet#1{\left| #1\right]}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%  Jim Gates and Marc Grisaru MACROS   %%%%%%%%%%%%%%%%
+\def\pp{{\mathchoice
+            %{general format
+               %[w] = length of horizontal bars
+               %[t] = thickness of the lines
+               %[h] = length of the vertical line
+               %[s] = spacing around the symbol
+              %
+              %\kern [s] pt%
+              %\raise 1pt
+              %\vbox{\hrule width [w] pt height [t] pt depth0pt
+              %      \kern -([h]/3) pt
+              %      \hbox{\kern ([w]-[t])/2 pt
+              %            \vrule width [t] pt height [h] pt depth0pt
+              %            }
+              %      \kern -([h]/3) pt
+              %      \hrule width [w] pt height [t] pt depth0pt}%
+              %      \kern [s] pt
+          {%displaystyle
+              \kern 1pt%
+              \raise 1pt
+              \vbox{\hrule width5pt height0.4pt depth0pt
+                    \kern -2pt
+                    \hbox{\kern 2.3pt
+                          \vrule width0.4pt height6pt depth0pt
+                          }
+                    \kern -2pt
+                    \hrule width5pt height0.4pt depth0pt}%
+                    \kern 1pt
+           }
+            {%textstyle
+              \kern 1pt%
+              \raise 1pt
+              \vbox{\hrule width4.3pt height0.4pt depth0pt
+                    \kern -1.8pt
+                    \hbox{\kern 1.95pt
+                          \vrule width0.4pt height5.4pt depth0pt
+                          }
+                    \kern -1.8pt
+                    \hrule width4.3pt height0.4pt depth0pt}%
+                    \kern 1pt
+            }
+            {%scriptstyle
+              \kern 0.5pt%
+              \raise 1pt
+              \vbox{\hrule width4.0pt height0.3pt depth0pt
+                    \kern -1.9pt  %[e]=0.15pt
+                    \hbox{\kern 1.85pt
+                          \vrule width0.3pt height5.7pt depth0pt
+                          }
+                    \kern -1.9pt
+                    \hrule width4.0pt height0.3pt depth0pt}%
+                    \kern 0.5pt
+            }
+            {%scriptscriptstyle
+              \kern 0.5pt%
+              \raise 1pt
+              \vbox{\hrule width3.6pt height0.3pt depth0pt
+                    \kern -1.5pt
+                    \hbox{\kern 1.65pt
+                          \vrule width0.3pt height4.5pt depth0pt
+                          }
+                    \kern -1.5pt
+                    \hrule width3.6pt height0.3pt depth0pt}%
+                    \kern 0.5pt%}
+            }
+        }}
+
+\def\mm{{\mathchoice
+                      %{general format %[w] = length of bars
+                                       %[t] = thickness of bars
+                                       %[g] = gap between bars
+                                       %[s] = space around symbol
+   %[w], [t], [s], [h]=3([g]) are taken from corresponding definitions of \pp
+   %
+                      %       \kern [s] pt
+               %\raise 1pt    \vbox{\hrule width [w] pt height [t] pt depth0pt
+               %                   \kern [g] pt
+               %                   \hrule width [w] pt height[t] depth0pt}
+               %              \kern [s] pt}
+                  %
+                       {%displaystyle
+                             \kern 1pt
+               \raise 1pt    \vbox{\hrule width5pt height0.4pt depth0pt
+                                  \kern 2pt
+                                  \hrule width5pt height0.4pt depth0pt}
+                             \kern 1pt}
+                       {%textstyle
+                            \kern 1pt
+               \raise 1pt \vbox{\hrule width4.3pt height0.4pt depth0pt
+                                  \kern 1.8pt
+                                  \hrule width4.3pt height0.4pt depth0pt}
+                             \kern 1pt}
+                       {%scriptstyle
+                            \kern 0.5pt
+               \raise 1pt
+                            \vbox{\hrule width4.0pt height0.3pt depth0pt
+                                  \kern 1.9pt
+                                  \hrule width4.0pt height0.3pt depth0pt}
+                            \kern 1pt}
+                       {%scriptscriptstyle
+                           \kern 0.5pt
+             \raise 1pt  \vbox{\hrule width3.6pt height0.3pt depth0pt
+                                  \kern 1.5pt
+                                  \hrule width3.6pt height0.3pt depth0pt}
+                           \kern 0.5pt}
+                       }}
+
+\def\ad{{\kern0.5pt
+                   \alpha \kern-5.05pt
+\raise5.8pt\hbox{$\textstyle.$}\kern 0.5pt}}
+
+\def\bd{{\kern0.5pt
+                   \beta \kern-5.05pt \raise5.8pt\hbox{$\textstyle.$}\kern 0.5pt}}
+
+\def\qd{{\kern0.5pt
+                   q \kern-5.05pt \raise5.8pt\hbox{$\textstyle.$}\kern 0.5pt}}
+\def\Dot#1{{\kern0.5pt
+     {#1} \kern-5.05pt \raise5.8pt\hbox{$\textstyle.$}\kern 0.5pt}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage{beamerthemesplit}
+
+\title{The Covariant Superstring on K3}
+\author{William D. Linch, III}
+\date{Prepared for the Max Ba\~nados Field Theory and Gravitational Group,\\
+Pontificia Universidad Cat\'olica de Chile,\\
+3 November, 2011.
+}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section[Outline]{}
+\frame{\tableofcontents}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+\frame{
+\frametitle{Introduction}
+\begin{itemize}
+\item We want to use superstrings as a calculus for quantum field theories coupled to quantum gravity.
+\item The simplest definition of this calculus is as a free ten-dimensional string.
+\item To use this tool for lower-dimensional physics, we need to reduce from 10D.
+\item First method: Holographic (Brenno's talk here last week)
+\item Second method: Compactification
+\item The compactification problem of relating the pure spinor in 10D to the RNS string in lower dimensions has resisted solution since 2002.
+\item We will solve this problem for compactification of the pure spinor string to six dimensions on a K3 surface ({\it i.e.} the four-dimensional Calabi-Yau manifold).
+\end{itemize}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Covariant superstrings}
+\frame{
+\frametitle{The Green-Schwarz Superstring (1984)}
+We start with the bosonic string $x:\Sigma \to M$ with dynamics determined by
+\begin{eqnarray}
+S_\mathrm {bose}\sim \int_\Sigma (\partial x)^2.
+\nonumber
+\end{eqnarray}
+\pause
+Then we add space-time ($M$) supersymmetry
+\begin{eqnarray}
+\delta x^m = i\epsilon \gamma^m \theta,~~~
+\delta \theta=\epsilon.
+\nonumber
+\end{eqnarray}
+\pause
+The Green-Schwarz variables are manifestly supersymmetric
+\begin{eqnarray}
+\Pi^m = \mathrm dx^m-i \theta \gamma^m \mathrm d \theta,~~~
+\mathrm d\theta.
+\nonumber
+\end{eqnarray}
+\pause
+And the Green-Schwarz superstring is defined by the action
+\begin{eqnarray}
+S_\mathrm{GS} \sim \int_\Sigma \Pi^2 + S_\mathrm{WZ}.&&\cr
+\pause
+\uparrow~~&&\cr
+\textrm{(for Max)}&&
+\nonumber
+\end{eqnarray}
+\pause
+%Additionally, there is a Siegel symmetry
+%\begin{eqnarray}
+%\delta \Pi= \mathrm d\theta\gamma^m \delta \theta,~~~
+%\delta \theta = \slash\!\!\! \Pi \kappa.
+%\nonumber
+%\end{eqnarray}
+Unfortunately the flat space limit of this string is only free in light-cone gauge so covariant quantization is not straightforward.
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{
+\frametitle{Siegel formalism (1986)}
+Siegel proposed the following modification:
+\begin{eqnarray}
+S_\mathrm{GSS} \sim S_\mathrm{GS}+ \int_\Sigma d\partial \theta,
+\nonumber
+\end{eqnarray}
+where the Siegel constraint is given by
+\begin{eqnarray}
+d= p_\theta + i (\theta \gamma^m)\partial x_m + \theta^2\partial \theta\textrm{-term}.
+\nonumber
+\end{eqnarray}
+\pause
+With this, the string in flat space is free
+\begin{eqnarray}
+S_\mathrm{GSS} \sim \int_\Sigma \left[ (\partial x)^2+ p_\theta \partial \theta\right],
+\nonumber
+\end{eqnarray}
+\pause
+So quantization gives the canonical operator product algebra
+\begin{eqnarray}
+x(z) x(0) \sim \log|z|^2, ~~~ p_\theta(z) \theta(0)\sim \frac 1z.
+\nonumber
+\end{eqnarray}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{
+\frametitle{Dirac quantization}
+Then it is easy to compute the operator product
+%The fundamental operator product relation of the Siegel constraints is
+\begin{eqnarray}
+d(z)d(0) \sim \frac1z \slash\!\!\!\Pi(0),
+\nonumber
+\end{eqnarray}
+%\pause
+implying that (half of) the Siegel constraints are $2^{\textrm{nd}}$-class constraints.\\
+\pause
+There is also the $1^{\textrm{st}}$-class Virasoro constraint
+\begin{eqnarray}
+T \sim\, \normal{\Pi \Pi}+\normal{d\partial \theta}
+\nonumber
+\end{eqnarray}
+\pause
+Problem: To use the Dirac procedure, we have to separate the constraints. Is there a Poincar\'e-covariant way to do this?
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{
+\frametitle{Berkovits' formalism I (1994): Hybrid}
+Consider the RNS string on a factorized background
+\begin{eqnarray}
+\begin{array}{ccc}
+M&\to& M\times X\\
+\mathrm{Hol}(\nabla_M)&\to&\mathrm{Hol}(\nabla_M)\times\mathrm{Hol}(\nabla_X)
+\end{array}
+\nonumber
+\end{eqnarray}
+\pause
+If $\mathrm{Hol}(\nabla_X)$ is ``special'' 
+\pause
+then $\exists$ map
+\begin{eqnarray}
+\begin{array}{lcc}
+	&\textrm{``space-time''}& \textrm{``internal''}\\\\
+\textrm{matter}&x^m , \psi^m & y^i , \bar y^{\bar \imath}, \psi^i, \bar \psi^{\bar \imath}\\
+\textrm{ghosts} & b,c,\beta,\gamma &\\
+&\downarrow&\downarrow\\
+\textrm{Berkovits}~
+\textrm{variables}&x^m ,p_\theta, \theta,\rho,\sigma & y^i , \bar y^{\bar \imath}, \psi^i, \bar \psi^{\bar \imath}\\
+\end{array}
+\nonumber
+\end{eqnarray}
+with canonical operator products.\pause..\\
+and a factorized algebra of constraints
+\begin{eqnarray}
+\mathrm {SCA}_{10} \to \mathrm {SCA}_{\textrm{space-time}}\oplus \mathrm {SCA}_{\textrm{internal}}.
+\nonumber
+\end{eqnarray}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{
+\frametitle{Berkovits' formalism II (2000): Pure spinor}
+The maximal number of supercharges realizable in this way is 8.\\
+\pause
+Meanwhile, the minimal number of supersymmetries in $D=10$ is 16.\\~\\
+\pause 
+Therefore, a new method is required to separate the ten-dimensional constraints
+\begin{eqnarray}
+%d_\alpha (z) d_\beta(0)\sim \frac 1z (\gamma^a)_{\alpha \beta} \Pi_m(0)
+d(z)d(0) \sim \frac1z \slash\!\!\!\Pi(0).
+\nonumber
+\end{eqnarray}
+\pause
+Borrow trick from harmonic superspace:
+\pause
+Introduce bosonic ``pure'' spinor $\lambda$:
+\begin{eqnarray}
+(\lambda \gamma^m \lambda)=0 ~~~ m=0,1,\dots,9.
+\nonumber
+\end{eqnarray}
+\pause
+(Together with their momenta, the pure spinors form a 22-dimensional cone over the space $SO(10)/U(5)$ of orthogonal complex structures on $\mathbb R^{10}$.)\\
+\pause
+Then define Berkovits differential 
+\begin{eqnarray}
+Q=\oint \lambda d ~~~:~~~ Q^2=0.
+\nonumber
+\end{eqnarray}
+\pause
+Proceed with BRST-type quantization!
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{
+\frametitle{Mysteries}
+\begin{itemize}
+\item What is the pure spinor?
+%\pause
+Harmonic? Ghost? Twistor? Mix?\\
+%\pause
+%Looks like gauge-fixed superstring...\\
+%\pause
+\item What is the relation with the hybrid formalism?\\
+%\pause
+\item What is the relation (if any) with the pure spinors of generalized geometry?\\
+%\pause
+\item How to recover the correct spectrum in compactification with off-shell superspace? \\
+\item Many more questions...
+\end{itemize}
+\pause
+Strategy: Compactify on K3 
+\pause
+which has the advantages that it
+\begin{itemize}
+\item is simple,\pause
+\item has a hybrid description, \pause
+\item has harmonics in its superspace, \pause
+\item can be compactified further to 4 dimensions on $T^2$ to make K3-fibered Calabi-Yau 3-fold.
+\end{itemize}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Compactification}
+\frame{
+\frametitle{K3 orbifold}
+Start with a torus ({\em very} special holonomy)
+\begin{eqnarray}
+T^4&\approx& {\mathbb C \times \mathbb C\over \mathbb Z\times \mathbb Z},
+%\nonumber
+%\end{eqnarray}
+%\pause
+%Hodge diamond 
+%\begin{eqnarray}
+~~~~~~~~~
+\begin{array}{ccccc}
+&&1&&\\
+&2&&2&\\
+1&&4&&1\\
+&2&&2&\\
+&&1&&
+\end{array}
+\nonumber
+\end{eqnarray}
+\pause
+and gauge $\mathbb Z_2\subsetneq SU(2)_- \hookrightarrow SU(2)_+\times SU(2)_- \approx Spin(4)$ subgroup of the four-dimensional Lorentz ({\it i.e.} rotation) group.\\
+\pause
+%Geometrically, this identifies $(z^1,z^2) \sim (-z^1,-z^2)$ to get the K3 orbifold 
+\begin{eqnarray}
+\Rightarrow~~~ 
+\textrm{K3 orbifold } X=T^4/\sim,
+~~~~~~~~~
+\begin{array}{ccccc}
+&&1&&\\
+&0&&0&\\
+1&&4&&1\\
+&0&&0&\\
+&&1&&
+\end{array}
+\nonumber
+\end{eqnarray}
+with $2^4=16$ fixed points
+\pause
+which can be blown up to Eguchi-Hanson spaces $\mathcal O_{\mathbb P^1}(-2)\approx T^*S^2$ (gravitational instantons).
+}
+
+\frame{
+\frametitle{Twisted sector states}
+Orbifold identification gives new massless ``twisted'' string states at each orbifold point.\\
+\pause
+The Casimir energies of the worldsheet fields is given by
+\begin{eqnarray}
+E= (-)^F\left[ \frac1{48} -\frac1{16}(2\theta-1)^2\right]
+\left\{ 
+\begin{array}{rl}
+-\frac1{24}&{\textrm {real periodic boson}}\\~\\
+\frac1{48}&{\textrm {real anti-periodic boson}}
+\end{array}
+\right.
+\nonumber
+\end{eqnarray}
+\pause
+Contribution with $n$ untwisted pure spinors:
+\pause
+\begin{eqnarray}
+E&=&\underbrace{6( -\tfrac1{24})+ 4(\tfrac1{48})}_{x+\tilde x}+
+\underbrace{8(\tfrac1{12})+ 8(-\tfrac1{24})}_{\theta, p+ \tilde \theta ,\tilde p}+
+\underbrace{n(-\tfrac1{12})+(11-n)(\tfrac1{24})}_{\lambda,w+ \tilde \lambda, \tilde w}\cr
+&=&-\frac 18 (n-5).
+\nonumber
+\end{eqnarray}
+\pause
+Spectrum matches iff $n=5\Rightarrow6$ of the original 11 pure spinors are $\mathbb Z_2$-twisted.
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Dimensional reduction of the pure spinor}
+\frame{
+\frametitle{$U(5)$ variables}
+Breaking $Spin(10)\to U(5)$, we can solve the pure spinor constraint
+\begin{eqnarray}
+\begin{array}{ccccccc}
+\lambda & \to & \gamma & &\gamma u_{[ab]} && \gamma u_{[ab}u_{cd]}\cr\cr
+\mathbf{16}&=&\mathbf{1}&\oplus&\overline{\mathbf{10}}&\oplus&\mathbf{5}
+\end{array}
+\nonumber
+\end{eqnarray}
+\pause
+Dimensionally reducing further $SU(5)\to SU(3)\times SU(2)$, we find that 
+\begin{eqnarray}
+\begin{array}{ccccccc}
+\overline{\mathbf{10}} &=&(\mathbf{3},\mathbf 1)&\oplus&(\bar{\mathbf{3}},\mathbf2)&\oplus&(\mathbf 1,\mathbf{1})\\\\
+u_{[ab]} &=&u^I&,&u_{Ia^\prime}&,&u.
+\end{array}
+\nonumber
+\end{eqnarray}
+\pause
+This can be rearranged into a six-dimensional spinor $(\lambda^A)=\left(\begin{array}{c}\gamma\\\gamma u^I\end{array}\right)$, 
+\pause
+a ``harmonic'' iso-spinor: $(u^a)=\left(\begin{array}{c}1\\ u\end{array}\right)$, and
+\pause
+junk: $(u_{Ia^\prime}) \leftrightarrow \mathbf6$.
+}
+
+\frame{
+\frametitle{Small Hilbert Space}
+The Berkovits differential splits
+\begin{eqnarray}
+Q=\oint \left( \lambda^Au^a d_{Aa} +\lambda_{Aa^\prime} d^{Aa^\prime} + \Lambda^A d_{A2}\right)=Q_0+Q_1+Q_2
+\nonumber
+\end{eqnarray}
+were $Q_m$ has $m$ factors of $\mathbf 6$ in it.\\
+\pause
+The Hilbert space of string fields forms a chain complex with differential $Q$ graded by number of $\mathbf 6$s
+\begin{eqnarray}
+\cdots \stackrel Q\longrightarrow C^\bullet \stackrel Q\longrightarrow C^\bullet \stackrel Q\longrightarrow 
+C^\bullet \stackrel Q\longrightarrow \cdots
+\nonumber
+\end{eqnarray}
+\pause
+Claim: 
+\begin{eqnarray}
+H_Q (C^\bullet) = H^0_{Q_0}(C^\bullet).
+\nonumber
+\end{eqnarray}
+In words: The physical states are described by the cohomology of a short differential on a small Hilbert space without $\mathbf 6$-variables.
+}
+
+\frame{
+\frametitle{Spectrum}
+The reduced differential factorizes the cohomology further:
+\begin{eqnarray}
+Q_0 = q+\delta
+\nonumber
+\end{eqnarray}
+\pause
+were 
+\begin{eqnarray}
+q=\oint \lambda^Ad^+_A~~~\mathrm{and}~~~ \delta = \oint \psi_{aa^\prime}\partial x^{aa^\prime} 
+\nonumber
+\end{eqnarray}
+are both differentials.
+Here,
+%\begin{eqnarray}
+$d^+_{A} = u^a\left(p_{Aa} + i\theta^B_a \partial x_{AB}+\epsilon_{ABCD} \theta^{B}_{a}\theta^{Cb}\partial \theta^D_b\right)$
+%\nonumber
+%\end{eqnarray}
+and 
+%\begin{eqnarray}
+$\psi_{aa^\prime}= \gamma \,u_{a}\, \theta_{1a^\prime}$.\\
+%\nonumber
+%\end{eqnarray}
+\pause
+By Dolbeault's theorem,
+%a standard argument in homological algebra, 
+the cohomology of the double complex becomes the relative cohomology
+\begin{eqnarray}
+H_{Q_0} \approx H_{\delta}(H_{q}).
+\nonumber
+\end{eqnarray}
+}
+
+\frame{
+\frametitle{Spectrum}
+We have found that the spectrum of the pure spinor formalism on K3 is computed by the relative cohomology $H_{\delta}(H_{q})$.\\~\\
+\pause
+We will review below that $H_q$ is the space of projective superfields. \\~\\
+\pause
+Meanwhile, $H_\delta$ is the ring of vertex operators of the form $\omega_{aa^\prime bb^\prime\dots}\psi^{aa^\prime}\psi^{bb^\prime}\dots$ which are annihilated by $\delta= \psi^{aa^\prime}\partial_{aa^\prime}$ and not $\delta$-exact.\\~\\
+\pause
+In other words, $H_\delta \approx H_\mathrm{dR}$ is just the de Rham cohomology of K3.\\~\\
+\pause
+Hence, $H_\delta(H_q)$ is the cohomology algebra of K3 vertex operators with projective superfield wave functions.
+}
+
+
+\frame{
+\frametitle{Projective superspace}
+The space-time part of the hybrid formalism on K3 lives in projective superspace 
+\begin{eqnarray}
+\mathbb R^{6|8}\times \mathbb CP^1 &\approx& {\mathbb R^{6|8}\rtimes \left(Spin(6)\times SU_R(2)\right)\over
+	Spin(6) \times U(1)_R}.
+\nonumber
+\end{eqnarray}
+\pause
+Vertex operators have superspace wave functions $\Phi(x,\theta,u)$,
+%\pause
+which can be expanded in harmonics
+\begin{eqnarray}
+\Phi(x,\theta,u) = \sum_{n=-\infty}^\infty u^n \varphi_n(x,\theta) 
+\nonumber
+\end{eqnarray}
+%\pause
+(infinite number of ordinary $\mathcal N=(1,0)$ superfields).\\~\\
+\pause
+The Siegel constraints act, by the operator product, as superspace derivatives
+\begin{eqnarray}
+d_{\alpha i} (z) \Phi(x,\theta, u) =\frac1z D_{\alpha i} \Phi(x,\theta,u) .
+\nonumber
+\end{eqnarray}
+}
+
+\frame{
+\frametitle{Projective superspace}
+The flat, six-dimensional superspace derivatives satisfy
+\begin{eqnarray}
+\{ D_{\alpha i} , D_{\beta j} \} = 2i \varepsilon_{ij} (\gamma^a)_{\alpha \beta} \partial_a.
+\nonumber
+\end{eqnarray}
+\pause
+Introduce zwei-beine $\{u^{\pm}_i\}_{i=1}^2$ of $S^2$ and define $D^\pm_{\alpha} = u^{\pm i} D_{\alpha i}$. 
+\pause
+Then
+\begin{eqnarray}
+\{ D^+ , D^+ \} = 0
+\nonumber
+\end{eqnarray}
+gives the integrability condition for the ``analytic subspace'' $\mathrm {ker} D^+$.\\
+\pause
+The space parameterized by $(x,\theta^\pm, u^\pm)$ is called ``harmonic superspace''.\\
+\pause
+The analytic subspace parameterized by $(x, \theta^+,u^+)$ and in $\mathrm {ker} D^+$ is called ``projective superspace''.\\
+\pause
+Returning to the cohomology, the differential
+\begin{eqnarray}
+q=\oint \lambda d^+
+\nonumber
+\end{eqnarray}
+\pause
+acts as $D^+$, implying that string wave functions are projective superfields.
+}
+
+\frame{
+\frametitle{Solving the off-shell problem}
+Projective superspace is off-shell: Equations of motion not imposed by supersymmetry. \\~\\
+\pause
+In fact, $H_q=\{0\}$ if the superfield $\Phi$ is not entire on $\mathbb CP^1$.\\~\\
+\pause
+Restriction of $\Phi$ to be an entire function truncates the harmonic expansion and this puts the component superfields on-shell.\\~\\
+\pause
+To impose this in string theory, we need to bosonize the projective parameter:	
+\pause
+\begin{eqnarray}
+u = \mathrm e^{-\rho -i\sigma}
+\nonumber
+\end{eqnarray}
+in terms of chiral bosons
+\begin{eqnarray}
+\rho(z)\rho(0) \sim -\log z,~~~~~ \sigma(z)\sigma(0)\sim -\log z.
+\nonumber
+\end{eqnarray}
+\pause
+To ensure only $\rho/\sigma$-dependence in the combination $u$, vertex operators must have no poles with the constraint $J= \partial(\rho+i\sigma)$ (which generates shifts $(\rho, \sigma)\mapsto (\rho+a, \sigma+ia)$).
+}
+
+\frame{
+\frametitle{Emergence of worldsheet superconformal symmetry}
+The condition that the harmonic expansion of the vertex has no poles is implied by the constraint
+\begin{eqnarray}
+G^- = \normal{\mathrm e^{-i\sigma}}.
+\nonumber
+\end{eqnarray}
+\pause
+Together with the Virasoro constraint 
+\begin{eqnarray}
+T=\normal{ \Pi^2}+ \normal{d^+\partial \theta^-}+\dots,
+\nonumber
+\end{eqnarray}
+\pause
+the algebra closes if we also define
+\begin{eqnarray}
+G^+ = -\frac1{4!} \epsilon^{ABCD}\normal{ d^+_A(d^+_B(d^+_C(d^+_D(\mathrm e^{2\rho+3i\sigma}))))}.
+\nonumber
+\end{eqnarray}
+\pause
+This terminates the expansion and puts the wave function on-shell.\\
+\pause
+The constraints $\{J, G^\pm, T\}$ generate the desired $N=2$ worldsheet superconformal algebra of the {\em hybrid} (a.k.a. RNS) superstring on K3.
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusion}
+\frame{
+\frametitle{R\'esum\'e} 
+\begin{itemize}
+\item We started with the pure spinor superstring in ten flat dimensions.
+\pause
+\item We solved the pure spinor condition and rewrote all worldsheet fields in $(6+2+2^*)$-variables appropriate to compactification on K3.
+\pause
+\item We proved a theorem that the cohomology reduces to a small Hilbert space which removes 6 of the original 11 pure spinor degrees of freedom.
+\pause
+\item We interpreted the remaining $4+1$ pure spinor variables as an unconstrained $Spin(5,1)$ spinor and a holomorphic projective variable $u$ parameterizing $\mathbb CP^1\approx SU(2)/U(1)$.
+\pause
+\item We bosonized $u$ and defined the constraints $J$ and $G^-$ which simplify the description of the physical state conditions.
+\pause
+\item We closed the constraint algebra by introducing $G^+$, thereby recovering the physical state conditions.
+\pause 
+\item Thus, we succeed in deriving the hybrid string on K3 from the compactification of the ten-dimensional pure spinor string.\pause Yay!
+\end{itemize}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\frame{
+\frametitle{Fin}
+\begin{centering}
+{\Huge Thank you!}
+\end{centering}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The work reported here was done in collaboration with Osvaldo Chand\'ia and Brenno Carlini Vallilo in the following papers: 
+\begin{thebibliography}{99}
+\footnotesize{
+
+%%\bibitem{AP13}
+%%\cite{Linch:2006ig}
+%\bibitem{Linch:2006ig}
+%  Wm~D.~Linch, III and B.~C.~Vallilo,
+%  ``Hybrid formalism, supersymmetry reduction, and Ramond-Ramond fluxes,''
+%  JHEP {\bf 0701}, 099 (2007)
+%  [arXiv:hep-th/0607122].
+%  %%CITATION = JHEPA,0701,099;%%
+  
+%%\cite{Berkovits:1999du}
+%\bibitem{Berkovits:1999du}
+%  N.~Berkovits,
+%  ``Quantization of the type II superstring in a curved six-dimensional
+%  background,''
+%  Nucl.\ Phys.\  B {\bf 565}, 333 (2000)
+%  [arXiv:hep-th/9908041].
+%  %%CITATION = NUPHA,B565,333;%%
+
+%%\cite{Linch:2006sh}
+%\bibitem{Linch:2006sh}
+%  Wm~D.~Linch, III and B.~C.~Vallilo,
+%  ``Covariant N = 2 heterotic string in four dimensions,''
+%  JHEP {\bf 0703}, 082 (2007)
+%  [arXiv:hep-th/0611105].
+%  %%CITATION = JHEPA,0703,082;%%
+  
+%%\cite{Linch:2008rw}
+%\bibitem{Linch:2008rw}
+%  Wm~D.~Linch, III, J.~McOrist and B.~C.~Vallilo,
+%  ``Type IIB Flux Vacua from the String Worldsheet,''
+%  JHEP {\bf 0809}, 042 (2008)
+%  [arXiv:0804.0613 [hep-th]].
+%  %%CITATION = JHEPA,0809,042;%% 
+
+%%\cite{Linch:2008nt}
+%\bibitem{Linch:2008nt}
+%  Wm~D.~Linch, III and B.~C.~Vallilo,
+%  ``Integrability of the Gauged Linear Sigma Model for $AdS_5\times S^5$''
+%  JHEP {\bf 0911}, 007 (2009)
+%  [arXiv:0804.4507 [hep-th]].
+%  %%CITATION = JHEPA,0911,007;%%
+  
+%\cite{Chandia:2009it}
+\bibitem{Chandia:2009it}
+  O.~Chandia, Wm~D.~Linch III and B.~C.~Vallilo,
+  ``Compactification of the Heterotic Pure Spinor Superstring I,''
+  JHEP {\bf 0910}, 060 (2009)
+  [arXiv:0907.2247 [hep-th]].
+  %%CITATION = JHEPA,0910,060;%%
+  
+%\cite{Chandia:2011wd}
+\bibitem{Chandia:2011wd}
+  O.~Chandia, Wm~D.~Linch III, B.~C.~Vallilo,
+  ``Compactification of the Heterotic Pure Spinor Superstring II,''
+  JHEP {\bf 1110}, 098 (2011).
+  [arXiv:1108.3555 [hep-th]].
+  
+%\cite{Chandia:2011su}
+\bibitem{Chandia:2011su}
+  O.~Chandia, Wm~D.~Linch III, B.~C.~Vallilo,
+  ``The Covariant Superstring on K3,''
+  [arXiv:1109.3200 [hep-th]].
+
+}%end footnotesize
+
+\end{thebibliography}
+
+
+\end{document}

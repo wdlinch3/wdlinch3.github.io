@@ -1,0 +1,253 @@
+\documentclass[12pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{Notes on the gauge principle in physics}
+\author{Wm D Linch III}
+\date{April 18, 2006}
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+
+\abstract{Lectures given in MAT682 which meets T$\Theta$ 14:20-15:40 P128.}
+
+
+\section{Force fields}
+
+Classical mechanics is the description of the motion of matter, that is, the (relative) position of particles ${\bf x}$ as a function of time $t$. Here the concept of a {\em force field} %\footnote{A {\em field} is a map $f:M\to V$ from spacetime $M$ to a vector bundle $V$. What type of field it is depends on what type of vector space the fiber is. For example, if $V={\mathbb R}$ (or ${\mathbb C}$), $f$ is called a real (or complex) scalar field. If $V=TM$ the field is called a vector field or more generally a tensor field of type $(p,q)$ if $V=TM^{\otimes p}\otimes T^* M^{\otimes q}$.} 
+is introduced as that which gives rise to the acceleration of particles through the famous
+\begin{eqnarray}
+\label{NII}
+{\bf F}({\bf x})=m \ddot{\bf x}%{{\rm d}^2 {\bf x}\over {\rm d}t^2}
+\end{eqnarray} 
+The archetypal force is the gravitational force. According to Newton's universal law of gravitation, a particle of gravitational mass $m$ gives rise to the radial force field%\footnote{Here $G$ denotes the universal gravitational constant and $r=||{\bf r}||$ is the radial distance from the particle.}
+\begin{eqnarray}
+{\bf F}=-m {\hat {\bf r}\over r^2}
+\end{eqnarray}
+Another forces common to our experience are the electric and magnetic forces. We find through experiment that a particle of charge $q$ and velocity $\dot{\bf x}$ relative to a static electric field ${\bf E}$ and magnetic field ${\bf B}$ experiences a force ${\bf F}=q( {\bf E}+\dot{\bf x}\times {\bf B})$. The theory of electric and magnetic fields is given by the Maxwell equations:
+\begin{eqnarray}
+\nabla \cdot {\bf E}=\rho ~~~&;&~~~\nabla \cdot {\bf B}=0\cr
+\nabla \times {\bf B}+{\partial {\bf E}\over \partial t}={\bf j} ~~~&;&~~~\nabla \times {\bf E}-{\partial {\bf B}\over \partial t}=0
+\end{eqnarray}
+In keeping with their relativistic symmetry, we collect the coordinates into a four component coordinate $(x^\mu)=(t, x, y, z)$ for $\mu=0, 1, 2, 3$. Similarly, we combine the charge and current into a vector $(j^\mu)=(\rho, {\bf j})$ and finally we collect the components of the electric and magnetic fields into the electromagnetic fieldstrength $F_{\mu \nu}$ such that $F_{0i}$ is the $i^{\rm th}$ component of ${\bf E}$ for $i=1,2,3$ and $F_{ij}=\epsilon_{ijk} {\bf B}^k$ with $\epsilon$ the completely antisymmetric $SO(3)$ invariant. It is then easy to show that the Maxwell equations take the form
+\begin{eqnarray}
+\label{covMax}
+\partial^\mu F_{\mu \nu}=j_\nu~~~;~~~\epsilon^{\lambda \mu\nu \rho} \partial_{\mu} F_{\nu \rho}=0
+\end{eqnarray}
+or, what is perhaps more familiar, ${\rm d}^* F=j$ and ${\rm d} F=0$.
+
+\section{Potentials and symmetries}
+
+In practice, it is usually more useful to switch to {\em potential fields}. In mechanics a potential field $U$ is introduced which gives rise to the force associated to it by ${\bf F}=-{\rm grad} U$. Doing this implies that we are introducing unphysical degrees of freedom into our formalism. For example, the potential has a ``zero mode'' (constant part) which does not contribute to the force derived from it. Accompanying this zero mode is a symmetry of the potential formalism:
+\begin{eqnarray}
+\label{global}
+U\mapsto U+c
+\end{eqnarray}
+where $c\in {\mathbb R}$ is a constant. This means that potentials themselves are unphysical and that there is an equivalence relation $U\sim V\Leftrightarrow U-V\in {\mathbb R}$: only potential differences have physical meaning.
+
+In electromagnetism we solve the Bianchi identity for $F_{\mu \nu}$ in terms of the ``vector potential'' $A_\mu$ such that $F_{\mu \nu}=\partial_\mu A_\nu -\partial_\nu A_\mu$. Similarly the vector potential has four zero modes corresponding to a constant 4-vector and the story is the same as for the mechanical potential. In addition to this symmetry of $F$, however, is the more subtle one
+\begin{eqnarray}
+\label{local}
+A_\mu \mapsto A_\mu-\partial_\mu \lambda
+\end{eqnarray}
+Here $\lambda: M\to {\mathbb R}$ is itself a field. The form of the transformation shows that now there is an entire function's worth $a(x)$ of unphysical degrees of freedom corresponding to the longitudinal part $A_\mu=\partial_\mu a+\dots$
+
+Theories constructed from $U$ or $A_\mu$ but written in terms of ${\bf F}$ or $F_{\mu \nu}$ will have the symmetries (\ref{global}) and (\ref{local}) in the sense that the equations of motion (\ref{NII}) and (\ref{covMax}) which they define will be invariant under the transformations (\ref{global}) and (\ref{local}). Transformations which are constants like (\ref{global}) are called {\em global symmetries} because constancy means that the transformation is the same everywhere in spacetime. When the parameter of the transformation is a non-constant function on spacetime it is called a {\em local symmetry} because the transformation %can be performed differently at some points than at other points provided the resulting function is smooth.
+varies from point to point {\it id est} locally.
+
+\section{The gauge principle}
+\label{GaugePrinciple}
+
+A theory constructed in terms of a ``vector'' field with local gauge symmetry is called a {\em gauge theory} and the potential field is called the {\em gauge field}. The term ``gauge principle'' refers to the belief that the forces of nature are fundamentally described by gauge theories. So far, we are aware of the existence of three basic (non-gravitational) gauge forces in Nature. The most obvious is the electromagnetic force we have just described. In addition there are two ``nuclear'' (or is it nucular?) forces. The strong nuclear force is responsible for the binding of quarks into protons, neutrons, {\it et cetera} and their binding to each other in the nuclei of atoms. The weak nuclear force is responsible for radioactivity and myriad particle decays.  
+
+Let us construct our first gauge theory from its coupling to a complex scalar field $\psi : {\mathbb R}^4\to {\mathbb C}$ in flat spacetime. We can think of this field as describing an electrically charged particle such as the electron. The reason a field is interpreted as describing a particle is the foundation of the quantum nature of fundamental particles. The standard interpretation is that the probability of finding the particle in an infinitesimally small box of volume ${\rm d}^4 x$ at the point $x^\mu$ in spacetime is given by 
+\begin{eqnarray}
+\label{prob}
+{\rm d}P=|\psi(x)|^2 {\rm d}^4 x
+\end{eqnarray}
+and $\psi (x)$ is called the ``wave function'' of the particle.
+
+The free field (no self-interactions) equation of motion 
+\begin{eqnarray}
+0=\Box \psi =\left( -{1\over c^2} {\partial^2 \over \partial t^2}+{\partial^2 \over \partial x^2}+{\partial^2 \over \partial y^2}+{\partial^2 \over \partial z^2}\right) \psi
+\end{eqnarray}
+is called the Klein-Gordon equation. (We have momentarily reinstated the explicit factor of $c$ to show that the wave $\psi$ is propagating at the speed of light.) The Klein-Gordon equation follows from the action 
+\begin{eqnarray}
+S_0=\int {\rm d}^4x \partial^\mu \bar \psi \partial_\mu \psi
+\end{eqnarray}
+by the variational principle $\delta S=0$. This theory has an obvious global $U(1)$ symmetry given by 
+\begin{eqnarray}
+\label{u1}
+\psi\to {\rm e}^{i \lambda} \psi
+\end{eqnarray}
+where $\lambda \in {\mathbb R}$ is a constant. This symmetry is consistent with the probabilistic interpretation (\ref{prob}). In fact, even if $\lambda$ were an entire {\em field} this would be consistent with the probabilistic interpretation. The statement which is usually made is that the phase of the wave function is unphysical. Upon hearing such a thing, a physicist will immediately attempt to make the global symmetry local. This process is called ``gauging''
+
+So let us gauge the $U(1)$ symmetry. Clearly we will have to deal with the fact that $\partial({\rm e}^{i\lambda} \psi) \neq {\rm e}^{i\lambda}(\partial \psi)$. We say that $\partial_\mu \psi$ is not ``(gauge) covariant'' and fix this by adding a gauge field $\partial_\mu\to \nabla_\mu =\partial_\mu -iA_\mu$ with transformation law (\ref{local}). Now $\nabla_\mu \psi$ {\em is} covariant and therefore our new theory
+\begin{eqnarray}
+\label{s1}
+S_1=\int {\rm d}^4x \nabla^\mu \bar \psi \nabla_\mu \psi
+\end{eqnarray}
+is invariant. We have gauged the global $U(1)$ symmetry (\ref{u1}) but we have not yet constructed a proper gauge theory because the ``photon'' $A_\mu(x)$ is not dynamical. %The description we have so far is appropriate for describing the dynamics of the charged particle $\psi(x)$ in a fixed electromagnetic ``background field'' given by the fixed 1-form $A$. 
+To see this, let us apply the variational principle to the gauge field. It's Euler-Lagrange equation is 
+\begin{eqnarray}
+\label{eom1}
+A_\mu={1\over |\psi|^2} j_\mu
+\end{eqnarray}
+with the ``current''%\footnote{This current is ``conserved'', that is $\partial^\mu j_\mu=0$. Stoke's theorem implies that the ``charge'' $Q=\int {\rm d}^3 x j^0$ is constant in time $\dot Q=0$. (The three dimensional integral is taken over a suitable spacelike surface.)}
+\begin{eqnarray}
+\label{current}
+j_\mu:={1\over 2i} (\bar \psi \partial_\mu \psi- \psi \partial_\mu \bar \psi )
+\end{eqnarray}
+The equation of motion is ``algebraic in $A$'' in the sense that there are no derivatives acting on $A_\mu(x)$. Therefore we can solve explicitly for $A$ and plug it back into the action (\ref{s1}) giving a new action
+\begin{eqnarray}
+\label{sigma1}
+S^\prime_1= \int {\rm d}^4x \left[ \partial^\mu \bar \psi \partial_\mu \psi-{1\over |\psi|^2} j^\mu j_\mu \right]
+%\int {\rm d}^4x g(\bar \psi, \psi) \partial^\mu \bar \psi \partial_\mu \psi
+\end{eqnarray}
+independent of $A$ and non-quadratic in $\psi$. Note that the $j^2$ term is also quadratic in derivatives although the coefficients of those terms are functions of $\psi$ and $\bar \psi$. More precisely defining the real vector $X =\left( \frac12(\psi+\bar \psi), \frac1{2i}(\psi-\bar \psi)\right)$ with components $X^i$ there are coefficient functions $g_{ij}(X)$ such that the action can be written
+\begin{eqnarray}
+\label{sigma}
+S_\sigma= \int {\rm d}^4x \, g_{ij}(X)\partial_\mu X^i \partial^\mu X^j
+\end{eqnarray}
+Such a model for $X$ is called a ``non-linear $\sigma$-model'' -- non-linear because the terms in the field equation (Euler-Lagrange equation) for $X$ quadratic in derivatives is non-linear in $X$ (the $\sigma$-model part is an unfortunate historical moniker). Considering a {\em target space} $S$ which is a two-dimensional manifold coordinatized locally by $X: {\mathbb R}^4\to S$. The three functions $g_{ij}(X)$ can be interpreted as a (pseudo-)Riemannian metric on the space $S$
+
+%We should perhaps pause to note that the current (\ref{current}) is ``conserved'' in the sense that $\partial^\mu j_\mu=0$ using the equations of motion for $\psi$. This means that the ``charge'' $Q=\int {\rm d}^3 x j^0$ defined and the spacial integral of the time component of the current is constant in time: ${\partial Q/ \partial t}=0$.
+
+So we see that although the gauge field has introduced interactions, the ``force'' introduced by it is a contact force which ultimately does not involve the gauge field. Here ``contact force'' means that the interaction only occurs at a point and not over a long range. To describe forces which are not of this contact type, we must therefore avoid algebraic solutions to the Euler-Lagrange equation for the gauge field $A$. This is done by introducing terms into the action with derivatives acting on the gauge field. Of course, these terms must themselves be gauge invariant and therefore, we could consider constructing such terms from the gauge invariant field strength $F_{\mu \nu}$.\footnote{In odd dimensions $d=2n+1$ we can also consider Chern-Simons terms $\int A\wedge F^{\wedge n}$. These are gauge invariant up to surface terms which vanish for fields with rapid fall-off at infinity.} This tensor is linear in derivatives so there are two terms we can write which are quadratic. The first is $\int F\wedge F$, however this term is a surface term which vanishes since we are assuming that all fields have rapid fall-off at infinity.\footnote{As we may or may not discuss, this dismissal is too glib. This Chern class term is important in two cases. Obviously, if our spacetime is topologically non-trivial rather than contractible we should consider this term. Secondly, even in contractible spacetimes, we often consider singular gauge field configurations -- that is, not-really-contractible-spacetimes. This Chern class term or ``$\theta$-term'' will then be counting the number of ``instantons''.} Therefore we consider the alternative quadratic action 
+\begin{eqnarray}
+S_2=-{1\over 4} \int {\rm d}^4 x   F^{\mu \nu}F_{\mu \nu}+S_1
+\end{eqnarray}
+If we compute the Euler-Lagrange equations of this action for the gauge field we find the first set of Maxwell equations (\ref{covMax}) with the current $j_\mu$ given by (\ref{current}). In the absence of matter ($\psi$), the Maxwell equations admit propagating (massless) wave solutions $\Box {\bf E}=0$ and $\Box {\bf B}=0$. It can be checked that this implies a force law with $1/r^2$ asymptotics. We have therefore accomplished what we set out to do: Introduce a long-range force (electromagnetic in this case) between charged matter fields. 
+
+
+\section{The power of the gauge principle}
+
+What we have just achieved is considered by many to be one of the most remarkable facts of Nature: All of electrodynamic theory follows from the principle of relativity and $U(1)$ gauge invariance. What is even more remarkable lies in the almost effortless generalization of this idea to (almost) every force of Nature. To see how this works, let us reconsider our construction from a more abstract point of view. 
+
+We started out as na\"{i}ve physicists talking about a complex-valued wave function $\psi: M\to {\mathbb C}$ only to promptly conclude that wave functions differing by a $U(1)$ phase were to be considered equivalent. That is, $\psi$ is more properly considered as a section of a complex line bundle over $M$ with structure group $G=U(1)$. The gauge field is then simply the connection on this bundle. We can consider this line bundle as the associated bundle to a principle $U(1)$-bundle $P$. In our case the principle bundle $P=M\times U(1)$ has a product structure because $M$ is contractible. The connection 1-form may then be written in global coordinates $A=A_\mu(x) {\rm d}x^\mu$.
+%We then considered the principle $U(1)$-bundle with this connection and computed its curvature which we called ``field strength''. 
+The ``field strength'' 2-form $F_{\mu \nu}(x){\rm d}x^\mu\wedge {\rm d}x^\nu$ was then defined to be the curvature of this connection. It obviously obeys the Bianchi identity because ${\rm d}^2\equiv 0$. 
+
+We implicitly took $M$ to have a (pseudo-)Riemannian structure which we used to ``raise and lower indices''. We used this to introduce a function $S:P\to {\mathbb R}$ which was quadratic in $F$. The stationary points of this function(al?) were found to be gauge field configurations satisfying the Maxwell equations.
+
+The massive generalizability of this setup should be obvious. The data required to construct a pure gauge theory (ie without matter) is
+\begin{itemize}
+\item A (pseudo-)Riemannian manifold $(M, g)$
+\item A Lie group $G$
+\item A trace, that is, a $G$-invariant symmetric bi-linear form ${\mathfrak g}\times {\mathfrak g}\to {\mathbb R}$ on the Lie algebra ${\mathfrak g}$ of $G$
+\end{itemize}
+ From this we construct a principle $G$-bundle over $M$ whose curvature is the gauge field strength. The (pseudo-)Riemannian structure and the trace are required to construct the action functional. The stationary points of this functional will be the not-necessarily-abelian generalization of the Maxwell equations {\it in vacuo} (without matter). Such equations are called the ``Yang-Mills field equations'' and pure gauge theories are called ``Yang-Mills theories''.
+
+The coupling to matter is computed by constructing associated bundles $E=P\times_\rho V$ given by identifying $(u, v)\sim (u g, \rho(g)^{-1} v)$ for some representation $\rho: G\to {\rm End} (V)$ defining the fibres $V$. %The fibres $F$ of this bundle define a representation $rho$ of $G$. 
+The matter fields $\psi\in \Gamma(M,E)$ are sections of this bundle and their transformation properties under a change of coordinates is defined by the chosen representation $\rho$: $\psi\mapsto \rho(g) \psi$.
+
+
+\section{Physical examples}
+
+%\subsection{Physical}
+
+Let us consider  some examples. For completeness we start with the electromagnetic case and define some jargon. The theory of the electromagnetic field and its coupling to charged particles is known as ``Quantum Electrodynamics'' or QED. The electromagnetic field is often referred to by its quantum or particle name: ``photon''. Classically, it is the connection on a principle $U(1)$-bundle over spacetime. ``Electrons'' are the most ubiquitous form of charged matter. Their fields are classically sections of the complex line bundle associated with the principle $U(1)$-bundle.\footnote{Not really. As we may or may not discuss, all electromagnetically charged particles (indeed, all known fundamental non-gauge particles) are ``spinors'' not scalars. Spinors are sections of a spinor bundle over spacetime, transforming in the fundamental representation of ${\rm Spin}({3,1})$ (the double cover of ${\rm SO}({3,1})$) under Lorentz transformations. This fact hugely complicates the description of fundamental particles but adds nothing to the discussion presented here. We will therefore simply ignore this extra structure.} 
+
+The ``strong nuclear force'' is known to be described by a gauge theory called Quantum Chromodynamics (QCD). This theory is a Yang-Mills theory based on the principle ${\rm SU}(N)$-bundle over spacetime coupled to matter. In Nature $N=3$, the gauge fields are called ``gluons'' and the matter fields are called ``quarks''. The quarks transform in the vector representation of $SU(3)$ denoted as ${\bf 3}$ while the gluons are in the ${\bf 8}$ or adjoint representation. The non-abelian nature of the gauge group introduces ``self-couplings'' of the gauge field (non-linearities in the Yang-Mills field equations) since $F={\rm d}A+A\wedge A$ itself is already non-linear in the connection. These non-linearities hugely complicate the phenomenology of this theory. A major open problem is to understand the behavior of the Yang-Mills sector in the ``strong coupling regime'', where perturbation theory does not apply. In fact this problem is one of the Millennium Problems. It variously goes under the names ``the strong-coupling problem'', ``the mass-gap problem'', and ``the confinement problem''.
+%in the ``large $N$'' limit. 
+
+The gravitational force is a gauge theory or almost a gauge theory depending on who you ask. The idea here is to consider the tangent bundle of the spacetime $M$. The structure group, then, is the isometry group of the tangent space $G={\rm SO}({3,1})$. The principle bundle associated to this is the frame bundle over $M$. The connection now has two parts: the frame field and the spin-connection (the Lorentz part). This ``frame field'' is usually called by its particle name {\em graviton} although many people prefer ``frame field'' or ``viel-bein'' (German\footnote{Some authors like to show off their command of the german language by substituting for ``viel-'' the actual number e.g. ein-, zwei-, vier-, zehn-, or elf-bein in dimension 1, 2, 4, 10, or 11.} for ``many-leg"). The spin-connection is an extra field which can be eliminated algebraically from the theory by imposing the condition that the connection be torsion-free.
+
+
+
+
+
+\section{An aside on the Aharonov-Bohm effect}
+
+Consider\footnote{This treatment mostly copies Ryder.} the standard double-slit setup with slits $A$ and $B$ with distance $d$ between them. Let $O$ denote the symmetric point on the screen a distance $L$ away from the slits and $C$ a target point a distance $h$ above $O$. An interference pattern emerges on the screen when a beam of electrons is fired at the double slit as usual. Let $\alpha$ and $\beta$ denote the parameterized paths through $A$ and $B$ respectively. The interference maxima, respectively minima, occur when the phase difference $\delta$ at $C$ due to the difference in the path lengths of $\alpha$ and $\beta$ is $\delta=2 n \pi$, respectively $\delta = (2n+1)\pi$ for $n\in \mathbb Z$ an integer.
+
+Now suppose that we introduce a small perfect solenoid in the barrier between the slits $A$ and $B$ at $S$. By perfect we mean that although the magnetic field at $S$ is non-vanishing, there is no magnetic field anywhere outside of (a small neighborhood of) $S$, that is, there is no ``fringe effect''. Note, however, that there is a non-vanishing potential $\bf A$ in this region as required by it's definition ${\bf B}={\rm curl} \bf A$. 
+
+In the classically allowed region the magnetic field vanishes and therefore the force due to the solenoid on electrons in this region ${\bf F}=q {\bf v} \times {\bf B}=0$ vanishes. This is the usual statement that classically it is the magnetic field that is physical and not the potential. Quantum mechanically, however, we must check that there is no change in the interference pattern. To this end, we must re-calculate the phase shifts along the trajectories $\alpha$ and $\beta$. 
+%Let $a$ denote the difference in length of $AC$ and $BC$. The relative phase upon arrival at $C$ of the wave is then $\delta=2\pi a/ \lambda$ where $\lambda$ is the wavelength. 
+Over and above the geometric phase giving rise to the original interference pattern, there will now be a contribution from the vector potential. 
+
+Recall that for a free wave the (spacial) phase factor of the wave function is ${\rm e}^{i {\bf p}\cdot {\bf x}}$. We have learned above that electromagnetic theory is a minimally coupled gauge theory. This meant that the procedure of including the electromagnetic field amounted to replacing $p_\mu \mapsto p_\mu-A_\mu$.\footnote{Recall that $p_\mu =-i \hbar  \partial_\mu$ and we are taking $\hbar=1$.} Therefore minimal coupling implies that in a background field ${\bf A}({\bf x})$, the free wave function acquires a phase factor $\psi({\bf x}) \mapsto {\rm e}^{i {\bf A}\cdot {\bf x}} \psi({\bf x})$. The phase over a path $\gamma$ therefore accumulates to $\int_\gamma {\bf A} \cdot {\rm d}{\bf x}$. Therefore the phase difference accumulated between the paths $\alpha$ and $\beta$ is given by 
+\begin{eqnarray}
+\label{pd}
+\Delta \delta = \int_\gamma {\bf A}\cdot {\rm d} {\bf x}~~~{\rm where}~~~ \gamma=\beta^{-1} \circ \alpha.
+\end{eqnarray}
+Let $\sigma$ denote the area with boundary $\partial \sigma = \gamma$ and let $\Phi=\int_\sigma *{\bf B} $ denote the flux through $\sigma$. Then Stoke's formula gives
+\begin{eqnarray}
+\Delta \delta = \Phi
+\end{eqnarray}
+that is, {\em the difference in the accumulated phase between the particle trajectories $\alpha$ and $\beta$ in a background gauge field ${\bf A}$ is given by the flux of the field strength $\nabla \times {\bf A}$ through the surface bounded by $\beta^{-1}\circ \alpha$. } It becomes an exercise in planar geometry to convert this phase into an overall shift in the interference pattern by a distance $h={ L \lambda \over 2 \pi d} \Phi$.
+
+It is worth emphasizing that the electron paths never enter a region with ${\bf B}\neq 0$. We also note that although the gauge field ${\bf A}$ is not gauge invariant, and hence cannot be physical, the Dirac phase factor (a.k.a. Wilson line)
+\begin{eqnarray}
+W(\gamma)={\rm e}^{i \int_\gamma A}
+\end{eqnarray}
+{\em is} gauge invariant  for any closed path $\gamma$ by Stoke's formula (we are writing $A$ for the 1-form whose expression in local coordinates is ${\bf A}({\bf x}) \cdot {\rm d} {\bf x}$) since $\delta A={\rm d} \lambda$ and $\partial \gamma=\varnothing$. 
+
+%To this end, let us exclude the ${\bf B}\neq 0$ region entirely from our considerations and work on the space $M={\mathbb R}^2\backslash \{{\rm pt}\}$. 
+%Then the gauge potential with non-vanishing component $A_\phi={BR^2\over 2r}$ is well-defined and has ${\rm curl} {\bf A}=B \hat{\bf z}$ of strength $B$ in the $z$-direction. 
+%On $M$, ${\bf B\equiv 0}$ and therefore ${\rm curl} {\bf A}=0$. Were $M$ simply connected, we could solve the latter condition as ${\bf A} ={\rm grad} \chi$. 
+%We may still do this on the universal cover $\hat M$ of $M$ in which case we interpret $\chi$ on $M$ as a multi-valued function. With this interpretation we find that the phase difference (\ref{pd}) is 
+%We may still do this locally on $M$. 
+%\begin{eqnarray}
+%\Delta \delta = {\rm deg} \chi.
+%\end{eqnarray}
+
+
+
+\section{Gauge symmetry and $\sigma$-models}
+
+In section \ref{GaugePrinciple} we considered the simple case of a ${\rm U}(1)$ gauge field $A$ coupled minimally ($\partial\to \nabla$) to a complex wave function $\psi$. The latter was a section of a ${\mathbb C}$-line bundle over spacetime as is appropriate for the quantum mechanical description of a charged scalar field. Starting from the minimally coupled theory without kinetic terms for the gauge field (\ref{s1}), we motivated the introduction of the latter by arguing that without it the gauge field's equation of motion (\ref{eom1}) could be solved algebraically, implying that the theory originally being described effectively does not have a dynamical gauge field. The result of ``integrating out''\footnote{Putting the gauge field on-shell when it's equation of motion is algebraic is equivalent in the path integral description to performing the $\int [{\rm d}A]$ integral by quadratures. Hence, we are integrating $A$ out.} the gauge field (\ref{sigma1}) was a non-linear theory in the original field $\psi$ called a non-linear $\sigma$-model.
+
+Actually the reality is a bit more mundane in this case. The action (\ref{sigma1}) for a single complex field $\psi$ collapses completely to the free action for it's modulus $\rho=|\psi|:S^\prime_1=\int (\partial \rho)^2$. We can see this by direct calculation. If we parameterize $\psi=\rho {\rm e}^{i \pi}$ then the current (\ref{current}) is just $j_\mu =\rho^2 \partial_\mu \pi$ and we notice that plugging this into the action, all the $\pi$ terms cancel and leave only the modulus terms.\footnote{Note that the gauge field takes the form $A_\mu=\partial_\mu \pi$. Such a field is said to be {\em pure gauge} meaning that it is gauge equivalent to no field at all.}
+
+A better motivation is the following: The gauge freedom (\ref{u1}) implies that $\rho^\prime=\rho$ and $\pi^\prime =\pi+\lambda$. The latter equation means that for any choice of section $\pi$, we can locally find a function $\lambda=-\pi$ such that $\pi^\prime=0$. Since these sections are physically equivalent this implies that $\pi$ is unphysical, which was the whole point of introducing the gauge field in the first place. Choosing the section $\pi^\prime=0$ by the above procedure is called {\em gauging away} $\pi$ or {\em gauge fixing} ($\pi$ to zero). The resulting theory has only $\rho$ as a dynamical field and is said to be in {\em unitary gauge}. Anyway, we never picked any such gauge when we integrated out the gauge field. Therefore, the action $S^\prime_1$ is still gauge invariant even without the gauge field. How can this be when the gauge field was introduced to render $\pi$ unphysical? The answer is that this will be whenever the resulting action does not depend on $\pi$ and the action is still gauge invariant because the $\rho$ field was gauge invariant by itself. 
+
+Although this is perfectly consistent with everything we have said it is a bit disappointing that our non-linear $\sigma$-model is not non-linear at all -- in fact it is free. (Recall that the reason for discussing it in section (\ref{GaugePrinciple}) was to point out that the gauge field could be eliminated unless kinetic terms were introduced.) The problem is that we took a single scalar field. What if we take instead $N+1$ scalar fields? 
+%Then the relative phases of these fields 
+This would be a described by a section $\psi$ of a complex vector bundle with ${\mathbb C}^{N+1}$ fibers. In order to get rid of the pesky $\rho$ factor above, let use further assume that $\bar \psi \psi=1$ is normalized. (We will use $\bar{}$ to denote hermitian conjugation so that the formul\ae{} we have already derived continue to be valid.) That is, the fibers are actually $N$-spheres embedded in ${\mathbb C}^{N+1}$.
+Suppose that now we gauge the overall phase of these fields. The action is now
+\begin{eqnarray}
+S=\int {\rm d}^4 x \nabla^\mu \bar \psi \nabla_\mu \psi +\Lambda (\bar \psi \psi-1)
+\end{eqnarray}
+The field $\Lambda$ serves as a Lagrange mutliplier enforcing the constraint\footnote{In the path integral, $\int [{\rm d} \Lambda]{e^{-i \Lambda (\bar \psi\psi-1)}}=\delta(\bar \psi \psi-1)$.} although this is not really necessary -- we can also impose the constraint by hand. The connection $A$ is still taken to be a $U(1)$ gauge field as before. This action has a global ${\rm U}(N+1)$ symmetry of which a ${\rm U}(1)$ subgroup is gauged. 
+
+Integrating out the gauge field we obtain the obvious generalization of the non-linear $\sigma$-model action (\ref{sigma1}) 
+\begin{eqnarray}
+S_\sigma= \int {\rm d}^4x \left[ \partial^\mu \bar \psi \partial_\mu \psi-j^\mu j_\mu \right]
+\end{eqnarray}
+(we are using $|\psi|^2=1$) with the obvious generalization of the current (\ref{current})
+\begin{eqnarray}
+j_\mu=\frac1{2i}\bar \psi \stackrel{\leftrightarrow}{\partial}_\mu \psi
+\end{eqnarray}
+We can solve the constraint in terms of an unconstrained field $z$ s.t.
+\begin{eqnarray}
+\psi=\left( { 2z \over 1+|z|^2}, {1-|z|^2\over 1+|z|^2}\right)^T
+\end{eqnarray}
+In terms of the $z$ field the action becomes 
+\begin{eqnarray}
+S_\sigma &=&\int {\rm d}^4x { 2\partial_\mu \bar z\partial^\mu z+ (\bar z \stackrel{\leftrightarrow}{\partial}_\mu z)(\bar z \stackrel{\leftrightarrow}{\partial}^\mu z)\over (1+\bar zz)^2}\cr
+&=&\int {\rm d}^4x {\partial_\mu \bar z \partial^\mu z \over (1+\bar zz)^2}
+\end{eqnarray}
+%Or considering $(\bar z, z)$ as homogeneous coordinates of the embedding $\Phi:M\to {\mathbb C}P^1$
+%&=&\int {\rm d}^4x {\partial_\mu \bar z \partial^\mu z \over (1+\bar zz)^2}\cr
+%&=&\int_M z_*( g)
+%\end{eqnarray}
+This is the pull-back of the Fubini-Study metric on ${\mathbb C}P^1$ to the spacetime $M$.
+
+
+\end{document}   
+
+
+
+
+
+

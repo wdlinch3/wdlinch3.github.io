@@ -1,0 +1,357 @@
+\documentclass[9pt]{beamer}
+
+\usecolortheme[RGB={205,173,0}]{structure} 
+\usefonttheme{serif} 
+
+\usepackage{amssymb}
+\usepackage[all]{xy}
+
+%Typesetting conventions
+\def\K3{\mathrm K3}
+\def\CY#1{\mathrm{CY}_{#1}}
+%\def\SU2{\mathrm{SU}(2)}
+\def\SU#1{SU({#1})}
+%\def\U1{\mathrm U(1)}
+\def\U#1{U({#1})}
+\def\SO#1{SO({#1})}
+\def\O#1{O({#1})}
+%multiplet and dimension
+\def\mult #1#2{\mathrm{#1}[\![ {#2}]\!]}
+%normal ordering
+\def\normal#1{\,\!:\! #1 \!:\! \,}
+%doublebar
+\def\double #1{#1{\hbox{\kern-2pt $#1$}}}
+%underline
+\def\un#1{\underline #1}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%  Typesetting conventions  %%%%%%%%%%%%%%%%%%%
+
+%doublebar
+\def\double #1{#1{\hbox{\kern-2pt $#1$}}}
+%Bras and kets
+\def\ket#1{\left| #1\right>}
+\def\bra#1{\left< #1\right|}
+\def\braket#1#2{\left< #1\right|\left.#2\right>}
+%For twistors
+\def\kra#1{\left[ #1\right|}
+\def\bet#1{\left| #1\right]}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%  Jim Gates and Marc Grisaru MACROS   %%%%%%%%%%%%%%%%
+\def\pp{{\mathchoice
+            %{general format
+               %[w] = length of horizontal bars
+               %[t] = thickness of the lines
+               %[h] = length of the vertical line
+               %[s] = spacing around the symbol
+              %
+              %\kern [s] pt%
+              %\raise 1pt
+              %\vbox{\hrule width [w] pt height [t] pt depth0pt
+              %      \kern -([h]/3) pt
+              %      \hbox{\kern ([w]-[t])/2 pt
+              %            \vrule width [t] pt height [h] pt depth0pt
+              %            }
+              %      \kern -([h]/3) pt
+              %      \hrule width [w] pt height [t] pt depth0pt}%
+              %      \kern [s] pt
+          {%displaystyle
+              \kern 1pt%
+              \raise 1pt
+              \vbox{\hrule width5pt height0.4pt depth0pt
+                    \kern -2pt
+                    \hbox{\kern 2.3pt
+                          \vrule width0.4pt height6pt depth0pt
+                          }
+                    \kern -2pt
+                    \hrule width5pt height0.4pt depth0pt}%
+                    \kern 1pt
+           }
+            {%textstyle
+              \kern 1pt%
+              \raise 1pt
+              \vbox{\hrule width4.3pt height0.4pt depth0pt
+                    \kern -1.8pt
+                    \hbox{\kern 1.95pt
+                          \vrule width0.4pt height5.4pt depth0pt
+                          }
+                    \kern -1.8pt
+                    \hrule width4.3pt height0.4pt depth0pt}%
+                    \kern 1pt
+            }
+            {%scriptstyle
+              \kern 0.5pt%
+              \raise 1pt
+              \vbox{\hrule width4.0pt height0.3pt depth0pt
+                    \kern -1.9pt  %[e]=0.15pt
+                    \hbox{\kern 1.85pt
+                          \vrule width0.3pt height5.7pt depth0pt
+                          }
+                    \kern -1.9pt
+                    \hrule width4.0pt height0.3pt depth0pt}%
+                    \kern 0.5pt
+            }
+            {%scriptscriptstyle
+              \kern 0.5pt%
+              \raise 1pt
+              \vbox{\hrule width3.6pt height0.3pt depth0pt
+                    \kern -1.5pt
+                    \hbox{\kern 1.65pt
+                          \vrule width0.3pt height4.5pt depth0pt
+                          }
+                    \kern -1.5pt
+                    \hrule width3.6pt height0.3pt depth0pt}%
+                    \kern 0.5pt%}
+            }
+        }}
+
+\def\mm{{\mathchoice
+                      %{general format %[w] = length of bars
+                                       %[t] = thickness of bars
+                                       %[g] = gap between bars
+                                       %[s] = space around symbol
+   %[w], [t], [s], [h]=3([g]) are taken from corresponding definitions of \pp
+   %
+                      %       \kern [s] pt
+               %\raise 1pt    \vbox{\hrule width [w] pt height [t] pt depth0pt
+               %                   \kern [g] pt
+               %                   \hrule width [w] pt height[t] depth0pt}
+               %              \kern [s] pt}
+                  %
+                       {%displaystyle
+                             \kern 1pt
+               \raise 1pt    \vbox{\hrule width5pt height0.4pt depth0pt
+                                  \kern 2pt
+                                  \hrule width5pt height0.4pt depth0pt}
+                             \kern 1pt}
+                       {%textstyle
+                            \kern 1pt
+               \raise 1pt \vbox{\hrule width4.3pt height0.4pt depth0pt
+                                  \kern 1.8pt
+                                  \hrule width4.3pt height0.4pt depth0pt}
+                             \kern 1pt}
+                       {%scriptstyle
+                            \kern 0.5pt
+               \raise 1pt
+                            \vbox{\hrule width4.0pt height0.3pt depth0pt
+                                  \kern 1.9pt
+                                  \hrule width4.0pt height0.3pt depth0pt}
+                            \kern 1pt}
+                       {%scriptscriptstyle
+                           \kern 0.5pt
+             \raise 1pt  \vbox{\hrule width3.6pt height0.3pt depth0pt
+                                  \kern 1.5pt
+                                  \hrule width3.6pt height0.3pt depth0pt}
+                           \kern 0.5pt}
+                       }}
+
+\def\ad{{\kern0.5pt
+                   \alpha \kern-5.05pt
+\raise5.8pt\hbox{$\textstyle.$}\kern 0.5pt}}
+
+\def\bd{{\kern0.5pt
+                   \beta \kern-5.05pt \raise5.8pt\hbox{$\textstyle.$}\kern 0.5pt}}
+
+\def\qd{{\kern0.5pt
+                   q \kern-5.05pt \raise5.8pt\hbox{$\textstyle.$}\kern 0.5pt}}
+\def\Dot#1{{\kern0.5pt
+     {#1} \kern-5.05pt \raise5.8pt\hbox{$\textstyle.$}\kern 0.5pt}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage{beamerthemesplit}
+
+\title{Superstrings in Flux Backgrounds} %\\(Proyecto n\'umero 11100425)}
+\author{William D. Linch III}
+\date{21 diciembre, 2011.}
+
+\begin{document}
+
+\frame{\titlepage}
+
+%\section[Outline]{}
+%\frame{\tableofcontents}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Superstrings in Flux Backgrounds}
+\frame{
+\frametitle{F\'isca Fundamental Actual y en el Futuro Cercano}
+Hay mucha emoci\'on reciente sobre la f\'isica de part\'iculas fundamentales\pause :
+\begin{itemize}
+\item T2K: >Oscilaci\'on de neutrinos $\nu_\mu \to \nu_e$? ($\sim2.5\sigma$) 
+\item OPERA: >>>Propagaci\'on superlum\'inico de neutrinos??? ($\sim6\sigma$)
+\item LHCb: >Exceso de violaci\'on de CP en $D^0\to K^+K^-$ y $D^0\to \pi^+\pi^-$? ($\sim3.5\sigma$)
+\item LHC: >Exceso de $pp\to \ell^-\bar\nu\ell^+\nu$ consistente con Higgs de $m_h\sim 125$ GeV? (ATLAS:$\sim2.6\sigma$ y CMS: $\sim1.9\sigma$)
+\end{itemize}
+\pause  
+Confirmaci\'on y violaci\'on del Modelo Est\'andar simulaneamente!\\
+$\Rightarrow$ F\'isica m\'as all\'a del Modelo Est\'andar\pause :
+\begin{itemize}
+\item >Dimensiones adicionales?
+\item >Gran Unificaci\'on de electromagnetismo, la fuerza d\'ebil, y la fuerza fuerte? (GUT: $SU(5)$, $SO(10)$, $E_6$, \dots)
+\item >Supersimetr\'ia? (SUSY/SUGRA)
+\item >...?
+\end{itemize}
+}
+
+\frame{
+\frametitle{El Espacio de Teor\'ias Fundamentales}
+\begin{displaymath}
+\xymatrix@=10pt{ 
+{\begin{array}{c}\textrm{Grav.}\\ \textrm{Cu\'ant.}\end{array}}&& \ar[ll]{\begin{array}{c}\textrm{Camp.}\\ \textrm{Cu\'ant.}\end{array}}& \\
+&&&{\begin{array}{c}\textrm{Mec.}\\ \textrm{Cu\'ant.}\end{array}}\ar[ul] \\
+{\begin{array}{c}\textrm{Rel.}\\ \textrm{Gen.}\end{array}}\ar[uu] &  & 
+	{\begin{array}{c}\textrm{Rel.}\\ \textrm{Esp.}\end{array}}\ar[ll]\ar[uu]& \\
+&{\begin{array}{c}\textrm{Grav.}\\ \textrm{Cl\'as.}\end{array}}\ar[ul]&&
+	\ar[ll]_{G}{\begin{array}{c}\textrm{Mec.}\\ \textrm{Cl\'as.}\end{array}} \ar[ul]_{1/c}\ar[uu]_\hbar
+}
+\end{displaymath}
+}
+
+\frame{
+\frametitle{El Espacio de Teor\'ias Fundamentales}
+\begin{displaymath}
+\xymatrix@=10pt{ 
+{\begin{array}{c}\textrm{Grav.}\\ \textrm{Cu\'ant.}\end{array}}&& \ar[ll]{\color{red}\begin{array}{c}\textrm{Camp.}\\ \textrm{Cu\'ant.}\end{array}}& \\
+&{\color{red}\begin{array}{c}\textrm{Mod.}\\ \textrm{Est.}\end{array}} \ar@{=>}[ur]\ar@{:>}[dl]&&{\begin{array}{c}\textrm{Mec.}\\ \textrm{Cu\'ant.}\end{array}}\ar[ul] \\
+{\color{red}\begin{array}{c}\textrm{Rel.}\\ \textrm{Gen.}\end{array}}\ar[uu] &  & 
+	{\begin{array}{c}\textrm{Rel.}\\ \textrm{Esp.}\end{array}}\ar[ll]\ar[uu]& \\
+&{\begin{array}{c}\textrm{Grav.}\\ \textrm{Cl\'as.}\end{array}}\ar[ul]&&
+	\ar[ll]_{G}{\begin{array}{c}\textrm{Mec.}\\ \textrm{Cl\'as.}\end{array}} \ar[ul]_{1/c}\ar[uu]_\hbar
+}
+\end{displaymath}
+}
+
+\frame{
+\frametitle{Supercuerdas}
+Necesidad de ``cuerdas'':\pause 
+\begin{itemize}
+\item Cuantizaci\'on de part\'iculas relativ\'isticas $\Rightarrow$ Teor\'ia Cu\'antica de Campos = el c\'alculo del Modelo Est\'andar ($\hbar$ \& $c$)
+%\pause  
+\item Cuantizaci\'on de cuerdas relativ\'isticas $\Rightarrow$ Teor\'ia de todas part\'iculas y fuerzas ($\hbar$, $c$, \& $G$)
+%\pause  
+\item Formulaci\'on sencillo $\Rightarrow$ $D=10$ \& {SUSY}\pause :
+%{\bf I}, {\bf II}{\sc a}, {\bf II}{\sc b}, {\bf H}{\sc e}, {\bf H}{\sc o}
+\end{itemize}
+%~\\
+\begin{displaymath}
+\xymatrix@=10pt{ 
+&\ar@{-}@/^1pc/[dl]{\begin{array}{c}11\textrm{\sc d}\\ \textrm{{\sc sugra}}\end{array}} \ar@{-}@/_1pc/[dr]& \\
+\mathbf {II}\textrm{\sc a}\ar@{-}@/^1pc/[dd]&&\mathbf {H}\textrm{\sc e}\ar@{-}@/_1pc/[dd]\\
+&\mathbf M&\\
+\mathbf {II}\textrm{\sc b}&&\mathbf {H}\textrm{\sc o}\\
+&\ar@{-}@/_1pc/[ul]{\mathbf I}\ar@{-}@/^1pc/[ur]&
+}
+\end{displaymath}
+}
+
+\frame{
+\frametitle{Supercuerdas}
+Formulaciones de supercuerdas:
+\begin{itemize}
+\item Ramond-Neveu-Schwarz 
+\item Green-Schwarz 
+\item H\'ibrida $=$ (Ramond-Neveu-Schwarz) $\oplus$ (Green-Schwarz)
+\item Covariante $\supset$ Green-Schwarz
+\end{itemize}
+\pause  
+Implementaci\'on en c\'alculos fen\'omenologicos:
+\begin{itemize}
+\item $D<10$ $\Rightarrow$ ``compactificaci\'on'' y ``holograf\'ia''
+\item Fondos con flujos no-triviales
+\item $\Rightarrow$ Teor\'ia de cuerdas = Herramienta computacional muy poderoso pero tambi\'en {\em muy complicado}
+\end{itemize}
+}
+
+%\frame{
+%\frametitle{Supercuerdas}
+%\begin{displaymath}
+%\xymatrix{ 
+%???&&Covariante \\
+%&Hibrida\ar[u] &\\
+%RNS\ar[ur] &  & GS\ar[ul]
+%}
+%\end{displaymath}
+%}
+
+
+\frame{
+\frametitle{Proyecto propuesto (11100425)}
+Fase I
+\begin{itemize}
+\item Formulaci\'on de la supercuerda covariante (tipo {\bf I}, {\bf H}{\sc e}, {\bf H}{\sc o}) en un fondo Calabi-Yau
+\item Establecer relaci\'on con forumulaci\'on ``h\'ibrida'' en $D=4$ y $D=6$
+\end{itemize}
+%\pause  
+Fase II
+\begin{itemize}
+\item Investigaci\'on de soluciones de problemas t\'ecnicos en formulaciones no covariantes
+\item Investigar posibilidad de simetr\'ia especular en las cuerdas {\bf H}{\sc e} y {\bf H}{\sc o}
+\end{itemize}
+%\pause  
+Fase III
+\begin{itemize}
+\item Inclusi\'on de flujos en fondos tipo {\bf II}{\sc a} y {\bf II}{\sc b} para fenomenolog\'ia
+\item Descripci\'on de part\'iculas en fondos hologr\'aficos $AdS\times X$
+\item Uso de resultados para aclarar estructura de superespacios y agujeros negros
+\end{itemize}
+}
+
+\frame{
+\frametitle{Fase I: Resultados}
+\begin{itemize}
+\item Compactificaciones a $D=4,6,$ y 8 en ``orbifoldes'' con ``holonom\'ia especial''
+	\begin{itemize}
+	\item {\em Compactification of the Heterotic Pure Spinor Superstring II}, JHEP {\bf 1110}, 098 (2011) [arXiv:1108.3555 [hep-th]] junto con Chand\'ia ({\sc uai}) y Vallilo ({\sc unab}).
+	\end{itemize}
+\item Compactificacion a $D=6$ en fondo de K3
+\item Relaci\'on de la cuerda en K3 con descripci\'on h\'ibrida 
+	\begin{itemize}
+	\item {\em The Covariant Superstring on K3}, [arXiv:1109.3200 [hep-th]] con Chand\'ia ({\sc uai}) y Vallilo ({\sc unab}).
+	\end{itemize}
+\item Desarrollo de SUGRA en el superespacio proyectivo/arm\'onico con $D=6$ y $N=(1,0)$
+	\begin{itemize}
+	\item {\em Super-Weyl invariance in 6D supergravity}, (en preparaci\'on) con G. Tartaglino-Mazzucchelli ({Uppsala}, Swecia).
+	\end{itemize}
+\end{itemize}
+}
+
+\frame{
+\frametitle{Fase I: Otros}
+\begin{itemize}
+\item Presentaci\'on: {\em Compactification of the pure spinor superstring}, 5th {\sc ictp-capes} Latin-American String School (diciembre, 2010), {\sc ift-unesp}, Sa\~o Paulo, Brazil.
+\item Visita de colaboraci\'on a Dr Gabriele Tartaglino- Mazzucchelli en Uppsala University (28 julio|11 agosto, 2011), Uppsala, Suecia.
+\item Inicio trabajo con alumno de mag\'ister (C\'esar Patricio Arias Huerta) en geometr\'ia de superespacios de seis dimensiones con supersimetr\'ia m\'inimo.
+\item Entrevistas sobre neutrinos superlum\'inicos/dimensiones adicionales (23/9/2011 por TVN) y descubrimiento del Higgs/supersimetr\'ia (14/12/2011 en La Tercera).
+\end{itemize}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\frame{
+%\frametitle{Fin}
+%\begin{centering}
+%{\Huge Thank you!}
+%\end{centering}
+%}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{thebibliography}{99}
+%
+%\footnotesize{
+%  
+%%\cite{Chandia:2011su}
+%\bibitem{Chandia:2011su}
+%  O.~Chandia, W.~D.~Linch, III, B.~C.~Vallilo,
+%  ``The Covariant Superstring on K3,''
+%  [arXiv:1109.3200 [hep-th]].
+%
+%}%end footnotesize
+%
+%\end{thebibliography}
+
+
+\end{document}

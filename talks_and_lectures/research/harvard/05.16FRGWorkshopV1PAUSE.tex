@@ -1,0 +1,887 @@
+\documentclass[8pt]{beamer}
+
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+
+\setbeamersize{text margin left=5mm,text margin right=5mm}
+
+\usepackage{/Users/wdlinch3/Dropbox/Rashoumon/LaTeX/macros/WDL3beamer}
+
+%Pausing toggle
+\def\mypause{
+\pause
+} %Remove "%" or comment out 
+% Pro-tip: for 50+10 minute talk there should < about 50 pauses
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{beamerthemesplit}
+
+\title{Supergeometry of Gauged $p$-Form Hierarchies}
+%\author{William D. Linch III \\
+%~\\
+%{\em George P. and Cynthia W. Mitchell Institute for\\
+%Fundamental Physics and Astronomy, \\
+%Texas A\&{}M University.}
+%}
+\subtitle{(Based on work with M. Becker, K. Becker, and D. Robbins)}
+\author{William D. Linch III}
+\institute{ 
+\includegraphics[height=5mm]{TAMUlogo.jpg}\\
+\em Mitchell Institute for Fundamental Physics and Astronomy, \\
+Texas A\&{}M University
+}
+
+\date{
+Prepared for the FRG %Focused research group
+Workshop on \\
+{\em 
+Special Holonomy Geometry, Mirror, and Supersymmetry, 
+\\
+Harvard University\\
+%~\\
+9|10 May, 2016}
+}
+
+
+%\logo{\includegraphics[height=5mm]{TAMUlogo.jpg}}
+
+\begin{document}
+
+\frame{\titlepage}
+
+%\section[Outline]{}
+%\frame{\tableofcontents}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{
+\frametitle{Motivation: Eleven-dimensional Supergravity}
+Investigations into M(ystery)-theory: Fundamental (M-branes) and/or \underline{Effective (11D SG)}\\~\\
+%
+\mypause
+%
+11D SG supermultiplet: $g$ (metric), $\psi\in \Omega^1(S)$ (gravitino), $C\in \Omega^3$\\
+Action ($G=dC$): 
+\begin{align*}
+S \sim 
+	S_{EH}
+	+ \tfrac i2 \int d^{11}x \,  \bar \psi_m \Gamma^{mnp} \nabla_n \psi_p 
+	+ \tfrac12 \int G\wedge \ast \, G
+	+ \int C \wedge G\wedge G
+\end{align*}
+Looks innocuous but ...
+%
+\mypause
+%
+\begin{enumerate}
+\item Supersymmetry mixes metric and 3-form components
+\item Supersymmetry algebra does not close on gravitino unless we impose $\Gamma^{mnp} \nabla_n \psi_p =0$
+\begin{center}
+	mixed {\em kinematical} (first class/off-shell) and {\em dynamical} (second class/on-shell)\\
+	$\Rightarrow$ supersymmetry algebra is ``soft'' (closes only on-shell) \\
+\end{center}
+\end{enumerate}
+%
+\mypause
+%
+Super(symmetric)space does not help because we need 
+\begin{enumerate}
+\item Supersymmetric space as Klein geometry $G/H$ with $G=$ eleven-dimensional super-Poincar\'e group and $H=Spin(10,1)$ Lorentz subgroup.
+\item Maximally non-integrable odd distribution $\{D\}$: $[D,D] = -i \!\not\! \partial $ and $\not\! \partial^2=\Box$
+\item ``Large enough'' integrable odd sub-distribution $\{\bar D\}$ ($\nexists$ in 11D)
+\end{enumerate}
+
+} %end frame
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{
+\frametitle{Goal}
+Suggested solution: 
+\begin{enumerate}
+\item Reduce $H\to H_{st} \times H_{int}$ (and $G\to G_{st} \times G_{int}$) such that Klein geometry $(G_{st},H_{st})$ admits integrable odd sub-distribution
+\item Replace 11D superspace by foliation by $G_{st}/H_{st}$ superspaces
+\end{enumerate}
+%
+\mypause
+%
+
+{\bf Goal:} \\	
+Understand 11D SG in terms of foliation by 4D, $N=1$ ``simple'' superspaces \\
+$\Rightarrow$ finite-dimensional off-shell representations encode kinematical part of symmetry\\
+Remaining dynamical part of symmetry encoded by additional structures:
+%
+\mypause
+%
+%{\bf Goal:} \\	
+\begin{itemize}
+\item $\mathrm D>4$ and/or $N>1$ supergravity contains graviton and gravitino but also
+$p$-form fields + Chern-Simons-like terms ({\it e.g.}\ 5D, $N=1$ $\Rightarrow$ $p=1$ and 11D, $N=1$ $\Rightarrow$ $p=3$)
+%
+\mypause
+%
+\item Need to understand $p$-forms in $D>4$ in terms of 4D, $N=1$\\ 
+$\Rightarrow$ ``hierarchies'' of 4D superforms
+%
+\mypause
+%
+\item Need to understand associated Chern-Simons-like superinvariants
+%
+\mypause
+%
+\item Superforms formulated in terms of frames \\
+$\Rightarrow$ Reduction to 4D gives Kaluza-Klein gauge fields $e_m{}^i$\\ 
+$\Rightarrow$ non-abelian gauging of $p$-form hierarchy
+\end{itemize}
+} %end frame
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{
+\frametitle{$N=0$}
+\begin{itemize}
+\item Spacetime $M$ with $p$-form gauge field $\phi_{[p]}$ transforming under abelian gauge transformation as $\delta \phi_{[p]} = d_M \Lambda_{[p-1]}$, with invariant field strength $F_{[p+1]} = d_M \phi_{[p]}$, and Chern-Simons-like invariant 
+\begin{align*}
+S_{CS} =  \int_M \phi \wedge d\phi\wedge \dots \wedge d\phi = \int_M \phi \wedge c
+\end{align*}
+%%
+%\mypause
+%%
+\item Splitting $M = X\times Y$ $\Rightarrow$ $d_M=d_X+d_Y$ and $\Omega^p_M = \bigoplus_{q=0}^p \Omega_X^{p-q}(\Omega_Y^q)$ double complex.
+%with $X\sim \mathbf R^4$ and $Y\sim \mathbf R^7$ 
+%%
+%\mypause
+%%
+\item Write $d:=d_X$ and $\partial := d_Y$. Forms split $\phi_{[p]} \to \sum_q \phi_{[p-q,q]}$ by bi-degree and 
+\begin{align*}
+\delta \phi_{[r,s]} = d \Lambda_{[r-1,s]} + \partial \Lambda_{[r,s-1]}
+~~~\mathrm{and}~~~
+F_{[r,s]} = d \phi_{[r-1,s]} + \partial \phi_{[r,s-1]}
+\end{align*}
+%%
+%\mypause
+%%
+\item Chern-Simons-like action for $\{\phi_{[r,s]}\}_{r+s=p}$:
+\begin{align*}
+S_{CS}  = \sum_{r=0}^p%{\mathrm{dim}(X)}%\sum_{s=0}^{\mathrm{dim}(Y)}
+	\int_{X\times Y} \phi_{[r,p-r]} \wedge c_{[\mathrm{dim}(X)-r,\mathrm{dim}(Y)-p+r]}
+\end{align*}
+%%
+%\mypause
+%%
+\item Invariant (up to surface terms) provided $c$ is a closed: $dc_{[r,s]} + (-1)^p\partial c_{[r+1,s-1]}= 0$
+\end{itemize}
+
+} %end frame
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Superspace}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{
+\frametitle{4D, $N=1$ Superspace}
+\begin{itemize}
+\item ``Physical'' superspace: Klein geometry $X = G/H$ with $G=$ super-Poincar\'e (4D, $N=1$) and $H\subset G$ Lorentz subgroup $Spin(3,1)\cong SL_2(\mathbf C)$
+%
+\mypause
+%
+\item $X \cong \mathbf R^{4|4}$ with Cartesian coordinates $\{z^M\} = \{x^m, \theta^\mu, \bar \theta^{\dt\mu}\}$ \\
+Super-translations generated by $\{Q_A\}=\{P_a, Q_\alpha, \bar Q_{\dt \alpha}\}$
+%
+\mypause 
+%
+\item Left-invariant framing of the tangent space $[Q , D]=0$:
+\begin{align*}
+D_A  = e_A{}^M \partial/\partial z^M = 
+\left\{
+\begin{array}{l}
+D_a =  \partial_a := \delta_a^m \partial/\partial x^m \\
+D_\alpha = \delta_\alpha^\mu \partial/\partial \theta^\mu 
+	-i (\sigma^m)_{\alpha \dt \alpha} \delta_{\dt \mu}^{\dt \alpha} \bar\theta^{\dt \mu}\partial/\partial x^m\\
+\bar D_{\dt \alpha} = \delta^{\dt \mu}_{\dt \alpha} \partial/\partial \theta^\mu  	
+	-i (\sigma^m)_{\alpha \dt \alpha} \delta_{\mu}^{\alpha} \theta^{\mu}\partial/\partial x^m
+\end{array}
+\right.
+\end{align*}
+%
+\mypause
+%
+\item 
+``$D$-algebra'' rules: %$[D,D] = 0$, $[D,\bar D] = -2i \partial$, and $[\bar D,\bar D] = 0$
+\begin{align*}
+[D,D] = 0
+~~~,~~~
+[D,\bar D] = -2i \partial 
+~~~,~~~
+[\bar D,\bar D] = 0 
+\end{align*}
+%
+\mypause
+%
+\item $\Rightarrow$ $\{\bar D\}$ defines integrable distribution 
+$\Rightarrow$ ring of ``chiral'' superfields $\{\Phi : \bar D\Phi = 0\}$\\
+$\Rightarrow$ off-shell, irreducible superfield representations for any superspin
+%
+\mypause 
+%
+\item Super-de Rham differential $d = dz^M \partial/\partial z^M \to e^A D_A$ but co-frame carries torsion $de^A = T^A$ (even in flat superspace) $\Rightarrow$ complicates analysis of closed super-$p$-forms
+\end{itemize}
+} %end frame
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{
+\frametitle{Closed Superforms}
+Solving $dF=0$ in superspace (a.k.a.\ solving the ``Bianchi identities'') gives
+\begin{align*}
+\begin{array}{ccl}
+p=0 
+	&& F = f
+\\
+p=1
+	&& F = e^\alpha D_\alpha F + e^a (D\sigma_a \bar D) F
+\\
+p=2
+	&& F = e^\alpha e^a (\sigma_a \bar W)_\alpha + e^a e^b (D \sigma_{ab}W) + \mathrm{h.c.}
+\\
+p=3
+	&& F = e^\alpha e^{\dt \alpha} e^a (\sigma_a)_{\alpha \dt \alpha}H 
+		+ \dots 
+		+e^a e^b e^c \epsilon_{abcd} (D\sigma^d \bar D)H 
+\\
+p=4
+	&&F = e^\alpha e^\beta e^a e^b (\sigma_{ab})_{\alpha \beta} G
+		+\dots
+		+ e^a e^b e^c e^d\epsilon_{abcd} D^2G
+\end{array}
+\end{align*}
+%
+\mypause 
+%
+together with the conditions on the superfield strengths
+{\renewcommand{\arraystretch}{1.5} %adds some padding
+\begin{align*}
+\begin{array}{c|crcrclcc}
+p
+	&& \textrm{BI}
+	&& \textrm{irreducibility}
+	&& \textrm{solution}
+	&& \textrm{prepotential}
+\\
+\hline
+0 
+	&&\partial f =0 
+	&& \bar f = - f
+	&\Rightarrow& f= i c
+	&& c \in \mathbf R
+\\
+1 
+	&&\bar D^2 D F =0 
+	&& \bar F = F
+	&\Rightarrow& F=\tfrac1{2i} \left( \Phi - \bar \Phi	\right)
+	&& \bar D\Phi = 0
+\\
+2
+	&& DW- \bar D \bar W = 0%\mathrm{Im}(DW)=0
+	&&\bar DW =0 
+	&\Rightarrow& W= -\tfrac14 \bar D^2D V
+	&& \bar V = V
+\\
+3
+	&&\bar D^2 H =0 
+	&& \bar H = H
+	&\Rightarrow& H= \tfrac1{2i} \left( D\Sigma - \bar D \bar \Sigma 	\right) %\mathrm{Im}(D\Sigma)
+	&& \bar D\Sigma = 0
+\\
+4
+	&&
+	&&\bar DG =0 
+	&\Rightarrow& G=-\tfrac14 \bar D^2 X
+	&& \bar X = X
+\\
+\textrm{``$5$''}
+	&&
+	&&
+	&&\hfill \Gamma\hfill
+	&& \bar D\Gamma = 0\\
+\end{array}
+\end{align*}
+} %end arraystretch
+%Organize into ``prepotential'' complex
+%\begin{align*}
+%%\Omega^\bullet : 
+%0\longrightarrow \underbrace{{\mathscr O^0}}_{\textrm{chiral scalar}}
+%		\stackrel {d_0} \longrightarrow \underbrace{{\mathscr O^1}}_{\textrm{real scalar}}
+%		\stackrel {d_1} \longrightarrow \underbrace{{\mathscr O^2}}_{\textrm{chiral spinor}}
+%		\stackrel {d_2} \longrightarrow \underbrace{{\mathscr O^3}}_{\textrm{real scalar}}
+%		\stackrel {d_3} \longrightarrow \underbrace{{\mathscr O^4}}_{\textrm{chiral scalar}}
+%%		\stackrel {d_4} \longrightarrow \mathscr O^5
+%\longrightarrow 0
+%\end{align*}
+} %end frame
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{
+\frametitle{Prepotential de Rham Complex}
+Organize into (exact) cochain complex of sheaves of superfields
+\begin{align*}
+%\Omega^\bullet : 
+\hspace{-5mm}
+0\longrightarrow 
+i\mathbf R\longrightarrow
+		\underbrace{{\mathscr O^0}}_{\textrm{chiral scalar}}
+		\stackrel {d_0} \longrightarrow \underbrace{{\mathscr O^1}}_{\textrm{real scalar}}
+		\stackrel {d_1} \longrightarrow \underbrace{{\mathscr O^2}}_{\textrm{chiral spinor}}
+		\stackrel {d_2} \longrightarrow \underbrace{{\mathscr O^3}}_{\textrm{real scalar}}
+		\stackrel {d_3} \longrightarrow \underbrace{{\mathscr O^4}}_{\textrm{chiral scalar}}
+		\stackrel {d_4} \longrightarrow 0
+\end{align*}
+%
+\begin{align*}
+d_0 \phi = \tfrac1{2i} \left( \phi - \bar \phi	\right) %\mathrm{Im}(\phi)
+~,~
+d_1 \phi = -\tfrac14 \bar D^2D \phi
+~,~
+d_2 \phi = \tfrac1{2i} \left( \iota_D \phi  - \iota_{\bar D}\bar \phi\right)
+~,~
+d_3 \phi = -\tfrac14 \bar D^2 \phi
+~,~
+d_4 \phi = \bar D\phi
+\end{align*}
+%
+\mypause 
+%
+\begin{align*}
+\textrm{$D$-algebra rules} 
+~~~\Rightarrow~~~
+d_{i+1}\circ d_i = 0 
+\end{align*}
+%
+\mypause 
+%
+For $\mathbf A = (\Phi,V ,\Sigma, X, \Gamma) \in \mathscr O^\bullet$ the poly-superform $\mathbf F = d \mathbf A =(0,F, W, H , G)$ is invariant under $\delta \mathbf A = d \bm \Lambda$.
+%
+\mypause 
+%
+~\\
+~\\
+{\bf NB}: These are not derivations:
+$d_i (\phi \phi') \neq (d_i\phi) \phi' + \phi d_i \phi'$
+\\~\\
+\centering
+{\em There is no differential graded algebra structure at the level of prepotentials}.
+} %end frame
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{
+\frametitle{Simple Superspace Foliation}
+Take spacetime $M=X\times Y$ with $X=\mathbf R^{4|4}$ and $Y$ an ordinary $N=0$ space.\\
+Extend all $\mathscr O_X^\bullet$ to take values in the de Rham complex $(\Omega_Y^\bullet, d_Y)$; denote $d_Y= \partial$
+
+%
+\mypause 
+%
+Example: 11D SG has $Y=\mathbf R^7$ and 3-form decomposing under $\Omega_M^3 \to \bigoplus_{q=0}^3 \Omega_X^{3-q}(\Omega_Y^q)$ :
+{\renewcommand{\arraystretch}{1.2} %adds some padding
+\begin{align*}
+C_{[3]} & \longrightarrow 
+	\begin{array}{ccccccc}
+	1 && 7 && {7\choose2} = 21&& {7\choose3} = 35\\
+	\textrm{3-form} && \textrm{2-forms} && \textrm{vectors}&& \textrm{scalars}\\
+	C_{[3,0]} &+& C_{[2,1]} &+& C_{[1,2]} &+& C_{[0,3]} \\
+	X_{\bm 1} && \Sigma_{\bm 7} && V_{\bm {21}} && \Phi_{\bm {35}}
+	\end{array}\cr
+F_{[4]} & \longrightarrow 
+	\begin{array}{cccccccccc}
+	F_{[4,0]} &+& F_{[3,1]} &+& F_{[2,2]} &+& F_{[1,3]}&+& F_{[0,4]} \\
+%	\textrm{4-form} && \textrm{3-forms} && \textrm{2-forms}&& \textrm{}\\
+	G_{\bm 1} && H_{\bm 7} && W_{\bm {21}} && F_{\bm {35}} && E_{\bm {35}}
+	\end{array}
+\end{align*}
+}
+%
+\mypause 
+%
+Field strengths and Bianchi identities (relative closure relations):
+\begin{align*}
+\begin{array}{ccc}
+\begin{array}{ccccccc}
+E &=& &-& \partial \Phi\\
+F &=& d_0(\Phi) &-& \partial V \\ 
+W&=& d_1(V) &-& \partial \Sigma \\ 
+H&=& d_2(\Sigma) &-& \partial X \\ 
+G&=& d_3(X) 
+\end{array}
+&\Longrightarrow&
+\begin{array}{ccc}
+d_0(E)&=&- \partial F\\ 
+d_1(F) &=& - \partial W \\ 
+d_2(W) &=& - \partial H \\
+d_3(H) &=& - \partial G \\ 
+d_4(G) &=& 0
+\end{array}
+\end{array}
+\end{align*}
+%
+\mypause 
+%
+Manifestly supersymmetric ``Abelian Tensor Hierarchy''
+%(here ``tensor'' means $p$-form)
+} %end frame
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{
+\frametitle{Abelian Chern-Simons-like Action}
+``Abelian Tensor Hierarchy'' has Chern-Simons-like invariants of the form $(\textrm{prepotential})\times(\textrm{superfield strength})\times\dots \times(\textrm{superfield strength})$
+%\\
+%%
+%\mypause 
+%%
+%In 11D $\to$ 4D superspace case we have (anti-)chiral terms and real ones
+\begin{align*}
+S_{CS} = \int d^4 x \int_Y \Bigg\{
+	\int d^2 \theta \left[ \Phi \wedge c_{[4,4]} + \Sigma^\alpha \wedge c_{[2,6] \alpha}\right]
+	+\mathrm{h.c.}
+\cr
++\int d^4 \theta \left[ V\wedge c_{[3,5]} + X\wedge c_{[1,7]}\right]
+\Bigg\}
+\end{align*}
+%
+\mypause 
+%
+Gauge invariant (up to surface terms) under 
+\begin{align*}
+\delta (\Phi, V, \Sigma, X) = (0,d_0\Lambda, d_1U, d_2 \Upsilon)  +\partial (\Lambda, U , \Upsilon,0 )
+\end{align*}
+provided the $c$s satisfy the ``descent relations'' (cocycle condition)
+\begin{align*}
+\begin{array}{ccc}
+0&=&\partial c_{[1,7]}\\ 
+d_1(c_{[1,7]}) &=& \partial c_{[2,6]} \\ 
+d_2(c_{[2,6]}) &=& \partial c_{[3,5]} \\ 
+d_3(c_{[3,5]}) &=& \partial c_{[4,4]} \\
+d_4(c_{[4,4]}) &=& 0
+\end{array}
+\end{align*}
+Formally the same equations as the Bianchi identities... \\ 
+%
+\mypause 
+%
+but far less trivial because $c$'s are bilinear in field strengths and $d_i$ are not derivations
+} %end frame
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{
+\frametitle{Existence of Quadratic Co-cycle}
+Explicit solution to the quadratic descent relations
+%
+\mypause 
+%
+\begin{align*}
+\mathscr O^1 (\Omega_Y^7) \ni c_{[1,7]} &= \mathrm{Re}(E) \wedge F
+\cr
+\mathscr O^2 (\Omega_Y^6) \ni c_{[2,6]} &= - E  \wedge W -\tfrac i4 \bar D^2 (F  \wedge D F)
+\cr
+\mathscr O^3 (\Omega_Y^5) \ni c_{[3,5]} &= - \mathrm{Re}(E)  \wedge H -2 \omega (W, F)
+\cr
+\mathscr O^4 (\Omega_Y^4) \ni c_{[4,4]} &= \boxed{E G} +  \boxed{2W \wedge W} -\tfrac i2 \bar D^2 (FH)
+\end{align*}
+%
+\mypause 
+%
+Here $\omega (W, F)$ is the ``Chern-Simons superform'' 
+\begin{align*}
+\omega (W, F) := W^\alpha \wedge D_\alpha F + \tfrac12 D^\alpha W_\alpha \wedge  F +\mathrm{h.c.}
+\end{align*}
+It is the superspace analogue of $A\wedge F$ satisfying 
+\begin{align*}
+d_3 \omega (W, F) &= W \wedge d_1 F +  d_2(W) \wedge  F  
+\cr
+&= W \wedge \partial W +  \partial H \wedge  F  
+\end{align*}
+%
+\mypause 
+%
+Using every $D$-identity, Bianchi identity, and internal de Rham DGA property, it is possible to show that $c \in \bigoplus_i \mathscr O^{8-i}(\Omega_Y^i)$ is a cocycle.
+} %end frame
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Gauging}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{
+\frametitle{Non-Abelian $p$-Form Hierarchy Structure} %Gauged Super-$p$-form Hierarchy
+Have manifestly supersymmetric abelian $p$-form hierarchy.% and Chern-Simons-like invariant.
+%
+\mypause 
+%
+On $M=X\times Y$ there are mixed components of the frame $\sim dx^m e_m{}^i \partial/\partial y^i$ behaving like $G$ gauge fields for $G=\textrm{{\it Diff}} (Y)$
+%
+\mypause 
+%
+$\Rightarrow$ need to ``gauge'' the abelian tensor hierarchy.
+%
+\mypause 
+%
+
+Minimum structure required is a:\\ 
+~\\
+{\bf Non-abelian $p$-form hierarchy structure:}
+$((\mathfrak g, f), (V_\bullet, t_\bullet, q),  h_\bullet)$ where
+\begin{enumerate}
+%
+\mypause 
+%
+\item $(\mathfrak g, f)$ is a Lie algebra.
+%
+\mypause 
+%
+\item $(V_\bullet,t_\bullet, q)$ is a $\mathfrak g$-equivariant differential complex of representations $t_i : \mathfrak g\to GL(V_i)$.
+%%
+%\mypause 
+%%
+%\item For each $i$ a homomorphism of Lie algebras $t_i: \mathfrak g \to \mathrm{End} (V_i)$ defined by $t_i:a\mapsto t_a:= \rho_i(a)$.
+%
+\mypause 
+%
+\item For each $i$ a linear map $h_i: \mathfrak g \to \mathrm{Hom} (V_i,V_{i+1})$. 
+\end{enumerate}
+These data are subject to the following compatibility conditions: For all $a,b \in \mathfrak g$,
+%\begin{enumerate}
+%%
+%\mypause 
+%%
+%\item Closure (intertwiner?) condition: $\forall a,b \in \mathfrak g$, %$[h_a , t_b] = h_{f(a,b)}$
+%\begin{align*}
+%[h_a , t_b] = h_{f(a,b)}
+%\end{align*}
+%%
+%\mypause 
+%%
+%\item Nilpotence condition: $\forall a,b \in \mathfrak g$, %$h_a h_b + h_b h_a = 0$
+%\begin{align*}
+%h_a h_b + h_b h_a = 0
+%\end{align*}
+%%
+%\mypause 
+%%
+%\item Cartan formula: $\forall a \in \mathfrak g$, %$q h_a + h_a q = t_a$
+%\begin{align*}
+%q h_a + h_a q = t_a
+%\end{align*}
+%\end{enumerate}
+\begin{description}
+%
+\mypause 
+%
+\item[Closure:] $[h_a , t_b] = h_{f(a,b)}$
+%\begin{align*}
+%[h_a , t_b] = h_{f(a,b)}
+%~~~
+%\forall a,b \in \mathfrak g
+%\end{align*}
+%
+\mypause 
+%
+\item[Nilpotence:] $h_a h_b + h_b h_a = 0$
+%\begin{align*}
+%h_a h_b + h_b h_a = 0
+%\end{align*}
+%
+\mypause 
+%
+\item[Cartan formula:] $q h_a + h_a q = t_a$
+%\begin{align*}
+%q h_a + h_a q = t_a
+%\end{align*}
+\end{description}
+
+%
+\mypause 
+%
+
+Important example: Let $Y$ be a smooth manifold and set $(\mathfrak g, f)= (\mathfrak{X}(Y), [\cdot, \cdot])$ to be the algebra of diffeomorphisms and $(V_\bullet, q)=(\Omega_Y^\bullet, d_Y)$ to be the de Rham complex. Finally, for any vector field $a\in\mathfrak X(Y)$, set $t_a:=\mathscr L_a$ to be the Lie derivative along $a$ and set $h_a := \iota_a$ to be the contraction of forms by the vector field.
+
+} %end frame
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{
+\frametitle{Construction of the Non-Abelian $p$-Form Hierarchy} %Gauged Super-$p$-form Hierarchy
+We can now bolt this structure on to the superspace de Rham complex:
+\begin{itemize}
+%
+\mypause 
+%
+\item In the abelian case, the $p$-form hierarchy structure can be used to make the double complex $(\mathscr O^\bullet_X(V_\bullet), d+q)$ of manifestly supersymmetric $p$-forms we already had with $V_i = \Omega^{p-i}_Y$ and $q=\partial$.
+%
+\mypause 
+%
+\item ``Minimal coupling'': Replace flat superspace $D\to \mathscr D$ with (super)curvature $\mathscr F \sim \mathscr D^2$.
+%
+\mypause 
+%
+\item Introduce derivation $\bm d := \mathscr D + q + h_\mathscr F$. 
+%
+\mypause 
+%
+\item By equivariance, $q^2=0$, closure relation, non-abelian Bianchi identity ($\mathscr D\mathscr F = 0$), and Cartan formula, $\bm d$ is a differential 
+\begin{align*}
+\bm d^2 = 0
+\end{align*}
+%
+\mypause 
+%
+\item Repeat analysis of abelian super-$p$-form hierarchy: For $\mathbf A \in \bm \Omega^1$, $\bm \Lambda \in \bm \Omega^0$, {\it et cetera}
+\begin{align*}
+\delta \mathbf A = t_\lambda \mathbf A + \bm d \bm \Lambda
+~~~,~~~
+\mathbf F= \bm d \mathbf A
+~~~\Rightarrow~~~
+\delta \mathbf F = t_\lambda \mathbf F
+~~~\mathrm{and}~~~
+\bm d \mathbf F= 0.
+\end{align*}
+\end{itemize}
+} %end frame
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{
+\frametitle{Non-Abelian Result}
+Returning to the 11D supergravity example ({\it e.g.}\ $q\sim\partial$)
+\begin{align*}
+\begin{array}{ccc}
+\begin{array}{ccl}
+E &=&\hspace{8mm} - \,\partial \Phi\\
+F &=& d_0(\Phi) - \partial V \\ 
+W &=& d_1(V) - \partial \Sigma - \iota_\mathscr W \Phi \\ 
+H &=& d_2(\Sigma) - \partial X  - \omega(\mathscr W, V) \\ 
+G &=& d_3(X) \hspace{7mm} - \iota_\mathscr W \Sigma
+\end{array}
+&\Longrightarrow&
+\begin{array}{ccl}
+0&=& - \partial E\\
+d_0(E)&=&- \partial F\\ 
+d_1(F) &=& - \partial W - \iota_\mathscr W E \\ 
+d_2(W) &=& - \partial H  - \omega(\mathscr W, F) \\ 
+d_3(H) &=& - \partial G - \iota_\mathscr W W \\ 
+d_4(G) &=& ~~~0
+\end{array}
+\end{array}
+\end{align*}
+The field strengths are all gauge covariant and satisfy the modified Bianchi identities.
+%
+\mypause 
+%
+The modified quadratic forms
+\begin{align*}
+\mathscr O^1 (\Omega_Y^7) \ni c_{[1,7]} &= \mathrm{Re}(E) \wedge F
+\cr
+\mathscr O^2 (\Omega_Y^6) \ni c_{[2,6]} &= - E  \wedge W -\tfrac i4 \bar {\mathscr D}^2 (F  \wedge {\mathscr D} F)
+\cr
+\mathscr O^3 (\Omega_Y^5) \ni c_{[3,5]} &= - \mathrm{Re}(E)  \wedge H -2 \omega (W, F) - i \iota_\mathscr W(F  \wedge {\mathscr D} F) + i \iota_{\bar {\mathscr W}} (F  \wedge \bar {\mathscr D} F)
+\cr
+\mathscr O^4 (\Omega_Y^4) \ni c_{[4,4]} &= E G + 2 W \wedge W -\tfrac i2 \bar {\mathscr D}^2 (FH)
+\end{align*}
+miraculously satisfy the modified descent relations.
+
+} %end frame
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{
+\frametitle{Non-Abelian Chern-Simons Action}
+To write an invariant action we need the analogue of a trace on the non-abelian $p$-form hierarchy structure. 
+In the compactification case, this is $\int_Y$ with the conditions 
+\begin{align*}
+\int_Y \partial (\dots) = 0
+~~~\mathrm{and}~~~
+\int_Y \iota_\lambda (\dots) = 0 
+~~~\Rightarrow~~~
+\int_Y \mathscr L_\lambda (\dots) = 0 
+%~~~~~ \lambda \in \mathfrak X(Y)
+\end{align*}
+The first is integration by parts. The second is non-existence of 8-forms on the 7-manifold $Y$. 
+%(The third is diffeomorphism invariance.)
+
+%
+\mypause 
+%
+
+
+In a more general case, we need a 3-chain $\alpha$ on the non-abelian $p$-form hierarchy closed under the differentials $q$ and $h_\bullet$ (and therefore gauge-invariant). 
+%
+\mypause 
+%
+Explicitly, we need a chain
+\begin{align*}
+\alpha : \bigoplus_{r+s+t=4} \bm \Omega^r \otimes \bm \Omega^s \otimes \bm \Omega^t \to \mathbf R
+\end{align*}
+subject to 
+\begin{align*}
+q \alpha(\mathbf x, \mathbf y,\mathbf z) &:= 
+	\alpha(q \mathbf a, \mathbf b,\mathbf c)
+	+\alpha(\mathbf a, q\mathbf b,\mathbf c)
+	+\alpha(\mathbf a, \mathbf b,q \mathbf c)
+	=0
+\cr	
+h_a \alpha(\mathbf x, \mathbf y,\mathbf z)&:= 
+	\alpha(h_a \mathbf x, \mathbf y,\mathbf z)
+	+\alpha(\mathbf x, h_a \mathbf y,\mathbf z)
+	+\alpha(\mathbf x, \mathbf y,h_a \mathbf z)
+	=0
+	~~~\forall a\in \mathfrak g
+\end{align*}
+
+} %end frame
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{
+\frametitle{Application: 11D Supergravity in $\mathbf R^{4|4} \times \mathbf R^7$}
+Abstraction {\em necessary} to really describe higher-D theories in simple superspace:
+%
+\mypause 
+%
+\begin{itemize}
+\item Cannot simply take $V_i = \Omega_Y^{7-i}$ because\\
+$\Rightarrow$ decomposition of components in $Spin(7)$ representations\\
+$\Rightarrow$ embedding in superfield representations gives ``fake'' components
+%
+\mypause 
+%
+%\item To single out 4D, $N=1$ superfield reps, need $\mathrm{Hol}(Y) = G_2$.
+%\begin{align}
+%\begin{array}{cccccc}
+%g_{\bm m\bm n} &\to& g_{mn} & g_{mi} &g_{ij} \\
+%\psi_{\bm m}^{\bm \alpha} &\to& \psi_m^{\alpha I} & \psi_j^{\alpha I} \\
+%C_{\bm {mnp}} &\to& C_{mnp} & C_{mni} & C_{m ij} & C_{ijk}
+%\end{array}
+%\end{align}
+%%
+%\mypause 
+%%
+\item To single out 4D, $N=1$ superfield representations need $G_2 \subset Spin(7)$ decomposition:
+\begin{align*}
+\begin{array}{cccccccc}
+&&\bm 1 & \bm 7& \bm 7 & \bm 1\oplus \bm {27} & \bm 7\oplus \bm {14} & \bm 1\oplus \bm {7}\oplus \bm {27}\\
+g_{\bm m\bm n} &\to& g_{mn} & g_{mi} &&g_{ij} \\
+\psi_{\bm m}^{\bm \alpha} &\to& \psi_m^\alpha&\psi_m^{\alpha i} & \eta_j^\alpha  &\chi_{(j}^{\alpha}{}_{i)}
+	&\chi_{[j}^{\alpha}{}_{i]}  \\
+C_{\bm {mnp}} &\to& C_{mnp} & C_{mni} &&& C_{m ij} & C_{ijk}
+\end{array}
+\end{align*}
+%
+\mypause 
+%
+\item 4D, $N=1$ component supermultiplets:
+\begin{align*}
+\begin{array}{ccl}
+1 &:& (e_m^a, \psi_m^\alpha) \oplus ( g_{\bm 1} , C_{\bm 1}, C_{mnp} , \chi_{\bm 1}^\alpha) \\
+7 &:& (C_{\bm 7m}, \psi_{\bm 7 m}^\alpha) \oplus (e_{\bm 7m}, \eta_{\bm 7}^\alpha) \oplus (C_{\bm 7}, C_{\bm 7 mn}, \chi_{\bm 7}^\alpha)\\
+14 &:& (C_{\bm {14} m}, \chi_{\bm {14}}^\alpha) \\
+27 &:& (C_{\bm {27}} + i g_{\bm {27}} , \chi_{\bm {27}}^\alpha) 
+\end{array}
+\end{align*}
+\end{itemize}
+
+} %end frame
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{
+\frametitle{Faithful Superspace Embedding}
+\begin{itemize}
+\item 1 superspin-$\tfrac32$ superconformal graviton $H^a \sim \dots + (\theta \sigma^m \bar \theta) e_m^a + \bar \theta^2 (\theta \sigma^m \psi_m)+\dots $
+\item 7 superspin-$1$ gravitino superfields $\Psi^{\alpha i} \sim \dots + (\sigma^m\bar \theta)^\alpha C_{\bm 7 m} +(\theta \sigma^m \bar \theta) \psi_m^{\alpha i} + \dots$
+\item 1 4-form ``radion'' field strength $G_{\bm 1} = (g_{\bm 1} + i C_{\bm 1}) + \theta \chi_{\bm 1} + \theta^2 \varepsilon^{mnpq} F_{mnpq} + \dots$
+\item 7 3-form field strengths $H_{\bm 7} = C_{\bm 7} + \theta \chi_{\bm 7} + (\theta \sigma_m \bar \theta) \varepsilon^{mnpq} H_{npq}$
+\item 21 2-form field strengths $W^\alpha_{\bm 7 \oplus \bm{14}} = \chi^\alpha_{\bm 7 \oplus \bm{14}} + (\theta \sigma^{mn})^\alpha (F_{{\bm 7 \oplus \bm{14}}}){}_{mn} +\dots$
+\item 27 1-form field strengths $F_{\bm{27}} = g_{\bm{27}} + \theta \chi_{\bm {27}} + (\theta \sigma_m \bar \theta) \partial_m C_{\bm{27}}+ \dots$
+\end{itemize}
+
+%
+\mypause 
+%
+
+Expanding in orders of the gravitational coupling we find:
+\begin{itemize}
+\item At quadratic order: Linearized ``old-minimal'' supergravity coupled to 7 gravitino multiplets $\bm \Psi_{\bm 7} = \Psi_{\bm 7} + W_{\bm 7} + \Sigma_{\bm 7}$ and the ``radion'' $G_{\bm 1}$. 
+%
+\mypause 
+%
+\item Cubic order contains a $p$-form hierarchy 
+\begin{align*}
+0\longrightarrow \mathscr O^0(\mathbf R^{27})
+	\longrightarrow \mathscr O^1(\mathbf R^{7}\oplus \mathbf R^{14})
+	\longrightarrow \mathscr O^2(\mathbf R^{7})
+	\longrightarrow \mathscr O^3(\mathbf R)
+	\longrightarrow 0
+\end{align*}
+%
+\mypause 
+%
+\item Gauged by the non-abelian $V_{\bm 7}$ 
+\end{itemize}
+
+
+} %end frame
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Future work}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{
+\frametitle{Open questions and current \& future work}
+Loads of work to do... 
+\begin{enumerate}
+\item Relation to other ``non-abelian tensor hierarchies'', Courant Algebroids, Strongly homotopy Lie algebras, Lie algebra extensions, ... 
+%%
+%\mypause 
+%%
+\item Relation to on-shell $E_{7(7)}$ gauged supergravity and ``gravitational tensor hierarchies''
+%%
+%\mypause
+%%
+\item Relation to exceptional generalized geometry
+%%
+%\mypause
+%%
+\item Investigation of linearized action and resolution of ``the $\bm 7$-problem''
+%%
+%\mypause
+%%
+\item  Construction of non-linear superspace action, perhaps in gravitino expansion
+%%
+%\mypause
+%%
+\item  All orders in $\alpha'$ results for K\"ahler and super-potential
+%%
+%\mypause
+%%
+\item  ...
+\end{enumerate}
+%
+\mypause
+%
+\begin{center}
+{\bf \huge THANK YOU!}
+\end{center}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{\tiny
+%\small
+%\footnotesize
+%\linespread{1.1}\selectfont
+\bibliography{/Users/wdlinch3/Dropbox/Rashoumon/LaTeX/BibTex/BibTex}
+\bibliographystyle{unsrt}
+} % end resize
+
+
+\end{document}

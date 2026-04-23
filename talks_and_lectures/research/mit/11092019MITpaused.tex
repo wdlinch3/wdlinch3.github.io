@@ -1,0 +1,976 @@
+\documentclass[8pt]{beamer}
+
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+
+%\usepackage{etex}
+%\usecolortheme[RGB={205,173,0}]{structure} 
+\usefonttheme{serif} 
+
+%Pausing toggle
+\def\mypause{
+\pause
+} %Remove "%" or comment out
+
+\usepackage{/Users/wdlinch3/Dropbox/Rashoumon/LaTeX/macros/WDL3beamer}
+
+\setbeamertemplate{bibliography entry title}{}
+\setbeamertemplate{bibliography entry location}{}
+\setbeamertemplate{bibliography entry note}{}
+
+%\usepackage{beamerthemesplit}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Off-shell Supersymmetry and the M-theory Effective Action}
+%\author{William D. Linch III \\
+%~\\
+%{\em George P. and Cynthia W. Mitchell Institute for\\
+%Fundamental Physics and Astronomy, \\
+%Texas A\&{}M University.}
+%}
+\author{William D. Linch III} 
+\date{
+{\em George P. and Cynthia W. Mitchell Institute for\\
+Fundamental Physics and Astronomy, \\
+Texas A\&{}M University.}\\
+~\\
+MIT CTP 11 September, 2019\\
+~\\
+Based on work 
+%\cite{Becker:2016xgv, %ATH
+%Becker:2016rku,	%NATH
+%Becker:2016edk,	%G2Potential
+%Becker:2017njd, 	%All CS
+%Becker:2017zwe,	%Linearized
+%Becker:2018phr}	%Current
+with\\
+K.\ Becker, 
+M.\ Becker, 
+D.\ Butter, 
+S.\ Guha, 
+S.\ Randall, \\
+D.\ Robbins,
+and
+A.\ Sengupta.
+
+}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section[Outline]{}
+%\frame{\tableofcontents}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{
+\frametitle{Open string effective action}
+\begin{itemize}
+\item 
+	Fradkin and Tseytlin (1985): Leading low-energy effective action of open string theory is Born-Infeld. 
+%
+\mypause
+%
+	Tseytlin's attempt at open superstring gives a weird answer. 
+%
+\mypause
+%
+\item
+	Cecotti and Ferrara (1986): 4D, $N=1$ supersymmetry implies 
+\begin{align}
+\mathcal L_{CF} = \int d^2\theta W^2 + \int d^4\theta \,\Psi W^2\bar W^2
+\nonumber
+\end{align}
+	They found a $\Psi= \Psi(D^2W^2, \bar D^2 \bar W^2) $ that reproduced Tseytlin's result but also observed that there is another corresponding to Born-Infeld again.
+	% \cite{Cecotti:1986gb}.
+%
+\mypause
+%
+\item
+	Metsaev, Rahkmanov, and Tseytin realize the mistake (R boundary condition) and recalculate with NS to find that the low-energy effective action is Born-Infeld (1987).
+%
+\mypause
+%
+\item
+	Bagger and Galperin demonstrate that, starting in 4D, $N=1$ superspace, a second non-linearly-realized supersymmetry uniquely fixes the action to be Born-Infeld (1996).
+Schematically,
+\begin{align}
+F^2 + F^4 + \textrm{8 supercharges} \Rightarrow \textrm{Born-Infeld}
+\nonumber\end{align}
+\end{itemize}
+}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{
+\frametitle{Closed string effective action?}
+Can we carry out the analogous steps for closed strings/gravity?
+\begin{itemize}
+\item
+	Cannot do Tseytin {\it et al.}\ calculation because world-sheet theory is interacting (quartic) even for constant Riemann tensor. 
+
+%
+\mypause
+%	
+
+\item 
+	Unclear what the gravitational analog of Born-Infeld is. Constant field strength? No birefringence? No ghosts? Determinantal form? Higher dimensions? Supersymmetric? \dots ?
+
+%
+\mypause
+%
+
+\item 
+	Analog of  BG result may hold: There are only two supersymmetric densities in flat space. They would be related by $N\geq 2$ supersymmetry. Maybe even fixed by $N$ large enough?
+\end{itemize}
+}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{
+\frametitle{M-theory effective action?}
+\begin{itemize}
+\item
+ 	11D SG has maximal D and $N$.
+%
+\mypause
+%
+
+\item
+ 	First higher-derivative correction is of order (Riemann)${}^4$.
+
+%
+\mypause
+%
+
+\item
+Higher-derivative correction requires a higher-derivative correction to the supersymmetry transformation, which requires higher derivatives in the effective action, {\it ad infinitum}.\\
+ 	It is believed that in this case the analog of the Born-Infeld statement holds:
+\begin{align}
+R + R^4 + \textrm{11D, $N=1$ supersymmetry} \Rightarrow \textrm{Leading M-theory LEEA?}
+ \nonumber\end{align}
+
+%
+\mypause
+%
+
+\item
+	Supersymmetrization order-by-order in components is unfeasible. Off-shell supersymmetry might fix this, but supersymmetry is on shell if $\#Q > 9$ (Berkovits 1993: Non-associativity of $\mathbb O$).
+
+%
+\mypause
+%
+
+\item 
+	Perhaps keeping some $0<N<1$ manifest in 11D is enough?
+\end{itemize}
+}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{
+\frametitle{Previous work on fractional superspaces}
+\begin{itemize}
+\item 
+	Marcus, Sagnotti, and Siegel (1983): 10D SYM in a $\mathbb R^{10|4}$. 
+	The vector multiplet in this 10D, $N=1/4$ superspace consists of a real field $V(x, \theta, \bar \theta ; y)$ familiar from 4D, $N=1$ and an $SU(3)$ triplet of chiral superfields $\Phi_i(x, \theta; y)$. 
+%\begin{align}
+%R + R^4 + \textrm{11D, $N=1$ supersymmetry} \Rightarrow \textrm{M-theory effective action?}
+% \end{align}
+Action $\sim \int d^{10}x \int d^2 \theta W^\alpha W_\alpha +$ Chern-Simons terms.
+
+%
+\mypause
+%
+
+\item
+	Berkovits (1994): Hybrid string  in this superspace and open string field theory using the result of MSS (1995).
+
+%
+\mypause
+%
+
+\item	
+	Seiberg and Witten (1994): %``Solution'' of 4D, $N=2$ $SU(2)$ super-Yang-Mills. 
+	Starting with 4D, $N=2$  SYM in terms of $N=1$ superfields, there is a D-term integral of the K\"ahler function $K(\bar \Phi, \Phi)$ and an F-term integral of the gauge kinetic term determined by a holomorphic gauge kinetic function $f(\Phi)$. 
+	The second non-manifest supersymmetry determines the former in terms of the latter: $K = -\frac i2 f' \bar \Phi +\hc$ 
+	$N=4$ fixes $f(\Phi)$ uniquely.
+
+%
+\mypause
+%
+
+\item
+	5D, $N=1/2$ linearized supergravity was constructed with Luty and Phillips (2002) and used to compute loop corrections to slepton masses in a phenomenological analog of heterotic M-theory (with also Buchbinder, Gates, Goh, and Ng).
+
+%
+\mypause
+%
+
+\item 
+	Extended to 11D SG with group at Texas A\&M.\\ 
+%	 \cite{Becker:2016xgv, %ATH
+%Becker:2016rku,	%NATH
+%Becker:2016edk,	%G2Potential
+%Becker:2017njd, 	%All CS
+%Becker:2017zwe,	%Linearized
+%Becker:2018phr}.	%Current
+%This is work with 
+%K.\ Becker, 
+%M.\ Becker, 
+%D.\ Butter, 
+%S.\ Guha, 
+%S.\ Randall, 
+%D.\ Robbins
+%and
+%A.\ Sengupta.
+~\\
+\underline{Goal:} ~~~~Higher-derivative corrections to the M-theory effective action.
+\end{itemize}
+}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{11D, $N=1/8$ Superspace}
+\frame{
+\frametitle{Constructing 11D, $N=1/8$ Superspace}
+We construct 11D supergravity in an off-shell superspace $\bm M\sim \bm X\times Y$ with $\bm X$ a 4D, $N=1$ supermanifold and $Y$ a bosonic 7D manifold.
+
+%
+\mypause
+%
+
+
+This proceeds in six steps:
+%
+\mypause
+%
+
+%\begin{description}
+\begin{itemize}
+\item[1] Decompose 11D SG fields 
+\begin{align}
+\begin{array}{cccclcc}
+	e_{\bm m}{}^{\bm a} &\to &
+		e_{m}{}^{a} ~,~ 
+		\mathcal A_m^i ~,~ 
+		{\color {red} g_{ij} }
+&\with & a, m = 0,1,2,3
+\\
+	\psi_{\bm m}^{\bm \alpha}&\to &
+		\psi_{m}^{\alpha} ~,~ 
+		\psi_{m}^{\alpha i} ~,~ 
+		\psi_{j}^{\alpha } ~,~ 
+		\psi_{j}^{\alpha i} ~,~
+&\and & i,j = 1,\dots, 7	
+\\ 
+	C_{\bm {mnp}} &\to &C_{mnp}~,~ C_{mn \, i} ~,~ C_{m \, ij}~,~ C_{ijk}
+&\and & \alpha = 1,2	
+\end{array}
+\nonumber
+\end{align}
+\end{itemize}
+%description}
+}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{
+\frametitle{Step 2 (of 6): Reinterpreting the Metric on $Y$}
+%\begin{description}
+\begin{itemize}
+\item[2] 
+	Rewrite the metric {\color{red} $g_{ij}$} on $Y$ in terms of a 3-form (Bryant 1987, Hitchin, Joyce 2000) 
+	\begin{align}
+	\sqrt{g}g_{ij} = \frac1{144}\epsilon^{k_1\cdots k_7} \varphi_{i k_1k_2} \varphi_{j k_3 k_4} \varphi_{k_5k_6k_7}
+	\nonumber 
+	\end{align}
+%
+\mypause
+%
+	\begin{itemize}
+	\item 
+		This 3-form is ``stable'' when $g_{ij}$ is invertible. A stable 3-form on a 7 manifold is a(n almost) $G_2$ structure. 
+%
+\mypause
+%
+	\item 
+		The torsion of this $G_2$ structure is defined by $\nabla_l \varphi_{ijk} = T_l{}^m (\ast \varphi)_{ijkm}$.
+%
+\mypause
+%
+	\item 
+		If $T_i^j =0$, the holonomy of $\nabla$ is contained in $G_2$. The $49 = 1+ 7+ 14+ 27$ components of this tensor make up the torsion forms 
+		\begin{align}
+		d\varphi = \tau_0 \ast \varphi + \tau_1 \wedge \varphi + \ast \tau_3
+		~~~\and~~~
+		d(\ast \varphi) = \tau_1 \wedge \ast \varphi + \tau_2 \wedge \varphi
+		\nonumber\end{align}
+%
+\mypause
+%
+	\item 
+		If, furthermore, $Y$ is compact and simply-connected, then $\mathrm{Hol}(\nabla) = G_2$.
+%
+\mypause
+%
+	\item 
+		The functional $\int_Y \sqrt{g(\varphi)} = \int_Y \varphi \wedge \ast \varphi$ is called the Hitchin (2000) functional. When $d\varphi = 0$ its equation of motion is $d(\ast \varphi) =0$ $\Leftrightarrow$ $G_2$ holonomy metrics (``Topological M-theory'' Dijkgraaf, Gukov, Neitzke, Vafa 2004). 
+	\end{itemize}
+%\end{description}
+\end{itemize}
+}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{
+\frametitle{Step 3 (of 6): Superfield Embedding}
+%\begin{description}
+\begin{itemize}
+
+\item[3] 
+	Embed the bosonic fields into 11D, $N=1/8$ superfields:
+%
+\mypause
+%
+	\begin{itemize}
+	\item 
+	$e_{m}{}^{a}$ and $\psi_{m}^{\alpha}$ in a real 4-vector-valued superfield $U^a(x, \theta , \bar \theta;y)$ familiar from (conformal) 4D, $N=1$ supergravity,
+%
+\mypause
+%
+	\item 
+	$\psi_{m}^{\alpha i}$ into a spinor superfield $\Psi_{\alpha i} (x, \theta , \bar \theta;y)$ in the $\bar {\bm 7}$ of $GL(7)$,
+%
+\mypause
+%
+	\item 
+	$\mathcal A_m^i $ into a real superfield $\mathcal V^i (x, \theta , \bar \theta;y)$ forming a vector on $Y$, 
+%
+\mypause
+%
+	\item
+	$C_{mnp}$ into a real scalar superfield $X(x, \theta , \bar \theta;y)$ forming a 0-form on $Y$,
+%
+\mypause
+%
+	\item
+	$C_{mn \, i}$ into a chiral spinor $\Sigma_{\alpha i} (x, \theta ;y)$ forming a 1-form on $Y$,
+%
+\mypause
+%
+	\item
+	$C_{m \, ij}$ into 21 real superfields $V_{ij} (x, \theta , \bar \theta;y)$ forming a 2-form on $Y$,
+%
+\mypause
+%
+	\item
+	$C_{ijk}+i {\color{red} \varphi_{ijk}}$ into 35 chiral superfields $\Phi_{ijk} (x, \theta ;y)$ forming a 3-form on $Y$.
+\end{itemize}
+All these fields are superconformal primaries of the 4D, $N=1$ superconformal algebra. 
+%\end{description}
+\end{itemize}
+}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{
+\frametitle{Step 4 (of 6): Chern-Simons Action}
+%\begin{description}
+\begin{itemize}
+
+\item[4] 
+	The last five form a ``non-abelian tensor hierarchy'' of superfields.\footnote{Mathematically, this is a {\it Diff}(7)-equivariant chain complex of differential forms on $Y$ with values in a complex of (sheaves of) representations of the 4D, $N=1$ super-Poincar\'e algebra.} Such things have a unique Chern-Simons-like invariant supersymmetrizing the term $\int C \wedge dC \wedge dC$:
+%
+\mypause
+%
+	\begin{align}
+	-12 \kappa^2 \mathcal L_{CS} &= i\int d^2 \theta \mathcal E\, \left[ i \Phi_{[0,3]}\wedge  \mathbb G_{[4,4]}  + \Sigma^\alpha_{[2,1]} \wedge \mathbb W_{[2,6] \alpha }\right] 
+	\cr&
+	+\int d^4 \theta E \left[ V_{[1,2]} \wedge \mathbb H_{[3, 5]} - X_{[3,0]} \mathbb F_{[1,7]}\right]
+	+\hc 
+	\nonumber\end{align}
+%
+\mypause
+%
+
+	\begin{itemize}
+	\item 
+		$\Phi\wedge \mathbb G = G \Phi \wedge d \Phi + \cdots$ contains ``$G_2$ superpotential'' (Gukov 1999). 
+%
+\mypause
+%
+	\item 
+		$\Phi\wedge \mathbb G = \frac12 \Phi \wedge W^\alpha \wedge W_\alpha +\cdots$ also contains the holomorphic gauge-kinetic function $f(\Phi)  = \Phi$ familiar from Seiberg-Witten theory.
+	\end{itemize}
+
+%
+\mypause
+%
+
+These terms and the others (10 total) are required for gauge invariance. 
+
+%
+\mypause
+%
+
+
+Unique invariant containing F-term integrals:
+$\nexists$ gauge-invariant superpotential or gauge-kinetic function.
+%\end{description}
+\end{itemize}
+}
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{
+\frametitle{Steps 5 and 6: Complete Action}
+%\begin{description}
+\begin{itemize}
+
+\item[5] 
+	There is a natural lift of the Hitchin functional to 11D, $N=1/8$ superspace:
+	\begin{align}
+	S_H = -\frac 3{\kappa^2} \int d^7 y \int d^4x  \int d^4\theta E (\bar GG)^{1/3} \sqrt{g(F)}\, f(x)
+	~~~,~~~ x = {H_i g^{ij}(F) H_j \over (\bar GG)^{2/3}}
+	\nonumber\end{align} 
+	Uniquely fixed by local supersymmetry on $\bm X$, diffeomorphism invariance on $Y$, tensor hierarchy gauge invariance, engineering dimensions, conformal weights, $U(1)_R$ weights, and $GL(7)$ representation.
+
+%
+\mypause
+%
+
+\item[6] 
+	Introducing the gravitino superfield, we can extend the local supersymmetry on $\bm X$ to all of $\bm M$. This fixes $f(x)$ exactly: 
+	
+%
+\mypause
+%
+
+	The combination ${\hat f} := f -2 x f'$ satisfies the quartic equation 
+	\begin{align}
+		\frac x4 {\hat f}^4 +  {\hat f}^3 -1 = 0
+			~~~\and~~~
+		f(0)= 1
+		~~~\Rightarrow
+		~~~f(x)	
+	\nonumber\end{align}
+%	Together with the boundary condition $ {f}(0)= 1$, we can solve for $ {f}(x)$ in closed form.
+%\end{description}
+\end{itemize}
+}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{
+\frametitle{Checks}
+We have subjected this result to the following consistency checks:
+\begin{itemize}
+\item
+	Linearizing around a flat background, projecting to components, and throwing out fermions, we recover the correct bosonic component action of eleven-dimensional supergravity. 
+
+%
+\mypause
+%
+
+\item 
+	Taking $\bm M = \mathbf R^{4|4} \times Y$ for general $Y$, reducing to components, throwing out all fermions and those bosons with polarizations in 4D directions, we obtain the ``scalar potential'' 
+	\begin{align}
+%\label{E:ScalarPotential1}
+\hspace{-8mm}V=
+	\tfrac14d_X^2 
+	+ 2 g_{ij} \bm d^i \bm d^j 		
+	-  d_{\mathbf 7 ij} ^2 
+		+ \tfrac12 d_{\mathbf {14} ij}^2
+	-\tfrac1{18} |f_{\mathbf 1 ijk}+\tfrac{i}2d_XF_{ijk}|^2
+		-\tfrac1{24} |f_{\mathbf 7 ijk}|^2
+		+\tfrac1{24} |f_{\mathbf {27} ijk}|^2
+\nonumber
+\end{align}
+D- and F-term supersymmetry conditions $\Leftrightarrow$ $G_2$-holonomy and zero flux.
+%
+\mypause
+%
+\item 	
+	Substituting the on-shell values of the auxiliary fields, this becomes 
+\begin{align}
+%\label{E:ScalarPotential}
+V(x,y)&= 
+%	-\tfrac{42}{18}\cdot \tfrac 9{16}\tau_0^2 
+%	- \left(6+\tfrac{9\cdot 24}{24}\right)\tau_1^2 
+%	+\tfrac12\cdot\tfrac14 \tau_2^2 
+%	+\tfrac1{24} \tau_3^2			
+%\cr&
+%	+\left(\tfrac{49}{16} - \tfrac{42}{18} \cdot \tfrac 9{16}\right) \sigma_0^2 
+%	+\left(2\cdot 9 - \tfrac{9\cdot 24}{24} \right) \sigma_1^2  
+%	+\tfrac1{24} \sigma_3^2		
+%\cr&= 
+	-\tfrac{21}{16} \tau_0^2 
+	- 15\tau_1^2 
+	+\tfrac18 \tau_2^2 
+	+\tfrac1{24} \tau_3^2			
+%
+	+\tfrac{7}{4} \sigma_0^2 
+	+ 9 \sigma_1^2  
+	+\tfrac1{24} \sigma_3^2	
+\nonumber\end{align}
+$G_2$ identities for torsion forms and $C$-field analogs $\Rightarrow$
+%
+\mypause
+%
+\begin{align}
+%\label{E:ScalarPotential}
+V(x,y)&= 
+	-\tfrac12 R(g)
+		+\tfrac1{4\cdot 4!} F_{ijkl}^2 
+\nonumber\end{align}
+$=$ Einstein-Hilbert and Maxwell terms on $Y$ from {\em auxiliary field mechanism}.
+\end{itemize}
+}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Higher derivatives}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{
+\frametitle{Higher derivatives?}
+Can we guess higher-derivative terms? Many are easy. Most interesting one:
+\begin{itemize}
+\item We want to covariantize the term $\int C \wedge X_8$. 
+
+%
+\mypause
+%
+
+\item It contains $\int C \wedge R\wedge R\wedge R\wedge R$. 
+
+%
+\mypause
+%
+
+\item Decomposing, it contains $\int C \wedge W_X\wedge W_X\wedge W_Y\wedge W_Y$ 
+%in terms of the Weyl tensors of $X$ and $Y$. 
+(Weyl tensors of $X$, $Y$). 
+
+%
+\mypause
+%
+
+\item 
+%The Weyl tensor on $X$ is in the gravitino curl $W_{\alpha \beta \gamma}$ familiar from 4D, $N=1$ supergravity. 
+$W_X$ $\Leftrightarrow$ gravitino curl $W_{\alpha \beta \gamma}$ from 4D, $N=1$ supergravity.
+So term $\Leftrightarrow$ %we expect this to come from 
+$\varepsilon^{ijklmnp} \int \Phi_{ijk} W^{\alpha \beta \gamma}W_{\alpha \beta \gamma} S_{lmnp}$ for some $S\sim (W_Y)^2$ . %constructed from the square of the Weyl tensor on $Y$.
+
+%
+\mypause
+%
+
+\item But the Riemann tensor on $Y$ is real, so $S$ cannot be constructed directly from it. This was also the case for the potential, so perhaps it is generated by some auxiliary field mechanism?
+
+%
+\mypause
+%
+
+\item But the Weyl tensor is in the $\bm {70'}$ representation of $G_2$, and there is no auxiliary field for this!
+\end{itemize}
+}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{
+\frametitle{Strategies}
+We are pursuing a few strategies to study this problem. 
+\begin{itemize}
+\item[1] Consider a simpler problem:
+%
+\mypause
+%
+	\begin{itemize}
+	\item 
+		Construct Born-Infeld in 10D, $N=1/4$ superspace. 
+
+%
+\mypause
+%
+
+	\item 
+		Auxiliary fields in $SU(3)$ reps:
+			\begin{itemize}
+			\item $\bar{\bm 3}$ $\leftrightarrow$ chiral $\Phi_i$ $\leftrightarrow$ $(2,0)$ part $F_{ij}$ of the curvature of the connection in a Calabi-Yau compactification. 
+			\item a singlet $\leftrightarrow$ vector field $V$ $\leftrightarrow$ trace of $(1,1)$ part $F_k{}^k$. 
+			\end{itemize}
+			F-term SUSY $\Leftrightarrow$ holomorphic connex. \\
+			D-term SUSY $\Leftrightarrow$ Donaldson-Uhlenbeck-Yau equation. 
+%
+\mypause
+%
+
+	\item The analog of the $\bm {70'}$ above is the $\bm 8={6\choose 2} -3-3-1$ $\leftrightarrow$ $F_i{}^j-\frac13 \delta_i{}^j F_k{}^k$ (the rest).
+	\end{itemize}
+%
+\mypause
+%
+	Solution to the $\bm 8$ problem in BI  $\stackrel? \longleftrightarrow$ solution to $\bm {70'}$ problem in M-theory.
+%
+\mypause
+%
+	
+	Better yet: If we can show there is no solution to the $\bm 8$ problem, we can safely forget about the $\bm {70'}$ problem and go work on something else.
+\end{itemize}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{
+\frametitle{Strategies}
+\begin{itemize}
+\item [2${}^{\mathrm{nd}}$] Strategy:
+Shut up and calculate
+	\begin{enumerate}
+	\item Construct off-shell supergeometry
+	\item Construct $R\wedge R$ super-4-form
+	\item Square to get $R\wedge R\wedge R\wedge R$
+	\end{enumerate}
+
+%
+\mypause
+%
+
+%\item 
+	To see how this works, first do easier 5D, $N=1/2$ superspace: 
+%	In that case, the linearized supergeometry was already known from previous work with 
+%
+\mypause
+%
+	\begin{enumerate}
+	\item Construct non-linear 5D, $N=1/2$ superspace supergravity {\ala} 11D, $N=1/8$. (Linearized limit agrees 2003 result.) 
+%
+\mypause
+%
+
+	\item We then use the known supergeometry (with Gates and Phillips 2003) to construct $R\wedge R$ (\cf Hanaki, Ohashi, and Tachikawa 2006):
+\begin{align}
+\mathbb G &= W^{\alpha \beta \gamma} W_{\alpha \beta \gamma} 
+\cr
+\mathbb H_i &= -\tfrac14 D^\gamma F_i^{\prime \alpha \beta} W_{\alpha \beta \gamma}
+	+\tfrac 18 F_i^{\prime \alpha \beta}\bar D^{\dt \alpha}  D_\beta G_{\un a}
+	+\tfrac 18 \bar D^{\dt \alpha} F_i^{\prime \alpha \beta}D_\beta G_{\un a} 
+\cr	&	+\tfrac 1{16} \left( D^\beta \bar D_{\dt \alpha} F'_{\alpha \beta i} 
+	+\tfrac 14 D_\alpha \bar D^2 \bar \lambda_{\dt \alpha i} \right) G^{\un a}
+	+\tfrac 1{32} D^2 \lambda_i^\alpha D_\alpha R
+	+ \mathrm{h.c.}
+\nonumber\end{align}
+%This is the superspace analog of the 2006 component calculation by 
+
+%
+\mypause
+%
+	\item This step is trivial in 5D. 
+	\end{enumerate}
+Conveniently, this answer can be lifted to 11D, $N=1/8$ unchanged. 
+\end{itemize}	
+
+}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusion}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{
+\frametitle{Summary}
+\begin{itemize}
+\item 
+	We have embedded eleven-dimensional supergravity in an off-shell 11D, $N=1/8$ superspace. 
+\item 
+	We have constructed the linearized off-shell supergeometry for it by starting with the fields and their gauge and local supersymmetry transformations and constructing the Riemann tensor, gravitino curls, and super-4-form field strength. 
+\item 
+	We have partially constructed the (Riemann)${}^2$ invariants with the intention of using them to construct the leading $\sim R^4$ M-theory corrections.
+\item 
+	Along the way, we have revisited the 5D, $N=1/2$ analog of this problem and are currently studying the 10D Born-Infeld analog. 
+\end{itemize}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{
+\frametitle{Outlook}
+\begin{itemize}
+\item 
+	Success in the construction of even the most non-trivial part of the $\int C \wedge X_8$ term is not the end of the story: 
+	\begin{enumerate}
+	\item 
+		Chern-Simons-like action is not invariant under all 11D super-diffeomorphisms (\cf 2-derivative action). 
+
+%
+\mypause
+%
+
+	\item 
+		D-term integral that fixes this problem already determined by $f(x)$. The non-invariance patched up by shift $G\to G + R\wedge R$ of tensor hierarchy field strengths (Witten 1996).
+		% (this is what that term was for in the 2-derivative case and it was unique.
+
+%
+\mypause
+%
+
+	\item
+		But D-term integrand is non-polynomial $\Rightarrow$ non-polynomial dependence in Riemann.
+	\end{enumerate}
+%
+\mypause
+%
+Outcome expected from general arguments:\\
+{\center 
+\hspace{15mm} 
+Supersymmetrization of $R^4$ must be non-polynomial.}
+\end{itemize}
+}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{
+\frametitle{Outlook}
+%\begin{itemize}
+This would be an 11D supergravity analog of Born-Infeld. If this is correct, it would settle many questions about the definition of the latter but also leave some open and suggest new ones:
+	\begin{itemize}
+		\item It is not constructed purely from the curvature. Some derivatives thereof will be generated by the superspace integration. These are needed for supersymmetry.
+%		\item There are no ghosts. 
+		\item What is the fate of the singular GR solutions? This should not be difficult to answer once the action is known.
+		\item Can the bosonic part be put in determinantal form? Does it define a new characteristic class?
+%
+\mypause
+%
+		\item Is it the leading low-energy effective action of M-theory? This could be checked by comparing terms available in the literature from amplitude computations. 
+%
+\mypause
+%
+		\item Is there a 64-supercharge theory for which the M-theory result is the Goldstone? Witten's 12D theory and $E_8$ framing (1996)? 
+		\item $\cdots$
+	\end{itemize}
+%\end{itemize}
+In addition, there are many applications/extensions (superstrings, compactifications, SFT, ...).
+
+}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{
+\frametitle{}
+\begin{center}
+{\bf \huge THANK YOU!}
+\end{center}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{
+\frametitle{NATH fields and transformations}
+
+\begin{align}
+\delta_0 \Psi_{\alpha i}
+	&= \Xi_{\alpha i}
+	+ \bar G\, \mathcal G_{i j} \nabla_\alpha \Omega^j
+	+ i \,W_{\alpha i j} \,\bar{\Omega}^{j}
+~,
+\cr
+\Delta_1 \Phi &= \Xi^\alpha \wedge W_\alpha
+	+ \bar\nabla^2 \Big(
+	\frac{i}{2} \iota_{\bar\Omega} \mathcal U
+	+ \frac{1}{4} \iota_{\bar\Omega} (F \wedge H)
+	\Big)
+	~,\cr
+% 	
+\Delta_1 V &= - \frac{i}{2} \bar G \iota_\Omega F + \frac{i}{2} G \iota_{\bar\Omega} F ~,
+\cr
+% 
+\Delta_1 \Sigma_\alpha &= -G\, \Xi_{\alpha}~, 
+\cr
+% 
+\Delta_1 X &= -\frac{i}{2} \bar G\, \iota_\Omega H + \frac{i}{2} G\, \iota_{\bar\Omega} H~,
+\cr
+% 
+\delta_1 \mathcal V &= -\frac{1}{2} \bar G\, \Omega - \frac{1}{2} G\, \bar \Omega ~.
+\nonumber
+\end{align}
+\begin{align}
+\mathcal U_{ijkl} &:= 3 \,\epsilon_{ijklmnp} \frac{\partial}{\partial F_{mnp}} \Big( \sqrt g\,  {f}\, (G \bar G)^{1/3}\Big) 
+%\cr
+%	&= \frac{1}{3!} \sqrt{g}\,\epsilon_{ijklmnp} \Big(
+%	F^{mnp} (\cF + |H|^2 \cF')
+%	- 9 \cF'\, H^{m} F^{n p q} H_q (G \bar G)^{-2/3}
+%	\Big) (G \bar G)^{1/3}~.
+\cr
+\mathcal G_{i j} 
+	&= (G \bar G)^{-1/3} \Big(\hat  {f}^{-1}g_{i j} + \frac i2 (G \bar G)^{-1/3} \hat  {f} F_{i j k} \,g^{k l} \,H_l \Big)
+\nonumber
+\end{align}
+\begin{align}
+\delta_0 \Psi_{\alpha i} &= \Xi_{\alpha i} + g_{i j} D_\alpha \Omega^j  ~,
+\cr
+\delta_1 \Phi_{ijk} &= \tfrac1{2i} \tilde \varphi_{ijkl} \bar D^2 \bar \Omega^l ~,
+\cr
+\delta_1  V_{ij} &= \tfrac1{2i} \varphi_{ijk} (\Omega^k -\bar \Omega^k) ~,
+\cr
+\delta_1  \Sigma_{\alpha i}&= -\Xi_{\alpha i} ~,
+\cr
+\delta_1 {\mathcal V}{}^i &= -\tfrac12(\Omega^i + \bar \Omega^i)~.
+\nonumber
+\end{align}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{
+\frametitle{NATH field strengths and Bianchi identities}
+\begin{align}
+E &= \partial \Phi
+	\cr
+F &= \tfrac1{2i}\left( \Phi - \bar \Phi\right) - \partial V
+	\cr
+W_\alpha &= -\tfrac14 \bar \nabla^2 \nabla_\alpha V 
+	+\partial \Sigma_\alpha 
+	+ \iota_{\mathcal W_\alpha} \Phi
+	\cr
+H &= \tfrac1{2i}\left(\nabla^\alpha \Sigma_\alpha - \bar \nabla_{\dt \alpha} \bar \Sigma^{\dt \alpha} \right)
+	-\partial X 
+	-\omega_{\mathsf h}(\mathcal W, V)
+	\cr
+G&= -\tfrac14 \bar \nabla^2 X 
+	+ \iota_{\mathcal W^\alpha} \Sigma_\alpha	
+\nonumber
+\end{align}
+\begin{align}
+0 &= - \partial E
+	\cr
+\tfrac1{2i}\left(E - \bar E\right) &=  \partial F
+	\cr
+-\tfrac14 \bar {\nabla}^2 {\nabla}_\alpha F  &= 
+	-\partial W_\alpha 
+	- \iota_{\mathcal W_\alpha} E
+	\cr
+\tfrac1{2i}\left({\nabla}^\alpha W_\alpha - \bar {\nabla}_{\dt \alpha} \bar W^{\dt \alpha} \right)&= 
+	\partial H 
+	+ \omega_{\mathsf h}(\mathcal W, F)
+	\cr
+-\tfrac14 \bar {\nabla}^2 H &= 
+	-\partial G 
+	- \iota_{\mathcal W^\alpha} W_\alpha 
+	\cr
+\bar {\nabla}_{\dt \alpha} G &= 0
+\nonumber
+\end{align}
+\begin{align}
+	\omega_{\mathsf h}(\chi_\alpha, v) := 
+\iota_{\chi^\alpha} {\nabla}_\alpha v 
+	+ \iota_{\bar \chi_{\dt \alpha}} \bar {\nabla}^{\dt \alpha} v 
+	+\tfrac12 \left(  \iota_{{\nabla}^\alpha\chi_\alpha} v 
+		+ \iota_{\bar {\nabla}_{\dt \alpha} \bar \chi^{\dt \alpha}} v 
+	\right)
+\nonumber
+\end{align}	
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame{
+\frametitle{Chern-Simons-like invariant}
+\begin{align}
+-12 L_{CS} &= 
+i \int d^2 \theta  \, \mathcal E\,   \Phi \left[
+	E G + \tfrac12 W^\alpha W_\alpha - \tfrac i4 \bar {\nabla}^2 (  F H) 
+	\right]
+\cr&+ \int d^4 \theta  \, E\,  V \left[  
+	\left( E + \bar E\right) H + \omega(W, F) 
+	- i {\nabla}^\alpha F\iota_{\mathcal W_\alpha}F 
+	+ i \bar {\nabla}_{\dt \alpha} F \iota_{\bar{\mathcal W}^{\dt \alpha} }F 
+	\right]
+\cr&+i \int d^2 \theta  \, \mathcal E\, \Sigma^\alpha \left[
+	E W_\alpha -\tfrac i4 \bar {\nabla}^2 (  F {\nabla}_\alpha F) 
+	\right]
+\cr&- \int d^4 \theta  \, E\, X \left[  
+	\left( E + \bar E\right) F
+	\right]
+	+\mathrm{h.c.} 	
+\nonumber
+\end{align}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\frame{
+%\frametitle{Born-Infeld}
+%
+%
+%
+%}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{\tiny
+%\small
+%\footnotesize
+%\linespread{1.1}\selectfont
+\bibliography{/Users/wdlinch3/Dropbox/Rashoumon/LaTeX/BibTex/BibTex}
+\bibliographystyle{unsrt}
+} % end resize
+
+
+\end{document}

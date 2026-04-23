@@ -1,0 +1,1853 @@
+% !TEX TS-program = pdflatexmk
+\documentclass[letter,12pt]{article} %[twocolumn]
+% page formatting %%%%%%%%%%%%%%%%%%%%%
+%\usepackage{geometry} %defaults are roughly [top=33mm, bottom=48mm, left=33mm, right=33mm]
+%\usepackage[top=20mm, bottom=30mm, left=15mm, right=15mm]{geometry}
+\usepackage[top=30mm, bottom=40mm, left=25mm, right=25mm]{geometry}
+%\usepackage[top=30mm, bottom=45mm, left=30mm, right=30mm]{geometry}
+%\usepackage[top=26mm, bottom=40mm, left=26mm, right=26mm]{geometry}
+
+\usepackage{/Users/wdlinch3/Dropbox/Rashoumon/LaTeX/macros/WDL3}
+
+\usepackage{/Users/wdlinch3/Dropbox/Rashoumon/LaTeX/macros/SupergeometryDefs}
+\usepackage{/Users/wdlinch3/Dropbox/Rashoumon/LaTeX/macros/SupergeometryDefs2}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Definitions for this paper 
+
+\usepackage{xcolor}
+\usepackage{pagecolor}
+
+\def\gauge#1{ {\color{green} { {#1}} } }
+\def\physical#1{ {\color{green} {\bm {#1}} } }
+\def\auxiliary#1{ {\color{yellow} {\bm {#1}} } }
+\def\compensating#1{ {\color{red}  #1} }
+\def\FS#1{ { {\physical{\bm {#1}} } } }
+
+\def\frameXX{ \physical{e} }
+\def\frameXY{ \physical{e} }
+\def\frameYX{ \physical{e} }
+\def\frameYY{ \physical{e} }
+
+\def\CXXX{ \physical{C} }
+\def\CXXY{ \physical{C} }
+\def\CXYY{ \physical{C} }
+\def\CYYY{ \physical{C} }
+
+\def\grinoXX{ \physical{\psi} }
+\def\grinoXY{ \physical{\psi} }
+\def\grinoYX{ \physical{\psi} }
+\def\grinoYY{ \physical{\psi} }
+
+\def\spinorYY{ \physical{\chi} }
+\def\spinorYYY{ \physical{\chi} }
+
+\def\d{ \auxiliary{d_X} }
+\def\dX{ \auxiliary{d} }
+\def\dY{ \auxiliary{d} }
+\def\dYY{ \auxiliary{d} }
+
+\def\f{\auxiliary{f} }
+
+\def\l{ \auxiliary{\lambda} }
+\def\y{ \auxiliary{y} }
+\def\t{ \auxiliary{t} }
+\def\r{ \auxiliary{\rho} }
+
+\def\surfeit{ \compensating{\eta} }
+\def\compX{ \compensating{G} }
+\def\compY{ \compensating{H} }
+
+\def\calibration{ \physical{F} }
+
+\def\X{X}
+\def\T{T}
+
+\def\gravitonXX{\physical{h} }
+\def\gravitonXY{\physical{h} }
+\def\gravitonYY{\physical{h} }
+
+\def\Ga{\auxiliary{\bm \Gamma}}
+\def\Oh{\physical{ {\bm \Omega} }}
+\def\I{\bm I}
+\def\F{\bm F}
+\def\H{\bm H}
+\def\Weyl{\physical W}
+\def\KK{\physical {\mathcal F}}
+\def\Scalar{\physical R}
+%\def\F{\bm G_{[2,2] }
+
+\def\G{ \physical{ {\bm G} } }
+\def\Torsion{ \physical{ {\bm T} } }
+\def\Curvature{ \physical{ {\bm R} } }
+
+
+\def\TorsionX{ \physical{ {\bm T} } }
+\def\TorsionY{ \physical{ {\bm T} } }
+%Refinements
+\def\TorsionXXX{ \physical{ {\bm T} } }
+\def\TorsionXYX{ \physical{ {\bm T} } }
+\def\TorsionYYX{ \physical{ {\bm T} } }
+\def\TorsionXXY{ \physical{ {\bm T} } }
+\def\TorsionXYY{ \physical{ {\bm T} } }
+\def\TorsionYYY{ \physical{ {\bm T} } }
+
+%4form Field strength
+\def\FSXXXX{\hyperlink{E:FSXXXX} {\FS{G}} }
+\def\FSXXXY{\hyperlink{E:FSXXXY} {\FS{G}} }
+\def\FSXXYY{\hyperlink{E:FSXXYY} {\FS{G}} }
+\def\FSXYYY{\hyperlink{E:FSXYYY} {\FS{G}} }
+\def\FSYYYY{\hyperlink{E:FSYYYY} {\FS{G}} }
+\def\Torsion{ {\FS{T}} }
+\def\Curvature{ {\FS{R}} }
+
+\def\Ztorsion{ { \auxiliary{Z} } }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%
+%%%
+%%%%%
+%%%%%%%%%
+%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%UMDEPP-014-026
+%\title{Components of Eleven-dimensional Supergravity from the Superspace Chern-Simons Action}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+%\nopagecolor
+%\pagecolor{yellow!30!orange}
+%\pagecolor{white!60!black}
+%\maketitle
+%\default@color{white}
+
+
+%%\begin{center}
+%\addtolength{\baselineskip}{.5mm}
+%\thispagestyle{empty}
+%\begin{flushright}
+%{\color{red}\today \\
+%{\sc MI-TH-16??}\\
+%}
+%\end{flushright}
+
+\vspace{10mm}
+\begin{center}
+%\doublespacing{
+\Large \textbf {
+Eleven-dimensional Supergravity with Four Off-shell Supersymmetries
+}
+%}
+\end{center} 
+\vspace{5mm}
+\begin{center} 
+%\\[10mm] 
+%\\[15mm]
+{
+William D.\ Linch III
+}
+\\[5mm]
+%~\\[5mm]
+{
+{\em George P. and Cynthia W. Mitchell Institute for\\
+Fundamental Physics and Astronomy, \\
+Texas A\&{}M University.}\\
+~\\
+Caltech Theory Seminar\\
+7 August, 2020.\\
+~\\
+Based on work 
+%\cite{Becker:2016xgv, %ATH
+%Becker:2016rku,	%NATH
+%Becker:2016edk,	%G2Potential
+%Becker:2017njd, 	%All CS
+%Becker:2017zwe,	%Linearized
+%Becker:2018phr}	%Current
+with \\
+~\\
+K.\ Becker, 
+M.\ Becker, 
+D.\ Butter, 
+S.\ Guha, 
+S.\ Randall, 
+D.\ Robbins,
+and
+A.\ Sengupta.
+}
+\end{center} 
+
+\vspace{10pt}
+
+
+\begin{abstract}
+Off-shell supersymmetry of higher-derivative corrections to 2-derivative actions generally leads to an infinite set of ever-higher-derivative corrections. In some cases, the result is a potentially large part of an effective action for some more fundamental theory. While it is generally expected to be impossible to describe more than eight {\color{red} twelve?} Poincar\'e supersymmetries this way, some constructions may be simplified considerably even if only a fraction of them closes off-shell. In this talk, I will describe eleven-dimensional supergravity with four of the 32 supersymmetries manifest and the status of a project to construct the famous $\int C\wedge X_8$ invariant.
+\end{abstract}
+
+%%email addresses
+%%\vspace*{.5cm}
+%\begin{flushleft}
+%~\\
+%{${}^{\small \mbox\Pisces}$ \href{mailto:wdlinch3@gmail.com}{wdlinch3@gmail.com}}\\
+%%\makebox[0pt][t]
+%%{$^\text{\Scorpio}$ \href{mailto:siegel@insti.physics.sunysb.edu}{siegel@insti.physics.sunysb.edu}}
+%%\makebox[0pt][t]
+%\end{flushleft}
+\thispagestyle{empty}
+\newpage
+%\thispagestyle{empty}
+\tableofcontents
+
+%\newpage
+\setcounter{page}1
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Motivation and Strategy}
+
+``M-theory'' is still poorly understood.
+It should have (at least) 2-branes and 5-branes (not necessarily fundamental). These have comparable tensions (not parametrically-separated), so a world-volume-like description has not been found.\\
+The alternative is to exploit the spacetime properties (\eg symmetries and anomaly structure) together with known limits in the moduli space of theories (\ie string theories). 
+
+We will rely on the following properties of M:
+\begin{enumerate}
+\item 11D super-Poincar\'e symmetry represented by the minimal multiplet as explained by Cremmer, Julia and Scherk (1978): 11D SG represented in components by a metric $g_{\bm {mn}}$, a gravitino $\psi_{\bm m}^{\bm \alpha}$, and a gauge 3-form $C_{\bm {mnp}}$. 
+\item Partial knowledge of the leading higher-derivative corrections to the 11D SG: $\int C \wedge X_8$, with $X_8 \sim R^4+\cdots$ a specific contraction of the fourth exterior power of the curvature 2-form with corrections involving fewer curvatures.
+\item The 4-form field strength $G=dC$ does not have integer periods on a generic spinnable Lorenzian 11-manifold. What has integral periods is instead $G - \tfrac14 p_1$ where $p_1 \sim \mathrm{tr} \, R\wedge R$ is the first Pontryagin class (Witten 1997).
+\item The long-standing conjecture that this is the leading Wilsonian effective action of M-theory. Schematically,
+{%\color{white}
+\begin{align}
+\label{E:MLEEA}
+\boxed{R + R^4 + \textrm{11D, $N=1$ supersymmetry} \Rightarrow \textrm{Leading M-theory LEEA?}}
+\tag{$\ast$}
+%\nonumber
+\end{align}}
+\end{enumerate}
+
+Now suppose there were an off-shell, 11D superspace with all 32 supercharges. \\
+Then a description of the leading terms in the M-theory LEEA in this superspace must actually contain all orders, at least when all the auxiliary fields are integrated out. \\
+The catch is that this superspace does not exist. (For rigid supersymmetry Berkovits (1993) explains that the algebra will not close unless the number of supercharges is 9 or less due to non-associativity of $\mathbb O$.)
+
+Can we make do with fewer than 32 supercharges, say, only 4?\\
+In this 11D, $N=1/8$ superspace, the 4 supersymmetries would close on 4 translations giving a 4D, $N=1$ {\em off-shell} subalgebra of the full 11D, $N=1$ on-shell supersymmetry algebra.\\
+We would then have to impose the remaining symmetries ``by hand''. \\
+A good analogy was provided by Bagger and Galperin \cite{Bagger:1996wp}: $F^2 + F^4 +$ 10D, $N=1$ supersymmetry $\Rightarrow$ Born-Infeld.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\subsection{Noether Procedure}
+%We may represent the situation as follows: The M-theory effective action is of the form $S=S_2 + S_8 +\cdots$ where the subscript denotes the number of derivatives on the bosonic fields. \\
+%Then under the lowest-order supersymmetry transformation $\delta_0$, $S_2$ is invariant, but $S_8$ is not. \\
+%Supersymmetry of the effective action requires a correction $\delta= \delta_0+\delta_6 +\cdots$ so that $\delta_6 S_2$ cancels the transformation $\delta_0 S_8$. \\
+%But then $\delta_6 S_8\neq 0$ so that we require an even-higher-order term in the effective action that may cancel this, and so on.
+%This is the usual component Noether procedure--it has been carried out explicitly only to very low orders and even then only partially.\\
+%Putting this enormous technical hurdle aside, summing up this infinite number of steps would give a supersymmetric, all-orders-in-derivatives effective action. \\
+%It is a long-standing conjecture that this is the leading Wilsonian effective action of M-theory. Schematically,
+%\begin{align}
+%\label{E:MLEEA}
+%R + R^4 + \textrm{11D, $N=1$ supersymmetry} \Rightarrow \textrm{Leading M-theory LEEA?}
+%\tag{$\ast$}
+%%\nonumber
+%\end{align}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\paragraph{Born-Infeld}
+%
+%The situation described above has a spin-1 analog discovered by Born and Infeld (1933). 
+%They deformed the Maxwell Lagrangian by higher-derivative corrections in such a way that the field strength would be bounded above: $L\sim \tfrac1{\alpha^2 }[1-\sqrt{1-\alpha^2 F^2}]\approx \tfrac12 F^2 + o(\alpha^2 )$.\\
+%It was discovered by Tseytlin {\em half a century} later (1985) that this action is the exact leading LEEA of open (super)string field theory. \\
+%A decade later, it was realized by Bagger and Galperin (1997) that this action is fixed by extended supersymmetry, so that we have the analog 
+%\begin{align}
+%F^2 + F^4 + \textrm{10D, $N=1$ supersymmetry} \Rightarrow \textrm{Born-Infeld}
+%\nonumber
+%\end{align}
+%of the conjecture \eqref{E:MLEEA} above. 
+
+\begin{enumerate}
+\item We will attempt to take 4 real supersymmetries off-shell. This is the maximal amount possible with finitely many fields. These symmetries will be taken to close on 4 of the 11 translations.
+\item Split the indices of the component fields of the eleven-dimensional super-Poincar\'e multiplet into $4+7$ and embed each one into supermultiplets according to their na\"ive 4D interpretation. 
+The M-theory 3-form gives rise to a double complex of differential superforms (non-abelian tensor hierarchy) in this 11D, $N=1/8$ superspace \cite{Becker:2016xgv, Becker:2016rku, Becker:2017njd}.\footnote{Mathematically, this is a {\it Diff}(7)-equivariant chain complex of differential forms on $Y$ with values in a complex of (sheaves of) representations of the 4D, $N=1$ super-Poincar\'e algebra \cite{Becker:2016rku}.} 
+\item Construct the 2-derivative action as a covariantization of the associated Chern-Simons invariant, and compute its field equations \cite{Becker:2016edk, Becker:2017zwe, Becker:2017njd, Becker:2018phr}. This tells us how to compare to on-shell theories and is the starting point for studying deformations. 
+\item Act repeatedly on the unconstrained superfields in all possible ways with super-translations and consider all possible linear combinations. This gives a large differential algebra containing connections and tensors of our reduced structure algebra. Identifying ``differential ideal'' is tantamount to finding the (reduced) supergeometry.\\
+%\xymatrix{
+%U \ar[d]_{\bar D} \ar[r]^{D} & DU\ar[d]_{\bar D} \ar[r]^{D} & D^2 U \ar[d]_{\bar D} \ar[r]^{D} &0&&&&\\
+%\bar DU\ar[d]_{\bar D} \ar[r]^{D} & [D , \bar D] U \ar[d]_{\bar D} \ar[r]^{D} & \bar D D^2 U\ar[d]_{\bar D} \ar[r]^{D} &0\\
+%\bar D^2 U\ar[d]_{\bar D} \ar[r]^{D} & \bar D^2 U \ar[d]_{\bar D} \ar[r]^{D} & \{\bar D^2, D^2\} U\ar[d]_{\bar D} \ar[r]^{D} &0\\
+%0&0&0
+%}
+
+{%\color{white}
+\xymatrix{
+\compensating {V} \ar[d]_{\bar D} \ar[r]^{D} & \gauge {DV}\ar[d]_{\bar D} \ar[r]^{D} & \compensating {D^2 V} \ar[d]_{\bar D} \ar[r]^{D} &0&&&&\\
+\gauge{\bar DV} \ar[d]_{\bar D} \ar[r]^{D} & \gauge {A_a} \ar[d]_{\bar D} \ar[r]^{D} & \physical{\bar W^\alpha} \ar[d]_{\bar D} \ar[r]^{D} &0\\
+\compensating{\bar D^2 V}\ar[d]_{\bar D} \ar[r]^{D} & \physical{W^\alpha} \ar[d]_{\bar D} \ar[r]^{D} & \physical{F_{ab}} \oplus \auxiliary {d} \ar[d]_{\bar D} \ar[r]^{D} &0\\
+0&0&0
+}
+}
+
+{\color{white}
+\xymatrix{
+\compensating {U} \ar[d]_{\bar D} \ar[r]^{D} & \compensating {DU}\ar[d]_{\bar D} \ar[r]^{D} & \compensating {D^2 U} \ar[d]_{\bar D} \ar[r]^{D} &0&&&&\\
+\compensating{\bar DU} \ar[d]_{\bar D} \ar[r]^{D} & \gauge {A_a} \ar[d]_{\bar D} \ar[r]^{D} & \physical{\bar W^\alpha} \ar[d]_{\bar D} \ar[r]^{D} &0\\
+\compensating{\bar D^2 U}\ar[d]_{\bar D} \ar[r]^{D} & \physical{W^\alpha} \ar[d]_{\bar D} \ar[r]^{D} & \physical{F_{ab}} \oplus \auxiliary {d} \ar[d]_{\bar D} \ar[r]^{D} &0\\
+0&0&0
+}
+}
+
+
+\item Construct the full supergeometry of this 11D, $N=1/8$ superspace so that is agrees with the 11D, $N=1$ on-shell supergeometry in the appropriate limit.
+This requires finding the 
+	\begin{itemize}
+	\item field strength super-4-form $\G_{\bm{ABCD}}$ 
+	\item torsion 2-form $\Torsion_{\bm{AB}}{}^{\bm C}$ 
+	\item curvature 2-form $\Curvature_{\bm{AB} }{}^{\bm{cd} }$
+	\end{itemize}
+where $\bm A = \bm a, \alpha, \dt \alpha$ and $\bm a = a, i$. 
+\item Use the resulting curvature super-2-form tensor to define the  super-4-form $\Curvature^2$ and super-8-form $\Curvature^4$, and use them to deform the 2-derivative action.
+%\item Deform the action by the super-8-form and perform the Witten shift on the super-4-form field strength $\G=dC$. 
+\end{enumerate}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Putting it up to 11(D SG in $N=1/8$ Superspace)}
+Following the strategy for spin-1, we first decompose 11D SG fields 
+\begin{align}
+\begin{array}{cccclcc}
+	e_{\bm m}{}^{\bm a} &\to &
+		e_{m}{}^{a} ~,~ 
+		e_{i}{}^{a} ~,~ 
+		e_{m}{}^{j} ~,~ 
+		{\color {teal} e_i{}^j }
+&\with & a, m = 0,1,2,3
+\\
+	\psi_{\bm m}^{\bm \alpha}&\to &
+		\psi_{m}^{\alpha} ~,~ 
+		\psi_{m}^{\alpha i} ~,~ 
+		\psi_{j}^{\alpha } ~,~ 
+		\psi_{j}^{\alpha i} ~,~
+&\and & i,j = 1,\dots, 7	
+\\ 
+	C_{\bm {mnp}} &\to &C_{mnp}~,~ C_{mn \, i} ~,~ C_{m \, ij}~,~ C_{ijk}
+&\and & \alpha = 1,2	
+\end{array}
+\nonumber
+\end{align}
+and embed them into superfields. 
+This requires the following surprising fact about Riemannian 7-manifolds:
+For any orientable and spinnable such smooth manifold, 
+%\begin{theorem}
+%Let $(Y, g)$ be a smooth Riemannian manifold that is oriented ($w_1=0$) and spin ($w_2$=0). 
+%Then 
+%\end{theorem}
+there is a 3-form $\varphi$ such that 
+{%\color{white}
+\begin{align}
+{\color {teal} \sqrt{g}g_{ij} } = -\tfrac1{144}\varepsilon^{k_1\cdots k_7} \phi_{i k_1k_2} \phi_{j k_3 k_4} \phi_{k_5k_6k_7}
+\nonumber 
+\end{align}
+}
+This 3-form is then embedded into a chiral superfield $\Phi_{ijk}$ together with the 35 pseudoscalars. 
+All the other bosons get their own superfields by the na\"ive assignment \cite{Becker:2017zwe}
+{%\color{white}
+\begin{align}
+U^a &\sim \cdots 
+	+ (\theta \sigma^m \bar \theta) \frameXX_m{}^a 
+	+ \theta^2 (\sigma^m \bar \theta)_\alpha \grinoXX_m{}^\alpha 
+	+ \bar \theta^2 (\theta \sigma^m )_{\dt \alpha} \bar \grinoXX_m{}^{\dt \alpha }
+	+ \theta^2 \bar \theta^2 \dX^a
+\cr
+\Psi^{\alpha i} &\sim \cdots 
+	+ (\theta \sigma^m \bar \theta) \grinoXY_m{}^{\alpha i}
+	+ \theta^2 (\bar \theta \bar \sigma_a)^\alpha \y_i^a
+	+ \bar \theta^2 (\theta \sigma^{ab})^\alpha \t_{ab i} 
+	+ \theta^2 \bar \theta^2 \r^i_\alpha
+\cr
+\mathcal V^i &\sim \cdots 
+	+ (\theta \sigma^m \bar \theta) \frameXY_m^i 
+	+ \bar \theta^2 \theta^\alpha \surfeit_\alpha^i
+	+ \theta^2 \bar \theta_{\dt \alpha}\bar \surfeit^{\dt \alpha i}
+	+ \theta^2\bar \theta^2 \dY^i
+\cr
+X &\sim \cdots 
+	+ \theta^2 \compX
+	+ \bar \theta^2 \bar \compX
+	+ \theta \sigma_m \bar \theta \mathcal \, \varepsilon^{mnpq} \CXXX_{npq}
+	+ \bar \theta^2 \theta^\alpha \surfeit_\alpha
+	+ \theta^2 \bar \theta_{\dt \alpha}\bar \surfeit^{\dt \alpha}
+	+ \theta^2\bar \theta^2 \d
+\cr
+\Sigma_i^\alpha &\sim \cdots	
+	+ [\theta^\alpha \compY_i + (\theta \sigma^{mn})^\alpha \CXXY_{mn \, i} ] 
+	+  \theta^2 \tilde \surfeit_i^\alpha
+\cr
+V_{ij} &\sim \cdots 
+	+  (\theta \sigma^m \bar \theta)  \CXYY_{m\, ij}
+	+ \bar \theta^2 \theta^\alpha \spinorYY_{\alpha \, ij} 
+	+ \theta^2 \bar \theta_{\dt \alpha}\bar \spinorYY_{ij}^{\dt \alpha}
+	+ \theta^2\bar \theta^2 \dYY_{ij}
+\cr
+\Phi_{ijk} &\sim \CYYY_{ijk} + i \calibration_{ijk}  
+	+ \theta^\alpha \spinorYYY_{\alpha\, ijk}
+	+ \theta^2 \f_{ijk}
+\nonumber
+\end{align}
+}
+Notes:
+\begin{itemize} 
+	\item {\color{PineGreen} Gauge fields} transform canonically. Their (double) curls are field strength, torsion, and curvature 2-form components. 
+	\item {\color{Orange} Auxiliary fields} are invariant. 
+	\item {\color{Red} Compensators} suffer St\"uckelberg shifts under ``pre-gauge'' transformations. They do not appear in the spectrum of gauge(-invariant) superfields.
+\end{itemize}
+
+
+The spins $\leq 1$ fields in the list form a ``non-abelian tensor hierarchy'' of superfield.
+Such homological objects have a complex of field strengths:
+%\begin{align}
+%E_{ijkl} &= 4\partial_{[i} \Phi_{jkl]}
+%	\cr
+%F_{ijk} &= \tfrac1{2i}\left( \Phi_{ijk} - \bar \Phi_{ijk}\right) - 3\partial_{[i} V_{jk]}
+%	\cr
+%W_{\alpha ij} &= -\tfrac14 \bar {\mathcal D}^2 {\mathcal D}_\alpha V_{ij}
+%	+2\partial_{[i} \Sigma_{\alpha j]}
+%	+ \mathcal W_\alpha^k \Phi_{ijk}
+%	\cr
+%H_i &= \tfrac1{2i}\left({\mathcal D}^\alpha \Sigma_{\alpha i} - \bar {\mathcal D}_{\dt \alpha} \bar \Sigma_i^{\dt \alpha} \right)
+%	-\partial_i X 
+%	+\left[  \mathcal W^{\alpha j} {\mathcal D}_\alpha  V_{ij}
+%		+\tfrac12 {\mathcal D}^\alpha \mathcal W_\alpha^j   V_{ij}
+%	+\hc \right]
+%	\cr
+%G&= -\tfrac14 \bar {\mathcal D}^2 X 
+%	+ \mathcal W^{\alpha i} \Sigma_{\alpha	i}
+%\nonumber
+%\end{align}
+{%\color{white}
+\begin{align}
+E_{ijkl} &= 4\partial_{[i} \Phi_{jkl]}
+	\cr
+F_{ijk} &= \tfrac1{2i}\left( \Phi_{ijk} - \bar \Phi_{ijk}\right) - 3\partial_{[i} V_{jk]}
+	\cr
+W_{\alpha ij} &= -\tfrac14 \bar {\mathcal D}^2 {\mathcal D}_\alpha V_{ij}
+	+2\partial_{[i} \Sigma_{\alpha j]}
+	+ \mathcal W_\alpha^k \Phi_{ijk}
+	\cr
+H_i &= \tfrac1{2i}\left({\mathcal D}^\alpha \Sigma_{\alpha i} - \bar {\mathcal D}_{\dt \alpha} \bar \Sigma_i^{\dt \alpha} \right)
+	-\partial_i X 
+	+\left[  \mathcal W^{\alpha j} {\mathcal D}_\alpha  V_{ij}
+		+\tfrac12 {\mathcal D}^\alpha \mathcal W_\alpha^j   V_{ij}
+	+\hc \right]
+	\cr
+G&= -\tfrac14 \bar {\mathcal D}^2 X 
+	+ \mathcal W^{\alpha i} \Sigma_{\alpha	i}
+\nonumber
+\end{align}
+}
+It is gauged by the non-abelian KK vector multiplet $\mathcal V^i$ with field gauge-chiral strength $\mathcal W_\alpha^i$.
+
+In addition there are some combinations of the other three superfields $\{U^a, \Psi_i, \mathcal V^i\}$ that appear (mixed with a little $X$)
+{%\color{white}
+\begin{align}
+S &:=\tfrac12(G+\bar G) -\tfrac14 [D \sigma_a \bar D] U^a
+\cr
+P &:=\tfrac 1{2i} (G-\bar G) + \partial_a U^a
+\cr
+\X_i^a &:= \tfrac i4 ( \bar D \bar \sigma^a \Psi_i+ D\sigma^a\bar \Psi_i ) - \partial_i U^a
+\cr
+\T_i &:= \tfrac1{2i} ( D\Psi_{i} - \bar D \bar \Psi_i) + H_i
+%\cr
+%\bm \Gamma^{\un a}_i &:= -i\bar D^2 \X^{\un a}_i
+%	- i \bar D^{\dt \alpha} D^\alpha \T_i 
+\nonumber
+\end{align}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{``Components''}
+The formul\ae{} above can be partially inverted for the (linearized) components.\footnote{Need to define $\tau, Z$.} 
+%\begin{align}
+%\CXXX_{mnp}&:=- \tfrac12\varepsilon_{mnpq}\left[ 
+%	\tfrac12 (\bar \sigma^q)^{\dt \delta \delta} [D_\delta, \bar D_{\dt \delta}] X 
+%	+(D^2 +\bar D^2) U^d
+%	\right]
+%\cr
+%\CXXY_{mn \, i}  &:=\tfrac12 D_{(\alpha} \left[ \Sigma_{\beta) i} + \Psi_{\beta) i}\right]
+%\cr
+%\CXYY_{m\, ij}&:=\tfrac 12 [D_\alpha, \bar D_{\dt \alpha}] V_{ij} + \varphi_{ijk} \X_{\un a}^k
+%\cr
+%\CYYY_{ijk} &:=\tfrac12\left( \Phi_{ijk} + \bar \Phi_{ijk}\right)
+%	+\tfrac12\psi_{ijkl} \T^l
+%\nonumber
+%\end{align}
+%%%%%%%%%%%%%
+%%%% Graviton
+%%%%%%%%%%%%%
+%\begin{align}
+%\frameXX_m{}^a &:=-\tfrac12 [D_\alpha, \bar D_{\dt \alpha} ] \, U^{\un b} 	-\tfrac23 \delta_\alpha^\beta \delta_{\dt \alpha}^{\dt \beta} S
+%\cr
+%\frameXY_m{}^i &:=\tfrac12 [D_\alpha, \bar D_{\dt \alpha} ] \mathcal V^i 
+%\cr
+%\frameYX_i{}^b &:=
+%	- \tfrac12\left( \bar D_{\dt \alpha} \Psi_{\alpha i} - D_{\alpha} \bar \Psi_{\dt \alpha i}\right)
+%\cr
+%\frameYY_i{}^j&:= \tfrac14 \varphi^{j kl} F_{ikl} 
+%	- \tfrac1{36} \delta_i^j \varphi^{klm} F_{klm}
+%\nonumber
+%\end{align}
+{%\color{white}
+\begin{align}
+-4 \CXXX_{mnp}&:= \varepsilon_{mnpq}\left(
+	 [D\sigma^q\bar D] X
+%(\bar \sigma^q)^{\dt \delta \delta} [D_\delta, \bar D_{\dt \delta}] X 
+	+2(D^2 +\bar D^2) U^d
+	\right)
+\cr
+2\CXXY_{mn \, i}  &:= (D\sigma_{mn}\Sigma_{i} ) 
+	+ (D\sigma_{mn}\Psi_{ i})
+\cr
+-4 \CXYY_{m\, ij}&:= 
+%(\bar \sigma_m)^{\dt \alpha \alpha} [D_\alpha, \bar D_{\dt \alpha}] 
+	[D\sigma_m \bar D] V_{ij} -4 \varphi_{ijk} \X_{a}^k
+\cr
+2 \CYYY_{ijk} &:= \Phi_{ijk} + \bar \Phi_{ijk} +\psi_{ijkl} \T^l
+\nonumber
+\end{align}
+%%%%%%%%%%%%
+%%% Graviton
+%%%%%%%%%%%%
+\begin{align}
+4\frameXX_m{}^a &:=
+%(\bar \sigma_m)^{\dt \alpha \alpha} [D_\alpha, \bar D_{\dt \alpha} ] \, 
+	[D\sigma_m \bar D]U^{a} 
+	-\tfrac83  \delta_m^a S
+\cr
+-4 \frameXY_m{}^i &:= 
+%(\bar \sigma_m)^{\dt \alpha \alpha} [D_\alpha, \bar D_{\dt \alpha} ] 
+	[D\sigma_m \bar D]\mathcal V^i 
+\cr
+4 \frameYX_i{}^b &:=
+	 \bar D \sigma^b \Psi_{i} - D \sigma^b \bar \Psi_{ i}
+\cr
+4\frameYY_i{}^j&:=  \varphi^{j kl} F_{ikl} 
+	- \tfrac1{9} \delta_i^j \varphi^{klm} F_{klm}
+\nonumber
+\end{align}
+%%%%%%%%%%%%%
+%%%% Gravitino
+%%%%%%%%%%%%%
+%\begin{align}
+%\grinoXX_m{}^\alpha &:=-\tfrac{i}8 \bar D^2 D^{\beta} U_{\alpha\dt \alpha} 
+%	+\tfrac i{3} \delta_\alpha^\beta
+%		\bar D_{\dt \alpha}S
+%\cr
+%\grinoYX_i{}^\beta &:= \tfrac i8 \bar D^2 \Psi_i^\alpha
+%	+\tfrac1{12}\left[
+%	2 \bar D_{\dt \alpha} \X_i^{~\un a} - D^\alpha \T_i
+%	-4i \mathcal W_i^\alpha
+%	\right]
+%\cr	
+%\grinoXY_m{}^{\alpha i}&:=-\tfrac i2 [D_\alpha , \bar D_{\dt \alpha}] \Psi^{\beta j}
+%	-2 \partial^j D_\alpha U^\beta{}_{\dt \alpha}
+%	- \delta_\alpha^\beta  \bar D_{\dt \alpha} \T^j
+%	-4 \delta_\alpha^\beta \bar \grinoXY^j{}_{\dt \alpha}
+%\cr
+%\grinoYY_i{}^{\beta j} &:= i h_i{}^j(\spinorYYY^\beta)
+%	+\partial_{i}\Psi^{\beta j}
+%	-\tfrac i{3} \varphi_i{}^{jk}\left[ 
+%		\tfrac1{12}\psi_k{}^{lmn}\spinorYYY^\beta_{lmn}
+%		+i D^\beta \T_k\right]
+%	- \pi_{\bm{14}}{}_i{}^j  
+%	( \widehat W^\beta)
+%\nonumber
+%\end{align}
+%%%%%%%%%%%%%
+%%%% Alternative combinations 
+%%%%%%%%%%%%%
+%\begin{align}
+%\spinorYY_{ij}^\alpha &:=\widehat W_{\alpha ij} 
+%	+i\varphi_{ijk} (\mathcal W_\alpha^k -\tfrac14 \bar D^2 \Psi_\alpha^k)
+%\cr
+%\spinorYYY_{ijk}^\alpha&:= D^\alpha \left( F_{ijk} - 3i \varphi_{l[ij} \partial_{k]} \mathcal V^l\right)
+%\nonumber
+%\end{align}
+%%%%%%%%%%%%%
+%%%% Auxiliary fields
+%%%%%%%%%%%%%
+%\begin{align}
+%\dX^a &:=\tfrac18 D^\beta \bar D^2 D_\beta U_{\un a} 
+%	+ \tfrac16 [ D_\alpha, \bar D_{\dt \alpha}] S
+%	+\partial_{\un a} P
+%\cr
+%\d&:= -\tfrac14 (D^2 + \bar D^2) S
+%\cr
+%3\dY^i&:=D^\alpha \mathcal W_\alpha^i 
+%		-\tfrac18\left(
+%			D^\alpha \bar D^2 \Psi_\alpha^i 
+%			+\bar D_{\dt \alpha} D^2 \bar \Psi^{\dt \alpha i}
+%		\right)
+%		+2\partial^i P
+%\cr
+%4\dYY_{ij}&:=	\tfrac12 \left( 
+%		D^\alpha \spinorYY_{\alpha \, ij}
+%		+\bar D_{\dt \alpha} \bar \spinorYY_{ij}^{\dt \alpha }
+%	\right)
+%	-\tfrac43 \varphi_{ijk} \partial^k S
+%		-4 \varphi_{ijk} (\tau_1)^k 
+%		-2 (\tau_2)_{ij}
+%\cr
+%\f_{ijk}&:=-18 i \bar D^2 \left[ G^{ijk, lmn} \bar Z_{lmn}\right]
+%	- \tfrac 13 \epsilon^{ijk lmnp}\partial_l \bar Z_{mnp}
+%\cr
+%\y_i^a&:= - \bar D_{\dt \alpha} \l_\alpha^i
+%\cr
+%2 \t_{ab i} &:=D_{(\alpha} \mathcal W_{\beta) }^k
+%	-\tfrac i2 \left[  3 \bar D^{\dt \alpha} D_{(\beta}   
+%	+D_{(\beta} \bar D^{\dt \alpha}
+%	\right] \X_{\alpha) \dt \alpha}^k 
+%\cr
+%\r^i_\alpha&:=-\tfrac14 D^\beta \bar D^2 D_{(\alpha} \Psi_{\beta)}^i 
+%	- i \partial^i \left[
+%	D_\alpha G +\tfrac12 \bar D^{\dt \alpha} D^2 U_{\un a}
+%	\right]
+%\nonumber
+%\end{align}
+%%%%%%%%%%%%
+%%% Gravitino
+%%%%%%%%%%%%
+\begin{align}
+8i \grinoXX_m{}^\beta &:= \bar D^2 D^{\beta} U_{m} 
+	+\tfrac 4{3} (\sigma_m\bar D)^\beta S
+\cr
+-8i \grinoYX_i{}^\beta &:= \bar D^2 \Psi_i^\beta
+	-\tfrac {2i}{3}\left[
+	2 (\sigma_m\bar D)^\beta \X_i^{m} - D^\alpha \T_i
+	-4i \mathcal W_i^\alpha
+	\right]
+\cr	
+-4i\grinoXY_m{}^{\beta j}&:=
+%(\bar \sigma_m)^{\dt \alpha \alpha} [D_\alpha , \bar D_{\dt \alpha}] 	
+	[D\sigma_m \bar D]\Psi^{\beta j}
+	-4i \partial^j (D\bar \sigma_m \sigma_n )^\beta U^n
+	-2i (\sigma_m\bar D )^\beta \T^j
+	-8i (\sigma_m \bar \grinoXY^j)^\beta 
+\cr
+\grinoYY_i{}^{\beta j} &:= i h_i{}^j(\spinorYYY_{ijk}^\beta)
+	+\partial_{i}\Psi^{\beta j}
+	-\tfrac i{3} \varphi_i{}^{jk}\left[ 
+		\tfrac1{12}\psi_k{}^{lmn}\spinorYYY^\beta_{lmn}
+		+i D^\beta \T_k\right]
+	- \pi_{\bm{14}}
+	( \spinorYY_{i}^{\beta\, j})
+\nonumber
+\end{align}
+%%%%%%%%%%%%
+%%% Alternative combinations 
+%%%%%%%%%%%%
+\begin{align}
+\spinorYY_{ij}^\alpha &:=\widehat W_{ij}^\alpha 
+	+i\varphi_{ijk} (\mathcal W^{\alpha k} -\tfrac14 \bar D^2 \Psi^{\alpha k})
+\cr
+\spinorYYY_{ijk}^\alpha&:= D^\alpha \left( F_{ijk} - 3i \varphi_{l[ij} \partial_{k]} \mathcal V^l\right)
+\nonumber
+\end{align}
+%%%%%%%%%%%%
+%%% Auxiliary fields
+%%%%%%%%%%%%
+\begin{align}
+8 \dX^a &:= D^\beta \bar D^2 D_\beta U^a
+	- \tfrac 2{3} 
+%(\bar \sigma^a)^{\dt \alpha \alpha} [ D_\alpha, \bar D_{\dt \alpha}] 
+	[D\sigma^a \bar D]S
+	+ 8 \partial^{a} P
+\cr
+-4 \d&:=  (D^2 + \bar D^2) S
+\cr
+3\dY^i&:=D^\alpha \mathcal W_\alpha^i 
+		-\tfrac18\left(
+			D^\alpha \bar D^2 \Psi_\alpha^i 
+			+\bar D_{\dt \alpha} D^2 \bar \Psi^{\dt \alpha i}
+		\right)
+		+2\partial^i P
+\cr
+8\dYY_{ij}&:=
+		D^\alpha \spinorYY_{\alpha \, ij}
+		+\bar D_{\dt \alpha} \bar \spinorYY_{ij}^{\dt \alpha }
+	-\tfrac83 \varphi_{ijk} \partial^k S
+		-8 \varphi_{ijk} (\tau_1)^k 
+		-4 (\tau_2)_{ij}
+\cr
+\f_{ijk}&:=-18 i \bar D^2 \left[ G^{ijk, lmn} \bar Z_{lmn}\right]
+	- \tfrac 13 \epsilon^{ijk lmnp}\partial_l \bar Z_{mnp}
+\cr
+2\y_i^a&:=  (\bar D \bar \sigma^a \l_i)
+\cr
+2 \t_{ab i} &:=(D \sigma_{ab} \mathcal W_{}^k)
+	+\tfrac i2 \left[  3 (\bar D^{\dt \alpha} \bar \sigma^c\sigma_{ab}  D)
+	+ (D \sigma_{ab} \sigma^c \bar D)
+	\right] \X_{c}^k 
+\cr
+\l^i_\alpha 
+%&:= D_\alpha \T^i - 2(\sigma_a \bar D)_\alpha \X_i^a
+%	+2i \left[
+%	\mathcal W^i_\alpha - \tfrac i2\varphi^{i jk} \widehat W_{\alpha jk}
+%	- \tfrac 1{12} \psi^{i jkl} \spinorYYY_{\alpha jkl}
+%	\right]
+%\cr
+	&:= 12 \grinoYX^i{}_\alpha 
+	+ \varphi^{ijk} \spinorYY_{\alpha\, jk}
+	-\tfrac i6 \psi^{i jkl} \spinorYYY_{\alpha\, jkl}
+\cr
+-4 \r^i_\alpha&:= D^\beta  \bar D^2 D_{(\alpha} \Psi_{\beta)}^i 
+	+4i \partial^i \left[
+	D_\alpha G +\tfrac12 \bar D^{\dt \alpha} D^2 U_{\alpha \dt \alpha}
+	\right]
+\nonumber
+\end{align}
+Notes:
+\begin{itemize} 
+\item These are all superfields. 
+\item Supersymmetry acts by supertranslations $\delta = -\epsilon D - \bar \epsilon \bar D$.
+\item {\color{PineGreen} Gauge fields} transform canonically. Their (double) curls are field strength, torsion, and curvature 2-form components. {\color{Orange} Auxiliary fields} are invariant. 
+\item {\color{Red} Compensators} suffer St\"uckelberg shifts under ``pre-gauge'' transformations. They do not appear in the spectrum of gauge(-invariant) superfields.
+\item There is only one dimension-1/2 invariant $\l^i_\alpha$. Because of this field, the definition of the gravitino components is ambiguous. We have chosen a minimal prescription in which any such a term is absent.
+\end{itemize}
+
+} %end white
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Off-Shell Supersymmetry}
+
+The Wess-Zumino transformations of the 3-form field are 
+{%\color{white}
+\begin{align}
+\delta_\epsilon \CXXX_{abc} &= -6 (\epsilon \sigma_{[ab} \grinoXX_{c]})
+	+\mathrm{h.c.}
+\cr
+\delta_\epsilon \CXXY_{ab\, i} &= - 4i (\epsilon \sigma_{[a} \bar \grinoXY_{b] i}) 
+	-2 (\epsilon \sigma_{ab} \grinoYX_{i})
+	+\mathrm{h.c.}
+\cr
+\delta_\epsilon \CXYY_{a\, ij} &= \varphi_{ijk} (\epsilon \grinoXY_{a}{}^k ) 
+	-4i\delta_{k[i} (\epsilon \sigma_{a} \bar \grinoYY_{j]}{}^k)
+	-\tfrac16 \varphi_{ijk} (\epsilon \sigma_{a} \bar \l_{}^k)
+	+\mathrm{h.c.}
+\cr
+\delta_\epsilon \CYYY_{ijk} &= \varphi_{l[ij} (\epsilon \grinoYY_{k]}{}^l)
+	+\mathrm{h.c.}
+\nonumber	
+\end{align}
+}
+Note the appearance of the dimension-1/2 auxiliary field $\l_\alpha^i$. 
+
+We now proceed to the off-shell metric transformations. These are unchanged from their on-shell values by our minimal choice of gravitini:
+{%\color{white}
+\begin{align}
+\delta_\epsilon \gravitonXX_{ab} &= -4 (\epsilon \sigma_{(a} \bar \grinoXX_{b)})
+	+\mathrm{h.c.}
+\cr
+\delta_\epsilon \gravitonXY_{a i} &= - i (\epsilon\grinoXY_{a i}) -2(\epsilon \sigma_{a} \bar \grinoYX_{i}) 
+	+\mathrm{h.c.}
+\cr
+\delta_\epsilon \gravitonYY_{ij} &= -2i (\epsilon\grinoYY_{(i, j)})
+	+\mathrm{h.c.}
+\nonumber	
+\end{align}
+}
+In principle there could have been a contribution by $\l$ to the off-shell $h_{a i}$ transformation, but in contrast to the 3-form transformations, it does not enter (unless we expressly redefine the gravitino components). 
+No other contributions are possible because there is there is no other dimension-1/2 invariant with the required $G_2$ representations.
+{%\color{white}
+\begin{align}
+\delta_\epsilon \grinoXX_a^\beta &\simeq
+	-i  (\epsilon \eta_{ab} - \epsilon \sigma_a \bar \sigma_b)^\beta \dX^b
+	-\tfrac 16 (\bar \sigma_a \bar \epsilon)^{\beta} \d
+	+\tfrac 1{72} (\bar \sigma_a \bar \epsilon)^{\beta} \varepsilon^{bcde} \G_{bcde}
+\cr	
+\delta_\epsilon \grinoYX_i^\beta &\simeq
+	-\tfrac12 (\epsilon \sigma_{ab})^\beta \omega_i{}^{ab}
+	+\tfrac i{12} (\epsilon \sigma_{ab})^\beta \t_i^{ab}
+	-\tfrac i2 \epsilon^\beta \dX_i  
+	+ \tfrac i{12} (\bar \epsilon \bar \sigma_a )^\beta \Ga_i^{a}
+\cr
+\delta_\epsilon \grinoXY_{a}{}^{\beta j} 
+	&\simeq 
+	\tfrac{5i}{12} (\delta_a^b\epsilon 
+		- \epsilon \sigma_a \bar \sigma^b)^\beta\,  \bar \Ga_b^j
+	- \epsilon^\beta \left[
+		\tilde \omega_a{}^{kl}\varphi_{kl}{}^j 
+		+\tfrac i4 \Ga^j_a
+		-\tfrac18\left(
+			\bar D\bar \sigma_a \l^j - D\sigma_a \bar \l^j 
+		\right) 
+	\right]
+	\cr
+	& + (\bar \epsilon \bar \sigma_b)^\beta \left[ 
+		- \delta_a^b \d^j - \omega_a{}^{bj} 
+		-\tfrac12 \varepsilon_a{}^{bcd} \t^j_{cd}
+		\right]
+	+ (\bar \epsilon \bar \sigma^{bc}\bar \sigma_a)^\beta \left[ 
+		\tfrac i3 \varphi^{jkl} \G_{bc\, kl} 
+		+\tfrac16 (\bar D \bar \sigma_{bc} \bar\l^j)
+		\right]		
+\cr
+\delta_\epsilon \grinoYY_{i}{}^{\beta j} 
+	&\simeq
+	-i(\epsilon \sigma^{ab})^\beta \pi_{\bm 14} \G_{ab\,i}{}^j
+	\cr
+	&-\tfrac 12 \epsilon^\beta \left[
+		2\tilde \omega_i{}^{kl}\varphi_{kl}{}^j
+		+\bar \Oh_i{}^j
+		-\tfrac16 \varphi_i{}^{jk} \left(
+			3i \dY_k 
+			+\tfrac23 \varphi_k{}^{lm} \dYY_{lm}
+			+\tfrac1{36} \psi_k{}^{lmn} \bar \f_{lmn}
+		\right)
+		\right]
+	\cr
+	&+ (\bar \epsilon \bar \sigma^a)^\beta \left[
+		2\omega_i{}^{bj}  
+		-i\gravitonYY_i^j(\G^b{}_{ijk})
+		+\tfrac i6 \varphi_i{}^{jk} \Ga_k^b 
+		-\tfrac 1{12} \varphi_i{}^{jk} \bar D \bar \sigma^b \l_k
+		\right]
+\nonumber	
+\end{align}
+
+
+\begin{align}
+\Ga^{a}_i 
+%&:= -i\bar D^2 \X^{a}_i+\tfrac i2 \bar D \bar \sigma^a D^\alpha \T_i 
+%\cr&
+&:=\tfrac i{3!}\varepsilon^{abcd} \G_{bcd \,i}
+	+\tfrac16 \psi_{ijkl} \G^{a jkl} 
+	+\tfrac1{4i} ( \bar D \bar \sigma^a \l_i + D \sigma^a \bar \l_i )
+\cr
+\bar \Oh_i{}^j &:= 2\partial_k [ \gravitonYY_{il} - 2i \partial_{(i}\mathcal V_{l)} ]  \varphi^{kl j} 
+ 	+iD^2 [  \gravitonYY_i{}^j - 2i \partial_{(i}\mathcal V^{j)} ]
+	+\tfrac16\partial_i \psi^{jklm} Z_{klm}
+	- q_i{}^j	
+\nonumber
+\end{align}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%\begin{align}
+%\frameXX_m{}^a &:=-\tfrac12 [D_\alpha, \bar D_{\dt \alpha} ] \, U^{\un b} 	-\tfrac23 \delta_\alpha^\beta \delta_{\dt \alpha}^{\dt \beta} S
+%\cr
+%\grinoXX_m{}^\alpha &:=-\tfrac{i}8 \bar D^2 D^{\beta} U_{\alpha\dt \alpha} 
+%	+\tfrac i{3} \delta_\alpha^\beta
+%		\bar D_{\dt \alpha}S
+%\cr
+%\dX^a &:=
+%\cr
+%\grinoXY_m{}^{\alpha i}&:=\tfrac i8 \bar D^2 \Psi_i^\alpha
+%	+\tfrac1{12}\left[
+%	2 \bar D_{\dt \alpha} \X_i^{~\un a} - D^\alpha \T_i
+%	-4i \mathcal W_i^\alpha
+%	\right]
+%\cr
+%\y_i^a&:=
+%\cr
+%\t_{ab i} &:=
+%\cr
+%\r^i_\alpha&:=
+%\cr
+%\frameXY_m{}^i &:=\tfrac12 [D_\alpha, \bar D_{\dt \alpha} ] \mathcal V^i 
+%\cr
+%\frameYX_i{}^b &:=
+%	- \tfrac12\left( \bar D_{\dt \alpha} \Psi_{\alpha i} - D_{\alpha} \bar \Psi_{\dt \alpha i}\right)
+%\cr
+%\dY^i&:=
+%\cr
+%\cr
+%\CXXX_{mnp}&:=- \tfrac12\varepsilon_{abcd}\left[ 
+%	\tfrac12 (\bar \sigma^d)^{\dt \delta \delta} [D_\delta, \bar D_{\dt \delta}] X 
+%	+(D^2 +\bar D^2) U^d
+%	\right]
+%\cr
+%\d&:=
+%\cr
+%\CXXY_{mn \, i} ] &:=\tfrac12 D_{(\alpha} \left[ \Sigma_{\beta) i} + \Psi_{\beta) i}\right]
+%\cr
+%\CXYY_{m\, ij}&:=\tfrac 12 [D_\alpha, \bar D_{\dt \alpha}] V_{ij} + \varphi_{ijk} \X_{\un a}^k
+%\cr
+%\spinorYY_{\alpha \, ij} &:=
+%\cr
+%\grinoYX &:= -\tfrac i2 [D_\alpha , \bar D_{\dt \alpha}] \Psi^{\beta j}
+%	-2 \partial^j D_\alpha U^\beta{}_{\dt \alpha}
+%%\cr
+%	- \delta_\alpha^\beta  \bar D_{\dt \alpha} \T^j
+%	-4 \delta_\alpha^\beta \bar \grinoXY^j{}_{\dt \alpha}
+%\cr	
+%\dYY_{ij}&:=
+%\cr
+%\CYYY_{ijk} &:=\tfrac12\left( \Phi_{ijk} + \bar \Phi_{ijk}\right)
+%	+\tfrac12\psi_{ijkl} \T^l
+%\cr
+%\grinoYY &:= i h_i{}^j(\spinorYYY^\beta)
+%	+\partial_{i}\Psi^{\beta j}
+%	-\tfrac i{3} \varphi_i{}^{jk}\left[ 
+%		\tfrac1{12}\psi_k{}^{lmn}\spinorYYY^\beta_{lmn}
+%		+i D^\beta \T_k\right]
+%	- \pi_{\bm{14}}{}_i{}^j  
+%	( \widehat W^\beta)
+%\cr
+%\calibration_{ijk}  &:=
+%\cr
+%\spinorYYY_{\alpha\, ijk}&:=
+%\cr
+%\f_{ijk}&:=
+%\cr
+%\frameYY_i{}^j&:= \tfrac14 \varphi^{j kl} F_{ikl} 
+%	- \tfrac1{36} \delta_i^j \varphi^{klm} F_{klm}
+%\nonumber
+%\end{align}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Action}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Chern-Simons-like Action}
+They also have a unique Chern-Simons-like invariant \cite{Becker:2016xgv,Becker:2016rku,Becker:2017njd}:
+%\begin{align}
+%	-12 \kappa^2 \mathcal L_{CS} &= i\int d^2 \theta \, \left[ i \Phi_{[0,3]}\wedge  \mathbb G_{[4,4]}  + \Sigma^\alpha_{[2,1]} \wedge \mathbb W_{[2,6] \alpha }\right] 
+%	\cr&
+%	+\int d^4 \theta  \left[ V_{[1,2]} \wedge \mathbb H_{[3, 5]} - X_{[3,0]} \mathbb F_{[1,7]}\right]
+%	+\hc 
+%\nonumber
+%\end{align}
+{%\color{white}
+\begin{align}
+-12 L_{CS} &= 
+i \int d^2 \theta  \,   \Phi_3 \left[
+	{\color{TealBlue} \partial_1\Phi_3 G_0} + {\color{blue} \tfrac12 W_2W_2} - \tfrac i4 \bar {{\mathcal D}}^2 (  F_3 H_1) 
+	\right]
+\cr&+ \int d^4 \theta  \,  V_2 \left[  
+	\partial_1\left( \Phi_3 + \bar \Phi_3 \right) H_1 + \omega(W^1, F_3) 
+	- i {\mathcal D} F_3\iota_{\mathcal W^1}F_3 
+	+ i \bar {\mathcal D}F_3 \iota_{\bar{\mathcal W}^{1} }F_3 
+	\right]
+\cr&+i \int d^2 \theta  \, \Sigma_1 \left[
+	\partial_1\Phi_3 W_2 -\tfrac i4 \bar {{\mathcal D}}^2 (  F_3 {\mathcal D}F_3) 
+	\right]
+\cr&- \int d^4 \theta  \, X_0 \left[  
+	\partial_1\left( \Phi_3 + \bar \Phi_3 \right) F_3
+	\right]
+	+\mathrm{h.c.} 	
+\nonumber
+\end{align}
+}
+Some observations:
+\begin{itemize}
+	\item 
+		${\color{teal} G \Phi \wedge d \Phi }$ contains the ``$G_2$ superpotential'' (Gukov 1999). 
+	\item 
+		${\color{blue} \tfrac12 \Phi \wedge W^\alpha \wedge W_\alpha}$ is the holomorphic gauge-kinetic function. 
+	\item Every term is required for non-abelian tensor hierarchy gauge invariance: Had we not known this action existed, we would have discovered it by starting from any single particular term.
+%	\item Local 4D, N=1 super-conformal invariance.
+	\item There is no superpotential. The only F-term integrals of the theory are the ones that appear here.
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Supervolume}
+The D-term integral
+{%\color{white}
+\begin{align}
+	S_{vol} = -\frac 3{\kappa^2} {\color{Orange} \int d^7 y} {%\color{white}
+	 \int d^4x  \int d^4\theta \, \mathrm{sdet}(E_M{}^A) (\bar GG)^{1/3} } {\color{Orange} \sqrt{g(F)} }\, {\color{TealBlue}f( x)}
+\nonumber
+\end{align} 
+}
+is uniquely fixed by \cite{Becker:2016xgv, Becker:2016rku, Becker:2017njd}
+\begin{itemize}
+	\item Local supersymmetry on 4D, $N=1$, 
+	\item tensor hierarchy gauge invariance, 
+	\item {\color{Orange} diffeomorphism invariance in 7D}, 
+	\item {\color{teal} engineering dimensions, 4D conformal weights, $U(1)_R$ weights, and $GL(7)$ representation} 
+	\begin{align}
+	{\color {TealBlue} x = {H_i g^{ij}(F) H_j \over (\bar GG)^{2/3}} }
+	\nonumber
+	\end{align}
+\end{itemize}
+%up to a function of 
+%\begin{align}
+%{\color {teal} x = {H_i g^{ij}(F) H_j \over (\bar GG)^{2/3}} }
+%\nonumber
+%\end{align}
+%This is the unique dimensionless, weightless, and chargeless scalar.
+
+Introducing the gravitino superfield $\Psi_i$, we can extend the local supersymmetry from 4D, $N=1$ to all of 11D, $N=1/8$. This fixes $f(x)$ exactly: 
+\begin{align}
+	\tfrac x4 {\hat f}^4 +  {\hat f}^3 -1 = 0
+		~~~\with~~~
+	{\hat f} := f -2 x f'	
+\nonumber
+\end{align}
+and the boundary condition $f(0)= 1$ $\Rightarrow$ $f(x) = $ 
+%\textrm{ugly but explicit function.}
+ugly but explicit function.
+
+%The combination ${\hat f} := f -2 x f'$ satisfies the quartic equation 
+
+\begin{figure}[h]
+\center
+\scalebox{0.40}{
+\includegraphics{./Butter.png}
+}
+\begin{caption}{
+The function $f(x)$ appearing in the D-term integral interpolates starts as $1+\tfrac x{12}$ and slowly asymptotes to $\sqrt{x}/3$.}
+\label{F:Fhat}
+\end{caption}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Components}
+A big mystery is how in the world this can produce the correct ``scalar potential'' 
+\begin{align}
+\label{E:ScalarPotential}
+V(x,y)&= 
+	-\tfrac12 R(g)
+		+\tfrac1{4\cdot 4!} F_{ijkl}^2 
+\tag{$\ast \ast$}
+\end{align}
+$=$ Einstein-Hilbert and Maxwell terms with all polarizations along 7D.\\
+In hybrid superspaces, this must happen by (more complicated) auxiliary field mechanism: 
+In terms of these fields, the scalar potential is 
+\begin{align}
+%\label{E:ScalarPotential1}
+\hspace{-8mm}V=
+	\tfrac14d_X^2 
+	+ 2 g_{ij} \bm d^i \bm d^j 		
+	-  d_{\mathbf 7 ij} ^2 
+		+ \tfrac12 d_{\mathbf {14} ij}^2
+	-\tfrac1{18} |f_{\mathbf 1 ijk}+\tfrac{i}2d_XF_{ijk}|^2
+		-\tfrac1{24} |f_{\mathbf 7 ijk}|^2
+		+\tfrac1{24} |f_{\mathbf {27} ijk}|^2
+\nonumber
+\end{align}
+Define the ``torsion forms'' of $\varphi$ by 
+\begin{align}
+d\varphi = \tau_0 \ast \varphi + 3\tau_1 \wedge \varphi + \ast \tau_3
+~~~\and~~~
+d(\ast \varphi) = 4\tau_1 \wedge \ast \varphi + \tau_2 \wedge \varphi
+\nonumber
+\end{align}
+and define $\sigma_0,\cdots, \sigma_3$ similarly for the 3-form $C_{ijk}$.\\
+Then component projection results in the equations of motion for the auxiliary fields. Plugging them in gives \cite{Becker:2016edk}
+\begin{align}
+%\label{E:ScalarPotential}
+V(x,y)&= 
+	-\tfrac{21}{16} \tau_0^2 
+	- 15\tau_1^2 
+	+\tfrac18 \tau_2^2 
+	+\tfrac1{24} \tau_3^2			
+%
+	+\tfrac{7}{4} \sigma_0^2 
+	+ 9 \sigma_1^2  
+	+\tfrac1{24} \sigma_3^2	
+=\eqref{E:ScalarPotential}	
+\nonumber
+\end{align}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Variational equations}
+
+Variation of the action with respect to prepotentials
+{%\color{white}
+\begin{align}
+\delta S = \int 
+\Big\{
+	\delta U^a E_{U^a}
+	+\delta \Psi_i^\alpha E_{\Psi_i^\alpha}
+	+\delta \mathcal V^i E_{\mathcal V^i}
+	+\delta X E_{X}
+	+\delta \Sigma_i^\alpha E_{\Sigma_i^\alpha}
+	+\delta V_{ij} E_{V_{ij} }
+	+\delta \Phi_{ijk} E_{\Phi_{ijk} }
+	\Big\}
+\nonumber	
+\end{align}
+}
+defines the supercurrents
+{%\color{white}
+\begin{subequations}
+\label{E:EoM}
+\begin{align}
+-9 E_{U^{a}}  &= -18 \dX_a + \varphi^{ijk} \G_{a\, ijk}
+\cr
+4 E_{\Psi_i^\alpha} &= \l_i^\alpha
+\cr
+6E_{\mathcal V^i} &= - 6\dY_i
+	 +\varphi^{jkl}  \G_{ijkl}
+\cr
+96 E_X&= -128 \d
+ 	-i\varphi_{ijk} (\f^{ijk} -\bar \f^{ijk})
+	+\psi^{ijkl} \G_{ijkl}
+\cr
+-16E_{\Sigma^\alpha_i} &= 
+	\bar D^2 \l_\alpha^i
+\cr
+E_{V_{ij} } &= - \psi^{ijkl} \dYY_{kl} 
+\cr
+-48 E_{\Phi_{ijk} } &=  \f^{ijk} 
+	-\tfrac{8i}3\varphi^{ijk} \d 
+	+ 18\varphi^{ijk}  \varepsilon^{abcd} \G_{abcd} 
+	+12i \varepsilon^{ijklmnp} \G_{lmnp}
+%~.
+\nonumber
+\end{align}
+\end{subequations}
+}
+Notes
+\begin{itemize}
+	\item These superfields satisfy differential relations expressing the pre-gauge symmetry (redundancy) in the superfield description. For example $E_\Sigma = -\tfrac14 \bar D^2 E_\Psi$ because both fields shift under a chiral spinor parameter superfield: $\delta \Psi_i = \Xi_i+D\Omega + \cdots $ and $\delta \Sigma = -\Xi+... $ compensates. 
+	\item Going on-shell corresponds to Imposing equations of motion $E_\ast \to 0$.
+	\item On-shell every auxiliary field either vanishes or becomes related to a component of the 4-form field strength $\G = dC$.
+\end{itemize}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Supergeometry}
+
+We can now read off the low-dimension field strength, torsions, and curvatures of the 11D, $N=1/8$ supergeometry.
+\begin{itemize}
+\item There are no dimension-0 invariants, so 
+{%\color{white}
+\begin{gather}
+\Torsion_{\alpha \beta}{}^{c} = 0
+~,~~
+\Torsion_{\alpha \dt \beta}{}^{c} = -2i (\sigma^c)_{\alpha \dt \beta}
+~,~~
+\Torsion_{\hat \alpha \hat \beta}{}^{ k} = 0
+%~,~~
+\nonumber
+\end{gather}
+}
+where $\hat \alpha = \alpha, \dt \alpha$.
+\item At dimension 1/2, there is only the gravitino equation of motion. 
+With our minimal choice, it only enters as the dimension-$1/2$ component of the 4-form
+{%\color{white}
+\begin{gather}
+\G_{\alpha b ij} = \varphi_{ijk} (\sigma_b\bar \l^{k})_\alpha  
+%~.
+\nonumber
+\end{gather}
+}
+This allows for the simplest set of dimension-$\frac12$ torsions 
+{%\color{white}
+\begin{gather}
+%\Torsion_{\hat \alpha \hat \beta}{}^{\hat \gamma} = 0
+%~,~~
+%\Torsion_{\hat \alpha \hat \beta}{}^{\gamma k} = 0
+\Torsion_{\hat \alpha \hat \beta}{}^{\bm \gamma} = 0
+~,~~
+%\Torsion_{\alpha b}{}^{c} = 0
+%~,~~
+%\Torsion_{\alpha j}{}^{c} = 0
+%~,~~
+%\Torsion_{\alpha b}{}^{k} = 0
+%~,~~
+%\Torsion_{\alpha j}{}^{ k} = 0
+\Torsion_{\alpha \bm b}{}^{\bm c} = 0
+%~.
+\nonumber
+\end{gather}
+}
+for {%\color{white} 
+$\bm \gamma = \hat \gamma, \hat \gamma k$ and $\bm c = c, k$}
+\item The spin connections appearing in the supersymmetry transformations imply the dimesion-1 conventional constraints
+{%\color{white}
+\begin{gather}
+\Torsion_{\bm{a b}}{}^{\bm c} = 0
+%\Torsion_{a b}{}^{c} = 0
+%~,~~
+%\Torsion_{a j}{}^{c} = 0
+%~,~~
+%\Torsion_{i j}{}^{c} = 0
+%~,~~
+%\Torsion_{a b}{}^{k} = 0
+%~,~~
+%\Torsion_{a j}{}^{ k} = 0
+%~,~~
+%\Torsion_{i j}{}^{ k} = 0
+\end{gather}
+}
+\item With this, we can proceed to solve the superspace Bianchi identities.
+{%\color{white}
+\begin{align}
+d \G + \iota_\Torsion \G = 0
+~~~\and~~~
+d\Torsion +\iota_\Torsion \Torsion = \Curvature 
+\nonumber
+\end{align}
+}
+for the remaining field strength, torsion, and curvature components (Dragon's theorem). 
+\end{itemize}
+
+For example, the dimension-1 torsions with $N=1$ spinor index are
+\begin{gather}
+\Torsion_{\alpha b}{}^{\gamma} = 
+	\tfrac i2 (\delta_b^c - \sigma_b \bar \sigma^c)_{\alpha}{}^\gamma  \dX_c
+~,~~
+\Torsion_{\alpha b}{}^{\dt \gamma} = 
+	- i (\sigma_b)_{\alpha}{}^{\dt \gamma} {\bm R}
+~,~~
+%	\cr
+%T_{\alpha b}{}^{\gamma k} =
+%	-\tfrac i{12} (\delta_b^c - \sigma_b \bar \sigma^c)_{\alpha}{}^\gamma \bar \Ga_c^k
+%	-\tfrac i{16} \delta_\alpha^\gamma (\sigma_b)^{\un b} \varphi^{ijk} R_{\beta \dt \beta i j}
+%~,~~
+%\cr
+%T_{\alpha b}{}^{\dt \gamma k} =
+%	i(\sigma_b)_\alpha{}^{\dt \gamma} \d^k 
+%	-\tfrac1{24} (\sigma_b)^{\un c} \t_{\alpha \gamma}{}^k
+%	-\tfrac1{16} (\sigma_b)_{\un a} \bar \t^{\dt \alpha \dt \gamma k}
+%~,~~
+	\cr	
+\Torsion_{\alpha j}{}^{\gamma} = 
+	\tfrac12 \delta_\alpha^\gamma \d_j 
+	+\tfrac1{48} (\sigma^{ab})_\alpha{}^\gamma \t_{ab \,j }
+~,~~
+\Torsion_{\alpha j}{}^{\dt \gamma} = -\tfrac i{12} (\sigma_a)_\alpha{}^{\dt \gamma} \bar \Ga_j^a
+~,~~
+%	\cr
+%T_{\alpha j}{}^{\gamma k} \sim \tfrac12 \delta_\alpha^\gamma Z_j{}^k
+%	-\tfrac i2 (\sigma^{ab})_\alpha{}^\gamma \pi_{\bm {14}}\F_{ab\, j}{}^k 
+%~,~~
+%T_{\alpha j}{}^{\dt \gamma k} \sim (\sigma^a)_{\alpha}{}^{\dt \gamma} \varphi^{klm} \I_{a jlm}
+%~,~~	
+\end{gather}
+whereas the dimension-1 torsions with $\bm 7$-valued spinor index are
+\begin{gather}
+%T_{\alpha b}{}^{\gamma} = 
+%	\tfrac i2 (\delta_b^c - \sigma_b \bar \sigma^c)_{\alpha}{}^\gamma  \dX_c
+%~,~~
+%T_{\alpha b}{}^{\dt \gamma} = 
+%	- i (\sigma_b)_{\alpha}{}^{\dt \gamma} {\bm R}
+%~,~~
+%	\cr
+\Torsion_{\alpha b}{}^{\gamma k} =
+%	-\tfrac i{12} (\delta_b^c - \sigma_b \bar \sigma^c)_{\alpha}{}^\gamma \bar \Ga_c^k
+%	-\tfrac i{16} \delta_\alpha^\gamma (\sigma_b)^{\un b} \varphi^{ijk} R_{\beta \dt \beta i j}
+-\tfrac i{12} (\delta_b^c - \sigma_b\bar \sigma^c)_\alpha{}^\gamma \bar \Ga_c^k 
+	+ \tfrac 18 \delta_\alpha{}^\gamma \check \Ga_b^k 
+	-\tfrac i{32} \delta_\alpha^\gamma 
+		[ \bar D \bar \sigma_b \l^k + D\sigma_b \bar \l{}^k]
+~,~~
+\cr
+\Torsion_{\alpha b}{}^{\dt \gamma k} =
+	i(\sigma_b)_\alpha{}^{\dt \gamma} \d^k 
+	-\tfrac1{24} (\sigma_b)^{\un c} \t_{\alpha \gamma}{}^k
+	-\tfrac1{16} (\sigma_b)_{\un a} \bar \t^{\dt \alpha \dt \gamma k}
+~,~~
+	\cr	
+%T_{\alpha j}{}^{\gamma} = 
+%	\tfrac12 \delta_\alpha^\gamma \d_j 
+%	+\tfrac1{24} \t_{j \alpha}{}^\gamma
+%~,~~
+%T_{\alpha j}{}^{\dt \gamma} = -\tfrac i{12} (\sigma_a)_\alpha{}^{\dt \gamma} \bar \Ga_j^a
+%~,~~
+%	\cr
+\Torsion_{\alpha j}{}^{\gamma k} \sim \tfrac12 \delta_\alpha^\gamma \bar \Oh_j{}^k
+	-\tfrac i2 (\sigma^{ab})_\alpha{}^\gamma \pi_{\bm {14}}\G_{ab\, j}{}^k 
+~,~~
+\cr
+\Torsion_{\alpha j}{}^{\dt \gamma k} = 
+	\tfrac i4 (\sigma^a)_\alpha{}^{\dt \gamma} [
+		h_j{}^k(\I_{a}) 
+	-\tfrac 1{6} \varphi_j{}^{kl} \bar \Ga_l^a
+	]
+	+\tfrac i{24} \varphi_j{}^{kl} D_\alpha \bar \l^{\dt \gamma}_l
+~.~~	
+\end{gather}
+%The dimension-$\frac32$ curls
+%\begin{align}
+%T_{a b}{}^{\gamma} = \Weyl_{a b}{}^{\gamma} 
+%	+ (\bar D \tilde \sigma_{[a} )^{\gamma} \dX_{b]}
+%~,~~
+%T_{a b}{}^{\gamma k} = (d\physical \psi)_{a b}{}^{\gamma k} 
+%~,~~
+%	\cr
+%T_{a j}{}^{\gamma} = (d\physical \psi)_{a j}{}^{\gamma} + D\Ga
+%~,~~
+%T_{a j}{}^{\gamma k} =  (d\physical \psi)_{a j}{}^{\gamma k}
+%~,~~
+%	\cr
+%T_{i j}{}^{\gamma} = (d\physical \psi)_{i j}{}^{\gamma} + D\F
+%~,~~
+%T_{i j}{}^{\gamma k} = (d\physical \psi)_{i j}{}^{\gamma k}
+%\end{align}
+and so on.
+These results agree with our supersymmetry transformations 
+\begin{align}
+\delta E_M{}^{\bm C} = - \mathcal D_M \xi^{\bm C} - \xi^{\bm D} T_{\bm D M}{}^{\bm C}
+\end{align}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Toward the $R^2$ Invariant}
+
+{%\color{white}
+\begin{gather}
+\Curvature_{\bm{ab}}{}^{\bm {cd}} 
+\cr
+\TorsionX_{\bm {ab}}{}^\gamma,
+\TorsionY_{\bm {ab}}{}^{\gamma k},
+%\CurlXXX_{\alpha \beta}{}^{ \gamma} ,
+%\CurlXYX_{aj}{}^{\gamma} , 
+%\CurlYYX_{ij}{}^{\gamma} , 
+%\CurlXXY_{\alpha \beta}{}^{\gamma k} , 
+%\CurlXYY_{aj}{}^{\gamma k} , 
+%\CurlYYY_{ij}{}^{\gamma k} , 
+\r_i^\alpha 
+\cr
+\dX^a, 
+\d, 
+\dY^i, 
+\dYY_{ij}, 
+\f_{ijk},
+\y_i^a,
+\t_k^{ab},
+\G_{\bm {abcd}}
+\cr
+\l_i^\alpha
+\nonumber
+\end{gather}
+}
+
+{%\color{white}
+\begin{align}
+\mathbb G &= \Weyl^{\alpha \beta \gamma}\Weyl_{\alpha \beta \gamma}
+	-\tfrac14 \bar D^2 (\dX_a^2)
+	+\cdots	
+\cr
+%\label{E:mathbbH}
+\mathbb H_i &= 
+%-\tfrac12 D^\gamma F_i^{\prime \alpha \beta} W_{\alpha \beta \gamma}
+	4i \Weyl_i^{\alpha \beta \gamma} \Weyl_{\alpha \beta \gamma}
+	-\tfrac 14 D^{\alpha} (\bar F_i^{\prime \dt\alpha \dt\beta}\bar D_{\dt\beta} G_{\alpha \dt \alpha} -\tfrac18 D^2 \lambda_{\alpha i} R)
+\cr	&+\tfrac 1{24} \left( D^2 \bar D_{\dt \alpha}\lambda_{\alpha i}+ 2 D^\beta \bar D_{\dt \alpha} D_{(\alpha}\lambda_{\beta)i} \right) \, G^{\alpha \dt \alpha} 
+	+\hc+\cdots	
+\cr
+\mathbb G &= \Weyl^{\alpha \beta \gamma} \Weyl_{\alpha \beta \gamma} 
+\cr
+\mathbb H_i &= D^\gamma \KK_i^{\alpha \beta} \Weyl_{\alpha \beta \gamma}
+	-\tfrac 12 \KK_i^{\alpha \beta}\bar D^{\dt \alpha}  D_\beta \dX_{\alpha \dt \alpha}
+	-\tfrac 12 \bar D^{\dt \alpha} \KK_i^{\alpha \beta}D_\beta \dX_{\alpha \dt \alpha} 
+\cr	&	-\tfrac 1{4} \left( D^\beta \bar D_{\dt \alpha} \KK_{\alpha \beta i} 
+	+\tfrac 14 D_\alpha \bar D^2 \bar \l_{\dt \alpha i} \right) \dX^{\alpha \dt \alpha}
+	+\tfrac 1{32} D^2 \l_i^\alpha D_\alpha \Scalar
+	+\cdots
+	+ \mathrm{h.c.}
+\cr
+\mathbb W_{\alpha ij} &= \tfrac i8 R_{ij}{}^{\beta \gamma} \Weyl_{\alpha \beta \gamma}
+	+2i \partial_{[i}\mathbb Z_{\alpha j]} 
+	+ i \bar \Theta^{\dt \alpha \dt \beta \dt \gamma}_{[i} D_\alpha \bar \Theta_{j]\, \dt \alpha \dt \beta \dt \gamma}
+	-2i \bar R_{ij}{}^{\dt \alpha \dt \beta} \bar D_{\dt \beta} G_{\alpha \dt \alpha}
+	+\cdots	
+\cr
+\mathbb F_{ijk} &= b R_{[ij}{}^{\alpha \beta} F'_{k]\alpha \beta}
+	+\cdots	
+\cr
+%\label{E:mathbbE}
+\mathbb E_{ijkl} &= a R_{[ij}{}^{\alpha \beta} R_{kl] \alpha \beta} +\cdots 	
+\nonumber	
+\end{align}
+}
+In this form, $\mathbb H_y'$ is manifestly real again. 
+
+Another form in which it manifestly satisfies the descent relation is
+{\color{white}
+\begin{align}
+%\label{E:mathbbG}
+\mathbb G &= \TorsionXXX^{\alpha \beta \gamma} \TorsionXXX_{\alpha \beta \gamma}
+	-\tfrac14 \bar D^2 (\dX_a^2)
+	+\cdots	
+\cr
+%\label{E:mathbbH}
+\mathbb H_i &= 
+%-\tfrac12 D^\gamma F_i^{\prime \alpha \beta} W_{\alpha \beta \gamma}
+%	+\tfrac 14 F_i^{\prime \alpha \beta}\bar D^{\dt \alpha}  D_\beta G_{\un a}
+%	+\tfrac 14 \bar D^{\dt \alpha} F_i^{\prime \alpha \beta}D_\beta G_{\un a} 
+%\cr	&+\tfrac 1{24} \left( D^\alpha \bar D^{\dt \alpha} + 2 \bar D^{\dt \alpha} D^\alpha \right) 
+%D^\beta \lambda_{\beta \,i} \, G_{\un a} 
+%	+\tfrac 1{32} D^2 \lambda_i^\alpha D_\alpha R
+%	+ ~\hc
+%%	- \partial_i(G_a^2)
+%	+\cdots
+-2i \TorsionXXY_i^{\alpha \beta \gamma} \TorsionXXX_{\alpha \beta \gamma}
+	- \partial_i(\dX_a^2)
+	+\bar D_{\dt \alpha} \bar {\mathbb Z}_i^{\dt \alpha}
+	+\cdots	
+\cr
+%\label{E:mathbbW}
+\mathbb W_{\alpha ij} &= \tfrac i8 \Curvature_{ij}{}^{\beta \gamma} \TorsionXXX_{\alpha \beta \gamma}
+	+2i \partial_{[i}\mathbb Z_{\alpha j]} 
+	+ i \bar \TorsionXXY^{\dt \alpha \dt \beta \dt \gamma}_{[i} D_\alpha \bar \TorsionXXY_{j]\, \dt \alpha \dt \beta \dt \gamma}
+%	-2i \bar \Curvature_{ij}{}^{\dt \alpha \dt \beta} \bar D_{\dt \beta} \dX_{\alpha \dt \alpha}
+	+\cdots	
+\cr
+\mathbb F_{ijk} &= c_3 \Curvature_{[ij}{}^{\alpha \beta} \KK_{k]\alpha \beta}
+	+\cdots	
+\cr
+%\label{E:mathbbE}
+\mathbb E_{ijkl} &= c_4 \Curvature_{[ij}{}^{\alpha \beta} \Curvature_{kl] \alpha \beta} +\cdots 	
+\nonumber 	
+\end{align}
+}
+with
+{%\color{white}
+\begin{align}
+%\label{E:mathbbZ}
+\bar {\mathbb Z}_i^{\dt \alpha}  &:= 
+-\tfrac12 \bar \KK_{\dt \beta \dt \gamma \,i} \bar \TorsionXXX^{\dt \alpha \dt\beta \dt\gamma}
+-\tfrac 14 \KK_{\alpha \beta\,i}D^\beta \dX^{\alpha \dt \alpha} 
++\tfrac 1{4} D^{\beta} \bar \KK_i^{\dt \alpha \dt \beta}  \dX_{\beta \dt \beta}
+	+\tfrac i{32} D^2 \l_{\alpha i} \dX^{\alpha \dt \alpha} 
+	+\tfrac i{32} \bar D^2 \bar \l_i^{\dt \alpha} \bar \Scalar
+	+\cdots
+\cr
+\KK_{ab}{}^k &:= -\tfrac{4i}3 \varphi^{ijk} \G_{ab\, jk} + \tfrac12 D\sigma_{ab} \l^k
+\nonumber	
+\end{align}
+}
+
+{%\color{white}
+\begin{align}
+%\bar D_{\dt \alpha} \mathbb G = 0
+%~,~
+\bar D^2 \mathbb H =  4\partial \mathbb G 
+~,~
+D\mathbb W - \bar D\bar {\mathbb W}= 2i\partial \mathbb H 
+~,~
+\bar D^2 D\mathbb F  = 4\partial \mathbb W 
+~,~
+\mathbb E - \bar {\mathbb E} &=  2i \partial \mathbb F
+~,~
+\partial \mathbb E = 0
+\nonumber
+\end{align}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Beyond...}
+
+
+%%%%
+%%%% Tabel 3
+%%%%
+%\begin{table}[t]
+{\color{white}
+\footnotesize
+\begin{align*}
+~\hspace{-13mm}
+{\renewcommand{\arraystretch}{1.5} %adds some padding
+%\begin{array}{|c|ccccccc|}
+\begin{array}{|c|c|c|c|c|c|c|c|c|}
+\hline
+& U^a & \Psi_i^\alpha & \mathcal V^i  & X & \Sigma_{\alpha i} & V_{ij} &  \Phi_{ijk} &\textrm{sdim}_{\mathbf R} \\
+\textrm{prepotential}& \textrm{real} & \textrm{spinor} & \textrm{real} &  \textrm{real} &  \textrm{chiral}  &  \textrm{real} &  \textrm{chiral}&\\
+\hline
+\physical{\textrm{physical }}
+	&\gravitonXX_{ab} , \grinoXX_a{}^\beta 
+	& \grinoXY_a{}^{\beta j} & \gravitonXY_a^i & \CXXX_{abc} 
+	& \CXXY_{ab\,i} & \CXYY_{a\, ij}, \spinorYY_{\alpha\, ij} 
+	& \CYYY_{ijk}, \gravitonYY_{ij}, \spinorYYY_{\alpha\, ijk}&\\
+%	& 2|2 & \\
+\auxiliary{\textrm{auxiliary }} & \dX^a 
+	&\l^i_\alpha, \y_i^a, \t_i{}^{\alpha \beta} ,\r_i^\alpha 
+	& \dY^i & \d &  & \dYY_{ij} & \f_{ijk} &\\
+\compensating{\textrm{compensating}}
+	&&&\surfeit^i_\alpha &\compX,\surfeit'_\alpha 
+	&\compY_i,\surfeit''_{\alpha i}&&&
+	\\
+\hline	
+\textrm{on-shell} & 2|2 & 0|14 & 14|0 & 0|0 & 7|0 & 42|42 & 63|70 & 128|128 \\
+%\textrm{off-shell} & 10|12 & 98|140 & 28|0 & 2|0 & 21|0 & 84|84 & 133|140 &   376|376\\
+\textrm{off-shell} & (\physical{6}+\auxiliary{4})|\physical{12} & \auxiliary{98}|(\physical{84}+\auxiliary{56}) & (\physical{21}+\auxiliary{7})|0 & (\physical{1}+\auxiliary{1})|0 & \physical{21}|0 & (\physical{63}+\auxiliary{21})|\physical{84} & (\physical{63}+\auxiliary{70})|\physical{140} &   376|376\\
+\hline
+\end{array}
+}
+\end{align*}
+%\caption{\scriptsize The unconstrained ``prepotential'' superfields of the 11D, $N=1/8$ supergravity multiplet and their physical, auxiliary, and compensating component content. The components of the gravitino of the type $\psi_i{}^\beta$ and $\psi_i{}^{\beta j}$ are encoded in $\chi_{\alpha ij}$ and $\chi_{\alpha ijk}$ \eqref{E:spinor}. The real superdimension contributed by each superfield is computed modulo gauge transformation. The superdimension of the auxiliary field space adds up to $201|56$. 
+%%The total off-shell dimension of this supermultiplet is 
+%}
+%\label{T:Components}
+} %end scriptsize
+%\end{table}
+%%%%
+%%%% Tabel 3 
+%%%%
+
+
+{\color{white}
+\begin{align*}
+\delta_\epsilon \grinoXX_a^\beta &\simeq
+	-i  (\epsilon\delta_a^b - \epsilon \sigma_a \bar \sigma^b)^\beta \dX_b
+	-\tfrac i2 (\bar \epsilon \bar \sigma_a )^{\beta} \Scalar
+\\
+%%%%%
+\delta_\epsilon \grinoYX_i^\beta &\simeq
+	\tfrac i{12} (\epsilon \sigma^{ab})^\beta \t_{ab\, i}
+	+\tfrac i2 \epsilon^\beta \dY_i  
+	+ \tfrac i{12} (\bar \epsilon \bar \sigma_a )^\beta \Ga_i^{a}
+\cr
+%%%%%
+\delta_\epsilon \grinoXY_{a}{}^{\beta j} 
+	&\simeq 
+	\tfrac{5i}{12} (\epsilon\delta_a^b - \epsilon \sigma_a \bar \sigma^b)^\beta\,  \bar \Ga_b^j
+	-i (\bar \epsilon\bar \sigma_b )^\beta
+		\big[ 
+			\delta_a^b \dY^j 
+			-\tfrac i2 \varepsilon_a{}^{bcd} \t^j_{cd} 
+		\big]
+%\cr&
++\tfrac18 \epsilon^\beta \big[
+		2i \Ga^j_a
+		-\bar D\bar \sigma_a \l^j + D\sigma_a \bar \l^j 
+	\big]
+\cr
+%%%%%
+\delta_\epsilon \grinoYY_{i}{}^{\beta j} &\simeq
+	-i(\epsilon \sigma^{ab})^\beta \pi_{\bm {14}} \FSXXYY_{ab\,i}{}^j
+	-i (\bar \epsilon \bar \sigma^a)^\beta \left[
+		h_i^j(\FSXYYY_{a\, ijk})
+		+\tfrac i{12}\varphi_i{}^{jk} ( 
+			2i  \Ga_{a k}
+			-\bar D \bar \sigma_a \l_k
+			)
+		\right]
+	+2\epsilon^\beta \Ztorsion_i{}^j
+\nonumber	
+\end{align*}
+}
+
+
+
+
+{\color{white}
+\begin{align*}
+%\hyperlabel{E:R}
+%\R
+\R &:= \tfrac13 \d + \tfrac i{6\cdot 4!} \varepsilon^{abcd} \FSXXXX_{abcd}
+\\
+%\hyperlabel{E:Ga}
+\Ga^{a}_i 
+	&:=  \tfrac 1{2i} \big[ \y_i^{a} - \bar \y_i^{a} \big]
+	+\tfrac16 \psi_{ijkl} \FSXYYY^{a jkl} 
+	+\tfrac i{3!} \varepsilon^{abcd} \FSXXXY_{bcd\, i}
+\\
+%\hyperlabel{E:Ztorsion}
+\Ztorsion_i{}^j 
+	&:= 
+	- i h_i{}^j ( \f)
+	+\tfrac1{36}\varphi_i{}^{jk}\psi_k{}^{lmn} \f_{lmn}
+	+  \pi_{\bm{14}} \dYY_i{}^j	
+\end{align*}
+}
+
+
+
+
+{\color{white}
+\begin{align}
+\dX_a &=\tfrac1{18} \varphi^{ijk} \FSXYYY_{a\, ijk} 
+	+ \tfrac12 \EoMX{}_a
+\\
+\l_\alpha^i &= 4 \EoMgrino{}_\alpha^i
+\\
+\dY_i&= \tfrac16\varphi^{jkl} \FSYYYY_{ijkl}
+	 - \EoMY{}_i
+\\
+\d&= 
+	-\tfrac 1{96}\psi^{ijkl}\FSYYYY_{ijkl}
+	+\EoM
+	-\tfrac i2 \varphi_{ijk} ( \EoMYYY - \overline {\EoMYYY} )^{ijk}
+\\
+\dYY_{ij}  &= \tfrac1{8} \left(
+	2 \delta_{[i}^k \delta_{j]}^l + \psi_{ij}{}^{kl}
+	\right)
+	\EoMYY{}_{kl} 
+\\
+%\f^{ijk}  &= 
+%- \tfrac 1{3\cdot 4!}\left[
+%	4 \varphi^{ijk} \varepsilon^{abcd} \FSXXXX_{abcd} 
+%	+i \varphi^{ijk} \psi^{lmnp} \FSYYYY_{lmnp} 
+%%	+6i \epsilon^{ijklmnp} \FSYYYY_{lmnp}
+%	\right]-48\EoMYYY^{ijk}
+%\cr
+%	&\hspace{45mm}
+%	+\tfrac{4}3 \left[
+%		\varphi^{ijk} \varphi_{lmn} ( \EoMYYY - \overline {\EoMYYY})^{lmn}
+%		+2i\EoM 
+%	\right]
+G^{ijk\, lmn} \f_{lmn}  &= 
+\tfrac 1{36}\left[
+	\varphi^{ijk}( 2i  \varepsilon^{abcd} \FSXXXX_{abcd} 
+	+  \psi^{lmnp} \FSYYYY_{lmnp} )
+%	2i \varphi^{ijk} \varepsilon^{abcd} \FSXXXX_{abcd} 
+%	+ \varphi^{ijk} \psi^{lmnp} \FSYYYY_{lmnp} 
+	+3 \varepsilon^{ijklmnp} \FSYYYY_{lmnp} 
+	\right]
+\cr
+	&\hspace{25mm}
+	+48i\overline\EoMYYY^{ijk}
+	+\tfrac{4i}3 \varphi^{ijk} \varphi_{lmn} ( \EoMYYY - \overline {\EoMYYY})^{lmn}
+	-\tfrac 83\EoM 
+\end{align}
+}
+
+{%\color{white}
+\begin{align}
+%\y_{\un a i} &= - 4\bar D_{\dt \alpha} \EoMgrino{}_\alpha^i
+\y_{i}^a&= 2 \bar D \bar \sigma^a \EoMgrino{}_i
+\cr
+\t_{\alpha \beta i} &=
+		-\tfrac12 \varphi_i{}^{jk} \FSXXYY_{\alpha \beta jk} 
+		-i D_{(\alpha}\EoMgrino{}_{\beta) i}
+\cr
+\r_i^\alpha 
+%	&= -\tfrac 1{12} \psi_i{}^{jkl} \bar D_{\dt \alpha} \FSXYYY_{jkl}^{\alpha \dt \alpha}
+%	+\tfrac i2 \bar D_{\dt \alpha} \tilde \FSXXXY_i^{\un a}
+%	+2i \psi_i{}^{jkl} \partial_j \spinorYY_{kl}^\alpha 
+%	- i \bar D_{\dt \alpha} D^\alpha \overline \EoMgrino^{\dt \alpha}_{ i} 
+%\cr
+	&=
+	-\tfrac 1{12} (\bar D\bar \sigma^a)^{\alpha} 
+		\left[ 
+			\psi_i{}^{jkl} \FSXYYY_{a\, jkl} 
+			-i \varepsilon_a{}^{bcd}  \FSXXXY_{bcd\, i}
+		\right]
+	+2i \psi_i{}^{jkl} \partial_j \spinorYY_{kl}^\alpha 
+	- i \bar D_{\dt \alpha} D^\alpha \overline \EoMgrino^{\dt \alpha}_{ i} 
+\end{align}
+}
+
+
+{%\color{white}
+\begin{displaymath}
+\xymatrix{
+	&
+	\Scalar \ar[dl]_{\bar D} \ar[dr]^{D} 
+	&& 
+	\dX_a \ar[dl]_{\bar D\cdot } \ar[dr]^{\bar D\wedge}  
+\\
+	0
+	&& 
+	\Torsion_\alpha \ar[dl]_{D} \ar[dr]^{\bar D} 
+	&& 
+	\TorsionXXX_{\dt \beta \dt \alpha}{}^\gamma \ar[dl]_{\bar D} \ar[dr]^{D}
+	&&
+	\TorsionXXX_{\alpha \beta}{}^\gamma\ar[dl]_{D} \ar[dr]^{\bar D}
+\\
+	&
+	\Curvature_{ab}{}^{ab}
+	& & 
+	\partial \Curvature_{ab}{}^{ab}
+	&&
+	\Curvature_{\dt \alpha\dt \beta}{}^{\gamma \delta} \oplus \partial \dX^a \oplus
+	\Curvature_{\alpha \beta}{}^{\gamma \delta} 
+	&&
+	0
+}
+\end{displaymath}
+}
+
+{%\color{white}
+{\renewcommand{\arraystretch}{1.7} %adds some padding
+\begin{align*}
+\begin{array}{llll}
+T_{\alpha b}{}^{\gamma} \sim \dX_b
+&
+T_{\alpha b}{}^{\dot \gamma} \sim  \R
+&
+T_{\alpha j}{}^{\gamma} \sim  \dY_j  ~,~ \t_{ab \,j}
+&
+T_{\alpha j}{}^{\dot \gamma} \sim \bar \Ga_j^a
+\\
+T_{\alpha b}{}^{\gamma k} \sim \Ga_b^k~,~ \bar D \bar \sigma_b \l^k
+&
+T_{\alpha b}{}^{\dot \gamma k} \sim \dY^k~,~ \t_{ab}{}^k
+&
+T_{\alpha j}{}^{\gamma k} \sim \Ztorsion_j{}^k~,~ \FSXXYY_{ab\, [jk]_{\bm {14}}}
+&
+T_{\alpha j}{}^{\dot \gamma k} \sim \FSXYYY_{a\,ijk}~,~\Ga_{a i}~,~D_\alpha \bar \l^{\dt \gamma}_i
+\end{array}
+\end{align*}
+}
+}
+
+
+
+
+\center
+\scalebox{0.40}{
+\includegraphics{./5DButter}
+\includegraphics{./11DButter}
+}
+
+
+
+
+
+
+
+
+{\color{white}
+{\renewcommand{\arraystretch}{1.7} %adds some padding
+\begin{align*}
+\begin{array}{|c|ccccccccc|}
+\hline
+&\dX^a &\R &\dY^i  & \t_{ab \,k} & \Ga_i^a & \bar D \bar \sigma_a \l^i & \Ztorsion_i{}^j& \FSXXYY_{ab\, [jk]_{\bm {14}}}& \FSXYYY_{a\,[ijk]_{\bm{28}}}
+\\
+\hline
+T_{\alpha b}{}^{\gamma} 
+&\ast&&&&&&&&
+\\
+T_{\alpha b}{}^{\dot \gamma} 
+&&\ast&&&&&&&
+\\
+T_{\alpha j}{}^{\gamma} 
+&&&\ast&\ast&&&&&
+\\
+T_{\alpha j}{}^{\dot \gamma} 
+&&&&&\ast&&&&
+\\
+\hline
+T_{\alpha b}{}^{\gamma k}  
+&&&&&\ast&\ast&&&
+\\
+T_{\alpha b}{}^{\dot \gamma k} 
+&&&\ast&\ast&&&&&
+\\
+T_{\alpha j}{}^{\gamma k} 
+&&&&&&&\ast&\ast&
+\\
+T_{\alpha j}{}^{\dot \gamma k} 
+&&&&&\ast&\ast&&&\ast
+\\
+\hline
+\end{array}
+\end{align*}
+}
+}
+
+{\color{white}
+%%%%%%%%%%
+%%%%%%%%%%
+\begin{figure}[htb]
+\begin{center}
+\begin{tikzpicture}[auto, > = {stealth}, decoration = {
+    markings,
+    mark = at position 0.75 with {\arrow{>}}}]
+	
+	\draw[fill=black!10!white, draw=black!50!white] (-2,1) -- (2,1) -- (0,-1) -- (-4,-1) -- cycle;
+	
+	\draw [postaction = {decorate}] (-1, 0) -- (-1, 2);
+	\draw [dashed, draw=black!50!white] (-1, 0) -- (-1, -1);
+	\draw (-1, -1) -- (-1, -2);
+	\draw [draw=black!50!white] (-2.6, -0.35) -- (-2.6, 1.15);
+	
+	\draw (-3, 0.5) node[right, rotate=90] {$B_{a6}$};
+	\draw (0, 1.55) node[right] {$\partial_6 B \,\neq\, 0$};
+	\draw (-0.25, 2.2) node[left] {$x^6$};
+	\draw (-0.65, 0.5) node[right] {{\color{black}$B_{ab}$}};
+%	\draw [->] (0.25, 0) arc (200:270:12pt) arc (90:40:16pt);
+%	\draw (0.65, -0.9) node[right] {$\partial_{[\hat a} F_{\hat b \hat c]} \,=\, 0$};
+\end{tikzpicture}
+\caption{Properties of the Perry-Schwarz 2-form $F$.
+\label{fig:2form}}
+\end{center}
+\end{figure}
+%%%%%%%%%%
+%%%%%%%%%%
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{
+%\small
+\footnotesize
+%\scriptsize
+%
+\bibliography{/Users/wdlinch3/Dropbox/Rashoumon/LaTeX/BibTex/BibTex}
+\bibliographystyle{unsrt}
+%\bibliographystyle{amsplain}
+%\bibliographystyle{amsalpha}
+}
+
+\end{document}  
+
+
