@@ -1,0 +1,21 @@
+---
+title: "Once Upon a Time"
+format:
+  html:
+    theme: darkly
+    html-math-method: mathjax
+    toc: true
+    css: ../../assets/css/style.css
+---
+
+Once upon a time (about 3 centuries ago), Newton wanted to formulate the Laws of Nature in a mathematically precise way. In order to do so, he first had to develop the necessary language. This language became known as the Calculus, and Newton used it to express his famous laws. 
+
+The Calculus of Newton (and Leibniz) is perfectly suited to the description of particles and forces in Classical Mechanics. Unfortunately, this description of Nature is not complete. Two generalizations of the classical Calculus have been developed that are well-suited to describe Gravitation (Differential Geometry) and non-relativistic Quantum Mechanics (Linear Operator Theory on Hilbert Space).
+
+This is still not sufficient to describe the Quantum Mechanics of light. For this, the calculus of relativistic Quantum Field Theory was developed. Using this calculus, physicists were able to formulate the “Standard Model” of fundamental particle physics which describes all of the known particles and all forces, except Gravitation.
+
+The Standard Model is wildly successful. Unfortunately, it is not consistent at very high energies which means that it cannot be more than an approximation to the true workings of Nature. Worse, it does not include Gravity as a fundamental force. The Standard Model can be made to be consistent as a Quantum Field Theory resulting in a Grand Unified Theory but it still would not include Gravitation. After years of work by many physicists, it has become apparent that a new calculus is needed to describe theories which are fully consistent and include gravity. This calculus is currently under development and the working title for this project is “String Theory”.
+
+In its simplest form, String Theory is described as a quantum mechanical string moving in ten dimensions. Although this is currently the simplest definition of the new calculus, it is not directly applicable to the description of the Standard Model, which is four-dimensional. The process of reducing to a suitable calculus is called “compactification”.
+
+The goal of my fondecyt project “Superstrings in Flux Backgrounds” is to develop this new calculus to a point were we can use it with the same ease with which we use Quantum Field Theory. Ultimately, this will be necessary to complete our understanding of all of the fundamental particles and forces of Nature, thereby (finally) realizing Newton’s dream.
