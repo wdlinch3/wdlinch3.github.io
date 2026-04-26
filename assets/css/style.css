@@ -44,6 +44,7 @@ body {
 }
 
 .page,
+.section-page,
 .aa-page,
 .research-page {
   position: relative;
@@ -56,6 +57,15 @@ body {
   padding: 0 24px;
 }
 
+.section-page {
+  max-width: 1400px;
+  margin: 40px auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr) 240px;
+  gap: 36px;
+}
+
 .page:has(> .sidebar) {
   max-width: 1150px;
   display: grid;
@@ -63,26 +73,43 @@ body {
   gap: 48px;
 }
 
-.sidebar {
+.sidebar,
+.section-sidebar {
   position: sticky;
   top: 30px;
   align-self: start;
   font-size: 16px;
+}
+
+.sidebar {
   border-right: 1px solid var(--border);
   padding-right: 24px;
 }
 
-.sidebar h2 {
+.section-sidebar-left {
+  border-right: 1px solid var(--border);
+  padding-right: 24px;
+}
+
+.section-sidebar-right {
+  border-left: 1px solid var(--border);
+  padding-left: 24px;
+}
+
+.sidebar h2,
+.section-sidebar h2 {
   font-size: 1.05em;
   margin: 0 0 0.5em 0;
   line-height: 1.2;
 }
 
-.sidebar section {
+.sidebar section,
+.section-sidebar section {
   margin-bottom: 1.75em;
 }
 
-.content {
+.content,
+.section-content {
   min-width: 0;
   max-width: 850px;
 }
@@ -118,14 +145,16 @@ ul {
 }
 
 .linklist,
-.sidebar ul {
+.sidebar ul,
+.section-sidebar ul {
   list-style: none;
   padding-left: 0;
   margin-left: 0;
 }
 
 .linklist li,
-.sidebar li {
+.sidebar li,
+.section-sidebar li {
   margin-bottom: 0.4em;
 }
 
@@ -199,6 +228,30 @@ a:hover {
   font-weight: 600;
 }
 
+.section-subgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.section-subcard {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.8rem 0.9rem;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.section-subcard h3 {
+  margin-top: 0;
+  margin-bottom: 0.4rem;
+  font-size: 1.05rem;
+}
+
+.section-subcard p:last-child {
+  margin-bottom: 0;
+}
+
 .kicker {
   max-width: 44rem;
 }
@@ -229,20 +282,26 @@ mjx-container {
 }
 
 @media (max-width: 900px) {
+  .section-page,
   .page:has(> .sidebar) {
     grid-template-columns: 1fr;
     gap: 24px;
   }
 
-  .sidebar {
+  .sidebar,
+  .section-sidebar-left,
+  .section-sidebar-right {
     position: static;
-    border-right: none;
     border-bottom: 1px solid var(--border);
+    border-right: none;
+    border-left: none;
     padding-right: 0;
+    padding-left: 0;
     padding-bottom: 1em;
   }
 
-  .content {
+  .content,
+  .section-content {
     max-width: none;
   }
 }

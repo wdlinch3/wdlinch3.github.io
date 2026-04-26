@@ -39,14 +39,18 @@
   <div class="page-bg" aria-hidden="true"></div>
   {% endif %}
 
-  <main class="research-page">
-    <aside class="research-sidebar">
-      {% include research_nav.html %}
+  <main class="section-page research-page">
+    <aside class="section-sidebar section-sidebar-left">
+      {% include global_nav.html %}
     </aside>
 
-    <section class="research-content">
+    <section class="section-content research-content">
       {{ content }}
     </section>
+
+    <aside class="section-sidebar section-sidebar-right">
+      {% include research_context_nav.html %}
+    </aside>
   </main>
 </body>
 </html>

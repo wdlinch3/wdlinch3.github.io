@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% if page.bg_image %}
+<style>
+  :root {
+    --page-bg-image: url('{{ page.bg_image }}');
+    --page-bg-position: {{ page.bg_position | default: "center center" }};
+    --page-bg-size: {{ page.bg_size | default: "cover" }};
+    --page-bg-overlay: rgba(13, 17, 23, {{ page.bg_overlay | default: 0.72 }});
+    --page-bg-opacity: {{ page.bg_opacity | default: 0.38 }};
+  }
+</style>
+{% endif %}
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+  {% if page.extra_css %}
+  <link rel="stylesheet" href="{{ page.extra_css }}">
+  {% endif %}
+
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']]
+      }
+    };
+  </script>
+  <script
+    id="MathJax-script"
+    async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+  </script>
+</head>
+<body class="{% if page.bg_image %}has-page-bg{% endif %}">
+{% if page.bg_image %}
+<div class="page-bg" aria-hidden="true"></div>
+{% endif %}
+  <main class="section-page">
+    <aside class="section-sidebar section-sidebar-left">
+      {% include global_nav.html %}
+    </aside>
+
+    <section class="section-content">
+      {{ content }}
+    </section>
+
+    <aside class="section-sidebar section-sidebar-right">
+      {% case page.nav_section %}
+      {% when "natural_philosophy" %}
+        {% include natural_philosophy_context_nav.html %}
+      {% when "teaching" %}
+        {% include teaching_context_nav.html %}
+      {% when "talks_and_lectures" %}
+        {% include talks_and_lectures_context_nav.html %}
+      {% when "about" %}
+        {% include about_context_nav.html %}
+      {% when "sitemap" %}
+        {% include sitemap_context_nav.html %}
+      {% endcase %}
+    </aside>
+  </main>
+</body>
+</html>

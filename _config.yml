@@ -7,11 +7,42 @@ defaults:
       layout: default
 
   - scope:
+      path: "natural_philosophy"
+    values:
+      layout: section
+      nav_section: natural_philosophy
+
+  - scope:
+      path: "teaching"
+    values:
+      layout: section
+      nav_section: teaching
+
+  - scope:
+      path: "talks_and_lectures"
+    values:
+      layout: section
+      nav_section: talks_and_lectures
+
+  - scope:
       path: "research"
     values:
       layout: research
+      nav_section: research
       bg_image: /assets/images/backgrounds/blackboard.png
       bg_overlay: 0.25
       bg_opacity: 0.65
       bg_position: center center
       bg_size: cover
+
+  - scope:
+      path: "about"
+    values:
+      layout: section
+      nav_section: about
+
+  - scope:
+      path: "sitemap"
+    values:
+      layout: section
+      nav_section: sitemap
