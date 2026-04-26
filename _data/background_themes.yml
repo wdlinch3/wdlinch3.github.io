@@ -1,0 +1,76 @@
+main:
+  image: /assets/images/backgrounds/blackboard.png
+  overlay: 0.25
+  opacity: 0.65
+  position: center center
+  size: cover
+
+natural_philosophy:
+  image: /assets/images/backgrounds/blackboard.png
+  overlay: 0.25
+  opacity: 0.65
+  position: center center
+  size: cover
+
+research:
+  image: /assets/images/backgrounds/blackboard.png
+  overlay: 0.25
+  opacity: 0.65
+  position: center center
+  size: cover
+
+teaching:
+  image: /assets/images/backgrounds/blackboard.png
+  overlay: 0.25
+  opacity: 0.65
+  position: center center
+  size: cover
+
+talks_and_lectures:
+  image: /assets/images/backgrounds/blackboard.png
+  overlay: 0.25
+  opacity: 0.65
+  position: center center
+  size: cover
+
+about:
+  image: /assets/images/backgrounds/blackboard.png
+  overlay: 0.25
+  opacity: 0.65
+  position: center center
+  size: cover
+
+sitemap:
+  image: /assets/images/backgrounds/blackboard.png
+  overlay: 0.25
+  opacity: 0.65
+  position: center center
+  size: cover
+
+aa:
+  image: /assets/images/backgrounds/blackboard.png
+  overlay: 0.25
+  opacity: 0.65
+  position: center center
+  size: cover
+
+aa_universe:
+  image: /assets/images/backgrounds/EagleIR.jpeg
+  overlay: 0.15
+  opacity: 0.25
+  position: center center
+  size: cover
+
+aa_solar_system:
+  image: /assets/images/backgrounds/jupiter.jpg
+  overlay: 0.25
+  opacity: 0.65
+  position: center center
+  size: cover
+
+aa_x:
+  image: /assets/images/backgrounds/blackboard.png
+  overlay: 0.25
+  opacity: 0.65
+  position: center center
+  size: cover
