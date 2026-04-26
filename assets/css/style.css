@@ -143,6 +143,66 @@ a:hover {
   margin-bottom: 1.5em;
 }
 
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+}
+
+.portal-grid,
+.section-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.portal-card,
+.section-card,
+.note-panel {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.portal-card h2,
+.section-card h2,
+.section-card h3,
+.note-panel h2,
+.note-panel h3 {
+  margin-top: 0;
+}
+
+.portal-card p:last-child,
+.section-card p:last-child,
+.note-panel p:last-child,
+.note-panel ul:last-child {
+  margin-bottom: 0;
+}
+
+.section-links,
+.plain-links {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.section-links li,
+.plain-links li {
+  margin-bottom: 0.5rem;
+}
+
+.section-links a {
+  font-weight: 600;
+}
+
+.kicker {
+  max-width: 44rem;
+}
+
 code {
   background: #161b22;
   padding: 0.15rem 0.35rem;
