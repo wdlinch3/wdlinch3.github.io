@@ -5,44 +5,66 @@ defaults:
       path: ""
     values:
       layout: default
+      bg_theme: main
 
   - scope:
       path: "natural_philosophy"
     values:
       layout: section
       nav_section: natural_philosophy
+      bg_theme: natural_philosophy
 
   - scope:
       path: "teaching"
     values:
       layout: section
       nav_section: teaching
+      bg_theme: teaching
 
   - scope:
       path: "talks_and_lectures"
     values:
       layout: section
       nav_section: talks_and_lectures
+      bg_theme: talks_and_lectures
 
   - scope:
       path: "research"
     values:
       layout: research
       nav_section: research
-      bg_image: /assets/images/backgrounds/blackboard.png
-      bg_overlay: 0.25
-      bg_opacity: 0.65
-      bg_position: center center
-      bg_size: cover
+      bg_theme: research
 
   - scope:
       path: "about"
     values:
       layout: section
       nav_section: about
+      bg_theme: about
 
   - scope:
       path: "sitemap"
     values:
       layout: section
       nav_section: sitemap
+      bg_theme: sitemap
+
+  - scope:
+      path: "aa"
+    values:
+      bg_theme: aa
+
+  - scope:
+      path: "aa/u"
+    values:
+      bg_theme: aa_universe
+
+  - scope:
+      path: "aa/ss"
+    values:
+      bg_theme: aa_solar_system
+
+  - scope:
+      path: "aa/x"
+    values:
+      bg_theme: aa_x

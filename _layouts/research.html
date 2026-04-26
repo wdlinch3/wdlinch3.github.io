@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  {% assign main_bg_theme = site.data.background_themes.main %}
+  {% assign resolved_bg_theme = site.data.background_themes[page.bg_theme] | default: main_bg_theme %}
+  {% assign resolved_bg_image = page.bg_image | default: resolved_bg_theme.image | default: main_bg_theme.image %}
+  {% assign resolved_bg_overlay = page.bg_overlay | default: resolved_bg_theme.overlay | default: main_bg_theme.overlay %}
+  {% assign resolved_bg_opacity = page.bg_opacity | default: resolved_bg_theme.opacity | default: main_bg_theme.opacity %}
+  {% assign resolved_bg_position = page.bg_position | default: resolved_bg_theme.position | default: main_bg_theme.position %}
+  {% assign resolved_bg_size = page.bg_size | default: resolved_bg_theme.size | default: main_bg_theme.size %}
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
@@ -8,14 +16,14 @@
   <link rel="stylesheet" href="/assets/css/style.css">
   <link rel="stylesheet" href="/assets/css/research.css">
 
-  {% if page.bg_image %}
+  {% if resolved_bg_image %}
   <style>
     :root {
-      --page-bg-image: url('{{ page.bg_image }}');
-      --page-bg-position: {{ page.bg_position | default: "center center" }};
-      --page-bg-size: {{ page.bg_size | default: "cover" }};
-      --page-bg-overlay: rgba(13, 17, 23, {{ page.bg_overlay | default: 0.72 }});
-      --page-bg-opacity: {{ page.bg_opacity | default: 0.38 }};
+      --page-bg-image: url('{{ resolved_bg_image }}');
+      --page-bg-position: {{ resolved_bg_position }};
+      --page-bg-size: {{ resolved_bg_size }};
+      --page-bg-overlay: rgba(13, 17, 23, {{ resolved_bg_overlay }});
+      --page-bg-opacity: {{ resolved_bg_opacity }};
     }
   </style>
   {% endif %}
@@ -34,8 +42,8 @@
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
   </script>
 </head>
-<body class="{% if page.bg_image %}has-page-bg{% endif %}">
-  {% if page.bg_image %}
+<body class="{% if resolved_bg_image %}has-page-bg{% endif %}">
+  {% if resolved_bg_image %}
   <div class="page-bg" aria-hidden="true"></div>
   {% endif %}
 
