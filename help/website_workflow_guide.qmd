@@ -1,0 +1,958 @@
+# Core principle
+
+Do not preview everything the same way. Different source formats require different build and preview tools.
+
+The practical rule is:
+
+| Task | Edit with | Preview with | URL |
+|---|---|---|---|
+| Homepage | VS Code | Jekyll | `http://127.0.0.1:4000/` |
+| Normal website page | VS Code | Jekyll | `http://127.0.0.1:4000/path/page.html` |
+| Research page | VS Code | Jekyll | `http://127.0.0.1:4000/research/...` |
+| Quarto essay | VS Code | Quarto | Quarto-provided `localhost` URL |
+| Rendered Quarto page on site | VS Code | Jekyll | `http://127.0.0.1:4000/path/page.html` |
+| Notebook | JupyterLab | JupyterLab | Jupyter URL |
+| Plain static test HTML | VS Code | Python server or browser | `http://localhost:8000/` or `file://` |
+| Public site check | Browser | GitHub Pages | `https://wdlinch3.github.io/` |
+
+Short version:
+
+```text
+Jekyll = preview the website.
+Quarto = write/render documents.
+VS Code = edit files.
+Brave = view local server URLs.
+Jupyter = notebooks only.
+Python http.server = simple static files only.
+```
+
+# Repository context
+
+The website repository is:
+
+```bash
+~/Documents/github/wdlinch3.github.io
+```
+
+Open it in VS Code from the repository root:
+
+```bash
+cd ~/Documents/github/wdlinch3.github.io
+code .
+```
+
+Do not open only an individual `.html` file from Finder if you want project-aware editing and previewing.
+
+# Main website workflow: Jekyll
+
+Use this for ordinary website pages such as:
+
+```text
+index.html
+cv/cv.html
+research/effective_actions.html
+aa/index.html
+```
+
+These are Jekyll site pages. They may depend on:
+
+```text
+_layouts/
+_includes/
+assets/css/
+_config.yml
+Liquid syntax
+MathJax includes
+shared navigation
+sidebars
+background images
+```
+
+Do **not** open these files directly in Brave using `file://`.
+
+Correct workflow:
+
+```bash
+cd ~/Documents/github/wdlinch3.github.io
+bundle exec jekyll serve --livereload
+```
+
+Then open:
+
+```text
+http://127.0.0.1:4000/
+```
+
+or a specific page:
+
+```text
+http://127.0.0.1:4000/research/effective_actions.html
+http://127.0.0.1:4000/cv/cv.html
+http://127.0.0.1:4000/aa/
+```
+
+Use this workflow when checking whether the site looks like the public site:
+
+```text
+https://wdlinch3.github.io/
+```
+
+Port usually used:
+
+```text
+:4000
+```
+
+Tools involved:
+
+```text
+Jekyll
+Ruby
+Bundler
+Brave
+VS Code
+```
+
+Purpose:
+
+```text
+Preview the actual GitHub Pages-style website locally.
+```
+
+# Raw HTML files
+
+Use this only for standalone HTML that does not depend on Jekyll.
+
+Example:
+
+```text
+some_test_page.html
+```
+
+A raw HTML file is safe to open directly in Brave only if it does **not** require:
+
+```text
+YAML front matter
+Liquid syntax
+Jekyll layouts
+Jekyll includes
+relative_url filters
+site-wide injected CSS
+site-wide injected MathJax
+```
+
+Opening directly in Brave gives a URL like:
+
+```text
+file:///Users/wdlinch3/Documents/github/wdlinch3.github.io/index.html
+```
+
+This is usually **wrong** for actual website pages in this repository.
+
+For real site pages, use Jekyll instead:
+
+```bash
+bundle exec jekyll serve --livereload
+```
+
+Then open:
+
+```text
+http://127.0.0.1:4000/
+```
+
+# Quarto writing pages
+
+Use this for `.qmd` files such as:
+
+```text
+talks_and_lectures/writings/once_upon_a_time.qmd
+vlo_aa_ss.qmd
+vlo_aa_u.qmd
+vlo_aa_x.qmd
+```
+
+Quarto files are source files. A browser does not understand `.qmd` directly. They must be rendered by Quarto.
+
+Preview a single Quarto file:
+
+```bash
+cd ~/Documents/github/wdlinch3.github.io
+quarto preview talks_and_lectures/writings/once_upon_a_time.qmd
+```
+
+Quarto will open a local server. The port may be something like:
+
+```text
+http://localhost:6482
+```
+
+The exact port can vary.
+
+Render the file to HTML:
+
+```bash
+quarto render talks_and_lectures/writings/once_upon_a_time.qmd
+```
+
+This produces:
+
+```text
+talks_and_lectures/writings/once_upon_a_time.html
+```
+
+Then preview the rendered HTML as part of the Jekyll site:
+
+```bash
+bundle exec jekyll serve --livereload
+```
+
+Open:
+
+```text
+http://127.0.0.1:4000/talks_and_lectures/writings/once_upon_a_time.html
+```
+
+Use this workflow for:
+
+```text
+math-heavy essays
+lecture notes
+standards/VLO documents
+converted documents
+documents that should eventually render to both HTML and PDF
+```
+
+Typical `.qmd` front matter:
+
+```yaml
+---
+title: "Once Upon a Time"
+format:
+  html:
+    theme: darkly
+    html-math-method: mathjax
+    toc: false
+    css:
+      - ../../assets/css/style.css
+---
+```
+
+If adding a Quarto-specific stylesheet later:
+
+```yaml
+---
+title: "Once Upon a Time"
+format:
+  html:
+    theme: darkly
+    html-math-method: mathjax
+    toc: false
+    css:
+      - ../../assets/css/style.css
+      - ../../assets/css/quarto_site.css
+---
+```
+
+Important distinction:
+
+```text
+quarto preview file.qmd     previews the Quarto document
+jekyll serve                previews the full website
+```
+
+# Markdown and Quarto Markdown
+
+Plain Markdown files use extension:
+
+```text
+.md
+```
+
+Quarto Markdown files use extension:
+
+```text
+.qmd
+```
+
+For the current website/document workflow, prefer:
+
+```text
+.qmd
+```
+
+when the document is intended to become a polished web or PDF page with math, tables, formatting, and possible future publication.
+
+Use `.md` for simpler project notes, README files, GitHub-facing documentation, or files that do not need Quarto features.
+
+Markdown preview in VS Code is fine for rough editing, but it is not the final website preview.
+
+Correct previews:
+
+```text
+README.md                  → VS Code Markdown preview is okay
+ordinary Jekyll .md page   → Jekyll preview
+Quarto .qmd page           → Quarto preview
+```
+
+# Liquid syntax
+
+Liquid is the templating language Jekyll uses.
+
+Example:
+
+```liquid
+/assets/css/style.css
+```
+
+This means:
+
+```text
+Take /assets/css/style.css
+adjust it for the site base URL
+insert the result into the HTML
+```
+
+The double braces mean “evaluate this expression and insert the result here”:
+
+```liquid
+
+```
+
+The vertical bar applies a filter:
+
+```liquid
+| relative_url
+```
+
+Use Liquid inside Jekyll-processed files:
+
+```text
+_layouts/default.html
+_includes/*.html
+index.html
+research/*.html
+aa/*.html
+pages with YAML front matter
+```
+
+Use it for internal site links and assets:
+
+```html
+<link rel="stylesheet" href="/assets/css/style.css">
+
+<a href="/research/effective_actions.html">Effective actions</a>
+
+<img src="/assets/images/backgrounds/EagleIR.jpeg" alt="">
+```
+
+Use `relative_url` for ordinary internal links and assets.
+
+Use `absolute_url` only when a full public URL is genuinely needed:
+
+```liquid
+http://localhost:4000/research/effective_actions.html
+```
+
+Good uses of `absolute_url` include:
+
+```text
+canonical URLs
+RSS feeds
+Open Graph metadata
+sitemaps
+external sharing metadata
+```
+
+Do **not** expect Liquid to work inside files that Jekyll does not process, such as ordinary CSS or JavaScript files.
+
+# Internal and external links
+
+Internal links to your own site should generally use Liquid inside Jekyll files:
+
+```html
+<a href="/cv/cv.html">CV</a>
+<a href="/aa/">Advanced Astronomy</a>
+<a href="/talks_and_lectures/">Talks and lectures</a>
+```
+
+External links should be hard-coded:
+
+```html
+<a href="https://en.wikipedia.org/wiki/Thomas_Jefferson_High_School_for_Science_and_Technology">TJHSST</a>
+<a href="https://arxiv.org/">arXiv</a>
+```
+
+PDFs or files hosted in your own repository should use `relative_url` in Jekyll files:
+
+```html
+<a href="/cv/wdlinch_cv.pdf">PDF CV</a>
+```
+
+PDFs or files hosted externally should use a full hard-coded URL:
+
+```html
+<a href="https://arxiv.org/pdf/hep-th/0608005">Paper PDF</a>
+```
+
+Rule:
+
+```text
+Own site, own files, own assets    → use /... in Jekyll files
+Outside website                    → hard-code the full https://... URL
+Canonical/share/feed metadata      → use http://localhost:4000/...
+```
+
+# CSS files
+
+The main CSS files live in:
+
+```text
+assets/css/
+```
+
+Currently relevant files include:
+
+```text
+assets/css/style.css
+assets/css/research.css
+assets/css/aa.css
+```
+
+For Jekyll layouts, include CSS using:
+
+```html
+<link rel="stylesheet" href="/assets/css/style.css">
+```
+
+For Quarto `.qmd` files, include CSS in the YAML front matter using a relative filesystem path from the `.qmd` file:
+
+```yaml
+css:
+  - ../../assets/css/style.css
+```
+
+Do not use Liquid inside Quarto YAML unless deliberately running the output through Jekyll as a second processing stage. For now, avoid that.
+
+To test whether CSS is being served by Jekyll:
+
+```bash
+curl -I http://127.0.0.1:4000/assets/css/style.css
+```
+
+Expected result:
+
+```text
+HTTP/1.1 200 OK
+Content-Type: text/css
+```
+
+To see what CSS a page is linking:
+
+```bash
+curl -s http://127.0.0.1:4000/ | grep -i stylesheet
+```
+
+# MathJax
+
+MathJax renders LaTeX-style math in the browser.
+
+For Jekyll pages, MathJax should be included globally through the site layout or an include.
+
+For Quarto pages, use:
+
+```yaml
+format:
+  html:
+    html-math-method: mathjax
+```
+
+Use ordinary inline math:
+
+```markdown
+$E = mc^2$
+```
+
+Use display math:
+
+```markdown
+$$
+S = \int d^4x \sqrt{-g}\,\mathcal{L}
+$$
+```
+
+If math works in Quarto preview but not in the Jekyll-served page, check whether the rendered HTML includes MathJax or whether Quarto used a different math-rendering method.
+
+# JupyterLab
+
+Use JupyterLab for notebooks and computational documents.
+
+Good use cases:
+
+```text
+.ipynb notebooks
+Python calculations
+student assignments
+nbgrader workflows
+plots
+data analysis
+notebook-to-PDF workflows
+```
+
+Poor use cases:
+
+```text
+editing normal website HTML
+previewing Jekyll pages
+previewing Quarto pages
+debugging site CSS
+```
+
+For website work, JupyterLab is usually the wrong abstraction.
+
+Use:
+
+```text
+VS Code for editing
+Jekyll for site preview
+Quarto for .qmd preview
+Brave for browser preview
+```
+
+# VS Code
+
+Use VS Code as the main editor for:
+
+```text
+.html
+.qmd
+.md
+.css
+.yml
+.js
+Liquid templates
+```
+
+Open the website repo from the repo root:
+
+```bash
+cd ~/Documents/github/wdlinch3.github.io
+code .
+```
+
+Recommended VS Code extensions:
+
+```text
+Quarto
+Liquid
+HTML CSS Support
+GitHub Pull Requests
+```
+
+VS Code Live Preview is optional. For this repository, it is not the primary preview tool because Live Preview does not understand Jekyll or Quarto build steps.
+
+Use the actual tools instead:
+
+```text
+Jekyll preview for site pages
+Quarto preview for .qmd pages
+```
+
+# Browser preview
+
+Use Brave as the browser previewer, but open local server URLs, not source files.
+
+Correct:
+
+```text
+http://127.0.0.1:4000/
+http://127.0.0.1:4000/research/effective_actions.html
+http://127.0.0.1:4000/talks_and_lectures/writings/once_upon_a_time.html
+http://localhost:6482/
+```
+
+Usually wrong:
+
+```text
+file:///Users/wdlinch3/Documents/github/wdlinch3.github.io/index.html
+```
+
+Why it is wrong:
+
+```text
+Brave does not run Jekyll.
+Brave does not process Liquid.
+Brave does not apply layouts or includes.
+Brave only renders the raw file.
+```
+
+# Port numbers
+
+Several local servers may appear.
+
+## Port 4000
+
+Usually Jekyll:
+
+```bash
+bundle exec jekyll serve --livereload
+```
+
+Open:
+
+```text
+http://127.0.0.1:4000/
+```
+
+Quarto may also sometimes use `4000` if it is available, so check the terminal to see what server is actually running.
+
+To see what is using port `4000`:
+
+```bash
+lsof -i :4000
+```
+
+If it says `ruby`, it is probably Jekyll.
+
+To stop it from the terminal where it is running:
+
+```text
+Ctrl + C
+```
+
+To kill it from another terminal:
+
+```bash
+kill $(lsof -ti :4000)
+```
+
+## Port 8000
+
+Usually Python’s simple static server:
+
+```bash
+python3 -m http.server 8000
+```
+
+Open:
+
+```text
+http://localhost:8000/
+```
+
+This is useful only for plain static files. It does not run Jekyll or Quarto.
+
+For the main website, this is generally not the right tool.
+
+To see what is using port `8000`:
+
+```bash
+lsof -i :8000
+```
+
+To kill it:
+
+```bash
+kill $(lsof -ti :8000)
+```
+
+## Port 3000
+
+Often used by VS Code Live Preview or other development servers.
+
+For this repository, do not rely on it unless deliberately using Live Preview.
+
+## Random Quarto ports
+
+Quarto may use ports like:
+
+```text
+http://localhost:6482
+```
+
+That is normal. The terminal output from `quarto preview` tells you the correct URL.
+
+# Common problems and fixes
+
+## Page loads but CSS is ignored
+
+Check whether the CSS file is reachable:
+
+```bash
+curl -I http://127.0.0.1:4000/assets/css/style.css
+```
+
+Check whether the page links the CSS:
+
+```bash
+curl -s http://127.0.0.1:4000/ | grep -i stylesheet
+```
+
+If CSS exists but the page looks stale, hard refresh Brave:
+
+```text
+Cmd + Shift + R
+```
+
+## Site looks wrong when opening `index.html` directly
+
+Reason:
+
+```text
+You are opening the Jekyll source file directly.
+```
+
+Fix:
+
+```bash
+bundle exec jekyll serve --livereload
+```
+
+Then open:
+
+```text
+http://127.0.0.1:4000/
+```
+
+## Address already in use
+
+Example:
+
+```text
+OSError: [Errno 48] Address already in use
+```
+
+Find the process:
+
+```bash
+lsof -i :4000
+```
+
+or:
+
+```bash
+lsof -i :8000
+```
+
+Kill it:
+
+```bash
+kill $(lsof -ti :4000)
+```
+
+or:
+
+```bash
+kill $(lsof -ti :8000)
+```
+
+## Quarto preview works, but the page does not look like the website
+
+Reason:
+
+```text
+Quarto preview is showing a standalone Quarto document.
+It is not using the full Jekyll layout.
+```
+
+Fix options:
+
+```text
+Accept Quarto pages as standalone essays.
+Add site CSS to the Quarto YAML.
+Add a Quarto-specific stylesheet.
+Later, integrate Quarto output more deeply into Jekyll if desired.
+```
+
+## Hard-coded links broke local preview
+
+Avoid hard-coding internal site paths like:
+
+```html
+<link rel="stylesheet" href="https://wdlinch3.github.io/assets/css/style.css">
+```
+
+or:
+
+```html
+<link rel="stylesheet" href="/wdlinch3.github.io/assets/css/style.css">
+```
+
+Use Liquid in Jekyll files:
+
+```html
+<link rel="stylesheet" href="/assets/css/style.css">
+```
+
+Use normal relative paths in Quarto files:
+
+```yaml
+css:
+  - ../../assets/css/style.css
+```
+
+# Which tool should I use?
+
+## I am editing the homepage
+
+Use:
+
+```bash
+bundle exec jekyll serve --livereload
+```
+
+Open:
+
+```text
+http://127.0.0.1:4000/
+```
+
+## I am editing a research page
+
+Use:
+
+```bash
+bundle exec jekyll serve --livereload
+```
+
+Open the specific page:
+
+```text
+http://127.0.0.1:4000/research/effective_actions.html
+```
+
+## I am writing a new essay or lecture note with math
+
+Use Quarto:
+
+```bash
+quarto preview path/to/file.qmd
+```
+
+Render when ready:
+
+```bash
+quarto render path/to/file.qmd
+```
+
+Then check through Jekyll:
+
+```bash
+bundle exec jekyll serve --livereload
+```
+
+## I am editing a CSS file
+
+Use Jekyll preview for normal site CSS:
+
+```bash
+bundle exec jekyll serve --livereload
+```
+
+Hard reload Brave:
+
+```text
+Cmd + Shift + R
+```
+
+## I am editing a notebook
+
+Use JupyterLab:
+
+```bash
+jupyter lab
+```
+
+## I am editing `.qmd`
+
+Use VS Code plus Quarto preview:
+
+```bash
+quarto preview file.qmd
+```
+
+## I am editing `.html` that belongs to the website
+
+Use VS Code plus Jekyll preview:
+
+```bash
+bundle exec jekyll serve --livereload
+```
+
+## I am checking the public deployed website
+
+Open:
+
+```text
+https://wdlinch3.github.io/
+```
+
+This checks what GitHub Pages has actually published, not necessarily the local working copy.
+
+# Recommended daily workflows
+
+## Normal website work
+
+```bash
+cd ~/Documents/github/wdlinch3.github.io
+code .
+bundle exec jekyll serve --livereload
+```
+
+Open:
+
+```text
+http://127.0.0.1:4000/
+```
+
+Edit in VS Code. Preview in Brave. Commit with GitHub Desktop or `git`.
+
+## Quarto writing
+
+```bash
+cd ~/Documents/github/wdlinch3.github.io
+code .
+quarto preview talks_and_lectures/writings/once_upon_a_time.qmd
+```
+
+When satisfied:
+
+```bash
+quarto render talks_and_lectures/writings/once_upon_a_time.qmd
+bundle exec jekyll serve --livereload
+```
+
+Then open:
+
+```text
+http://127.0.0.1:4000/talks_and_lectures/writings/once_upon_a_time.html
+```
+
+Commit both the source and the rendered result if GitHub Pages should serve the rendered page:
+
+```text
+.qmd source file
+.html rendered file
+any CSS/images used
+```
+
+# Files and folders not to edit
+
+Do not edit:
+
+```text
+_site/
+```
+
+That is generated output from Jekyll.
+
+Do not commit `_site/` unless there is a very specific reason. For a normal GitHub Pages/Jekyll repository, source files should be committed, not generated `_site` output.
+
+# Final decision rule
+
+```text
+Editing a normal website page?       Run Jekyll.
+Editing a .qmd writing/math page?    Run Quarto.
+Checking the whole site shell?       Run Jekyll.
+Publishing?                          Commit source + rendered HTML as needed.
+```

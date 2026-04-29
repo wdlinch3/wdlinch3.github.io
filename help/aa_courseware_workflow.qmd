@@ -1,0 +1,764 @@
+---
+title: "Advanced Astronomy Courseware Workflow"
+subtitle: "Private notebooks → nbgrader release → public assignments → website links"
+format:
+  html:
+    theme: darkly
+    html-math-method: mathjax
+    toc: true
+    page-layout: full
+    css:
+      - ../assets/css/style.css
+  pdf:
+    toc: true
+format-links: false
+---
+
+# Core principle
+
+Do not confuse the private working materials with the public student release.
+
+The practical pipeline is:
+
+```text
+aa_class / private working repo
+↓
+nbgrader source notebooks
+↓
+nbgrader release generation
+↓
+release notebooks with solutions/tests/instructor metadata stripped
+↓
+aa_assignments public repo
+↓
+student-facing GitHub links and website packet pages
+```
+
+The private course repo is where assignments are authored. The public assignment repo is where students get released materials. The website should link to the public release, not to private working files.
+
+# Repository roles
+
+| Repository or folder | Role | Typical contents | Main warning |
+|---|---|---|---|
+| `aa_class/` | Private working/courseware repo | Source notebooks, nbgrader configuration, solutions, tests, release folders | Do not publish private source notebooks directly. |
+| `aa_assignments/` | Public student-facing assignment repo | Released notebooks and support files only | Do not include instructor solutions, hidden tests, private metadata, or scratch files. |
+| `wdlinch3.github.io/` | Public website repo | Course pages, packet hubs, help pages, VLO/standards pages, CSS/layouts | Do not commit generated `_site/` output. |
+| `aa_tools/` | Support package for astronomy notebooks | `astroconst.py`, legacy `astroc.py`, kernels/constants/helpers | If imports fail in Jupyter, check the kernel first. |
+
+The assignment order is not required for the basic release workflow. It becomes important only when building course maps, packet index pages, VLO alignments, or prerequisite-aware help pages.
+
+# Local path conventions
+
+Current working root on the Mac:
+
+```bash
+/Users/wdlinch3/Documents/github
+```
+
+Common repositories:
+
+```bash
+/Users/wdlinch3/Documents/github/aa_class
+/Users/wdlinch3/Documents/github/aa_assignments
+/Users/wdlinch3/Documents/github/wdlinch3.github.io
+```
+
+Use exact paths. Be especially careful with:
+
+```text
+GitHub vs github
+hyphen vs underscore
+ss_... vs u_... vs x_...
+```
+
+For new file and folder names, use underscores where the separator semantically represents a space. Use hyphens only when the underlying phrase itself is hyphenated.
+
+# Course labels and assignment IDs
+
+Use these course folders consistently:
+
+```text
+aa_ss   Advanced Astronomy: Solar System
+aa_u    Advanced Astronomy: Universe
+aa_x    Advanced Astronomy: X / shared or enrichment material
+```
+
+Use these assignment prefixes consistently:
+
+```text
+ss_     Solar System assignment
+u_      Universe assignment
+x_      shared / enrichment assignment
+```
+
+Examples:
+
+```text
+ss_aristarchus
+ss_jupiter_1
+u_ism_and_star_birth
+x_astrodynamics_1
+```
+
+The assignment ID should match the nbgrader assignment ID and the public release folder unless there is a deliberate reason to do otherwise.
+
+# Before changing anything
+
+Start by checking the repo state.
+
+For the private courseware repo:
+
+```bash
+cd /Users/wdlinch3/Documents/github/aa_class
+git status -sb
+git branch -vv
+```
+
+For the public assignment repo:
+
+```bash
+cd /Users/wdlinch3/Documents/github/aa_assignments
+git status -sb
+git branch -vv
+```
+
+For the website repo:
+
+```bash
+cd /Users/wdlinch3/Documents/github/wdlinch3.github.io
+git status -sb
+git branch -vv
+```
+
+If GitHub Desktop shows unexpected files, inspect them before committing. Generated folders and editor artifacts should normally not be committed.
+
+# Starting the notebook environment
+
+Use JupyterLab for notebook work, not VS Code or raw browser previews.
+
+```bash
+cd /Users/wdlinch3/Documents/github/aa_class
+source .venv/bin/activate
+which python
+python -V
+jupyter lab
+```
+
+In JupyterLab, check the notebook kernel. For this courseware, the first thing to check when imports or previously working notebook code fail is whether the kernel is set to:
+
+```text
+aa_class
+```
+
+Do this before reinstalling packages or changing code.
+
+# Checking nbgrader
+
+From the environment used to launch JupyterLab:
+
+```bash
+python -m pip show nbgrader
+which nbgrader
+python -c "import nbgrader; print(nbgrader.__version__)"
+```
+
+If `nbgrader` is missing from that environment:
+
+```bash
+python -m pip install -U pip
+python -m pip install nbgrader ipykernel
+```
+
+After installation, restart JupyterLab and check that the nbgrader interface appears.
+
+# Checking `aa_tools`
+
+The course uses real astronomy/scientific tools where possible, but wraps some recurring constants and parameters in `aa_tools`.
+
+Important modules:
+
+```text
+aa_tools/aa_tools/astroconst.py
+aa_tools/aa_tools/astroc.py
+```
+
+`astroc.py` is legacy and should be treated as deprecated unless an older notebook still depends on it.
+
+`astroconst.py` is the preferred support module for constants and orbital parameters. It may depend on SPICE/NAIF-style kernels such as text PCK files, leapsecond kernels, and ephemeris files.
+
+When editing `aa_tools` while a notebook is already open, reload the module before testing changes:
+
+```python
+import importlib
+import aa_tools.astroconst as ac
+importlib.reload(ac)
+```
+
+If this fails, first check the Jupyter kernel. Then check whether the package is installed or importable from the active environment.
+
+# Authoring a source notebook
+
+Source notebooks live in the private courseware repo. They may contain instructor-only material and nbgrader metadata.
+
+A typical source notebook should have:
+
+```text
+student-facing Markdown prompt cells
+student-editable answer cells
+student-visible setup cells when needed
+hidden instructor solution cells when needed
+hidden or autograded test cells when needed
+supporting data/images with relative paths
+```
+
+Avoid absolute local paths in notebooks. A path like this is fragile:
+
+```text
+/Users/wdlinch3/Documents/github/...
+```
+
+Prefer paths relative to the notebook or assignment folder.
+
+Use MathJax-compatible Markdown math:
+
+```markdown
+Inline: $E = mc^2$
+
+Display:
+
+$$
+F = \frac{G M m}{r^2}
+$$
+```
+
+Do not use `\(...\)` in notebook Markdown if `$...$` is the established class convention.
+
+# Nbgrader cell checklist
+
+Before generating a release, inspect the source notebook in JupyterLab.
+
+Check that:
+
+```text
+all intended student cells are editable
+all intended answer cells are marked correctly
+manually graded cells are marked as manually graded answers
+hidden solution/test cells are not accidentally visible student content
+point values are set where needed
+cell IDs/metadata are not duplicated or corrupted
+notebook runs from top to bottom in a clean kernel
+```
+
+Use the nbgrader Validate button before generating the assignment.
+
+# Generate a release assignment
+
+Run `nbgrader generate_assignment` from the course root expected by the local `nbgrader_config.py`. In the common layout, this is the parent of the relevant `source/` directory.
+
+Example for a Solar System assignment:
+
+```bash
+cd /Users/wdlinch3/Documents/github/aa_class/aa_ss
+nbgrader generate_assignment ss_jupiter_1 --force
+```
+
+Example for a Universe assignment:
+
+```bash
+cd /Users/wdlinch3/Documents/github/aa_class/aa_u
+nbgrader generate_assignment u_ism_and_star_birth --force
+```
+
+Example for an AA:X assignment:
+
+```bash
+cd /Users/wdlinch3/Documents/github/aa_class/aa_x
+nbgrader generate_assignment x_astrodynamics_1 --force
+```
+
+The `--force` flag overwrites the previous generated release for that assignment. Use it deliberately.
+
+If the command fails because it cannot find the assignment, inspect the directory structure:
+
+```bash
+pwd
+find . -maxdepth 3 -type d \( -name source -o -name release -o -name releases \) | sort
+find .. -maxdepth 3 -name nbgrader_config.py -print
+```
+
+Then open the relevant `nbgrader_config.py` and check the configured source/release directory names.
+
+# Inspect the generated release
+
+After generation, inspect the release folder before copying anything to the public repo.
+
+Common locations may look like:
+
+```text
+release/<assignment_id>/
+releases/<assignment_id>/
+```
+
+Check what was produced:
+
+```bash
+ls -la release/<assignment_id>
+```
+
+or:
+
+```bash
+ls -la releases/<assignment_id>
+```
+
+Open the generated notebook as if you were a student. Confirm that:
+
+```text
+solutions are removed
+hidden tests are removed or hidden as intended
+student instructions still make sense
+supporting images/data files are present
+relative paths still work
+the notebook runs in the student-facing environment
+```
+
+A crude text search can help catch obvious instructor leakage, but it is not a substitute for manual inspection:
+
+```bash
+grep -R "BEGIN SOLUTION\|END SOLUTION\|NBGRADER-CELL: solution\|instructor\|hidden test" release/<assignment_id> || true
+```
+
+Adjust the folder name if your local release folder is `releases/` rather than `release/`.
+
+# Copy the release to `aa_assignments`
+
+The public repo is student-facing. Copy only the generated release and necessary support files.
+
+First inspect the destination:
+
+```bash
+cd /Users/wdlinch3/Documents/github/aa_assignments
+git status -sb
+ls -la aa_ss
+ls -la aa_u
+ls -la aa_x
+```
+
+Dry-run the copy first. Example for `ss_jupiter_1`:
+
+```bash
+rsync -av --dry-run \
+  /Users/wdlinch3/Documents/github/aa_class/aa_ss/release/ss_jupiter_1/ \
+  /Users/wdlinch3/Documents/github/aa_assignments/aa_ss/ss_jupiter_1/
+```
+
+If the dry run looks right, run the real copy:
+
+```bash
+rsync -av \
+  /Users/wdlinch3/Documents/github/aa_class/aa_ss/release/ss_jupiter_1/ \
+  /Users/wdlinch3/Documents/github/aa_assignments/aa_ss/ss_jupiter_1/
+```
+
+For destructive syncs, use `--delete` only after confirming the destination path very carefully:
+
+```bash
+rsync -av --delete --dry-run \
+  /path/to/generated/release/ \
+  /path/to/public/destination/
+```
+
+Then run the same command without `--dry-run` only if the preview is correct.
+
+# Commit the public release
+
+In the public `aa_assignments` repo:
+
+```bash
+cd /Users/wdlinch3/Documents/github/aa_assignments
+git status -sb
+git diff --stat
+git add aa_ss/ss_jupiter_1
+git commit -m "Release ss_jupiter_1 assignment"
+git push origin main
+```
+
+Adjust the folder and message for `aa_u` or `aa_x` assignments.
+
+If using GitHub Desktop instead of terminal:
+
+```text
+review the changed files
+make sure no private/source/generated junk files are included
+write a concise commit message
+commit to the correct branch
+push origin
+```
+
+# Link from the website
+
+The website should link students to the public `aa_assignments` repo.
+
+For a normal student-facing GitHub page, prefer ordinary GitHub links, for example:
+
+```text
+https://github.com/wdlinch3/aa_assignments/tree/main/aa_ss/ss_jupiter_1
+https://github.com/wdlinch3/aa_assignments/blob/main/aa_ss/ss_jupiter_1/ss_jupiter_1.ipynb
+```
+
+Use `raw.githubusercontent.com` only when a direct raw file download is needed for a specific technical reason.
+
+Likely website locations:
+
+```text
+wdlinch3.github.io/aa/packets/index.html
+wdlinch3.github.io/aa/ss/index.html
+wdlinch3.github.io/aa/u/index.html
+wdlinch3.github.io/aa/x/index.html
+```
+
+Preview website changes with Jekyll:
+
+```bash
+cd /Users/wdlinch3/Documents/github/wdlinch3.github.io
+bundle exec jekyll serve --livereload
+```
+
+Open:
+
+```text
+http://127.0.0.1:4000/aa/packets/
+```
+
+Do not preview Jekyll pages by opening source files directly with `file://`.
+
+# Commit website changes
+
+In the website repo:
+
+```bash
+cd /Users/wdlinch3/Documents/github/wdlinch3.github.io
+git status -sb
+git diff --stat
+git diff
+```
+
+Do not commit generated output:
+
+```text
+_site/
+help/_site/
+.DS_Store
+.ipynb_checkpoints/
+```
+
+If only legitimate source files changed:
+
+```bash
+git add aa/packets/index.html aa/ss/index.html aa/u/index.html aa/x/index.html
+git commit -m "Update assignment links"
+git push origin main
+```
+
+Adjust the `git add` command to the files actually changed.
+
+# Generated files and files not to commit
+
+Usually do not commit:
+
+```text
+_site/
+help/_site/
+.DS_Store
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+scratch files
+temporary exports
+```
+
+For Jekyll, `_site/` is build output.
+
+For Quarto, files ending in `_files/` are support assets generated for a rendered HTML document. These may or may not need to be committed depending on whether the rendered HTML is meant to be served directly. Do not delete them blindly if the corresponding HTML page depends on them.
+
+# GitHub Desktop versus terminal
+
+`Fetch origin` in GitHub Desktop asks GitHub what changed remotely. It does not necessarily merge those changes into the current local branch.
+
+A terminal `git pull` fetches and then integrates changes into the current branch.
+
+Before important work, this terminal check is precise:
+
+```bash
+git status -sb
+git branch -vv
+git log --oneline --decorate --graph --left-right main...origin/main
+```
+
+Interpretation:
+
+```text
+ahead     local commits not yet pushed
+behind    remote commits not yet pulled
+clean     no uncommitted changes
+```
+
+# Codex delegation workflow
+
+Use Codex for narrow, repo-contained changes, especially when it can inspect existing files and make a branch/PR.
+
+Good Codex tasks:
+
+```text
+add a packet link to an existing index page
+repair an internal route
+draft a page using only existing repository material
+refactor repeated HTML into an include
+apply an existing CSS convention consistently
+```
+
+Poor Codex tasks:
+
+```text
+make broad unexplained site redesigns
+invent new course policy
+alter many unrelated pages at once
+change routing conventions without approval
+commit generated `_site/` output
+```
+
+A good Codex prompt includes:
+
+```text
+the repository
+specific files or section to inspect
+exact scope of allowed changes
+style constraints
+dark-mode/default site conventions
+whether to open a draft PR
+what validation to report
+```
+
+Example:
+
+```text
+In wdlinch3.github.io, inspect aa/packets/index.html and nearby AA pages. Add a student-facing link for ss_jupiter_1 using the existing style. Do not change layouts, CSS, or unrelated navigation. Do not commit _site output. Create a branch, commit, push, and open a draft PR. Summarize changed files and validation.
+```
+
+# Updating VLO or standards documents
+
+Use Quarto `.qmd` for VLO/standards pages.
+
+Current naming convention:
+
+```text
+vlo_aa_ss.qmd
+vlo_aa_u.qmd
+vlo_aa_x.qmd
+```
+
+Canonical objective code pattern:
+
+```text
+aa.<course>.<unit>.<topic>.<objective>
+```
+
+Examples:
+
+```text
+aa.ss.aristarchus.geometry.angle
+aa.u.ism_star_birth.clouds.fragmentation
+aa.x.astrodynamics.orbits.energy
+```
+
+Prefer dark-mode HTML and PDF-capable Quarto front matter:
+
+```yaml
+format:
+  html:
+    theme: darkly
+    css: standards_table.css
+    page-layout: full
+    toc: false
+  pdf:
+    toc: true
+format-links: false
+```
+
+When aligning VLOs with quizzes or assignments, keep the mapping in source form. Do not rely only on rendered HTML.
+
+# Updating help documents
+
+This document is source and should live somewhere like:
+
+```text
+help/aa_courseware_workflow.qmd
+```
+
+It should not live only inside:
+
+```text
+help/_site/
+```
+
+Render with Quarto when needed:
+
+```bash
+cd /Users/wdlinch3/Documents/github/wdlinch3.github.io
+quarto render help/aa_courseware_workflow.qmd
+```
+
+Then preview the rendered page through Jekyll:
+
+```bash
+bundle exec jekyll serve --livereload
+```
+
+Open:
+
+```text
+http://127.0.0.1:4000/help/aa_courseware_workflow.html
+```
+
+# Common failure modes
+
+## Import error in notebook
+
+First check the kernel:
+
+```text
+Kernel → Change Kernel → aa_class
+```
+
+Then restart the kernel and run the notebook again.
+
+Only after that, check package installation, `PYTHONPATH`, or local editable installs.
+
+## A module changed but the notebook still uses the old version
+
+Reload the module:
+
+```python
+import importlib
+import aa_tools.astroconst as ac
+importlib.reload(ac)
+```
+
+If that is not enough, restart the kernel.
+
+## nbgrader cannot find the assignment
+
+Check:
+
+```bash
+pwd
+ls -la
+find . -maxdepth 3 -type d \( -name source -o -name release -o -name releases \) | sort
+find .. -maxdepth 3 -name nbgrader_config.py -print
+```
+
+Then confirm that the assignment ID matches the source folder and notebook metadata.
+
+## The public release contains private material
+
+Stop. Do not push.
+
+Regenerate the assignment from the corrected source notebook, inspect the generated release again, and only then copy to `aa_assignments`.
+
+## GitHub Desktop wants to commit many `_site` files
+
+Usually this means generated output is being tracked or staged accidentally.
+
+Do not commit them. Inspect with:
+
+```bash
+git status -sb
+```
+
+Restore accidental generated changes if appropriate:
+
+```bash
+git restore _site help/_site
+```
+
+Use this only when you are sure those files are disposable generated output.
+
+## A website page looks wrong in Brave
+
+Check whether you opened a source file directly.
+
+Wrong:
+
+```text
+file:///Users/wdlinch3/Documents/github/wdlinch3.github.io/index.html
+```
+
+Right:
+
+```bash
+cd /Users/wdlinch3/Documents/github/wdlinch3.github.io
+bundle exec jekyll serve --livereload
+```
+
+Open:
+
+```text
+http://127.0.0.1:4000/
+```
+
+# Minimal release checklist
+
+Before release:
+
+```text
+source notebook validates
+notebook runs top-to-bottom
+assignment ID is correct
+student-facing text is clear
+support files use relative paths
+```
+
+Generate:
+
+```text
+run nbgrader generate_assignment <assignment_id> --force
+inspect generated release
+open release notebook as student
+```
+
+Publish:
+
+```text
+copy generated release to aa_assignments
+verify no private material is present
+commit and push aa_assignments
+update website links if needed
+preview website with Jekyll
+commit and push website changes
+```
+
+# Decision rule
+
+```text
+Writing/editing an assignment?      Work in aa_class.
+Generating student version?         Use nbgrader release generation.
+Publishing student files?           Copy generated release to aa_assignments.
+Linking students to it?             Update wdlinch3.github.io.
+Debugging notebook imports?         Check the aa_class kernel first.
+Previewing website pages?           Use Jekyll at http://127.0.0.1:4000/.
+Writing durable help/standards?     Use Quarto .qmd source.
+Delegating repo edits?              Give Codex a narrow branch/PR task.
+```
+
+# Open items to verify later
+
+These do not block use of the workflow, but they should eventually be confirmed.
+
+```text
+exact current aa_class directory layout
+whether release folder is named release/ or releases/
+whether each course has its own nbgrader_config.py
+whether aa_assignments should include an assignment-order manifest
+whether website packet pages should be generated from a data file
+whether a small shell script should automate the safe release copy
+```

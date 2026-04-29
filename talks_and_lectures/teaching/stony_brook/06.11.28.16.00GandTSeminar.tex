@@ -1,0 +1,176 @@
+\documentclass[12pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{latexsym}
+\usepackage[all]{xy}
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+%new rules
+\def\ket#1{| #1\rangle}
+\def\bra#1{\langle #1|}
+\def\SO#1{\mathrm{SO}(#1)}
+
+\title{Aspects of covariant super-string quantization}
+\author{William D. Linch, {\sc iii}}
+\date{November 28, 2006}                                           % Activate to display a given date or no date
+
+\begin{document}
+
+\maketitle
+
+\abstract{Talk given for the Stony Brook seminar series on  Geometry and Topology.}
+
+\section{Introduction}
+
+The phrase ``covariant superstring quantization'' is used to describe a program which consists of roughly 4 ingredients:
+\begin{itemize}
+\item The string is a generalization of the point particle describing an infinite tower of increasingly massive particles in irreducible representations of the Poincar\'e group of successively larger dimension.  It is mathematically modeled as a map $\Sigma \to M$ of a 2-dimensional manifold $\Sigma$ called the {\em world sheet} to a smooth manifold $M$ called the {\em target space}. In most of what we will talk about today, however, we will restrict attention to the 0-mode or lowest mass level, that is, a particle. In this sense the title of the talk may be considered misleading. For a particle, $\Sigma$ is taken to be a smooth 1-manifold called the {\em world line}. 
+\item The prefix ``super-'' refers to the generalization of the target space from a smooth manifold to a smooth {\em super-manifold}. Local coordinates on super-manifolds are denoted $(x^m, \theta^\mu)$, where $\theta$ is a {\em Gra\ss man coordinate}. Roughly this means the following: A basis of the tangent space adapted to the coordinates $x^m$ is given by the partial derivatives $\partial_m$. By definition, they obey the commutator relation $[\partial_m, \partial _n]=0$ and evaluate on the coordinates as $\partial_m x^n=\delta_m^n$. We now postulate a generalization of the notion of coordinates $\theta^\mu$ in with partial derivatives $\partial_\mu$ such that $\partial_\mu \theta^\nu=\delta_\mu^\nu$ and contrary to the case of the usual coordinates, $\{\partial_\mu, \partial_\nu\}=0$. Consistency then requires that the fermionic coordinates {\em anti-commute}: $\{\theta^\mu, \theta^\nu\}=0$. 
+
+Working in the linear category, we can think of the coordinates $x^m$ as vectors. This means that under the action of the orthogonal group $\SO{d-1,1}$, they transform in the fundamental (or vector) representation. Then the ``super-partners'' $\theta^\mu$ are {\em spinors}, transforming in the spinor representation, that is, as the fundamental of $\mathrm{Spin}(d-1,1)$. 
+
+ A super-manifold is then one which has local charts which generalize in the natural way that of manifolds. A {\em super-field} is a function on such a super-manifold $F(x, \theta)$. We assume it is analytic in the fermionic coordinate. Since the spinor representation is finite dimensional and since the fermionic coordinates anti-commute, a superfield can be expanded into ordinary functions called {\em component fields} $F(x,\theta)= f(x)+\psi_\mu(x) \theta^\mu+\dots$ and the expansion terminates. Note that the spins and statistics of the component fields are fixed by those of the superfield $F$ by the properties of the Gra\ss man coordinates: For example, if $F$ is a spin-0 bosonic function meaning that it is a commuting singlet of $\SO{d-1,1}$ then $f$ is a commuting spin-0 component, $\psi_\mu$ is an {\em anti}-commuting spin-$\frac12$, etc.
+\item In any system of physical interest, the coordinates used to describe the mechanics are to some extent arbitrary. It is of interest to formulate the classical theory in such a way that the equations defining it transform in a simple way when we change from one set of coordinates to a related set. When the change of coordinates does not change the dynamics of the system, it is called a {\em symmetry}. Symmetries fall into two categories: {\em global symmetries} are those in which the parameters describing the change of coordinates are constant on $\Sigma$ and {\em local symmetries} are those in which they are not. A formalism is generally deemed to be {\em covariant} if the quantities defining it transform linearly under symmetry transformations. 
+\item The notions above are classical. We can bring to bear the full machinery of the Hamiltonian formalism to define the theory. All quantities of interest in this system can be expressed as functions of the coordinates and momenta which form a Lie algebra with respect to the Poisson bracket. 
+The process of {\em quantization} will be taken to mean the passage to the representation of this system on a Hilbert space in which the coordinates and momenta are replaced with linear operators and the Poisson brackets are replaced with Lie brackets.
+The term ``covariant'' should in this context really be combined with ``quantization'' into one term. A {\em covariant quantization} is a quantization which preserves the covariance of the classical theory.
+\end{itemize}
+
+In the case of a super-string/particle, there are various symmetries of the system which are generated though the Poisson bracket by {\em constraints}. This is in particular true of the super-symmetry. Dirac has taught us how to quantize a system with constraints \cite{Dirac}. However, there is no guarantee that his procedure will preserve covariance. Indeed, Dirac's quantization method relies on the separation of the constraints into two types: A constraint is {\em first class} if it forms an algebra with the Hamiltonian and all other constraints and {\em second class} otherwise. Dirac's prescription then eliminates the second class constraints by modification of the Poisson bracket
+\begin{eqnarray}
+\{\cdot, \cdot\}_\mathrm{P.B.} \to 
+\{\cdot, \cdot\}_\mathrm{Dirac}=
+\{\cdot, \cdot\}_\mathrm{P.B.}-\{\cdot, \chi_r\}_\mathrm{P.B.}
+{1\over \{\chi_r, \chi_s\}_\mathrm{P.B.}}
+%c_{rs}
+\{\chi_s,\cdot\}_\mathrm{P.B.}
+\end{eqnarray}
+while the first class constraints are taken in the quantum theory to annihilate all states in the Hilbert space. The problem of covariant quantization therefore reduces to the separation of the constraints into first and second class in a covariant way. Note that (a) this is a classical problem and (b) it is not at all clear that it can be done.
+
+In this talk I hope elucidate the concepts outlined above following the example of the super-particle. It turns out, however, that the solution of the super-particle problem is (almost) equivalent to the analogous super-string case. So actually we have already accomplished two things. If we believe me, we have (i) reduced the problem from a super-string problem to a super-particle problem and (ii) reduced a quantum mechanical question to a classical one. As a historical comment relevant to the venue, the program of  covariant quantization of the super-string/particle originated in large part due to the efforts of Warren Siegel. Its main champion is Nathan Berkovits who was a post-doc here. Most of what I will say was emphasized by one of these two researchers. 
+
+
+\section{The example of the super-particle}
+For simplicity of exposition we start with the example of a point (super-)particle although much of what I will say generalizes to the case of the string. The point particle action is given by \cite{Dirac}
+\begin{eqnarray}
+\label{Eqn:PointParticleAction}
+S=\int \left[ p_m\dot x^m-H_\mathrm{E}(p, x) \right]\mathrm d \lambda
+\end{eqnarray}
+where $H_\mathrm{E}=H+\mathrm{constraints}$ is the {\em extended Hamiltonian}. In the case of a relativistic point particle the (ordinary) Hamiltonian vanishes and the extended Hamiltonian is given entirely by the primary first class constraint $p_m p_n \eta^{mn}=0$:
+\begin{eqnarray}
+H_\mathrm{E}=\frac 12 e(\lambda) p^2
+\end{eqnarray}
+The coefficient $e$ is a {\em Lagrange multiplier}. As the action does not contain $\dot e$, its equation of motion imposes the constraint $p^2=0$. Being the only constraint and given that the Hamiltonian vanishes, it is trivially first class. The system is trivial to quantize since the particle is free. 
+
+Although I have not shown it, the system given above describes a particle with {\em spin-0}. This means that the vacuum state is non-degenerate so that the the particle has no internal degrees of freedom -- its only degrees of freedom are its position and its momentum and they are Fourier conjugates of each other. Let us generalize to the super-particle. We will just do it first and justify the terminology later. Consider, then, the system described by the action
+\begin{eqnarray}
+S=\int \left[ p_m\Pi^m-\frac 12 e p^2 \right]\mathrm d \lambda
+\end{eqnarray}
+generalizing that of the point particle (\ref{Eqn:PointParticleAction}). The object $\Pi^m$ is a generalization of the velocity $\dot x^m$ is given by 
+\begin{eqnarray}
+\Pi^m=\dot x^m-\frac i2 \dot \theta \gamma^m \theta
+\end{eqnarray}
+where the $\gamma^m$ are the (off-diagonal components of the) Dirac matrices satisfying the {\em Clifford algebra}
+\begin{eqnarray}
+\gamma^m_{\alpha \beta} \gamma^{n\beta \gamma}+\gamma^n_{\alpha \beta} \gamma^{m\beta \gamma}=2 \eta^{mn}\delta_\alpha^\gamma~.
+\end{eqnarray}
+This implies that the combinations $(M^{mn})_\alpha{}^\gamma:=\gamma^m_{\alpha \beta} \gamma^{n\beta \gamma}-\gamma^n_{\alpha \beta} \gamma^{m\beta \gamma}$ satisfy the Lorentz algebra $[M^{mn},M^{pq}]=\eta^{mp}\eta^{qn}+\mathrm{permutations}$.
+
+A {\em super-symmetry} is a gauge symmetry exchanging {\em bosons} and {\em fermions}. A classical boson-field is a function $f(x)$ which commutes with itself. A classical fermion-field is a function which anti-commutes with itself. So a super-symmetric field theory is one in which there is a symmetry of the theory exchanging fermionic and bosonic fields. In the case of the super-particle, the symmetry acts on the coordinates by
+\begin{eqnarray}
+\label{Eqn:Super-symmetry}
+\delta x^m= \frac i2 \theta \gamma^m \epsilon~,~\delta \theta =\epsilon~,~\delta p_m=0~,~\delta e=0~.
+\end{eqnarray}
+The parameter $\epsilon$ is constant $\dot \epsilon=0$ so this is a global symmetry. The local version of super-symmetry is called {\em super-gravity} and is the low-energy limit of super-string theories. It is easy to see that under the super-symmetry transformation (\ref{Eqn:Super-symmetry}), the super-symmetric velocity is invariant $\delta \Pi^m=0$. Therefore the action is {\em manifestly} super-symmetric. 
+
+The momentum conjugate to $\theta^\mu$ is, by definition,
+\begin{eqnarray}
+p_\mu:={\delta S\over \delta \dot \theta^\mu}= -\frac i2 (\gamma^m \theta)_\mu p_m~.
+\end{eqnarray}
+We therefore find the primary constraints \cite{Siegel:1985xj} (which generate the super-symmetry transformations (\ref{Eqn:Super-symmetry}))
+\begin{eqnarray}
+d_\mu:=p_\mu+\frac i2 (\gamma^m \theta)_\mu p_m=0~.
+\end{eqnarray}
+If these constraints are all first class, we can impose them on the states in the Hilbert space. 
+Computing their Poisson brackets, however, we find that
+\begin{eqnarray}
+\label{Eqn:ConstraintAlgebra}
+\{d_\mu, d_\nu\}_\mathrm{P.B.}=i\gamma^m_{\mu \nu} p_m~.
+\end{eqnarray}
+
+Since $\gamma^m_{\mu\nu}p_m$ is not a constraint, the $d_\mu$ are not all first class. The trick would now be to separate the first and second class constraints in a covariant way. We could then use the second class constraints to define the Dirac bracket and impose the first class constraints on physical states. This, then, is the problem of covariant quantization.
+
+Let us consider the translation of the problem to superspace. Analogously to the relation $\partial_m=\{p_m, \cdot\}$, we define the super-space covariant derivative $D_\mu:=\{d_\mu, \cdot\}$, realizing the constraint on fields. Imposing the constraint in the Hilbert space then translates to a statement on superspace. The physical states are those which live in the subspace $\mathrm{ker}D_\mu=\{\Phi(x, \theta)|D_\mu \Phi=0\}$ of the space of all superfields. Computing the anti-commutator of the derivations shows that 
+\begin{eqnarray}
+\{D_\mu, D_\nu\}= i \gamma^m_{\mu\nu} \partial_m
+\end{eqnarray}
+which is the superfield statement analogous to the Poisson bracket of the constraints (\ref{Eqn:ConstraintAlgebra}). We now see the problem in a different light: If $\Phi(x,\theta)$ is a superfield such that $D_\mu \Phi=0$, then $\partial_m \Phi=0$ which means the field is constant. This restriction is too severe as the mass-shell condition was $\Box \Phi=0$. 
+
+Now suppose that we could find a separation $D_\mu\to D_\mu , \hat D_\mu$ such that $\{\hat D_\mu, \hat  D_\mu \}=0$. Then we could consider superfields which satisfy $\hat D_\mu \Phi=0$ but $D_\mu \Phi\neq 0$ thus avoiding a contradiction with the constraint. This is the method used in the so-called {\em hybrid formalisms} \cite{Berkovits:1996bf}. Since this method breaks some of the Lorentz invariance, it is usually used  when the background in which the string is quantized factorizes as $M^d\times N^{10-d}$ where $d=2, 4, 6, 8$. From the superspace point of view, we are trying to find an integrable (proper) subspace of the full superspace. This is known in full generality only for $d\leq 6$ and relies on the use of {\em harmonic superspaces}. 
+
+%\paragraph{Superspace} We can think of Minkowski space as the coset 
+%\begin{eqnarray}
+%\mathbb R^{d-1,1}= {\mathrm{ISO}(d-1,1)\over \mathrm{SO}(d-1,1)}.
+%\end{eqnarray}
+%where $\mathrm{ISO}(d-1,1)$ denotes the Poincar\'e group generated by $\{p_m, M_{ab}\}$ representing the algebra of translations and Lorentz transformations. Similarly, we may consider the super-Minkowski space as the analogous coset with the Lie algebras replaced with Lie super-algebras. 
+
+\paragraph{Pure Spinors} For $d=10$, a new method has recently been developed \cite{Berkovits:2000wm} which relies on an auxiliary variable which turns out to be a commuting {\em pure spinor} $\lambda^\mu$. Suppose we define a spinor by the constraint 
+\begin{eqnarray}
+\lambda \gamma^m \lambda=0
+\end{eqnarray}
+for all $m=0,1, \dots, 9$. Then we can form a {\em BRST charge} 
+\begin{eqnarray}
+Q=\lambda^\mu d_\mu~\Rightarrow Q^2=0~.
+\end{eqnarray}
+This operator squares to 0 due to the identity on the constraints and the defining relation for $\lambda$. Whenever one has such a formulation, one can define the physical states of the system to lie in the cohomology of $Q$. That is, a state $\Phi$ is physical if $Q\Phi=0$ and $\Phi\neq Q \Lambda$. Berkovits then goes on to compute the cohomology of this operator and shows that the spectrum describes a spin-1 component field together with it's spin-$\frac12$ super-partner. 
+
+
+
+
+\begin{thebibliography}{9}
+\bibitem{Dirac} Paul A. M. Dirac, ``Lectures on Quantum Mechanics'' (1966).
+
+%\cite{Siegel:1985xj}
+\bibitem{Siegel:1985xj}
+  W.~Siegel,
+  ``Classical Superstring Mechanics,''
+  Nucl.\ Phys.\  B {\bf 263}, 93 (1986).
+  %%CITATION = NUPHA,B263,93;%%
+
+%\cite{Berkovits:1996bf}
+\bibitem{Berkovits:1996bf}
+  N.~Berkovits,
+  ``A new description of the superstring,''
+  arXiv:hep-th/9604123.
+  %%CITATION = HEP-TH/9604123;%%
+  
+%\cite{Berkovits:2000wm}
+\bibitem{Berkovits:2000wm}
+  N.~Berkovits,
+  ``Covariant quantization of the superstring,''
+  Nucl.\ Phys.\ Proc.\ Suppl.\  {\bf 127}, 23 (2004)
+  [Int.\ J.\ Mod.\ Phys.\  A {\bf 16}, 801 (2001)]
+  [arXiv:hep-th/0008145].
+  %%CITATION = IMPAE,A16,801;%%
+
+%\cite{Berkovits:2001rb}
+%\bibitem{Berkovits:2001rb}
+%N.~Berkovits,
+	{\it Idem}
+  ``Covariant quantization of the superparticle using pure spinors,''
+  JHEP {\bf 0109}, 016 (2001)
+  [arXiv:hep-th/0105050].
+  %%CITATION = JHEPA,0109,016;%%
+
+\end{thebibliography}
+
+\end{document}  

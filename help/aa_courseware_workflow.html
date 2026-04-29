@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Advanced Astronomy Courseware Workflow</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="aa_courseware_workflow_files/libs/clipboard/clipboard.min.js"></script>
+<script src="aa_courseware_workflow_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="aa_courseware_workflow_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="aa_courseware_workflow_files/libs/quarto-html/popper.min.js"></script>
+<script src="aa_courseware_workflow_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="aa_courseware_workflow_files/libs/quarto-html/anchor.min.js"></script>
+<link href="aa_courseware_workflow_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="aa_courseware_workflow_files/libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="aa_courseware_workflow_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="aa_courseware_workflow_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="aa_courseware_workflow_files/libs/bootstrap/bootstrap-580f59859ddf617fe2e58b4aca1d3752.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+
+
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-full">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#core-principle" id="toc-core-principle" class="nav-link active" data-scroll-target="#core-principle">Core principle</a></li>
+  <li><a href="#repository-roles" id="toc-repository-roles" class="nav-link" data-scroll-target="#repository-roles">Repository roles</a></li>
+  <li><a href="#local-path-conventions" id="toc-local-path-conventions" class="nav-link" data-scroll-target="#local-path-conventions">Local path conventions</a></li>
+  <li><a href="#course-labels-and-assignment-ids" id="toc-course-labels-and-assignment-ids" class="nav-link" data-scroll-target="#course-labels-and-assignment-ids">Course labels and assignment IDs</a></li>
+  <li><a href="#before-changing-anything" id="toc-before-changing-anything" class="nav-link" data-scroll-target="#before-changing-anything">Before changing anything</a></li>
+  <li><a href="#starting-the-notebook-environment" id="toc-starting-the-notebook-environment" class="nav-link" data-scroll-target="#starting-the-notebook-environment">Starting the notebook environment</a></li>
+  <li><a href="#checking-nbgrader" id="toc-checking-nbgrader" class="nav-link" data-scroll-target="#checking-nbgrader">Checking nbgrader</a></li>
+  <li><a href="#checking-aa_tools" id="toc-checking-aa_tools" class="nav-link" data-scroll-target="#checking-aa_tools">Checking <code>aa_tools</code></a></li>
+  <li><a href="#authoring-a-source-notebook" id="toc-authoring-a-source-notebook" class="nav-link" data-scroll-target="#authoring-a-source-notebook">Authoring a source notebook</a></li>
+  <li><a href="#nbgrader-cell-checklist" id="toc-nbgrader-cell-checklist" class="nav-link" data-scroll-target="#nbgrader-cell-checklist">Nbgrader cell checklist</a></li>
+  <li><a href="#generate-a-release-assignment" id="toc-generate-a-release-assignment" class="nav-link" data-scroll-target="#generate-a-release-assignment">Generate a release assignment</a></li>
+  <li><a href="#inspect-the-generated-release" id="toc-inspect-the-generated-release" class="nav-link" data-scroll-target="#inspect-the-generated-release">Inspect the generated release</a></li>
+  <li><a href="#copy-the-release-to-aa_assignments" id="toc-copy-the-release-to-aa_assignments" class="nav-link" data-scroll-target="#copy-the-release-to-aa_assignments">Copy the release to <code>aa_assignments</code></a></li>
+  <li><a href="#commit-the-public-release" id="toc-commit-the-public-release" class="nav-link" data-scroll-target="#commit-the-public-release">Commit the public release</a></li>
+  <li><a href="#link-from-the-website" id="toc-link-from-the-website" class="nav-link" data-scroll-target="#link-from-the-website">Link from the website</a></li>
+  <li><a href="#commit-website-changes" id="toc-commit-website-changes" class="nav-link" data-scroll-target="#commit-website-changes">Commit website changes</a></li>
+  <li><a href="#generated-files-and-files-not-to-commit" id="toc-generated-files-and-files-not-to-commit" class="nav-link" data-scroll-target="#generated-files-and-files-not-to-commit">Generated files and files not to commit</a></li>
+  <li><a href="#github-desktop-versus-terminal" id="toc-github-desktop-versus-terminal" class="nav-link" data-scroll-target="#github-desktop-versus-terminal">GitHub Desktop versus terminal</a></li>
+  <li><a href="#codex-delegation-workflow" id="toc-codex-delegation-workflow" class="nav-link" data-scroll-target="#codex-delegation-workflow">Codex delegation workflow</a></li>
+  <li><a href="#updating-vlo-or-standards-documents" id="toc-updating-vlo-or-standards-documents" class="nav-link" data-scroll-target="#updating-vlo-or-standards-documents">Updating VLO or standards documents</a></li>
+  <li><a href="#updating-help-documents" id="toc-updating-help-documents" class="nav-link" data-scroll-target="#updating-help-documents">Updating help documents</a></li>
+  <li><a href="#common-failure-modes" id="toc-common-failure-modes" class="nav-link" data-scroll-target="#common-failure-modes">Common failure modes</a>
+  <ul class="collapse">
+  <li><a href="#import-error-in-notebook" id="toc-import-error-in-notebook" class="nav-link" data-scroll-target="#import-error-in-notebook">Import error in notebook</a></li>
+  <li><a href="#a-module-changed-but-the-notebook-still-uses-the-old-version" id="toc-a-module-changed-but-the-notebook-still-uses-the-old-version" class="nav-link" data-scroll-target="#a-module-changed-but-the-notebook-still-uses-the-old-version">A module changed but the notebook still uses the old version</a></li>
+  <li><a href="#nbgrader-cannot-find-the-assignment" id="toc-nbgrader-cannot-find-the-assignment" class="nav-link" data-scroll-target="#nbgrader-cannot-find-the-assignment">nbgrader cannot find the assignment</a></li>
+  <li><a href="#the-public-release-contains-private-material" id="toc-the-public-release-contains-private-material" class="nav-link" data-scroll-target="#the-public-release-contains-private-material">The public release contains private material</a></li>
+  <li><a href="#github-desktop-wants-to-commit-many-_site-files" id="toc-github-desktop-wants-to-commit-many-_site-files" class="nav-link" data-scroll-target="#github-desktop-wants-to-commit-many-_site-files">GitHub Desktop wants to commit many <code>_site</code> files</a></li>
+  <li><a href="#a-website-page-looks-wrong-in-brave" id="toc-a-website-page-looks-wrong-in-brave" class="nav-link" data-scroll-target="#a-website-page-looks-wrong-in-brave">A website page looks wrong in Brave</a></li>
+  </ul></li>
+  <li><a href="#minimal-release-checklist" id="toc-minimal-release-checklist" class="nav-link" data-scroll-target="#minimal-release-checklist">Minimal release checklist</a></li>
+  <li><a href="#decision-rule" id="toc-decision-rule" class="nav-link" data-scroll-target="#decision-rule">Decision rule</a></li>
+  <li><a href="#open-items-to-verify-later" id="toc-open-items-to-verify-later" class="nav-link" data-scroll-target="#open-items-to-verify-later">Open items to verify later</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Advanced Astronomy Courseware Workflow</h1>
+<p class="subtitle lead">Private notebooks → nbgrader release → public assignments → website links</p>
+</div>
+
+
+
+<div class="quarto-title-meta column-page-left">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="core-principle" class="level1">
+<h1>Core principle</h1>
+<p>Do not confuse the private working materials with the public student release.</p>
+<p>The practical pipeline is:</p>
+<pre class="text"><code>aa_class / private working repo
+↓
+nbgrader source notebooks
+↓
+nbgrader release generation
+↓
+release notebooks with solutions/tests/instructor metadata stripped
+↓
+aa_assignments public repo
+↓
+student-facing GitHub links and website packet pages</code></pre>
+<p>The private course repo is where assignments are authored. The public assignment repo is where students get released materials. The website should link to the public release, not to private working files.</p>
+</section>
+<section id="repository-roles" class="level1">
+<h1>Repository roles</h1>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Repository or folder</th>
+<th>Role</th>
+<th>Typical contents</th>
+<th>Main warning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>aa_class/</code></td>
+<td>Private working/courseware repo</td>
+<td>Source notebooks, nbgrader configuration, solutions, tests, release folders</td>
+<td>Do not publish private source notebooks directly.</td>
+</tr>
+<tr class="even">
+<td><code>aa_assignments/</code></td>
+<td>Public student-facing assignment repo</td>
+<td>Released notebooks and support files only</td>
+<td>Do not include instructor solutions, hidden tests, private metadata, or scratch files.</td>
+</tr>
+<tr class="odd">
+<td><code>wdlinch3.github.io/</code></td>
+<td>Public website repo</td>
+<td>Course pages, packet hubs, help pages, VLO/standards pages, CSS/layouts</td>
+<td>Do not commit generated <code>_site/</code> output.</td>
+</tr>
+<tr class="even">
+<td><code>aa_tools/</code></td>
+<td>Support package for astronomy notebooks</td>
+<td><code>astroconst.py</code>, legacy <code>astroc.py</code>, kernels/constants/helpers</td>
+<td>If imports fail in Jupyter, check the kernel first.</td>
+</tr>
+</tbody>
+</table>
+<p>The assignment order is not required for the basic release workflow. It becomes important only when building course maps, packet index pages, VLO alignments, or prerequisite-aware help pages.</p>
+</section>
+<section id="local-path-conventions" class="level1">
+<h1>Local path conventions</h1>
+<p>Current working root on the Mac:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">/Users/wdlinch3/Documents/github</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Common repositories:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">/Users/wdlinch3/Documents/github/aa_class</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/Users/wdlinch3/Documents/github/aa_assignments</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">/Users/wdlinch3/Documents/github/wdlinch3.github.io</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Use exact paths. Be especially careful with:</p>
+<pre class="text"><code>GitHub vs github
+hyphen vs underscore
+ss_... vs u_... vs x_...</code></pre>
+<p>For new file and folder names, use underscores where the separator semantically represents a space. Use hyphens only when the underlying phrase itself is hyphenated.</p>
+</section>
+<section id="course-labels-and-assignment-ids" class="level1">
+<h1>Course labels and assignment IDs</h1>
+<p>Use these course folders consistently:</p>
+<pre class="text"><code>aa_ss   Advanced Astronomy: Solar System
+aa_u    Advanced Astronomy: Universe
+aa_x    Advanced Astronomy: X / shared or enrichment material</code></pre>
+<p>Use these assignment prefixes consistently:</p>
+<pre class="text"><code>ss_     Solar System assignment
+u_      Universe assignment
+x_      shared / enrichment assignment</code></pre>
+<p>Examples:</p>
+<pre class="text"><code>ss_aristarchus
+ss_jupiter_1
+u_ism_and_star_birth
+x_astrodynamics_1</code></pre>
+<p>The assignment ID should match the nbgrader assignment ID and the public release folder unless there is a deliberate reason to do otherwise.</p>
+</section>
+<section id="before-changing-anything" class="level1">
+<h1>Before changing anything</h1>
+<p>Start by checking the repo state.</p>
+<p>For the private courseware repo:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /Users/wdlinch3/Documents/github/aa_class</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status <span class="at">-sb</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-vv</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>For the public assignment repo:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /Users/wdlinch3/Documents/github/aa_assignments</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status <span class="at">-sb</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-vv</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>For the website repo:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /Users/wdlinch3/Documents/github/wdlinch3.github.io</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status <span class="at">-sb</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-vv</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>If GitHub Desktop shows unexpected files, inspect them before committing. Generated folders and editor artifacts should normally not be committed.</p>
+</section>
+<section id="starting-the-notebook-environment" class="level1">
+<h1>Starting the notebook environment</h1>
+<p>Use JupyterLab for notebook work, not VS Code or raw browser previews.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /Users/wdlinch3/Documents/github/aa_class</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> .venv/bin/activate</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> python</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-V</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> lab</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>In JupyterLab, check the notebook kernel. For this courseware, the first thing to check when imports or previously working notebook code fail is whether the kernel is set to:</p>
+<pre class="text"><code>aa_class</code></pre>
+<p>Do this before reinstalling packages or changing code.</p>
+</section>
+<section id="checking-nbgrader" class="level1">
+<h1>Checking nbgrader</h1>
+<p>From the environment used to launch JupyterLab:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> pip show nbgrader</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> nbgrader</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-c</span> <span class="st">"import nbgrader; print(nbgrader.__version__)"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>If <code>nbgrader</code> is missing from that environment:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> pip install <span class="at">-U</span> pip</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> pip install nbgrader ipykernel</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>After installation, restart JupyterLab and check that the nbgrader interface appears.</p>
+</section>
+<section id="checking-aa_tools" class="level1">
+<h1>Checking <code>aa_tools</code></h1>
+<p>The course uses real astronomy/scientific tools where possible, but wraps some recurring constants and parameters in <code>aa_tools</code>.</p>
+<p>Important modules:</p>
+<pre class="text"><code>aa_tools/aa_tools/astroconst.py
+aa_tools/aa_tools/astroc.py</code></pre>
+<p><code>astroc.py</code> is legacy and should be treated as deprecated unless an older notebook still depends on it.</p>
+<p><code>astroconst.py</code> is the preferred support module for constants and orbital parameters. It may depend on SPICE/NAIF-style kernels such as text PCK files, leapsecond kernels, and ephemeris files.</p>
+<p>When editing <code>aa_tools</code> while a notebook is already open, reload the module before testing changes:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> importlib</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> aa_tools.astroconst <span class="im">as</span> ac</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>importlib.<span class="bu">reload</span>(ac)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>If this fails, first check the Jupyter kernel. Then check whether the package is installed or importable from the active environment.</p>
+</section>
+<section id="authoring-a-source-notebook" class="level1">
+<h1>Authoring a source notebook</h1>
+<p>Source notebooks live in the private courseware repo. They may contain instructor-only material and nbgrader metadata.</p>
+<p>A typical source notebook should have:</p>
+<pre class="text"><code>student-facing Markdown prompt cells
+student-editable answer cells
+student-visible setup cells when needed
+hidden instructor solution cells when needed
+hidden or autograded test cells when needed
+supporting data/images with relative paths</code></pre>
+<p>Avoid absolute local paths in notebooks. A path like this is fragile:</p>
+<pre class="text"><code>/Users/wdlinch3/Documents/github/...</code></pre>
+<p>Prefer paths relative to the notebook or assignment folder.</p>
+<p>Use MathJax-compatible Markdown math:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="an">Inline:</span><span class="co"> $E = mc^2$</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>Display:</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>F = \frac{G M m}{r^2}</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>$$</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Do not use <code>\(...\)</code> in notebook Markdown if <code>$...$</code> is the established class convention.</p>
+</section>
+<section id="nbgrader-cell-checklist" class="level1">
+<h1>Nbgrader cell checklist</h1>
+<p>Before generating a release, inspect the source notebook in JupyterLab.</p>
+<p>Check that:</p>
+<pre class="text"><code>all intended student cells are editable
+all intended answer cells are marked correctly
+manually graded cells are marked as manually graded answers
+hidden solution/test cells are not accidentally visible student content
+point values are set where needed
+cell IDs/metadata are not duplicated or corrupted
+notebook runs from top to bottom in a clean kernel</code></pre>
+<p>Use the nbgrader Validate button before generating the assignment.</p>
+</section>
+<section id="generate-a-release-assignment" class="level1">
+<h1>Generate a release assignment</h1>
+<p>Run <code>nbgrader generate_assignment</code> from the course root expected by the local <code>nbgrader_config.py</code>. In the common layout, this is the parent of the relevant <code>source/</code> directory.</p>
+<p>Example for a Solar System assignment:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /Users/wdlinch3/Documents/github/aa_class/aa_ss</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="ex">nbgrader</span> generate_assignment ss_jupiter_1 <span class="at">--force</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Example for a Universe assignment:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /Users/wdlinch3/Documents/github/aa_class/aa_u</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="ex">nbgrader</span> generate_assignment u_ism_and_star_birth <span class="at">--force</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Example for an AA:X assignment:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /Users/wdlinch3/Documents/github/aa_class/aa_x</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="ex">nbgrader</span> generate_assignment x_astrodynamics_1 <span class="at">--force</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The <code>--force</code> flag overwrites the previous generated release for that assignment. Use it deliberately.</p>
+<p>If the command fails because it cannot find the assignment, inspect the directory structure:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-maxdepth</span> 3 <span class="at">-type</span> d <span class="dt">\(</span> <span class="at">-name</span> source <span class="at">-o</span> <span class="at">-name</span> release <span class="at">-o</span> <span class="at">-name</span> releases <span class="dt">\)</span> <span class="kw">|</span> <span class="fu">sort</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> .. <span class="at">-maxdepth</span> 3 <span class="at">-name</span> nbgrader_config.py <span class="at">-print</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Then open the relevant <code>nbgrader_config.py</code> and check the configured source/release directory names.</p>
+</section>
+<section id="inspect-the-generated-release" class="level1">
+<h1>Inspect the generated release</h1>
+<p>After generation, inspect the release folder before copying anything to the public repo.</p>
+<p>Common locations may look like:</p>
+<pre class="text"><code>release/&lt;assignment_id&gt;/
+releases/&lt;assignment_id&gt;/</code></pre>
+<p>Check what was produced:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-la</span> release/<span class="op">&lt;</span>assignment_id<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>or:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-la</span> releases/<span class="op">&lt;</span>assignment_id<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Open the generated notebook as if you were a student. Confirm that:</p>
+<pre class="text"><code>solutions are removed
+hidden tests are removed or hidden as intended
+student instructions still make sense
+supporting images/data files are present
+relative paths still work
+the notebook runs in the student-facing environment</code></pre>
+<p>A crude text search can help catch obvious instructor leakage, but it is not a substitute for manual inspection:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-R</span> <span class="st">"BEGIN SOLUTION\|END SOLUTION\|NBGRADER-CELL: solution\|instructor\|hidden test"</span> release/<span class="op">&lt;</span>assignment_id<span class="op">&gt;</span> <span class="kw">||</span> <span class="fu">true</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Adjust the folder name if your local release folder is <code>releases/</code> rather than <code>release/</code>.</p>
+</section>
+<section id="copy-the-release-to-aa_assignments" class="level1">
+<h1>Copy the release to <code>aa_assignments</code></h1>
+<p>The public repo is student-facing. Copy only the generated release and necessary support files.</p>
+<p>First inspect the destination:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /Users/wdlinch3/Documents/github/aa_assignments</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status <span class="at">-sb</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-la</span> aa_ss</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-la</span> aa_u</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-la</span> aa_x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Dry-run the copy first. Example for <code>ss_jupiter_1</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-av</span> <span class="at">--dry-run</span> <span class="dt">\</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  /Users/wdlinch3/Documents/github/aa_class/aa_ss/release/ss_jupiter_1/ <span class="dt">\</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  /Users/wdlinch3/Documents/github/aa_assignments/aa_ss/ss_jupiter_1/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>If the dry run looks right, run the real copy:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-av</span> <span class="dt">\</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  /Users/wdlinch3/Documents/github/aa_class/aa_ss/release/ss_jupiter_1/ <span class="dt">\</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  /Users/wdlinch3/Documents/github/aa_assignments/aa_ss/ss_jupiter_1/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>For destructive syncs, use <code>--delete</code> only after confirming the destination path very carefully:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-av</span> <span class="at">--delete</span> <span class="at">--dry-run</span> <span class="dt">\</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  /path/to/generated/release/ <span class="dt">\</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  /path/to/public/destination/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Then run the same command without <code>--dry-run</code> only if the preview is correct.</p>
+</section>
+<section id="commit-the-public-release" class="level1">
+<h1>Commit the public release</h1>
+<p>In the public <code>aa_assignments</code> repo:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /Users/wdlinch3/Documents/github/aa_assignments</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status <span class="at">-sb</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff <span class="at">--stat</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add aa_ss/ss_jupiter_1</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Release ss_jupiter_1 assignment"</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin main</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Adjust the folder and message for <code>aa_u</code> or <code>aa_x</code> assignments.</p>
+<p>If using GitHub Desktop instead of terminal:</p>
+<pre class="text"><code>review the changed files
+make sure no private/source/generated junk files are included
+write a concise commit message
+commit to the correct branch
+push origin</code></pre>
+</section>
+<section id="link-from-the-website" class="level1">
+<h1>Link from the website</h1>
+<p>The website should link students to the public <code>aa_assignments</code> repo.</p>
+<p>For a normal student-facing GitHub page, prefer ordinary GitHub links, for example:</p>
+<pre class="text"><code>https://github.com/wdlinch3/aa_assignments/tree/main/aa_ss/ss_jupiter_1
+https://github.com/wdlinch3/aa_assignments/blob/main/aa_ss/ss_jupiter_1/ss_jupiter_1.ipynb</code></pre>
+<p>Use <code>raw.githubusercontent.com</code> only when a direct raw file download is needed for a specific technical reason.</p>
+<p>Likely website locations:</p>
+<pre class="text"><code>wdlinch3.github.io/aa/packets/index.html
+wdlinch3.github.io/aa/ss/index.html
+wdlinch3.github.io/aa/u/index.html
+wdlinch3.github.io/aa/x/index.html</code></pre>
+<p>Preview website changes with Jekyll:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /Users/wdlinch3/Documents/github/wdlinch3.github.io</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="ex">bundle</span> exec jekyll serve <span class="at">--livereload</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Open:</p>
+<pre class="text"><code>http://127.0.0.1:4000/aa/packets/</code></pre>
+<p>Do not preview Jekyll pages by opening source files directly with <code>file://</code>.</p>
+</section>
+<section id="commit-website-changes" class="level1">
+<h1>Commit website changes</h1>
+<p>In the website repo:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /Users/wdlinch3/Documents/github/wdlinch3.github.io</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status <span class="at">-sb</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff <span class="at">--stat</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Do not commit generated output:</p>
+<pre class="text"><code>_site/
+help/_site/
+.DS_Store
+.ipynb_checkpoints/</code></pre>
+<p>If only legitimate source files changed:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb42"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add aa/packets/index.html aa/ss/index.html aa/u/index.html aa/x/index.html</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Update assignment links"</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin main</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Adjust the <code>git add</code> command to the files actually changed.</p>
+</section>
+<section id="generated-files-and-files-not-to-commit" class="level1">
+<h1>Generated files and files not to commit</h1>
+<p>Usually do not commit:</p>
+<pre class="text"><code>_site/
+help/_site/
+.DS_Store
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+scratch files
+temporary exports</code></pre>
+<p>For Jekyll, <code>_site/</code> is build output.</p>
+<p>For Quarto, files ending in <code>_files/</code> are support assets generated for a rendered HTML document. These may or may not need to be committed depending on whether the rendered HTML is meant to be served directly. Do not delete them blindly if the corresponding HTML page depends on them.</p>
+</section>
+<section id="github-desktop-versus-terminal" class="level1">
+<h1>GitHub Desktop versus terminal</h1>
+<p><code>Fetch origin</code> in GitHub Desktop asks GitHub what changed remotely. It does not necessarily merge those changes into the current local branch.</p>
+<p>A terminal <code>git pull</code> fetches and then integrates changes into the current branch.</p>
+<p>Before important work, this terminal check is precise:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb44"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status <span class="at">-sb</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-vv</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span> <span class="at">--decorate</span> <span class="at">--graph</span> <span class="at">--left-right</span> main...origin/main</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Interpretation:</p>
+<pre class="text"><code>ahead     local commits not yet pushed
+behind    remote commits not yet pulled
+clean     no uncommitted changes</code></pre>
+</section>
+<section id="codex-delegation-workflow" class="level1">
+<h1>Codex delegation workflow</h1>
+<p>Use Codex for narrow, repo-contained changes, especially when it can inspect existing files and make a branch/PR.</p>
+<p>Good Codex tasks:</p>
+<pre class="text"><code>add a packet link to an existing index page
+repair an internal route
+draft a page using only existing repository material
+refactor repeated HTML into an include
+apply an existing CSS convention consistently</code></pre>
+<p>Poor Codex tasks:</p>
+<pre class="text"><code>make broad unexplained site redesigns
+invent new course policy
+alter many unrelated pages at once
+change routing conventions without approval
+commit generated `_site/` output</code></pre>
+<p>A good Codex prompt includes:</p>
+<pre class="text"><code>the repository
+specific files or section to inspect
+exact scope of allowed changes
+style constraints
+dark-mode/default site conventions
+whether to open a draft PR
+what validation to report</code></pre>
+<p>Example:</p>
+<pre class="text"><code>In wdlinch3.github.io, inspect aa/packets/index.html and nearby AA pages. Add a student-facing link for ss_jupiter_1 using the existing style. Do not change layouts, CSS, or unrelated navigation. Do not commit _site output. Create a branch, commit, push, and open a draft PR. Summarize changed files and validation.</code></pre>
+</section>
+<section id="updating-vlo-or-standards-documents" class="level1">
+<h1>Updating VLO or standards documents</h1>
+<p>Use Quarto <code>.qmd</code> for VLO/standards pages.</p>
+<p>Current naming convention:</p>
+<pre class="text"><code>vlo_aa_ss.qmd
+vlo_aa_u.qmd
+vlo_aa_x.qmd</code></pre>
+<p>Canonical objective code pattern:</p>
+<pre class="text"><code>aa.&lt;course&gt;.&lt;unit&gt;.&lt;topic&gt;.&lt;objective&gt;</code></pre>
+<p>Examples:</p>
+<pre class="text"><code>aa.ss.aristarchus.geometry.angle
+aa.u.ism_star_birth.clouds.fragmentation
+aa.x.astrodynamics.orbits.energy</code></pre>
+<p>Prefer dark-mode HTML and PDF-capable Quarto front matter:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb53"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> darkly</span></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">css</span><span class="kw">:</span><span class="at"> standards_table.css</span></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">page-layout</span><span class="kw">:</span><span class="at"> full</span></span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf</span><span class="kw">:</span></span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a><span class="fu">format-links</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>When aligning VLOs with quizzes or assignments, keep the mapping in source form. Do not rely only on rendered HTML.</p>
+</section>
+<section id="updating-help-documents" class="level1">
+<h1>Updating help documents</h1>
+<p>This document is source and should live somewhere like:</p>
+<pre class="text"><code>help/aa_courseware_workflow.qmd</code></pre>
+<p>It should not live only inside:</p>
+<pre class="text"><code>help/_site/</code></pre>
+<p>Render with Quarto when needed:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb56"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /Users/wdlinch3/Documents/github/wdlinch3.github.io</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render help/aa_courseware_workflow.qmd</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Then preview the rendered page through Jekyll:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb57"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="ex">bundle</span> exec jekyll serve <span class="at">--livereload</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Open:</p>
+<pre class="text"><code>http://127.0.0.1:4000/help/aa_courseware_workflow.html</code></pre>
+</section>
+<section id="common-failure-modes" class="level1">
+<h1>Common failure modes</h1>
+<section id="import-error-in-notebook" class="level2">
+<h2 class="anchored" data-anchor-id="import-error-in-notebook">Import error in notebook</h2>
+<p>First check the kernel:</p>
+<pre class="text"><code>Kernel → Change Kernel → aa_class</code></pre>
+<p>Then restart the kernel and run the notebook again.</p>
+<p>Only after that, check package installation, <code>PYTHONPATH</code>, or local editable installs.</p>
+</section>
+<section id="a-module-changed-but-the-notebook-still-uses-the-old-version" class="level2">
+<h2 class="anchored" data-anchor-id="a-module-changed-but-the-notebook-still-uses-the-old-version">A module changed but the notebook still uses the old version</h2>
+<p>Reload the module:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> importlib</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> aa_tools.astroconst <span class="im">as</span> ac</span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>importlib.<span class="bu">reload</span>(ac)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>If that is not enough, restart the kernel.</p>
+</section>
+<section id="nbgrader-cannot-find-the-assignment" class="level2">
+<h2 class="anchored" data-anchor-id="nbgrader-cannot-find-the-assignment">nbgrader cannot find the assignment</h2>
+<p>Check:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb61"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-la</span></span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-maxdepth</span> 3 <span class="at">-type</span> d <span class="dt">\(</span> <span class="at">-name</span> source <span class="at">-o</span> <span class="at">-name</span> release <span class="at">-o</span> <span class="at">-name</span> releases <span class="dt">\)</span> <span class="kw">|</span> <span class="fu">sort</span></span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> .. <span class="at">-maxdepth</span> 3 <span class="at">-name</span> nbgrader_config.py <span class="at">-print</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Then confirm that the assignment ID matches the source folder and notebook metadata.</p>
+</section>
+<section id="the-public-release-contains-private-material" class="level2">
+<h2 class="anchored" data-anchor-id="the-public-release-contains-private-material">The public release contains private material</h2>
+<p>Stop. Do not push.</p>
+<p>Regenerate the assignment from the corrected source notebook, inspect the generated release again, and only then copy to <code>aa_assignments</code>.</p>
+</section>
+<section id="github-desktop-wants-to-commit-many-_site-files" class="level2">
+<h2 class="anchored" data-anchor-id="github-desktop-wants-to-commit-many-_site-files">GitHub Desktop wants to commit many <code>_site</code> files</h2>
+<p>Usually this means generated output is being tracked or staged accidentally.</p>
+<p>Do not commit them. Inspect with:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb62"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status <span class="at">-sb</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Restore accidental generated changes if appropriate:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb63"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> restore _site help/_site</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Use this only when you are sure those files are disposable generated output.</p>
+</section>
+<section id="a-website-page-looks-wrong-in-brave" class="level2">
+<h2 class="anchored" data-anchor-id="a-website-page-looks-wrong-in-brave">A website page looks wrong in Brave</h2>
+<p>Check whether you opened a source file directly.</p>
+<p>Wrong:</p>
+<pre class="text"><code>file:///Users/wdlinch3/Documents/github/wdlinch3.github.io/index.html</code></pre>
+<p>Right:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb65"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /Users/wdlinch3/Documents/github/wdlinch3.github.io</span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="ex">bundle</span> exec jekyll serve <span class="at">--livereload</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Open:</p>
+<pre class="text"><code>http://127.0.0.1:4000/</code></pre>
+</section>
+</section>
+<section id="minimal-release-checklist" class="level1">
+<h1>Minimal release checklist</h1>
+<p>Before release:</p>
+<pre class="text"><code>source notebook validates
+notebook runs top-to-bottom
+assignment ID is correct
+student-facing text is clear
+support files use relative paths</code></pre>
+<p>Generate:</p>
+<pre class="text"><code>run nbgrader generate_assignment &lt;assignment_id&gt; --force
+inspect generated release
+open release notebook as student</code></pre>
+<p>Publish:</p>
+<pre class="text"><code>copy generated release to aa_assignments
+verify no private material is present
+commit and push aa_assignments
+update website links if needed
+preview website with Jekyll
+commit and push website changes</code></pre>
+</section>
+<section id="decision-rule" class="level1">
+<h1>Decision rule</h1>
+<pre class="text"><code>Writing/editing an assignment?      Work in aa_class.
+Generating student version?         Use nbgrader release generation.
+Publishing student files?           Copy generated release to aa_assignments.
+Linking students to it?             Update wdlinch3.github.io.
+Debugging notebook imports?         Check the aa_class kernel first.
+Previewing website pages?           Use Jekyll at http://127.0.0.1:4000/.
+Writing durable help/standards?     Use Quarto .qmd source.
+Delegating repo edits?              Give Codex a narrow branch/PR task.</code></pre>
+</section>
+<section id="open-items-to-verify-later" class="level1">
+<h1>Open items to verify later</h1>
+<p>These do not block use of the workflow, but they should eventually be confirmed.</p>
+<pre class="text"><code>exact current aa_class directory layout
+whether release folder is named release/ or releases/
+whether each course has its own nbgrader_config.py
+whether aa_assignments should include an assignment-order manifest
+whether website packet pages should be generated from a data file
+whether a small shell script should automate the safe release copy</code></pre>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
