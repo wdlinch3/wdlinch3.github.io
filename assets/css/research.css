@@ -49,3 +49,50 @@
   font-size: 0.95rem;
   color: #ccc;
 }
+
+.research-path {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.research-path-card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.research-path-card h3,
+.research-path-card h4 {
+  margin-top: 0;
+  margin-bottom: 0.55rem;
+}
+
+.research-level {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+  color: #d8e3ff;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+}
+
+.research-note-panel {
+  margin: 1.5rem 0;
+  padding: 1rem 1.1rem;
+  border-left: 3px solid rgba(180, 210, 255, 0.55);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.research-page-links {
+  margin: 1.5rem 0;
+}
+
+.research-page-links ul {
+  margin-top: 0.5rem;
+}
