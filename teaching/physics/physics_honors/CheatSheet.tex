@@ -1,0 +1,135 @@
+%\title{A Very Simple \LaTeXe{} Template}
+%\author{
+%        Vitaly Surazhsky \\
+%                Department of Computer Science\\
+%        Technion---Israel Institute of Technology\\
+%        Technion City, Haifa 32000, \underline{Israel}
+%            \and
+%        Yossi Gil\\
+%        Department of Computer Science\\
+%        Technion---Israel Institute of Technology\\
+%        Technion City, Haifa 32000, \underline{Israel}
+%}
+%\date{\today}
+
+
+
+\documentclass[12pt]{article}
+
+\usepackage{amsmath}
+\usepackage{bm}
+
+\begin{document}
+%\maketitle
+
+%\begin{abstract}
+%This is the paper's abstract \ldots
+%\end{abstract}
+\pagestyle{empty}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Kinematics}
+
+\begin{align}
+\Delta{\bm { r}} &= {\bm r}_f - {\bm r}_i
+\\
+{\bm v} &= \frac {\Delta \bm r}{\Delta t}
+\\
+{\bm a} &= \frac {\Delta \bm v}{\Delta t}
+\end{align}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{1D CAKE}
+
+\begin{align}
+v(t) &= v_0 + a_0  t
+\\
+x(t) &=x_0 + v_0t + \frac12 a_0  t^2
+\\
+v_f^2 &= v_i^2 + 2 a \Delta x 
+\end{align}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{3D CAKE}
+
+\begin{align}
+{\bm v}(t) &= {\bm v}_0 + {\bm a}_0  t
+\\
+{\Delta \bm r}(t) &= {\bm v}_0t + \frac12 {\bm a}_0  t^2
+\\
+v_f^2 &= v_i^2 + 2 {\bm a}_0 \cdot {\Delta \bm  r}
+\end{align}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Dynamics}
+
+\begin{align}
+{\bm F}_{net} &= \sum_i {\bm F_i}
+\end{align}
+
+
+\begin{align}
+{\bm F}_{net} &= m {\bm a}
+\end{align}
+
+\begin{align}
+F_{spring} &= - k \Delta x
+\end{align}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Impulse and momentum}
+
+\begin{align}
+{\bm p} &=  m {\bm v}
+\end{align}
+
+\begin{align}
+{\bm F}_{net} &= \frac {\Delta \bm p}{\Delta t}
+\end{align}
+
+\begin{align}
+{\bm J} &= { \bm F}{\Delta t}
+\end{align}
+
+\begin{align}
+{\bm J} &= \Delta {\bm p}
+\end{align}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Work and Kinetic Energy}
+
+\begin{align}
+T &=  \frac12 m v^2 
+\end{align}
+
+\begin{align}
+W &= { \bm F} \cdot {\Delta \bm r}
+\end{align}
+
+\begin{align}
+W&= \Delta T
+\end{align}
+
+\begin{align}
+E&= T + \sum U
+\end{align}
+
+
+\begin{align}
+U_{g}&= mg\Delta y
+\cr
+U_{spring}&= \frac12 k x^2
+\end{align}
+
+
+
+
+%\bibliographystyle{abbrv}
+%\bibliography{main}
+
+\end{document}
