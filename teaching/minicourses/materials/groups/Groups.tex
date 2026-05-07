@@ -1,0 +1,509 @@
+% !TEX encoding = UTF-8 Unicode
+% !TEX program = lualatex
+% was lualatexmk
+% don't forget Edit > Substitutions > Text Replacement
+% needs file combining_preprocessor.lua, & BibTex.bib (e.g.) for \bibliography
+%\input{/Users/wdlinch3/Dropbox/Rashoumon/LaTeX/macros/headerWDL3}
+\input{headerWDL3}
+
+\def\red#1{{\color{red}#1}}
+\def\blue#1{{\color{blue}#1}}
+\def\green#1{{\color{green}#1}}
+
+\usepackage{placeins}
+\usepackage{mathrsfs}
+
+\def\gap{38mm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%  Theorem environments  %%%%%%%%%%%%%%%%%%%%
+% Theorem environments
+\usepackage{amsthm} %Enable theorem environments
+%% No-number theorems
+%\theoremstyle{definition}
+%\newtheorem*{definition}{Definition}
+%\theoremstyle{plain}
+%\newtheorem*{prop}{Proposition}
+%\newtheorem*{lemma}{Lemma}
+%\newtheorem*{thm}{Theorem}
+%\newtheorem*{cor}{Corollary}
+%\newtheorem*{example}{Example}
+%% Numbered theorems
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{example}{Example}
+\newtheorem{result}{Result}
+\newtheorem{claim}{Claim}
+\newtheorem*{result*}{Result}
+\newtheorem{exercise}{Exercise}
+\newtheorem{problem}{Problem}
+
+
+\begin{document}
+
+{\center
+{\color{violet}\fontsize{28pt}{34pt}\bf\sffamily 
+Supplemental Material 1: Rotations
+\\[.5in]
+}
+
+%{\color[rgb]{0,.7,1}\today}\\[.5in]}
+}
+{\abstract
+This is supplemental material for the students of Physics 736-C: Advanced Studies; Mechanics.
+}
+
+%\vfill
+
+%\thispagestyle{empty}
+%\newpage
+
+%{
+%%\linespread{1.1}
+%%\linespread{1}
+%%\linespread{.9}
+%\linespread{.8}
+%\small
+%%\tableofcontents
+%}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Linear algebra in 3D}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+In class we learned about vectors as objects that have various properties like addition, a zero, and multiplication by real numbers. 
+When we have a dot product, vectors gain additional properties like lengths and relative angles. 
+In these supplemental notes we will work through some material on rotations. 
+To get interesting results, we will work in 3D. 
+
+\subsection{Vectors and Covectors}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{enumerate}
+\item  Let $ 𝒂 =(a¹, a², a³)^T$. The ${}^T$ stands for “transpose” and means that 
+$$
+𝒂 = \ma{a¹\\ a²\\ a³}
+$$
+Is a 3-component column vector. Strictly, the qualifier “column” is unnecessary, since--by convention--all vectors are columns. 
+Note that the ${}¹, {}²,{}³$ are “upstairs” on the components of $𝒂$. We write these components as $a^i$ with the “index” $i=1,2,3$. 
+\item Dual to vectors are “covectors”. These are row-shaped:
+$$
+α = \ma{α₁, α₂, α₃}
+$$
+Note that the ${}₁,{}₂,{}₃$ are “downstairs” instead of “upstairs” as on the vector. We write these components of the covector as $α_i$ with the “index” $i=1,2,3$. 
+\item The covectors are dual to the vectors in the sense that we can combine the covector with the vector thus:
+\eq{\label{MatMult}
+α(𝒂) := \ma{α₁, α₂, α₃}\ma{a¹\\ a²\\ a³} = α₁ a¹ +  α₂ a² + α₃a³ 
+}
+This is an example of “matrix multiplication”. In this case between a $1 × 3$ matrix called a row matrix and a $3 × 1$ matrix called a column matrix.
+When using components, we write this as 
+$$
+α(𝒂) = \sum_{i=1}³  α_i a^i
+$$
+where $\sum$ (capital sigma) stands for “sum” and instructs you to take the sum of all the terms $α_i a^i$ for $i=1,2,3$. 
+When written in this way, we say that the result is given in “components” or “index notation”.
+\end{enumerate}
+
+\paragraph{Einstein summation convention} The ∑ symbols are cumbersome and unnecessary, especially when multiple contractions are being carried out:
+\begin{enumerate}
+\item When writing $∑_{i=1}^n$ we are already making the index explicit, and there is exactly one sum for each pair of repeated indices. 
+\item The range is generally understood from context. 
+\item When an index is repeated, it is almost always going to be summed. 
+\item If indices are being used correctly, summed pairs always appear with one of them “up” and one of them “down”.\footnote{Physicists and mathematicians often disagree about which type is called “covariant” and which type is called “contravariant”. If the group action is defined $V→ V$, it seems natural to call this “covariant”. Then the dual action $V*→ V*$ is called contravariant. }
+\end{enumerate}
+
+\subsection{Matrices}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Vectors and covectors are simple examples of matrices that have one column or row, respectively. 
+In general a matrix can have $m$ rows and $n$ columns:
+$$
+M = \ma{M¹{}_{1} & M¹{}_{2} & \dots &M¹{}_{n}\\
+	M²{}_{1} &  M²{}_{2} &  \dots &  M²{}_{n}\\
+	\vdots &\vdots &\ddots &\vdots\\
+	M^m{}_{1} & M^m{}_{2} & \dots & M^m{}_{n}
+	}
+$$
+This is an example of an $m × n$ matrix. The elements of this matrix are written $M^i{}_{j}$ for $i=1,\dots, m$ and $j=1,\dots, n$. 
+Sometimes matrices can be multiplied by vectors or covectors or among one another. 
+\begin{enumerate}
+\item  An $m × n$ matrix $M^i{}_{j}$ can be multiplied by an $n × p$ matrix $N^j{}_{k}$ to form an $m × p$ matrix $(MN)^i{}_{k}$. This is done by multiplying each column of $N$ into the rows of $M$ sequentially according to the rule \eqref{MatMult}:
+In index notation 
+$$
+(MN)^i{}_{k} = \sum_{j=1}³ M^i{}_{j} N^j{}_{k} 
+\quad \text{where} \quad i= 1,\dots , m \quad \text{and} \quad k=1, \dots, p
+$$
+Note that for the sum to make sense, the second index on $M$ must have the same range as the first index on $N$.
+After we sum over this index, it disappears and the result does not depend on $n$.
+\item A special case is when an $n× n$ matrix $A$ acts on an $n$-component vector $\bf u$: Recall that an $n$-component vector is an $n×1$ matrix. Then 
+$$
+A {\bf u} = \ma{A¹{}_{1} & A¹{}_{2} & \dots &A¹{}_{n}\\
+	A²{}_{1} &  A²{}_{2} &  \dots &  A²{}_{n}\\
+	\vdots &\vdots &\ddots &\vdots\\
+	A^n{}_{1} & A^n{}_{2} & \dots & A^n{}_{n}
+	}
+	\ma{u¹ \\ u² \\ \vdots \\ u^n}
+	=\ma{A^1{}_{1}u¹ + A^n{}_{2} u²+ \dots +A^n{}_{n} u^n \\ 
+	A^2{}_{1} u¹ + A^2{}_{2}u² +  \dots +  A^2{}_{n}u^n \\ \vdots \\ 
+	A^n{}_{1}u¹  + A^n{}_{2}u² + \dots + A^n{}_{n}u^n
+	}
+	=\ma{v¹ \\ v² \\ \vdots \\ v^n}
+	= \bf v
+$$
+%Note that $\bf v$ has components ...
+\end{enumerate}
+
+
+\section{Rotations}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+We now use the stuff above to do some problems specific to 2D and 3D. 
+\begin{enumerate}
+\item \label{SO(2)} Let 
+$$
+R₁₂(α) \ := \ma{ \cos(α) & -\sin(α) \\
+	\sin(α) & \cos(α) }
+$$
+	\begin{enumerate}
+		\item Describe in detail what this matrix does to vectors in $𝐑²$. 
+		\item Calculate $R₁₂(α) R₁₂(β)$ and $R₁₂(β) R₁₂(α)$. How are they related?
+		\item Calculate the inverse $[R₁₂(α)]^{-1}$, the transpose $[R₁₂(α)]^t$ (relative to the Euclidean norm\footnote{If you think you know what a transpose is, but don't understand why I made the parenthetical remark, then just ignore the remark.}), and $R₁₂(-α)$. How are they related? 
+		\item Calculate the determinant $\det R₁₂(α)$. Considering what a determinant usually is, is this interesting? 
+		\item Think about all the different matrices $\{R₁₂(α) \}_α$ as you let $α$ vary. 
+	\begin{enumerate}
+	\item What type of space is this? Hints: It is not a vector space. What are the distinct values of $α$? 
+	\item What is the meaning of $L₁₂$ (defined below) in this interpretation?
+	\end{enumerate}
+	\end{enumerate}
+%%%
+\item \label{so(2)} Define $$L₁₂\ :=  \left.  {d R₁₂(α) \over d α}\right|_{α=0}$$
+	\begin{enumerate}
+		\item Compute what it is explicitly as a matrix. 
+		\item Define $(L₁₂)^0 := 𝟏$ to be the (2 × 2) unit matrix, and calculate $(L₁₂)^n$ for $n ∈ 𝐍$.
+		\item Define the exponential $e^M=\exp(M)$ of a matrix $M$ by 
+$$ \exp(M)\ := \sum_{n=0}^∞ \, \frac1{n!}  \, M^n $$
+Prove/argue that the sum converges, and explain clearly what type of object this is. 
+		\item Calculate $\exp(α L₁₂)$.\footnote{The element $L₁₂$ is called a rotation “generator”. If you did this calculation correctly, you will understand this nomenclature because $L₁₂$ generates finite rotations.}
+		\item Take a moment to appreciate how remarkable this is. $L₁₂$ is only the first non-trivial term in a MacLauren series for $R₁₂(θ)$ ({\it i.e.} it is the infinitesimal part of the finite transformation), but it can be exponentiated to recover the entire finite transformation: In this case integration is just exponentiation.
+	\end{enumerate}	
+%%%
+\item Generalize $R₁₂(α)$ to a 3 × 3 matrix that rotates any vector in $𝐑³$ as follows: It leaves the 3rd component alone and rotates the first two as before. More precisely: We pick a linear subspace $𝐑² ⊂ 𝐑³$ that we call the 12-plane, and use it to decompose $𝐑³ = 𝐑² ⊕ 𝐑$.
+	\begin{enumerate}
+	\item Explicitly define our new matrix $R₁₂(α)$ to act as before in that plane and as the identity in the complement.
+	\item Repeat all steps in problem \ref{so(2)} for this new 3 × 3 matrix. 
+	\end{enumerate}
+%%%
+\item Define two new matrices $R₂₃(β)$ and $R₃₁(γ)$ by permuting $1 → 2 → 3 → 1$ in the obvious way. 
+That is, decomposing $𝐑³ = (𝐑 ⊕ 𝐑) ⊕ 𝐑$ further and calling the factors 1, 2, and 3, respectively, $R₂₃(β)$ should act as a rotation in 2 and 3 and $R₃₁(γ)$ as a rotation in 3 and 1. 
+	\begin{enumerate}
+	\item Construct $R₂₃(β)$ and $R₃₁(γ)$ explicitly. (If you notice a sign ambiguity, resolve it by thinking of the 3-1 plane as the orientation reversal of the 1-3 plane.) Warning: The intention should be obvious but the matrices will look different. 
+	\item Comment on whether/how the properties in problem \ref{SO(2)} change for these new matrices. 
+	\item Repeat all steps in problem \ref{so(2)} for these new matrices. 
+	\end{enumerate}
+%%%%
+%\item Define 
+%%%
+\item Next, we consider how matrix products of $R$s act on vectors.
+	\begin{enumerate}
+	\item Explain in words what the product $R₂₃(β)R₁₂(α)$ does to a vector in $𝐑³$. 
+	\item Does $R₁₂(α)R₂₃(β)$ do the same thing?
+	\item What does $R₃₁(γ)R₂₃(β)R₁₂(α)$ do? In this context, α, β, and γ are called Euler angles. 
+	\end{enumerate}
+\item Meditate deeply on the set $\{ R₁₂(α), R₂₃(β), R₃₁(γ)\}_{α, β \, γ}$. Is there any combination of products of the $R$s that is not a rotation in 3D? Can I get any rotation from such a product? Thinking of the space of all possible rotations in $𝐑³$, is it a linear space? What is the dimension of the space? Hint: Use your physical intuition about what this is describing to answer these questions. (I'm not asking for proofs here.) 
+\item We call the set of all rotations with these additional properties the $SO(3, 𝐑)$ or just $SO(3)$ when the reality is implied. If $R ∈ SO(3)$ is any rotation, what is true about the transpose $R^t$? What is $\det (R)$? 
+What would you call the set of $2\times 2$ matrices?
+%\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Below is new material added in 2023 for Preston Brown.
+%
+\item If you have managed to do all the problems above, you have shown that the set of all rotations of Euclidean 3-space is a “group”. By definition, this means: 
+	\begin{enumerate}
+		\item It is a closed set under an associative multiplication operation (which here is matrix multiplication). 
+		\item There is a unit element (the unit matrix).
+		\item For every rotation, there is a (unique) inverse rotation.
+	\end{enumerate}
+You have also shown that this is true for $SO(2)$, however:
+\item The “commutator” $[\cdot, \cdot]$ of two matrices $A$ and $B$ is defined as
+$$
+[A,B] = AB -BA
+$$
+A group is called “commutative” or “Abelian” if the commutator of any two elements is 0. Otherwise, it is called non-commutative or non-abelian. What are the correct statements about the (non-)commutativity of $SO(2)$ and $SO(3)$?
+\item Calculate the commutators of the matrices $L₁₂$, $L₂₃$, and $L₃₁$. What do you notice?
+\item We call a linear map $V\to V$ from a vector space $V$ to itself a “linear operator” or just “operator” when linearity is implied. An operator $N$ is called “normal” if it commutes with its transpose, that is $[N,N^t]=0$. Show that rotations are normal operators. 
+\item Use the fact that orthogonal operators are normal to deduce the conditions on the generators corresponding to the following conditions on operators:
+	\begin{enumerate}
+		\item The determinant $=1$
+		\item The operator is orthogonal
+		\item Use these results to calculate the dimension of the group $SO(n)$ for any $n ∈ 𝐍$.
+	\end{enumerate}
+\item Up until now, we implicitly assumed we were working in Euclidean space, that is, a(n affine,) real vector space of dimension 3 equipped with a specific inner product\footnote{In more modern language, the inner product is a symmetric bilinear form on the vector space $V = 𝐑³$. A linear form is a map $V → 𝐑$ from the vector space $V$ to the field over which it is defined ($𝐑$ in this case). In a local set of coordinates $❴ x^i ❵_{i=1}³$ for $𝐑³$, the basis vectors are denoted $❴ ∂/∂x^i ❵_{i=1}³$ (which we will abbreviate as $❴∂_i❵_{i=1}³$) and the linear forms are denoted $❴ dx^i ❵_{i=1}³$. In this language, the inner product $g$ is denoted 
+$$
+g = \sum_{i,j=1}³ \delta_{ij} dx^i ⊗ dx^j
+$$
+Here $\delta_{ij}$ is an array called the “Kronecker delta”. It is defined to have value 1 when $i=j$ and 0 otherwise. 
+\\
+Suggested exercise: Prove that if a bilinear form is symmetric, constant, and positive definite, then there is a choice of coordinates that reduces it to the Kronecker product. (Positive definite means $\langle u , u\rangle >0\ ∀ u ∈ V$.)
+}
+\al{
+\langle \cdot , \cdot \rangle \ :\  𝐑³ × 𝐑³ &⟶ 𝐑 
+\cr 
+(u , v)\ &↦ u・v
+}
+called the dot product $\langle u , v \rangle = u・v$. Specifically, denoting the components of $u$ and $v$ by $❴ u^i ❵_{i=1}³$ and $❴v^i❵_{i=1}³$, respectively, the dot product is defined as $u・v = \sum_{i=1}³ u^i v^i$.
+\\
+A vector space $V$ equipped with an inner product $\langle \cdot , \cdot \rangle$ is called an inner product space.
+In such a space, for any operator $L:V→ V$, we can define an operator $L*:V→ V$ by setting 
+$$
+\langle L* u , v\rangle = \langle  u , L v\rangle \quad ∀ u, v ∈ V
+$$
+This $L*$ is called the adjoint of $L$ w.r.t. to the inner product $\langle \cdot , \cdot \rangle$ of $V$. This is almost always abbreviated to “the adjoint (of $L$)”.
+	\begin{enumerate}
+	\item Find the adjoints of the transformations you worked out above.
+	\item By extending all of this to $𝐑^n$, find the largest group of linear transformations that preserves the Kronecker product.
+	\end{enumerate}
+\end{enumerate}
+
+\subsection{Synthesis} 
+In this section, we studied rotation groups of $𝐑^n$ by looking at some low-dimensional examples. These groups are subgroups\footnote{A subgroup $H⊂G$ of a group $G$ is a subset of $G$ that is also a group.} of a larger groups of linear transformations of $𝐑^n$. The largest is called the general linear group of $𝐑^n$; it is denoted $GL(𝐑^n)$ or $GL(n,𝐑)$.\footnote{In general, if $V$ is a vector space, the group consisting of all linear transformations $V→ V$ is denoted $GL(V)$. The notation $GL(n,𝐅)$ is used for the group of $n× n$ matrices with entries valued in the field $𝐅$. For us, $𝐅=𝐑$ or $𝐂$ (most of the time).} Since group transformations must have inverses, the only condition on such a transformation (besides linearity) is that it be invertible. Equivalently, the determinant of such a transformation is not allowed to vanish. Since this is an “open” condition, the dimension of $GL(𝐑^n)$ is $n²$. 
+
+There were a few main subgroups of $GL(𝐑^n)$ that we considered: 
+\begin{itemize}
+\item The subgroup $SL(𝐑^n) ⊂ GL(𝐑^n)$ of transformations with determinant 1 is called the “special” group. It has dimension $n² -1$. 
+\item The subgroup $O(n) ⊂ GL(𝐑^n)$ of matrices that preserve the Kronecker product is called the “orthogonal” group. From your work on the exponential, you know the dimension of this group should be the same as that of the anti-symmetric $n× n$ matrices, so $\frac {n(n-1)}2$. 
+\begin{exercise}
+Check this.
+\end{exercise}
+\item The group $SO(n) = O(n) ⋂ SL(𝐑^n)$ is called the “special orthogonal group”. 
+\begin{exercise}
+\label{notspecial}
+What's an example of an orthogonal transformation that is not special?
+\end{exercise}
+\begin{exercise}
+Check that his group also has dimension $\frac {n(n-1)}2$. 
+\end{exercise}
+\end{itemize}
+
+The groups $G$ above are all interesting and very nice\footnote{When this term is used in the technical sense, it means that something has a lot of additional structures on it that allow you to do things you cannot assume you may do in general. Good examples are whether you can put a distance measure on it (metric structure) and/or whether you are able to define derivatives (differentiable structure).} spaces called smooth manifolds. (This is in addition to being groups.)  On such spaces, you can do calculus, and in particular, you can define (co)tangent spaces. As a group one point is special, because it corresponds to the identity transformation $𝟏$; its tangent space is denoted $T_𝟏G$ and pronounced “the tangent space to $G$ at the identity”. It is traditional to denote $T_𝟏G$ by the frakture letter(s) corresponding to the lowercase of whatever $G$ is, so $𝔤$ in this case.
+From general considerations, this is a real vector space with the same dimension as $G$. The $𝟎∈ 𝔤$ origin of the vector space corresponds to the point $𝟏∈G$. 
+
+For $G =SO(2)$ and $SO(3)$, you computed a basis of $T_𝟏G$ showing that $𝔰𝔬(2) ≃ 𝐑$ and $𝔰𝔬(3) ≃ 𝐑³$. Since we are talking about matrices, the tangent space to the group at the identity is actually an associative algebra, but this is not necessarily the case in general. There is something that generalizes and makes $𝔤$ into a non-associative algebra called the Lie algebra of $G$, and it goes as follows: 
+Since we were talking about matrix groups, the commutator is defined. The commutator has an explicit expression in terms of the associative matrix multiplication, but it also has the properties that
+\begin{itemize}
+\item it is an alternating ({\it i.e.}\ antisymmtric) bilinear map $𝔤 × 𝔤 → 𝔤$. 
+\item it satisfies the Jacobi identity: for any $a,b,c∈ 𝔤 $
+$$
+[[a,b],c] + [[b,c],a] + [[c,a],b] = 0
+$$
+\end{itemize}
+\begin{exercise}
+Show that the commutator satisfies these identities. In particular, show that it satisfies the Jacobi identity precisely because the matrix multiplication is associative. 
+\end{exercise}
+{We can think of these identities as conditions generalizing associativity of a product in an algebra. Because of this, the combination $[a,b,c]=[[a,b],c] + [[b,c],a] + [[c,a],b]$ is sometimes called the “associator” (but “Jacobiator” is more common).}\footnote{This is probably TMI, but $μ₂(a,b) = [a,b]$ and $μ₃(a,b,c)=[a,b,c]$ are the first two non-trivial examples of an infinite collection of “higher products” required to satisfy a coherence condition (similarly to how $μ₃$ is defined in terms of two $μ₂$s). This is the structure of a beast called an “infinity algebra (of Lie type)” or $L_∞$-algebra. Finding simple examples of such algebras is an active area of current research (and potentially an avenue for student research).}
+
+
+In general, any vector space $𝔤$ over a field $𝐅$ with a binary operation $[∙ , ∙ ] : 𝔤 × 𝔤 → 𝔤$ satisfying the rules above is called a “Lie (pronounced “lee”) algebra”. The alternating form is called the Lie bracket. Note that the conditions above do not imply anything about how you can define the Lie bracket explicitly. In particular there does not need to be any way to associate a “product” $ab$ to elements $a,b∈ 𝔤$.\footnote{It's quite the pain in the {\it derriere} that we cannot assume $𝔤$ is associative. However, thanks to a \href{https://en.wikipedia.org/wiki/Poincaré–Birkhoff–Witt_theorem}{theorem} by Poincaré, Birkhoff, and Witt, any Lie algebra $𝔤$ can be embedded into an associative algebra $U(𝔤)$ with identity in such a way that the Lie bracket in $𝔤$ becomes the commutator in $U(𝔤)$. This algebra is called “\href{https://en.wikipedia.org/wiki/Universal_enveloping_algebra}{the universal enveloping algebra} of $𝔤$”.
+} 
+\begin{exercise}
+Show that the cross product $×$ in $𝐑³$ makes $(𝐑³, × )$ into a Lie algebra. Which Lie algebra is it?
+\end{exercise}
+
+
+The exponential map $M ↦ e^M$ was defined on arbitrary matrices, but with a bit more differential geometry, we can define it more generally. In particular, there is a map
+$$
+\exp : 𝔤 → G
+$$
+called the exponential map that agrees with your calculations in the special case that $𝔤$ is an associative algebra.
+It is important to understand that this map need be neither injective nor surjective. 
+\begin{exercise}
+Use your answer to exercise \ref{notspecial} to come up with an example where surjectivity fails. 
+\end{exercise}
+It turns out the if the group is compact,\footnote{The formal definition of compact requires point set topology, but there is an equivalent definition for spaces we can embed into $𝐑^n$ for some $n$ large enough (c.f.\ \href{https://en.wikipedia.org/wiki/Whitney_embedding_theorem}{Whitney Embedding Theorem}). In this case the notion of compactness lines up with intuition: $G ⊂ 𝐑^n$ is compact iff it is closed and bounded.} then this is the only way it can fail: If $G$ is connected and compact, then the exponential map is surjective. 
+\begin{exercise}
+Consider the familiar exponential map $x ↦ e^x$ from algebra and show that it is injective but not surjective. 
+In light of the previous claim, why does it fail to be surjective?
+Generalize to the map to the complex domain and then consider the image of $𝐑$ in $𝐂$ defined by $x↦ e^{ix}$. Show that this map is not injective. In light of the previous claim, why doesn't it fail to be surjective?
+\end{exercise}
+Since the “linearization map” $G→ 𝔤$ is the local inverse to $\exp: 𝔤 → G$, and since linearization is differentiation, we see that “integration” corresponds to exponentiation. This is a remarkable thing, because in calculus the first derivative of a function $f$ is not usually even close to enough to reconstruct the whole function. 
+\begin{exercise}
+\label{localiso}
+With this observation in mind, suppose you have two Lie groups $G$ and $H$ with isomorphic algebras $𝔤 ≃ 𝔥$. 
+%$𝔤$ and $𝔥$ that are isomorphic as Lie algebras $𝔤 ≃ 𝔥$. 
+What will be true about their Lie groups $G$ and $H$?
+\end{exercise}
+
+
+
+
+\subsection{Complex rotations}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+In this section, we relax the assumption that we are working over $𝐑$. In mathematics (and physics) we often want to do this because the fundamental theorem of algebra is false over $𝐑$ (the field $𝐑$ is not algebraically closed).
+
+\begin{exercise}
+Diagonalize the $2 × 2$ rotation matrix from problem 1 above. Notice that you have to extend to complex-valued entries, that is, we must work over $𝐂$. 
+\end{exercise}
+
+\begin{exercise}
+\label{L3}
+Calculate the generator of this transformation. 
+\end{exercise}
+
+\begin{exercise}
+Describe the group $SL(2, 𝐂)$. 
+\end{exercise}
+
+When working over $𝐂$ we are often interested, not in the Kronecker inner product, but in a sesquilinear form called the Hermitian inner product. Explicitly, let $u$ and $v$ denote elements in $𝐂^n$ with complex components $❴ u^i ❵_{i=1}^n$ and $❴v^i❵_{i=1}^n$. Then the Hermitian inner product on $𝐂²$ is defined to be
+$$
+\langle u, v \rangle = ∑_{i=1}^n ū^i v^i
+$$
+The unitary group $U(n)$ is defined to be the subgroup of the general linear group $GL(𝐂^n)$ that preserves this Hermitian form.\footnote{It is perfectly fine to define/study $O(𝐂^n)$ and $SO(𝐂^n)$, but usually the relevant structure in the complex setting is not the orthogonal one.}
+
+\begin{exercise}
+Describe the group $U(1)$ and its Lie algebra $𝔲(1)$. 
+Same for $SU(1)$ and $𝔰𝔲(1)$.  
+\end{exercise}
+
+\begin{exercise}
+Show that the diagonal rotation matrix you found above is unitary. 
+\end{exercise}
+
+\begin{exercise}
+Starting over, parameterize a generic element of $SU(2)$ by starting with $GL(2, 𝐂)$, imposing $\det =1$ to reduce to $SL(2,𝐂)$, and finally imposing unitarity. 
+What is the real dimension of this group? Prove that if you forget about the group structure, this space is a 3-dimensional sphere. In other words, show that $SU(2) ≃ S³$.
+\end{exercise}
+
+\begin{exercise}
+Using the exponential map and the fact that unitary operators are normal, describe the Lie algebras $𝔲(n)$ and $𝔰𝔲(n)$. 
+\end{exercise}
+
+Next, we define the Pauli matrices
+$$
+σ¹ = \ma{0&1\\1&0}
+\quad ,\quad
+σ² = \ma{0&-i\\i&0}
+\quad ,\quad
+σ³ = \ma{1&0\\0&-1}
+$$
+These are Hermitian and traceless. Your generator from problem \ref{L3} is anti-hermitian and traceless and related to the Pauli matrices by multiplication by $±i$.
+%$L₃ = i σ³$. Inspired by this, let's set $L₁ = i σ¹$ and $L₂= i σ²$.
+
+\begin{exercise}
+Calculate the commutators of the Pauli matrices. 
+\begin{enumerate}
+	\item What do you notice?
+	\item Define the generators $S_i = -\frac i2 σ^i$, and write down the commutation relations of these. 
+	\item Do you stand by your answer to problem \ref{localiso}? Comment in detail about what these calculations show. 
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+\begin{enumerate}
+	\item Calculate $e^{α S₁}$, $e^{β S₂}$, and $e^{γ S₃}$. 
+	\item How do the ranges of these “angles” compare to those of the Euler angles? 
+	\item How many elements of $SU(2)$ are there for each element of $SO(3)$? (This question is not about generators or dimensions since both groups have real dimension 3. Rather, if $R(α, β, γ)∈ SO(3)$ is some rotation, to which element(s) $S(α, β, γ) ∈ SU(2)$ does it correspond? 
+\end{enumerate}	
+\end{exercise}
+
+\begin{exercise}
+Starting from the Pauli matrices, find a basis for $𝔰𝔩(2,𝐑)$. 
+Find one for $𝔤𝔩(2,𝐑)$.
+\end{exercise}
+
+§{Group representations}
+The standard to study groups is to look at how they act on various things. For example, rotations rotate vectors in a very specific way, as demonstrated explicitly in the $3×3$ matrix representation. 
+But we can make larger matrices that satisfy the same algebra, and we can even make them infinite-dimensional.
+\begin{exercise} 
+Define generators $L_{ij}: 𝒞^∞(𝐑³)→ 𝒞^∞(𝐑³)$ acting on functions by 
+$$
+L_{ij}f = x_i ∂_jf - x_j ∂_if\quad \quad ∀ f ∈ 𝒞^∞(𝐑³)
+$$
+Here, we are lowering the index $x_i = δ_{ij} x^j$ of the coordinates $❴x^i❵_{i=1}³$ of $𝐑³$. Show that they generate rotations by calculating and comparing their commutators. What is the real dimension of this representation?
+\end{exercise} 
+In addition, we saw that there was a $2×2$ generalization of the algebra of rotations. It also acted on things that are not vectors. These “spinors” are elements of a 2-complex-dimensional space.
+
+§{Spin groups}
+Above, you found that the $SU(2)$ rotations corresponding to opposite points on $S³$ represented the same element in $SO(3)$. We now study this correspondence in more detail.
+
+First, let us make precise the isomorphism $𝔰𝔲(2) ≃ 𝐑³$. To do this, we want to associate to every vector in $𝐑³$ an anti-hermitian $2×2$ matrix. However, we already have a basis for these given by $❴S_i❵_{i=1}³$: For every vector, we associate a matrix by contracting with this basis:
+\al{
+𝐑³ &⟶ 𝔰𝔲(2)
+\cr
+𝒗 &↦ v^i S_i 
+}
+where summation is implied.\footnote{In physics, this map is referred to as the Feynman slash because he used a slash through a (co-)vector to denote the matrix version of it.}
+\begin{exercise}
+Explicitly write out the matrix $v$ defined above. 
+\end{exercise}
+\begin{exercise}
+Use the trace to define the inverse map $𝔰𝔲(2) ∋ v ↦ 𝒗 ∈ 𝐑³$.
+\end{exercise} 
+
+A group has two natural actions on itself called the left and right action: Let $h∈ G$ and define the left-multiplication $L_h : G → G$ by $L_h(g) = hg$. Similarly, define the right action $R_h(g) = gh$. 
+\begin{exercise}
+Show that the left and right actions commute. 
+\end{exercise} 
+
+%The left and right actions have infinitesimal versions denoted $d L_h$ and $d R_h$ that act on the Lie algebra of $G$. 
+%We can get these actions by replacing $h→ e^{tA}$ for any $A∈ 𝔤$. As $t∈ 𝐑$ these element form “one-parameter subgroups” of $G$ passing through the identity at $t=0$ with velocity $A$. 
+%$$
+%dL_h : B ⟶ [A,B]
+%$$
+%This is the infinitesimal version of 
+%\al{
+%&\left( 1 - tB +\frac {t²}2 B² +O(t³) \right) \left( 1 + tA+\frac{t²}2 A²  +O(t³) \right) \left( 1 + tB +\frac{t²}2 B² O(t³) \right) 
+%\cr
+%&=1 
+%+ t (-B + A +B) 
+%+ t² (+\frac12B²- BA+AB -B²+\frac12B²+\frac12A²) + O(t³)  
+%\cr
+%&=1 
+%+ t (-B + A +B) 
+%+ t² (+\frac12B²- BA+AB -B²+\frac12B²+\frac12A²) + O(t³)  
+%}
+%
+%We can find the infinitesimal version $dL_h : 𝔤 → 𝔤$ of the left action, say, by differentiating with respect to $t$: 
+%Let $A,B∈ 𝔞$, define $h(t)=e^{tA}$, and consider the left action $L_{h(t)}: G→ G$ taking an element $g=e^B ↦ h(t)g$. 
+%To get the tangent action, we expand the 
+%
+%we can take the derivative with respect to $t$, but this is not an element of $𝔤=T₁G$, but of $T_gG$, so we must pull it back to the identity by left-multiplication by $g^{-1}$:
+%$$
+%dL_h(g)=L_{g^{-1}} ∘ \left. \frac d{dt} L_{h(t)} g \right|_{t=0} 
+%$$
+%
+%This looks complicated, but in general it needs to be like this since it must be constructed properly from well-defined maps of the (tangent space of the) Lie group into itself. 
+%When referring to matrix groups, however, the existence of an associative product on the space of matrices simplifies this expression to 
+%$$
+%dL_h(g)=g^{-1}\left. \frac d{dt} h(t) g \right|_{t=0} 
+%= g^{-1}\frac d{dt} \left[ g + t A g +O(t²) \right|_{t=0} 
+%= g^{-1}A g 
+%$$
+%Writing $g=e^B$ and expanding, this becomes
+%\al{
+%dL_h(g)&=\left(1 - B -\frac12 B² +\cdots \right) \frac d{dt} \left[ g + t A g +O(t²) \right|_{t=0} 
+%\cr
+%&= \left(1 - B -\frac12 B² +\cdots \right) \frac d{dt} \left[  A g +O(t) \right|_{t=0} 
+%}
+%
+%$$
+%\left. \frac d{dt} L_{h(t)} g \right|_{t=0} 
+%	= \left. \frac d{dt} e^{tA}g \right|_{t=0} 
+%	=\frac d{dt} \left[ g + t A g +O(t²) \right|_{t=0} 
+%$$
+%but this is not an element of the tangent space at 
+
+
+\begin{exercise}
+...
+\end{exercise} 
+
+
+
+
+\end{document}

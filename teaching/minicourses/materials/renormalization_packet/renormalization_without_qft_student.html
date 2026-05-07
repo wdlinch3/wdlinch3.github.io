@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Student release, draft 3">
+<meta name="dcterms.date" content="2026-04-29">
+
+<title>Renormalization Without Quantum Field Theory</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="renormalization_without_qft_student_v3_files/libs/clipboard/clipboard.min.js"></script>
+<script src="renormalization_without_qft_student_v3_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="renormalization_without_qft_student_v3_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="renormalization_without_qft_student_v3_files/libs/quarto-html/popper.min.js"></script>
+<script src="renormalization_without_qft_student_v3_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="renormalization_without_qft_student_v3_files/libs/quarto-html/anchor.min.js"></script>
+<link href="renormalization_without_qft_student_v3_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="renormalization_without_qft_student_v3_files/libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="renormalization_without_qft_student_v3_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="renormalization_without_qft_student_v3_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="renormalization_without_qft_student_v3_files/libs/bootstrap/bootstrap-580f59859ddf617fe2e58b4aca1d3752.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#mathematical-interlude-why-bessel-functions-appear" id="toc-mathematical-interlude-why-bessel-functions-appear" class="nav-link active" data-scroll-target="#mathematical-interlude-why-bessel-functions-appear"><span class="header-section-number">1</span> Mathematical interlude: why Bessel functions appear</a></li>
+  <li><a href="#the-model-and-the-classical-scaling-question" id="toc-the-model-and-the-classical-scaling-question" class="nav-link" data-scroll-target="#the-model-and-the-classical-scaling-question"><span class="header-section-number">2</span> The model and the classical scaling question</a></li>
+  <li><a href="#green-functions-and-the-logarithmic-divergence" id="toc-green-functions-and-the-logarithmic-divergence" class="nav-link" data-scroll-target="#green-functions-and-the-logarithmic-divergence"><span class="header-section-number">3</span> Green functions and the logarithmic divergence</a></li>
+  <li><a href="#regularization-by-a-short-distance-cutoff" id="toc-regularization-by-a-short-distance-cutoff" class="nav-link" data-scroll-target="#regularization-by-a-short-distance-cutoff"><span class="header-section-number">4</span> Regularization by a short-distance cutoff</a></li>
+  <li><a href="#renormalization-and-the-running-coupling" id="toc-renormalization-and-the-running-coupling" class="nav-link" data-scroll-target="#renormalization-and-the-running-coupling"><span class="header-section-number">5</span> Renormalization and the running coupling</a></li>
+  <li><a href="#the-three-scales-regulator-bookkeeping-physics" id="toc-the-three-scales-regulator-bookkeeping-physics" class="nav-link" data-scroll-target="#the-three-scales-regulator-bookkeeping-physics"><span class="header-section-number">6</span> The three scales: regulator, bookkeeping, physics</a></li>
+  <li><a href="#positive-energy-and-the-scattering-ansatz" id="toc-positive-energy-and-the-scattering-ansatz" class="nav-link" data-scroll-target="#positive-energy-and-the-scattering-ansatz"><span class="header-section-number">7</span> Positive energy and the scattering ansatz</a></li>
+  <li><a href="#cross-sections-in-two-dimensions" id="toc-cross-sections-in-two-dimensions" class="nav-link" data-scroll-target="#cross-sections-in-two-dimensions"><span class="header-section-number">8</span> Cross sections in two dimensions</a></li>
+  <li><a href="#the-lippmannschwinger-equation-in-this-problem" id="toc-the-lippmannschwinger-equation-in-this-problem" class="nav-link" data-scroll-target="#the-lippmannschwinger-equation-in-this-problem"><span class="header-section-number">9</span> The Lippmann–Schwinger equation in this problem</a></li>
+  <li><a href="#physical-interpretation-asymptotic-freedom-infrared-enhancement-and-anomaly" id="toc-physical-interpretation-asymptotic-freedom-infrared-enhancement-and-anomaly" class="nav-link" data-scroll-target="#physical-interpretation-asymptotic-freedom-infrared-enhancement-and-anomaly"><span class="header-section-number">10</span> Physical interpretation: asymptotic freedom, infrared enhancement, and anomaly</a></li>
+  <li><a href="#strong-coupling-and-the-qcd-analogy" id="toc-strong-coupling-and-the-qcd-analogy" class="nav-link" data-scroll-target="#strong-coupling-and-the-qcd-analogy"><span class="header-section-number">11</span> Strong coupling and the QCD analogy</a></li>
+  <li><a href="#synthesis-questions" id="toc-synthesis-questions" class="nav-link" data-scroll-target="#synthesis-questions"><span class="header-section-number">12</span> Synthesis questions</a></li>
+  <li><a href="#source-note-and-further-reading" id="toc-source-note-and-further-reading" class="nav-link" data-scroll-target="#source-note-and-further-reading"><span class="header-section-number">13</span> Source note and further reading</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="renormalization_without_qft_student_v3.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Renormalization Without Quantum Field Theory</h1>
+<p class="subtitle lead">A two-dimensional quantum-mechanical model of asymptotic freedom and dimensional transmutation</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Student release, draft 3 </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 29, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-important callout-titled" title="How to use this packet">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>How to use this packet
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is not an introductory reading. It is a guided derivation for a student who already knows the time-independent Schrödinger equation and is comfortable learning new mathematical tools as needed.</p>
+<p>Do not read this passively. The problems are the packet. Keep a scratch notebook open. When a special-function identity is supplied, treat it as a tool, not as a fact to memorize.</p>
+</div>
+</div>
+<p>The goal is to see, inside a solvable quantum-mechanical problem, the same conceptual pattern that appears in quantum field theory:</p>
+<ol type="1">
+<li>a classically scale-invariant model,</li>
+<li>an ultraviolet divergence after quantization,</li>
+<li>a regulator,</li>
+<li>a cutoff-dependent bare coupling,</li>
+<li>a finite physical observable,</li>
+<li>a running renormalized coupling,</li>
+<li>a beta function,</li>
+<li>a dynamically generated scale,</li>
+<li>asymptotic freedom,</li>
+<li>a scale anomaly.</li>
+</ol>
+<p>The model is a nonrelativistic particle moving in two spatial dimensions in the attractive potential of a point source:</p>
+<p><span class="math display">\[
+V(\mathbf{x})=-\lambda\delta^{(2)}(\mathbf{x}),
+\qquad \lambda&gt;0.
+\]</span></p>
+<p>The attractive delta-function potential in one spatial dimension is familiar and well behaved. In two spatial dimensions it is more subtle: the corresponding quantum problem is ultraviolet divergent and must be renormalized.</p>
+<p>Throughout, the mass of the moving particle is <span class="math inline">\(M\)</span>, the wave function is <span class="math inline">\(\psi(\mathbf{x})\)</span>, and the time-independent Schrödinger equation is</p>
+<p><span class="math display">\[
+-\frac{\hbar^2}{2M}\nabla^2\psi(\mathbf{x})+V(\mathbf{x})\psi(\mathbf{x})=E\psi(\mathbf{x}).
+\]</span></p>
+<p>Useful external references:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Bessel_function">Bessel functions</a>, especially the roles of <span class="math inline">\(J_0\)</span>, <span class="math inline">\(K_0\)</span>, and Hankel functions.</li>
+<li><a href="https://en.wikipedia.org/wiki/Green%27s_function">Green’s function</a>, for the general idea of inverting a differential operator with a point-source response.</li>
+<li><a href="https://en.wikipedia.org/wiki/Lippmann%E2%80%93Schwinger_equation">Lippmann–Schwinger equation</a>, for the scattering integral equation used later.</li>
+<li><a href="https://en.wikipedia.org/wiki/Cross_section_(physics)">Cross section</a>, for the vocabulary of scattering measurements.</li>
+<li><a href="https://en.wikipedia.org/wiki/Beta_function_(physics)">Beta function</a>, <a href="https://en.wikipedia.org/wiki/Asymptotic_freedom">asymptotic freedom</a>, and <a href="https://en.wikipedia.org/wiki/Dimensional_transmutation">dimensional transmutation</a>, for the QFT language that this toy model is designed to illuminate.</li>
+</ul>
+<section id="mathematical-interlude-why-bessel-functions-appear" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="mathematical-interlude-why-bessel-functions-appear"><span class="header-section-number">1</span> Mathematical interlude: why Bessel functions appear</h2>
+<p>The unfamiliar special functions in this packet are not arbitrary decorations. They appear for the same reason that sines, cosines, and exponentials appear in one-dimensional constant-coefficient differential equations.</p>
+<p>In one spatial dimension, the free equation</p>
+<p><span class="math display">\[
+\frac{d^2f}{dx^2}+k^2f=0
+\]</span></p>
+<p>has oscillatory solutions such as <span class="math inline">\(\cos(kx)\)</span>, <span class="math inline">\(\sin(kx)\)</span>, and <span class="math inline">\(e^{\pm ikx}\)</span>. If the sign is changed,</p>
+<p><span class="math display">\[
+\frac{d^2f}{dx^2}-m^2f=0,
+\]</span></p>
+<p>the solutions become exponential growth and decay, <span class="math inline">\(e^{\pm mx}\)</span>.</p>
+<p>In two spatial dimensions, a central source leads naturally to polar coordinates. The radial part of the Laplacian contains an extra term,</p>
+<p><span class="math display">\[
+\nabla^2 f(r)=\frac{1}{r}\frac{d}{dr}\left(r\frac{df}{dr}\right)
+=\frac{d^2f}{dr^2}+\frac{1}{r}\frac{df}{dr},
+\]</span></p>
+<p>for rotationally symmetric functions. This extra <span class="math inline">\((1/r)f'(r)\)</span> term changes the radial equation. The two-dimensional analogues of the elementary one-dimensional functions are Bessel-type functions.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>One-dimensional role</th>
+<th>Two-dimensional radial analogue</th>
+<th>Use in this packet</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\cos x\)</span>, <span class="math inline">\(\sin x\)</span></td>
+<td><span class="math inline">\(J_\alpha(x)\)</span>, <span class="math inline">\(Y_\alpha(x)\)</span></td>
+<td>oscillatory radial waves</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(e^{+ix}\)</span>, <span class="math inline">\(e^{-ix}\)</span></td>
+<td><span class="math inline">\(H_\alpha^{(1)}(x)\)</span>, <span class="math inline">\(H_\alpha^{(2)}(x)\)</span></td>
+<td>outgoing and incoming cylindrical waves</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(e^{+x}\)</span></td>
+<td><span class="math inline">\(I_\alpha(x)\)</span></td>
+<td>exponentially growing modified radial solution</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(e^{-x}\)</span></td>
+<td><span class="math inline">\(K_\alpha(x)\)</span></td>
+<td>exponentially decaying modified radial solution</td>
+</tr>
+</tbody>
+</table>
+<p>Only the order-zero functions are needed here because the point source is rotationally symmetric. The bound-state Green function uses <span class="math inline">\(K_0(mr)\)</span> because the bound state must decay away from the origin. The positive-energy scattering Green function uses <span class="math inline">\(H_0^{(1)}(kr)\)</span> because it represents an outgoing cylindrical wave.</p>
+<p>For this packet, the most important facts are not the complete theory of Bessel functions. The important facts are:</p>
+<ol type="1">
+<li><span class="math inline">\(K_0(mr)\)</span> decays at large <span class="math inline">\(r\)</span>, making it appropriate for a bound state.</li>
+<li><span class="math inline">\(K_0(mr)\)</span> diverges logarithmically as <span class="math inline">\(r\to0\)</span>, producing the ultraviolet divergence.</li>
+<li><span class="math inline">\(H_0^{(1)}(kr)\)</span> behaves like an outgoing wave at large <span class="math inline">\(r\)</span>.</li>
+<li>The logarithmic short-distance behavior of these functions is the mathematical source of renormalization in this model.</li>
+</ol>
+</section>
+<section id="the-model-and-the-classical-scaling-question" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="the-model-and-the-classical-scaling-question"><span class="header-section-number">2</span> The model and the classical scaling question</h2>
+<p>For bound states, take <span class="math inline">\(E&lt;0\)</span> and define</p>
+<p><span class="math display">\[
+g_0=\frac{2M\lambda}{\hbar^2},
+\qquad
+m^2=\frac{2M(-E)}{\hbar^2}.
+\]</span></p>
+<p>The symbol <span class="math inline">\(m\)</span> is not the particle mass. The particle mass is <span class="math inline">\(M\)</span>. The quantity <span class="math inline">\(m\)</span> is an inverse length associated with the bound state.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 1: Dimensions and scaling">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 1: Dimensions and scaling
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Show that <span class="math inline">\(g_0\)</span> is dimensionless in two spatial dimensions.</p>
+<p>Then consider the scaling transformation</p>
+<p><span class="math display">\[
+\mathbf{x}\mapsto \Omega\mathbf{x}.
+\]</span></p>
+<p>Show that the classical Schrödinger equation keeps the same form if</p>
+<p><span class="math display">\[
+E\mapsto \Omega^{-2}E,
+\]</span></p>
+<p>with <span class="math inline">\(M\)</span> and <span class="math inline">\(g_0\)</span> held fixed. Finally, show that <span class="math inline">\(m\)</span> therefore scales like an inverse length.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 2: Rewriting the Schrödinger equation">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 2: Rewriting the Schrödinger equation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Rewrite the bound-state Schrödinger equation in the form</p>
+<p><span class="math display">\[
+(\nabla^2-m^2)\psi(\mathbf{x})
+=-g_0\delta^{(2)}(\mathbf{x})\psi(\mathbf{x}).
+\]</span></p>
+</div>
+</div>
+</section>
+<section id="green-functions-and-the-logarithmic-divergence" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="green-functions-and-the-logarithmic-divergence"><span class="header-section-number">3</span> Green functions and the logarithmic divergence</h2>
+<p>Define the Green function of the modified Helmholtz operator by</p>
+<p><span class="math display">\[
+(\nabla_x^2-m^2)G(\mathbf{x},\mathbf{y})
+=-\delta^{(2)}(\mathbf{x}-\mathbf{y}).
+\]</span></p>
+<p>Because the free operator is translationally invariant,</p>
+<p><span class="math display">\[
+G(\mathbf{x},\mathbf{y})=G(\mathbf{x}-\mathbf{y}).
+\]</span></p>
+<p>Use the Fourier representation</p>
+<p><span class="math display">\[
+G(\mathbf{x}-\mathbf{y})
+=\int \frac{d^2q}{(2\pi)^2}
+\,e^{i\mathbf{q}\cdot(\mathbf{x}-\mathbf{y})}\widetilde G(\mathbf{q}).
+\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 3: Fourier-space Green function">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 3: Fourier-space Green function
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Substitute this Fourier representation into the Green-function equation and find <span class="math inline">\(\widetilde G(\mathbf{q})\)</span>.</p>
+</div>
+</div>
+<p>Writing <span class="math inline">\(r=|\mathbf{x}-\mathbf{y}|\)</span>, the Green function is therefore</p>
+<p><span class="math display">\[
+G(r)=\int\frac{d^2q}{(2\pi)^2}\frac{e^{i\mathbf{q}\cdot\mathbf{r}}}{q^2+m^2}.
+\]</span></p>
+<p>In polar coordinates in momentum space,</p>
+<p><span class="math display">\[
+G(r)
+=\frac{1}{(2\pi)^2}\int_0^\infty dq\frac{q}{q^2+m^2}
+\int_0^{2\pi}d\theta\,e^{iqr\cos\theta}.
+\]</span></p>
+<p>Use the standard identities</p>
+<p><span class="math display">\[
+\int_0^{2\pi}d\theta\,e^{iz\cos\theta}=2\pi J_0(z),
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+\int_0^\infty dq\frac{qJ_0(qr)}{q^2+m^2}=K_0(mr).
+\]</span></p>
+<p>Thus</p>
+<p><span class="math display">\[
+G(r)=\frac{1}{2\pi}K_0(mr).
+\]</span></p>
+<p>The only special-function asymptotic you need for the bound-state part is</p>
+<p><span class="math display">\[
+K_0(z)\sim -\log\left(\frac{z}{2}\right)-\gamma,
+\qquad 0&lt;z\ll 1,
+\]</span></p>
+<p>where <span class="math inline">\(\gamma\)</span> is the Euler–Mascheroni constant.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 4: The Green-function solution and the failure at the origin">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 4: The Green-function solution and the failure at the origin
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(\rho\)</span> be an arbitrary source and define</p>
+<p><span class="math display">\[
+\psi(\mathbf{x})=-\int d^2y\,G(\mathbf{x},\mathbf{y})\rho(\mathbf{y}).
+\]</span></p>
+<p>Show that <span class="math inline">\(\psi\)</span> solves</p>
+<p><span class="math display">\[
+(\nabla^2-m^2)\psi=\rho.
+\]</span></p>
+<p>Then specialize to the source</p>
+<p><span class="math display">\[
+\rho(\mathbf{x})=-g_0\delta^{(2)}(\mathbf{x})\psi(\mathbf{x})
+\]</span></p>
+<p>and derive the formal bound-state wave function. Finally, analyze the <span class="math inline">\(r\to0\)</span> limit and explain why the naive point-interaction problem is not self-consistent.</p>
+</div>
+</div>
+</section>
+<section id="regularization-by-a-short-distance-cutoff" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="regularization-by-a-short-distance-cutoff"><span class="header-section-number">4</span> Regularization by a short-distance cutoff</h2>
+<p>We introduce a regulator by refusing to evaluate the wave function at distances shorter than</p>
+<p><span class="math display">\[
+\epsilon=\frac{1}{\Lambda}.
+\]</span></p>
+<p>Here <span class="math inline">\(\Lambda\)</span> is a large inverse-length cutoff. It is artificial: it is not supposed to survive in physical predictions.</p>
+<p>Replace the formal value <span class="math inline">\(\psi(0)\)</span> by the value at the cutoff radius, <span class="math inline">\(\psi(\epsilon)\)</span>. For <span class="math inline">\(r\geq\epsilon\)</span>,</p>
+<p><span class="math display">\[
+\psi(r)=\frac{g_0}{2\pi}\psi(\epsilon)K_0(mr).
+\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 5: The regulated bound-state energy">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 5: The regulated bound-state energy
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Impose self-consistency at <span class="math inline">\(r=\epsilon\)</span>. Assuming <span class="math inline">\(m/\Lambda\ll1\)</span>, derive the cutoff-dependent bound-state energy.</p>
+<p>Your answer should make clear what happens if <span class="math inline">\(g_0\)</span> is held fixed while <span class="math inline">\(\Lambda\to\infty\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 6: Tuning the bare coupling">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 6: Tuning the bare coupling
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Suppose the bound-state energy is a fixed physical input. Define the corresponding inverse length by</p>
+<p><span class="math display">\[
+\Lambda_*
+\equiv
+\frac{\sqrt{2M|E_{\rm bs}|}}{\hbar}.
+\]</span></p>
+<p>Use the regulated bound-state condition to solve for <span class="math inline">\(1/g_0(\Lambda)\)</span> in terms of <span class="math inline">\(\Lambda\)</span> and <span class="math inline">\(\Lambda_*\)</span>. What happens to <span class="math inline">\(g_0(\Lambda)\)</span> as the cutoff is removed?</p>
+</div>
+</div>
+</section>
+<section id="renormalization-and-the-running-coupling" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="renormalization-and-the-running-coupling"><span class="header-section-number">5</span> Renormalization and the running coupling</h2>
+<p>The cutoff-dependent bare coupling is useful, but it is not the most useful way to discuss physics. We subtract the divergent part and define a finite renormalized coupling at an arbitrary inverse-length scale <span class="math inline">\(\mu\)</span>:</p>
+<p><span class="math display">\[
+\frac{1}{g_r(\mu)}
+=
+\frac{1}{g_0(\Lambda)}
++\frac{1}{2\pi}\log\left(\frac{\mu}{2\Lambda}\right)
++\frac{\gamma}{2\pi}.
+\]</span></p>
+<p>The scale <span class="math inline">\(\mu\)</span> is called a subtraction point or renormalization scale. It is arbitrary, so no physical observable can depend on it.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 7: Removing the cutoff">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 7: Removing the cutoff
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Substitute your expression for <span class="math inline">\(g_0(\Lambda)\)</span> into the definition of <span class="math inline">\(g_r(\mu)\)</span>. Show that the cutoff cancels.</p>
+<p>Write the result as a relation between <span class="math inline">\(g_r(\mu)\)</span>, <span class="math inline">\(\mu\)</span>, and <span class="math inline">\(\Lambda_*\)</span>.</p>
+</div>
+</div>
+<p>Equivalently, between two subtraction points,</p>
+<p><span class="math display">\[
+\frac{1}{g_r(\mu)}
+=
+\frac{1}{g_r(\mu_0)}+
+\frac{1}{2\pi}\log\left(\frac{\mu}{\mu_0}\right).
+\]</span></p>
+<p>The beta function is defined by</p>
+<p><span class="math display">\[
+\beta(g_r)=\mu\frac{dg_r}{d\mu}.
+\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 8: The beta function">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 8: The beta function
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Show that</p>
+<p><span class="math display">\[
+\beta(g_r)=-\frac{1}{2\pi}g_r^2.
+\]</span></p>
+<p>Then interpret the sign physically.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 9: Callan--Symanzik invariance">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 9: Callan–Symanzik invariance
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The bound-state energy may be written as</p>
+<p><span class="math display">\[
+E_{\rm bs}
+=-\frac{\hbar^2}{2M}\mu^2e^{-4\pi/g_r(\mu)}.
+\]</span></p>
+<p>Show explicitly that</p>
+<p><span class="math display">\[
+\left[
+\mu\frac{\partial}{\partial\mu}
++\beta(g_r)\frac{\partial}{\partial g_r}
+\right]E_{\rm bs}=0.
+\]</span></p>
+</div>
+</div>
+</section>
+<section id="the-three-scales-regulator-bookkeeping-physics" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="the-three-scales-regulator-bookkeeping-physics"><span class="header-section-number">6</span> The three scales: regulator, bookkeeping, physics</h2>
+<p>This packet uses QCD-inspired language deliberately. Keep the following distinction sharp:</p>
+<p><span class="math display">\[
+\Lambda
+\quad\text{is the UV regulator.}
+\]</span></p>
+<p>It is scaffolding. It makes divergent intermediate expressions finite, but it must disappear from physical predictions.</p>
+<p><span class="math display">\[
+\mu
+\quad\text{is the renormalization scale.}
+\]</span></p>
+<p>It is bookkeeping. It tells us where we define the finite coupling <span class="math inline">\(g_r(\mu)\)</span>, but no observable can depend on the arbitrary choice of <span class="math inline">\(\mu\)</span>.</p>
+<p><span class="math display">\[
+\Lambda_*
+\quad\text{is the generated physical scale.}
+\]</span></p>
+<p>It is physics. In this model,</p>
+<p><span class="math display">\[
+\Lambda_*
+=
+\frac{\sqrt{2M|E_{\rm bs}|}}{\hbar}
+=
+\mu e^{-2\pi/g_r(\mu)}.
+\]</span></p>
+<p>This is the cleanest version of dimensional transmutation: the classical theory began with a dimensionless coupling, while the quantum theory is characterized by a dimensionful inverse length.</p>
+<p>In QCD, the analogous symbol is often <span class="math inline">\(\Lambda_{\rm QCD}\)</span>: the dynamically generated scale that tells us where the running strong coupling becomes large and perturbation theory ceases to be the correct language. This toy model is not QCD, but the logic is intentionally parallel.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 10: Dimensional transmutation">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 10: Dimensional transmutation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Starting from the running-coupling relation, derive</p>
+<p><span class="math display">\[
+\Lambda_*=
+\mu e^{-2\pi/g_r(\mu)}.
+\]</span></p>
+<p>Then write three sentences explaining why this is called dimensional transmutation.</p>
+</div>
+</div>
+</section>
+<section id="positive-energy-and-the-scattering-ansatz" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="positive-energy-and-the-scattering-ansatz"><span class="header-section-number">7</span> Positive energy and the scattering ansatz</h2>
+<p>Now take <span class="math inline">\(E&gt;0\)</span> and define</p>
+<p><span class="math display">\[
+k^2=\frac{2ME}{\hbar^2}.
+\]</span></p>
+<p>The bound-state equation involved <span class="math inline">\(\nabla^2-m^2\)</span>. Positive-energy scattering instead involves the ordinary Helmholtz operator <span class="math inline">\(\nabla^2+k^2\)</span>.</p>
+<p>Far from the target, the potential is absent. The wave function should therefore look like a free incoming wave plus an outgoing disturbance caused by the target. In one dimension an outgoing wave looks like <span class="math inline">\(e^{ikx}\)</span>. In three dimensions an outgoing spherical wave looks like <span class="math inline">\(e^{ikr}/r\)</span>, because the flux spreads over a sphere with area proportional to <span class="math inline">\(r^2\)</span>. In two dimensions the outgoing wave spreads around a circle with circumference proportional to <span class="math inline">\(r\)</span>, so the amplitude falls like <span class="math inline">\(1/\sqrt r\)</span>.</p>
+<p>Thus the large-distance scattering form in two dimensions is</p>
+<p><span class="math display">\[
+\psi(\mathbf{x})
+\sim
+e^{i\mathbf{k}\cdot\mathbf{x}}
++f(k,\theta)\frac{e^{i(kr-\pi/4)}}{\sqrt r}.
+\]</span></p>
+<p>The phase <span class="math inline">\(-\pi/4\)</span> is conventional here; it comes from the large-<span class="math inline">\(r\)</span> behavior of the Hankel function. The important object is <span class="math inline">\(f(k,\theta)\)</span>, the coefficient of the outgoing cylindrical wave.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 11: Why the outgoing wave has an inverse-square-root envelope">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 11: Why the outgoing wave has an inverse-square-root envelope
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Assume the outgoing radial wave has the form</p>
+<p><span class="math display">\[
+\psi_{\rm out}(r)\sim A(r)e^{ikr}.
+\]</span></p>
+<p>Use conservation of radial probability flux in two dimensions to argue that <span class="math inline">\(A(r)\propto r^{-1/2}\)</span> at large <span class="math inline">\(r\)</span>.</p>
+</div>
+</div>
+</section>
+<section id="cross-sections-in-two-dimensions" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="cross-sections-in-two-dimensions"><span class="header-section-number">8</span> Cross sections in two dimensions</h2>
+<p>A cross section is an effective target size. It answers the experimental question: how much of an incoming beam is redirected by the target?</p>
+<p>In three spatial dimensions, cross sections have units of area. In two spatial dimensions, the incoming beam has a width rather than an area, so the cross section has units of length.</p>
+<p>The differential cross section asks a more refined question: how much of the effective target size corresponds to scattering into angles between <span class="math inline">\(\theta\)</span> and <span class="math inline">\(\theta+d\theta\)</span>? In two dimensions, the angular element is simply <span class="math inline">\(d\theta\)</span>, and the scattering convention above gives</p>
+<p><span class="math display">\[
+d\sigma=|f(k,\theta)|^2d\theta,
+\qquad
+\frac{d\sigma}{d\theta}=|f(k,\theta)|^2.
+\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 12: Dimensional check for the amplitude">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 12: Dimensional check for the amplitude
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Use the two-dimensional relation</p>
+<p><span class="math display">\[
+\frac{d\sigma}{d\theta}=|f(k,\theta)|^2
+\]</span></p>
+<p>to determine the dimensions of <span class="math inline">\(f(k,\theta)\)</span>.</p>
+<p>Then check that this agrees with the large-distance ansatz for <span class="math inline">\(\psi\)</span>.</p>
+</div>
+</div>
+</section>
+<section id="the-lippmannschwinger-equation-in-this-problem" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="the-lippmannschwinger-equation-in-this-problem"><span class="header-section-number">9</span> The Lippmann–Schwinger equation in this problem</h2>
+<p>The Lippmann–Schwinger equation is not a new physical law. It is the Schrödinger equation rewritten as an integral equation using the Green function of the free particle.</p>
+<p>For the bound state, normalizability killed the homogeneous solution, so the solution was just a Green-function response to a source. For scattering, the boundary condition includes an incoming free particle. Therefore the schematic structure is</p>
+<p><span class="math display">\[
+\psi=\psi_{\rm in}+G(\text{source produced by the potential}).
+\]</span></p>
+<p>For positive energy, the outgoing Green function is</p>
+<p><span class="math display">\[
+G(r)=\frac{i}{4}H_0^{(1)}(kr).
+\]</span></p>
+<p>The needed asymptotic forms are</p>
+<p><span class="math display">\[
+H_0^{(1)}(x)
+\sim
+1+\frac{2i}{\pi}\left[\log\left(\frac{x}{2}\right)+\gamma\right],
+\qquad 0&lt;x\ll1,
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+H_0^{(1)}(x)
+\sim
+\sqrt{\frac{2}{\pi x}}e^{i(x-\pi/4)},
+\qquad x\gg1.
+\]</span></p>
+<p>For the regulated point interaction, the Lippmann–Schwinger equation becomes</p>
+<p><span class="math display">\[
+\psi(\mathbf{x})
+=e^{i\mathbf{k}\cdot\mathbf{x}}+g_0G(r)\psi(\epsilon),
+\qquad
+\epsilon=\Lambda^{-1}.
+\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Reading checkpoint: Lippmann--Schwinger">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Reading checkpoint: Lippmann–Schwinger
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Skim the opening description of the <a href="https://en.wikipedia.org/wiki/Lippmann%E2%80%93Schwinger_equation">Lippmann–Schwinger equation</a>. In one or two sentences, explain why the equation above has the form “incoming wave plus outgoing Green-function response.”</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 13: The wave function at the cutoff">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 13: The wave function at the cutoff
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Assume <span class="math inline">\(k\epsilon\ll1\)</span>, so the incoming plane wave is approximately <span class="math inline">\(1\)</span> at the cutoff scale. Derive an expression for <span class="math inline">\(\psi(\epsilon)\)</span> in terms of <span class="math inline">\(g_0\)</span> and <span class="math inline">\(G(\epsilon)\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 14: Extracting the scattering amplitude">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 14: Extracting the scattering amplitude
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Use the large-distance asymptotic form of <span class="math inline">\(H_0^{(1)}\)</span> to extract <span class="math inline">\(f(k,\theta)\)</span> from the Lippmann–Schwinger solution.</p>
+<p>Then rewrite the result so that the denominator contains <span class="math inline">\(1/g_0-G(\epsilon)\)</span>.</p>
+</div>
+</div>
+<p>The small-distance expansion of the outgoing Green function gives</p>
+<p><span class="math display">\[
+G(\epsilon)
+=\frac{i}{4}
+-\frac{1}{2\pi}\left[\log\left(\frac{k}{2\Lambda}\right)+\gamma\right].
+\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 15: Renormalizing the scattering amplitude">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 15: Renormalizing the scattering amplitude
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Use the cutoff-dependent bare coupling and the expression for <span class="math inline">\(G(\epsilon)\)</span> to show that the cutoff cancels from <span class="math inline">\(1/g_0-G(\epsilon)\)</span>.</p>
+<p>Then write <span class="math inline">\(f(k,\theta)\)</span> in terms of <span class="math inline">\(k\)</span> and the generated scale <span class="math inline">\(\Lambda_*\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 16: Differential and total cross section">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 16: Differential and total cross section
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Use the renormalized amplitude to compute</p>
+<p><span class="math display">\[
+\frac{d\sigma}{d\theta}
+\]</span></p>
+<p>and then integrate over <span class="math inline">\(0\leq\theta&lt;2\pi\)</span> to find <span class="math inline">\(\sigma(k)\)</span>.</p>
+<p>Rewrite your final answer using the dimensionless ratio <span class="math inline">\(k/\Lambda_*\)</span>.</p>
+</div>
+</div>
+<p>Since</p>
+<p><span class="math display">\[
+k^2=\frac{2ME}{\hbar^2},
+\qquad
+\Lambda_*^2=\frac{2M|E_{\rm bs}|}{\hbar^2},
+\]</span></p>
+<p>we have</p>
+<p><span class="math display">\[
+\frac{k^2}{\Lambda_*^2}=\frac{E}{|E_{\rm bs}|}.
+\]</span></p>
+<p>The total cross section may therefore be written as</p>
+<p><span class="math display">\[
+\sigma(E)
+=
+\frac{4}{\Lambda_*}
+\sqrt{\frac{|E_{\rm bs}|}{E}}
+\frac{\pi^2}{\pi^2+\log^2(E/|E_{\rm bs}|)}.
+\]</span></p>
+<p>This version is more physically transparent than one written mainly in terms of <span class="math inline">\(\hbar\)</span> and <span class="math inline">\(M\)</span>. The factor <span class="math inline">\(1/\Lambda_*\)</span> is the generated length scale. The ratio <span class="math inline">\(E/|E_{\rm bs}|\)</span> is the dimensionless energy variable. The dimensionless coupling has disappeared in favor of a physical scale.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/cross_section_universal.png" class="img-fluid figure-img" style="width:80.0%" alt="A log-scale plot of Lambda-star times sigma as a function of E divided by the absolute bound-state energy. The curve diverges in the deep infrared and falls to zero in the ultraviolet."></p>
+<figcaption>Universal total cross section in units of the generated scale.</figcaption>
+</figure>
+</div>
+</section>
+<section id="physical-interpretation-asymptotic-freedom-infrared-enhancement-and-anomaly" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="physical-interpretation-asymptotic-freedom-infrared-enhancement-and-anomaly"><span class="header-section-number">10</span> Physical interpretation: asymptotic freedom, infrared enhancement, and anomaly</h2>
+<p>At large <span class="math inline">\(k/\Lambda_*\)</span>, the scattering cross section goes to zero. The target becomes effectively invisible to sufficiently high-momentum probes. This is the observable scattering version of the negative beta function: the coupling becomes weak in the ultraviolet.</p>
+<p>At small <span class="math inline">\(k/\Lambda_*\)</span>, the cross section grows. The low-energy particle moves slowly, has a long wavelength, and spends a long time in the interaction region. This is an infrared enhancement. The analogy to QCD should be handled carefully: this model has an exact solution and a simple point interaction, while QCD has confinement and a much richer infrared structure. But the RG lesson is the same: the ultraviolet and infrared descriptions need not look alike.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 17: The ultraviolet limit">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 17: The ultraviolet limit
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Use the final expression for <span class="math inline">\(\sigma(k)\)</span> or <span class="math inline">\(\sigma(E)\)</span> to show that the cross section vanishes in the ultraviolet.</p>
+<p>Then connect this behavior to the sign of the beta function.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 18: The infrared limit">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 18: The infrared limit
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Show that <span class="math inline">\(\sigma(E)\to\infty\)</span> as <span class="math inline">\(E\to0\)</span>, despite the logarithm in the denominator.</p>
+<p>A useful substitution is</p>
+<p><span class="math display">\[
+u=\log(E/|E_{\rm bs}|).
+\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 19: The scale anomaly">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 19: The scale anomaly
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The classical scaling argument suggested that if</p>
+<p><span class="math display">\[
+E\mapsto\Omega^{-2}E,
+\]</span></p>
+<p>then a two-dimensional cross section should scale like a length:</p>
+<p><span class="math display">\[
+\sigma\mapsto\Omega\sigma.
+\]</span></p>
+<p>Use the exact cross section to show that this is not what happens in the quantum theory.</p>
+<p>Explain precisely what role <span class="math inline">\(\Lambda_*\)</span> plays in the failure of classical scale invariance.</p>
+</div>
+</div>
+</section>
+<section id="strong-coupling-and-the-qcd-analogy" class="level2" data-number="11">
+<h2 data-number="11" class="anchored" data-anchor-id="strong-coupling-and-the-qcd-analogy"><span class="header-section-number">11</span> Strong coupling and the QCD analogy</h2>
+<p>Because</p>
+<p><span class="math display">\[
+\frac{1}{g_r(\mu)}=\frac{1}{2\pi}\log\left(\frac{\mu}{\Lambda_*}\right),
+\]</span></p>
+<p>the coupling becomes small when <span class="math inline">\(\mu\gg\Lambda_*\)</span>. It becomes large as <span class="math inline">\(\mu\)</span> approaches <span class="math inline">\(\Lambda_*\)</span> from above. In perturbative language, <span class="math inline">\(\Lambda_*\)</span> is the scale at which the weak-coupling description stops being natural.</p>
+<p>This is the main reason for using QCD-inspired notation. In QCD, <span class="math inline">\(\Lambda_{\rm QCD}\)</span> is the generated scale that replaces the dimensionless coupling as the practical low-energy parameter of the theory. In this quantum-mechanical model, <span class="math inline">\(\Lambda_*\)</span> is visible directly in the bound-state energy and in the scattering cross section.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 20: Where perturbation theory would fail">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 20: Where perturbation theory would fail
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Suppose a perturbative treatment is trusted only when <span class="math inline">\(g_r(\mu)\ll1\)</span>.</p>
+<p>Using the exact running coupling, describe the region of scales where perturbation theory is reliable and the region where it is not.</p>
+<p>Then compare this with the role of <span class="math inline">\(\Lambda_{\rm QCD}\)</span> in the usual qualitative story of QCD.</p>
+</div>
+</div>
+</section>
+<section id="synthesis-questions" class="level2" data-number="12">
+<h2 data-number="12" class="anchored" data-anchor-id="synthesis-questions"><span class="header-section-number">12</span> Synthesis questions</h2>
+<div class="callout callout-style-default callout-note callout-titled" title="Synthesis 1: What was renormalized?">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Synthesis 1: What was renormalized?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Explain the difference between <span class="math inline">\(g_0\)</span>, <span class="math inline">\(g_0(\Lambda)\)</span>, and <span class="math inline">\(g_r(\mu)\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Synthesis 2: Which quantities are physical?">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Synthesis 2: Which quantities are physical?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Classify the following as physical quantities or auxiliary quantities:</p>
+<p><span class="math display">\[
+\Lambda,
+\qquad
+\mu,
+\qquad
+\Lambda_*,
+\qquad
+E_{\rm bs},
+\qquad
+g_r(\mu),
+\qquad
+\sigma(E).
+\]</span></p>
+<p>Explain each classification briefly.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Synthesis 3: The analogy to QFT">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Synthesis 3: The analogy to QFT
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Write a concise paragraph explaining why this quantum-mechanical model is a useful toy model for renormalization in quantum field theory.</p>
+<p>Your paragraph should include the phrases “ultraviolet divergence,” “running coupling,” “asymptotic freedom,” “scale anomaly,” and “dimensional transmutation.”</p>
+</div>
+</div>
+</section>
+<section id="source-note-and-further-reading" class="level2" data-number="13">
+<h2 data-number="13" class="anchored" data-anchor-id="source-note-and-further-reading"><span class="header-section-number">13</span> Source note and further reading</h2>
+<p>This derivation follows the structure of W. D. Linch, III, “Ultraviolet Divergences, Renormalization, and Anomalies in Quantum Mechanics” (2008), which reviews and elaborates on the example of Mead and Godines.</p>
+<p>For a deeper look at related mathematical issues, see R. Jackiw, “Delta-function potentials in two- and three-dimensional quantum mechanics,” and related discussions of self-adjoint extensions.</p>
+<p>Suggested reading links:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Dimensional_transmutation">Dimensional transmutation</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Renormalization_group">Renormalization group</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Beta_function_(physics)">Beta function (physics)</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Asymptotic_freedom">Asymptotic freedom</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Conformal_anomaly">Scale anomaly / conformal anomaly</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Lippmann%E2%80%93Schwinger_equation">Lippmann–Schwinger equation</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Cross_section_(physics)">Cross section (physics)</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Bessel_function">Bessel function</a></li>
+</ul>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

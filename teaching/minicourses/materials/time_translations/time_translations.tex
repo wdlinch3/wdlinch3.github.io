@@ -1,0 +1,628 @@
+% Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrartcl}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+
+
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+
+
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Time translations},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{Time translations}
+\author{}
+\date{}
+\begin{document}
+\maketitle
+
+
+In class we learned that the (linear) momentum \(p\) is the
+``generator'' of translations in space. (We work in one spacial
+dimension for simplicity.) Concretely what this meant is that we can
+construct from \(p\) an operator \(U\) on the Hilbert space of functions
+\(\{f(x)\}\) of the coordinate \(x\) so that \[
+U(a)f(x) = f(x+a)
+\] Recall that since we want to preserve the Hilbert space norm, \(U\)
+should be unitary. From this and certain limits, we worked out that
+\(U(a)\) could be expressed in terms of the absolutely convergent sum
+for the exponential \[
+\exp \left( \frac i\hbar ap \right) = \sum_{n=0}^\infty \frac1{n!} \left( \frac i\hbar ap \right)^n
+\] In other words \(U(a)=e^{a \frac {d}{dx} } f(x) = f(x+a)\).
+
+\begin{quote}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{-1}
+\tightlist
+\item
+  Show this explicity by expanding out the exponential and
+  reinterpreting the result as a Taylor series.
+\end{enumerate}
+\end{quote}
+
+The exponential sum is \[
+e^{ a\frac d{dx} } = \sum_{n=0}^\infty \frac 1{n!} a^n \frac {d^n}{dx^n}
+\] Let \(f(x)\) be any smooth function and Taylor expand \(f(x+a)\)
+around some constant \(a\): \[
+f(x+a)=\sum_{n=0}^\infty \frac 1{n!} a^n f^{(n)}
+\] where \(f^{(n)}\) is a common notation for the \(n\)th derivative of
+\(f\). But then we are done, because these two expansions are identical.
+
+In this set of notes, we will work out the same set of steps for
+translations in time. That is, we aim to find the generator of time
+translations. Time in Newtonian physics is nothing like space. All
+observers agree on the passing of time, and at any particular moment in
+time, space is Euclidean. Coordinates like \(x\) are merely choices we
+make to parameterize this space. Time on the other hand defines
+\emph{dynamics} though Newton's Second Law. Because of this, what we
+will find that the rabbit hole goes far deeper in time\ldots{}
+
+So, by complete analogy, we are looking for an operator \(U(c)\) that
+maps functions of time \(f(t)\mapsto f(t+c)\) for any constant \(c\). By
+all the same arguments, this has to have the form
+\(U(c)=e^{c \frac d{dt}}\) which we can write as
+\(e^{-\frac i\hbar ch }\) where \(h\) is a Hermitian operation on
+functions called the generator of time translations. Just as \(p\) was
+the generator of translations, we now need to identify this operator.
+
+\begin{quote}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Find the dimensions of the generator \(h\). What real (\emph{i.e.} has
+  no imaginary part) quantity do you know with these dimensions?
+\end{enumerate}
+\end{quote}
+
+Let \([A]\) denote ``the dimensions of \(A\)''. Exponentiation of a
+dimensionful quantity is meaningless (ask, if you don't understand
+this!), so \([\frac i\hbar ch]=1\). The imaginary unit is dimensionless
+since it is just a number.
+\([\hbar]=[x]\cdot [p]= L \cdot ML/T=ML^2/T\). Since \(c\) enters in
+\(f(t)\mapsto f(t+c)\), \([c]=[t]=T\). Thus
+\(1=[\frac {ch}\hbar ]=T/(ML^2) \cdot T \cdot [h]\), which implies
+\([h]=ML^2/T^2\). But these are the dimensions of mass times
+velocity-squared, which is an energy. So whatever \(h\) is, it must have
+the dimesions of energy.
+
+Now to identify what \(h\) actually is, we use the observation that the
+generator of time translations is what we use to write Newton's second
+law \[
+F=\frac {dp}{dt}
+\] and it is unique in that way. We must also recall that the momentum
+is \emph{defined} as a derivative of the kinetic energy \(K\).
+
+\begin{quote}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  If you did not derive this in class, derive explicitly from the
+  example of a free classical particle of mass \(m\) and velocity
+  \(\bf v\) a formula for \(\bf p\) as a derivative of \(K\).
+\end{enumerate}
+\end{quote}
+
+The energy of a free particle is \(K=\frac12 m v^2\) where
+\(v=\sqrt{{\bf v} \cdot {\bf v}}\). Thus, component-by-component writing
+\({\bf v}=(v^i)\) for the 3 differnt directions \(i=x,y,z\),
+\(\frac{\partial K}{\partial v^i}=2\times \frac12 m v_i= mv_i=p_i\).
+Thus, component-by-component \[
+{\bf p} = \frac{\partial K}{\partial {\bf v}}
+\] We can take this formula as the definition of \({\bf p}\). We say
+that ``\({\bf p}\) is the momentum canonically conjugate to
+\({\bf x}\)''. (More on this terminology below.)
+
+Besides the kinetic energy there is another potential energy for any
+conservative force: If \({\bf R}^3\),
+\(0=\int_\gamma {\bf F}\cdot d{\bf x}=0\) for any closed contour
+\(\gamma\), then there is a function \(U({\bf x})\) such that
+\({\bf F}=-{\nabla}U\). Importantly, although \(K=K(x,v)\) is allowed to
+depend on \(x\), \(U(x)\) is \emph{not} allowed to depend on \(v\). (I
+know, unfair right?) Now consider the total energy function
+\(H=K(x,v)+U(x)\).
+
+\begin{quote}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  For this problem, treat \(p\) and \(v\) as independent variables.\\
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  Show that for any kinetic energy, the combination
+  \[H(x,p)=pv-K(x,v)+U(x)\] is independent of \(v\).\\
+\item
+  Assume that \(K(x,v)=f(x) v^\alpha\) for some real number \(\alpha\).
+  Show that \(pv-K=(\alpha -1)K\).\\
+\item
+  Combine parts a. and b. to conclude that, if \(K\) is quadratic in
+  \(v\), then \(H(x,p)=K(x,v)+U(x)\).
+\end{enumerate}
+\end{quote}
+
+3 a. Just calculate the partial derivative and use the definition of the
+momentum: \[
+\frac{\partial H}{\partial v}
+=\frac{\partial }{\partial v}\left[ pv-K(x,v)+U(x) \right]
+=p-\frac{\partial H}{\partial v}
+=p-p
+=0
+\]
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{1}
+\item
+  If \(K=f(x)v^\alpha\), then
+  \(\frac{\partial K}{\partial v}=\alpha f(x)v^{\alpha-1}\) which
+  implies that \(v\frac{\partial K}{\partial v}=\alpha K\). But this is
+  the same as \(pv=\alpha K\), so \(pv-K=(\alpha -1)K\).
+\item
+  If \(K\) is quadratic in \(v\), then \(\alpha=2\). When that happens,
+  \(pv-K=(\alpha -1)K=K\), so \(H(x,p)=pv-K(x,v)+U(x)=K(x,v)+U(x)\).
+\end{enumerate}
+
+This took a lot of effort that seems like it should not have been
+necessary, so we should go back an look at how \(K\) was originally
+defined.
+
+Recall that all these energy consideratoins came from work without
+dissipative forces. Then \(F=-\nabla U\) for some \(U\) and
+\(\int_\gamma F\cdot dx = - \int_\gamma \nabla U\cdot dx=\left. U\right|_{-\partial \gamma}\).
+But
+\(\int_\gamma F\cdot dx = \int_\gamma \dot p \cdot dx = \int_\gamma m \dot v \cdot v dt=\frac m2 \int_\gamma\frac {dv^2}{dt} dt=\left.\frac m2 v^2\right|_{\partial \gamma}\).
+Thus \(\left[\frac m2 v^2+U\right]_{\partial \gamma}=0\) and this holds
+along any path \(\gamma\) in space. Therefore, \(\frac m2 v^2+U =\)
+constant. This was the original motivation for introducing
+\(K=\frac m2 v^2\).
+
+Now in general \begin{align}
+\int_\gamma F\cdot dx &= \int_\gamma \dot p \cdot dx 
+= \int_\gamma \frac d{dt}\left(\frac{\partial K}{\partial v}\right) \cdot dx 
+= \int_\gamma \frac d{dt}\left(\frac{\partial K}{\partial v}\right) \cdot vdt \cr
+&= \int_\gamma \frac d{dt}\left(\alpha f(x)v^{\alpha -1}\right) \cdot vdt
+= \int_\gamma \frac d{dt}\left(f(x)v^\alpha\right)dt
+= \int_\gamma \frac {dK}{dt}dt
+=\left.K\right|_\gamma
+\end{align} so we, again recover the work-kinetic energy theorem, but
+this time for any kinetic energy of the form \(K=f(x)v^\alpha\).
+
+\subsection{Hamiltonian formulation of
+dynamics}\label{hamiltonian-formulation-of-dynamics}
+
+But wait, what?! \(H\) clearly depends on \(v\)! What's going on??
+
+\begin{quote}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Rewrite the kinetic energy part of the Hamiltonian \(H\) for a
+  particle of mass \(m\) in terms of momentum. Use this expression to
+  show that \[
+  \frac{d x}{dt} = \frac{\partial H}{\partial p}
+  \] Speculate about what this means for the dependence of the total
+  energy on position, velocity, and linear momentum.
+\end{enumerate}
+\end{quote}
+
+The kinetic energy of a particle of mass \(m\) is \(K=\frac m2 v^2\).
+Its momentum is is \(p=\partial K/\partial v=mv\), to \(v=\frac pm\),
+and \(K=\frac12 pv=\frac1{2m}p^2\). Thus
+\(dx/dt=v=\partial K/\partial p\), but since the potential energy does
+not depend on \(v\), it cannot depend on \(p\). Therefore,
+\(dx/dt=\partial H/\partial p\).
+
+\begin{quote}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  For a partcile of mass \(m\) in Euclidean space, show that Newton II
+  can be re-expressed as \[
+  \frac{d p}{dt} = -\frac {\partial H}{\partial x}
+  \]
+\end{enumerate}
+\end{quote}
+
+This is again just a calculation: \[
+\frac{\partial H}{\partial x}=\frac{\partial K}{\partial x}+\frac{\partial U}{\partial x}=-F=-\frac{d p}{dt}
+\]
+
+Congratulations! You have derived Hamiltons ``canonical equations''.
+Let's recap. The total energy function \(H(x,p)\) is a function on the
+\textbf{phase space} of positions and momenta. This space is
+\(2n\)-dimensional when the \textbf{configuration space} (a.k.a.
+``space'', \emph{e.g.} \({\bf R}^3\)) is \(n\)-dimensional. In this
+formulation of Newtonian physics, particle dynamics corresponds to the
+allowed paths in phase space. If there is no \emph{explicit}
+time-dependence in the system (\emph{i.e.} the system is not being
+driven with time-dependent forces), then all intersting dynamical
+quantities can be formulated as functions on this phase space. So all
+the quantities we care about are phase space functions. (We will return
+to explicit time-dependence later.)
+
+In this phase space formulation, the dynamics of any quantity \(f(x,p)\)
+is encoded in Hamilton's equations. That is, the ``Hamiltonian
+(function)'' completely determines the dynamics of the system.
+
+\begin{quote}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{6}
+\tightlist
+\item
+  Let \(f(x,p)\) be any differentiable function on the phase space. Use
+  the chain rule and Hamilton's equations to write a formula for
+  \(df/dt\).
+\end{enumerate}
+\end{quote}
+
+\begin{align}
+\frac{df}{dt} &= \frac{\partial f}{\partial x}\frac{dx}{dt} + \frac{\partial f}{\partial p}\frac{dp}{dt} 
+=\frac{\partial f}{\partial x}\frac{\partial H}{\partial p} - \frac{\partial f}{\partial p}\frac{\partial H}{\partial x}
+\end{align}
+
+\subsubsection{Poisson Bracket}\label{poisson-bracket}
+
+Looking at this formula we found in problem 6, we notice an interesting
+structure that encourages us to introduce the \textbf{Poisson bracket}:
+For any two phase space functions \(f\) and \(g\), define the function
+\[
+\{f, g\}=\frac{\partial f}{\partial p}\frac{\partial g}{\partial x} - \frac{\partial f}{\partial x}\frac{\partial g}{\partial p}
+\]
+
+\begin{quote}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{7}
+\tightlist
+\item
+  Rewrite your dynamical equation in terms of the Poisson bracket.
+\end{enumerate}
+\end{quote}
+
+Almost by inspection, the equation can be written as \[
+\frac {df}{dt} = \{H,f\}
+\]
+
+It is important to note that we did not introduce any new structure into
+the theory ``by hand''. (An example of a structure that is just thrown
+in by hand is the cross product in particle mechanics.) Even the dot
+product is not a native thing to the vector space \({\bf R}^3\), but
+added as an assumtion that makes the vector space into an ``inner
+product space'' we can Euclidean. The Poisson bracket, by contrast, is a
+stucture that comes with any phase space \emph{automatically}. It was
+handed to us by the math Gods as a gift. This is the reason
+mathematicians call it ``canonical'', and this particular type of
+canonical structure is called ``symplectic'' in the math jargon.
+
+\begin{quote}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{8}
+\tightlist
+\item
+  For any 3 phase space functions \(f\), \(g\), and \(h\), check that
+  the Poisson bracket satisfies the following properties:\\
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\roman{enumi}.}
+\tightlist
+\item
+  \(\{g, f+h\} = \{f, g\}+ \{f, h\}\) and for any real number
+  \(c\in {\bf R}\), \(\{f, cg\}=c\{f, g\}\)\\
+\item
+  \(\{g, f\} = -\{f, g\}\)\\
+\item
+  \(\{f, \{g, h\}\} + \{g,\{h, f\}\} + \{h, \{f, g\}\} = 0\)
+\end{enumerate}
+\end{quote}
+
+The first property just follows from how derivatives behave. The second
+property is obvious. The third is an annoying calculation: \begin{align}
+\{h,\{f,g\}\}&=
+\left\{h, \frac{\partial f}{\partial p}\frac{\partial g}{\partial x} - \frac{\partial f}{\partial x}\frac{\partial g}{\partial p} \right\}\cr
+&=\left\{h, \frac{\partial f}{\partial p}\right\}\frac{\partial g}{\partial x} - \left\{ h, \frac{\partial f}{\partial x}\right\}\frac{\partial g}{\partial p}
++\frac{\partial f}{\partial p}\left\{h, \frac{\partial g}{\partial x}\right\} - \frac{\partial f}{\partial x}\left\{ h, \frac{\partial g}{\partial p} \right\}
+\end{align} Since this is such a mess, we simplify the notation by
+writing the derivatives as subscripts: \begin{align}
+\{h,\{f,g\}\}&=\left\{h, f_p\right\}g_x- \left\{ h, f_x\right\}g_p +f_p\left\{h, g_x\right\} - f_x\left\{ h, g_p \right\}\cr
+&=
+h_p f_{xp}g_x - h_xf_{pp}g_x - h_p f_{xx}g_p+h_x f_{px}g_p\cr
+&+f_p h_p g_{xx} - f_p h_x g_{px} - f_x h_p g_{xp}+f_x h_xg_{pp}\cr
+&=
+f_{xx}\left(- g_p h_p \right)
++f_{xp}\left(g_ph_x +  g_x h_p\right)
++f_{pp}\left(- g_x h_x\right)\cr
+&+g_{xx}\left(h_p f_p \right)  
++g_{xp}\left( - h_x f_p  - h_pf_x \right)
++g_{pp}\left(h_xf_x \right)
+\end{align} Now we need to add the cyclic permutations
+\(f\to g\to h\to f\), but here is what will happen: Note that if we do
+this permutation to the first line of the result, we get the second line
+with all the signs switched. This means that when we add up the
+permutations, the second line gets canceled by the first line of the
+next permutation, and this repeats, so everything cancels when we add up
+all three.
+
+If that was too slick for you, I'll do it explicitly: \begin{align}
+&f_{xx}\left(- g_p h_p \right)
++f_{xp}\left(g_ph_x +  g_x h_p\right)
++f_{pp}\left(- g_x h_x\right)\cr
+&+g_{xx}\left(h_p f_p \right)  
++g_{xp}\left( - h_x f_p  - h_pf_x \right)
++g_{pp}\left(h_xf_x \right)\cr~\cr
+&+g_{xx}\left(- h_p f_p \right)
++g_{xp}\left(h_pf_x +  h_x f_p\right)
++g_{pp}\left(- h_x f_x\right)\cr
+&+h_{xx}\left(f_p g_p \right)  
++h_{xp}\left( - f_x g_p  - f_pg_x \right)
++h_{pp}\left(f_xg_x \right)\cr~\cr
+&+h_{xx}\left(- f_p g_p \right)
++h_{xp}\left(f_pg_x +  f_x g_p\right)
++h_{pp}\left(- f_x g_x\right)\cr
+&+f_{xx}\left(g_p h_p \right)  
++f_{xp}\left( - g_x h_p  - g_p h_x \right)
++f_{pp}\left(g_xh_x \right)
+\end{align} Now we finally see that all the terms enter twice with
+opposite signs, so they cancel pairwise.
+
+\subsection{Recapitulation}\label{recapitulation}
+
+The fundamental equations of Newtonian dynamics can be reformulated as
+statements about operations on a linear space \(\mathscr H\) that almost
+magically comes with a Poisson bracket \(\{\cdot, \cdot\}\), that
+promotes it to a very special sort of algebra that is intimately tied to
+a specific class of differential equations and their solutions. In this
+formalism, time translations are generated by a distinguished function
+called the Hamiltonian.
+
+This space is not just a vector space with an norm (\emph{i.e.} the
+Hilbert space part), but a Lie algebra because it automatically comes
+with a Poisson bracket that satisfies the defining relations of a Lie
+bracket.
+
+\subsection{Time dependence}\label{time-dependence}
+
+Hamilton's formulation of dynamics shows that the time evolution of any
+function \(f\in {\mathscr H}\), that is any function \(f\) on the phase
+space of \(p\)s and \(x\)s is generated, through the Poisson Bracket, by
+the Hamiltonian. This, however, is not the most general behavior because
+it is always possible to have explicit dependence on time. To describe
+this situation, we talk about the \emph{extended} phase space of \(x\)s,
+\(p\)s, and \(t\).
+
+\begin{quote}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{9}
+\tightlist
+\item
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    Show that for a function on the extended phase space \[
+    \frac {df}{dt} = \frac {\partial f}{\partial t} + \{f,H\}
+    \]
+  \end{enumerate}
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Use this to show that, unless the Hamiltonian \(H\) depends explicitly
+  on time, it is \textbf{conserved}, where ``conserved'' means constant
+  in time.
+\end{enumerate}
+\end{quote}
+
+9 a. A function on the extended phase space has the form \(f(x, p, t)\).
+Therefore, \(\frac {df}{dt} = \frac {\partial f}{\partial t}+\) parts
+already there when it does not depend explicitly on \(t\). But we
+already know these are generated by \(H\) through the Poisson bracket.
+This gives the stated equation.\\
+b. Plugging in \(f\to H\) gives \[
+\frac {dH}{dt} = \frac {\partial H}{\partial t} + \{H,H\}
+= \frac {\partial H}{\partial t}
+\] The \(\{H, H\}=-\{H, H\}\) term vanishes by antisymmetry of P.B., so
+\(\frac {dH}{dt}=0\) iff \(\frac {\partial H}{\partial t}=0\).
+
+\section{Hamiltonian quantization}\label{hamiltonian-quantization}
+
+\begin{quote}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{10}
+\tightlist
+\item
+  Suppose we have an algebra of operators \(\mathscr O\) with a
+  multiplication that may or may not be associative: For any \(f\),
+  \(g\), \(h\in \mathscr O\) \[
+  (h(fg)) \stackrel?= ((hf)g)
+  \] and define the \textbf{commutator} \[
+  [f,g] = fg - gf
+  \] Show that \([\cdot, \cdot]\) satisfies the Jabobi identity if the
+  algebra multiplication is associative.
+\end{enumerate}
+\end{quote}
+
+Let's look at the first of three terms \[
+[h,[f,g]]=(h(fg)) - ((fg)h) + ((gf)h) - (h(gh))
+\] The other two terms are the permulations \(f\to g\to h\to f\) and
+\(f\to h\to g\to f\).
+
+An example of an associative algebra is the algebra of matrices with
+matrix multiplication.
+
+
+
+
+\end{document}

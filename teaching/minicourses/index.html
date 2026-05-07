@@ -1,0 +1,118 @@
+---
+title: Teaching Minicourses
+---
+
+<p class="eyebrow">Teaching</p>
+<h1>Minicourses</h1>
+
+<p class="small">
+  Local snapshots of public guided-study packets and source materials for compact mathematical and physical minicourses.
+</p>
+
+<p>
+  These materials are copied from the public <a href="https://github.com/wdlinch3/minicourses_release">minicourses release repository</a>
+  so the student-facing artifacts can be read from this site. The collection is uneven by design: some minicourses are polished PDF
+  packets, some are rendered web notes, and some are source notebooks for ongoing guided work.
+</p>
+
+<div class="section-grid">
+  <section class="section-card" id="groups">
+    <h2>Groups</h2>
+    <p>
+      A mechanics-oriented introduction to rotations, vectors, covectors, index notation, and the matrix language behind rotation groups.
+      The main packet introduces 3D linear algebra and rotations; the supplemental packet extends the same ideas toward \(SO(2)\),
+      \(SO(3)\), commutativity, dimensions of \(SO(n)\), and standard matrix groups such as \(GL\), \(SL\), and \(O\).
+    </p>
+    <ul class="plain-links">
+      <li><a href="{{ '/teaching/minicourses/materials/groups/Groups.pdf' | relative_url }}">Read PDF: Rotations</a></li>
+      <li><a href="{{ '/teaching/minicourses/materials/groups/SupplementalMaterial.pdf' | relative_url }}">Read PDF: Supplemental Material</a></li>
+      <li><a href="{{ '/teaching/minicourses/materials/groups/Groups.tex' | relative_url }}">TeX source: Rotations</a></li>
+      <li><a href="{{ '/teaching/minicourses/materials/groups/SupplementalMaterial.tex' | relative_url }}">TeX source: Supplemental Material</a></li>
+    </ul>
+  </section>
+
+  <section class="section-card" id="linear_algebra">
+    <h2>Linear Algebra</h2>
+    <p>
+      A Research Club packet on orthogonal functions and the bridge from finite-dimensional linear algebra to analysis. It begins with
+      eigenvectors, adjoints, self-adjoint operators, and Gram-Schmidt, then moves into function spaces, orthogonal polynomials,
+      Sturm-Liouville problems, Fourier series, spherical symmetry, and complex Hilbert spaces.
+    </p>
+    <ul class="plain-links">
+      <li><a href="{{ '/teaching/minicourses/materials/linear_algebra/SturmLiouville.pdf' | relative_url }}">Read PDF</a></li>
+      <li><a href="{{ '/teaching/minicourses/materials/linear_algebra/SturmLiouville.tex' | relative_url }}">TeX source</a></li>
+      <li><a href="{{ '/teaching/minicourses/materials/linear_algebra/sturm_liouville.md' | relative_url }}">Source files</a></li>
+    </ul>
+  </section>
+
+  <section class="section-card" id="qm_to_em">
+    <h2>Quantum Mechanics to Electromagnetism</h2>
+    <p>
+      A notebook-style derivation that starts from the irrelevance of an overall quantum phase and asks what changes when the phase is
+      allowed to vary over spacetime. The notes introduce local rephasing, gauge covariance, the vector potential, the Aharonov-Bohm
+      experiment, the magnetic field, the Faraday-Maxwell tensor, Stokes' theorem in differential-form language, charge and current, the
+      spacetime metric, the Hodge dual, and Maxwell's equations.
+    </p>
+    <p>
+      The release currently provides this minicourse as a Jupyter notebook rather than a PDF, HTML page, or TeX packet.
+    </p>
+    <ul class="plain-links">
+      <li><a href="{{ '/teaching/minicourses/materials/qm_to_em/qm_to_em.ipynb' | relative_url }}">Source files</a></li>
+    </ul>
+  </section>
+
+  <section class="section-card" id="relativity">
+    <h2>Relativity</h2>
+    <p>
+      Two relativity packets are available. The electromagnetic-forms packet rewrites Maxwell theory from integral and vector-calculus
+      forms into differential forms, the Faraday tensor, the compact Maxwell equations, and the Maxwell action with gauge invariance.
+      The general-relativity packet moves from Newtonian unease about action at a distance to metrics as dynamical fields, Lorentz-covariant
+      Maxwell equations, spacetime geometry, and the coordinate-independent structures needed for general relativity.
+    </p>
+    <ul class="plain-links">
+      <li><a href="{{ '/teaching/minicourses/materials/relativity/em_forms/EM.pdf' | relative_url }}">Read PDF: Maxwell Theory and Differential Forms</a></li>
+      <li><a href="{{ '/teaching/minicourses/materials/relativity/gr/GR.pdf' | relative_url }}">Read PDF: General Relativity</a></li>
+      <li><a href="{{ '/teaching/minicourses/materials/relativity/em_forms/EM.tex' | relative_url }}">TeX source: Maxwell Theory and Differential Forms</a></li>
+      <li><a href="{{ '/teaching/minicourses/materials/relativity/gr/GR.tex' | relative_url }}">TeX source: General Relativity</a></li>
+    </ul>
+  </section>
+
+  <section class="section-card" id="renormalization_packet">
+    <h2>Renormalization Packet</h2>
+    <p>
+      A guided derivation of renormalization in a solvable quantum-mechanical model: a nonrelativistic particle in two spatial dimensions
+      moving in an attractive delta-function potential. The packet is explicit that it is not passive introductory reading; the problems
+      lead students through Bessel functions, Green functions, the logarithmic divergence, short-distance regularization, the running
+      coupling, the beta function, dimensional transmutation, asymptotic freedom, and the scale anomaly.
+    </p>
+    <ul class="plain-links">
+      <li><a href="{{ '/teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student.pdf' | relative_url }}">Read PDF</a></li>
+    </ul>
+  </section>
+
+  <section class="section-card" id="time_translations">
+    <h2>Time Translations</h2>
+    <p>
+      A rendered web packet that develops time evolution by analogy with spatial translations. Starting from momentum as the generator of
+      translations, it asks for the generator of time translations, identifies the role of energy, derives Hamilton's canonical equations,
+      introduces Poisson brackets and conservation of the Hamiltonian, and then turns toward Hamiltonian quantization.
+    </p>
+    <ul class="plain-links">
+      <li><a href="{{ '/teaching/minicourses/materials/time_translations/time_translations.html' | relative_url }}">View HTML</a></li>
+      <li><a href="{{ '/teaching/minicourses/materials/time_translations/time_translations.tex' | relative_url }}">TeX source</a></li>
+      <li><a href="{{ '/teaching/minicourses/materials/time_translations/time_translations.ipynb' | relative_url }}">Source files</a></li>
+    </ul>
+  </section>
+</div>
+
+<section class="note-panel" id="release_source">
+  <h2>Release Source</h2>
+  <p>
+    This page is a local site snapshot of the current public release materials. Long-term synchronization with the release repository is
+    intentionally left for a later pass.
+  </p>
+  <ul class="plain-links">
+    <li><a href="https://github.com/wdlinch3/minicourses_release">Public minicourses release repository</a></li>
+    <li><a href="{{ '/teaching/' | relative_url }}">Teaching overview</a></li>
+  </ul>
+</section>
