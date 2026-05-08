@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Electromagnetism in Differential Forms</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="em_forms_files/libs/clipboard/clipboard.min.js"></script>
+<script src="em_forms_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="em_forms_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="em_forms_files/libs/quarto-html/popper.min.js"></script>
+<script src="em_forms_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="em_forms_files/libs/quarto-html/anchor.min.js"></script>
+<link href="em_forms_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="em_forms_files/libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="em_forms_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="em_forms_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="em_forms_files/libs/bootstrap/bootstrap-138a6193a3bd40baf1e627da441a4734.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+</head><body class="quarto-light">\DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}
+\DeclareOldFontCommand{\rm}{\normalfont\rmfamily}{\mathrm}
+\newcommand{\ma}[1]{\begin{pmatrix}#1\end{pmatrix}}
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+
+
+
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="em_forms.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Electromagnetism in Differential Forms</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="maxwell-theory" class="level1">
+<h1>Maxwell Theory</h1>
+<section id="integral-form" class="level2">
+<h2 class="anchored" data-anchor-id="integral-form">Integral form</h2>
+<p>We are going to describe the Maxwell equations in integral form. For this, we need a bunch of definitions. Let</p>
+<ul>
+<li><p><span class="math inline">\(U ⊂ 𝐑³\)</span> be a 3-dimensional region in 3-space</p></li>
+<li><p><span class="math inline">\(dv\)</span> denote the volume element on <span class="math inline">\(U\)</span></p></li>
+<li><p><span class="math inline">\(∂U\)</span> denote the (2-dimensional) boundary of <span class="math inline">\(U\)</span></p></li>
+<li><p><span class="math inline">\(\bf n\)</span> denote the (outward-directed) unit normal to <span class="math inline">\(∂U\)</span></p></li>
+<li><p><span class="math inline">\(da\)</span> denote the area element on <span class="math inline">\(∂U\)</span> induced from the canonical volume form on <span class="math inline">\(𝐑³\)</span> and let <span class="math inline">\(d{\bf a} = {\bf n} da\)</span>.</p></li>
+<li><p><span class="math inline">\(A⊂ 𝐑³\)</span> denote an oriented surface</p></li>
+<li><p><span class="math inline">\(d\bf l\)</span> denote the line element on <span class="math inline">\(∂A\)</span> induced from the canonical volume form on <span class="math inline">\(𝐑³\)</span></p></li>
+</ul>
+<p>The Maxwell equations are</p>
+<dl>
+<dt>Coulomb</dt>
+<dd>
+<p>Let <span class="math inline">\(Q(U)\)</span> be the charge contained in <span class="math inline">\(U\)</span>. Then <span class="math display">\[%Q(U) = \frac 1{4 π } ∫_{∂U} {\bf E} ∙ {\bf n}\ da
+4π Q(U) =  ∫_{∂U} {\bf E} ∙ d{\bf a}\]</span></p>
+</dd>
+<dt>No monopoles</dt>
+<dd>
+<p>There are no magnetic sources: <span class="math display">\[0 = ∫_{∂U} {\bf B} ∙ d{\bf a}\]</span></p>
+</dd>
+<dt>Ampere</dt>
+<dd>
+<p>Let <span class="math inline">\(\bf j (A)\)</span> denote the current (charge flux) flowing through the surface <span class="math inline">\(A\)</span>. Then <span class="math display">\[∫_{∂A} {\bf B} ∙ d{\bf l} = \frac{4π}c {\bf J}(A) + \frac 1c {∂ \over ∂ t} ∫_A {\bf E}∙ {\bf n}\ da\]</span></p>
+</dd>
+<dt>Faraday-Lenz</dt>
+<dd>
+<p><span class="math display">\[∫_{∂A} {\bf E} ∙d{\bf l} = - \frac 1c {∂ \over ∂ t} ∫_A {\bf B}∙ {\bf n}\ da\]</span></p>
+</dd>
+</dl>
+</section>
+<section id="traditional-calculus-3-form" class="level2">
+<h2 class="anchored" data-anchor-id="traditional-calculus-3-form">Traditional Calculus 3 form</h2>
+<p>Let</p>
+<ul>
+<li><p><span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> denote functions <span class="math inline">\(𝐑³ → 𝐑\)</span></p></li>
+<li><p><span class="math inline">\(\bf u\)</span> and <span class="math inline">\(\bf v\)</span> denote vector fields on <span class="math inline">\(𝐑³\)</span></p></li>
+<li><p><span class="math inline">\((x,y,z)=(x¹, x², x³) = (x^i)_{i=1}³\)</span> denote Cartesian coordinate functions on <span class="math inline">\(𝐑³\)</span></p></li>
+</ul>
+<p>In calculus 3, we learn about the differential vector operators</p>
+<dl>
+<dt>coordinate basis</dt>
+<dd>
+<p><span class="math inline">\(❴ ∂_i ❵ _{i=1}³\)</span> with <span class="math inline">\(∂_i = \frac ∂ {∂x^i}\)</span>. By definition of Cartesian coordinates, the coordinate vectors commute <span class="math inline">\(∂_i ∂_j = ∂_j ∂_i\)</span>.</p>
+</dd>
+<dt>gradient</dt>
+<dd>
+<p>The gradient <span class="math inline">\(\textrm{grad}(f)\)</span> or <span class="math inline">\(∇f\)</span> of a function is a vector field with components <span class="math display">\[∇f = (∂^i f)= (δ^{ij} ∂_j f) =
+    \ma{
+        \frac {∂f} {∂x} \\
+        \frac {∂f} {∂y} \\
+        \frac {∂f} {∂z}
+    }\]</span></p>
+</dd>
+<dt>divergence</dt>
+<dd>
+<p>The divergence <span class="math inline">\(\mathrm{div} ({\bf u})\)</span> or <span class="math inline">\(∇ ∙ {\bf u}\)</span> of a vector field is a scalar defined by <span class="math display">\[∇ ∙ {\bf u} = \frac {∂ u¹} {∂x} + \frac {∂ u²} {∂y} +\frac {∂ u³} {∂z} = ∂_i u^i\]</span> Here and henceforth, repeated indices with one “up” and one “down” are summed (Einstein summation convention).</p>
+</dd>
+<dt>curl</dt>
+<dd>
+<p>The curl <span class="math inline">\(\mathrm{curl}({\bf u})\)</span> or <span class="math inline">\(∇ × {\bf u}\)</span> of a vector field is a vector field with components defined by <span class="math display">\[(∇ × {\bf u})³ = \frac {∂ u²} {∂x¹} - \frac {∂ u¹} {∂x²}\]</span> and cyclic permutations of <span class="math inline">\(¹,²,³\)</span>.</p>
+</dd>
+</dl>
+<p>We also learn that these operators are related by integration. In particular, for subsets of <span class="math inline">\(𝐑³\)</span> in the notation of the previous section, we have the following theorems:</p>
+<dl>
+<dt>FTC?</dt>
+<dd>
+<p>Let <span class="math inline">\(f\)</span> be a function on (a neighborhood of) of an oriented curve <span class="math inline">\(γ\)</span> with boundary <span class="math inline">\(∂γ = b - a\)</span>, possibly with <span class="math inline">\(b=a\)</span> (no boundary).<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Then <span class="math display">\[∫_γ (∇ f) = ∫_{∂γ} f = f|^b_a = f(b) - f(a)\]</span></p>
+</dd>
+<dt>Green</dt>
+<dd>
+<p>Let <span class="math inline">\(𝒖\)</span> denote a vector field on (a neighborhood of) <span class="math inline">\(A\)</span>. Then <span class="math display">\[∫_A (∇ × 𝒖) ∙ d 𝒂 = ∫_{∂A} 𝒖 ∙ d𝒍\]</span></p>
+</dd>
+<dt>Stokes</dt>
+<dd>
+<p>Let <span class="math inline">\(𝒖\)</span> denote a vector field on (a neighborhood of) <span class="math inline">\(U\)</span>. Then <span class="math display">\[∫_U (∇ ∙ 𝒖)\ dv = ∫_{∂U} 𝒖 ∙ d 𝒂\]</span></p>
+</dd>
+</dl>
+<p>Ever feel like Green’s theorem and Stokes’ theorem were secretly the same thing?</p>
+<p>We now define the charge density <span class="math inline">\(ρ\)</span> and the current density <span class="math inline">\(𝒋\)</span> so that <span class="math display">\[Q(U) = ∫_U ρ dv
+\quad\quad \textrm{and}\quad \quad
+{\bf J}(U) = ∫_U 𝒋 dv\]</span></p>
+<div class="exercise">
+<p><strong>Exercise 1</strong>. <em>Put the Maxwell equations into differential form:</em></p>
+<dl>
+<dt>Coulomb</dt>
+<dd>
+<p><em><span class="math display">\[∇∙𝑬 = 4πρ\]</span></em></p>
+</dd>
+<dt>No monopoles</dt>
+<dd>
+<p><em><span class="math display">\[∇∙𝑩 = 0\]</span></em></p>
+</dd>
+<dt>Ampère</dt>
+<dd>
+<p><em><span class="math display">\[∇ × 𝑩 = \frac{4π}c 𝒋 + \frac 1c \frac{∂𝑬}{∂t}\]</span></em></p>
+</dd>
+<dt>Faraday-Lenz</dt>
+<dd>
+<em><span class="math display">\[∇ × 𝑬 = - \frac 1c \frac{∂𝑩}{∂t}\]</span></em>
+</dd>
+</dl>
+</div>
+<p>Notice the overwhelming superiority of the differential form notation.</p>
+<div class="exercise">
+<p><strong>Exercise 2</strong>. <em>Show that if <span class="math inline">\(𝑩 = ∇ × 𝑨\)</span> for some vector field <span class="math inline">\(𝑨\)</span>, the it automatically solves the no-monopole condition.</em></p>
+<p><em>Show that if we change <span class="math inline">\(𝑨\)</span> to <span class="math inline">\(𝑨' = 𝑨 + ∇ λ\)</span> for any function <span class="math inline">\(λ\)</span> then that does not change <span class="math inline">\(𝑩\)</span>.</em></p>
+</div>
+<p>The ambiguity in the definition of <span class="math inline">\(𝑨\)</span> is an example of something called a “gauge ambiguity”.</p>
+</section>
+<section id="superior-mathematical-form" class="level2">
+<h2 class="anchored" data-anchor-id="superior-mathematical-form">Superior mathematical form</h2>
+<p>The differential “calc 3” notation is clearly superior to the integral form, it is still dirty for various reasons.</p>
+<div class="exercise">
+<p><strong>Exercise 3</strong>. <em>Restrict the entire universe to two dimensions instead of 3. What does the cross product mean in this 2D universe? Extend to a 4D universe by adding an additional direction to up/down, left/right, forward/backward. Can you define the cross product there?</em></p>
+</div>
+<p>The problem is that the existence of the cross product is an accident of 3D. A cross product is an anti-symmetric pairing to two vectors/vector fields to give a third vector (field) and this does not need to exist in arbitrary dimension.</p>
+<p>We will return to the reason it exists in 3D eventually, but for now, let’s see how we can salvage the Maxwell equations by stripping off the 3D-ness. To do this, we need some formalism.</p>
+<div class="definition">
+<p><strong>Definition 1</strong>. Let <span class="math inline">\(V\)</span> be a real vector space. A linear form on <span class="math inline">\(V\)</span> is a linear map <span class="math inline">\(V → 𝐑\)</span>. The space of linear forms on <span class="math inline">\(V\)</span> is denoted by <span class="math inline">\(V*\)</span>; it is called the dual of <span class="math inline">\(V\)</span>.</p>
+</div>
+<div class="claim">
+<p><strong>Claim 1</strong>. <em>Let <span class="math inline">\(\textrm{dim}_𝐑 (V) &lt; ∞\)</span>. Then <span class="math inline">\(V*\)</span> is a vector space and <span class="math inline">\(\textrm{dim}_𝐑 (V*) = \textrm{dim}_𝐑 (V)\)</span>.</em></p>
+</div>
+<div class="definition">
+<p><strong>Definition 2</strong>. Let <span class="math inline">\(𝒖\)</span> be a vector field on <span class="math inline">\(U⊂ 𝐑³\)</span> and let <span class="math inline">\(❴x^i ❵_{i=1}³\)</span> be a set of coordinates on <span class="math inline">\(U\)</span>. In these coordinates <span class="math display">\[𝒖 = u^i(x) ∂_i = u^i(x) \frac ∂{∂x^i}\]</span> For the functions <span class="math inline">\(u^i :U→ 𝐑\)</span> for <span class="math inline">\(i=1,2,3\)</span> are called the components of <span class="math inline">\(𝒖\)</span> (in the coordinates <span class="math inline">\(x\)</span>).</p>
+</div>
+<p>Take careful note of the position of the indices in the expressions above: The the component functions of vector fields have their indices “up”, whereas the coordinate basis vectors <span class="math inline">\(∂\)</span> have their indices “down”.</p>
+<p>Now suppose we have the component functions <span class="math inline">\(❴u^i❵_{i=1}³\)</span> for some vector field <span class="math inline">\(𝒖\)</span>. I’m getting tired of typing that out, so when the meaning is clear, I will abbreviate this as <span class="math inline">\(❴u^i❵\)</span>. Anyway, to map from a set like this to a real function, we need to “get rid of the index”: If we have 3 other functions <span class="math inline">\(❴ω_i(x)❵\)</span>, we can make <span class="math display">\[ω(𝒖) = ω_i(x) u^i(x)\]</span> which is a function <span class="math inline">\(U→ 𝐑\)</span>, as we wanted when we defined linear forms.</p>
+<p>Our conclusion is that under the conditions set out in the Claim, the dual space is spanned by elements with coordinate functions <span class="math inline">\(❴ω_i❵\)</span> analogous to the <span class="math inline">\(❴u^i❵\)</span> of a vector field, but with the indices in the other position. There is a good reason for this, but for the moment you can just take it as a rule.</p>
+<p>If you don’t want to hit the “I believe” button, consider the following: Let <span class="math inline">\(L : V→ V\)</span> denote a linear operator on a vector space <span class="math inline">\(V\)</span>, and consider its action on a vector <span class="math inline">\(𝒖 ↦ L(𝒖)\)</span>. This operator does not act on <span class="math inline">\(𝐑\)</span> so if we consider a linear form <span class="math inline">\(ω : V→ 𝐑\)</span> then it maps <span class="math inline">\(𝒖 ↦ ω(𝒖) ∈ 𝐑\)</span>. This implies that <span class="math inline">\(L\)</span> must act on <span class="math inline">\(ω\)</span> in a way that ensures that it has no effect on <span class="math inline">\(ω(𝒖)\)</span> (since it is an element of <span class="math inline">\(𝐑\)</span> and <span class="math inline">\(L\)</span> has no effect there.</p>
+<div class="exercise">
+<p><strong>Exercise 4</strong>. <em><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> By working in components, compare what the matrix of <span class="math inline">\(L\)</span> does to the components of <span class="math inline">\(𝒖\)</span> and show that that is not the same as what it does to the components of <span class="math inline">\(ω\)</span>. Note that it </em>is* related, but not the same.*</p>
+</div>
+<p>A linear form <span class="math inline">\(V→ 𝐑\)</span> is also called a 1-form. When we have a coordinate basis for <span class="math inline">\(V\)</span> denoted by <span class="math inline">\(❴∂_i= ∂/∂x^i❵\)</span> , then there is a natural basis for <span class="math inline">\(V*\)</span> denoted <span class="math inline">\(❴dx^i❵\)</span>. (Note the position of the index.) Since 1-forms map vectors to numbers, it must be true that the <span class="math inline">\(dx\)</span>s map the <span class="math inline">\(∂\)</span>s to numbers. The definition/normalization for Cartesian coordinates is this:<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> <span class="math display">\[dx^i ( ∂_j ) = δ^i_j = \begin{cases}
+    1 &amp; \textrm{if } i=j\\
+    0 &amp; \textrm{otherwise}
+    \end{cases}\]</span></p>
+<div class="exercise">
+<p><strong>Exercise 5</strong>. <em>We can combine all theses things into the following synthesis: Let <span class="math inline">\(𝒖\)</span> be a vector field and let <span class="math inline">\(ω\)</span> be a 1-form field, both defined on <span class="math inline">\(U⊂ 𝐑^n\)</span> for general <span class="math inline">\(n\)</span>. Let <span class="math inline">\(❴x^i❵\)</span> denote coordinates on <span class="math inline">\(U\)</span>. In these coordinates, <span class="math inline">\(𝒖=u^i(x) ∂_i\)</span> and <span class="math inline">\(ω = ω_i(x) dx^i\)</span> where the repeated indices are summed (as always). Then from these expressions and the definitions show that <span class="math display">\[ω(𝒖) = ω_i(x) u^j(x) dx^i(∂_j) = ω_i(x) u^j(x) δ^i_j = ω_i(x) u^i(x)\]</span></em></p>
+</div>
+<p>This is an example of a calculation done in a local coordinates called a “component calculation”. We will do many of these.</p>
+<section id="multilinear-algebra" class="level4">
+<h4 class="anchored" data-anchor-id="multilinear-algebra">Multilinear algebra</h4>
+<p>We can make combinations of the basis 1-forms by taking more copies of <span class="math inline">\(V*\)</span> in what is called the “tensor product”. Operationally, the tensor product <span class="math inline">\(V*⊗V*\)</span> is just the collection of objects with basis <span class="math inline">\(dx^i ⊗ dx^j\)</span> where the <span class="math inline">\(⊗\)</span> symbol roughly means “keep them in this order”. For example, if <span class="math inline">\(M ∈ V*⊗V*\)</span> then what this means is that in local coordinates <span class="math inline">\(M = M_{ij} dx^i ⊗ dx^j\)</span>. We recognize the components <span class="math inline">\(M_{ij}\)</span> as those of an <span class="math inline">\(n× n\)</span> matrix.</p>
+<p>We can similarly do this for <span class="math inline">\(V\)</span> as well and we can mix <span class="math inline">\(V\)</span> and <span class="math inline">\(V*\)</span>. Furthermore, we can make arbitrarily higher numbers of factors like <span class="math inline">\(V ⊗ V ⊗ V* ⊗ V* ⊗ V\)</span>. Often, we rearrange the factors so that all the vector spaces come first and then all the duals,<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> so we could write this as <span class="math inline">\(V ⊗ V ⊗ V ⊗ V* ⊗ V*\)</span>.</p>
+<div class="exercise">
+<p><strong>Exercise 6</strong>. <em>Show that</em></p>
+<ol type="1">
+<li><p><em>linear operators are elements of <span class="math inline">\(V ⊗ V*\)</span></em></p></li>
+<li><p><em>inner products are elements of <span class="math inline">\(V* ⊗ V*\)</span></em></p></li>
+<li><p><em>the 3D cross product is an element <span class="math inline">\(V ⊗ V* ⊗ V*\)</span></em></p></li>
+</ol>
+<p><em>Hint: What do you need to provide to each of these to get a scalar?</em></p>
+</div>
+<p>An element of <span class="math inline">\(V ⊗ \cdots ⊗ V ⊗ V* ⊗ \cdots ⊗ V*\)</span> with <span class="math inline">\(q\)</span> factors of <span class="math inline">\(V\)</span> and <span class="math inline">\(p\)</span> factors of <span class="math inline">\(V*\)</span> is called a <em>tensor</em> of rank <span class="math inline">\((q,p)\)</span>. Tensors of low rank often have special names: A tensor of rank</p>
+<ul>
+<li><p><span class="math inline">\((0,0)\)</span> is a scalar</p></li>
+<li><p><span class="math inline">\((1,0)\)</span> is a vector</p></li>
+<li><p><span class="math inline">\((0,1)\)</span> is a linear form or 1-form</p></li>
+<li><p><span class="math inline">\((0,2)\)</span> is a bilinear form 2-form</p></li>
+<li><p><span class="math inline">\((0,q)\)</span> is a multi-linear form of rank <span class="math inline">\(q\)</span> or <span class="math inline">\(q\)</span>-form</p></li>
+<li><p><span class="math inline">\((1,1)\)</span> is a linear operator</p></li>
+<li><p><span class="math inline">\((q,p)\)</span> with <span class="math inline">\(p+q=2\)</span> are also called matrices</p></li>
+</ul>
+<p>Permutations have a natural action on tensors, and we use them to reduce the general tensors to simpler elements. For example a <span class="math inline">\((0,2)\)</span> tensor <span class="math inline">\(T\)</span> can be split into symmetric <span class="math inline">\(S\)</span> and anti-symmetric <span class="math inline">\(A\)</span> parts: <span class="math inline">\(T_{ij} = S_{ij} + A_{ij}\)</span>. This is so useful that we use a special notation on the indices: <span class="math display">\[S_{ij} = T_{(ij)} = \frac12 (T_{ij} + T_{ji})
+\quad \quad \textrm{and}\quad \quad
+A_{ij} = T_{[ij]} = \frac12 (T_{ij} - T_{ji})\]</span></p>
+<p>The anti-symmetric part of <span class="math inline">\(V* ⊗ V*\)</span> is so nice that it gets a special name: <span class="math inline">\(V*\wedge V*\)</span>. The reason it is nice is related to the following</p>
+<div class="exercise">
+<p><strong>Exercise 7</strong>. <em>Let <span class="math inline">\(f:U→ 𝐑\)</span> be a smooth function and define the Hessian matrix of <span class="math inline">\(f\)</span> by <span class="math inline">\(H(f)\)</span> as the matrix of second partial derivatives of <span class="math inline">\(f\)</span>. Show that <span class="math inline">\(H(f)\)</span> is in the kernel of the map <span class="math inline">\(V*⊗ V*→ V*\wedge V*\)</span>.</em></p>
+</div>
+<p>An exterior <span class="math inline">\(q\)</span>-form is an element <span class="math display">\[ω ∈ Λ^q = ⋀_{i=1}^q V*= V*\wedge \cdots \wedge  V*\]</span> In local coordinates <span class="math inline">\(❴x^i❵_{i=1}^n\)</span> on <span class="math inline">\(U\)</span>, an exterior form of rank <span class="math inline">\(p\)</span> can be written as <span class="math display">\[ω = ω_{i₁ ... i_p}(x) dx^{i₁} \wedge \cdots \wedge dx^{i_p}
+%\quad \quad \textrm{where} \quad \quad
+%ω_{i₁ ... i_p}(x)\]</span> where the component functions <span class="math inline">\(ω_{i₁ ... i_p}(x) = ω_{[i₁ ... i_p]}(x)\)</span> are totally anti-symmetric under permutation of indices.</p>
+<div class="exercise">
+<p><strong>Exercise 8</strong>. <em>Let <span class="math inline">\(\mathrm{dim}(U)=n\)</span>. Show that</em></p>
+<ol type="1">
+<li><p><em><span class="math inline">\(\mathrm{dim}(Λ^p) = {n \choose p}\)</span>, in particular <span class="math inline">\(Λ^p = ∅\)</span> if <span class="math inline">\(p&gt;n\)</span>.</em></p></li>
+<li><p><em><span class="math inline">\(Λ^p ⋀ Λ^q ≅ Λ^{p+q}\)</span></em></p></li>
+<li><p><em>for <span class="math inline">\(ω ∈ Λ^p\)</span> and <span class="math inline">\(η ∈ Λ^q\)</span>, <span class="math inline">\(ω \wedge η = (-1)^{pq} η \wedge ω\)</span>, in particular <span class="math inline">\(ω² = 0\)</span> if <span class="math inline">\(p\)</span> is odd.</em></p></li>
+</ol>
+</div>
+<p>Together with the fact that a <span class="math inline">\(p\)</span>-form is still a <span class="math inline">\(p\)</span>-form if you multiply by a real scalar, this exercise shows that the space of exterior forms is an algebra; we call it <span class="math inline">\(Λ^∙\)</span>.</p>
+<div class="definition">
+<p><strong>Definition 3</strong>. Let <span class="math inline">\(d_i : Λ^i → Λ^{i+1}\)</span> for <span class="math inline">\(i=0,\dots,n\)</span> be a set of maps. Such a set of maps is called a differential on <span class="math inline">\(U\)</span> if <span class="math inline">\(d_{i+1} ∘ d_i = 0\)</span> for all <span class="math inline">\(i\)</span>. We define an extension of these maps to forms of any degree by defining <span class="math inline">\(d_i : Λ^j → Λ^{j+1}\)</span> to be the 0 map whenever <span class="math inline">\(i≠ j\)</span>. Finally, using this extension, we define <span class="math inline">\(d : Λ^p(U) → Λ^{p+1}(U)\)</span> for any <span class="math inline">\(p\)</span> by <span class="math inline">\(d = ∑_{i=0}^n d_i\)</span>.</p>
+</div>
+<p>Here is an important application/example: For each <span class="math inline">\(i,p=0,...,n\)</span>, let <span class="math inline">\(ω∈ Λ^p(U)\)</span> and define <span class="math display">\[d_i(ω) = \begin{cases}
+    ∂_k ω_{j₁ ... j_i}(x) dx^k \wedge dx^{j₁} \wedge \cdots \wedge dx^{j_i} &amp; \textrm{if } i=p\\
+    0 &amp; \textrm{otherwise}
+    \end{cases}\]</span></p>
+<div class="exercise">
+<p><strong>Exercise 9</strong>.</p>
+<ol type="1">
+<li><p><em>Show that the collection of maps defines a differential on the algebra of exterior forms.</em></p></li>
+<li><p><em>Show that, for any <span class="math inline">\(p\)</span>, <span class="math inline">\(d² = 0\)</span> as a map <span class="math inline">\(Λ^p→ Λ^{p+2}\)</span>.</em></p></li>
+<li><p><em>Let <span class="math inline">\(ω ∈ Λ^p(U)\)</span> and <span class="math inline">\(η ∈ Λ^q(U)\)</span>. Show that <span class="math inline">\(d(ω \wedge η )= (dω) \wedge η + (-1)^p ω \wedge (dη)\)</span>.</em></p></li>
+<li><p><em>Suppose <span class="math inline">\(U\)</span> is an open ball in <span class="math inline">\(𝐑^n\)</span> and let <span class="math inline">\(ω ∈ Λ^p(U)\)</span> be a <span class="math inline">\(p\)</span>-form on <span class="math inline">\(U\)</span> such that <span class="math inline">\(dω=0\)</span>. Show that there is a <span class="math inline">\((p-1)\)</span>-form <span class="math inline">\(λ∈ Λ^{p-1}(U)\)</span> such that <span class="math inline">\(ω = d λ\)</span>.</em></p></li>
+</ol>
+</div>
+<p>This exercise has very interesting consequences for mathematics: An algebra of exterior forms equipped with a differential is called a differential algebra, so the first two conditions are saying that there is such a thing embedded in the structure of calculus. The third part of the exercise is interesting, because you cannot drop the qualifier that <span class="math inline">\(U\)</span> is an open ball.</p>
+<p>A form <span class="math inline">\(ω ∈ Λ^p(U)\)</span> is called “closed” if <span class="math inline">\(dω=0\)</span>. A form <span class="math inline">\(ω ∈ Λ^p(U)\)</span> that can be written as <span class="math inline">\(ω = d λ\)</span> for some <span class="math inline">\((p-1)\)</span>-form <span class="math inline">\(λ\)</span> is called “exact”. Note that exact forms are always closed because <span class="math inline">\(d(dλ) = 0\)</span> by the very construction of the differential. However, closed forms are not always exact.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+<p>Often in physics, quantities that we refer to as “vectors” are actually 1-forms. For example, while it is true that the gradient <span class="math inline">\(∇f\)</span> of a function is a vector, the more natural object is actually the 1-form <span class="math inline">\(df\)</span>. The two are related with the dot product: A dot product <span class="math inline">\(\langle ∙ , ∙ \rangle\)</span> is a map <span class="math inline">\(V⊗V→ 𝐑\)</span> taking two vectors <span class="math inline">\((𝒖, 𝒗 )↦ \langle 𝒖, 𝒗 \rangle = 𝒖 ∙ 𝒗\)</span>. This means that if we fill only the first slot, say, with a vector <span class="math inline">\(\langle 𝒖 , ∙ \rangle\)</span> then we get a map <span class="math inline">\(V→ 𝐑\)</span>, that is, we get an element of <span class="math inline">\(V*\)</span>, or in yet other words, we get a 1-form. You should confirm that <span class="math display">\[df = \langle ∇ f, \cdot \rangle\]</span> In fact, if you think about how we make a gradient, we take the components of <span class="math inline">\((df)_i = ∂_i f\)</span> and arrange them as a column vector: <span class="math display">\[( (df)_x , (df)_y, (df)_z) ) = (∂f/∂x, ∂f/∂y, ∂f/∂z) ⟶
+\ma{∂f/∂x\\ ∂f/∂y\\ ∂f/∂z}\]</span> But that means that we are making a vector out of the components of the 1-form!<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
+<div class="exercise">
+<p><strong>Exercise 10</strong>.</p>
+<ol type="1">
+<li><p><em>Write out the components of the vector <span class="math inline">\(𝑩 = ∇ × 𝑨\)</span>.</em></p></li>
+<li><p><em>Suppose <span class="math inline">\(B\)</span> is a 2-form field that is closed <span class="math inline">\(dB=0\)</span>. Then “locally” it is exact, so there is a 1-form <span class="math inline">\(A\)</span> such that <span class="math inline">\(B = dA\)</span>. Write out the components of this expression.</em></p></li>
+<li><p><em>Define the Levi-Civita symbol <span class="math inline">\(ε^{ijk}\)</span> for <span class="math inline">\(i,j,k=1,2,3\)</span> as follows <span class="math display">\[ε^{ijk} = \begin{cases}
+        +1 &amp; \textrm{ if } i=1, j=2,k=3\textrm{ or any even permutation }\\
+        -1 &amp; \textrm{ if } i=2, j=1,k=3\textrm{ or any even permutation }\\
+        0 &amp;\textrm{ otherwise }
+    \end{cases}\]</span> Use this symbol and to relate the components of the 2-form <span class="math inline">\(B\)</span> to those of the vector <span class="math inline">\(𝑩\)</span>.</em></p></li>
+<li><p><em>Use the Levi-Civita symbol to relate <span class="math inline">\(dB=0\)</span> to the no-monopole equation.</em></p></li>
+</ol>
+</div>
+<p>We are starting to see the superiority of this this approach to the vector approach, but there is much more...</p>
+</section>
+</section>
+<section id="special-relativity" class="level2">
+<h2 class="anchored" data-anchor-id="special-relativity">Special relativity</h2>
+<p>In special relativity, we treat the time coordinate <span class="math inline">\(t\)</span> on an equal footing with the spacial coordinates <span class="math inline">\(x^i\)</span>. To do this, we define <span class="math inline">\(x⁰ = ct\)</span> so that it has the correct units. Then we extend the index range <span class="math inline">\(x^i → x^m\)</span> with <span class="math inline">\(m=0,1,2,3\)</span>. Note that <span class="math inline">\(∂_i → ∂_m\)</span> with <span class="math inline">\(∂₀ = \frac1c \frac ∂{∂t}\)</span>. The (relativistic) wave operator <span class="math inline">\(☐\)</span> is defined by <span class="math display">\[☐ = -\frac1 {c²} \frac {∂²}{∂t²} + ∇²
+= -\frac1 {c²} \frac {∂²}{∂t²} + \frac {∂²}{∂x²}+\frac {∂²}{∂y²}+\frac {∂²}{∂z²}\]</span> It is called the d’Alembertian. Notice that it looks like <span class="math inline">\((∂_m)²\)</span> except that the sign of the temporal component is reversed! For this reason, we define <span class="math inline">\(∂^m\)</span> to have the components <span class="math inline">\(∂⁰ = - \frac1c \frac ∂{∂t}\)</span> and <span class="math inline">\(∂^i = δ^{ij} ∂_j\)</span> (as before).</p>
+<p>The 4D inner product defined is defined to have components <span class="math display">\[η_{mn} = \begin{cases}
+    -1 &amp; \textrm{ if } m=0=n \\
+    +1 &amp; \textrm{ if } m=n ≠ 0\\
+    0 &amp;\textrm{ otherwise }
+\end{cases}\]</span> It is called the “Minkowski metric”. The “inverse” metric <span class="math inline">\(η^{mn}\)</span> is defined to have the same components numerically. This is so that it is, in fact, an inverse: <span class="math inline">\(η^{mp}η_{pn} = δ^m_n\)</span> for any <span class="math inline">\(m\)</span> and <span class="math inline">\(n\)</span> (including 0).</p>
+<div class="exercise">
+<p><strong>Exercise 11</strong>.</p>
+<ol type="1">
+<li><p><em>Show that <span class="math inline">\(☐ = η^{mn} ∂_m ∂_n\)</span>.</em></p></li>
+<li><p><em>Extend the Levi-Civita symbol in the natural way (</em>i.e.* so that in particular <span class="math inline">\(ε^{0ijk} =ε^{ijk}\)</span> from before), and use it to interpret the no-monopole symbol as the time component (<em>i.e.</em> 0-component) of a 4D equation.*</p></li>
+<li><p><em>Calculate the spacial components of the equation you just constructed. Which equation is this? What is <span class="math inline">\(B_{0i}\)</span>?</em></p></li>
+<li><p><em>Define the Levi-Civita symbol with “the indices down” by “lowering the indices” on the original, that is, <span class="math inline">\(ε_{mnpq} = η_{mm'}η_{nn'} η_{pp'}η_{qq'}ε^{m'n'p'q'}\)</span>. What are the values of its components?<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></em></p></li>
+</ol>
+</div>
+<p>If all has gone well, you have discovered that the electric and magnetic fields are the space-time and the space-space components of a four-dimensional 2-form. This 2-form is called the electromagnetic field tensor, Maxwell tensor, or Faraday tensor. It is usually denoted <span class="math inline">\(F\)</span>. In local coordinates <span class="math inline">\(F=F_{mn}(x) dx^m \wedge dx^n\)</span>.</p>
+<div class="exercise">
+<p><strong>Exercise 12</strong>. <em>Confirm by explicit calculation that two of the Maxwell equations are equivalent to the statement that the Maxwell tensor is a closed 2-form <span class="math inline">\(dF=0\)</span>.</em></p>
+</div>
+<div class="exercise">
+<p><strong>Exercise 13</strong>. <em>Us the inverse metric to raise the indices on the Maxwell tensor <span class="math inline">\(F^{mn} = η^{mm'}η^{nn'} F_{m'n'}\)</span>, and use this to figure out how to write the other two Maxwell equations.</em></p>
+</div>
+<p>Note that you need the metric to write the second half of the Maxwell equations, but not to write the first half.</p>
+<p>Finally, we introduce the “Hodge” operator with components defined by <span class="math display">\[(\ast ω)_{m₁ ... m_{n-p}} = \frac1{p!} η_{m₁ r₁} ... η_{m_{n-p} r_{n-p}} ε^{r₁ ... r_{n-p}s₁ .. s_p} ω_{s₁ .. s_p}\]</span> Note that you need a metric to define this operation.</p>
+<p>Performing this operation twice brings us from <span class="math inline">\(p\)</span>-forms back to <span class="math inline">\(p\)</span>-forms. In even dimensions, it acts on <span class="math inline">\(Λ^{\frac n2}\)</span> as an involution.</p>
+<div class="exercise">
+<p><strong>Exercise 14</strong>. <em>Show that <span class="math inline">\(\ast² =± 1\)</span> on <span class="math inline">\(Λ^p\)</span> for <span class="math inline">\(p\)</span> odd/even, respectively.</em></p>
+</div>
+<div class="exercise">
+<p><strong>Exercise 15</strong>. <em>Show that the Maxwell equations are <span class="math display">\[dF = 0
+\quad \quad \textrm{ and } \quad \quad
+d\ast F = 4π σ\]</span> for a </em>closed* (why?) current-density 3-form <span class="math inline">\(σ\)</span>.*</p>
+</div>
+<p>The first equation is sometimes called the Bianchi identity. The second equation is the equation of motion. (Below we will see why.)</p>
+</section>
+<section id="integration" class="level2">
+<h2 class="anchored" data-anchor-id="integration">Integration</h2>
+<p>Differential forms can be integrated. To integrate a <span class="math inline">\(1-form\)</span>, we need a 1-dimensional subspace of <span class="math inline">\(𝐑^n\)</span>, that is, a curve. To integrate a <span class="math inline">\(2-form\)</span>, we need a surface, and we integrate a 3-form over a volume, <em>et cetera</em>. The curve, surface, and volume on which we integrate are called <span class="math inline">\(p\)</span>-chains for <span class="math inline">\(p=1,2,3\)</span>. (A 0-chain is an ordered collection of points.) The space of <span class="math inline">\(p\)</span>-chains is denoted by <span class="math inline">\(Λ_p\)</span>. Integration is a pairing of <span class="math inline">\(Λ_p\)</span> with <span class="math inline">\(Λ^p\)</span>: We will not go into the details of chains, but you can imagine that a <span class="math inline">\(p\)</span>-chain can have a boundary that is a <span class="math inline">\((p-1)\)</span>-chain. We write the boundary of a chain <span class="math inline">\(γ\)</span> as <span class="math inline">\(∂γ\)</span>.</p>
+<div class="exercise">
+<p><strong>Exercise 16</strong>. <em>Convince yourself that the boundary of a boundary is empty.</em></p>
+</div>
+<p>In fact, it turns out that the space of chains can also be reformulated to have the structure of a differential algebra where the differential is the boundary operator. For this to be valid, we need the condition that <span class="math inline">\(∂² = 0\)</span>, but that is precisely the statement that the boundary of a boundary is empty. Note that <span class="math inline">\(∂ : Λ_p → Λ_{p-1}\)</span> so the differential moves us down in the degree instead of up.</p>
+<p>Now let <span class="math inline">\(ω ∈ Λ^p (U)\)</span>, let <span class="math inline">\(γ∈ Λ_{p+1}(U)\)</span>. Then <span class="math display">\[∫_γ dω = ∫_{∂γ} ω\]</span> This is called Stokes’ theorem for reasons that will be clear after the following</p>
+<div class="exercise">
+<p><strong>Exercise 17</strong>.</p>
+<ol type="1">
+<li><p><em>Set <span class="math inline">\(p=0\)</span> and show that Stokes’ theorem is just the fundamental theorem of line integrals.</em></p></li>
+<li><p><em>Set <span class="math inline">\(p=1\)</span> and show that Stokes’ theorem reduces to Green’s theorem.</em></p></li>
+<li><p><em>Set <span class="math inline">\(p=2\)</span> and show that Stokes’ theorem is reduces to what is usually called Stokes’ theorem in the traditional form of multivariable calculus.</em></p></li>
+</ol>
+</div>
+<p>We can always integrate over all of <span class="math inline">\(𝐑^n\)</span> provided that all forms die off fast enough at infinity. This is a physical condition that we often assume because our fields represent physical energy and matter and we want the total amount to not be infinite.</p>
+<div class="exercise">
+<p><strong>Exercise 18</strong>. <em>Let <span class="math inline">\(ω∈ Λ^p(U)\)</span> satisfying physical fall-off conditions. Show that <span class="math display">\[∫ ω  \wedge \ast ω\]</span> makes sense as an integral over all <span class="math inline">\(𝐑^n\)</span> and write it in multi-variable calculus form (that is, in cartesian coordinates for <span class="math inline">\(𝐑^n\)</span>). It may be helpful to know that <span class="math display">\[dx^{m₁}  \wedge \dots  \wedge dx^{m_n} = ε^{m₁ ... m_n} d^nx\]</span></em></p>
+</div>
+<p>Finally, we apply all this to the Maxwell theory.</p>
+<div class="exercise">
+<p><strong>Exercise 19</strong>. <em>Solve the first Maxwell equation as <span class="math inline">\(F=dA\)</span> for a four-dimensional 1-form <span class="math inline">\(A\)</span>. Define the Maxwell action by <span class="math display">\[S = -\frac1{16π} ∫ F \wedge \ast F +  ∫ A \wedge σ\]</span> where the integral is over all of spacetime. Vary this action with respect to <span class="math inline">\(A\)</span>, and use the stationary action principle to derive the equation of motion. Change the gauge <span class="math inline">\(A→ A' = A+d λ\)</span>, and show that the Maxwell action is invariant up to a boundary term “at infinity”.</em></p>
+</div>
+<p>Note that you need the closure of <span class="math inline">\(σ\)</span> for this. Usually, we also require that all the fields die off at infinity because otherwise we would have problems with finiteness of field energy in the universe.</p>
+<div class="exercise">
+<p><strong>Exercise 20</strong>. <em>Construct a vector current density <span class="math inline">\(j =j^m(x) ∂_m\)</span> from the current 3-form <span class="math inline">\(σ\)</span>. What is the equation for the <span class="math inline">\(j\)</span> analogous to the closure of <span class="math inline">\(σ\)</span>?</em></p>
+</div>
+<p>Such current is called conserved becuase</p>
+<div class="exercise">
+<p><strong>Exercise 21</strong>. <em>Define the charge <span class="math inline">\(q = ∫ j⁰ d³x\)</span> where we integrate over all 3-space. Although this charge can depend in principle on time, show that, in fact, the charge is conserved (in time): <span class="math inline">\(\frac {dq}{dt} = 0\)</span>. Now redo this exercise directly in terms of the 3-form. How are you defining charge?</em></p>
+</div>
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>This means that <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are boundary points of the curve with the curve leaving from <span class="math inline">\(a\)</span> and arriving at <span class="math inline">\(b\)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><em>You will probably not know what to make of this question and how to even start, but that’s ok. If you think hard, then when we talk about it, it will make more sense and it will be a good investment.</em><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>The symbol on the RHS is called the “Kronecker delta” symbol/tensor.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>It is important to note that we are keeping the order in each type of factor, but we are listing all the duals (in their original order) “at the back”.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>For example, if <span class="math inline">\(U≅ S¹\)</span> is a circle and <span class="math inline">\(ω∈ Λ¹(S¹)\)</span> is a 1-form, then it is automatically closed because <span class="math inline">\(dω\)</span> has degree 2, but that must vanish in a space of dimension 1. (See your previous exercise on the dimension.) Now let <span class="math inline">\(θ: S¹ → 𝐑\)</span> be a coordinate on the circle. This coordinate cannot be defined everywhere because, for example, the point usually coordinatized as <span class="math inline">\(0\)</span> is the same as the one coordinatized by <span class="math inline">\(2π\)</span> and <span class="math inline">\(0 ≠ 2π\)</span>, even though the point is the same. What we need in such a case is to cover the circle with two different coordinates: If we remove a point of the circle and call the resulting set <span class="math inline">\(U₁\)</span> and then we go back to the original circle and remove the antipodal point to define <span class="math inline">\(U₂\)</span>, then <span class="math inline">\(θ₁ : U₁ → (0,2π)\)</span> and <span class="math inline">\(θ₂ : U₂ → (-π , π)\)</span> are good coordinates. Together, these coordinates account for every point on <span class="math inline">\(S¹\)</span> which we can think of as the union <span class="math inline">\(U₁ ⋃ U₂\)</span>, but alone, they cannot do the job. Now it is true that on <span class="math inline">\(U₁\)</span>, <span class="math inline">\(ω = d θ₁\)</span> and on <span class="math inline">\(U₂\)</span>, <span class="math inline">\(ω = d θ₂\)</span>. And it is also true that these expressions agree on the “overlap” <span class="math inline">\(U₁ ⋂ U₂ = (-π, 0) ⋃ (π, 2 π)\)</span> because there <span class="math inline">\(θ₂ = θ₁ - π\)</span> and thus, <span class="math inline">\(d θ₂  = d θ₁\)</span> give consistent expressions for <span class="math inline">\(ω\)</span> on <span class="math inline">\(U₁ ⋂ U₂\)</span>. But there is no function <span class="math inline">\(f:S¹ → 𝐑\)</span> defined uniquely on every point of the circle for which <span class="math inline">\(df\)</span> is the same form as <span class="math inline">\(ω\)</span>.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>In Euclidean space the difference is minor, because the components of the inner product in a cartesian basis are either <span class="math inline">\(0\)</span> or <span class="math inline">\(1\)</span> and this allows us to identify <span class="math inline">\(∂¹f = ∂₁f\)</span>, <em>et cetera</em>. However in special relativity, we add time as a coordinate and the inner product for this part is <span class="math inline">\(-1\)</span> instead of <span class="math inline">\(1\)</span>. In that case it really does matter whether we mean <span class="math inline">\(x^m\)</span> or <span class="math inline">\(x_m\)</span> for <span class="math inline">\(m=0,1,2,3\)</span>. In geometry or in general relativity the inner product is a complicated collection of functions. Sometimes, there is not even an inner product, so you cannot define the gradient at all!<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p><em>Note that you are actually calculating the determinant of the Minkowski metric thought of as a matrix.</em><a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

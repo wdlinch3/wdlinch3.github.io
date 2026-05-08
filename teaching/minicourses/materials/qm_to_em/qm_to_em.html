@@ -1,1183 +1,498 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
-<head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>qm_to_em</title>
-  <style>
-    html {
-      color: #1a1a1a;
-      background-color: #fdfdfd;
-    }
-    body {
-      margin: 0 auto;
-      max-width: 36em;
-      padding-left: 50px;
-      padding-right: 50px;
-      padding-top: 50px;
-      padding-bottom: 50px;
-      hyphens: auto;
-      overflow-wrap: break-word;
-      text-rendering: optimizeLegibility;
-      font-kerning: normal;
-    }
-    @media (max-width: 600px) {
-      body {
-        font-size: 0.9em;
-        padding: 12px;
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>From Quantum Mechanics to Electromagnetism</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="qm_to_em_files/libs/clipboard/clipboard.min.js"></script>
+<script src="qm_to_em_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="qm_to_em_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="qm_to_em_files/libs/quarto-html/popper.min.js"></script>
+<script src="qm_to_em_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="qm_to_em_files/libs/quarto-html/anchor.min.js"></script>
+<link href="qm_to_em_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="qm_to_em_files/libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="qm_to_em_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="qm_to_em_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="qm_to_em_files/libs/bootstrap/bootstrap-138a6193a3bd40baf1e627da441a4734.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+</head><body class="quarto-light">\DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}
+\DeclareOldFontCommand{\rm}{\normalfont\rmfamily}{\mathrm}
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
       }
-      h1 {
-        font-size: 1.8em;
-      }
     }
-    @media print {
-      html {
-        background-color: white;
-      }
-      body {
-        background-color: transparent;
-        color: black;
-        font-size: 12pt;
-      }
-      p, h2, h3 {
-        orphans: 3;
-        widows: 3;
-      }
-      h2, h3, h4 {
-        page-break-after: avoid;
-      }
-    }
-    p {
-      margin: 1em 0;
-    }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
-    }
-    img {
-      max-width: 100%;
-    }
-    svg {
-      height: auto;
-      max-width: 100%;
-    }
-    h1, h2, h3, h4, h5, h6 {
-      margin-top: 1.4em;
-    }
-    h5, h6 {
-      font-size: 1em;
-      font-style: italic;
-    }
-    h6 {
-      font-weight: normal;
-    }
-    ol, ul {
-      padding-left: 1.7em;
-      margin-top: 1em;
-    }
-    li > ol, li > ul {
-      margin-top: 0;
-    }
-    blockquote {
-      margin: 1em 0 1em 1.7em;
-      padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
-      color: #606060;
-    }
-    code {
-      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
-      font-size: 85%;
-      margin: 0;
-      hyphens: manual;
-    }
-    pre {
-      margin: 1em 0;
-      overflow: auto;
-    }
-    pre code {
-      padding: 0;
-      overflow: visible;
-      overflow-wrap: normal;
-    }
-    .sourceCode {
-     background-color: transparent;
-     overflow: visible;
-    }
-    hr {
-      border: none;
-      border-top: 1px solid #1a1a1a;
-      height: 1px;
-      margin: 1em 0;
-    }
-    table {
-      margin: 1em 0;
-      border-collapse: collapse;
-      width: 100%;
-      overflow-x: auto;
-      display: block;
-      font-variant-numeric: lining-nums tabular-nums;
-    }
-    table caption {
-      margin-bottom: 0.75em;
-    }
-    tbody {
-      margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
-    }
-    th {
-      border-top: 1px solid #1a1a1a;
-      padding: 0.25em 0.5em 0.25em 0.5em;
-    }
-    td {
-      padding: 0.125em 0.5em 0.25em 0.5em;
-    }
-    header {
-      margin-bottom: 4em;
-      text-align: center;
-    }
-    #TOC li {
-      list-style: none;
-    }
-    #TOC ul {
-      padding-left: 1.3em;
-    }
-    #TOC > ul {
-      padding-left: 0;
-    }
-    #TOC a:not(:hover) {
-      text-decoration: none;
-    }
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    /* The extra [class] is a hack that increases specificity enough to
-       override a similar rule in reveal.js */
-    ul.task-list[class]{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      font-size: inherit;
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1.6em;
-      vertical-align: middle;
-    }
-  </style>
-  <script
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
-  type="text/javascript"></script>
-</head>
-<body>
-<div id="ac052d4e-3d10-4f18-87f8-764932af56a4" class="cell markdown">
-<h1 id="from-quantum-to-em">From Quantum to E&amp;M</h1>
-<h2 id="irrelevance-of-overall-phase">Irrelevance of overall phase</h2>
-<p>In quantum mechanics, we are repeatedly told that the overall phase
-of the wave function is meaningless. This claim is supported with the
-argument that in the physical interpretation of the state in that
-formalism is in terms of its Hermitian square and not the state
-itself.</p>
-<p>For example, in the position-space wave function representation the
-state is described by a complex function <span
-class="math inline">\(\Psi(t,x,y,z)\)</span> defines a probability
-density through the equation <span class="math display">\[
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+
+
+
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="qm_to_em.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">From Quantum Mechanics to Electromagnetism</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="irrelevance-of-overall-phase" class="level2">
+<h2 class="anchored" data-anchor-id="irrelevance-of-overall-phase">Irrelevance of overall phase</h2>
+<p>In quantum mechanics, we are repeatedly told that the overall phase of the wave function is meaningless. This claim is supported with the argument that in the physical interpretation of the state in that formalism is in terms of its Hermitian square and not the state itself.</p>
+<p>For example, in the position-space wave function representation the state is described by a complex function <span class="math inline">\(\Psi(t,x,y,z)\)</span> defines a probability density through the equation <span class="math display">\[
 dP(t,x,y,z) = \left|\Psi(t,x,y,z)\right|^2dtdxdydz
-\]</span> This probability density is unchanged under a phase rotation
-in which <span class="math display">\[
+\]</span> This probability density is unchanged under a phase rotation in which <span class="math display">\[
 \Psi \to e^{i\alpha} \Psi
-\]</span> for any real <span class="math inline">\(\alpha \in {\bf
-R}\)</span>. Thus, the desciptions in terms of the wave function <span
-class="math inline">\(\Psi\)</span> and <span
-class="math inline">\(e^{i\alpha} \Psi\)</span> are physically
-indistinguishable, and so they should be equivalent.</p>
-<p>This is all fine, but if we accept it, shouldn't we also take this to
-be equivalent to <span class="math inline">\(\Psi^\prime = e^{i\alpha}
-\Psi\)</span> where <span class="math inline">\(\alpha =\alpha(t,x, y,
-z)\)</span> is an entire function? After all, the probability density
-resulting from <span class="math inline">\(\Psi^\prime\)</span> is
-identical to that of <span class="math inline">\(\Psi\)</span>. The
-catch is that this more general transformation, where the overall phase
-is different everywhere in space and time, is not a symmetry of the
-<em>Schrödinger equation</em> <span class="math display">\[
+\]</span> for any real <span class="math inline">\(\alpha \in {\bf R}\)</span>. Thus, the desciptions in terms of the wave function <span class="math inline">\(\Psi\)</span> and <span class="math inline">\(e^{i\alpha} \Psi\)</span> are physically indistinguishable, and so they should be equivalent.</p>
+<p>This is all fine, but if we accept it, shouldn’t we also take this to be equivalent to <span class="math inline">\(\Psi^\prime = e^{i\alpha} \Psi\)</span> where <span class="math inline">\(\alpha =\alpha(t,x, y, z)\)</span> is an entire function? After all, the probability density resulting from <span class="math inline">\(\Psi^\prime\)</span> is identical to that of <span class="math inline">\(\Psi\)</span>. The catch is that this more general transformation, where the overall phase is different everywhere in space and time, is not a symmetry of the <em>Schrödinger equation</em> <span class="math display">\[
 i\hbar \frac{\partial \Psi}{\partial t} = \hat H \Psi
 \]</span> Let us describe this is some detail.</p>
-<p>If we rephase the wave funtion <span class="math inline">\(\Psi
-\to  \Psi^\prime =\alpha \Psi\)</span> with a constant <span
-class="math inline">\(\alpha\)</span>, then the left-hand side changes
-to <span class="math display">\[
+<p>If we rephase the wave funtion <span class="math inline">\(\Psi \to  \Psi^\prime =\alpha \Psi\)</span> with a constant <span class="math inline">\(\alpha\)</span>, then the left-hand side changes to <span class="math display">\[
 e^{i\alpha}\left( i\hbar \frac{\partial \Psi}{\partial t}\right)
-\]</span> This shows that the left-hand side transforms just like <span
-class="math inline">\(\Psi\)</span> does when we replace <span
-class="math inline">\(\Psi \to \Psi^\prime\)</span>. When an object
-transforms just like <span class="math inline">\(\Psi\)</span> does, we
-say it "varies" in the "same" way, or "co-varies". Such terms are called
-"covariant" because they change (vary) in the same (co-) way.</p>
-<p>Similarly, the right-hand side changes to <span
-class="math display">\[
+\]</span> This shows that the left-hand side transforms just like <span class="math inline">\(\Psi\)</span> does when we replace <span class="math inline">\(\Psi \to \Psi^\prime\)</span>. When an object transforms just like <span class="math inline">\(\Psi\)</span> does, we say it “varies” in the “same” way, or “co-varies”. Such terms are called “covariant” because they change (vary) in the same (co-) way.</p>
+<p>Similarly, the right-hand side changes to <span class="math display">\[
 e^{i\alpha} \left( \hat H \Psi \right)
-\]</span> so the two sides change in the same way, and we can divide out
-by the invertable phase to recover the Schrödinger equation. This is why
-covariance is useful: The equation is not <em>invariant</em>
-(<em>i.e.</em> unchanged) because of the phase, but all terms vary the
-same way, and so in the end the whole equation is covariant and this
-gives a different, but equivalent equation.</p>
-<p>However, if the phase is time-dependent, <span
-class="math display">\[
-\frac{\partial \Psi}{\partial t}\to \frac{\partial \Psi^\prime}{\partial
-t} = e^{i\alpha} \frac{\partial \Psi}{\partial t} + i e^{i\alpha}
-\frac{\partial \alpha}{\partial t}\Psi
-\]</span> and the new term messes up our previous conclusion. It is not
-covariant. Similarly, if the phase is space-dependent, then <span
-class="math display">\[
-\hat{\bf p} \Psi\to \hat{\bf p} \Psi^\prime = e^{i\alpha} \hat{\bf p}
-\Psi -i \hbar e^{i\alpha}\nabla\alpha \Psi
-\]</span> is also not covariant and the transformed Schödinger equation
-is not equivant to the original. If we could somehow make some changes
-to the equation that resore covariance, then we would be able to claim
-that the physics is unchanged under a local rephasing. This is what we
-will try to do next.</p>
-</div>
-<div id="3f9640a5-4430-4102-9bf8-75445dfcf89f" class="cell markdown">
-<h3 id="local-rephasing">Local rephasing</h3>
-<p>For simplicity, we focus on time-independent rephasings, but we will
-allow the phase to be a function of position coordinates. When this
-condition holds <span class="math inline">\(\partial \Psi/\partial
-t\)</span> will be covariant, but <span class="math display">\[
+\]</span> so the two sides change in the same way, and we can divide out by the invertable phase to recover the Schrödinger equation. This is why covariance is useful: The equation is not <em>invariant</em> (<em>i.e.</em> unchanged) because of the phase, but all terms vary the same way, and so in the end the whole equation is covariant and this gives a different, but equivalent equation.</p>
+<p>However, if the phase is time-dependent, <span class="math display">\[
+\frac{\partial \Psi}{\partial t}\to \frac{\partial \Psi^\prime}{\partial t} = e^{i\alpha} \frac{\partial \Psi}{\partial t} + i e^{i\alpha} \frac{\partial \alpha}{\partial t}\Psi
+\]</span> and the new term messes up our previous conclusion. It is not covariant. Similarly, if the phase is space-dependent, then <span class="math display">\[
+\hat{\bf p} \Psi\to \hat{\bf p} \Psi^\prime = e^{i\alpha} \hat{\bf p} \Psi -i \hbar e^{i\alpha}\nabla\alpha \Psi
+\]</span> is also not covariant and the transformed Schödinger equation is not equivant to the original. If we could somehow make some changes to the equation that resore covariance, then we would be able to claim that the physics is unchanged under a local rephasing. This is what we will try to do next.</p>
+<section id="local-rephasing" class="level3">
+<h3 class="anchored" data-anchor-id="local-rephasing">Local rephasing</h3>
+<p>For simplicity, we focus on time-independent rephasings, but we will allow the phase to be a function of position coordinates. When this condition holds <span class="math inline">\(\partial \Psi/\partial t\)</span> will be covariant, but <span class="math display">\[
 \hat{\bf p} \Psi({\bf x}, t) = -i\hbar \nabla \Psi({\bf x}, t)
-\]</span> does not transform nicely under local rephasing <span
-class="math inline">\(\Psi \to  \Psi^\prime\)</span>, because <span
-class="math inline">\(\nabla \alpha\neq 0\)</span> is messing up
-covariance.</p>
-<p>Can we fix it somehow? The problem is that <span
-class="math inline">\(\hat {\bf p}\)</span> is not misbehaving under the
-transformation, only <span class="math inline">\(\Psi\)</span> is and
-<span class="math inline">\(\hat {\bf p}\)</span> gets hung up on the
-bad phase. But what if we make a new <span class="math inline">\(\hat
-{\bf p}\)</span> we'll call the delinquent momentum <span
-class="math inline">\(\hat {\pi}\)</span> that transforms like, say
-<span class="math display">\[
+\]</span> does not transform nicely under local rephasing <span class="math inline">\(\Psi \to  \Psi^\prime\)</span>, because <span class="math inline">\(\nabla \alpha\neq 0\)</span> is messing up covariance.</p>
+<p>Can we fix it somehow? The problem is that <span class="math inline">\(\hat {\bf p}\)</span> is not misbehaving under the transformation, only <span class="math inline">\(\Psi\)</span> is and <span class="math inline">\(\hat {\bf p}\)</span> gets hung up on the bad phase. But what if we make a new <span class="math inline">\(\hat {\bf p}\)</span> we’ll call the delinquent momentum <span class="math inline">\(\hat {\pi}\)</span> that transforms like, say <span class="math display">\[
 \hat {\pi}^\prime = \hat {\pi} + i \hbar\nabla\alpha
-\]</span> For example, we could take <span class="math inline">\({\pi}
-={\bf p} - i\hbar {\bf A}({\bf x})\)</span> for some mischievous
-"function" that transforms like <span class="math display">\[
+\]</span> For example, we could take <span class="math inline">\({\pi} ={\bf p} - i\hbar {\bf A}({\bf x})\)</span> for some mischievous “function” that transforms like <span class="math display">\[
 {\bf A}\to {\bf A}^\prime = {\bf A} - \nabla \alpha
 \tag{$*$}
 \]</span></p>
-<p>I'll admit that this seems very <em>ad hoc</em>, but that is what
-physicists do: make it work by hook or crook and try to justify it
-later. If it doesn't work, you look like an idiot, apologize, and hope
-people will forget. But if it work, you'll look like a genius!</p>
-<p>Anyway, let's try this stupid-looking idea. First, we check
-covariance: \begin{align} \hat{\pi} \Psi =\left(\hat{\bf p} - i\hbar
-{\bf A}\right) \Psi &amp;\to \left(\hat{\bf p} - i\hbar {\bf
-A}^\prime\right) \Psi^\prime \cr &amp;= e^{i\alpha}\left(\hat{\bf p} -
-i\hbar {\bf A}+i\hbar \nabla \alpha\right) \Psi -i \hbar
-e^{i\alpha}\nabla\alpha \Psi \cr &amp;= e^{i\alpha}\left(\hat{\bf p} -
-i\hbar {\bf A}\right) \Psi = e^{i\alpha}\hat{\pi}\Psi \end{align} So
-<span class="math inline">\(\hat{\pi} \Psi \to
-e^{i\alpha}(\hat{\pi}\Psi)\)</span> just like <span
-class="math inline">\(\Psi\)</span>! Covariance!</p>
-<p>Buoyed by this small success, we replace everywhere <span
-class="math inline">\({\bf p}\to {\pi} = {\bf p} - i \hbar {\bf
-A}\)</span>, and check the transformation properties. To do this, notice
-the following trick: since <span class="math inline">\((\hat{\pi}
-\Psi)^\prime = e^{i\alpha} (\hat{\pi} \Psi)\)</span> and since <span
-class="math inline">\(\Psi^\prime =e^{i\alpha} \Psi\)</span>, then that
-must mean that <span class="math display">\[
+<p>I’ll admit that this seems very <em>ad hoc</em>, but that is what physicists do: make it work by hook or crook and try to justify it later. If it doesn’t work, you look like an idiot, apologize, and hope people will forget. But if it work, you’ll look like a genius!</p>
+<p>Anyway, let’s try this stupid-looking idea. First, we check covariance: <span class="math display">\[\begin{align}
+\hat{\pi} \Psi =\left(\hat{\bf p} - i\hbar {\bf A}\right) \Psi
+    &amp;\to \left(\hat{\bf p} - i\hbar {\bf A}^\prime\right) \Psi^\prime \cr
+    &amp;= e^{i\alpha}\left(\hat{\bf p} - i\hbar {\bf A}+i\hbar \nabla \alpha\right) \Psi -i \hbar e^{i\alpha}\nabla\alpha \Psi \cr
+    &amp;= e^{i\alpha}\left(\hat{\bf p} - i\hbar {\bf A}\right) \Psi
+    = e^{i\alpha}\hat{\pi}\Psi
+\end{align}\]</span> So <span class="math inline">\(\hat{\pi} \Psi \to e^{i\alpha}(\hat{\pi}\Psi)\)</span> just like <span class="math inline">\(\Psi\)</span>! Covariance!</p>
+<p>Buoyed by this small success, we replace everywhere <span class="math inline">\({\bf p}\to {\pi} = {\bf p} - i \hbar {\bf A}\)</span>, and check the transformation properties. To do this, notice the following trick: since <span class="math inline">\((\hat{\pi} \Psi)^\prime = e^{i\alpha} (\hat{\pi} \Psi)\)</span> and since <span class="math inline">\(\Psi^\prime =e^{i\alpha} \Psi\)</span>, then that must mean that <span class="math display">\[
 \hat{\pi}^\prime = e^{i\alpha} \hat{\pi} e^{-i \alpha}
-\]</span> This is great, because it make covariance of iterated momenta
-trivial to check: <span class="math display">\[
-(\hat{\pi} \hat{\pi} \Psi)^\prime = \hat{\pi}^\prime \hat{\pi}^\prime
-\Psi^\prime
-= e^{i\alpha} \hat{\pi} e^{-i \alpha} e^{i\alpha} \hat{ \pi} e^{-i
-\alpha} e^{i\alpha} \Psi
+\]</span> This is great, because it make covariance of iterated momenta trivial to check: <span class="math display">\[
+(\hat{\pi} \hat{\pi} \Psi)^\prime = \hat{\pi}^\prime \hat{\pi}^\prime \Psi^\prime
+= e^{i\alpha} \hat{\pi} e^{-i \alpha} e^{i\alpha} \hat{ \pi} e^{-i \alpha} e^{i\alpha} \Psi
 = e^{i\alpha} \hat{\pi}\Psi
 \]</span></p>
-<p>With this result, it is clear that the covariantized Hamiltonian
-<span class="math display">\[
+<p>With this result, it is clear that the covariantized Hamiltonian <span class="math display">\[
 \hat H = \frac{{\pi}^2}{2m} + \hat V
 \]</span> is covariant: <span class="math display">\[
 \hat H = e^{i\alpha}\frac{{\pi}^2}{2m}e^{-i \alpha} + \hat V
 = e^{i\alpha}\left(\frac{{\pi}^2}{2m} + \hat V\right) e^{-i \alpha}
 = e^{i\alpha}\hat H e^{-i \alpha}
-\]</span> Thus, the Schrödinger equation is covariant now and all it
-cost was the introduction of the vector field <span
-class="math inline">\({\bf  A}\)</span> with the weird non-covariant
-transformation law (<span class="math inline">\(*\)</span>).</p>
-</div>
-<div id="86f952ed-f7b5-4309-92f2-fe5c3f59ffbe" class="cell markdown">
-<h3 id="the-gauge-invariant-wave-function">The gauge-invariant wave
-function</h3>
-<p>To understand better what we actually did, let's go back to the
-beginning and look at the wave function again. We have this <span
-class="math inline">\(\Psi\)</span> with an ambiguous phase <span
-class="math inline">\(\Psi\sim \Psi^\prime\)</span> for any <span
-class="math inline">\(\Psi^\prime = e^{i\alpha} \Psi\)</span>. Can't we
-just get rid the this phase ambiguity? Why yes, now we can! Consider the
-line integral <span class="math display">\[
+\]</span> Thus, the Schrödinger equation is covariant now and all it cost was the introduction of the vector field <span class="math inline">\({\bf  A}\)</span> with the weird non-covariant transformation law (<span class="math inline">\(*\)</span>).</p>
+</section>
+<section id="the-gauge-invariant-wave-function" class="level3">
+<h3 class="anchored" data-anchor-id="the-gauge-invariant-wave-function">The gauge-invariant wave function</h3>
+<p>To understand better what we actually did, let’s go back to the beginning and look at the wave function again. We have this <span class="math inline">\(\Psi\)</span> with an ambiguous phase <span class="math inline">\(\Psi\sim \Psi^\prime\)</span> for any <span class="math inline">\(\Psi^\prime = e^{i\alpha} \Psi\)</span>. Can’t we just get rid the this phase ambiguity? Why yes, now we can! Consider the line integral <span class="math display">\[
 \varphi(\gamma) = \int_\gamma {\bf A}\cdot d{\bf x}
-\]</span> over some path <span class="math inline">\(\gamma\)</span>
-starting a point <span class="math inline">\(p\)</span> and ending at a
-point <span class="math inline">\(q\)</span>. Then under a phase change
-<span class="math inline">\({\bf A}\to {\bf A}^\prime\)</span> according
-to the rule (<span class="math inline">\(*\)</span>), \begin{align}
-\varphi'(\gamma) &amp;= \int_\gamma {\bf A}'\cdot d{\bf x} = \int_\gamma
-{\bf A}\cdot d{\bf x} + \int_\gamma \nabla \alpha \cdot d{\bf x} \cr
-&amp;=\varphi(\gamma) + \alpha(q)-\alpha(p) \end{align} by the
-fundamental theorem of line integrals. Now suppose for simplicity that
-whatever function <span class="math inline">\(\alpha\)</span> is, <span
-class="math inline">\(\alpha(q)\to 0\)</span> if <span
-class="math inline">\(q\)</span> is "far enough away". (We don't need to
-do this, but assuming this makes the analysis less messy.) Then instead
-of considering the wave function at <span
-class="math inline">\(p\)</span>, let's consider the same wave function
-dressed up with a the line integral: We define <span
-class="math display">\[
+\]</span> over some path <span class="math inline">\(\gamma\)</span> starting a point <span class="math inline">\(p\)</span> and ending at a point <span class="math inline">\(q\)</span>. Then under a phase change <span class="math inline">\({\bf A}\to {\bf A}^\prime\)</span> according to the rule (<span class="math inline">\(*\)</span>), <span class="math display">\[\begin{align}
+\varphi'(\gamma) &amp;= \int_\gamma {\bf A}'\cdot d{\bf x}
+    = \int_\gamma {\bf A}\cdot d{\bf x} + \int_\gamma \nabla \alpha \cdot d{\bf x} \cr
+    &amp;=\varphi(\gamma) + \alpha(q)-\alpha(p)
+\end{align}\]</span> by the fundamental theorem of line integrals. Now suppose for simplicity that whatever function <span class="math inline">\(\alpha\)</span> is, <span class="math inline">\(\alpha(q)\to 0\)</span> if <span class="math inline">\(q\)</span> is “far enough away”. (We don’t need to do this, but assuming this makes the analysis less messy.) Then instead of considering the wave function at <span class="math inline">\(p\)</span>, let’s consider the same wave function dressed up with a the line integral: We define <span class="math display">\[
 \widetilde \Psi(p, t) = e^{i\int_q^p {\bf A}\cdot d{\bf x}}\Psi(p, t)
-\]</span> where <span class="math inline">\(\gamma\)</span> is any path
-starting at a point <span class="math inline">\(q\)</span> where <span
-class="math inline">\(\alpha=0\)</span> and ending at the point <span
-class="math inline">\(p\)</span>. Then our result above indicates that
-under a gauge transformation <span class="math display">\[
-\widetilde \Psi&#39;(p, t) = e^{i\int_\gamma {\bf A}\cdot d{\bf
-x}}e^{-i\alpha(p)} e^{i\alpha(p)} \Psi(p, t) = \widetilde \Psi(p, t)
-\]</span> This dressed up version of <span
-class="math inline">\(\Psi\)</span> is completely invariant!</p>
-<hr />
-<h2 id="the-aharonov-bohm-experiment">The Aharonov-Bohm experiment</h2>
+\]</span> where <span class="math inline">\(\gamma\)</span> is any path starting at a point <span class="math inline">\(q\)</span> where <span class="math inline">\(\alpha=0\)</span> and ending at the point <span class="math inline">\(p\)</span>. Then our result above indicates that under a gauge transformation <span class="math display">\[
+\widetilde \Psi'(p, t) = e^{i\int_\gamma {\bf A}\cdot d{\bf x}}e^{-i\alpha(p)} e^{i\alpha(p)} \Psi(p, t) = \widetilde \Psi(p, t)
+\]</span> This dressed up version of <span class="math inline">\(\Psi\)</span> is completely invariant!</p>
+<hr>
+</section>
+</section>
+<section id="the-aharonov-bohm-experiment" class="level2">
+<h2 class="anchored" data-anchor-id="the-aharonov-bohm-experiment">The Aharonov-Bohm experiment</h2>
 <p>** EXPLAIN AHARONOV-BOHM EXPERIMENT HERE **</p>
-<hr />
-<h2 id="the-magnetic-field">The magnetic field</h2>
-<p>Using our dolled-up wave function, we can explain this effect easily:
-As the electron progresses through an <span class="math inline">\({\bf
-A}\)</span> field in the Aharonov-Bohm modification of the double slit
-experiment, the usual phase accumulation <span
-class="math inline">\(e^{\frac i\hbar \int_\gamma {\bf p}\cdot d{\bf x}
-}\Psi\)</span> gains a line integral tail <span class="math display">\[
+<hr>
+</section>
+<section id="the-magnetic-field" class="level2">
+<h2 class="anchored" data-anchor-id="the-magnetic-field">The magnetic field</h2>
+<p>Using our dolled-up wave function, we can explain this effect easily: As the electron progresses through an <span class="math inline">\({\bf A}\)</span> field in the Aharonov-Bohm modification of the double slit experiment, the usual phase accumulation <span class="math inline">\(e^{\frac i\hbar \int_\gamma {\bf p}\cdot d{\bf x} }\Psi\)</span> gains a line integral tail <span class="math display">\[
 e^{\frac i\hbar \int_\gamma {\bf p}\cdot d{\bf x} }\Psi
     \to e^{\frac i\hbar \int_\gamma {\pi}\cdot d{\bf x} }\Psi
-    = e^{\frac i\hbar \int_\gamma {\bf p}\cdot d{\bf x} }e^{ \int_\gamma
-{\bf A}\cdot d{\bf x} }\Psi
+    = e^{\frac i\hbar \int_\gamma {\bf p}\cdot d{\bf x} }e^{ \int_\gamma {\bf A}\cdot d{\bf x} }\Psi
     =e^{\frac i\hbar \int_\gamma {\bf p}\cdot d{\bf x} }\widetilde \Psi
-\]</span> After a full circuit (equivalent to double-slit interference),
-the accumulated phase is <span class="math inline">\(e^{ \oint_\gamma
-{\bf A}\cdot d{\bf x} }\)</span>. But <span
-class="math inline">\(\gamma\)</span> is the boundary of the surface
-<span class="math inline">\(\Sigma\)</span> the the solenoid flux
-threads, so by the Green theorem (or whatever), <span
-class="math display">\[
+\]</span> After a full circuit (equivalent to double-slit interference), the accumulated phase is <span class="math inline">\(e^{ \oint_\gamma {\bf A}\cdot d{\bf x} }\)</span>. But <span class="math inline">\(\gamma\)</span> is the boundary of the surface <span class="math inline">\(\Sigma\)</span> the the solenoid flux threads, so by the Green theorem (or whatever), <span class="math display">\[
 \oint_\gamma {\bf A}\cdot d{\bf x}
     = \oint_{\partial \Sigma} {\bf A}\cdot d{\bf x}
     = \int_\Sigma \nabla \times {\bf A}\cdot {\bf n} da
-\]</span> Here <span class="math inline">\({\bf n}\)</span> is the unit
-normal vector to the oriented surface <span
-class="math inline">\(\Sigma\)</span> and <span
-class="math inline">\(\partial \Sigma\)</span> is math speak for "the
-boundary of <span class="math inline">\(\Sigma\)</span>" (which in our
-case is exactly <span class="math inline">\(\gamma\)</span>). Since this
-is the magnetic flux $ \int_\Sigma {\bf B}\cdot {\bf n} da $ through the
-solenoid, we are evidently supposed to conclude that <span
-class="math display">\[
+\]</span> Here <span class="math inline">\({\bf n}\)</span> is the unit normal vector to the oriented surface <span class="math inline">\(\Sigma\)</span> and <span class="math inline">\(\partial \Sigma\)</span> is math speak for “the boundary of <span class="math inline">\(\Sigma\)</span>” (which in our case is exactly <span class="math inline">\(\gamma\)</span>). Since this is the magnetic flux $ _ da $ through the solenoid, we are evidently supposed to conclude that <span class="math display">\[
 {\bf B} =  \nabla \times {\bf A} \tag{$**$}
 \]</span></p>
-<p>Wait what? We started with a local rephasing ambiguity and in the
-end, we are saying this is some form of the magnetic field! Does it make
-sense?? Well first of all, "gradients don't curl" so if we change <span
-class="math inline">\({\bf A}\)</span> to <span
-class="math inline">\({\bf A}&#39;={\bf A}+\nabla \alpha\)</span>, this
-definition of <span class="math inline">\({\bf B}\)</span> does not
-change, so that's at least not blatantly wrong...</p>
-<p>Ah! But curls don't diverge so if (<span
-class="math inline">\(**\)</span>) is correct then <span
-class="math inline">\({\bf B}\)</span> must satisfy <span
-class="math display">\[
+<p>Wait what? We started with a local rephasing ambiguity and in the end, we are saying this is some form of the magnetic field! Does it make sense?? Well first of all, “gradients don’t curl” so if we change <span class="math inline">\({\bf A}\)</span> to <span class="math inline">\({\bf A}'={\bf A}+\nabla \alpha\)</span>, this definition of <span class="math inline">\({\bf B}\)</span> does not change, so that’s at least not blatantly wrong…</p>
+<p>Ah! But curls don’t diverge so if (<span class="math inline">\(**\)</span>) is correct then <span class="math inline">\({\bf B}\)</span> must satisfy <span class="math display">\[
 \nabla \cdot {\bf B}= 0
-\]</span> Does it? Yes.. actually that is a consequence of the Maxwell
-equation in the following form: <span class="math display">\[
+\]</span> Does it? Yes.. actually that is a consequence of the Maxwell equation in the following form: <span class="math display">\[
 \int_\Sigma {\bf B}\cdot {\bf n} da =0
-\]</span> for any closed surface <span
-class="math inline">\(\Sigma\)</span>. (In cool math notation, <span
-class="math inline">\(\partial \Sigma = \emptyset\)</span>.) If <span
-class="math inline">\(U\)</span> is a volume with <span
-class="math inline">\(\Sigma=\partial U\)</span> as its boundary, this
-says that any flux line that leaves <span
-class="math inline">\(U\)</span> must come back to it: <em>i.e.</em>
-there are no magnetically charged particles. However, by the divergence
-theorem, <span class="math display">\[
+\]</span> for any closed surface <span class="math inline">\(\Sigma\)</span>. (In cool math notation, <span class="math inline">\(\partial \Sigma = \emptyset\)</span>.) If <span class="math inline">\(U\)</span> is a volume with <span class="math inline">\(\Sigma=\partial U\)</span> as its boundary, this says that any flux line that leaves <span class="math inline">\(U\)</span> must come back to it: <em>i.e.</em> there are no magnetically charged particles. However, by the divergence theorem, <span class="math display">\[
 0 = \int_\Sigma {\bf B}\cdot {\bf n} da = \int_U \nabla\cdot {\bf B} dv
-\]</span> Since is true for any such <span
-class="math inline">\(U\)</span>, it must be that <span
-class="math inline">\(\nabla\cdot {\bf B}=0\)</span>.</p>
-<blockquote>
-<h3 id="problem">Problem</h3>
-<p>Calculate <span class="math inline">\([\hat {\pi}, \hat
-{\pi}]\)</span> in the position space representation.</p>
+\]</span> Since is true for any such <span class="math inline">\(U\)</span>, it must be that <span class="math inline">\(\nabla\cdot {\bf B}=0\)</span>.</p>
+<blockquote class="blockquote">
+<h3 id="problem" class="anchored">Problem</h3>
+<p>Calculate <span class="math inline">\([\hat {\pi}, \hat {\pi}]\)</span> in the position space representation.</p>
 </blockquote>
-</div>
-<div id="d0c31ede-ee04-4ea0-be3c-4e7d88e3559a" class="cell markdown"
-data-nbgrader="{&quot;grade&quot;:true,&quot;grade_id&quot;:&quot;cell-ea122d7c8ed652c4&quot;,&quot;locked&quot;:false,&quot;points&quot;:0,&quot;schema_version&quot;:3,&quot;solution&quot;:true,&quot;task&quot;:false}">
-<blockquote>
-<h3 id="answer">Answer</h3>
-<p>In components \begin{align} \left[ \hat \pi_i , \hat \pi_j\right]
+<blockquote class="blockquote">
+<h3 id="answer" class="anchored">Answer</h3>
+<p>In components <span class="math display">\[\begin{align}
+\left[ \hat \pi_i , \hat \pi_j\right]
 &amp;=\left[ \hat p_i -i\hbar A_i , \hat p_j-i\hbar A_j \right]\cr
-&amp;=-i\hbar\left[ \hat p_i , A_j \right] -i\hbar\left[ A_i , \hat p_j
-\right] \cr &amp;=(-i\hbar)^2 \nabla_iA_j -(-i\hbar)^2\nabla_jA_i \cr
-&amp;=-\hbar^2 \left( \nabla_iA_j - \nabla_jA_i\right) \end{align}</p>
-<p>but this is the curl again, so the canonical commutation algebra has
-been deformed to \begin{align} \left[ \hat x^i , \hat x^j\right]=0 \quad
-~&amp;~\quad \left[ \hat \pi_i , \hat x^j\right]=-i\hbar \delta_i^j 1
-\quad\quad \cr \left[ \hat \pi_i , \hat \pi_j\right]&amp;=-\hbar^2
-\varepsilon_{ijk}B^k \end{align}</p>
+&amp;=-i\hbar\left[ \hat p_i , A_j \right]
+-i\hbar\left[  A_i , \hat p_j \right]
+\cr
+&amp;=(-i\hbar)^2 \nabla_iA_j
+-(-i\hbar)^2\nabla_jA_i
+\cr
+&amp;=-\hbar^2 \left( \nabla_iA_j - \nabla_jA_i\right)
+\end{align}\]</span></p>
+<p>but this is the curl again, so the canonical commutation algebra has been deformed to <span class="math display">\[\begin{align}
+\left[ \hat x^i , \hat x^j\right]=0
+\quad ~&amp;~\quad
+\left[ \hat \pi_i , \hat x^j\right]=-i\hbar \delta_i^j\ 1
+\quad\quad \cr
+\left[ \hat \pi_i , \hat \pi_j\right]&amp;=-\hbar^2 \varepsilon_{ijk}B^k
+\end{align}\]</span></p>
 </blockquote>
-</div>
-<div id="f9a3377c-93ac-49db-857e-41f2b2208cab" class="cell markdown">
-<p>A lot just happened. Not only did we discover a Maxwell equation,
-we</p>
-<ul>
-<li>stumbled on it through <em>quantum mechanics</em> even though
-classical electrodynamics supposedly has nothing to do with quantum
-mechanics</li>
-<li>we solved it in terms of the so-called <strong>vector
-potential</strong> <span class="math inline">\({\bf A}\)</span></li>
-<li>we also understand in what sense the vector potential is both more
-fundamental but also less real than the magnitic field:
-<ul>
-<li>It's less real, because it is not covariant: we can completely
-change it's functional form by adding the gradient of any function we
-want, so that cannot correspond to anything we measure directly; it's
-ambiguous</li>
-<li>It's more fundamental in the sense that electrons couple directly to
-<span class="math inline">\({\bf A}\)</span> and not <span
-class="math inline">\({\bf B}\)</span>. <span class="math inline">\({\bf
-B}\)</span> appears in equations of motion, but <span
-class="math inline">\({\bf A}\)</span> appears directly in the
-Schödinger equation.</li>
-</ul></li>
-<li>we understood the mysterious Aharonov-Bohm experiment.</li>
-</ul>
-</div>
-<div id="0b73104d-236f-4162-ae5c-43f1d541c342" class="cell markdown">
-<h2 id="relativity">Relativity?</h2>
-<p>I promised we would relax the restriction <span
-class="math inline">\(\partial \alpha/\partial t=0\)</span>, so let's do
-that. The easiest way (hindsight is 20-20; look it up kids!) is to go
-back to the line integral dressing factor. Now that we know we can make
-the wave function invariant, that's a good place to look. The line
-integral has <span class="math inline">\({\bf A}\cdot d{\bf x}\)</span>,
-so what about a <span class="math inline">\(dt\)</span> term? Since this
-is a scalar, the most natural thing is <span class="math display">\[
+<p>A lot just happened. Not only did we discover a Maxwell equation, we * stumbled on it through <em>quantum mechanics</em> even though classical electrodynamics supposedly has nothing to do with quantum mechanics * we solved it in terms of the so-called <strong>vector potential</strong> <span class="math inline">\({\bf A}\)</span> * we also understand in what sense the vector potential is both more fundamental but also less real than the magnitic field: * It’s less real, because it is not covariant: we can completely change it’s functional form by adding the gradient of any function we want, so that cannot correspond to anything we measure directly; it’s ambiguous * It’s more fundamental in the sense that electrons couple directly to <span class="math inline">\({\bf A}\)</span> and not <span class="math inline">\({\bf B}\)</span>. <span class="math inline">\({\bf B}\)</span> appears in equations of motion, but <span class="math inline">\({\bf A}\)</span> appears directly in the Schödinger equation. * we understood the mysterious Aharonov-Bohm experiment.</p>
+</section>
+<section id="relativity" class="level2">
+<h2 class="anchored" data-anchor-id="relativity">Relativity?</h2>
+<p>I promised we would relax the restriction <span class="math inline">\(\partial \alpha/\partial t=0\)</span>, so let’s do that. The easiest way (hindsight is 20-20; look it up kids!) is to go back to the line integral dressing factor. Now that we know we can make the wave function invariant, that’s a good place to look. The line integral has <span class="math inline">\({\bf A}\cdot d{\bf x}\)</span>, so what about a <span class="math inline">\(dt\)</span> term? Since this is a scalar, the most natural thing is <span class="math display">\[
 -c\phi\ dt+{\bf A}\cdot d{\bf x}
-\]</span> where <span class="math inline">\(c\)</span> is the speed of
-light. The sign is there because of a convention in electricity and
-magnetism we will discuss later. The reason to introduce the speed of
-light is that <span class="math inline">\(ct\)</span> has the same
-physical dimension (<em>i.e.</em> length) as the Cartesian <span
-class="math inline">\(x\)</span>, <span
-class="math inline">\(y\)</span>, and <span
-class="math inline">\(z\)</span> we are so in love with. In fact, if we
-denote <span class="math inline">\(x^1:=x\)</span> and <span
-class="math inline">\(x^2:=y\)</span> and <span
-class="math inline">\(x^3:=z\)</span> as I mean when I write <span
-class="math inline">\(d{\bf x}\)</span>, perhaps I should define <span
-class="math inline">\(x^0:=ct\)</span> while I'm at it! Then I can even
-set <span class="math inline">\(A_0:=-\phi\)</span> and just write the
-whole line integral in space and time as <span class="math display">\[
+\]</span> where <span class="math inline">\(c\)</span> is the speed of light. The sign is there because of a convention in electricity and magnetism we will discuss later. The reason to introduce the speed of light is that <span class="math inline">\(ct\)</span> has the same physical dimension (<em>i.e.</em> length) as the Cartesian <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span>, and <span class="math inline">\(z\)</span> we are so in love with. In fact, if we denote <span class="math inline">\(x^1:=x\)</span> and <span class="math inline">\(x^2:=y\)</span> and <span class="math inline">\(x^3:=z\)</span> as I mean when I write <span class="math inline">\(d{\bf x}\)</span>, perhaps I should define <span class="math inline">\(x^0:=ct\)</span> while I’m at it! Then I can even set <span class="math inline">\(A_0:=-\phi\)</span> and just write the whole line integral in space and time as <span class="math display">\[
 c\phi\ dt+{\bf A}\cdot d{\bf x}
     =A_0 dx^0+{\bf A}\cdot d{\bf x}
     = \sum_{\mu=0}^3 A_\mu dx^\mu
     =:A_\mu dx^\mu
-\]</span> In the last step, we are following Einstein's suggestion to
-just drop all the tedious summation signs over every index that is
-repeated, since this is (nearly) unambiguous: If you are summing, the
-indices always come in repeated pairs and if you want space-time
-symmetry, you need to sum. So any repeated index is assumed to be
-summed. This is called the "Einstein summation convention".</p>
-<p>OK! Where were we going with this? Oh yeah, how should <span
-class="math inline">\(\phi\)</span> transform is we want to keep all the
-nice properties we had before? Well when it was <span
-class="math inline">\({\bf A}\)</span>, the rule was <span
-class="math inline">\({\bf A}&#39;={\bf A} + \nabla \alpha\)</span>,
-which are space derivatives. So the right thing to do is to have <span
-class="math inline">\(\phi&#39; = \phi +\partial \alpha/\partial
-t\)</span>. Certianly if our new definition of the invariant wave
-function is <span class="math display">\[
+\]</span> In the last step, we are following Einstein’s suggestion to just drop all the tedious summation signs over every index that is repeated, since this is (nearly) unambiguous: If you are summing, the indices always come in repeated pairs and if you want space-time symmetry, you need to sum. So any repeated index is assumed to be summed. This is called the “Einstein summation convention”.</p>
+<p>OK! Where were we going with this? Oh yeah, how should <span class="math inline">\(\phi\)</span> transform is we want to keep all the nice properties we had before? Well when it was <span class="math inline">\({\bf A}\)</span>, the rule was <span class="math inline">\({\bf A}'={\bf A} + \nabla \alpha\)</span>, which are space derivatives. So the right thing to do is to have <span class="math inline">\(\phi' = \phi +\partial \alpha/\partial t\)</span>. Certianly if our new definition of the invariant wave function is <span class="math display">\[
 \widetilde \Psi = e^{i\int_\gamma A_\mu dx^\mu}\Psi
-\]</span> then yes, this will work because the phase (called a
-<strong>Wilson line</strong> by the way) will reconstitute the complete
-<span class="math inline">\(\alpha(p)\)</span> by the fundamental
-theorem of line integrals, which is now in spacetime and not just
-space.</p>
-<p>But! Now we can figure out the spacetime version not only of the
-<span class="math inline">\({\bf B}\)</span> field but also half of the
-Maxwell equations, since we will get the <span
-class="math inline">\({\bf E}\)</span> version of what we found by
-accident before for <span class="math inline">\({\bf B}\)</span> by
-following the same argument!</p>
-<p>Imagine a loop <span class="math inline">\(\gamma\)</span> in space
-and time. Let <span class="math inline">\(\Sigma\)</span> be
-<em>any</em> surface for which <span
-class="math inline">\(\gamma\)</span> is the boundary, <em>i.e.</em>
-<span class="math inline">\(\partial \Sigma = \gamma\)</span>. Then
-let's spam the Green theorem again: <span class="math display">\[
+\]</span> then yes, this will work because the phase (called a <strong>Wilson line</strong> by the way) will reconstitute the complete <span class="math inline">\(\alpha(p)\)</span> by the fundamental theorem of line integrals, which is now in spacetime and not just space.</p>
+<p>But! Now we can figure out the spacetime version not only of the <span class="math inline">\({\bf B}\)</span> field but also half of the Maxwell equations, since we will get the <span class="math inline">\({\bf E}\)</span> version of what we found by accident before for <span class="math inline">\({\bf B}\)</span> by following the same argument!</p>
+<p>Imagine a loop <span class="math inline">\(\gamma\)</span> in space and time. Let <span class="math inline">\(\Sigma\)</span> be <em>any</em> surface for which <span class="math inline">\(\gamma\)</span> is the boundary, <em>i.e.</em> <span class="math inline">\(\partial \Sigma = \gamma\)</span>. Then let’s spam the Green theorem again: <span class="math display">\[
 \int_\gamma A_\nu dx^\nu
     =\int_{\partial \Sigma} A_\nu dx^\nu  
     =\int_{\Sigma} (\partial \times A)\cdot {\bf n} da
-\]</span> Looks nice right? Yeah, except it doesn't mean anything!</p>
-<ul>
-<li>What is the vector normal to a surface in 4D??</li>
-<li>What does <span class="math inline">\(\partial \times A\)</span>
-mean?</li>
-</ul>
-<p>Actually, these problems are an artifact of poor choices made in your
-multivariable calculus classes. It all started with the misleading
-statement that "vectors have direction and magnitude" and then it got
-progressively worse with "transposing" column vectors into row vectors,
-defining the gradient as a vector, and worst of all, introducing the
-right-hand rule and cross product, <em>which only exist in 3
-dimensions</em>. So let's try to undo some of the damage, so we can move
-on. Let's agree with the working definition that a 3D vector <span
-class="math inline">\(\bf v\)</span> is a <span
-class="math inline">\(3\times 1\)</span> column of real numbers. (This
-is not the real definition, but it will work fine.) Lets also agree that
-these three numbers are labeled by <span
-class="math inline">\(v^1\)</span> for the top one, <span
-class="math inline">\(v^2\)</span> for the middle one, and <span
-class="math inline">\(v^3\)</span> for the bottom one. Together these
-<strong>components</strong> will be called <span
-class="math inline">\(v^i\)</span> where the <strong>index</strong>
-<span class="math inline">\(i\)</span> takes the three values <span
-class="math inline">\(i=1,2,3\)</span>, for example <span
-class="math display">\[
+\]</span> Looks nice right? Yeah, except it doesn’t mean anything! * What is the vector normal to a surface in 4D?? * What does <span class="math inline">\(\partial \times A\)</span> mean?</p>
+<p>Actually, these problems are an artifact of poor choices made in your multivariable calculus classes. It all started with the misleading statement that “vectors have direction and magnitude” and then it got progressively worse with “transposing” column vectors into row vectors, defining the gradient as a vector, and worst of all, introducing the right-hand rule and cross product, <em>which only exist in 3 dimensions</em>. So let’s try to undo some of the damage, so we can move on. Let’s agree with the working definition that a 3D vector <span class="math inline">\(\bf v\)</span> is a <span class="math inline">\(3\times 1\)</span> column of real numbers. (This is not the real definition, but it will work fine.) Lets also agree that these three numbers are labeled by <span class="math inline">\(v^1\)</span> for the top one, <span class="math inline">\(v^2\)</span> for the middle one, and <span class="math inline">\(v^3\)</span> for the bottom one. Together these <strong>components</strong> will be called <span class="math inline">\(v^i\)</span> where the <strong>index</strong> <span class="math inline">\(i\)</span> takes the three values <span class="math inline">\(i=1,2,3\)</span>, for example <span class="math display">\[
 {\bf v}
 = \begin{pmatrix} v^1\\v^2\\ v^3 \end{pmatrix}
 = \begin{pmatrix} \sqrt{\pi}\\ 0 \\ -1 \end{pmatrix}
-\]</span> Another really good example is the "infinitesimal
-displacement" vector <span class="math display">\[
+\]</span> Another really good example is the “infinitesimal displacement” vector <span class="math display">\[
 \left(dx^i\right) = \begin{pmatrix}dx\\dy\\dz\end{pmatrix}
-\]</span> Now let's calculate the partial derivatives of a function
-<span class="math inline">\(f(x^i)\)</span> of three variables <span
-class="math inline">\(x^1=x\)</span>, <span
-class="math inline">\(x^2=y\)</span>, and <span
-class="math inline">\(x^3=z\)</span>. This naturally looks like <span
-class="math inline">\(\partial f/\partial x^i\)</span>. Here the index
-is "up" but it is in the numerator. This turns out the mean that the
-natrual arrangement is <span class="math display">\[
-\frac{\partial f}{\partial x^i} = \left( \frac{\partial f}{\partial x},
-\frac{\partial f}{\partial y}, \frac{\partial f}{\partial z}\right)
-\]</span> The reason this arrangement is correct is that this matix
-arrangement naturally pairs with the first for the differential of <span
-class="math inline">\(f\)</span>; a <span class="math inline">\(1\times
-3\)</span> combines with a <span class="math inline">\(3\times
-1\)</span> to give a <span class="math inline">\(1\times 1\)</span>
-matrix: <span class="math display">\[
+\]</span> Now let’s calculate the partial derivatives of a function <span class="math inline">\(f(x^i)\)</span> of three variables <span class="math inline">\(x^1=x\)</span>, <span class="math inline">\(x^2=y\)</span>, and <span class="math inline">\(x^3=z\)</span>. This naturally looks like <span class="math inline">\(\partial f/\partial x^i\)</span>. Here the index is “up” but it is in the numerator. This turns out the mean that the natrual arrangement is <span class="math display">\[
+\frac{\partial f}{\partial x^i} = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z}\right)
+\]</span> The reason this arrangement is correct is that this matix arrangement naturally pairs with the first for the differential of <span class="math inline">\(f\)</span>; a <span class="math inline">\(1\times 3\)</span> combines with a <span class="math inline">\(3\times 1\)</span> to give a <span class="math inline">\(1\times 1\)</span> matrix: <span class="math display">\[
 df = dx^i \frac{\partial f}{\partial x^i} \tag{$***$}
-\]</span> Let us further define the shorthand <span
-class="math inline">\(\partial_i := {\partial f}/{\partial x^i}\)</span>
-so that <span class="math display">\[
+\]</span> Let us further define the shorthand <span class="math inline">\(\partial_i := {\partial f}/{\partial x^i}\)</span> so that <span class="math display">\[
 df = dx^i \frac{\partial f}{\partial x^i} = dx^i \partial_i f
 \]</span></p>
-<hr />
-<h3 id="dot-product-and-gradient">Dot product and gradient</h3>
-<p>Notice that the previous formula is <em>not</em> the same as <span
-class="math inline">\(df = d{\bf x} \cdot \nabla f\)</span>. In fact, I
-have not defined what <span class="math inline">\(\nabla\)</span> is
-<em>and</em> I have not introduced a dot product. In fact, neither of
-these are necessary to write (<span class="math inline">\(***\)</span>),
-because (<span class="math inline">\(***\)</span>) is simply the chain
-rule of calculus. I will now do both.</p>
-<p>Suppose that I were to give you a rule <span
-class="math inline">\(\langle - , - \rangle\)</span> for taking any two
-vectors <span class="math inline">\({\bf v}\)</span> and <span
-class="math inline">\({\bf w}\)</span> and giving you a number <span
-class="math inline">\(\langle {\bf v} , {\bf w} \rangle \in {\bf
-R}\)</span>. If this rule satisfies various conditions (symmetry,
-nondegeneracy, positivity), then it is called an <strong>inner
-product</strong> or <strong>metric</strong>. The most famous is the
-Euclidean one <span class="math display">\[
+<hr>
+<section id="dot-product-and-gradient" class="level3">
+<h3 class="anchored" data-anchor-id="dot-product-and-gradient">Dot product and gradient</h3>
+<p>Notice that the previous formula is <em>not</em> the same as <span class="math inline">\(df = d{\bf x} \cdot \nabla f\)</span>. In fact, I have not defined what <span class="math inline">\(\nabla\)</span> is <em>and</em> I have not introduced a dot product. In fact, neither of these are necessary to write (<span class="math inline">\(***\)</span>), because (<span class="math inline">\(***\)</span>) is simply the chain rule of calculus. I will now do both.</p>
+<p>Suppose that I were to give you a rule <span class="math inline">\(\langle - , - \rangle\)</span> for taking any two vectors <span class="math inline">\({\bf v}\)</span> and <span class="math inline">\({\bf w}\)</span> and giving you a number <span class="math inline">\(\langle {\bf v} , {\bf w} \rangle \in {\bf R}\)</span>. If this rule satisfies various conditions (symmetry, nondegeneracy, positivity), then it is called an <strong>inner product</strong> or <strong>metric</strong>. The most famous is the Euclidean one <span class="math display">\[
 \langle {\bf v} , {\bf w} \rangle = v^1w^1+v^2w^2+v^3w^3
-\]</span> But, in general the different terms could have different
-weights and there could even be cross-terms like <span
-class="math inline">\(v^2 w^3\)</span> (as long as there is also a term
-<span class="math inline">\(v^3 w^2\)</span> for symmetry). Now that my
-vector space is equipped with an inner product, I can introduce the
-notion of gradient: The gradient of a function, denoted <span
-class="math inline">\(\nabla\)</span> is a vector that has the property
-that <em>when plugged into the inner product with another vector <span
-class="math inline">\({\bf v}\)</span> computes the directional
-derivative</em> <span class="math display">\[
-\langle {\bf v} , \nabla f \rangle = v^i \frac{\partial f}{\partial x^i}
-\quad \quad \forall {\bf v}\in {\bf R}^3
+\]</span> But, in general the different terms could have different weights and there could even be cross-terms like <span class="math inline">\(v^2 w^3\)</span> (as long as there is also a term <span class="math inline">\(v^3 w^2\)</span> for symmetry). Now that my vector space is equipped with an inner product, I can introduce the notion of gradient: The gradient of a function, denoted <span class="math inline">\(\nabla\)</span> is a vector that has the property that <em>when plugged into the inner product with another vector <span class="math inline">\({\bf v}\)</span> computes the directional derivative</em> <span class="math display">\[
+\langle {\bf v} , \nabla f \rangle = v^i \frac{\partial f}{\partial x^i} \quad \quad \forall {\bf v}\in {\bf R}^3
 \]</span></p>
-<p>I will now go into more detail about components, because then I can
-use explicit symbols to emphasize what is happening here. Going back to
-the Euclidean inner product, let me write it in an unnecessarily
-complicated-looking way: <span class="math display">\[
-\langle {\bf v} , {\bf w} \rangle = \sum_{i=1}^3 \sum_{j=1}^3 v^i
-\delta_{ij} w^j =  \delta_{ij} v^i w^j
-\]</span> Here I am defining the <strong>Kronecker symbol</strong> <span
-class="math display">\[
+<p>I will now go into more detail about components, because then I can use explicit symbols to emphasize what is happening here. Going back to the Euclidean inner product, let me write it in an unnecessarily complicated-looking way: <span class="math display">\[
+\langle {\bf v} , {\bf w} \rangle = \sum_{i=1}^3 \sum_{j=1}^3 v^i \delta_{ij} w^j =  \delta_{ij} v^i w^j
+\]</span> Here I am defining the <strong>Kronecker symbol</strong> <span class="math display">\[
 \delta_{ij} = \begin{cases}
 1 &amp; \textrm{if }i=j \\
 0 &amp; \textrm{otherwise}
 \end{cases}
-\]</span> and I dispensed with the superfluous summations again. Note
-that I can define another <span
-class="math inline">\(\delta^{ij}\)</span> to be the inverse of the
-first one in the sense that <span
-class="math inline">\(\delta_{ik}\delta^{kj} = \delta_i^j\)</span> is
-the unit matrix. Now I can finally define the components of <span
-class="math inline">\(\nabla f\)</span> in terms of those of <span
-class="math inline">\(df\)</span>: <span class="math display">\[
-(\nabla f)^i = \delta^{ij} \frac{\partial f}{\partial x^j}= \delta^{ij}
-\partial_j f
-\]</span> We see that we need the <em>inverse metric</em> to define the
-gradient, whereas we did not need anything, when we defined the
-differential <span class="math inline">\(df\)</span>. So how does the
-formula connecting them work? You have to undo the inverse metric you
-<em>just introduced</em>: <span class="math display">\[
-\partial_i f = \delta_{ij} (\nabla f)^j =  \delta_{ij} \delta^{jk}
-\partial_k f
+\]</span> and I dispensed with the superfluous summations again. Note that I can define another <span class="math inline">\(\delta^{ij}\)</span> to be the inverse of the first one in the sense that <span class="math inline">\(\delta_{ik}\delta^{kj} = \delta_i^j\)</span> is the unit matrix. Now I can finally define the components of <span class="math inline">\(\nabla f\)</span> in terms of those of <span class="math inline">\(df\)</span>: <span class="math display">\[
+(\nabla f)^i = \delta^{ij} \frac{\partial f}{\partial x^j}= \delta^{ij} \partial_j f
+\]</span> We see that we need the <em>inverse metric</em> to define the gradient, whereas we did not need anything, when we defined the differential <span class="math inline">\(df\)</span>. So how does the formula connecting them work? You have to undo the inverse metric you <em>just introduced</em>: <span class="math display">\[
+\partial_i f = \delta_{ij} (\nabla f)^j =  \delta_{ij} \delta^{jk} \partial_k f
 \]</span></p>
-<hr />
-<h3 id="cross-produce">Cross produce</h3>
-<p>The next problem we confront is the cross product. This is a
-structure that takes an ordered pair of vectors <span
-class="math inline">\(({\bf u}, {\bf v})\)</span> and gives you a new
-vector <span class="math inline">\({\bf w}\)</span> which is defined to
-have the following components <span class="math display">\[
-{\bf w} = \begin{pmatrix}v^2 w^3-v^3 w^2\\v^3 w^1-v^1 w^3\\ v^1 w^2-v^2
-w^1\end{pmatrix}
-\]</span> Note that this assignment is invariant under cyclic
-permutations and is anti-symmetric under the switch <span
-class="math inline">\(({\bf u}, {\bf v})\mapsto ({\bf v}, {\bf
-u})\)</span>. The standard notation is to write <span
-class="math inline">\({\bf w} = {\bf u}\times {\bf v}\)</span>. So what
-is the problem with that? Well, for starters, what is this supposed to
-be in 2D? What about 4D? Are we claiming Green's Theorem only works in
-3D?? The issue is that we are insisting that the result is another
-vector, when really what we wanted was the area of the oriented
-parallelogram spanned by the two vectors, which is why you could write
-it as the determinant of a matrix of <span class="math inline">\({\bf
-u}, {\bf v}\)</span>, and a unit vector.</p>
-<p>Let's introduce a new symbol to make this more explicit. This symbol
-will have 3-indices <span class="math inline">\(i, j\)</span>, and <span
-class="math inline">\(k\)</span> all taking values <span
-class="math inline">\(i,j,k=1, 2, 3\)</span> (for now) such that <span
-class="math display">\[
+<hr>
+</section>
+<section id="cross-produce" class="level3">
+<h3 class="anchored" data-anchor-id="cross-produce">Cross produce</h3>
+<p>The next problem we confront is the cross product. This is a structure that takes an ordered pair of vectors <span class="math inline">\(({\bf u}, {\bf v})\)</span> and gives you a new vector <span class="math inline">\({\bf w}\)</span> which is defined to have the following components <span class="math display">\[
+{\bf w} = \begin{pmatrix}v^2 w^3-v^3 w^2\\v^3 w^1-v^1 w^3\\ v^1 w^2-v^2 w^1\end{pmatrix}
+\]</span> Note that this assignment is invariant under cyclic permutations and is anti-symmetric under the switch <span class="math inline">\(({\bf u}, {\bf v})\mapsto ({\bf v}, {\bf u})\)</span>. The standard notation is to write <span class="math inline">\({\bf w} = {\bf u}\times {\bf v}\)</span>. So what is the problem with that? Well, for starters, what is this supposed to be in 2D? What about 4D? Are we claiming Green’s Theorem only works in 3D?? The issue is that we are insisting that the result is another vector, when really what we wanted was the area of the oriented parallelogram spanned by the two vectors, which is why you could write it as the determinant of a matrix of <span class="math inline">\({\bf u}, {\bf v}\)</span>, and a unit vector.</p>
+<p>Let’s introduce a new symbol to make this more explicit. This symbol will have 3-indices <span class="math inline">\(i, j\)</span>, and <span class="math inline">\(k\)</span> all taking values <span class="math inline">\(i,j,k=1, 2, 3\)</span> (for now) such that <span class="math display">\[
 \varepsilon_{ijk} = \begin{cases}
-+1 &amp; \textrm{if }(i,j,k)=(1,2,3)\textrm{ or } (2,3,1)\textrm{ or }
-(3,1,2)\\
--1 &amp; \textrm{if }(i,j,k)=(2,1,3)\textrm{ or } (1,3,2)\textrm{ or }
-(3,2,1)\\
++1 &amp; \textrm{if }(i,j,k)=(1,2,3)\textrm{ or } (2,3,1)\textrm{ or } (3,1,2)\\
+-1 &amp; \textrm{if }(i,j,k)=(2,1,3)\textrm{ or } (1,3,2)\textrm{ or } (3,2,1)\\
 0  &amp; \textrm{otherwise}
 \end{cases}
-\]</span> This is called the <strong>Levi-Cevita</strong> (<em>lev-ee
-che-vee-tah</em>) symbol and what it does for us is keep track of signed
-permulations of 3 elements. Volumes in 3D are signed permutations of 3
-elements so for any 3 vectors <span class="math inline">\({\bf u}, {\bf
-v}\)</span>, and <span class="math inline">\({\bf w}\)</span>, the
-volume of the parallelepipid spanned by the ordered list <span
-class="math inline">\(({\bf u}, {\bf v}, {\bf w})\)</span> is <span
-class="math inline">\(\varepsilon_{ijk}u^iv^jw^k\)</span>. This is also
-the determinant of the matrix with columns <span
-class="math inline">\(({\bf u}, {\bf v}, {\bf w})\)</span> and so for
-any linear operator with matrix <span
-class="math inline">\(M^i{}_j\)</span>, the determinant is given by
-<span class="math display">\[
+\]</span> This is called the <strong>Levi-Cevita</strong> (<em>lev-ee che-vee-tah</em>) symbol and what it does for us is keep track of signed permulations of 3 elements. Volumes in 3D are signed permutations of 3 elements so for any 3 vectors <span class="math inline">\({\bf u}, {\bf v}\)</span>, and <span class="math inline">\({\bf w}\)</span>, the volume of the parallelepipid spanned by the ordered list <span class="math inline">\(({\bf u}, {\bf v}, {\bf w})\)</span> is <span class="math inline">\(\varepsilon_{ijk}u^iv^jw^k\)</span>. This is also the determinant of the matrix with columns <span class="math inline">\(({\bf u}, {\bf v}, {\bf w})\)</span> and so for any linear operator with matrix <span class="math inline">\(M^i{}_j\)</span>, the determinant is given by <span class="math display">\[
 \varepsilon_{lmn} M^l{}_i M^m{}_j M^n{}_k = \det(M) \varepsilon_{ijk}
-\]</span> Finally, I can write the components of the cross product of an
-ordered pair of vectors <span class="math inline">\(({\bf u}, {\bf
-v})\)</span> as <span class="math inline">\(\varepsilon_{ijk} u^j
-v^k\)</span> Note, however, that as a "vector", this is a "row vector"
-and not a "column vector". We can "fix" that, but it will cost us
-another factor of the inverse metric, so finally, the cross product is
-<span class="math display">\[
+\]</span> Finally, I can write the components of the cross product of an ordered pair of vectors <span class="math inline">\(({\bf u}, {\bf v})\)</span> as <span class="math inline">\(\varepsilon_{ijk} u^j v^k\)</span> Note, however, that as a “vector”, this is a “row vector” and not a “column vector”. We can “fix” that, but it will cost us another factor of the inverse metric, so finally, the cross product is <span class="math display">\[
 w^k=\delta^{kl}\varepsilon_{lij} u^i v^j
-\]</span> Note that <span class="math inline">\(\varepsilon_{kij} u^i
-v^j = \frac12 \varepsilon_{kij} (u^i v^j-u^jv^i)\)</span>, so this is
-<em>quite a mess</em> we are making just to talk about the antisymmetric
-combination <span class="math inline">\(u^iv^j -u^jv^i\)</span>.</p>
-<p>Now anti-symmetric combinations exist in any dimension, and this is
-in fact the right answer for the area of a parallelogram in 2D. All you
-need is <span class="math inline">\(u^1 v^2-u^2v^1 =
-\varepsilon_{ij}u^iv^j\)</span>, and, of course you could do this in 4D
-as <span class="math inline">\(\varepsilon_{ijkl}u^kv^l\)</span>. So we
-see the problem: In exactly 3D, the Levi-Cevita symbol has the correct
-number of indices to give back something that looks like a vector, and
-<em>this will never happen again in any other dimension</em>.</p>
-<blockquote>
+\]</span> Note that <span class="math inline">\(\varepsilon_{kij} u^i v^j = \frac12 \varepsilon_{kij} (u^i v^j-u^jv^i)\)</span>, so this is <em>quite a mess</em> we are making just to talk about the antisymmetric combination <span class="math inline">\(u^iv^j -u^jv^i\)</span>.</p>
+<p>Now anti-symmetric combinations exist in any dimension, and this is in fact the right answer for the area of a parallelogram in 2D. All you need is <span class="math inline">\(u^1 v^2-u^2v^1 = \varepsilon_{ij}u^iv^j\)</span>, and, of course you could do this in 4D as <span class="math inline">\(\varepsilon_{ijkl}u^kv^l\)</span>. So we see the problem: In exactly 3D, the Levi-Cevita symbol has the correct number of indices to give back something that looks like a vector, and <em>this will never happen again in any other dimension</em>.</p>
+<blockquote class="blockquote">
 <p>Problem</p>
 <p>Define a second Levi-Cevita tensor by <span class="math display">\[
 \varepsilon^{ijk} = \begin{cases}
-+1 &amp; \textrm{if }(i,j,k)=(1,2,3)\textrm{ or } (2,3,1)\textrm{ or }
-(3,1,2)\\
--1 &amp; \textrm{if }(i,j,k)=(2,1,3)\textrm{ or } (1,3,2)\textrm{ or }
-(3,2,1)\\
++1 &amp; \textrm{if }(i,j,k)=(1,2,3)\textrm{ or } (2,3,1)\textrm{ or } (3,1,2)\\
+-1 &amp; \textrm{if }(i,j,k)=(2,1,3)\textrm{ or } (1,3,2)\textrm{ or } (3,2,1)\\
 0  &amp; \textrm{otherwise}
 \end{cases}
-\]</span> (Yes, it looks exactly like the old one, but the indices are
-"up".)</p>
-<p>Show that:</p>
-<ol>
-<li><span
-class="math inline">\(\varepsilon_{ijk}\varepsilon^{ijk}=3!\)</span></li>
-<li><span
-class="math inline">\(\varepsilon_{ikl}\varepsilon^{jkl}=2\delta_i^j\)</span></li>
-<li><span
-class="math inline">\(\varepsilon_{ijm}\varepsilon^{klm}=(\delta_i^k\delta_j^l-\delta_j^k\delta_i^l)\)</span></li>
-<li><span class="math inline">\(\varepsilon_{ijk}\varepsilon^{lmn}=
-\delta_i^l\delta_j^m\delta_k^m \pm 5\)</span> more terms with each
-possible permutation of the lower indices. Not that the signs are lined
-up with even and odd permutations.</li>
-</ol>
+\]</span> (Yes, it looks exactly like the old one, but the indices are “up”.)</p>
+<p>Show that: 1. <span class="math inline">\(\varepsilon_{ijk}\varepsilon^{ijk}=3!\)</span> 2. <span class="math inline">\(\varepsilon_{ikl}\varepsilon^{jkl}=2\delta_i^j\)</span> 3. <span class="math inline">\(\varepsilon_{ijm}\varepsilon^{klm}=(\delta_i^k\delta_j^l-\delta_j^k\delta_i^l)\)</span> 4. <span class="math inline">\(\varepsilon_{ijk}\varepsilon^{lmn}= \delta_i^l\delta_j^m\delta_k^m \pm 5\)</span> more terms with each possible permutation of the lower indices. Not that the signs are lined up with even and odd permutations.</p>
 <p>Hint: If you can do 4 first, the others follow.</p>
 </blockquote>
-</div>
-<div id="efa3aec8-a99a-4096-a460-525e237e326b" class="cell markdown"
-data-jp-MarkdownHeadingCollapsed="true"
-data-nbgrader="{&quot;grade&quot;:true,&quot;grade_id&quot;:&quot;cell-cb28229801d94ced&quot;,&quot;locked&quot;:false,&quot;points&quot;:0,&quot;schema_version&quot;:3,&quot;solution&quot;:true,&quot;task&quot;:false}">
-<blockquote>
-<h3 id="answer">Answer</h3>
-<ol>
-<li>We will get <span
-class="math inline">\(\varepsilon_{123}\varepsilon^{123}=1\)</span> six
-times: 3 for the cyclic permutions <span
-class="math inline">\(123\)</span>, <span
-class="math inline">\(231\)</span>, and <span
-class="math inline">\(312\)</span>. The other 3 will be the odd
-permutations, like <span
-class="math inline">\(\varepsilon_{213}\varepsilon^\varepsilon_{213}=(-1)(-1)=1\)</span>
-so these also give three <span class="math inline">\(+1\)</span>s.</li>
-<li>We no that if <span class="math inline">\(i\neq j\)</span> then some
-index must be repeated on one of the <span
-class="math inline">\(\varepsilon\)</span>s which gives 0, so the RHS
-<span class="math inline">\(\propto \delta_i^j\)</span>. Since <span
-class="math inline">\(\delta_i^i=3\)</span>, comparison with 1. tells us
-the constant of proportionality is 2.</li>
-<li>...</li>
+<blockquote class="blockquote">
+<h3 id="answer-1" class="anchored">Answer</h3>
+<ol type="1">
+<li>We will get <span class="math inline">\(\varepsilon_{123}\varepsilon^{123}=1\)</span> six times: 3 for the cyclic permutions <span class="math inline">\(123\)</span>, <span class="math inline">\(231\)</span>, and <span class="math inline">\(312\)</span>. The other 3 will be the odd permutations, like <span class="math inline">\(\varepsilon_{213}\varepsilon^\varepsilon_{213}=(-1)(-1)=1\)</span> so these also give three <span class="math inline">\(+1\)</span>s.</li>
+<li>We no that if <span class="math inline">\(i\neq j\)</span> then some index must be repeated on one of the <span class="math inline">\(\varepsilon\)</span>s which gives 0, so the RHS <span class="math inline">\(\propto \delta_i^j\)</span>. Since <span class="math inline">\(\delta_i^i=3\)</span>, comparison with 1. tells us the constant of proportionality is 2.</li>
+<li>…</li>
 </ol>
 </blockquote>
-</div>
-<div id="1d488657-0dc4-46b2-be13-18d4f3d02b12" class="cell markdown">
-<h2 id="faraday-maxwell-tensor">Faraday-Maxwell tensor</h2>
-<p>Going back to our original problem: What is Green's Theorem in 4D? We
-were trying to make sense out of the last equality in <span
-class="math display">\[
+</section>
+</section>
+<section id="faraday-maxwell-tensor" class="level2">
+<h2 class="anchored" data-anchor-id="faraday-maxwell-tensor">Faraday-Maxwell tensor</h2>
+<p>Going back to our original problem: What is Green’s Theorem in 4D? We were trying to make sense out of the last equality in <span class="math display">\[
 \int_\gamma A_\nu dx^\nu
     =\int_{\partial \Sigma} A_\nu dx^\nu  
     =\int_{\Sigma} (\partial \times A)\cdot {\bf n} da
-\]</span> but that is not so difficult now: The derviative operator
-naturally has its index down so we need to focus on that: $\int_{\Sigma}
-(\partial \times A)\cdot {\bf n} da\to $ something like <span
-class="math inline">\(\int_{\Sigma} \partial_\mu A_\nu dx^\mu
-dx^\nu\)</span>, but it needs to be antisymmetric in the indices,
-because that seemed important to the curl earlier. So really, we want
-something like <span class="math inline">\(\partial_\mu A_\nu -
-\partial_\nu A_\mu\)</span>. This combination is so import, it is called
-the Maxwell tensor or Faraday tensor, or Maxwell-Faraday tensor or field
-strenght tensor, or ... you get the idea. Anyway, it is the correct
-version of the curl in 4D, and just like in 3D, it does not change under
-the <span class="math inline">\(A/A&#39;\)</span> ambiguity <span
-class="math inline">\(A_\mu\to A_\mu+\partial_\mu \alpha\)</span></p>
-<blockquote>
-<h3 id="problem">Problem</h3>
+\]</span> but that is not so difficult now: The derviative operator naturally has its index down so we need to focus on that: $_{} (A) da$ something like <span class="math inline">\(\int_{\Sigma} \partial_\mu A_\nu dx^\mu dx^\nu\)</span>, but it needs to be antisymmetric in the indices, because that seemed important to the curl earlier. So really, we want something like <span class="math inline">\(\partial_\mu A_\nu - \partial_\nu A_\mu\)</span>. This combination is so import, it is called the Maxwell tensor or Faraday tensor, or Maxwell-Faraday tensor or field strenght tensor, or … you get the idea. Anyway, it is the correct version of the curl in 4D, and just like in 3D, it does not change under the <span class="math inline">\(A/A'\)</span> ambiguity <span class="math inline">\(A_\mu\to A_\mu+\partial_\mu \alpha\)</span></p>
+<blockquote class="blockquote">
+<h3 id="problem-1" class="anchored">Problem</h3>
 <p>Prove this by direct calculation.</p>
 </blockquote>
-</div>
-<div id="0f6c4cd3-901a-4c92-998c-89d51127a7c6" class="cell markdown"
-data-nbgrader="{&quot;grade&quot;:true,&quot;grade_id&quot;:&quot;cell-413869539a0f2fd4&quot;,&quot;locked&quot;:false,&quot;points&quot;:0,&quot;schema_version&quot;:3,&quot;solution&quot;:true,&quot;task&quot;:false}">
-<blockquote>
-<h3 id="answer">Answer</h3>
-<p>Since partial derivatives commute <span
-class="math inline">\(\partial_\mu \partial_\nu \alpha = \partial_\nu
-\partial_\mu\)</span>, \begin{align} F_{\mu\nu}' &amp;= \partial_\mu
-A_\nu' - \partial_\nu A_\mu'\cr &amp;= \partial_\mu A_\nu - \partial_\nu
-A_\mu + \partial_\mu \partial_\nu \alpha - \partial_\nu \partial_\mu
-\alpha\cr &amp;=F_{\mu\nu} \end{align}</p>
+<blockquote class="blockquote">
+<h3 id="answer-2" class="anchored">Answer</h3>
+<p>Since partial derivatives commute <span class="math inline">\(\partial_\mu \partial_\nu \alpha = \partial_\nu \partial_\mu\)</span>, <span class="math display">\[\begin{align}
+F_{\mu\nu}' &amp;= \partial_\mu A_\nu' - \partial_\nu A_\mu'\cr
+&amp;= \partial_\mu A_\nu - \partial_\nu A_\mu +  \partial_\mu \partial_\nu \alpha - \partial_\nu \partial_\mu \alpha\cr
+&amp;=F_{\mu\nu}
+\end{align}\]</span></p>
 </blockquote>
-</div>
-<div id="bc66f238-ed94-4c1a-b27e-e2f47ef91ecc" class="cell markdown">
-<p>We are almost there, but we need to figure out what <span
-class="math inline">\(F_{\mu\nu}dx^\mu dx^\nu\)</span> means. In
-calculus we learn that <span class="math inline">\(dxdy=dydx\)</span>
-because integrals commute or something like that, but that is again an
-unforced error. We usually want <em>oriented</em> areas, and if we
-switch orientation, the integral flips sign! So really, we should be
-writing <span class="math inline">\(dxdy=-dydx\)</span>! We have a
-symbol for this: For any two differentials <span
-class="math inline">\(df\)</span> and <span
-class="math inline">\(dg\)</span>, we define the <strong>wedge
-product</strong> <span class="math inline">\(df\wedge dg\)</span> so
-that <span class="math display">\[
+<p>We are almost there, but we need to figure out what <span class="math inline">\(F_{\mu\nu}dx^\mu dx^\nu\)</span> means. In calculus we learn that <span class="math inline">\(dxdy=dydx\)</span> because integrals commute or something like that, but that is again an unforced error. We usually want <em>oriented</em> areas, and if we switch orientation, the integral flips sign! So really, we should be writing <span class="math inline">\(dxdy=-dydx\)</span>! We have a symbol for this: For any two differentials <span class="math inline">\(df\)</span> and <span class="math inline">\(dg\)</span>, we define the <strong>wedge product</strong> <span class="math inline">\(df\wedge dg\)</span> so that <span class="math display">\[
 dg\wedge df = -df\wedge dg
-\]</span> Then <span class="math inline">\(dx^\mu \wedge dx^nu\)</span>
-is antisymmetric and therefore <span class="math display">\[
+\]</span> Then <span class="math inline">\(dx^\mu \wedge dx^nu\)</span> is antisymmetric and therefore <span class="math display">\[
 \int_\gamma A_\nu\ dx^\nu
     =\int_{\Sigma} \partial_\mu A_\nu\ dx^\mu \wedge dx^\nu
-\]</span> checks all our boxes:</p>
-<ul>
-<li>It does what Green's is supposed to: relate a surface integral of a
-curl to a line integral aroudn a the boundary of the surface.</li>
-<li>It doesn't rely on metrics (they appear nowhere in this
-construction).</li>
-<li>The left-hand side is unambiguous under the shift by the fundamental
-theorem of line integrals.</li>
-<li>The righthand side is <strong>manifestly</strong> unambiguous
-because it is constructed "as a curl".</li>
-</ul>
-<blockquote>
-<h3 id="problem">Problem</h3>
-<p>Recall that when the fields <span class="math inline">\(\phi\)</span>
-and <span class="math inline">\({\bf A}\)</span> are time-independent,
-then <span class="math inline">\({\bf E}=-\nabla \phi\)</span> and <span
-class="math inline">\({\bf B}=\nabla \times {\bf A}\)</span>.</p>
-<p>a. Use this to calculate the components of the Maxwell tensor. Note
-that the electric field has a part that is not zero if the fields are
-allowed to vary in time.</p>
-<p>b. Show that if fields are allowed to vary in time, then <span
-class="math display">\[
+\]</span> checks all our boxes: * It does what Green’s is supposed to: relate a surface integral of a curl to a line integral aroudn a the boundary of the surface. * It doesn’t rely on metrics (they appear nowhere in this construction). * The left-hand side is unambiguous under the shift by the fundamental theorem of line integrals. * The righthand side is <strong>manifestly</strong> unambiguous because it is constructed “as a curl”.</p>
+<blockquote class="blockquote">
+<h3 id="problem-2" class="anchored">Problem</h3>
+<p>Recall that when the fields <span class="math inline">\(\phi\)</span> and <span class="math inline">\({\bf A}\)</span> are time-independent, then <span class="math inline">\({\bf E}=-\nabla \phi\)</span> and <span class="math inline">\({\bf B}=\nabla \times {\bf A}\)</span>.</p>
+<ol type="a">
+<li><p>Use this to calculate the components of the Maxwell tensor. Note that the electric field has a part that is not zero if the fields are allowed to vary in time.</p></li>
+<li><p>Show that if fields are allowed to vary in time, then <span class="math display">\[
 \nabla \times {\bf E} = -\frac1c\frac{\partial {\bf B}}{\partial t}
-\]</span></p>
-<p>c. Show that the result in b. is equivalent to the statement that
-<span class="math display">\[
+\]</span></p></li>
+<li><p>Show that the result in b. is equivalent to the statement that <span class="math display">\[
 \frac1c\frac{\partial }{\partial t} \Phi_B(\Sigma) = -{\mathcal E}
-\]</span> for any fixed surface <span
-class="math inline">\(\Sigma\)</span> (<em>i.e.</em> not changing in
-time). Here <span class="math inline">\(\Phi_B(\Sigma)\)</span> is the
-magnetic flux through the surface, and <span
-class="math inline">\(\mathcal E\)</span> is the <strong><a
-href="https://en.wikipedia.org/wiki/Electromotive_force">electromotive
-force</a></strong>. Which law from electricity and magnetism did you
-just rediscover?</p>
-<p>d. Show that the law in c. and the statement that there are no
-magnetic monopoles both follow from the formula <span
-class="math display">\[
+\]</span> for any fixed surface <span class="math inline">\(\Sigma\)</span> (<em>i.e.</em> not changing in time). Here <span class="math inline">\(\Phi_B(\Sigma)\)</span> is the magnetic flux through the surface, and <span class="math inline">\(\mathcal E\)</span> is the <strong><a href="https://en.wikipedia.org/wiki/Electromotive_force">electromotive force</a></strong>. Which law from electricity and magnetism did you just rediscover?</p></li>
+<li><p>Show that the law in c.&nbsp;and the statement that there are no magnetic monopoles both follow from the formula <span class="math display">\[
 \partial_\lambda F_{\mu \nu}
 +\partial_\mu F_{\nu\lambda}
 +\partial_\nu F_{\lambda \mu}=0
 \tag{\dagger}
-\]</span></p>
+\]</span></p></li>
+</ol>
 </blockquote>
-</div>
-<div id="478f7e21-37ec-4e57-a6e8-09348609b540" class="cell markdown"
-data-nbgrader="{&quot;grade&quot;:true,&quot;grade_id&quot;:&quot;cell-03a3f9a236ad5c24&quot;,&quot;locked&quot;:false,&quot;points&quot;:0,&quot;schema_version&quot;:3,&quot;solution&quot;:true,&quot;task&quot;:false}">
-<blockquote>
-<h3 id="answer">Answer</h3>
-<p>a. The Maxwell tensor is <span
-class="math inline">\(F_{\mu\nu}=\partial_\mu A_\nu - \partial_\nu
-A_\mu\)</span>, and we want to calculate <span
-class="math inline">\(F_{0i}\)</span> and <span
-class="math inline">\(F_{ij}\)</span>. We will start with <span
-class="math display">\[
-F_{ij} = \partial_i A_j - \partial_j A_i =  \varepsilon_{ijk} (\nabla
-\times {\bf A})^k = \varepsilon_{ijk}{\bf B}^k
-\]</span> so <span class="math inline">\({\bf B}^k = \frac12
-\varepsilon^{lij}F_{ij}\)</span>. Similarly, <span
-class="math display">\[
-F_{0i} = \partial_0 A_i - \partial_i A_0 =  \left( \frac1c\frac{\partial
-{\bf A} }{\partial t} + \nabla \phi\right)_i
-\]</span> so evidently <span class="math inline">\(E^i = -
-\delta^{ij}F_{0j}\)</span>, so the electric field is <span
-class="math display">\[
+<blockquote class="blockquote">
+<h3 id="answer-3" class="anchored">Answer</h3>
+<ol type="a">
+<li><p>The Maxwell tensor is <span class="math inline">\(F_{\mu\nu}=\partial_\mu A_\nu - \partial_\nu A_\mu\)</span>, and we want to calculate <span class="math inline">\(F_{0i}\)</span> and <span class="math inline">\(F_{ij}\)</span>. We will start with <span class="math display">\[
+F_{ij} = \partial_i A_j - \partial_j A_i =  \varepsilon_{ijk} (\nabla \times {\bf A})^k = \varepsilon_{ijk}{\bf B}^k
+\]</span> so <span class="math inline">\({\bf B}^k = \frac12 \varepsilon^{lij}F_{ij}\)</span>. Similarly, <span class="math display">\[
+F_{0i} = \partial_0 A_i - \partial_i A_0 =  \left( \frac1c\frac{\partial {\bf A} }{\partial t} + \nabla \phi\right)_i
+\]</span> so evidently <span class="math inline">\(E^i = - \delta^{ij}F_{0j}\)</span>, so the electric field is <span class="math display">\[
 {\bf E} = - \nabla \phi - \frac1c\frac{\partial {\bf A} }{\partial t}
-\]</span></p>
-<p>b. Note that this implies that a magnetic vector potential that is
-changing in time generates an electric field. If we take the curl of the
-definition above, we dervive that <span class="math display">\[
-\nabla \times {\bf E} = - \nabla \times \nabla \phi -
-\frac1c\frac{\partial }{\partial t} \nabla \times {\bf A}
-\]</span> The first term vanishes because "gradients don't curl", and
-the second term is <span class="math inline">\(-\frac1c\partial {\bf
-B}/\partial t\)</span>.</p>
-<p>c. We can integrate the whole equation from b. over the surface <span
-class="math inline">\(\Sigma\)</span>. Since the surface is not changing
-in time, we can switch the order of integration and differentiation of
-<span class="math inline">\({\bf B}\)</span> which gives the magnetic
-flux <span class="math inline">\(\Phi_B(\Sigma)=\int_\Sigma {\bf B}\cdot
-d{\bf a}\)</span>. Thus <span class="math display">\[
-\frac{\partial \Phi_B}{\partial t} = - \int_\Sigma \nabla \times {\bf E}
-\cdot d{\bf a}  
-\]</span> The claimed result now follows from Green's theorem again and
-the definition of the electromotive force. This is the Faraday-Lentz law
-of induction.</p>
-<p>d. If all the components are spacial (<em>i.e.</em> not the
-0-component), then <span class="math display">\[
+\]</span></p></li>
+<li><p>Note that this implies that a magnetic vector potential that is changing in time generates an electric field. If we take the curl of the definition above, we dervive that <span class="math display">\[
+\nabla \times {\bf E} = - \nabla \times \nabla \phi - \frac1c\frac{\partial }{\partial t} \nabla \times {\bf A}
+\]</span> The first term vanishes because “gradients don’t curl”, and the second term is <span class="math inline">\(-\frac1c\partial {\bf B}/\partial t\)</span>.</p></li>
+<li><p>We can integrate the whole equation from b. over the surface <span class="math inline">\(\Sigma\)</span>. Since the surface is not changing in time, we can switch the order of integration and differentiation of <span class="math inline">\({\bf B}\)</span> which gives the magnetic flux <span class="math inline">\(\Phi_B(\Sigma)=\int_\Sigma {\bf B}\cdot d{\bf a}\)</span>. Thus <span class="math display">\[
+\frac{\partial \Phi_B}{\partial t} = - \int_\Sigma \nabla \times {\bf E} \cdot d{\bf a}  
+\]</span> The claimed result now follows from Green’s theorem again and the definition of the electromotive force. This is the Faraday-Lentz law of induction.</p></li>
+<li><p>If all the components are spacial (<em>i.e.</em> not the 0-component), then <span class="math display">\[
 0=\partial_k F_{ij}
 +\partial_i F_{jk}
 +\partial_j F_{ki}
-=\frac1{3!}\varepsilon_{ijk} \varepsilon^{mnp}\partial_p
-F_{ij}=\frac1{3!}\varepsilon_{ijk}
-\varepsilon^{mnp}\varepsilon_{mnq}\partial_p B^q
+=\frac1{3!}\varepsilon_{ijk} \varepsilon^{mnp}\partial_p F_{ij}=\frac1{3!}\varepsilon_{ijk} \varepsilon^{mnp}\varepsilon_{mnq}\partial_p B^q
 =\frac1{3}\varepsilon_{ijk} \delta^{p}_{q}\partial_p B^q
-\]</span> but this is proportional to <span class="math inline">\(\nabla
-\cdot {\bf B}\)</span>. Next, we let <span class="math inline">\(\lambda
-=0\)</span> and <span class="math inline">\(\mu\)</span> and <span
-class="math inline">\(\nu\)</span> be spacial: <span
-class="math display">\[
+\]</span> but this is proportional to <span class="math inline">\(\nabla \cdot {\bf B}\)</span>. Next, we let <span class="math inline">\(\lambda =0\)</span> and <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\nu\)</span> be spacial: <span class="math display">\[
 0=\partial_0 F_{ij}
 +\partial_i F_{j0}
 +\partial_j F_{0i}
 =\partial_0 F_{ij}
 -\partial_i F_{0j}
 +\partial_j F_{0i}
-\]</span> since this is antisymmetric in <span
-class="math inline">\(ij\)</span>, we can pull out an <span
-class="math inline">\(\varepsilon\)</span>. This is equivalent to just
-contracting the formula with <span
-class="math inline">\(\varepsilon^{ijk}\)</span>, so lets do that (with
-a factor of <span class="math inline">\(\frac12\)</span> for
-convenience): \begin{align} 0&amp;=\frac12 \partial_0
-\varepsilon^{ijk}F_{ij} -\frac12\varepsilon^{ijk}\partial_i F_{0j}
-+\frac12\varepsilon^{ijk}\partial_j F_{0i}\cr &amp;=\partial_0 B^k +
-\varepsilon^{ijk}\partial_i E_j =\frac 1c \frac\partial{\partial t} B^k
-+ (\nabla \times {\bf E})^k \end{align} Taken together, these are the
-source-free Maxwell equations we were looking for.</p>
+\]</span> since this is antisymmetric in <span class="math inline">\(ij\)</span>, we can pull out an <span class="math inline">\(\varepsilon\)</span>. This is equivalent to just contracting the formula with <span class="math inline">\(\varepsilon^{ijk}\)</span>, so lets do that (with a factor of <span class="math inline">\(\frac12\)</span> for convenience): <span class="math display">\[\begin{align}
+0&amp;=\frac12 \partial_0 \varepsilon^{ijk}F_{ij}
+-\frac12\varepsilon^{ijk}\partial_i F_{0j}
++\frac12\varepsilon^{ijk}\partial_j F_{0i}\cr
+&amp;=\partial_0 B^k + \varepsilon^{ijk}\partial_i E_j
+=\frac 1c \frac\partial{\partial t} B^k + (\nabla \times {\bf E})^k
+\end{align}\]</span> Taken together, these are the source-free Maxwell equations we were looking for.</p></li>
+</ol>
 </blockquote>
-</div>
-<div id="db098a22-4815-4743-93f5-62b59f5b1ef7" class="cell markdown">
-<p>Notice that we casually derived both <span
-class="math inline">\(\nabla \cdot {\bf B}=0\)</span> and <span
-class="math inline">\(\partial \Phi_B/\partial t = -c{\mathcal
-E}\)</span> from a single equation in spacetime. In differential form
-notation, this equation is simply <span class="math display">\[
+<p>Notice that we casually derived both <span class="math inline">\(\nabla \cdot {\bf B}=0\)</span> and <span class="math inline">\(\partial \Phi_B/\partial t = -c{\mathcal E}\)</span> from a single equation in spacetime. In differential form notation, this equation is simply <span class="math display">\[
 dF=0
 \]</span></p>
-<blockquote>
-<h3 id="problem">Problem</h3>
-<p>Check this statement. Recall that the differential <span
-class="math inline">\(d=dx^\mu \partial_\mu\)</span> of some form has
-two parts: the derivative <span
-class="math inline">\(\partial_\mu\)</span> acting on the coefficients
-and the differential element <span class="math inline">\(dx^\mu\)</span>
-which has to be wedged with the differential element of the form.</p>
+<blockquote class="blockquote">
+<h3 id="problem-3" class="anchored">Problem</h3>
+<p>Check this statement. Recall that the differential <span class="math inline">\(d=dx^\mu \partial_\mu\)</span> of some form has two parts: the derivative <span class="math inline">\(\partial_\mu\)</span> acting on the coefficients and the differential element <span class="math inline">\(dx^\mu\)</span> which has to be wedged with the differential element of the form.</p>
 </blockquote>
-</div>
-<div id="630ab896-d47b-4996-8e0d-4408f1402e46" class="cell markdown"
-data-nbgrader="{&quot;grade&quot;:true,&quot;grade_id&quot;:&quot;cell-37a0d0d4bad22da9&quot;,&quot;locked&quot;:false,&quot;points&quot;:0,&quot;schema_version&quot;:3,&quot;solution&quot;:true,&quot;task&quot;:false}">
-<blockquote>
-<h3 id="answer">Answer</h3>
-<p>The Faraday-Maxwell 2-form is <span class="math inline">\(F=F_{\mu
-\nu}\ dx^\mu \wedge dx^\nu\)</span>, so <span class="math display">\[
-dF= \partial_\lambda F_{\mu\nu}\ dx^\lambda \wedge \left( dx^\mu \wedge
-dx^\nu\right) = \partial_\lambda F_{\mu\nu} \ dx^\lambda \wedge  dx^\mu
-\wedge dx^\nu
-\]</span> But <span class="math inline">\(dx^\lambda \wedge  dx^\mu
-\wedge dx^\nu\)</span> is totally anti-symmetric on <span
-class="math inline">\(\lambda\)</span>, <span
-class="math inline">\(\mu\)</span>, and <span
-class="math inline">\(\nu\)</span>, and therefore the coefficient of
-<span class="math inline">\(dF=0\)</span> is just the previous form of
-the Maxwell equation (<span class="math inline">\(\dagger\)</span>), up
-to a factor of 3.</p>
+<blockquote class="blockquote">
+<h3 id="answer-4" class="anchored">Answer</h3>
+<p>The Faraday-Maxwell 2-form is <span class="math inline">\(F=F_{\mu \nu}\ dx^\mu \wedge dx^\nu\)</span>, so <span class="math display">\[
+dF= \partial_\lambda F_{\mu\nu}\ dx^\lambda \wedge \left( dx^\mu \wedge dx^\nu\right) = \partial_\lambda F_{\mu\nu} \ dx^\lambda \wedge  dx^\mu \wedge dx^\nu
+\]</span> But <span class="math inline">\(dx^\lambda \wedge  dx^\mu \wedge dx^\nu\)</span> is totally anti-symmetric on <span class="math inline">\(\lambda\)</span>, <span class="math inline">\(\mu\)</span>, and <span class="math inline">\(\nu\)</span>, and therefore the coefficient of <span class="math inline">\(dF=0\)</span> is just the previous form of the Maxwell equation (<span class="math inline">\(\dagger\)</span>), up to a factor of 3.</p>
 </blockquote>
-</div>
-<div id="a5e1f1e6-95aa-4157-9193-169a0bebf4f4" class="cell markdown">
-<blockquote>
-<h3 id="problem">Problem</h3>
-<p>a. Check that on any differential (<em>i.e.</em> of any degree)</p>
+<blockquote class="blockquote">
+<h3 id="problem-4" class="anchored">Problem</h3>
+<ol type="a">
+<li>Check that on any differential (<em>i.e.</em> of any degree)</li>
+</ol>
 <p><span class="math display">\[
 d^2 = 0
 \]</span></p>
-<p>b. Use this to show that <span class="math display">\[
+<ol start="2" type="a">
+<li>Use this to show that <span class="math display">\[
 dF=0 \quad \Leftrightarrow \quad F=dA
-\]</span></p>
+\]</span></li>
+</ol>
 </blockquote>
-</div>
-<div id="cb5cd636-12b1-4445-b3df-146b0d5baf05" class="cell markdown"
-data-nbgrader="{&quot;grade&quot;:true,&quot;grade_id&quot;:&quot;cell-a73f83bbaaa3a2d3&quot;,&quot;locked&quot;:false,&quot;points&quot;:0,&quot;schema_version&quot;:3,&quot;solution&quot;:true,&quot;task&quot;:false}">
-<blockquote>
-<h3 id="answer">Answer</h3>
-<p>a. A differential form <span class="math inline">\(\omega\)</span> of
-degree <span class="math inline">\(p\)</span> is of the form <span
-class="math inline">\(\omega =\omega_{i_1 \cdots i_p}dx^{i_1}\wedge
-\dots dx^{i_p}\)</span>. Therefore \begin{align} d^2\omega &amp;=
-d\left(\partial_{j}\omega_{i_1 \cdots i_p}dx^{j}\wedge
-dx^{i_1}\wedge\dots dx^{i_p}\right)\cr &amp;= \partial_k\partial_j
-\omega_{i_1 \cdots i_p}  dx^{k}\wedge dx^{j}\wedge dx^{i_1}\wedge\dots
-dx^{i_p} \end{align} But the wedge is anti-symmetric in <span
-class="math inline">\(ij\)</span> and the double partials are symmetric,
-so the whole thing vanishes. I accidentally did this with spacial
-indices, but the arguement is the same regardless.</p>
-<p>b. Since <span class="math inline">\(d^2=0\)</span> on <span
-class="math inline">\(A\)</span>, <span
-class="math inline">\(dF=d^2A=0\)</span>. On the other hand, from
-multivariable calculus, whenever <span
-class="math inline">\(dF=0\)</span> in a contractable region of space
-(<em>i.e.</em> it has no "holes"), then there is some set of functions
-whose derivatives solve this equation. In the case at hand, this means
-that there is a form of degree 1 which we call <span
-class="math inline">\(A\)</span> by convention, for which <span
-class="math inline">\(F=dA\)</span>.</p>
+<blockquote class="blockquote">
+<h3 id="answer-5" class="anchored">Answer</h3>
+<ol type="a">
+<li><p>A differential form <span class="math inline">\(\omega\)</span> of degree <span class="math inline">\(p\)</span> is of the form <span class="math inline">\(\omega =\omega_{i_1 \cdots i_p}dx^{i_1}\wedge \dots dx^{i_p}\)</span>. Therefore <span class="math display">\[\begin{align}
+d^2\omega &amp;= d\left(\partial_{j}\omega_{i_1 \cdots i_p}dx^{j}\wedge dx^{i_1}\wedge\dots dx^{i_p}\right)\cr
+&amp;= \partial_k\partial_j \omega_{i_1 \cdots i_p}\ \ dx^{k}\wedge dx^{j}\wedge dx^{i_1}\wedge\dots dx^{i_p}
+\end{align}\]</span> But the wedge is anti-symmetric in <span class="math inline">\(ij\)</span> and the double partials are symmetric, so the whole thing vanishes. I accidentally did this with spacial indices, but the arguement is the same regardless.</p></li>
+<li><p>Since <span class="math inline">\(d^2=0\)</span> on <span class="math inline">\(A\)</span>, <span class="math inline">\(dF=d^2A=0\)</span>. On the other hand, from multivariable calculus, whenever <span class="math inline">\(dF=0\)</span> in a contractable region of space (<em>i.e.</em> it has no “holes”), then there is some set of functions whose derivatives solve this equation. In the case at hand, this means that there is a form of degree 1 which we call <span class="math inline">\(A\)</span> by convention, for which <span class="math inline">\(F=dA\)</span>.</p></li>
+</ol>
 </blockquote>
-</div>
-<div id="2c5849ae-9a28-4ae1-8b71-323f52eb9a7e" class="cell markdown">
-<h2 id="stokes-theorem-done-right">Stokes theorem done right</h2>
-<p>We have just defined generalizations of vectors and matrices. In the
-math(ematical physics) they are called <strong>differential exterior
-forms</strong>. The number of <span
-class="math inline">\(dx\wedge\)</span> terms appearing is called the
-degree of the form, and often we abbreviate to just <span
-class="math inline">\(p\)</span>-forms. The vector with the index down
-is the component of a 1-form. An antisymmetric matrix with both indices
-down is a 2-form. A function is a 0-form, <em>et cetera</em>.
-Differential exterior forms of degree <span
-class="math inline">\(p\)</span> can be paired with appropriately smooth
-subsets of <span class="math inline">\({\bf R}^n\)</span>: 3-forms can
-be integrated over volumes, 2-forms over surfaces, 1-forms over lines,
-and 0-forms can be summed over collections of points.</p>
-<p>Let <span class="math inline">\(\omega\)</span> be an exterior
-differential form of degree <span class="math inline">\(p\)</span>. Then
-<span class="math inline">\(d\omega\)</span> is an exterior differential
-form of degree <span class="math inline">\(p+1\)</span>. If <span
-class="math inline">\(U\)</span> is some <span
-class="math inline">\((p+1)\)</span>-dimensional subset of <span
-class="math inline">\({\bf R}^n\)</span>, then <span
-class="math inline">\(\int_Ud\omega\in {\bf R}\)</span> is some number.
-Actually, so is <span class="math inline">\(\int_{\partial U}\omega\in
-{\bf R}\)</span> for that matter. In fact, we have already seen from a
-handful of examples that these two numbers are equal. This is the
-general form of the Stokes theorem: <span class="math display">\[
+</section>
+<section id="stokes-theorem-done-right" class="level2">
+<h2 class="anchored" data-anchor-id="stokes-theorem-done-right">Stokes theorem done right</h2>
+<p>We have just defined generalizations of vectors and matrices. In the math(ematical physics) they are called <strong>differential exterior forms</strong>. The number of <span class="math inline">\(dx\wedge\)</span> terms appearing is called the degree of the form, and often we abbreviate to just <span class="math inline">\(p\)</span>-forms. The vector with the index down is the component of a 1-form. An antisymmetric matrix with both indices down is a 2-form. A function is a 0-form, <em>et cetera</em>. Differential exterior forms of degree <span class="math inline">\(p\)</span> can be paired with appropriately smooth subsets of <span class="math inline">\({\bf R}^n\)</span>: 3-forms can be integrated over volumes, 2-forms over surfaces, 1-forms over lines, and 0-forms can be summed over collections of points.</p>
+<p>Let <span class="math inline">\(\omega\)</span> be an exterior differential form of degree <span class="math inline">\(p\)</span>. Then <span class="math inline">\(d\omega\)</span> is an exterior differential form of degree <span class="math inline">\(p+1\)</span>. If <span class="math inline">\(U\)</span> is some <span class="math inline">\((p+1)\)</span>-dimensional subset of <span class="math inline">\({\bf R}^n\)</span>, then <span class="math inline">\(\int_Ud\omega\in {\bf R}\)</span> is some number. Actually, so is <span class="math inline">\(\int_{\partial U}\omega\in {\bf R}\)</span> for that matter. In fact, we have already seen from a handful of examples that these two numbers are equal. This is the general form of the Stokes theorem: <span class="math display">\[
 \int_Ud\omega = \int_{\partial U}\omega
 \tag{\dagger\dagger}
 \]</span></p>
-</div>
-<div id="3960d2f0-6588-4116-98ec-570cf0f92b29" class="cell markdown">
-<blockquote>
-<h3 id="problem">Problem</h3>
-<p>Use this form of Stokes' theorm together with the result of the
-previous problem to show that:</p>
-<blockquote>
-<p>The boundary of a boundary is empty.</p>
+<blockquote class="blockquote">
+<h3 id="problem-5" class="anchored">Problem</h3>
+<p>Use this form of Stokes’ theorm together with the result of the previous problem to show that: &gt; The boundary of a boundary is empty.</p>
+<p>In other words show that <span class="math inline">\(\partial^2 U =\emptyset\)</span> for all regions <span class="math inline">\(U\)</span>.</p>
 </blockquote>
-<p>In other words show that <span class="math inline">\(\partial^2 U
-=\emptyset\)</span> for all regions <span
-class="math inline">\(U\)</span>.</p>
+<blockquote class="blockquote">
+<h3 id="answer-6" class="anchored">Answer</h3>
+<p>…</p>
 </blockquote>
-</div>
-<div id="cec67084-6eb3-4ecd-ae07-4d302a2a42cd" class="cell markdown"
-data-nbgrader="{&quot;grade&quot;:true,&quot;grade_id&quot;:&quot;cell-c3fa34f921820517&quot;,&quot;locked&quot;:false,&quot;points&quot;:0,&quot;schema_version&quot;:3,&quot;solution&quot;:true,&quot;task&quot;:false}">
-<blockquote>
-<h3 id="answer">Answer</h3>
-<p>...</p>
-</blockquote>
-</div>
-<div id="36ab7e68-2a91-4416-b12a-5fe04f1e350c" class="cell markdown">
-<h2 id="charges-and-currents">Charges and currents</h2>
-<p>To proceed, we need to figure out how to get the other Maxwell
-equations which are Coulomb/Gauß and Ampère's laws. The first is that
-over any closed surface <span class="math inline">\(\Sigma\)</span>, the
-charge <span class="math inline">\(Q(\Sigma)\)</span> inside that
-surface is given by integrating the electric field over that surface
-<span class="math display">\[
+</section>
+<section id="charges-and-currents" class="level2">
+<h2 class="anchored" data-anchor-id="charges-and-currents">Charges and currents</h2>
+<p>To proceed, we need to figure out how to get the other Maxwell equations which are Coulomb/Gauß and Ampère’s laws. The first is that over any closed surface <span class="math inline">\(\Sigma\)</span>, the charge <span class="math inline">\(Q(\Sigma)\)</span> inside that surface is given by integrating the electric field over that surface <span class="math display">\[
 Q(\Sigma) = \int_\Sigma {\bf E}\cdot d{\bf a}
-\]</span> (or <span class="math inline">\(\int {\bf E}\cdot {\bf n}\
-da\)</span> if that's more familiar). Let <span
-class="math inline">\(U\)</span> be the region for which <span
-class="math inline">\(\Sigma=\partial U\)</span> is the boundary. Then
-we can rewrite the equation above using the divergence theorem: <span
-class="math display">\[
+\]</span> (or <span class="math inline">\(\int {\bf E}\cdot {\bf n}\ da\)</span> if that’s more familiar). Let <span class="math inline">\(U\)</span> be the region for which <span class="math inline">\(\Sigma=\partial U\)</span> is the boundary. Then we can rewrite the equation above using the divergence theorem: <span class="math display">\[
 Q(U) = \int_U \nabla \cdot {\bf E}\ dv
-\]</span> In general the charge <span class="math inline">\(Q\)</span>
-can be distributed throughout the region <span
-class="math inline">\(U\)</span>, often continuously. Because of this,
-we define the charge density <span class="math inline">\(\rho({\bf
-x})\)</span>: for any point with coordinates <span
-class="math inline">\({\bf x}\)</span>, the charge in an infinitesimal
-box of sides <span class="math inline">\(dx\)</span>, <span
-class="math inline">\(dy\)</span>, <span
-class="math inline">\(dz\)</span> is <span
-class="math inline">\(dQ=\rho({\bf x})dx\wedge dy\wedge dz\)</span>.
-Thus <span class="math inline">\(Q(\Sigma)=\int_U\rho({\bf x})dx\wedge
-dy\wedge dz\)</span>.</p>
-<blockquote>
-<h3 id="problem">Problem</h3>
-<p>a. Show that you can rewrite the Gauß law as <span
-class="math display">\[
+\]</span> In general the charge <span class="math inline">\(Q\)</span> can be distributed throughout the region <span class="math inline">\(U\)</span>, often continuously. Because of this, we define the charge density <span class="math inline">\(\rho({\bf x})\)</span>: for any point with coordinates <span class="math inline">\({\bf x}\)</span>, the charge in an infinitesimal box of sides <span class="math inline">\(dx\)</span>, <span class="math inline">\(dy\)</span>, <span class="math inline">\(dz\)</span> is <span class="math inline">\(dQ=\rho({\bf x})dx\wedge dy\wedge dz\)</span>. Thus <span class="math inline">\(Q(\Sigma)=\int_U\rho({\bf x})dx\wedge dy\wedge dz\)</span>.</p>
+<blockquote class="blockquote">
+<h3 id="problem-6" class="anchored">Problem</h3>
+<ol type="a">
+<li><p>Show that you can rewrite the Gauß law as <span class="math display">\[
 \nabla \cdot {\bf E} = \rho
-\]</span></p>
-<p>b. Suppose this equation is a special case of some 4D equation of the
-form <span class="math inline">\(\partial_\mu G^{\mu \nu}=
-j^\nu\)</span>, with <span class="math inline">\(G^{\mu \nu}\)</span>
-some version of <span class="math inline">\(F_{\mu \nu}\)</span>, but
-with the indices up instead of down. Explain how to make sense of this,
-and what this means for the temporal components of <span
-class="math inline">\(G^{\mu \nu}\)</span> and <span
-class="math inline">\(j^\mu\)</span>. You should assume that <span
-class="math inline">\(G\)</span>, like <span
-class="math inline">\(F\)</span>, is anti-symmetric.</p>
-<p>c. Write out what the spacial components <span
-class="math inline">\(\nu=i\)</span> look like in multivariable calculus
-notation, and discuss what you think it means. Can you identify this
-equation?</p>
+\]</span></p></li>
+<li><p>Suppose this equation is a special case of some 4D equation of the form <span class="math inline">\(\partial_\mu G^{\mu \nu}= j^\nu\)</span>, with <span class="math inline">\(G^{\mu \nu}\)</span> some version of <span class="math inline">\(F_{\mu \nu}\)</span>, but with the indices up instead of down. Explain how to make sense of this, and what this means for the temporal components of <span class="math inline">\(G^{\mu \nu}\)</span> and <span class="math inline">\(j^\mu\)</span>. You should assume that <span class="math inline">\(G\)</span>, like <span class="math inline">\(F\)</span>, is anti-symmetric.</p></li>
+<li><p>Write out what the spacial components <span class="math inline">\(\nu=i\)</span> look like in multivariable calculus notation, and discuss what you think it means. Can you identify this equation?</p></li>
+</ol>
 </blockquote>
-</div>
-<div id="d998a63d-32ea-4f66-8008-1330c026f548" class="cell markdown"
-data-nbgrader="{&quot;grade&quot;:true,&quot;grade_id&quot;:&quot;cell-629221a3c54e0414&quot;,&quot;locked&quot;:false,&quot;points&quot;:0,&quot;schema_version&quot;:3,&quot;solution&quot;:true,&quot;task&quot;:false}">
-<blockquote>
-<h3 id="answer">Answer</h3>
-<p>a. According to the problem statement <span class="math display">\[
-\int_U\rho({\bf x})dx\wedge dy\wedge dz = Q(\Sigma) = \int_U \nabla
-\cdot {\bf E}\ dx\wedge dy\wedge dz
-\]</span> Since this is true for all regions <span
-class="math inline">\(U\)</span>, it must be that the integrands agree:
-<span class="math inline">\(\rho=\nabla \cdot {\bf E}\)</span>.</p>
-<p>b. An equation like <span class="math inline">\(\partial_\mu G^{\mu
-\nu}=j^\nu\)</span> has temporal components (<span
-class="math inline">\(\nu=0\)</span>) and spacial ones <span
-class="math inline">\(\nu=j\)</span>. Let's look at the temporal ones
-first: Setting <span class="math inline">\(\nu=0\)</span> results in
-<span class="math display">\[
+<blockquote class="blockquote">
+<h3 id="answer-7" class="anchored">Answer</h3>
+<ol type="a">
+<li><p>According to the problem statement <span class="math display">\[
+\int_U\rho({\bf x})dx\wedge dy\wedge dz = Q(\Sigma) = \int_U \nabla \cdot {\bf E}\ dx\wedge dy\wedge dz
+\]</span> Since this is true for all regions <span class="math inline">\(U\)</span>, it must be that the integrands agree: <span class="math inline">\(\rho=\nabla \cdot {\bf E}\)</span>.</p></li>
+<li><p>An equation like <span class="math inline">\(\partial_\mu G^{\mu \nu}=j^\nu\)</span> has temporal components (<span class="math inline">\(\nu=0\)</span>) and spacial ones <span class="math inline">\(\nu=j\)</span>. Let’s look at the temporal ones first: Setting <span class="math inline">\(\nu=0\)</span> results in <span class="math display">\[
 j^0 = \partial_\mu G^{\mu 0} =\partial_i G^{i 0}
-\]</span> because <span class="math inline">\(G\)</span> is
-anti-symmetric, which is why there are no <span
-class="math inline">\(G^{00}\)</span> components. The resulting equation
-could be the Gauß law provided <span class="math inline">\(\rho\propto
-j^0\)</span> and the electric field components <span
-class="math inline">\(E^i\propto G^{0i}\)</span>. If it is permissible
-to scale the components to have values <span
-class="math inline">\(\pm1\)</span>, then, for example <span
-class="math inline">\(j^0=\rho\)</span> and <span
-class="math inline">\(G^{0i} = - G^{i0} = -E^i\)</span>.</p>
-<p>c. The spacial components of the equation are <span
-class="math inline">\(\partial_0 G^{0i} +\partial_j G^{ji} =
-j^i\)</span>. By what we just derived, the first term is the time
-derivative of <span class="math inline">\(-{\bf E}\)</span>. We next
-define a 3-vector <span class="math inline">\(\bf j\)</span> and another
-one <span class="math inline">\({\bf G}\)</span> with components <span
-class="math inline">\(G_k = \frac12 \varepsilon_{kij} G^{ij}\)</span>.
-Then the equation becomes <span class="math display">\[
--\frac1c \frac {\partial {\bf E}}{\partial t} + \nabla \times {\bf G} =
-\frac1c {\bf j}
-\]</span> The first factor of <span
-class="math inline">\(\frac1c\)</span> is needed because <span
-class="math inline">\(x^0=ct\)</span>. We now explain the second such
-factor and identify the equation.</p>
-<p>This equation looks a lot like Ampère's law: Take a surface <span
-class="math inline">\(\Sigma\)</span> and define the <span
-class="math inline">\({\bf j}\)</span>-flux through it to be <span
-class="math inline">\(I(\Sigma)=\int_\Sigma {\bf j} \cdot d{\bf
-a}\)</span>. Similarly, we define <span class="math inline">\(\Phi_{\bf
-E}(\Sigma) = \int_\Sigma {\bf E} \cdot d{\bf a}\)</span>, so that <span
-class="math inline">\(\int_\Sigma \nabla \times {\bf G}\cdot d{\bf a} =
-\int_{\partial \Sigma}{\bf G}\cdot d{\bf \ell}\)</span>, so <span
-class="math display">\[
-c\ \int_{\partial \Sigma}{\bf G}\cdot d{\bf \ell} = I + \frac
-{\partial}{\partial t}\Phi_{\bf E}
-\]</span> If <span class="math inline">\({\bf G}={\bf B}\)</span>, then
-this is the law of Ampère with Maxwell's modification called the
-<strong><a
-href="https://en.wikipedia.org/wiki/Displacement_current">displacement
-current</a></strong>.</p>
+\]</span> because <span class="math inline">\(G\)</span> is anti-symmetric, which is why there are no <span class="math inline">\(G^{00}\)</span> components. The resulting equation could be the Gauß law provided <span class="math inline">\(\rho\propto j^0\)</span> and the electric field components <span class="math inline">\(E^i\propto G^{0i}\)</span>. If it is permissible to scale the components to have values <span class="math inline">\(\pm1\)</span>, then, for example <span class="math inline">\(j^0=\rho\)</span> and <span class="math inline">\(G^{0i} = - G^{i0} = -E^i\)</span>.</p></li>
+<li><p>The spacial components of the equation are <span class="math inline">\(\partial_0 G^{0i} +\partial_j G^{ji} = j^i\)</span>. By what we just derived, the first term is the time derivative of <span class="math inline">\(-{\bf E}\)</span>. We next define a 3-vector <span class="math inline">\(\bf j\)</span> and another one <span class="math inline">\({\bf G}\)</span> with components <span class="math inline">\(G_k = \frac12 \varepsilon_{kij} G^{ij}\)</span>. Then the equation becomes <span class="math display">\[
+-\frac1c \frac {\partial {\bf E}}{\partial t} + \nabla \times {\bf G} = \frac1c {\bf j}
+\]</span> The first factor of <span class="math inline">\(\frac1c\)</span> is needed because <span class="math inline">\(x^0=ct\)</span>. We now explain the second such factor and identify the equation.</p></li>
+</ol>
+<p>This equation looks a lot like Ampère’s law: Take a surface <span class="math inline">\(\Sigma\)</span> and define the <span class="math inline">\({\bf j}\)</span>-flux through it to be <span class="math inline">\(I(\Sigma)=\int_\Sigma {\bf j} \cdot d{\bf a}\)</span>. Similarly, we define <span class="math inline">\(\Phi_{\bf E}(\Sigma) = \int_\Sigma {\bf E} \cdot d{\bf a}\)</span>, so that <span class="math inline">\(\int_\Sigma \nabla \times {\bf G}\cdot d{\bf a} = \int_{\partial \Sigma}{\bf G}\cdot d{\bf \ell}\)</span>, so <span class="math display">\[
+c\ \int_{\partial \Sigma}{\bf G}\cdot d{\bf \ell} = I + \frac {\partial}{\partial t}\Phi_{\bf E}
+\]</span> If <span class="math inline">\({\bf G}={\bf B}\)</span>, then this is the law of Ampère with Maxwell’s modification called the <strong><a href="https://en.wikipedia.org/wiki/Displacement_current">displacement current</a></strong>.</p>
 </blockquote>
-</div>
-<div id="68447203-3830-44e4-b467-c2ce4763df07" class="cell markdown">
-<h2 id="the-metric-of-spacetime">The metric of spacetime</h2>
-<p>In the previous problem, we postulated a second tensor <span
-class="math inline">\(G\)</span> similar to <span
-class="math inline">\(F\)</span> but "of the opposite type". In
-components, we previously found <span class="math display">\[
+</section>
+<section id="the-metric-of-spacetime" class="level2">
+<h2 class="anchored" data-anchor-id="the-metric-of-spacetime">The metric of spacetime</h2>
+<p>In the previous problem, we postulated a second tensor <span class="math inline">\(G\)</span> similar to <span class="math inline">\(F\)</span> but “of the opposite type”. In components, we previously found <span class="math display">\[
 \left( F_{\mu \nu} \right)
 =
 \begin{pmatrix}
@@ -1196,40 +511,15 @@ E^y &amp; -B^z &amp; 0 &amp; B^x \\
 E^z &amp; B^y &amp; -B^x &amp; 0
 \end{pmatrix}
 \]</span></p>
-<p>If we had a spacetime metric <span
-class="math inline">\(\eta_{\mu\nu}\)</span> and it's inverse <span
-class="math inline">\(\eta^{\mu\nu}\)</span> <span
-class="math display">\[
+<p>If we had a spacetime metric <span class="math inline">\(\eta_{\mu\nu}\)</span> and it’s inverse <span class="math inline">\(\eta^{\mu\nu}\)</span> <span class="math display">\[
 \eta^{\mu\lambda}\eta_{\lambda\nu}=\delta_\nu^\mu
 =\eta_{\nu\lambda}\eta^{\lambda\mu}
-\]</span> then we could define <span class="math inline">\(F^{\mu \nu} =
-\eta^{\mu\sigma}\eta^{\nu\rho}F_{\sigma \rho}\)</span>. If this version
-of <span class="math inline">\(F\)</span> is independent from <span
-class="math inline">\(G\)</span> then that would mean that there are two
-independent electromagnetic fields. Since this is not the case, we know
-that <span class="math inline">\(G\)</span> must be fixed by <span
-class="math inline">\(F\)</span>. The simplest guess is that we should
-set <span class="math inline">\(G^{\mu \nu}=\pm F^{\mu
-\nu}\)</span>.</p>
-<p>To be consistent with historical conventions we chose the <span
-class="math inline">\(+\)</span> sign. This is the correct thing to do
-in vacuum, but in more complicated materials there is a more complicated
-relation between <span class="math inline">\(F\)</span> and <span
-class="math inline">\(G\)</span> called the <a
-href="https://en.wikipedia.org/wiki/Constitutive_equation">constitutive
-relation</a>. For this reason, there are two additional symbols
-traditionally used in electromagnetic theory. The mixed space-time
-components of <span class="math inline">\(G\)</span> are written as
-<span class="math inline">\({\bf D}\)</span> called the electric
-displacement and <span class="math inline">\({\bf H}\)</span> called the
-magnetic intensity.</p>
-<p>In the remainder of these notes, we will assume the simplest
-constitutive relation which in components says <span
-class="math inline">\(G^{\mu\nu} = F^{\mu\nu}\)</span>.</p>
-<blockquote>
-<h3 id="problem">Problem</h3>
-<p>Assuming all this, show that the metric and its inverse have
-components <span class="math display">\[
+\]</span> then we could define <span class="math inline">\(F^{\mu \nu} = \eta^{\mu\sigma}\eta^{\nu\rho}F_{\sigma \rho}\)</span>. If this version of <span class="math inline">\(F\)</span> is independent from <span class="math inline">\(G\)</span> then that would mean that there are two independent electromagnetic fields. Since this is not the case, we know that <span class="math inline">\(G\)</span> must be fixed by <span class="math inline">\(F\)</span>. The simplest guess is that we should set <span class="math inline">\(G^{\mu \nu}=\pm F^{\mu \nu}\)</span>.</p>
+<p>To be consistent with historical conventions we chose the <span class="math inline">\(+\)</span> sign. This is the correct thing to do in vacuum, but in more complicated materials there is a more complicated relation between <span class="math inline">\(F\)</span> and <span class="math inline">\(G\)</span> called the <a href="https://en.wikipedia.org/wiki/Constitutive_equation">constitutive relation</a>. For this reason, there are two additional symbols traditionally used in electromagnetic theory. The mixed space-time components of <span class="math inline">\(G\)</span> are written as <span class="math inline">\({\bf D}\)</span> called the electric displacement and <span class="math inline">\({\bf H}\)</span> called the magnetic intensity.</p>
+<p>In the remainder of these notes, we will assume the simplest constitutive relation which in components says <span class="math inline">\(G^{\mu\nu} = F^{\mu\nu}\)</span>.</p>
+<blockquote class="blockquote">
+<h3 id="problem-7" class="anchored">Problem</h3>
+<p>Assuming all this, show that the metric and its inverse have components <span class="math display">\[
 \left( \eta_{\mu \nu} \right)
 =
 \begin{pmatrix}
@@ -1241,170 +531,475 @@ components <span class="math display">\[
 = \left( \eta^{\mu \nu} \right)
 \]</span></p>
 </blockquote>
-</div>
-<div id="ba62164a-375b-4109-9b34-bf88587f0ace" class="cell markdown"
-data-nbgrader="{&quot;grade&quot;:true,&quot;grade_id&quot;:&quot;cell-f0e7fb5067eae240&quot;,&quot;locked&quot;:false,&quot;points&quot;:0,&quot;schema_version&quot;:3,&quot;solution&quot;:true,&quot;task&quot;:false}">
-<blockquote>
-<h3 id="answer">Answer</h3>
-<p>By comparing the results of our calculations above, we see that the
-components of <span class="math inline">\(F_{0i}\)</span> are the same
-as those of <span class="math inline">\({\bf E}\)</span> and those of
-<span class="math inline">\(F^{0i}\)</span> the negatives of these. But
-<span class="math display">\[
+<blockquote class="blockquote">
+<h3 id="answer-8" class="anchored">Answer</h3>
+<p>By comparing the results of our calculations above, we see that the components of <span class="math inline">\(F_{0i}\)</span> are the same as those of <span class="math inline">\({\bf E}\)</span> and those of <span class="math inline">\(F^{0i}\)</span> the negatives of these. But <span class="math display">\[
 F^{0i} = \eta^{0\mu} \eta^{i \nu} F_{\mu\nu}
-= \eta^{00} \eta^{i j} F_{0j} + \eta^{0j} \eta^{i0} F_{j0} + \eta^{0j}
-\eta^{ik} F_{jk}
-\]</span> <span class="math inline">\(F_{jk}\)</span> is some component
-of the <span class="math inline">\({\bf B}\)</span> field, so this term
-should not be there. Since <span
-class="math inline">\(\eta_{ij}\)</span> is a 3D spacial metric, it's
-probably required to be <span class="math inline">\(\pm
-\delta_{ij}\)</span>, so we see that we should take <span
-class="math inline">\(\eta^{0i}=0\)</span>. Intuitively, this makes
-sense because it would be very strange if lifting a spacial index makes
-it temporal. For example a current would become a charge. This also
-kills the second term, so we see that either <span
-class="math inline">\(\eta^{00}=-1\)</span> and <span
-class="math inline">\(\eta^{ij}=\delta^{ij}\)</span> or <span
-class="math inline">\(\eta^{00}=1\)</span> and <span
-class="math inline">\(\eta^{ij}=-\delta^{ij}\)</span>. Both choices are
-possible, but the choices we have already made imply that we must pick
-the former.</p>
+= \eta^{00} \eta^{i j} F_{0j} + \eta^{0j} \eta^{i0} F_{j0} + \eta^{0j} \eta^{ik} F_{jk}
+\]</span> <span class="math inline">\(F_{jk}\)</span> is some component of the <span class="math inline">\({\bf B}\)</span> field, so this term should not be there. Since <span class="math inline">\(\eta_{ij}\)</span> is a 3D spacial metric, it’s probably required to be <span class="math inline">\(\pm \delta_{ij}\)</span>, so we see that we should take <span class="math inline">\(\eta^{0i}=0\)</span>. Intuitively, this makes sense because it would be very strange if lifting a spacial index makes it temporal. For example a current would become a charge. This also kills the second term, so we see that either <span class="math inline">\(\eta^{00}=-1\)</span> and <span class="math inline">\(\eta^{ij}=\delta^{ij}\)</span> or <span class="math inline">\(\eta^{00}=1\)</span> and <span class="math inline">\(\eta^{ij}=-\delta^{ij}\)</span>. Both choices are possible, but the choices we have already made imply that we must pick the former.</p>
 </blockquote>
-</div>
-<div id="5e2f794d-bb41-4b6d-a4c7-d6adb0fc2555" class="cell markdown">
-<p>This form of the spacetime metric is called the <strong>Minkowski
-metric</strong>, and we are using what is called the "mostly plus"
-convention (a.k.a. east-coast metric). The opposite convention (which we
-cannot take because of choices me made already) is called the "mostly
-minus" convention (a.k.a. west-coast metric).</p>
-<p>Our convention has the advantage that it agrees with our intuition
-about 3D geometry. The other convention has the advantage of minimizing
-the appearance of certain signs in particle physics calculations.</p>
-<p>We can now put it all together and write the Maxwell equations as
-<span class="math display">\[
+<p>This form of the spacetime metric is called the <strong>Minkowski metric</strong>, and we are using what is called the “mostly plus” convention (a.k.a. east-coast metric). The opposite convention (which we cannot take because of choices me made already) is called the “mostly minus” convention (a.k.a. west-coast metric).</p>
+<p>Our convention has the advantage that it agrees with our intuition about 3D geometry. The other convention has the advantage of minimizing the appearance of certain signs in particle physics calculations.</p>
+<p>We can now put it all together and write the Maxwell equations as <span class="math display">\[
 \varepsilon^{\mu\nu\rho\sigma}\partial_\nu F_{\rho \sigma} = 0
 \quad\quad \textrm{and}\quad\quad
 \partial_\mu F^{\mu \nu} = j^\nu
-\]</span> We have already shown that the first is equivalent to <span
-class="math display">\[
+\]</span> We have already shown that the first is equivalent to <span class="math display">\[
 \nabla \cdot {\bf B} = 0
 \quad\quad \textrm{and}\quad\quad
 \nabla \times {\bf E} = - \frac1c \frac {\partial {\bf B}}{\partial t}
 \]</span> and the latter one is <span class="math display">\[
 \nabla \cdot {\bf E} = \rho
 \quad\quad \textrm{and}\quad\quad
-c \nabla \times {\bf B} = \frac {\partial {\bf E}} {\partial t} + {\bf
-j}
+c \nabla \times {\bf B} = \frac {\partial {\bf E}} {\partial t} + {\bf j}
 \]</span></p>
-<h2 id="the-hodge-dual">The Hodge dual</h2>
-<p>When we are allowed to use both a spacetime metric <span
-class="math inline">\(\eta\)</span> and a spacetime volume form <span
-class="math inline">\(\varepsilon\)</span>, we can define an operation
-on called the Hodge duality operation on exterior differential forms. It
-is denoted by <span class="math inline">\(*\)</span> and is defined to
-take a <span class="math inline">\(p\)</span>-form <span
-class="math inline">\(\omega\)</span> to an <span
-class="math inline">\((n-p)\)</span>-form <span class="math inline">\(*
-\omega\)</span>, where <span class="math inline">\(n\)</span> is the
-dimension of the spacetime (which is equal to the degree of the volume
-form). In Minkowski space, for example, the components of <span
-class="math inline">\(* \omega\)</span> are defined by using <span
-class="math inline">\(p\)</span> factors of the (inverse) Minkowski
-metric <span class="math inline">\(\eta\)</span> to contract the <span
-class="math inline">\(p\)</span> indices of <span
-class="math inline">\(\omega\)</span> with <span
-class="math inline">\(\varepsilon\)</span>. This leaves <span
-class="math inline">\(n-p\)</span> totally antisymmetric indices on
-<span class="math inline">\(\varepsilon\)</span> and so defines
-components of an <span class="math inline">\((n-p)\)</span>-form.
-Explicitly, \begin{align} (* \omega)<em>{i_1\cdots i</em>{n-p}}
-&amp;=\frac1{p!} \varepsilon_{i_1\cdots i_{n-p}}{}^{j_i \dots
-j_p}\omega_{j_1\cdots j_p} \cr &amp;=\frac1{p!} \varepsilon_{i_1\cdots
-i_{n-p}j_i \dots j_p}\eta^{j_ik_1} \dots \eta^{j_pk_p}\omega_{k_1\cdots
-k_p} \end{align}</p>
-<blockquote>
-<h3 id="problem">Problem</h3>
-<p>a. Calculate <span
-class="math inline">\(\varepsilon^{0123}\)</span>.</p>
-<p>b. Calculate the Hodge dual of the volume 4-form <span
-class="math inline">\(\varepsilon\)</span>. What important quantity of
-the spacetime metric does it compute?</p>
-<p>c. Calculate the components of the Hodge dual of the Maxwell tensor.
-What is the duality operator doing to <span class="math inline">\({\bf
-E}\)</span> and <span class="math inline">\({\bf B}\)</span>?</p>
-<p>d. Taking the dual twice in a row takes a <span
-class="math inline">\(p\)</span>-form to a <span
-class="math inline">\(p\)</span>-form. Calculate the components of <span
-class="math inline">\(** \omega\)</span>.</p>
+</section>
+<section id="the-hodge-dual" class="level2">
+<h2 class="anchored" data-anchor-id="the-hodge-dual">The Hodge dual</h2>
+<p>When we are allowed to use both a spacetime metric <span class="math inline">\(\eta\)</span> and a spacetime volume form <span class="math inline">\(\varepsilon\)</span>, we can define an operation on called the Hodge duality operation on exterior differential forms. It is denoted by <span class="math inline">\(*\)</span> and is defined to take a <span class="math inline">\(p\)</span>-form <span class="math inline">\(\omega\)</span> to an <span class="math inline">\((n-p)\)</span>-form <span class="math inline">\(* \omega\)</span>, where <span class="math inline">\(n\)</span> is the dimension of the spacetime (which is equal to the degree of the volume form). In Minkowski space, for example, the components of <span class="math inline">\(* \omega\)</span> are defined by using <span class="math inline">\(p\)</span> factors of the (inverse) Minkowski metric <span class="math inline">\(\eta\)</span> to contract the <span class="math inline">\(p\)</span> indices of <span class="math inline">\(\omega\)</span> with <span class="math inline">\(\varepsilon\)</span>. This leaves <span class="math inline">\(n-p\)</span> totally antisymmetric indices on <span class="math inline">\(\varepsilon\)</span> and so defines components of an <span class="math inline">\((n-p)\)</span>-form. Explicitly, <span class="math display">\[\begin{align}
+(* \omega)_{i_1\cdots i_{n-p}}
+&amp;=\frac1{p!} \varepsilon_{i_1\cdots i_{n-p}}{}^{j_i \dots j_p}\omega_{j_1\cdots j_p}
+\cr
+&amp;=\frac1{p!} \varepsilon_{i_1\cdots i_{n-p}j_i \dots j_p}\eta^{j_ik_1} \dots \eta^{j_pk_p}\omega_{k_1\cdots k_p}
+\end{align}\]</span></p>
+<blockquote class="blockquote">
+<h3 id="problem-8" class="anchored">Problem</h3>
+<ol type="a">
+<li><p>Calculate <span class="math inline">\(\varepsilon^{0123}\)</span>.</p></li>
+<li><p>Calculate the Hodge dual of the volume 4-form <span class="math inline">\(\varepsilon\)</span>. What important quantity of the spacetime metric does it compute?</p></li>
+<li><p>Calculate the components of the Hodge dual of the Maxwell tensor. What is the duality operator doing to <span class="math inline">\({\bf E}\)</span> and <span class="math inline">\({\bf B}\)</span>?</p></li>
+<li><p>Taking the dual twice in a row takes a <span class="math inline">\(p\)</span>-form to a <span class="math inline">\(p\)</span>-form. Calculate the components of <span class="math inline">\(** \omega\)</span>.</p></li>
+</ol>
 </blockquote>
-</div>
-<div id="979a3771-87b8-4226-88d7-e222df109641" class="cell markdown"
-data-nbgrader="{&quot;grade&quot;:true,&quot;grade_id&quot;:&quot;cell-21b494b7c47737f7&quot;,&quot;locked&quot;:false,&quot;points&quot;:0,&quot;schema_version&quot;:3,&quot;solution&quot;:true,&quot;task&quot;:false}">
-<blockquote>
-<h3 id="answer">Answer</h3>
-<p>a. Raising the indices on <span
-class="math inline">\(\varepsilon\)</span> gives <span
-class="math inline">\(\varepsilon^{0123}=\eta^{0\mu}\eta^{1\nu}\eta^{2\rho}\eta^{3\sigma}\varepsilon_{\mu\nu\rho\sigma}
-= \eta^{00}\eta^{11}\eta^{22}\eta^{33}\varepsilon_{0123}\)</span>. There
-is one factor of <span class="math inline">\(\eta^{00}=-1\)</span> and
-<span class="math inline">\(\varepsilon_{0123}=1\)</span>, so <span
-class="math inline">\(\varepsilon^{0123}=-1\)</span>. In</p>
-<p>b. <span class="math inline">\(*\varepsilon = \frac1{4!}
-\varepsilon^{\mu \nu \rho\sigma}\varepsilon_{\mu \nu
-\rho\sigma}=\varepsilon^{0123}\varepsilon_{0123}= -1\)</span>. This is
-the determinant <span
-class="math inline">\(\det(\eta^{-1})\)</span>.</p>
-<p>c. <span class="math inline">\((*F)_{0i} =\frac12
-\varepsilon_{0i}{}^{jk}F_{jk}=\frac12\varepsilon_{ijk}F^{jk}=B_i\)</span>.
-Similarly, <span class="math inline">\((*F)_{ij} =\frac12
-\varepsilon_{ij}{}^{\mu \nu}F_{\mu \nu}= \varepsilon_{ij}{}^{0
-k}F_{0k}=-\varepsilon_{ijk}B^k\)</span>. This shows that Hodge maps
-<span class="math inline">\({\bf E}\to {\bf B}\)</span> and <span
-class="math inline">\({\bf B}\to -{\bf E}\)</span>.</p>
-<p>d. Doing the operation in part c. twice gives <span
-class="math inline">\({\bf E}\to {\bf B}\to -{\bf E}\)</span> so <span
-class="math inline">\(**\)</span> acts by multiplying by -1. Doing it on
-a 0-form is also easy because <span
-class="math inline">\(*1=\varepsilon\)</span>, so from part b., <span
-class="math inline">\(**1=*\varepsilon=-1\)</span>, so again, we find
-that it acts by multiplication by <span
-class="math inline">\(-1\)</span>. A similar calculation on 1-forms
-gives <span
-class="math display">\[(**A)_\mu=\frac1{3!}\frac1{1!}\varepsilon_\mu{}^{\nu\rho\sigma}\varepsilon_{\nu\rho\sigma}{}^\lambda
-A_\lambda\]</span> Doing the 0 component gives <span
-class="math inline">\(\varepsilon_0{}^{ijk}\varepsilon_{ijk}{}^0=-\varepsilon_{0
-ijk}\varepsilon^{0ijk}=+3!\)</span>. Note that permuting the 0 to the
-front gave an extra sign! Repeating this argument for the spacial
-components gives the same result. Evidently <span
-class="math inline">\(**=(-1)^{p+1}\)</span>.</p>
+<blockquote class="blockquote">
+<h3 id="answer-9" class="anchored">Answer</h3>
+<ol type="a">
+<li><p>Raising the indices on <span class="math inline">\(\varepsilon\)</span> gives <span class="math inline">\(\varepsilon^{0123}=\eta^{0\mu}\eta^{1\nu}\eta^{2\rho}\eta^{3\sigma}\varepsilon_{\mu\nu\rho\sigma}
+= \eta^{00}\eta^{11}\eta^{22}\eta^{33}\varepsilon_{0123}\)</span>. There is one factor of <span class="math inline">\(\eta^{00}=-1\)</span> and <span class="math inline">\(\varepsilon_{0123}=1\)</span>, so <span class="math inline">\(\varepsilon^{0123}=-1\)</span>. In</p></li>
+<li><p><span class="math inline">\(*\varepsilon = \frac1{4!} \varepsilon^{\mu \nu \rho\sigma}\varepsilon_{\mu \nu \rho\sigma}=\varepsilon^{0123}\varepsilon_{0123}= -1\)</span>. This is the determinant <span class="math inline">\(\det(\eta^{-1})\)</span>.</p></li>
+<li><p><span class="math inline">\((*F)_{0i} =\frac12 \varepsilon_{0i}{}^{jk}F_{jk}=\frac12\varepsilon_{ijk}F^{jk}=B_i\)</span>. Similarly, <span class="math inline">\((*F)_{ij} =\frac12 \varepsilon_{ij}{}^{\mu \nu}F_{\mu \nu}= \varepsilon_{ij}{}^{0 k}F_{0k}=-\varepsilon_{ijk}B^k\)</span>. This shows that Hodge maps <span class="math inline">\({\bf E}\to {\bf B}\)</span> and <span class="math inline">\({\bf B}\to -{\bf E}\)</span>.</p></li>
+<li><p>Doing the operation in part c.&nbsp;twice gives <span class="math inline">\({\bf E}\to {\bf B}\to -{\bf E}\)</span> so <span class="math inline">\(**\)</span> acts by multiplying by -1. Doing it on a 0-form is also easy because <span class="math inline">\(*1=\varepsilon\)</span>, so from part b., <span class="math inline">\(**1=*\varepsilon=-1\)</span>, so again, we find that it acts by multiplication by <span class="math inline">\(-1\)</span>. A similar calculation on 1-forms gives <span class="math display">\[(**A)_\mu=\frac1{3!}\frac1{1!}\varepsilon_\mu{}^{\nu\rho\sigma}\varepsilon_{\nu\rho\sigma}{}^\lambda A_\lambda\]</span> Doing the 0 component gives <span class="math inline">\(\varepsilon_0{}^{ijk}\varepsilon_{ijk}{}^0=-\varepsilon_{0 ijk}\varepsilon^{0ijk}=+3!\)</span>. Note that permuting the 0 to the front gave an extra sign! Repeating this argument for the spacial components gives the same result. Evidently <span class="math inline">\(**=(-1)^{p+1}\)</span>.</p></li>
+</ol>
 </blockquote>
-</div>
-<div id="7e8b6641-e4a6-47e7-9ffd-4d41eeec3f74" class="cell markdown">
-<blockquote>
-<h3 id="problem">Problem</h3>
-<p>a. Show that Maxwell's equations imply that the charge density <span
-class="math inline">\(\rho\)</span> and current density <span
-class="math inline">\({\bf j}\)</span> satisfy the equation <span
-class="math display">\[
+<blockquote class="blockquote">
+<h3 id="problem-9" class="anchored">Problem</h3>
+<ol type="a">
+<li><p>Show that Maxwell’s equations imply that the charge density <span class="math inline">\(\rho\)</span> and current density <span class="math inline">\({\bf j}\)</span> satisfy the equation <span class="math display">\[
 \frac1c \frac{\partial \rho}{\partial t}+\nabla \cdot {\bf j} = 0
-\]</span></p>
-<p>b. Assume that both densities fall off (go to zero) outside of a
-(potentially enormous) ball as long as that ball is big enough. This is
-a reasonable physical requirement because if this were not the case then
-the total charge/current would be infinite. Use this to show that the
-charge <span class="math inline">\(Q\)</span> integrated over all space
-(but not time) is <strong>conserved</strong> (meaning it is independent
-of time). In equations <span class="math inline">\(Q=\int \rho\ dx\wedge
-dy\wedge dz\)</span> and <span class="math inline">\(\partial Q/\partial
-t=  0\)</span>. ...</p>
+\]</span></p></li>
+<li><p>Assume that both densities fall off (go to zero) outside of a (potentially enormous) ball as long as that ball is big enough. This is a reasonable physical requirement because if this were not the case then the total charge/current would be infinite. Use this to show that the charge <span class="math inline">\(Q\)</span> integrated over all space (but not time) is <strong>conserved</strong> (meaning it is independent of time). In equations <span class="math inline">\(Q=\int \rho\ dx\wedge dy\wedge dz\)</span> and <span class="math inline">\(\partial Q/\partial t=  0\)</span>. …</p></li>
+</ol>
 </blockquote>
-</div>
-<div id="c6d01c2f-7d24-46ef-ac9a-632001b7eff3" class="cell markdown">
-<h1 id="finish-this">FINISH THIS</h1>
-</div>
-<div id="3181c6ae-d881-43f0-b082-7ef286be5c1d" class="cell markdown">
+</section>
+<section id="finish-this" class="level1">
+<h1>FINISH THIS</h1>
+</section>
 
-</div>
-</body>
-</html>
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
