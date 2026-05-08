@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>sturm_liouville</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<p>**Supplemental Material 1: Orthogonal Functions**</p>
+<p>These are notes for a discussion about linear algebra and analysis
+for the students of the Research Club.</p>
+<p>§Linear algebra</p>
+<p>Let <span class="math inline">\(V\)</span> be an <span
+class="math inline">\(𝐑\)</span>-vector space, and recall that a linear
+operator <span class="math inline">\(L\)</span> on <span
+class="math inline">\(V\)</span> is a linear map <span
+class="math display">\[L:V ⟶ V\]</span> An eigenvector of <span
+class="math inline">\(L\)</span> is a vector <span
+class="math inline">\(v_λ ∈ V\)</span> such that <span
+class="math display">\[L v_λ = λ v_λ\]</span> The number <span
+class="math inline">\(λ ∈ V\)</span> is called the eigenvalue of <span
+class="math inline">\(L\)</span> associated to the eigenvector <span
+class="math inline">\(v_λ\)</span>.</p>
+<p>Suppose <span class="math inline">\(V\)</span> is equipped with an
+inner product <span class="math display">\[\left&lt; ⋅ ,  ⋅ \right&gt; :
+V×V ⟶  𝐑\]</span> The adjoint <span
+class="math inline">\(L^\dagger\)</span> of <span
+class="math inline">\(L\)</span> with respect to the inner product is a
+linear map <span class="math display">\[L^\dagger :V  ⟶  V\]</span>
+defined by the formula <span class="math display">\[\left&lt;   v ,
+L^\dagger u \right&gt; = \left&lt;  L v , u \right&gt;  
+\quad \forall \quad
+u,v ∈ V\]</span></p>
+<div class="exercise">
+<p><strong>Exercise 1</strong>. <em>Let <span class="math inline">\(V =
+𝐑^n\)</span> and take the inner product to be the Euclidean one. Let
+<span class="math inline">\(L\)</span> be a matrix and find the entries
+of <span class="math inline">\(L^\dagger\)</span> in terms of those of
+<span class="math inline">\(L\)</span>.</em></p>
+</div>
+<p>Since <span class="math inline">\(L^\dagger\)</span> and <span
+class="math inline">\(L\)</span> are both operators on <span
+class="math inline">\(V\)</span>, we can compare then. An operator is
+called self-adjoint if <span class="math inline">\(L^\dagger =
+L\)</span>.</p>
+<div class="exercise">
+<p><strong>Exercise 2</strong>. <em>Let <span
+class="math inline">\(v_λ\)</span> and <span
+class="math inline">\(v_μ\)</span> be eigenvectors of <span
+class="math inline">\(L\)</span> and suppose <span
+class="math inline">\(L\)</span> is self-adjoint. Compare the “matrix
+elements” <span class="math inline">\(\left&lt; v_μ,
+L  v_λ\right&gt;\)</span> and <span class="math inline">\(\left&lt; v_μ,
+L^\dagger v_λ\right&gt;\)</span> to conclude that <span
+class="math inline">\(v_λ\)</span> is orthogonal to <span
+class="math inline">\(v_μ\)</span> (with respect to the inner product)
+if <span class="math inline">\(μ ≠ λ\)</span>.</em></p>
+</div>
+<p>Consider the special case in which <span
+class="math inline">\(\mathrm dim\ V = 2\)</span> with the Euclidean
+inner product, and let <span class="math inline">\(v₁ , v₂ ∈ V\)</span>
+be linearly-independent vectors. Compute the Euclidean length <span
+class="math inline">\(|v₁|\)</span>, and define the unit vector <span
+class="math display">\[e₁ = { v₁ \over |v₁| }\]</span> We will now make
+a new vector <span class="math inline">\(ṽ₂\)</span> defined by <span
+class="math display">\[ṽ₂ := v₂ - \left&lt; v₂ , e₁
+\right&gt;  e₁\]</span> It is orthogonal to <span
+class="math inline">\(e₁\)</span> since <span
+class="math inline">\(e₁\)</span> is a unit vector. Compute the length
+<span class="math inline">\(|ṽ₂|\)</span> and define the unit vector
+<span class="math display">\[e₂ = { ṽ₂ \over |ṽ₂| }\]</span> By
+construction <span class="math display">\[\left&lt; e_i , e_j \right&gt;
+= δ_{ij}\]</span> so <span class="math inline">\(V=\mathrm{Span}\{
+e_i\}_{i=1}²\)</span> is spanned by these “ortho(gonal)-normal(ized)”
+vectors.</p>
+<div class="exercise">
+<p><strong>Exercise 3</strong> (<a
+href="https://en.wikipedia.org/wiki/Gram–Schmidt_process">Gram-Schmidt</a>).
+<em>Use mathematical induction to extend this result to a procedure
+applicable to any finite-dimensional inner-product space. This algorithm
+is called the Gram-Schmidt orthonormalization process.</em></p>
+</div>
+<p>Together with the result on orthogonal eigenvectors for self-adjoint
+operators, we conclude that if we have a vector space equipped with such
+an operator, we can construct an orthonormal basis of eigenvectors for
+the vector space.</p>
+<p>§Function Spaces</p>
+<p>¶Orthogonal Polynomials</p>
+<p>Let <span class="math inline">\(S⊂ 𝐑\)</span> be a subset of the real
+line and define the space <span class="math inline">\(L²(S)\)</span> of
+square-integrable functions on <span class="math inline">\(S\)</span>:
+<span class="math display">\[L²(S) = \left\{
+        \ f : S ⟶ 𝐑 \ \Bigg| \int_S  |f(x)|² dx &lt; ∞
+    \right\}\]</span> Note that <span
+class="math inline">\(L²(S)\)</span> is an inner-product space over
+<span class="math inline">\(𝐑\)</span> with</p>
+<p>Consider <span class="math inline">\(S=[-1,1]\)</span>. Note that any
+continuous function defined on such a set is automatically (square)
+integrable.</p>
+<div class="exercise">
+<p><strong>Exercise 4</strong>. <em>Consider the monomials <span
+class="math inline">\(x^n\)</span> defined on <span
+class="math inline">\(S\)</span>. Starting with <span
+class="math inline">\(p₀=1\)</span>, show that <span
+class="math inline">\(p₁ = x\)</span> is orthogonal to it. Find <span
+class="math inline">\(p₂\)</span> so that it is a quadratic polynomial
+orthogonal to both <span class="math inline">\(p₀\)</span> and <span
+class="math inline">\(p₁\)</span>. Find <span
+class="math inline">\(p₃\)</span> so that it is a cubic polynomial
+orthogonal to <span class="math inline">\(p_i\)</span> with <span
+class="math inline">\(i=0,1\)</span>, and 2.</em></p>
+</div>
+<div class="exercise">
+<p><strong>Exercise 5</strong>. <em>Consider the operator on <span
+class="math inline">\(L²(S)\)</span>. Show that it is self-adjoint with
+respect to the inner product <a href="#innerprod"
+data-reference-type="eqref"
+data-reference="innerprod">[innerprod]</a>.<br />
+Hint: Show that any operator of the form <span
+class="math inline">\(\frac{d}{dx} \left( p(x)
+\frac{d}{dx}\right)\)</span> where <span
+class="math inline">\(p(x)\)</span> is a polynomial is “manifestly”
+self-adjoint, provided <span class="math inline">\(p\)</span> vanishes
+on the boundary of <span class="math inline">\(S\)</span>. Then find
+<span class="math inline">\(p(x)\)</span> for the operator
+above.</em></p>
+</div>
+<p>By convention, the Legendre polynomials <span
+class="math inline">\(P_n\)</span> are normalized by <span
+class="math display">\[\left&lt; P_m , P_n\right&gt;:= \int_{-1}¹ P_m(x)
+P_n(x)  dx = {2 \over 2n +1} δ_{mn}\]</span> The Rodriguez formula gives
+them as <span class="math display">\[P_n(x) = \frac1{2^nn!}
+\frac{d^n}{dx^n} (x² - 1)^n\]</span> These polynomials are the
+eigenvectors of the operator <span class="math inline">\(L\)</span> of
+<a href="#LegendreLaplacian" data-reference-type="eqref"
+data-reference="LegendreLaplacian">[LegendreLaplacian]</a>.</p>
+<div class="exercise">
+<p><strong>Exercise 6</strong>. <em>Check this on the first few Legendre
+polynomials <span class="math inline">\(p_i\)</span> for <span
+class="math inline">\(i=0, ... , 3\)</span>. What are the
+eigenvalues?</em></p>
+</div>
+<h4 id="laplace-equation">Laplace equation</h4>
+<p>The Legendre polynomials are famous because they are instrumental to
+the solution of the Laplace equation <span class="math inline">\(Δ
+𝜑  =0\)</span> <em>in three dimensions</em>. In spherical coordinates,
+the three-dimensional Laplacian operator is <span
+class="math display">\[Δ = \frac {1}{r²} \frac{∂}{∂r} \left( r²
+\frac{∂}{∂r}\ ⋅ \right)
+    +\frac{1}{r² \sin θ } \frac{∂}{∂θ} \left( \sin θ  \frac{∂}{∂θ}\ ⋅
+\right)
+    +\frac{1}{r² \sin θ } \frac{∂²}{∂φ²}\]</span> To solve a problem
+with spherical symmetry, the <em>Ansatz</em> is made that the solution
+is separable: <span class="math inline">\(𝜑(r, θ, φ) = R(r) Θ(θ)
+𝛷(φ)\)</span>. This allows the separation of the Laplace equation into
+three parts. It can be shown that the <span
+class="math inline">\(𝛷=\)</span> constant and that the rest of the
+equation separates into the sum of two parts with one depending only on
+<span class="math inline">\(r\)</span> and the other only on <span
+class="math inline">\(θ\)</span>. This means that the two must be equal
+to the same constant. The <span
+class="math inline">\(θ\)</span>-dependent part is given by <span
+class="math display">\[\frac{1}{\sin θ } \frac{d}{dθ} \left( \sin
+θ  \frac{d Θ}{dθ} \right)  + c Θ = 0.\]</span> (The separation constant
+is denoted by <span class="math inline">\(c\)</span>.)</p>
+<div class="exercise">
+<p><strong>Exercise 7</strong>. <em>Make the change of variables <span
+class="math inline">\(x = \cos θ\)</span> to show that this is an
+eigenvalue equation for the Legendre operator <a
+href="#LegendreLaplacian" data-reference-type="eqref"
+data-reference="LegendreLaplacian">[LegendreLaplacian]</a>.</em></p>
+</div>
+<h4 id="an-aside-on-taylor-series">An aside on Taylor series</h4>
+<p>The completeness of eigenfunctions of a self-adjoint operator on an
+infinite-dimensional vector space is striking, but it should not be
+entirely shocking to a student of calculus. Recall that a real function
+<span class="math inline">\(f\)</span> of a real variable <span
+class="math inline">\(x\)</span> is analytic on a domain <span
+class="math inline">\(D⊂ 𝐑\)</span> if there is a convergent series on
+<span class="math inline">\(D\)</span> that agrees with the function
+<span class="math inline">\(f\)</span> on <span
+class="math inline">\(D\)</span>: <span class="math display">\[f(x) =
+\sum_{n=0}^∞ a_n x^n \quad \quad \textrm{on}\quad D.\]</span></p>
+<div class="exercise">
+<p><strong>Exercise 8</strong>. <em>Find an expression for the
+coefficients <span class="math inline">\(\{a_n\}_{n=0}^∞\)</span> in
+terms of <span class="math inline">\(f\)</span> and its
+derivatives.</em></p>
+</div>
+<p>¶(Anti-)Periodic Functions</p>
+<p>Let <span class="math inline">\(S=(-π, π)\)</span>, and consider the
+operator <span class="math display">\[L = \frac{d²}{dx²}\]</span> on
+<span class="math inline">\(L²(S)\)</span>. Then <span
+class="math display">\[\int g \frac{d²}{dx²} f dx
+= \left. g \frac{df}{dx} \right|_{x=-π}^π  - \int
+\frac{dg}{dx}\frac{df}{dx}  dx
+= \left. g \frac{df}{dx} \right|_{x=-π}^π  
+    - \left. \frac{dg}{dx} f \right|_{x=-π}^π  
+    +\int \left(\frac{d²}{dx²} g\right)  f dx\]</span> The boundary
+terms will vanish if we restrict to the subset of <span
+class="math inline">\(L²(S)\)</span> of functions that vanish at <span
+class="math inline">\(x =± π\)</span> or have vanishing first
+derivatives at those points. Let’s call the former <span
+class="math inline">\(𝒟 (S)\)</span> and the latter <span
+class="math inline">\(𝒩 (S)\)</span>.</p>
+<div class="exercise">
+<p><strong>Exercise 9</strong>. <em>Find the eigenvectors and
+eigenvalues of the self-adjoint operator <span
+class="math inline">\(L\)</span> on <span
+class="math inline">\(𝒟(S)\)</span> and <span
+class="math inline">\(𝒩(S)\)</span>. Show that they are orthogonal and
+normalize them.</em></p>
+</div>
+<p>If the eigenvectors <span class="math inline">\(\{v_n(x)\}_{n∈
+𝐙}\)</span>, say of a self-adjoint operator span the vector space on
+which that operator acts, then in the context of <span
+class="math inline">\(L²(S)\)</span>, that must mean that it is possible
+to decompose <em>any</em> function <span class="math inline">\(f∈
+L²(S)\)</span> in a (possibly infinite) sum of these eigenvectors <span
+class="math inline">\(f(x) = \sum_{n∈ 𝐙} c_n v_n(x)\)</span>.
+Alternatively, for some series of real coefficients <span
+class="math inline">\(a_n, b_n ∈ 𝐑\ \forall n\)</span>. This form is
+called the Fourier series representation of the function <span
+class="math inline">\(f(x)\)</span>. It gives an entire function in
+terms of a series <span class="math inline">\(\{a_n\}_{n=1}^∞\)</span>
+and <span class="math inline">\(\{b_n\}_{n=0}^∞\)</span> of real numbers
+called the Fourier coefficients.</p>
+<div class="exercise">
+<p><strong>Exercise 10</strong>. <em>Assuming this decomposition of the
+function and using the orthogonality of the eigen-functions you found
+above, calculate the <span class="math inline">\(a\)</span> and <span
+class="math inline">\(b\)</span> coefficients.</em></p>
+</div>
+<p>¶Complex Hilbert Spaces Complex numbers are crucial for all life, so
+we would like to extend everything in sight to the complex domain. For
+one thing, that means that the vector spaces above will now be over
+<span class="math inline">\(𝐂\)</span>. It turns out that the nicest
+inner product, however, should be real, or “Hermitian” to be more
+precise: It is linear in the second slot, and anti-linear in the first.
+Explicitly, <span class="math display">\[\left&lt; v, a u\right&gt;  = a
+\left&lt; v,  u\right&gt;  \quad \textrm{and} \quad \left&lt; av,
+u\right&gt;  = ā \left&lt; v,  u\right&gt;\]</span></p>
+<div class="exercise">
+<p><strong>Exercise 11</strong>. <em>Let <span
+class="math inline">\(V\)</span> be an <span
+class="math inline">\(n\)</span>-dimensional inner product space over
+<span class="math inline">\(𝐂\)</span> with Hermitian form <span
+class="math inline">\(\left&lt;\ ⋅\ ,\ ⋅\ \right&gt;\)</span>. Let <span
+class="math inline">\(L : V ⟶ V\)</span> be a linear operator on <span
+class="math inline">\(V\)</span>. Then <span
+class="math inline">\(L\)</span> has a matrix representation. If <span
+class="math inline">\(L\)</span> is self-adjoint with respect to the
+inner product, what is the equivalent condition on its matrix
+representation?</em></p>
+</div>
+<p>A self-adjoint operator on a Hermitian inner-product space is also
+called a Hermitian operator.</p>
+<div class="exercise">
+<p><strong>Exercise 12</strong>. <em>Show that the eigenvalues of a
+Hermitian operator are all real. Show that eigenvectors with distinct
+eigenvalues are orthogonal.</em></p>
+</div>
+<p>There is a great amount of very awesome stuff to discuss about
+complex variables. Unfortunately, we will have to skip all of it here.
+One thing we will need however is Euler’s formula: <span
+class="math display">\[e^{ix} = \cos (x) + i \sin (x)\]</span> This is
+important to us for the following reason:</p>
+<p>Consider extending the real Fourier analysis above to complex values
+(𝐂 range but 𝐑 domain). Then <span class="math inline">\(f : 𝐑 ⟶
+𝐂\)</span> will have complex coefficients in the analogue of its Taylor
+expansion. Thus, the coefficients <span class="math inline">\(a\)</span>
+and <span class="math inline">\(b\)</span> in <a href="#FourierReal"
+data-reference-type="eqref"
+data-reference="FourierReal">[FourierReal]</a> are now allowed to be
+complex. Mediate for a second on the conclusion that the complex
+analogue of that result is that for a complex-valued function <span
+class="math inline">\(f\)</span></p>
+<div class="exercise">
+<p><strong>Exercise 13</strong>. <em>For <span class="math inline">\(m,
+n ∈ 𝐙\)</span>, show that<a href="#fn1" class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a> <span
+class="math display">\[\frac{1}{2π} \int_{-π}^π  e^{- i m x}\ e^{inx}\
+dx =\ δ_{m,n}\ :=  \begin{cases}
+        0 &amp; \textrm{if}\quad m≠ n\\
+        1 &amp; \textrm{if}\quad m = n
+    \end{cases}\]</span> Use this formula to derive an expression for
+the Fourier coefficients <span
+class="math inline">\(\{c_n\}_{n=0}^∞\)</span>.</em></p>
+</div>
+<p>¶Continuous Groups and Harmonic analysis The complex Fourier series
+<a href="#ComplexFourierSeries" data-reference-type="eqref"
+data-reference="ComplexFourierSeries">[ComplexFourierSeries]</a> can be
+expressed as an integral over a group. In this case, the group <span
+class="math inline">\(G=𝐙\)</span> is discrete and the integral reduces
+to a sum, but in general, the group could be continuous and even
+non-abelian. This is clear already from the formula for the Fourier
+modes <span class="math display">\[c_n = \int_{𝐑} f(x) e^{-i n x}
+dx\]</span></p>
+<p>...</p>
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p><em>The symbol in the middle of the equation above is
+the Kronecker <span class="math inline">\(δ\)</span>; it is defined by
+the expression on the right.</em><a href="#fnref1" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+</body>
+</html>
