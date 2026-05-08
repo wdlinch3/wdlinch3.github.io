@@ -1,0 +1,654 @@
+---
+title: "Electromagnetism in Differential Forms"
+render_with_liquid: false
+published: false
+format:
+  html:
+    html-math-method: mathjax
+  pdf:
+    pdf-engine: lualatex
+header-includes:
+  - \DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}
+  - \DeclareOldFontCommand{\rm}{\normalfont\rmfamily}{\mathrm}
+  - \newcommand{\ma}[1]{\begin{pmatrix}#1\end{pmatrix}}
+---
+
+# Maxwell Theory
+
+## Integral form
+
+We are going to describe the Maxwell equations in integral form. For
+this, we need a bunch of definitions. Let
+
+- $U ⊂ 𝐑³$ be a 3-dimensional region in 3-space
+
+- $dv$ denote the volume element on $U$
+
+- $∂U$ denote the (2-dimensional) boundary of $U$
+
+- $\bf n$ denote the (outward-directed) unit normal to $∂U$
+
+- $da$ denote the area element on $∂U$ induced from the canonical volume
+  form on $𝐑³$ and let $d{\bf a} = {\bf n} da$.
+
+- $A⊂ 𝐑³$ denote an oriented surface
+
+- $d\bf l$ denote the line element on $∂A$ induced from the canonical
+  volume form on $𝐑³$
+
+The Maxwell equations are
+
+Coulomb
+
+:   Let $Q(U)$ be the charge contained in $U$. Then
+    $$%Q(U) = \frac 1{4 π } ∫_{∂U} {\bf E} ∙ {\bf n}\ da
+    4π Q(U) =  ∫_{∂U} {\bf E} ∙ d{\bf a}$$
+
+No monopoles
+
+:   There are no magnetic sources: $$0 = ∫_{∂U} {\bf B} ∙ d{\bf a}$$
+
+Ampere
+
+:   Let $\bf j (A)$ denote the current (charge flux) flowing through the
+    surface $A$. Then
+    $$∫_{∂A} {\bf B} ∙ d{\bf l} = \frac{4π}c {\bf J}(A) + \frac 1c {∂ \over ∂ t} ∫_A {\bf E}∙ {\bf n}\ da$$
+
+Faraday-Lenz
+
+:   $$∫_{∂A} {\bf E} ∙d{\bf l} = - \frac 1c {∂ \over ∂ t} ∫_A {\bf B}∙ {\bf n}\ da$$
+
+## Traditional Calculus 3 form
+
+Let
+
+- $f$ and $g$ denote functions $𝐑³ → 𝐑$
+
+- $\bf u$ and $\bf v$ denote vector fields on $𝐑³$
+
+- $(x,y,z)=(x¹, x², x³) = (x^i)_{i=1}³$ denote Cartesian coordinate
+  functions on $𝐑³$
+
+In calculus 3, we learn about the differential vector operators
+
+coordinate basis
+
+:   $❴ ∂_i ❵ _{i=1}³$ with $∂_i = \frac ∂ {∂x^i}$. By definition of
+    Cartesian coordinates, the coordinate vectors commute
+    $∂_i ∂_j = ∂_j ∂_i$.
+
+gradient
+
+:   The gradient $\textrm{grad}(f)$ or $∇f$ of a function is a vector
+    field with components $$∇f = (∂^i f)= (δ^{ij} ∂_j f) =
+        \ma{
+            \frac {∂f} {∂x} \\
+            \frac {∂f} {∂y} \\
+            \frac {∂f} {∂z} 
+        }$$
+
+divergence
+
+:   The divergence $\mathrm{div} ({\bf u})$ or $∇ ∙ {\bf u}$ of a vector
+    field is a scalar defined by
+    $$∇ ∙ {\bf u} = \frac {∂ u¹} {∂x} + \frac {∂ u²} {∂y} +\frac {∂ u³} {∂z} = ∂_i u^i$$
+    Here and henceforth, repeated indices with one "up" and one "down"
+    are summed (Einstein summation convention).
+
+curl
+
+:   The curl $\mathrm{curl}({\bf u})$ or $∇ × {\bf u}$ of a vector field
+    is a vector field with components defined by
+    $$(∇ × {\bf u})³ = \frac {∂ u²} {∂x¹} - \frac {∂ u¹} {∂x²}$$ and
+    cyclic permutations of $¹,²,³$.
+
+We also learn that these operators are related by integration. In
+particular, for subsets of $𝐑³$ in the notation of the previous section,
+we have the following theorems:
+
+FTC?
+
+:   Let $f$ be a function on (a neighborhood of) of an oriented curve
+    $γ$ with boundary $∂γ = b - a$, possibly with $b=a$ (no
+    boundary).[^1] Then $$∫_γ (∇ f) = ∫_{∂γ} f = f|^b_a = f(b) - f(a)$$
+
+Green
+
+:   Let $𝒖$ denote a vector field on (a neighborhood of) $A$. Then
+    $$∫_A (∇ × 𝒖) ∙ d 𝒂 = ∫_{∂A} 𝒖 ∙ d𝒍$$
+
+Stokes
+
+:   Let $𝒖$ denote a vector field on (a neighborhood of) $U$. Then
+    $$∫_U (∇ ∙ 𝒖)\ dv = ∫_{∂U} 𝒖 ∙ d 𝒂$$
+
+Ever feel like Green's theorem and Stokes' theorem were secretly the
+same thing?
+
+We now define the charge density $ρ$ and the current density $𝒋$ so that
+$$Q(U) = ∫_U ρ dv 
+\quad\quad \textrm{and}\quad \quad 
+{\bf J}(U) = ∫_U 𝒋 dv$$
+
+::: exercise
+**Exercise 1**. *Put the Maxwell equations into differential form:*
+
+Coulomb
+
+:   *$$∇∙𝑬 = 4πρ$$*
+
+No monopoles
+
+:   *$$∇∙𝑩 = 0$$*
+
+Ampère
+
+:   *$$∇ × 𝑩 = \frac{4π}c 𝒋 + \frac 1c \frac{∂𝑬}{∂t}$$*
+
+Faraday-Lenz
+
+:   *$$∇ × 𝑬 = - \frac 1c \frac{∂𝑩}{∂t}$$*
+:::
+
+Notice the overwhelming superiority of the differential form notation.
+
+::: exercise
+**Exercise 2**. *Show that if $𝑩 = ∇ × 𝑨$ for some vector field $𝑨$, the
+it automatically solves the no-monopole condition.*
+
+*Show that if we change $𝑨$ to $𝑨' = 𝑨 + ∇ λ$ for any function $λ$ then
+that does not change $𝑩$.*
+:::
+
+The ambiguity in the definition of $𝑨$ is an example of something called
+a "gauge ambiguity".
+
+## Superior mathematical form
+
+The differential "calc 3" notation is clearly superior to the integral
+form, it is still dirty for various reasons.
+
+::: exercise
+**Exercise 3**. *Restrict the entire universe to two dimensions instead
+of 3. What does the cross product mean in this 2D universe? Extend to a
+4D universe by adding an additional direction to up/down, left/right,
+forward/backward. Can you define the cross product there?*
+:::
+
+The problem is that the existence of the cross product is an accident of
+3D. A cross product is an anti-symmetric pairing to two vectors/vector
+fields to give a third vector (field) and this does not need to exist in
+arbitrary dimension.
+
+We will return to the reason it exists in 3D eventually, but for now,
+let's see how we can salvage the Maxwell equations by stripping off the
+3D-ness. To do this, we need some formalism.
+
+::: definition
+**Definition 1**. Let $V$ be a real vector space. A linear form on $V$
+is a linear map $V → 𝐑$. The space of linear forms on $V$ is denoted by
+$V*$; it is called the dual of $V$.
+:::
+
+::: claim
+**Claim 1**. *Let $\textrm{dim}_𝐑 (V) < ∞$. Then $V*$ is a vector space
+and $\textrm{dim}_𝐑 (V*) = \textrm{dim}_𝐑 (V)$.*
+:::
+
+::: definition
+**Definition 2**. Let $𝒖$ be a vector field on $U⊂ 𝐑³$ and let
+$❴x^i ❵_{i=1}³$ be a set of coordinates on $U$. In these coordinates
+$$𝒖 = u^i(x) ∂_i = u^i(x) \frac ∂{∂x^i}$$ For the functions $u^i :U→ 𝐑$
+for $i=1,2,3$ are called the components of $𝒖$ (in the coordinates $x$).
+:::
+
+Take careful note of the position of the indices in the expressions
+above: The the component functions of vector fields have their indices
+"up", whereas the coordinate basis vectors $∂$ have their indices
+"down".
+
+Now suppose we have the component functions $❴u^i❵_{i=1}³$ for some
+vector field $𝒖$. I'm getting tired of typing that out, so when the
+meaning is clear, I will abbreviate this as $❴u^i❵$. Anyway, to map from
+a set like this to a real function, we need to "get rid of the index":
+If we have 3 other functions $❴ω_i(x)❵$, we can make
+$$ω(𝒖) = ω_i(x) u^i(x)$$ which is a function $U→ 𝐑$, as we wanted when
+we defined linear forms.
+
+Our conclusion is that under the conditions set out in the Claim, the
+dual space is spanned by elements with coordinate functions $❴ω_i❵$
+analogous to the $❴u^i❵$ of a vector field, but with the indices in the
+other position. There is a good reason for this, but for the moment you
+can just take it as a rule.
+
+If you don't want to hit the "I believe" button, consider the following:
+Let $L : V→ V$ denote a linear operator on a vector space $V$, and
+consider its action on a vector $𝒖 ↦ L(𝒖)$. This operator does not act
+on $𝐑$ so if we consider a linear form $ω : V→ 𝐑$ then it maps
+$𝒖 ↦ ω(𝒖) ∈ 𝐑$. This implies that $L$ must act on $ω$ in a way that
+ensures that it has no effect on $ω(𝒖)$ (since it is an element of $𝐑$
+and $L$ has no effect there.
+
+::: exercise
+**Exercise 4**. *[^2] By working in components, compare what the matrix
+of $L$ does to the components of $𝒖$ and show that that is not the same
+as what it does to the components of $ω$. Note that it *is* related, but
+not the same.*
+:::
+
+A linear form $V→ 𝐑$ is also called a 1-form. When we have a coordinate
+basis for $V$ denoted by $❴∂_i= ∂/∂x^i❵$ , then there is a natural basis
+for $V*$ denoted $❴dx^i❵$. (Note the position of the index.) Since
+1-forms map vectors to numbers, it must be true that the $dx$s map the
+$∂$s to numbers. The definition/normalization for Cartesian coordinates
+is this:[^3] $$dx^i ( ∂_j ) = δ^i_j = \begin{cases} 
+    1 & \textrm{if } i=j\\
+    0 & \textrm{otherwise}
+    \end{cases}$$
+
+::: exercise
+**Exercise 5**. *We can combine all theses things into the following
+synthesis: Let $𝒖$ be a vector field and let $ω$ be a 1-form field, both
+defined on $U⊂ 𝐑^n$ for general $n$. Let $❴x^i❵$ denote coordinates on
+$U$. In these coordinates, $𝒖=u^i(x) ∂_i$ and $ω = ω_i(x) dx^i$ where
+the repeated indices are summed (as always). Then from these expressions
+and the definitions show that
+$$ω(𝒖) = ω_i(x) u^j(x) dx^i(∂_j) = ω_i(x) u^j(x) δ^i_j = ω_i(x) u^i(x)$$*
+:::
+
+This is an example of a calculation done in a local coordinates called a
+"component calculation". We will do many of these.
+
+#### Multilinear algebra
+
+We can make combinations of the basis 1-forms by taking more copies of
+$V*$ in what is called the "tensor product". Operationally, the tensor
+product $V*⊗V*$ is just the collection of objects with basis
+$dx^i ⊗ dx^j$ where the $⊗$ symbol roughly means "keep them in this
+order". For example, if $M ∈ V*⊗V*$ then what this means is that in
+local coordinates $M = M_{ij} dx^i ⊗ dx^j$. We recognize the components
+$M_{ij}$ as those of an $n× n$ matrix.
+
+We can similarly do this for $V$ as well and we can mix $V$ and $V*$.
+Furthermore, we can make arbitrarily higher numbers of factors like
+$V ⊗ V ⊗ V* ⊗ V* ⊗ V$. Often, we rearrange the factors so that all the
+vector spaces come first and then all the duals,[^4] so we could write
+this as $V ⊗ V ⊗ V ⊗ V* ⊗ V*$.
+
+::: exercise
+**Exercise 6**. *Show that*
+
+1.  *linear operators are elements of $V ⊗ V*$*
+
+2.  *inner products are elements of $V* ⊗ V*$*
+
+3.  *the 3D cross product is an element $V ⊗ V* ⊗ V*$*
+
+*Hint: What do you need to provide to each of these to get a scalar?*
+:::
+
+An element of $V ⊗ \cdots ⊗ V ⊗ V* ⊗ \cdots ⊗ V*$ with $q$ factors of
+$V$ and $p$ factors of $V*$ is called a *tensor* of rank $(q,p)$.
+Tensors of low rank often have special names: A tensor of rank
+
+- $(0,0)$ is a scalar
+
+- $(1,0)$ is a vector
+
+- $(0,1)$ is a linear form or 1-form
+
+- $(0,2)$ is a bilinear form 2-form
+
+- $(0,q)$ is a multi-linear form of rank $q$ or $q$-form
+
+- $(1,1)$ is a linear operator
+
+- $(q,p)$ with $p+q=2$ are also called matrices
+
+Permutations have a natural action on tensors, and we use them to reduce
+the general tensors to simpler elements. For example a $(0,2)$ tensor
+$T$ can be split into symmetric $S$ and anti-symmetric $A$ parts:
+$T_{ij} = S_{ij} + A_{ij}$. This is so useful that we use a special
+notation on the indices: $$S_{ij} = T_{(ij)} = \frac12 (T_{ij} + T_{ji})
+\quad \quad \textrm{and}\quad \quad 
+A_{ij} = T_{[ij]} = \frac12 (T_{ij} - T_{ji})$$
+
+The anti-symmetric part of $V* ⊗ V*$ is so nice that it gets a special
+name: $V*\wedge V*$. The reason it is nice is related to the following
+
+::: exercise
+**Exercise 7**. *Let $f:U→ 𝐑$ be a smooth function and define the
+Hessian matrix of $f$ by $H(f)$ as the matrix of second partial
+derivatives of $f$. Show that $H(f)$ is in the kernel of the map
+$V*⊗ V*→ V*\wedge V*$.*
+:::
+
+An exterior $q$-form is an element
+$$ω ∈ Λ^q = ⋀_{i=1}^q V*= V*\wedge \cdots \wedge  V*$$ In local
+coordinates $❴x^i❵_{i=1}^n$ on $U$, an exterior form of rank $p$ can be
+written as $$ω = ω_{i₁ ... i_p}(x) dx^{i₁} \wedge \cdots \wedge dx^{i_p}
+%\quad \quad \textrm{where} \quad \quad 
+%ω_{i₁ ... i_p}(x)$$ where the component functions
+$ω_{i₁ ... i_p}(x) = ω_{[i₁ ... i_p]}(x)$ are totally anti-symmetric
+under permutation of indices.
+
+::: exercise
+**Exercise 8**. *Let $\mathrm{dim}(U)=n$. Show that*
+
+1.  *$\mathrm{dim}(Λ^p) = {n \choose p}$, in particular $Λ^p = ∅$ if
+    $p>n$.*
+
+2.  *$Λ^p ⋀ Λ^q ≅ Λ^{p+q}$*
+
+3.  *for $ω ∈ Λ^p$ and $η ∈ Λ^q$, $ω \wedge η = (-1)^{pq} η \wedge ω$,
+    in particular $ω² = 0$ if $p$ is odd.*
+:::
+
+Together with the fact that a $p$-form is still a $p$-form if you
+multiply by a real scalar, this exercise shows that the space of
+exterior forms is an algebra; we call it $Λ^∙$.
+
+::: definition
+**Definition 3**. Let $d_i : Λ^i → Λ^{i+1}$ for $i=0,\dots,n$ be a set
+of maps. Such a set of maps is called a differential on $U$ if
+$d_{i+1} ∘ d_i = 0$ for all $i$. We define an extension of these maps to
+forms of any degree by defining $d_i : Λ^j → Λ^{j+1}$ to be the 0 map
+whenever $i≠ j$. Finally, using this extension, we define
+$d : Λ^p(U) → Λ^{p+1}(U)$ for any $p$ by $d = ∑_{i=0}^n d_i$.
+:::
+
+Here is an important application/example: For each $i,p=0,...,n$, let
+$ω∈ Λ^p(U)$ and define $$d_i(ω) = \begin{cases}
+    ∂_k ω_{j₁ ... j_i}(x) dx^k \wedge dx^{j₁} \wedge \cdots \wedge dx^{j_i} & \textrm{if } i=p\\
+    0 & \textrm{otherwise} 
+    \end{cases}$$
+
+::: exercise
+**Exercise 9**.
+
+1.  *Show that the collection of maps defines a differential on the
+    algebra of exterior forms.*
+
+2.  *Show that, for any $p$, $d² = 0$ as a map $Λ^p→ Λ^{p+2}$.*
+
+3.  *Let $ω ∈ Λ^p(U)$ and $η ∈ Λ^q(U)$. Show that
+    $d(ω \wedge η )= (dω) \wedge η + (-1)^p ω \wedge (dη)$.*
+
+4.  *Suppose $U$ is an open ball in $𝐑^n$ and let $ω ∈ Λ^p(U)$ be a
+    $p$-form on $U$ such that $dω=0$. Show that there is a $(p-1)$-form
+    $λ∈ Λ^{p-1}(U)$ such that $ω = d λ$.*
+:::
+
+This exercise has very interesting consequences for mathematics: An
+algebra of exterior forms equipped with a differential is called a
+differential algebra, so the first two conditions are saying that there
+is such a thing embedded in the structure of calculus. The third part of
+the exercise is interesting, because you cannot drop the qualifier that
+$U$ is an open ball.
+
+A form $ω ∈ Λ^p(U)$ is called "closed" if $dω=0$. A form $ω ∈ Λ^p(U)$
+that can be written as $ω = d λ$ for some $(p-1)$-form $λ$ is called
+"exact". Note that exact forms are always closed because $d(dλ) = 0$ by
+the very construction of the differential. However, closed forms are not
+always exact.[^5]
+
+Often in physics, quantities that we refer to as "vectors" are actually
+1-forms. For example, while it is true that the gradient $∇f$ of a
+function is a vector, the more natural object is actually the 1-form
+$df$. The two are related with the dot product: A dot product
+$\langle ∙ , ∙ \rangle$ is a map $V⊗V→ 𝐑$ taking two vectors
+$(𝒖, 𝒗 )↦ \langle 𝒖, 𝒗 \rangle = 𝒖 ∙ 𝒗$. This means that if we fill only
+the first slot, say, with a vector $\langle 𝒖 , ∙ \rangle$ then we get a
+map $V→ 𝐑$, that is, we get an element of $V*$, or in yet other words,
+we get a 1-form. You should confirm that
+$$df = \langle ∇ f, \cdot \rangle$$ In fact, if you think about how we
+make a gradient, we take the components of $(df)_i = ∂_i f$ and arrange
+them as a column vector:
+$$( (df)_x , (df)_y, (df)_z) ) = (∂f/∂x, ∂f/∂y, ∂f/∂z) ⟶ 
+\ma{∂f/∂x\\ ∂f/∂y\\ ∂f/∂z}$$ But that means that we are making a vector
+out of the components of the 1-form![^6]
+
+::: exercise
+**Exercise 10**.
+
+1.  *Write out the components of the vector $𝑩 = ∇ × 𝑨$.*
+
+2.  *Suppose $B$ is a 2-form field that is closed $dB=0$. Then "locally"
+    it is exact, so there is a 1-form $A$ such that $B = dA$. Write out
+    the components of this expression.*
+
+3.  *Define the Levi-Civita symbol $ε^{ijk}$ for $i,j,k=1,2,3$ as
+    follows $$ε^{ijk} = \begin{cases}
+            +1 & \textrm{ if } i=1, j=2,k=3\textrm{ or any even permutation }\\
+            -1 & \textrm{ if } i=2, j=1,k=3\textrm{ or any even permutation }\\
+            0 &\textrm{ otherwise }
+        \end{cases}$$ Use this symbol and to relate the components of
+    the 2-form $B$ to those of the vector $𝑩$.*
+
+4.  *Use the Levi-Civita symbol to relate $dB=0$ to the no-monopole
+    equation.*
+:::
+
+We are starting to see the superiority of this this approach to the
+vector approach, but there is much more\...
+
+## Special relativity
+
+In special relativity, we treat the time coordinate $t$ on an equal
+footing with the spacial coordinates $x^i$. To do this, we define
+$x⁰ = ct$ so that it has the correct units. Then we extend the index
+range $x^i → x^m$ with $m=0,1,2,3$. Note that $∂_i → ∂_m$ with
+$∂₀ = \frac1c \frac ∂{∂t}$. The (relativistic) wave operator $☐$ is
+defined by $$☐ = -\frac1 {c²} \frac {∂²}{∂t²} + ∇² 
+= -\frac1 {c²} \frac {∂²}{∂t²} + \frac {∂²}{∂x²}+\frac {∂²}{∂y²}+\frac {∂²}{∂z²}$$
+It is called the d'Alembertian. Notice that it looks like $(∂_m)²$
+except that the sign of the temporal component is reversed! For this
+reason, we define $∂^m$ to have the components
+$∂⁰ = - \frac1c \frac ∂{∂t}$ and $∂^i = δ^{ij} ∂_j$ (as before).
+
+The 4D inner product defined is defined to have components
+$$η_{mn} = \begin{cases}
+    -1 & \textrm{ if } m=0=n \\
+    +1 & \textrm{ if } m=n ≠ 0\\
+    0 &\textrm{ otherwise }
+\end{cases}$$ It is called the "Minkowski metric". The "inverse" metric
+$η^{mn}$ is defined to have the same components numerically. This is so
+that it is, in fact, an inverse: $η^{mp}η_{pn} = δ^m_n$ for any $m$ and
+$n$ (including 0).
+
+::: exercise
+**Exercise 11**.
+
+1.  *Show that $☐ = η^{mn} ∂_m ∂_n$.*
+
+2.  *Extend the Levi-Civita symbol in the natural way (*i.e.* so that in
+    particular $ε^{0ijk} =ε^{ijk}$ from before), and use it to interpret
+    the no-monopole symbol as the time component (*i.e.* 0-component) of
+    a 4D equation.*
+
+3.  *Calculate the spacial components of the equation you just
+    constructed. Which equation is this? What is $B_{0i}$?*
+
+4.  *Define the Levi-Civita symbol with "the indices down" by "lowering
+    the indices" on the original, that is,
+    $ε_{mnpq} = η_{mm'}η_{nn'} η_{pp'}η_{qq'}ε^{m'n'p'q'}$. What are the
+    values of its components?[^7]*
+:::
+
+If all has gone well, you have discovered that the electric and magnetic
+fields are the space-time and the space-space components of a
+four-dimensional 2-form. This 2-form is called the electromagnetic field
+tensor, Maxwell tensor, or Faraday tensor. It is usually denoted $F$. In
+local coordinates $F=F_{mn}(x) dx^m \wedge dx^n$.
+
+::: exercise
+**Exercise 12**. *Confirm by explicit calculation that two of the
+Maxwell equations are equivalent to the statement that the Maxwell
+tensor is a closed 2-form $dF=0$.*
+:::
+
+::: exercise
+**Exercise 13**. *Us the inverse metric to raise the indices on the
+Maxwell tensor $F^{mn} = η^{mm'}η^{nn'} F_{m'n'}$, and use this to
+figure out how to write the other two Maxwell equations.*
+:::
+
+Note that you need the metric to write the second half of the Maxwell
+equations, but not to write the first half.
+
+Finally, we introduce the "Hodge" operator with components defined by
+$$(\ast ω)_{m₁ ... m_{n-p}} = \frac1{p!} η_{m₁ r₁} ... η_{m_{n-p} r_{n-p}} ε^{r₁ ... r_{n-p}s₁ .. s_p} ω_{s₁ .. s_p}$$
+Note that you need a metric to define this operation.
+
+Performing this operation twice brings us from $p$-forms back to
+$p$-forms. In even dimensions, it acts on $Λ^{\frac n2}$ as an
+involution.
+
+::: exercise
+**Exercise 14**. *Show that $\ast² =± 1$ on $Λ^p$ for $p$ odd/even,
+respectively.*
+:::
+
+::: exercise
+**Exercise 15**. *Show that the Maxwell equations are $$dF = 0 
+\quad \quad \textrm{ and } \quad \quad 
+d\ast F = 4π σ$$ for a *closed* (why?) current-density 3-form $σ$.*
+:::
+
+The first equation is sometimes called the Bianchi identity. The second
+equation is the equation of motion. (Below we will see why.)
+
+## Integration
+
+Differential forms can be integrated. To integrate a $1-form$, we need a
+1-dimensional subspace of $𝐑^n$, that is, a curve. To integrate a
+$2-form$, we need a surface, and we integrate a 3-form over a volume,
+*et cetera*. The curve, surface, and volume on which we integrate are
+called $p$-chains for $p=1,2,3$. (A 0-chain is an ordered collection of
+points.) The space of $p$-chains is denoted by $Λ_p$. Integration is a
+pairing of $Λ_p$ with $Λ^p$: We will not go into the details of chains,
+but you can imagine that a $p$-chain can have a boundary that is a
+$(p-1)$-chain. We write the boundary of a chain $γ$ as $∂γ$.
+
+::: exercise
+**Exercise 16**. *Convince yourself that the boundary of a boundary is
+empty.*
+:::
+
+In fact, it turns out that the space of chains can also be reformulated
+to have the structure of a differential algebra where the differential
+is the boundary operator. For this to be valid, we need the condition
+that $∂² = 0$, but that is precisely the statement that the boundary of
+a boundary is empty. Note that $∂ : Λ_p → Λ_{p-1}$ so the differential
+moves us down in the degree instead of up.
+
+Now let $ω ∈ Λ^p (U)$, let $γ∈ Λ_{p+1}(U)$. Then $$∫_γ dω = ∫_{∂γ} ω$$
+This is called Stokes' theorem for reasons that will be clear after the
+following
+
+::: exercise
+**Exercise 17**.
+
+1.  *Set $p=0$ and show that Stokes' theorem is just the fundamental
+    theorem of line integrals.*
+
+2.  *Set $p=1$ and show that Stokes' theorem reduces to Green's
+    theorem.*
+
+3.  *Set $p=2$ and show that Stokes' theorem is reduces to what is
+    usually called Stokes' theorem in the traditional form of
+    multivariable calculus.*
+:::
+
+We can always integrate over all of $𝐑^n$ provided that all forms die
+off fast enough at infinity. This is a physical condition that we often
+assume because our fields represent physical energy and matter and we
+want the total amount to not be infinite.
+
+::: exercise
+**Exercise 18**. *Let $ω∈ Λ^p(U)$ satisfying physical fall-off
+conditions. Show that $$∫ ω  \wedge \ast ω$$ makes sense as an integral
+over all $𝐑^n$ and write it in multi-variable calculus form (that is, in
+cartesian coordinates for $𝐑^n$). It may be helpful to know that
+$$dx^{m₁}  \wedge \dots  \wedge dx^{m_n} = ε^{m₁ ... m_n} d^nx$$*
+:::
+
+Finally, we apply all this to the Maxwell theory.
+
+::: exercise
+**Exercise 19**. *Solve the first Maxwell equation as $F=dA$ for a
+four-dimensional 1-form $A$. Define the Maxwell action by
+$$S = -\frac1{16π} ∫ F \wedge \ast F +  ∫ A \wedge σ$$ where the
+integral is over all of spacetime. Vary this action with respect to $A$,
+and use the stationary action principle to derive the equation of
+motion. Change the gauge $A→ A' = A+d λ$, and show that the Maxwell
+action is invariant up to a boundary term "at infinity".*
+:::
+
+Note that you need the closure of $σ$ for this. Usually, we also require
+that all the fields die off at infinity because otherwise we would have
+problems with finiteness of field energy in the universe.
+
+::: exercise
+**Exercise 20**. *Construct a vector current density $j =j^m(x) ∂_m$
+from the current 3-form $σ$. What is the equation for the $j$ analogous
+to the closure of $σ$?*
+:::
+
+Such current is called conserved becuase
+
+::: exercise
+**Exercise 21**. *Define the charge $q = ∫ j⁰ d³x$ where we integrate
+over all 3-space. Although this charge can depend in principle on time,
+show that, in fact, the charge is conserved (in time):
+$\frac {dq}{dt} = 0$. Now redo this exercise directly in terms of the
+3-form. How are you defining charge?*
+:::
+
+[^1]: This means that $a$ and $b$ are boundary points of the curve with
+    the curve leaving from $a$ and arriving at $b$.
+
+[^2]: *You will probably not know what to make of this question and how
+    to even start, but that's ok. If you think hard, then when we talk
+    about it, it will make more sense and it will be a good investment.*
+
+[^3]: The symbol on the RHS is called the "Kronecker delta"
+    symbol/tensor.
+
+[^4]: It is important to note that we are keeping the order in each type
+    of factor, but we are listing all the duals (in their original
+    order) "at the back".
+
+[^5]: For example, if $U≅ S¹$ is a circle and $ω∈ Λ¹(S¹)$ is a 1-form,
+    then it is automatically closed because $dω$ has degree 2, but that
+    must vanish in a space of dimension 1. (See your previous exercise
+    on the dimension.) Now let $θ: S¹ → 𝐑$ be a coordinate on the
+    circle. This coordinate cannot be defined everywhere because, for
+    example, the point usually coordinatized as $0$ is the same as the
+    one coordinatized by $2π$ and $0 ≠ 2π$, even though the point is the
+    same. What we need in such a case is to cover the circle with two
+    different coordinates: If we remove a point of the circle and call
+    the resulting set $U₁$ and then we go back to the original circle
+    and remove the antipodal point to define $U₂$, then
+    $θ₁ : U₁ → (0,2π)$ and $θ₂ : U₂ → (-π , π)$ are good coordinates.
+    Together, these coordinates account for every point on $S¹$ which we
+    can think of as the union $U₁ ⋃ U₂$, but alone, they cannot do the
+    job. Now it is true that on $U₁$, $ω = d θ₁$ and on $U₂$,
+    $ω = d θ₂$. And it is also true that these expressions agree on the
+    "overlap" $U₁ ⋂ U₂ = (-π, 0) ⋃ (π, 2 π)$ because there $θ₂ = θ₁ - π$
+    and thus, $d θ₂  = d θ₁$ give consistent expressions for $ω$ on
+    $U₁ ⋂ U₂$. But there is no function $f:S¹ → 𝐑$ defined uniquely on
+    every point of the circle for which $df$ is the same form as $ω$.
+
+[^6]: In Euclidean space the difference is minor, because the components
+    of the inner product in a cartesian basis are either $0$ or $1$ and
+    this allows us to identify $∂¹f = ∂₁f$, *et cetera*. However in
+    special relativity, we add time as a coordinate and the inner
+    product for this part is $-1$ instead of $1$. In that case it really
+    does matter whether we mean $x^m$ or $x_m$ for $m=0,1,2,3$. In
+    geometry or in general relativity the inner product is a complicated
+    collection of functions. Sometimes, there is not even an inner
+    product, so you cannot define the gradient at all!
+
+[^7]: *Note that you are actually calculating the determinant of the
+    Minkowski metric thought of as a matrix.*

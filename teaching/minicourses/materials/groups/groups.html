@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Groups and Rotations</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="groups_files/libs/clipboard/clipboard.min.js"></script>
+<script src="groups_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="groups_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="groups_files/libs/quarto-html/popper.min.js"></script>
+<script src="groups_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="groups_files/libs/quarto-html/anchor.min.js"></script>
+<link href="groups_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="groups_files/libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="groups_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="groups_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="groups_files/libs/bootstrap/bootstrap-138a6193a3bd40baf1e627da441a4734.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+</head><body class="quarto-light">\DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}
+\DeclareOldFontCommand{\rm}{\normalfont\rmfamily}{\mathrm}
+\newcommand{\ma}[1]{\begin{pmatrix}#1\end{pmatrix}}
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+
+
+
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="groups.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Groups and Rotations</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>This is supplemental material for the students of Physics 736-C: Advanced Studies; Mechanics.</p>
+<section id="linear-algebra-in-3d" class="level1">
+<h1>Linear algebra in 3D</h1>
+<p>In class we learned about vectors as objects that have various properties like addition, a zero, and multiplication by real numbers. When we have a dot product, vectors gain additional properties like lengths and relative angles. In these supplemental notes we will work through some material on rotations. To get interesting results, we will work in 3D.</p>
+<section id="vectors-and-covectors" class="level2">
+<h2 class="anchored" data-anchor-id="vectors-and-covectors">Vectors and Covectors</h2>
+<ol type="1">
+<li><p>Let <span class="math inline">\(𝒂 =(a¹, a², a³)^T\)</span>. The <span class="math inline">\({}^T\)</span> stands for “transpose” and means that <span class="math display">\[𝒂 = \ma{a¹\\ a²\\ a³}\]</span> Is a 3-component column vector. Strictly, the qualifier “column” is unnecessary, since–by convention–all vectors are columns. Note that the <span class="math inline">\({}¹, {}²,{}³\)</span> are “upstairs” on the components of <span class="math inline">\(𝒂\)</span>. We write these components as <span class="math inline">\(a^i\)</span> with the “index” <span class="math inline">\(i=1,2,3\)</span>.</p></li>
+<li><p>Dual to vectors are “covectors”. These are row-shaped: <span class="math display">\[α = \ma{α₁, α₂, α₃}\]</span> Note that the <span class="math inline">\({}₁,{}₂,{}₃\)</span> are “downstairs” instead of “upstairs” as on the vector. We write these components of the covector as <span class="math inline">\(α_i\)</span> with the “index” <span class="math inline">\(i=1,2,3\)</span>.</p></li>
+<li><p>The covectors are dual to the vectors in the sense that we can combine the covector with the vector thus: This is an example of “matrix multiplication”. In this case between a <span class="math inline">\(1 × 3\)</span> matrix called a row matrix and a <span class="math inline">\(3 × 1\)</span> matrix called a column matrix. When using components, we write this as <span class="math display">\[α(𝒂) = \sum_{i=1}³  α_i a^i\]</span> where <span class="math inline">\(\sum\)</span> (capital sigma) stands for “sum” and instructs you to take the sum of all the terms <span class="math inline">\(α_i a^i\)</span> for <span class="math inline">\(i=1,2,3\)</span>. When written in this way, we say that the result is given in “components” or “index notation”.</p></li>
+</ol>
+<section id="einstein-summation-convention" class="level4">
+<h4 class="anchored" data-anchor-id="einstein-summation-convention">Einstein summation convention</h4>
+<p>The ∑ symbols are cumbersome and unnecessary, especially when multiple contractions are being carried out:</p>
+<ol type="1">
+<li><p>When writing <span class="math inline">\(∑_{i=1}^n\)</span> we are already making the index explicit, and there is exactly one sum for each pair of repeated indices.</p></li>
+<li><p>The range is generally understood from context.</p></li>
+<li><p>When an index is repeated, it is almost always going to be summed.</p></li>
+<li><p>If indices are being used correctly, summed pairs always appear with one of them “up” and one of them “down”.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p></li>
+</ol>
+</section>
+</section>
+<section id="matrices" class="level2">
+<h2 class="anchored" data-anchor-id="matrices">Matrices</h2>
+<p>Vectors and covectors are simple examples of matrices that have one column or row, respectively. In general a matrix can have <span class="math inline">\(m\)</span> rows and <span class="math inline">\(n\)</span> columns: <span class="math display">\[M = \ma{M¹{}_{1} &amp; M¹{}_{2} &amp; \dots &amp;M¹{}_{n}\\
+    M²{}_{1} &amp;  M²{}_{2} &amp;  \dots &amp;  M²{}_{n}\\
+    \vdots &amp;\vdots &amp;\ddots &amp;\vdots\\
+    M^m{}_{1} &amp; M^m{}_{2} &amp; \dots &amp; M^m{}_{n}
+    }\]</span> This is an example of an <span class="math inline">\(m × n\)</span> matrix. The elements of this matrix are written <span class="math inline">\(M^i{}_{j}\)</span> for <span class="math inline">\(i=1,\dots, m\)</span> and <span class="math inline">\(j=1,\dots, n\)</span>. Sometimes matrices can be multiplied by vectors or covectors or among one another.</p>
+<ol type="1">
+<li><p>An <span class="math inline">\(m × n\)</span> matrix <span class="math inline">\(M^i{}_{j}\)</span> can be multiplied by an <span class="math inline">\(n × p\)</span> matrix <span class="math inline">\(N^j{}_{k}\)</span> to form an <span class="math inline">\(m × p\)</span> matrix <span class="math inline">\((MN)^i{}_{k}\)</span>. This is done by multiplying each column of <span class="math inline">\(N\)</span> into the rows of <span class="math inline">\(M\)</span> sequentially according to the rule <a href="#MatMult" data-reference-type="eqref" data-reference="MatMult">[MatMult]</a>: In index notation <span class="math display">\[(MN)^i{}_{k} = \sum_{j=1}³ M^i{}_{j} N^j{}_{k}
+\quad \text{where} \quad i= 1,\dots , m \quad \text{and} \quad k=1, \dots, p\]</span> Note that for the sum to make sense, the second index on <span class="math inline">\(M\)</span> must have the same range as the first index on <span class="math inline">\(N\)</span>. After we sum over this index, it disappears and the result does not depend on <span class="math inline">\(n\)</span>.</p></li>
+<li><p>A special case is when an <span class="math inline">\(n× n\)</span> matrix <span class="math inline">\(A\)</span> acts on an <span class="math inline">\(n\)</span>-component vector <span class="math inline">\(\bf u\)</span>: Recall that an <span class="math inline">\(n\)</span>-component vector is an <span class="math inline">\(n×1\)</span> matrix. Then <span class="math display">\[A {\bf u} = \ma{A¹{}_{1} &amp; A¹{}_{2} &amp; \dots &amp;A¹{}_{n}\\
+    A²{}_{1} &amp;  A²{}_{2} &amp;  \dots &amp;  A²{}_{n}\\
+    \vdots &amp;\vdots &amp;\ddots &amp;\vdots\\
+    A^n{}_{1} &amp; A^n{}_{2} &amp; \dots &amp; A^n{}_{n}
+    }
+    \ma{u¹ \\ u² \\ \vdots \\ u^n}
+    =\ma{A^1{}_{1}u¹ + A^n{}_{2} u²+ \dots +A^n{}_{n} u^n \\
+    A^2{}_{1} u¹ + A^2{}_{2}u² +  \dots +  A^2{}_{n}u^n \\ \vdots \\
+    A^n{}_{1}u¹  + A^n{}_{2}u² + \dots + A^n{}_{n}u^n
+    }
+    =\ma{v¹ \\ v² \\ \vdots \\ v^n}
+    = \bf v\]</span></p></li>
+</ol>
+</section>
+</section>
+<section id="rotations" class="level1">
+<h1>Rotations</h1>
+<p>We now use the stuff above to do some problems specific to 2D and 3D.</p>
+<ol type="1">
+<li><p>[]{#SO(2) label=“SO(2)”} Let <span class="math display">\[R₁₂(α) \ := \ma{ \cos(α) &amp; -\sin(α) \\
+    \sin(α) &amp; \cos(α) }\]</span></p>
+<ol type="1">
+<li><p>Describe in detail what this matrix does to vectors in <span class="math inline">\(𝐑²\)</span>.</p></li>
+<li><p>Calculate <span class="math inline">\(R₁₂(α) R₁₂(β)\)</span> and <span class="math inline">\(R₁₂(β) R₁₂(α)\)</span>. How are they related?</p></li>
+<li><p>Calculate the inverse <span class="math inline">\([R₁₂(α)]^{-1}\)</span>, the transpose <span class="math inline">\([R₁₂(α)]^t\)</span> (relative to the Euclidean norm<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>), and <span class="math inline">\(R₁₂(-α)\)</span>. How are they related?</p></li>
+<li><p>Calculate the determinant <span class="math inline">\(\det R₁₂(α)\)</span>. Considering what a determinant usually is, is this interesting?</p></li>
+<li><p>Think about all the different matrices <span class="math inline">\(\{R₁₂(α) \}_α\)</span> as you let <span class="math inline">\(α\)</span> vary.</p>
+<ol type="1">
+<li><p>What type of space is this? Hints: It is not a vector space. What are the distinct values of <span class="math inline">\(α\)</span>?</p></li>
+<li><p>What is the meaning of <span class="math inline">\(L₁₂\)</span> (defined below) in this interpretation?</p></li>
+</ol></li>
+</ol></li>
+<li><p>[]{#so(2) label=“so(2)”} Define <span class="math display">\[L₁₂\ :=  \left.  {d R₁₂(α) \over d α}\right|_{α=0}\]</span></p>
+<ol type="1">
+<li><p>Compute what it is explicitly as a matrix.</p></li>
+<li><p>Define <span class="math inline">\((L₁₂)^0 := 𝟏\)</span> to be the (2 × 2) unit matrix, and calculate <span class="math inline">\((L₁₂)^n\)</span> for <span class="math inline">\(n ∈ 𝐍\)</span>.</p></li>
+<li><p>Define the exponential <span class="math inline">\(e^M=\exp(M)\)</span> of a matrix <span class="math inline">\(M\)</span> by <span class="math display">\[\exp(M)\ := \sum_{n=0}^∞ \, \frac1{n!}  \, M^n\]</span> Prove/argue that the sum converges, and explain clearly what type of object this is.</p></li>
+<li><p>Calculate <span class="math inline">\(\exp(α L₁₂)\)</span>.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p></li>
+<li><p>Take a moment to appreciate how remarkable this is. <span class="math inline">\(L₁₂\)</span> is only the first non-trivial term in a MacLauren series for <span class="math inline">\(R₁₂(θ)\)</span> (<em>i.e.</em> it is the infinitesimal part of the finite transformation), but it can be exponentiated to recover the entire finite transformation: In this case integration is just exponentiation.</p></li>
+</ol></li>
+<li><p>Generalize <span class="math inline">\(R₁₂(α)\)</span> to a 3 × 3 matrix that rotates any vector in <span class="math inline">\(𝐑³\)</span> as follows: It leaves the 3rd component alone and rotates the first two as before. More precisely: We pick a linear subspace <span class="math inline">\(𝐑² ⊂ 𝐑³\)</span> that we call the 12-plane, and use it to decompose <span class="math inline">\(𝐑³ = 𝐑² ⊕ 𝐑\)</span>.</p>
+<ol type="1">
+<li><p>Explicitly define our new matrix <span class="math inline">\(R₁₂(α)\)</span> to act as before in that plane and as the identity in the complement.</p></li>
+<li><p>Repeat all steps in problem <a href="#so(2)" data-reference-type="ref" data-reference="so(2)">[so(2)]</a> for this new 3 × 3 matrix.</p></li>
+</ol></li>
+<li><p>Define two new matrices <span class="math inline">\(R₂₃(β)\)</span> and <span class="math inline">\(R₃₁(γ)\)</span> by permuting <span class="math inline">\(1 → 2 → 3 → 1\)</span> in the obvious way. That is, decomposing <span class="math inline">\(𝐑³ = (𝐑 ⊕ 𝐑) ⊕ 𝐑\)</span> further and calling the factors 1, 2, and 3, respectively, <span class="math inline">\(R₂₃(β)\)</span> should act as a rotation in 2 and 3 and <span class="math inline">\(R₃₁(γ)\)</span> as a rotation in 3 and 1.</p>
+<ol type="1">
+<li><p>Construct <span class="math inline">\(R₂₃(β)\)</span> and <span class="math inline">\(R₃₁(γ)\)</span> explicitly. (If you notice a sign ambiguity, resolve it by thinking of the 3-1 plane as the orientation reversal of the 1-3 plane.) Warning: The intention should be obvious but the matrices will look different.</p></li>
+<li><p>Comment on whether/how the properties in problem <a href="#SO(2)" data-reference-type="ref" data-reference="SO(2)">[SO(2)]</a> change for these new matrices.</p></li>
+<li><p>Repeat all steps in problem <a href="#so(2)" data-reference-type="ref" data-reference="so(2)">[so(2)]</a> for these new matrices.</p></li>
+</ol></li>
+<li><p>Next, we consider how matrix products of <span class="math inline">\(R\)</span>s act on vectors.</p>
+<ol type="1">
+<li><p>Explain in words what the product <span class="math inline">\(R₂₃(β)R₁₂(α)\)</span> does to a vector in <span class="math inline">\(𝐑³\)</span>.</p></li>
+<li><p>Does <span class="math inline">\(R₁₂(α)R₂₃(β)\)</span> do the same thing?</p></li>
+<li><p>What does <span class="math inline">\(R₃₁(γ)R₂₃(β)R₁₂(α)\)</span> do? In this context, α, β, and γ are called Euler angles.</p></li>
+</ol></li>
+<li><p>Meditate deeply on the set <span class="math inline">\(\{ R₁₂(α), R₂₃(β), R₃₁(γ)\}_{α, β \, γ}\)</span>. Is there any combination of products of the <span class="math inline">\(R\)</span>s that is not a rotation in 3D? Can I get any rotation from such a product? Thinking of the space of all possible rotations in <span class="math inline">\(𝐑³\)</span>, is it a linear space? What is the dimension of the space? Hint: Use your physical intuition about what this is describing to answer these questions. (I’m not asking for proofs here.)</p></li>
+<li><p>We call the set of all rotations with these additional properties the <span class="math inline">\(SO(3, 𝐑)\)</span> or just <span class="math inline">\(SO(3)\)</span> when the reality is implied. If <span class="math inline">\(R ∈ SO(3)\)</span> is any rotation, what is true about the transpose <span class="math inline">\(R^t\)</span>? What is <span class="math inline">\(\det (R)\)</span>? What would you call the set of <span class="math inline">\(2\times 2\)</span> matrices?</p></li>
+<li><p>If you have managed to do all the problems above, you have shown that the set of all rotations of Euclidean 3-space is a “group”. By definition, this means:</p>
+<ol type="1">
+<li><p>It is a closed set under an associative multiplication operation (which here is matrix multiplication).</p></li>
+<li><p>There is a unit element (the unit matrix).</p></li>
+<li><p>For every rotation, there is a (unique) inverse rotation.</p></li>
+</ol>
+<p>You have also shown that this is true for <span class="math inline">\(SO(2)\)</span>, however:</p></li>
+<li><p>The “commutator” <span class="math inline">\([\cdot, \cdot]\)</span> of two matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> is defined as <span class="math display">\[[A,B] = AB -BA\]</span> A group is called “commutative” or “Abelian” if the commutator of any two elements is 0. Otherwise, it is called non-commutative or non-abelian. What are the correct statements about the (non-)commutativity of <span class="math inline">\(SO(2)\)</span> and <span class="math inline">\(SO(3)\)</span>?</p></li>
+<li><p>Calculate the commutators of the matrices <span class="math inline">\(L₁₂\)</span>, <span class="math inline">\(L₂₃\)</span>, and <span class="math inline">\(L₃₁\)</span>. What do you notice?</p></li>
+<li><p>We call a linear map <span class="math inline">\(V\to V\)</span> from a vector space <span class="math inline">\(V\)</span> to itself a “linear operator” or just “operator” when linearity is implied. An operator <span class="math inline">\(N\)</span> is called “normal” if it commutes with its transpose, that is <span class="math inline">\([N,N^t]=0\)</span>. Show that rotations are normal operators.</p></li>
+<li><p>Use the fact that orthogonal operators are normal to deduce the conditions on the generators corresponding to the following conditions on operators:</p>
+<ol type="1">
+<li><p>The determinant <span class="math inline">\(=1\)</span></p></li>
+<li><p>The operator is orthogonal</p></li>
+<li><p>Use these results to calculate the dimension of the group <span class="math inline">\(SO(n)\)</span> for any <span class="math inline">\(n ∈ 𝐍\)</span>.</p></li>
+</ol></li>
+<li><p>Up until now, we implicitly assumed we were working in Euclidean space, that is, a(n affine,) real vector space of dimension 3 equipped with a specific inner product<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> called the dot product <span class="math inline">\(\langle u , v \rangle = u・v\)</span>. Specifically, denoting the components of <span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span> by <span class="math inline">\(❴ u^i ❵_{i=1}³\)</span> and <span class="math inline">\(❴v^i❵_{i=1}³\)</span>, respectively, the dot product is defined as <span class="math inline">\(u・v = \sum_{i=1}³ u^i v^i\)</span>.<br>
+A vector space <span class="math inline">\(V\)</span> equipped with an inner product <span class="math inline">\(\langle \cdot , \cdot \rangle\)</span> is called an inner product space. In such a space, for any operator <span class="math inline">\(L:V→ V\)</span>, we can define an operator <span class="math inline">\(L*:V→ V\)</span> by setting <span class="math display">\[\langle L* u , v\rangle = \langle  u , L v\rangle \quad ∀ u, v ∈ V\]</span> This <span class="math inline">\(L*\)</span> is called the adjoint of <span class="math inline">\(L\)</span> w.r.t. to the inner product <span class="math inline">\(\langle \cdot , \cdot \rangle\)</span> of <span class="math inline">\(V\)</span>. This is almost always abbreviated to “the adjoint (of <span class="math inline">\(L\)</span>)”.</p>
+<ol type="1">
+<li><p>Find the adjoints of the transformations you worked out above.</p></li>
+<li><p>By extending all of this to <span class="math inline">\(𝐑^n\)</span>, find the largest group of linear transformations that preserves the Kronecker product.</p></li>
+</ol></li>
+</ol>
+<section id="synthesis" class="level2">
+<h2 class="anchored" data-anchor-id="synthesis">Synthesis</h2>
+<p>In this section, we studied rotation groups of <span class="math inline">\(𝐑^n\)</span> by looking at some low-dimensional examples. These groups are subgroups<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> of a larger groups of linear transformations of <span class="math inline">\(𝐑^n\)</span>. The largest is called the general linear group of <span class="math inline">\(𝐑^n\)</span>; it is denoted <span class="math inline">\(GL(𝐑^n)\)</span> or <span class="math inline">\(GL(n,𝐑)\)</span>.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> Since group transformations must have inverses, the only condition on such a transformation (besides linearity) is that it be invertible. Equivalently, the determinant of such a transformation is not allowed to vanish. Since this is an “open” condition, the dimension of <span class="math inline">\(GL(𝐑^n)\)</span> is <span class="math inline">\(n²\)</span>.</p>
+<p>There were a few main subgroups of <span class="math inline">\(GL(𝐑^n)\)</span> that we considered:</p>
+<ul>
+<li><p>The subgroup <span class="math inline">\(SL(𝐑^n) ⊂ GL(𝐑^n)\)</span> of transformations with determinant 1 is called the “special” group. It has dimension <span class="math inline">\(n² -1\)</span>.</p></li>
+<li><p>The subgroup <span class="math inline">\(O(n) ⊂ GL(𝐑^n)\)</span> of matrices that preserve the Kronecker product is called the “orthogonal” group. From your work on the exponential, you know the dimension of this group should be the same as that of the anti-symmetric <span class="math inline">\(n× n\)</span> matrices, so <span class="math inline">\(\frac {n(n-1)}2\)</span>.</p>
+<div class="exercise">
+<p><strong>Exercise 1</strong>. <em>Check this.</em></p>
+</div></li>
+<li><p>The group <span class="math inline">\(SO(n) = O(n) ⋂ SL(𝐑^n)\)</span> is called the “special orthogonal group”.</p>
+<div id="notspecial" class="exercise">
+<p><strong>Exercise 2</strong>. <em>What’s an example of an orthogonal transformation that is not special?</em></p>
+</div>
+<div class="exercise">
+<p><strong>Exercise 3</strong>. <em>Check that his group also has dimension <span class="math inline">\(\frac {n(n-1)}2\)</span>.</em></p>
+</div></li>
+</ul>
+<p>The groups <span class="math inline">\(G\)</span> above are all interesting and very nice<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> spaces called smooth manifolds. (This is in addition to being groups.) On such spaces, you can do calculus, and in particular, you can define (co)tangent spaces. As a group one point is special, because it corresponds to the identity transformation <span class="math inline">\(𝟏\)</span>; its tangent space is denoted <span class="math inline">\(T_𝟏G\)</span> and pronounced “the tangent space to <span class="math inline">\(G\)</span> at the identity”. It is traditional to denote <span class="math inline">\(T_𝟏G\)</span> by the frakture letter(s) corresponding to the lowercase of whatever <span class="math inline">\(G\)</span> is, so <span class="math inline">\(𝔤\)</span> in this case. From general considerations, this is a real vector space with the same dimension as <span class="math inline">\(G\)</span>. The <span class="math inline">\(𝟎∈ 𝔤\)</span> origin of the vector space corresponds to the point <span class="math inline">\(𝟏∈G\)</span>.</p>
+<p>For <span class="math inline">\(G =SO(2)\)</span> and <span class="math inline">\(SO(3)\)</span>, you computed a basis of <span class="math inline">\(T_𝟏G\)</span> showing that <span class="math inline">\(𝔰𝔬(2) ≃ 𝐑\)</span> and <span class="math inline">\(𝔰𝔬(3) ≃ 𝐑³\)</span>. Since we are talking about matrices, the tangent space to the group at the identity is actually an associative algebra, but this is not necessarily the case in general. There is something that generalizes and makes <span class="math inline">\(𝔤\)</span> into a non-associative algebra called the Lie algebra of <span class="math inline">\(G\)</span>, and it goes as follows: Since we were talking about matrix groups, the commutator is defined. The commutator has an explicit expression in terms of the associative matrix multiplication, but it also has the properties that</p>
+<ul>
+<li><p>it is an alternating (<em>i.e.</em>&nbsp;antisymmtric) bilinear map <span class="math inline">\(𝔤 × 𝔤 → 𝔤\)</span>.</p></li>
+<li><p>it satisfies the Jacobi identity: for any <span class="math inline">\(a,b,c∈ 𝔤\)</span> <span class="math display">\[[[a,b],c] + [[b,c],a] + [[c,a],b] = 0\]</span></p></li>
+</ul>
+<div class="exercise">
+<p><strong>Exercise 4</strong>. <em>Show that the commutator satisfies these identities. In particular, show that it satisfies the Jacobi identity precisely because the matrix multiplication is associative.</em></p>
+</div>
+<p>We can think of these identities as conditions generalizing associativity of a product in an algebra. Because of this, the combination <span class="math inline">\([a,b,c]=[[a,b],c] + [[b,c],a] + [[c,a],b]\)</span> is sometimes called the “associator” (but “Jacobiator” is more common).<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p>
+<p>In general, any vector space <span class="math inline">\(𝔤\)</span> over a field <span class="math inline">\(𝐅\)</span> with a binary operation <span class="math inline">\([∙ , ∙ ] : 𝔤 × 𝔤 → 𝔤\)</span> satisfying the rules above is called a “Lie (pronounced”lee”) algebra”. The alternating form is called the Lie bracket. Note that the conditions above do not imply anything about how you can define the Lie bracket explicitly. In particular there does not need to be any way to associate a “product” <span class="math inline">\(ab\)</span> to elements <span class="math inline">\(a,b∈ 𝔤\)</span>.<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p>
+<div class="exercise">
+<p><strong>Exercise 5</strong>. <em>Show that the cross product <span class="math inline">\(×\)</span> in <span class="math inline">\(𝐑³\)</span> makes <span class="math inline">\((𝐑³, × )\)</span> into a Lie algebra. Which Lie algebra is it?</em></p>
+</div>
+<p>The exponential map <span class="math inline">\(M ↦ e^M\)</span> was defined on arbitrary matrices, but with a bit more differential geometry, we can define it more generally. In particular, there is a map <span class="math display">\[\exp : 𝔤 → G\]</span> called the exponential map that agrees with your calculations in the special case that <span class="math inline">\(𝔤\)</span> is an associative algebra. It is important to understand that this map need be neither injective nor surjective.</p>
+<div class="exercise">
+<p><strong>Exercise 6</strong>. <em>Use your answer to exercise <a href="#notspecial" data-reference-type="ref" data-reference="notspecial">2</a> to come up with an example where surjectivity fails.</em></p>
+</div>
+<p>It turns out the if the group is compact,<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a> then this is the only way it can fail: If <span class="math inline">\(G\)</span> is connected and compact, then the exponential map is surjective.</p>
+<div class="exercise">
+<p><strong>Exercise 7</strong>. <em>Consider the familiar exponential map <span class="math inline">\(x ↦ e^x\)</span> from algebra and show that it is injective but not surjective. In light of the previous claim, why does it fail to be surjective? Generalize to the map to the complex domain and then consider the image of <span class="math inline">\(𝐑\)</span> in <span class="math inline">\(𝐂\)</span> defined by <span class="math inline">\(x↦ e^{ix}\)</span>. Show that this map is not injective. In light of the previous claim, why doesn’t it fail to be surjective?</em></p>
+</div>
+<p>Since the “linearization map” <span class="math inline">\(G→ 𝔤\)</span> is the local inverse to <span class="math inline">\(\exp: 𝔤 → G\)</span>, and since linearization is differentiation, we see that “integration” corresponds to exponentiation. This is a remarkable thing, because in calculus the first derivative of a function <span class="math inline">\(f\)</span> is not usually even close to enough to reconstruct the whole function.</p>
+<div id="localiso" class="exercise">
+<p><strong>Exercise 8</strong>. <em>With this observation in mind, suppose you have two Lie groups <span class="math inline">\(G\)</span> and <span class="math inline">\(H\)</span> with isomorphic algebras <span class="math inline">\(𝔤 ≃ 𝔥\)</span>. What will be true about their Lie groups <span class="math inline">\(G\)</span> and <span class="math inline">\(H\)</span>?</em></p>
+</div>
+</section>
+<section id="complex-rotations" class="level2">
+<h2 class="anchored" data-anchor-id="complex-rotations">Complex rotations</h2>
+<p>In this section, we relax the assumption that we are working over <span class="math inline">\(𝐑\)</span>. In mathematics (and physics) we often want to do this because the fundamental theorem of algebra is false over <span class="math inline">\(𝐑\)</span> (the field <span class="math inline">\(𝐑\)</span> is not algebraically closed).</p>
+<div class="exercise">
+<p><strong>Exercise 9</strong>. <em>Diagonalize the <span class="math inline">\(2 × 2\)</span> rotation matrix from problem 1 above. Notice that you have to extend to complex-valued entries, that is, we must work over <span class="math inline">\(𝐂\)</span>.</em></p>
+</div>
+<div id="L3" class="exercise">
+<p><strong>Exercise 10</strong>. <em>Calculate the generator of this transformation.</em></p>
+</div>
+<div class="exercise">
+<p><strong>Exercise 11</strong>. <em>Describe the group <span class="math inline">\(SL(2, 𝐂)\)</span>.</em></p>
+</div>
+<p>When working over <span class="math inline">\(𝐂\)</span> we are often interested, not in the Kronecker inner product, but in a sesquilinear form called the Hermitian inner product. Explicitly, let <span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span> denote elements in <span class="math inline">\(𝐂^n\)</span> with complex components <span class="math inline">\(❴ u^i ❵_{i=1}^n\)</span> and <span class="math inline">\(❴v^i❵_{i=1}^n\)</span>. Then the Hermitian inner product on <span class="math inline">\(𝐂²\)</span> is defined to be <span class="math display">\[\langle u, v \rangle = ∑_{i=1}^n ū^i v^i\]</span> The unitary group <span class="math inline">\(U(n)\)</span> is defined to be the subgroup of the general linear group <span class="math inline">\(GL(𝐂^n)\)</span> that preserves this Hermitian form.<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></p>
+<div class="exercise">
+<p><strong>Exercise 12</strong>. <em>Describe the group <span class="math inline">\(U(1)\)</span> and its Lie algebra <span class="math inline">\(𝔲(1)\)</span>. Same for <span class="math inline">\(SU(1)\)</span> and <span class="math inline">\(𝔰𝔲(1)\)</span>.</em></p>
+</div>
+<div class="exercise">
+<p><strong>Exercise 13</strong>. <em>Show that the diagonal rotation matrix you found above is unitary.</em></p>
+</div>
+<div class="exercise">
+<p><strong>Exercise 14</strong>. <em>Starting over, parameterize a generic element of <span class="math inline">\(SU(2)\)</span> by starting with <span class="math inline">\(GL(2, 𝐂)\)</span>, imposing <span class="math inline">\(\det =1\)</span> to reduce to <span class="math inline">\(SL(2,𝐂)\)</span>, and finally imposing unitarity. What is the real dimension of this group? Prove that if you forget about the group structure, this space is a 3-dimensional sphere. In other words, show that <span class="math inline">\(SU(2) ≃ S³\)</span>.</em></p>
+</div>
+<div class="exercise">
+<p><strong>Exercise 15</strong>. <em>Using the exponential map and the fact that unitary operators are normal, describe the Lie algebras <span class="math inline">\(𝔲(n)\)</span> and <span class="math inline">\(𝔰𝔲(n)\)</span>.</em></p>
+</div>
+<p>Next, we define the Pauli matrices <span class="math display">\[σ¹ = \ma{0&amp;1\\1&amp;0}
+\quad ,\quad
+σ² = \ma{0&amp;-i\\i&amp;0}
+\quad ,\quad
+σ³ = \ma{1&amp;0\\0&amp;-1}\]</span> These are Hermitian and traceless. Your generator from problem <a href="#L3" data-reference-type="ref" data-reference="L3">10</a> is anti-hermitian and traceless and related to the Pauli matrices by multiplication by <span class="math inline">\(±i\)</span>.</p>
+<div class="exercise">
+<p><strong>Exercise 16</strong>. <em>Calculate the commutators of the Pauli matrices.</em></p>
+<ol type="1">
+<li><p><em>What do you notice?</em></p></li>
+<li><p><em>Define the generators <span class="math inline">\(S_i = -\frac i2 σ^i\)</span>, and write down the commutation relations of these.</em></p></li>
+<li><p><em>Do you stand by your answer to problem <a href="#localiso" data-reference-type="ref" data-reference="localiso">8</a>? Comment in detail about what these calculations show.</em></p></li>
+</ol>
+</div>
+<div class="exercise">
+<p><strong>Exercise 17</strong>.</p>
+<ol type="1">
+<li><p><em>Calculate <span class="math inline">\(e^{α S₁}\)</span>, <span class="math inline">\(e^{β S₂}\)</span>, and <span class="math inline">\(e^{γ S₃}\)</span>.</em></p></li>
+<li><p><em>How do the ranges of these “angles” compare to those of the Euler angles?</em></p></li>
+<li><p><em>How many elements of <span class="math inline">\(SU(2)\)</span> are there for each element of <span class="math inline">\(SO(3)\)</span>? (This question is not about generators or dimensions since both groups have real dimension 3. Rather, if <span class="math inline">\(R(α, β, γ)∈ SO(3)\)</span> is some rotation, to which element(s) <span class="math inline">\(S(α, β, γ) ∈ SU(2)\)</span> does it correspond?</em></p></li>
+</ol>
+</div>
+<div class="exercise">
+<p><strong>Exercise 18</strong>. <em>Starting from the Pauli matrices, find a basis for <span class="math inline">\(𝔰𝔩(2,𝐑)\)</span>. Find one for <span class="math inline">\(𝔤𝔩(2,𝐑)\)</span>.</em></p>
+</div>
+<p>§Group representations The standard to study groups is to look at how they act on various things. For example, rotations rotate vectors in a very specific way, as demonstrated explicitly in the <span class="math inline">\(3×3\)</span> matrix representation. But we can make larger matrices that satisfy the same algebra, and we can even make them infinite-dimensional.</p>
+<div class="exercise">
+<p><strong>Exercise 19</strong>. <em>Define generators <span class="math inline">\(L_{ij}: 𝒞^∞(𝐑³)→ 𝒞^∞(𝐑³)\)</span> acting on functions by <span class="math display">\[L_{ij}f = x_i ∂_jf - x_j ∂_if\quad \quad ∀ f ∈ 𝒞^∞(𝐑³)\]</span> Here, we are lowering the index <span class="math inline">\(x_i = δ_{ij} x^j\)</span> of the coordinates <span class="math inline">\(❴x^i❵_{i=1}³\)</span> of <span class="math inline">\(𝐑³\)</span>. Show that they generate rotations by calculating and comparing their commutators. What is the real dimension of this representation?</em></p>
+</div>
+<p>In addition, we saw that there was a <span class="math inline">\(2×2\)</span> generalization of the algebra of rotations. It also acted on things that are not vectors. These “spinors” are elements of a 2-complex-dimensional space.</p>
+<p>§Spin groups Above, you found that the <span class="math inline">\(SU(2)\)</span> rotations corresponding to opposite points on <span class="math inline">\(S³\)</span> represented the same element in <span class="math inline">\(SO(3)\)</span>. We now study this correspondence in more detail.</p>
+<p>First, let us make precise the isomorphism <span class="math inline">\(𝔰𝔲(2) ≃ 𝐑³\)</span>. To do this, we want to associate to every vector in <span class="math inline">\(𝐑³\)</span> an anti-hermitian <span class="math inline">\(2×2\)</span> matrix. However, we already have a basis for these given by <span class="math inline">\(❴S_i❵_{i=1}³\)</span>: For every vector, we associate a matrix by contracting with this basis: where summation is implied.<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a></p>
+<div class="exercise">
+<p><strong>Exercise 20</strong>. <em>Explicitly write out the matrix <span class="math inline">\(v\)</span> defined above.</em></p>
+</div>
+<div class="exercise">
+<p><strong>Exercise 21</strong>. <em>Use the trace to define the inverse map <span class="math inline">\(𝔰𝔲(2) ∋ v ↦ 𝒗 ∈ 𝐑³\)</span>.</em></p>
+</div>
+<p>A group has two natural actions on itself called the left and right action: Let <span class="math inline">\(h∈ G\)</span> and define the left-multiplication <span class="math inline">\(L_h : G → G\)</span> by <span class="math inline">\(L_h(g) = hg\)</span>. Similarly, define the right action <span class="math inline">\(R_h(g) = gh\)</span>.</p>
+<div class="exercise">
+<p><strong>Exercise 22</strong>. <em>Show that the left and right actions commute.</em></p>
+</div>
+<div class="exercise">
+<p><strong>Exercise 23</strong>. <em>...</em></p>
+</div>
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Physicists and mathematicians often disagree about which type is called “covariant” and which type is called “contravariant”. If the group action is defined <span class="math inline">\(V→ V\)</span>, it seems natural to call this “covariant”. Then the dual action <span class="math inline">\(V*→ V*\)</span> is called contravariant.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>If you think you know what a transpose is, but don’t understand why I made the parenthetical remark, then just ignore the remark.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>The element <span class="math inline">\(L₁₂\)</span> is called a rotation “generator”. If you did this calculation correctly, you will understand this nomenclature because <span class="math inline">\(L₁₂\)</span> generates finite rotations.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>In more modern language, the inner product is a symmetric bilinear form on the vector space <span class="math inline">\(V = 𝐑³\)</span>. A linear form is a map <span class="math inline">\(V → 𝐑\)</span> from the vector space <span class="math inline">\(V\)</span> to the field over which it is defined (<span class="math inline">\(𝐑\)</span> in this case). In a local set of coordinates <span class="math inline">\(❴ x^i ❵_{i=1}³\)</span> for <span class="math inline">\(𝐑³\)</span>, the basis vectors are denoted <span class="math inline">\(❴ ∂/∂x^i ❵_{i=1}³\)</span> (which we will abbreviate as <span class="math inline">\(❴∂_i❵_{i=1}³\)</span>) and the linear forms are denoted <span class="math inline">\(❴ dx^i ❵_{i=1}³\)</span>. In this language, the inner product <span class="math inline">\(g\)</span> is denoted <span class="math display">\[g = \sum_{i,j=1}³ \delta_{ij} dx^i ⊗ dx^j\]</span> Here <span class="math inline">\(\delta_{ij}\)</span> is an array called the “Kronecker delta”. It is defined to have value 1 when <span class="math inline">\(i=j\)</span> and 0 otherwise.<br>
+Suggested exercise: Prove that if a bilinear form is symmetric, constant, and positive definite, then there is a choice of coordinates that reduces it to the Kronecker product. (Positive definite means <span class="math inline">\(\langle u , u\rangle &gt;0\ ∀ u ∈ V\)</span>.)<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>A subgroup <span class="math inline">\(H⊂G\)</span> of a group <span class="math inline">\(G\)</span> is a subset of <span class="math inline">\(G\)</span> that is also a group.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>In general, if <span class="math inline">\(V\)</span> is a vector space, the group consisting of all linear transformations <span class="math inline">\(V→ V\)</span> is denoted <span class="math inline">\(GL(V)\)</span>. The notation <span class="math inline">\(GL(n,𝐅)\)</span> is used for the group of <span class="math inline">\(n× n\)</span> matrices with entries valued in the field <span class="math inline">\(𝐅\)</span>. For us, <span class="math inline">\(𝐅=𝐑\)</span> or <span class="math inline">\(𝐂\)</span> (most of the time).<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>When this term is used in the technical sense, it means that something has a lot of additional structures on it that allow you to do things you cannot assume you may do in general. Good examples are whether you can put a distance measure on it (metric structure) and/or whether you are able to define derivatives (differentiable structure).<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>This is probably TMI, but <span class="math inline">\(μ₂(a,b) = [a,b]\)</span> and <span class="math inline">\(μ₃(a,b,c)=[a,b,c]\)</span> are the first two non-trivial examples of an infinite collection of “higher products” required to satisfy a coherence condition (similarly to how <span class="math inline">\(μ₃\)</span> is defined in terms of two <span class="math inline">\(μ₂\)</span>s). This is the structure of a beast called an “infinity algebra (of Lie type)” or <span class="math inline">\(L_∞\)</span>-algebra. Finding simple examples of such algebras is an active area of current research (and potentially an avenue for student research).<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>It’s quite the pain in the <em>derriere</em> that we cannot assume <span class="math inline">\(𝔤\)</span> is associative. However, thanks to a <a href="https://en.wikipedia.org/wiki/Poincaré–Birkhoff–Witt_theorem">theorem</a> by Poincaré, Birkhoff, and Witt, any Lie algebra <span class="math inline">\(𝔤\)</span> can be embedded into an associative algebra <span class="math inline">\(U(𝔤)\)</span> with identity in such a way that the Lie bracket in <span class="math inline">\(𝔤\)</span> becomes the commutator in <span class="math inline">\(U(𝔤)\)</span>. This algebra is called “<a href="https://en.wikipedia.org/wiki/Universal_enveloping_algebra">the universal enveloping algebra</a> of <span class="math inline">\(𝔤\)</span>”.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>The formal definition of compact requires point set topology, but there is an equivalent definition for spaces we can embed into <span class="math inline">\(𝐑^n\)</span> for some <span class="math inline">\(n\)</span> large enough (c.f.&nbsp;<a href="https://en.wikipedia.org/wiki/Whitney_embedding_theorem">Whitney Embedding Theorem</a>). In this case the notion of compactness lines up with intuition: <span class="math inline">\(G ⊂ 𝐑^n\)</span> is compact iff it is closed and bounded.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>It is perfectly fine to define/study <span class="math inline">\(O(𝐂^n)\)</span> and <span class="math inline">\(SO(𝐂^n)\)</span>, but usually the relevant structure in the complex setting is not the orthogonal one.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p>In physics, this map is referred to as the Feynman slash because he used a slash through a (co-)vector to denote the matrix version of it.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
