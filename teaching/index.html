@@ -53,8 +53,9 @@ title: Teaching
 <section class="note-panel" id="resources">
   <h2>Resources</h2>
   <ul class="plain-links">
-    <li><a href="/aa/packets/">All AA packets</a></li>
-    <li><a href="https://github.com/wdlinch3/aa_assignments">AA Jupyter assignments</a></li>
-    <li><a href="/aa/">Astronomy and Astrophysics at TJ</a></li>
+    {% assign daily_links = site.data.quick_links | where: "category", "daily_use" | sort: "priority" %}
+    {% for link in daily_links %}
+      <li><a href="{% if link.external %}{{ link.url }}{% else %}{{ link.url | relative_url }}{% endif %}">{{ link.title }}</a></li>
+    {% endfor %}
   </ul>
 </section>

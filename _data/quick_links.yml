@@ -1,0 +1,83 @@
+- title: SIS
+  url: "https://sis.fcps.edu/SIS/Login_OVR.aspx?"
+  category: daily_use
+  audience: students
+  external: true
+  priority: 10
+
+- title: ION
+  url: "https://ion.tjhsst.edu/"
+  category: daily_use
+  audience: students
+  external: true
+  priority: 20
+
+- title: Schoology
+  url: "https://lms.fcps.edu/home"
+  category: daily_use
+  audience: students
+  external: true
+  priority: 30
+
+- title: Astronomy and Astrophysics at TJ
+  url: "/aa/"
+  category: daily_use
+  audience: students
+  external: false
+  priority: 35
+
+- title: AA packets
+  url: "/aa/packets/"
+  category: daily_use
+  audience: students
+  external: false
+  priority: 40
+
+- title: AA assignments repo
+  url: "https://github.com/wdlinch3/aa_assignments"
+  category: daily_use
+  audience: students
+  external: true
+  priority: 50
+
+- title: Minicourses
+  url: "/teaching/minicourses/"
+  category: daily_use
+  audience: students
+  external: false
+  priority: 60
+
+- title: Jupyter / Python / LaTeX help
+  url: "/aa/x/jupyter-python-latex.html"
+  category: daily_use
+  audience: students
+  external: false
+  priority: 70
+
+- title: TJ Staff Intranet
+  url: "https://sites.google.com/fcpsschools.net/tjstaffintranet/home?pli=1&authuser=1"
+  category: general
+  audience: staff
+  external: true
+  priority: 10
+
+- title: GitHub
+  url: "https://github.com/wdlinch3"
+  category: general
+  audience: general
+  external: true
+  priority: 20
+
+- title: Desmos
+  url: "https://www.desmos.com"
+  category: general
+  audience: general
+  external: true
+  priority: 30
+
+- title: ChatGPT
+  url: "https://chatgpt.com"
+  category: general
+  audience: general
+  external: true
+  priority: 40
