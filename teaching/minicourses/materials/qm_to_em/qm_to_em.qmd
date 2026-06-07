@@ -1,723 +1,999 @@
 ---
 title: "From Quantum Mechanics to Electromagnetism"
-render_with_liquid: false
-published: false
+subtitle: "Gauge covariance, Wilson lines, curvature, and Maxwell's equations"
+author: "Student packet"
+date: "2026-05-10"
 format:
   html:
-    html-math-method: mathjax
+    theme: darkly
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    page-layout: article
   pdf:
-    pdf-engine: lualatex
-header-includes:
-  - \DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}
-  - \DeclareOldFontCommand{\rm}{\normalfont\rmfamily}{\mathrm}
+    documentclass: article
+    toc: true
+    number-sections: true
+    geometry:
+      - margin=1in
+execute:
+  echo: false
 ---
 
+::: {.callout-important title="How to use this packet"}
+This is not an introductory reading. It is a guided derivation for students who already know the Schrödinger equation, vector calculus, and enough linear algebra to tolerate index notation.
 
-## Irrelevance of overall phase
+Do not read this passively. The problems are the packet. Keep a scratch notebook open, check the signs, and do not trust a formula until you know which convention produced it.
+:::
 
-In quantum mechanics, we are repeatedly told that the overall phase of the wave function is meaningless. This claim is supported with the argument that in the physical interpretation of the state in that formalism is in terms of its Hermitian square and not the state itself. 
+The goal is not merely to repackage Maxwell's equations in fancier notation. The goal is to show how much of electromagnetism is forced on us once we take one quantum-mechanical claim seriously: the phase of a wave function is not directly observable.
 
-For example, in the position-space wave function representation the state is described by a complex function  $\Psi(t,x,y,z)$ defines a probability density through the equation
-$$
-dP(t,x,y,z) = \left|\Psi(t,x,y,z)\right|^2dtdxdydz
-$$
-This probability density is unchanged under a phase rotation in which 
-$$
-\Psi \to e^{i\alpha} \Psi
-$$
-for any real $\alpha \in {\bf R}$. 
-Thus, the desciptions in terms of the wave function $\Psi$ and $e^{i\alpha} \Psi$ are physically indistinguishable, and so they should be equivalent. 
+That sounds innocent. In ordinary quantum mechanics we are told, repeatedly, that multiplying a wave function by a constant phase does not change the physics. Fine. But if that is really the principle, a reasonable student should immediately ask the more annoying question: why only a constant phase? Why not a phase that is different at every point in space and time?
 
-This is all fine, but if we accept it, shouldn't we also take this to be equivalent to $\Psi^\prime = e^{i\alpha} \Psi$ where $\alpha =\alpha(t,x, y, z)$ is an entire function? After all, the probability density resulting from $\Psi^\prime$ is identical to that of $\Psi$. The catch is that this more general transformation, where the overall phase is different everywhere in space and time, is not a symmetry of the *Schrödinger equation*
-$$
-i\hbar \frac{\partial \Psi}{\partial t} = \hat H \Psi
-$$
-Let us describe this is some detail. 
+The answer is that the probability density does not care, but the Schrödinger equation does. Derivatives notice when the phase varies. The whole packet is a guided attempt to repair that problem without cheating. The surprise is that the repair is not a small technical footnote; it is the beginning of electromagnetic gauge theory.
 
-If we rephase the wave funtion $\Psi \to  \Psi^\prime =\alpha \Psi$ with a constant $\alpha$, then the left-hand side changes to 
-$$
-e^{i\alpha}\left( i\hbar \frac{\partial \Psi}{\partial t}\right) 
-$$
-This shows that the left-hand side transforms just like $\Psi$ does when we replace $\Psi \to \Psi^\prime$. When an object transforms just like $\Psi$ does, we say it "varies" in the "same" way, or "co-varies". Such terms are called "covariant" because they change (vary) in the same (co-) way. 
+The derivational arc is:
 
-Similarly, the right-hand side changes to 
-$$
-e^{i\alpha} \left( \hat H \Psi \right) 
-$$
-so the two sides change in the same way, and we can divide out by the invertable phase to recover the Schrödinger equation. This is why covariance is useful: The equation is not *invariant* (*i.e.* unchanged) because of the phase, but all terms vary the same way, and so in the end the whole equation is covariant and this gives a different, but equivalent equation. 
+1. Global phase is physically irrelevant.
+2. Local phase changes destroy covariance of ordinary derivatives.
+3. Repairing covariance forces us to introduce a new field $A_i$.
+4. That new field is gauge-dependent, so it is not directly observable point-by-point.
+5. Wilson lines explain how $A$ can still have physical consequences.
+6. The commutator of covariant momenta measures curvature.
+7. In three-dimensional language, that curvature is the magnetic field.
+8. The Aharonov--Bohm effect explains why this is not just formal symbolism.
+9. Spacetime covariance combines the scalar and vector potentials into a 1-form $A$.
+10. The field strength $F=dA$ packages the electric and magnetic fields.
+11. The identity $dF=0$ gives the two source-free Maxwell equations.
+12. A spacetime metric and a four-current give the sourced Maxwell equations.
+13. Charge conservation follows from antisymmetry.
 
-However, if the phase is time-dependent, 
-$$
-\frac{\partial \Psi}{\partial t}\to \frac{\partial \Psi^\prime}{\partial t} = e^{i\alpha} \frac{\partial \Psi}{\partial t} + i e^{i\alpha} \frac{\partial \alpha}{\partial t}\Psi
-$$
-and the new term messes up our previous conclusion. It is not covariant. Similarly, if the phase is space-dependent, then 
-$$
-\hat{\bf p} \Psi\to \hat{\bf p} \Psi^\prime = e^{i\alpha} \hat{\bf p} \Psi -i \hbar e^{i\alpha}\nabla\alpha \Psi 
-$$
-is also not covariant and the transformed Schödinger equation is not equivant to the original. If we could somehow make some changes to the equation that resore covariance, then we would be able to claim that the physics is unchanged under a local rephasing. This is what we will try to do next. 
+A convention warning: this packet first uses a dimensionless gauge potential. This is deliberate. The physical electromagnetic vector potential can be restored later by inserting the appropriate factor of charge, $\frac{q}{\hbar c}$, depending on the unit system. For now, keeping $A$ dimensionless lets us see the geometry without stopping every three lines to argue about SI versus Gaussian units.
 
+One more warning: some of the early moves will look ad hoc. That is not a defect. A large fraction of theoretical physics consists of making a suspicious-looking repair, checking whether it actually works, and then discovering that the repair was trying to tell you something deeper all along.
 
-### Local rephasing
+## Global phase is not enough
 
-For simplicity, we focus on time-independent rephasings, but we will allow the phase to be a function of position coordinates. When this condition holds $\partial \Psi/\partial t$ will be covariant, but 
-$$
-\hat{\bf p} \Psi({\bf x}, t) = -i\hbar \nabla \Psi({\bf x}, t)
-$$
-does not transform nicely under local rephasing $\Psi \to  \Psi^\prime$, because $\nabla \alpha\neq 0$ is messing up covariance. 
+In quantum mechanics, we are repeatedly told that the overall phase of the wave function is meaningless. The usual argument is that the physical interpretation of the wave function is not in the complex number $\Psi$ itself, but in its Hermitian square.
 
-Can we fix it somehow? The problem is that $\hat {\bf p}$ is not misbehaving under the transformation, only $\Psi$ is and $\hat {\bf p}$ gets hung up on the bad phase. But what if we make a new $\hat {\bf p}$ we'll call the delinquent momentum $\hat {\pi}$ that transforms like, say
+For example, in the position-space representation, the state is described by a complex function $\Psi(t,\mathbf{x})$, and the probability density is
+
 $$
-\hat {\pi}^\prime = \hat {\pi} + i \hbar\nabla\alpha 
-$$
-For example, we could take ${\pi} ={\bf p} - i\hbar {\bf A}({\bf x})$ for some mischievous "function" that transforms like 
-$$
-{\bf A}\to {\bf A}^\prime = {\bf A} - \nabla \alpha
-\tag{$*$}
+|\Psi(t,\mathbf{x})|^2.
 $$
 
-I'll admit that this seems very *ad hoc*, but that is what physicists do: make it work by hook or crook and try to justify it later. If it doesn't work, you look like an idiot, apologize, and hope people will forget. But if it work, you'll look like a genius!
+If we rotate the phase by a real constant $\alpha$,
 
-Anyway, let's try this stupid-looking idea. First, we check covariance: 
-\begin{align}
-\hat{\pi} \Psi =\left(\hat{\bf p} - i\hbar {\bf A}\right) \Psi 
-    &\to \left(\hat{\bf p} - i\hbar {\bf A}^\prime\right) \Psi^\prime \cr
-    &= e^{i\alpha}\left(\hat{\bf p} - i\hbar {\bf A}+i\hbar \nabla \alpha\right) \Psi -i \hbar e^{i\alpha}\nabla\alpha \Psi \cr
-    &= e^{i\alpha}\left(\hat{\bf p} - i\hbar {\bf A}\right) \Psi 
-    = e^{i\alpha}\hat{\pi}\Psi 
-\end{align}
-So $\hat{\pi} \Psi \to e^{i\alpha}(\hat{\pi}\Psi)$ just like $\Psi$! Covariance!
-
-Buoyed by this small success, we replace everywhere ${\bf p}\to {\pi} = {\bf p} - i \hbar {\bf A}$, and check the transformation properties. To do this, notice the following trick: since $(\hat{\pi} \Psi)^\prime = e^{i\alpha} (\hat{\pi} \Psi)$ and since $\Psi^\prime =e^{i\alpha} \Psi$, then that must mean that 
 $$
-\hat{\pi}^\prime = e^{i\alpha} \hat{\pi} e^{-i \alpha}
-$$
-This is great, because it make covariance of iterated momenta trivial to check: 
-$$
-(\hat{\pi} \hat{\pi} \Psi)^\prime = \hat{\pi}^\prime \hat{\pi}^\prime \Psi^\prime
-= e^{i\alpha} \hat{\pi} e^{-i \alpha} e^{i\alpha} \hat{ \pi} e^{-i \alpha} e^{i\alpha} \Psi 
-= e^{i\alpha} \hat{\pi}\Psi 
+\Psi(t,\mathbf{x})\mapsto \Psi'(t,\mathbf{x})=e^{i\alpha}\Psi(t,\mathbf{x}),
 $$
 
-With this result, it is clear that the covariantized Hamiltonian 
-$$
-\hat H = \frac{{\pi}^2}{2m} + \hat V
-$$
-is covariant:
-$$
-\hat H = e^{i\alpha}\frac{{\pi}^2}{2m}e^{-i \alpha} + \hat V
-= e^{i\alpha}\left(\frac{{\pi}^2}{2m} + \hat V\right) e^{-i \alpha}
-= e^{i\alpha}\hat H e^{-i \alpha}
-$$
-Thus, the Schrödinger equation is covariant now and all it cost was the introduction of the vector field ${\bf  A}$ with the weird non-covariant transformation law ($*$). 
+then the probability density is unchanged. So the descriptions in terms of $\Psi$ and $e^{i\alpha}\Psi$ are physically indistinguishable.
 
-### The gauge-invariant wave function
+This is all fine, but it should bother you a little. If the probability-density argument is the whole story, then why not take
 
-To understand better what we actually did, let's go back to the beginning and look at the wave function again. We have this $\Psi$ with an ambiguous phase $\Psi\sim \Psi^\prime$ for any $\Psi^\prime = e^{i\alpha} \Psi$. Can't we just get rid the this phase ambiguity? Why yes, now we can! Consider the line integral 
 $$
-\varphi(\gamma) = \int_\gamma {\bf A}\cdot d{\bf x}
-$$
-over some path $\gamma$ starting a point $p$ and ending at a point $q$. Then under a phase change ${\bf A}\to {\bf A}^\prime$ according to the rule ($*$), 
-\begin{align}
-\varphi'(\gamma) &= \int_\gamma {\bf A}'\cdot d{\bf x}
-    = \int_\gamma {\bf A}\cdot d{\bf x} + \int_\gamma \nabla \alpha \cdot d{\bf x} \cr
-    &=\varphi(\gamma) + \alpha(q)-\alpha(p)
-\end{align}
-by the fundamental theorem of line integrals. Now suppose for simplicity that whatever function $\alpha$ is, $\alpha(q)\to 0$ if $q$ is "far enough away". (We don't need to do this, but assuming this makes the analysis less messy.) Then instead of considering the wave function at $p$, let's consider the same wave function dressed up with a the line integral: We define
-$$
-\widetilde \Psi(p, t) = e^{i\int_q^p {\bf A}\cdot d{\bf x}}\Psi(p, t)
-$$
-where $\gamma$ is any path starting at a point $q$ where $\alpha=0$ and ending at the point $p$. Then our result above indicates that under a gauge transformation 
-$$
-\widetilde \Psi'(p, t) = e^{i\int_\gamma {\bf A}\cdot d{\bf x}}e^{-i\alpha(p)} e^{i\alpha(p)} \Psi(p, t) = \widetilde \Psi(p, t) 
-$$
-This dressed up version of $\Psi$ is completely invariant!
-
----
-
-## The Aharonov-Bohm experiment 
-
-** EXPLAIN AHARONOV-BOHM EXPERIMENT HERE **
-
----
-
-## The magnetic field 
-
-Using our dolled-up wave function, we can explain this effect easily: As the electron progresses through an ${\bf A}$ field in the Aharonov-Bohm modification of the double slit experiment, the usual phase accumulation $e^{\frac i\hbar \int_\gamma {\bf p}\cdot d{\bf x} }\Psi$ gains a line integral tail 
-$$
-e^{\frac i\hbar \int_\gamma {\bf p}\cdot d{\bf x} }\Psi
-    \to e^{\frac i\hbar \int_\gamma {\pi}\cdot d{\bf x} }\Psi 
-    = e^{\frac i\hbar \int_\gamma {\bf p}\cdot d{\bf x} }e^{ \int_\gamma {\bf A}\cdot d{\bf x} }\Psi
-    =e^{\frac i\hbar \int_\gamma {\bf p}\cdot d{\bf x} }\widetilde \Psi
-$$
-After a full circuit (equivalent to double-slit interference), the accumulated phase is $e^{ \oint_\gamma {\bf A}\cdot d{\bf x} }$. But $\gamma$ is the boundary of the surface $\Sigma$ the the solenoid flux threads, so by the Green theorem (or whatever), 
-$$
-\oint_\gamma {\bf A}\cdot d{\bf x} 
-    = \oint_{\partial \Sigma} {\bf A}\cdot d{\bf x} 
-    = \int_\Sigma \nabla \times {\bf A}\cdot {\bf n} da 
-$$
-Here ${\bf n}$ is the unit normal vector to the oriented surface $\Sigma$ and $\partial \Sigma$ is math speak for "the boundary of $\Sigma$" (which in our case is exactly $\gamma$). Since this is the magnetic flux $ \int_\Sigma {\bf B}\cdot {\bf n} da $ through the solenoid, we are evidently supposed to conclude that 
-$$
-{\bf B} =  \nabla \times {\bf A} \tag{$**$}
+\Psi'(t,\mathbf{x})=e^{i\alpha(t,\mathbf{x})}\Psi(t,\mathbf{x})
 $$
 
-Wait what? We started with a local rephasing ambiguity and in the end, we are saying this is some form of the magnetic field! Does it make sense?? Well first of all, "gradients don't curl" so if we change ${\bf A}$ to ${\bf A}'={\bf A}+\nabla \alpha$, this definition of ${\bf B}$ does not change, so that's at least not blatantly wrong... 
+where $\alpha$ is an entire function rather than one number? The probability density is still identical point-by-point. The catch is that the Schrödinger equation contains derivatives, and derivatives are exactly the operation that notices when something varies from point to point.
 
-Ah! But curls don't diverge so if ($**$) is correct then ${\bf B}$ must satisfy 
-$$
-\nabla \cdot {\bf B}= 0
-$$
-Does it? Yes.. actually that is a consequence of the Maxwell equation in the following form:
-$$
-\int_\Sigma {\bf B}\cdot {\bf n} da =0
-$$
-for any closed surface $\Sigma$. (In cool math notation, $\partial \Sigma = \emptyset$.) If $U$ is a volume with $\Sigma=\partial U$ as its boundary, this says that any flux line that leaves $U$ must come back to it: *i.e.* there are no magnetically charged particles. 
-However, by the divergence theorem,
-$$
-0 = \int_\Sigma {\bf B}\cdot {\bf n} da = \int_U \nabla\cdot {\bf B} dv
-$$
-Since is true for any such $U$, it must be that $\nabla\cdot {\bf B}=0$. 
+This is the first serious lesson of gauge theory: the quantity we want to call physically irrelevant can be made local, but only if the equations of motion are rebuilt so that every term varies in the same way. That common behavior is what we mean here by covariance.
 
-> ### Problem
->
-> Calculate $[\hat {\pi}, \hat {\pi}]$ in the position space representation.
+::: {.callout-note title="Problem 1: Global phase and probability density"}
+This first check is supposed to be easy, but it is not supposed to be meaningless.
 
-> ### Answer
->
-> In components 
-\begin{align}
-\left[ \hat \pi_i , \hat \pi_j\right]
-&=\left[ \hat p_i -i\hbar A_i , \hat p_j-i\hbar A_j \right]\cr
-&=-i\hbar\left[ \hat p_i , A_j \right]
--i\hbar\left[  A_i , \hat p_j \right]
-\cr
-&=(-i\hbar)^2 \nabla_iA_j 
--(-i\hbar)^2\nabla_jA_i
-\cr
-&=-\hbar^2 \left( \nabla_iA_j - \nabla_jA_i\right)
-\end{align}
->
-> but this is the curl again, so the canonical commutation algebra has been deformed to
-\begin{align}
-\left[ \hat x^i , \hat x^j\right]=0
-\quad ~&~\quad
-\left[ \hat \pi_i , \hat x^j\right]=-i\hbar \delta_i^j\ 1
-\quad\quad \cr
-\left[ \hat \pi_i , \hat \pi_j\right]&=-\hbar^2 \varepsilon_{ijk}B^k
-\end{align}
+Compute $|\Psi'|^2$ when $\Psi'=e^{i\alpha}\Psi$ with constant real $\alpha$. Then repeat the reasoning when $\alpha=\alpha(t,\mathbf{x})$ is a real function. The point is to isolate exactly what the probability-density argument does and does not prove.
+:::
 
-A lot just happened. Not only did we discover a Maxwell equation, we
-* stumbled on it through *quantum mechanics* even though classical electrodynamics supposedly has nothing to do with quantum mechanics
-* we solved it in terms of the so-called **vector potential** ${\bf A}$
-* we also understand in what sense the vector potential is both more fundamental but also less real than the magnitic field:
-    * It's less real, because it is not covariant: we can completely change it's functional form by adding the gradient of any function we want, so that cannot correspond to anything we measure directly; it's ambiguous
-    * It's more fundamental in the sense that electrons couple directly to ${\bf A}$ and not ${\bf B}$. ${\bf B}$ appears in equations of motion, but ${\bf A}$ appears directly in the Schödinger equation.
-* we understood the mysterious Aharonov-Bohm experiment. 
+::: {.callout-note title="Problem 2: Ordinary derivatives are not covariant"}
+This is where the problem first appears.
 
-## Relativity?
+Assume
 
-I promised we would relax the restriction $\partial \alpha/\partial t=0$, so let's do that. The easiest way (hindsight is 20-20; look it up kids!) is to go back to the line integral dressing factor. Now that we know we can make the wave function invariant, that's a good place to look. The line integral has ${\bf A}\cdot d{\bf x}$, so what about a $dt$ term? Since this is a scalar, the most natural thing is 
 $$
--c\phi\ dt+{\bf A}\cdot d{\bf x}
-$$
-where $c$ is the speed of light. The sign is there because of a convention in electricity and magnetism we will discuss later. The reason to introduce the speed of light is that $ct$ has the same physical dimension (*i.e.* length) as the Cartesian $x$, $y$, and $z$ we are so in love with. In fact, if we denote $x^1:=x$ and $x^2:=y$ and $x^3:=z$ as I mean when I write $d{\bf x}$, perhaps I should define $x^0:=ct$ while I'm at it! Then I can even set $A_0:=-\phi$ and just write the whole line integral in space and time as
-$$
-c\phi\ dt+{\bf A}\cdot d{\bf x}
-    =A_0 dx^0+{\bf A}\cdot d{\bf x}
-    = \sum_{\mu=0}^3 A_\mu dx^\mu 
-    =:A_\mu dx^\mu 
-$$
-In the last step, we are following Einstein's suggestion to just drop all the tedious summation signs over every index that is repeated, since this is (nearly) unambiguous: If you are summing, the indices always come in repeated pairs and if you want space-time symmetry, you need to sum. So any repeated index is assumed to be summed. This is called the "Einstein summation convention".
-
-OK! Where were we going with this? Oh yeah, how should $\phi$ transform is we want to keep all the nice properties we had before? Well when it was ${\bf A}$, the rule was ${\bf A}'={\bf A} + \nabla \alpha$, which are space derivatives. So the right thing to do is to have $\phi' = \phi +\partial \alpha/\partial t$. Certianly if our new definition of the invariant wave function is 
-$$
-\widetilde \Psi = e^{i\int_\gamma A_\mu dx^\mu}\Psi
-$$
-then yes, this will work because the phase (called a **Wilson line** by the way) will reconstitute the complete $\alpha(p)$ by the fundamental theorem of line integrals, which is now in spacetime and not just space.
-
-But! Now we can figure out the spacetime version not only of the ${\bf B}$ field but also half of the Maxwell equations, since we will get the ${\bf E}$ version of what we found by accident before for ${\bf B}$ by following the same argument! 
-
-Imagine a loop $\gamma$ in space and time. Let $\Sigma$ be *any* surface for which $\gamma$ is the boundary, *i.e.* $\partial \Sigma = \gamma$. Then let's spam the Green theorem again: 
-$$
-\int_\gamma A_\nu dx^\nu 
-    =\int_{\partial \Sigma} A_\nu dx^\nu  
-    =\int_{\Sigma} (\partial \times A)\cdot {\bf n} da
-$$
-Looks nice right? Yeah, except it doesn't mean anything!
-* What is the vector normal to a surface in 4D??
-* What does $\partial \times A$ mean?
-
-Actually, these problems are an artifact of poor choices made in your multivariable calculus classes. It all started with the misleading statement that "vectors have direction and magnitude" and then it got progressively worse with "transposing" column vectors into row vectors, defining the gradient as a vector, and worst of all, introducing the right-hand rule and cross product, *which only exist in 3 dimensions*. So let's try to undo some of the damage, so we can move on. Let's agree with the working definition that a 3D vector $\bf v$ is a $3\times 1$ column of real numbers. (This is not the real definition, but it will work fine.) Lets also agree that these three numbers are labeled by $v^1$ for the top one, $v^2$ for the middle one, and $v^3$ for the bottom one. Together these **components** will be called $v^i$ where the **index** $i$ takes the three values $i=1,2,3$, for example
-$$
-{\bf v} 
-= \begin{pmatrix} v^1\\v^2\\ v^3 \end{pmatrix} 
-= \begin{pmatrix} \sqrt{\pi}\\ 0 \\ -1 \end{pmatrix}
-$$
-Another really good example is the "infinitesimal displacement" vector
-$$
-\left(dx^i\right) = \begin{pmatrix}dx\\dy\\dz\end{pmatrix}
-$$
-Now let's calculate the partial derivatives of a function $f(x^i)$ of three variables $x^1=x$, $x^2=y$, and $x^3=z$. This naturally looks like $\partial f/\partial x^i$. Here the index is "up" but it is in the numerator. This turns out the mean that the natrual arrangement is
-$$
-\frac{\partial f}{\partial x^i} = \left( \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z}\right)
-$$
-The reason this arrangement is correct is that this matix arrangement naturally pairs with the first for the differential of $f$; a $1\times 3$ combines with a $3\times 1$ to give a $1\times 1$ matrix:
-$$
-df = dx^i \frac{\partial f}{\partial x^i} \tag{$***$}
-$$
-Let us further define the shorthand $\partial_i := {\partial f}/{\partial x^i}$ so that 
-$$
-df = dx^i \frac{\partial f}{\partial x^i} = dx^i \partial_i f
+\Psi'=e^{i\alpha(\mathbf{x})}\Psi,
 $$
 
---- 
+where $\alpha$ is time-independent but spatially varying. Compute $\partial_i\Psi'$ carefully enough that the product-rule term cannot hide. Then apply
 
-### Dot product and gradient
-
-Notice that the previous formula is *not* the same as $df = d{\bf x} \cdot \nabla f$. In fact, I have not defined what $\nabla$ is *and* I have not introduced a dot product. In fact, neither of these are necessary to write ($***$), because ($***$) is simply the chain rule of calculus.
-I will now do both.
-
-Suppose that I were to give you a rule $\langle - , - \rangle$ for taking any two vectors ${\bf v}$ and ${\bf w}$ and giving you a number $\langle {\bf v} , {\bf w} \rangle \in {\bf R}$. If this rule satisfies various conditions (symmetry, nondegeneracy, positivity), then it is called an **inner product** or **metric**. The most famous is the Euclidean one
 $$
-\langle {\bf v} , {\bf w} \rangle = v^1w^1+v^2w^2+v^3w^3
-$$
-But, in general the different terms could have different weights and there could even be cross-terms like $v^2 w^3$ (as long as there is also a term $v^3 w^2$ for symmetry). Now that my vector space is equipped with an inner product, I can introduce the notion of gradient: The gradient of a function, denoted $\nabla$ is a vector that has the property that *when plugged into the inner product with another vector ${\bf v}$ computes the directional derivative*
-$$
-\langle {\bf v} , \nabla f \rangle = v^i \frac{\partial f}{\partial x^i} \quad \quad \forall {\bf v}\in {\bf R}^3
+\hat{p}_i=-i\hbar\partial_i
 $$
 
-I will now go into more detail about components, because then I can use explicit symbols to emphasize what is happening here. Going back to the Euclidean inner product, let me write it in an unnecessarily complicated-looking way:
+to $\Psi'$ and identify the term that prevents $\hat{p}_i\Psi$ from transforming in the same way as $\Psi$.
+:::
+
+## Covariant derivatives and the gauge potential
+
+For the moment, we simplify the problem by allowing $\alpha$ to depend on position but not on time. Then the time derivative in the Schrödinger equation is not the immediate problem. The spatial momentum operator is.
+
+The ordinary momentum operator
+
 $$
-\langle {\bf v} , {\bf w} \rangle = \sum_{i=1}^3 \sum_{j=1}^3 v^i \delta_{ij} w^j =  \delta_{ij} v^i w^j 
-$$
-Here I am defining the **Kronecker symbol**
-$$
-\delta_{ij} = \begin{cases}
-1 & \textrm{if }i=j \\
-0 & \textrm{otherwise}
-\end{cases}
-$$
-and I dispensed with the superfluous summations again. Note that I can define another $\delta^{ij}$ to be the inverse of the first one in the sense that $\delta_{ik}\delta^{kj} = \delta_i^j$ is the unit matrix. Now I can finally define the components of $\nabla f$ in terms of those of $df$: 
-$$
-(\nabla f)^i = \delta^{ij} \frac{\partial f}{\partial x^j}= \delta^{ij} \partial_j f
-$$
-We see that we need the *inverse metric* to define the gradient, whereas we did not need anything, when we defined the differential $df$. So how does the formula connecting them work? You have to undo the inverse metric you *just introduced*: 
-$$
-\partial_i f = \delta_{ij} (\nabla f)^j =  \delta_{ij} \delta^{jk} \partial_k f
+\hat{p}_i=-i\hbar\partial_i
 $$
 
----
+does not transform nicely under local rephasing because $\partial_i\alpha\neq 0$ gets caught by the derivative. The operator $\hat{p}_i$ is not doing anything wrong; it is applying the product rule. The phase is what changed, and the derivative noticed.
 
-### Cross produce
+Can we fix this somehow? We introduce a new derivative
 
-The next problem we confront is the cross product. This is a structure that takes an ordered pair of vectors $({\bf u}, {\bf v})$ and gives you a new vector ${\bf w}$ which is defined to have the following components 
 $$
-{\bf w} = \begin{pmatrix}v^2 w^3-v^3 w^2\\v^3 w^1-v^1 w^3\\ v^1 w^2-v^2 w^1\end{pmatrix}
+D_i=\partial_i-iA_i,
 $$
-Note that this assignment is invariant under cyclic permutations and is anti-symmetric under the switch $({\bf u}, {\bf v})\mapsto ({\bf v}, {\bf u})$. The standard notation is to write ${\bf w} = {\bf u}\times {\bf v}$. 
-So what is the problem with that? Well, for starters, what is this supposed to be in 2D? What about 4D? Are we claiming Green's Theorem only works in 3D?? The issue is that we are insisting that the result is another vector, when really what we wanted was the area of the oriented parallelogram spanned by the two vectors, which is why you could write it as the determinant of a matrix of ${\bf u}, {\bf v}$, and a unit vector. 
 
-Let's introduce a new symbol to make this more explicit. This symbol will have 3-indices $i, j$, and $k$ all taking values $i,j,k=1, 2, 3$ (for now) such that
-$$
-\varepsilon_{ijk} = \begin{cases}
-+1 & \textrm{if }(i,j,k)=(1,2,3)\textrm{ or } (2,3,1)\textrm{ or } (3,1,2)\\
--1 & \textrm{if }(i,j,k)=(2,1,3)\textrm{ or } (1,3,2)\textrm{ or } (3,2,1)\\
-0  & \textrm{otherwise}
-\end{cases}
-$$
-This is called the **Levi-Cevita** (*lev-ee che-vee-tah*) symbol and what it does for us is keep track of signed permulations of 3 elements. Volumes in 3D are signed permutations of 3 elements so for any 3 vectors ${\bf u}, {\bf v}$, and ${\bf w}$, the volume of the parallelepipid spanned by the ordered list $({\bf u}, {\bf v}, {\bf w})$ is $\varepsilon_{ijk}u^iv^jw^k$. This is also the determinant of the matrix with columns $({\bf u}, {\bf v}, {\bf w})$ and so for any linear operator with matrix $M^i{}_j$, the determinant is given by 
-$$
-\varepsilon_{lmn} M^l{}_i M^m{}_j M^n{}_k = \det(M) \varepsilon_{ijk}
-$$
-Finally, I can write the components of the cross product of an ordered pair of vectors $({\bf u}, {\bf v})$ as $\varepsilon_{ijk} u^j v^k$
-Note, however, that as a "vector", this is a "row vector" and not a "column vector". We can "fix" that, but it will cost us another factor of the inverse metric, so finally, the cross product is 
-$$
-w^k=\delta^{kl}\varepsilon_{lij} u^i v^j
-$$
-Note that $\varepsilon_{kij} u^i v^j = \frac12 \varepsilon_{kij} (u^i v^j-u^jv^i)$, so this is *quite a mess* we are making just to talk about the antisymmetric combination $u^iv^j -u^jv^i$. 
+where $A_i(\mathbf{x})$ is a new field. At this stage $A_i$ looks like a mischievous piece of bookkeeping. It is not yet obviously a physical field. The demand is simple: $D_i\Psi$ should transform the same way $\Psi$ transforms:
 
-Now anti-symmetric combinations exist in any dimension, and this is in fact the right answer for the area of a parallelogram in 2D. All you need is $u^1 v^2-u^2v^1 = \varepsilon_{ij}u^iv^j$, and, of course you could do this in 4D as $\varepsilon_{ijkl}u^kv^l$. So we see the problem: In exactly 3D, the Levi-Cevita symbol has the correct number of indices to give back something that looks like a vector, and *this will never happen again in any other dimension*. 
+$$
+D_i'\Psi'=e^{i\alpha}D_i\Psi.
+$$
 
-> Problem
->
-> Define a second Levi-Cevita tensor by
-$$
-\varepsilon^{ijk} = \begin{cases}
-+1 & \textrm{if }(i,j,k)=(1,2,3)\textrm{ or } (2,3,1)\textrm{ or } (3,1,2)\\
--1 & \textrm{if }(i,j,k)=(2,1,3)\textrm{ or } (1,3,2)\textrm{ or } (3,2,1)\\
-0  & \textrm{otherwise}
-\end{cases}
-$$
-> (Yes, it looks exactly like the old one, but the indices are "up".)
->
-> Show that:
-> 1. $\varepsilon_{ijk}\varepsilon^{ijk}=3!$
-> 2. $\varepsilon_{ikl}\varepsilon^{jkl}=2\delta_i^j$
-> 3. $\varepsilon_{ijm}\varepsilon^{klm}=(\delta_i^k\delta_j^l-\delta_j^k\delta_i^l)$
-> 4. $\varepsilon_{ijk}\varepsilon^{lmn}= \delta_i^l\delta_j^m\delta_k^m \pm 5$ more terms with each possible permutation of the lower indices. Not that the signs are lined up with even and odd permutations.
->
-> Hint: If you can do 4 first, the others follow.
+This demand determines how $A_i$ must transform. We are not guessing a new law of nature yet; we are asking what has to be true if local rephasing is to be a harmless redundancy in our description.
 
-> ### Answer
-> 
-> 1. We will get $\varepsilon_{123}\varepsilon^{123}=1$ six times: 3 for the cyclic permutions $123$, $231$, and $312$. The other 3 will be the odd permutations, like $\varepsilon_{213}\varepsilon^\varepsilon_{213}=(-1)(-1)=1$ so these also give three $+1$s.
-> 2. We no that if $i\neq j$ then some index must be repeated on one of the $\varepsilon$s which gives 0, so the RHS $\propto \delta_i^j$. Since $\delta_i^i=3$, comparison with 1. tells us the constant of proportionality is 2.
-> 3. ... 
+After that, we convert the repaired derivative into a repaired momentum,
 
-## Faraday-Maxwell tensor
+$$
+\hat{\pi}_i=-i\hbar D_i.
+$$
 
-Going back to our original problem: What is Green's Theorem in 4D? We were trying to make sense out of the last equality in
-$$
-\int_\gamma A_\nu dx^\nu 
-    =\int_{\partial \Sigma} A_\nu dx^\nu  
-    =\int_{\Sigma} (\partial \times A)\cdot {\bf n} da
-$$
-but that is not so difficult now: The derviative operator naturally has its index down so we need to focus on that: $\int_{\Sigma} (\partial \times A)\cdot {\bf n} da\to $ something like $\int_{\Sigma} \partial_\mu A_\nu dx^\mu dx^\nu$, but it needs to be antisymmetric in the indices, because that seemed important to the curl earlier. So really, we want something like $\partial_\mu A_\nu - \partial_\nu A_\mu$. This combination is so import, it is called the Maxwell tensor or Faraday tensor, or Maxwell-Faraday tensor or field strenght tensor, or ... you get the idea. Anyway, it is the correct version of the curl in 4D, and just like in 3D, it does not change under the $A/A'$ ambiguity $A_\mu\to A_\mu+\partial_\mu \alpha$ 
+In the original rough notebook this was jokingly called a delinquent momentum. The mature name is covariant momentum, but the joke is useful: ordinary momentum got into trouble with a local phase, and $\hat{\pi}_i$ is the replacement that knows how to stay out of trouble.
 
-> ### Problem
->
-> Prove this by direct calculation.
+::: {.callout-note title="Problem 3: Derive the gauge transformation of $A_i$"}
+Do not guess the transformation rule for $A_i$; derive it from the demand that the new derivative repair the failure you just found.
 
-> ### Answer
->
-> Since partial derivatives commute $\partial_\mu \partial_\nu \alpha = \partial_\nu \partial_\mu$,
-\begin{align}
-F_{\mu\nu}' &= \partial_\mu A_\nu' - \partial_\nu A_\mu'\cr
-    &= \partial_\mu A_\nu - \partial_\nu A_\mu +  \partial_\mu \partial_\nu \alpha - \partial_\nu \partial_\mu \alpha\cr
-    &=F_{\mu\nu}
-\end{align}
+Let
 
-We are almost there, but we need to figure out what $F_{\mu\nu}dx^\mu dx^\nu$ means. In calculus we learn that $dxdy=dydx$ because integrals commute or something like that, but that is again an unforced error. We usually want *oriented* areas, and if we switch orientation, the integral flips sign! So really, we should be writing $dxdy=-dydx$! We have a symbol for this: For any two differentials $df$ and $dg$, we define the **wedge product** $df\wedge dg$ so that 
 $$
-dg\wedge df = -df\wedge dg
+D_i=\partial_i-iA_i,
+\qquad
+D_i'=\partial_i-iA_i'.
 $$
-Then $dx^\mu \wedge dx^nu$ is antisymmetric and therefore 
-$$
-\int_\gamma A_\nu\ dx^\nu 
-    =\int_{\Sigma} \partial_\mu A_\nu\ dx^\mu \wedge dx^\nu
-$$
-checks all our boxes:
-* It does what Green's is supposed to: relate a surface integral of a curl to a line integral aroudn a the boundary of the surface.
-* It doesn't rely on metrics (they appear nowhere in this construction).
-* The left-hand side is unambiguous under the shift by the fundamental theorem of line integrals.
-* The righthand side is **manifestly** unambiguous because it is constructed "as a curl".
 
-> ### Problem
->
-> Recall that when the fields $\phi$ and ${\bf A}$ are time-independent, then ${\bf E}=-\nabla \phi$ and ${\bf B}=\nabla \times {\bf A}$.
-> 
-> a. Use this to calculate the components of the Maxwell tensor. Note that the electric field has a part that is not zero if the fields are allowed to vary in time. 
->
-> b. Show that if fields are allowed to vary in time, then
+Assume $\Psi'=e^{i\alpha}\Psi$. Determine the transformation law for $A_i'$ that makes
+
 $$
-\nabla \times {\bf E} = -\frac1c\frac{\partial {\bf B}}{\partial t}
+D_i'\Psi'=e^{i\alpha}D_i\Psi
 $$
->
-> c. Show that the result in b. is equivalent to the statement that
+
+hold for arbitrary $\Psi$.
+:::
+
+::: {.callout-note title="Problem 4: Covariant momentum"}
+Translate the repaired derivative into the corresponding repaired momentum.
+
+Define
+
 $$
-\frac1c\frac{\partial }{\partial t} \Phi_B(\Sigma) = -{\mathcal E}
+\hat{\pi}_i=-i\hbar D_i.
 $$
-> for any fixed surface $\Sigma$ (*i.e.* not changing in time). Here $\Phi_B(\Sigma)$ is the magnetic flux through the surface, and $\mathcal E$ is the **[electromotive force](https://en.wikipedia.org/wiki/Electromotive_force)**. Which law from electricity and magnetism did you just rediscover?
->
-> d. Show that the law in c. and the statement that there are no magnetic monopoles both follow from the formula
+
+First express $\hat{\pi}_i$ in terms of $\hat{p}_i$ and $A_i$. Then use the covariance of $D_i\Psi$ to determine how $\hat{\pi}_i\Psi$ transforms. The goal is to check that this operator really deserves to replace ordinary momentum in the Schrödinger equation.
+:::
+
+::: {.callout-note title="Problem 5: A gauge-covariant Hamiltonian"}
+The Hamiltonian is only repaired if every term in the Schrödinger equation transforms together.
+
+Suppose
+
 $$
-\partial_\lambda F_{\mu \nu}
+\hat{H}=\frac{1}{2m}\hat{\boldsymbol{\pi}}^2+V(\mathbf{x}),
+$$
+
+with $V$ gauge-invariant. Explain why applying two covariant momenta in succession still gives an object that transforms like $\Psi$, and use that to show that $\hat{H}\Psi$ is covariant.
+:::
+
+So the stupid-looking idea worked. We introduced a new field $A_i$, forced it to transform in a strange non-covariant way, and in exchange the equation became covariant. That is suspicious enough to deserve a closer look.
+
+## Wilson lines and gauge-invariant wave functions
+
+Now that we have introduced $A_i$, we should try to understand what we actually did. We began with a wave function $\Psi$ whose phase is ambiguous:
+
+$$
+\Psi\sim e^{i\alpha}\Psi.
+$$
+
+Can we simply dress the wave function in a way that gets rid of this ambiguity? Surprisingly, yes, provided we compare phases by integrating the gauge potential along a path.
+
+Let $\gamma$ be a path from a reference point $q$ to a point $p$. Consider the line integral
+
+$$
+\int_\gamma A=\int_q^p A_i\,dx^i.
+$$
+
+Under the gauge transformation $A_i'=A_i+\partial_i\alpha$, the fundamental theorem of line integrals gives
+
+$$
+\int_q^p A'
+=
+\int_q^p A+
+\alpha(p)-\alpha(q).
+$$
+
+This is exactly the kind of endpoint phase shift we need. If we choose the reference point so that $\alpha(q)=0$, then the Wilson-line factor
+
+$$
+W(q,p;\gamma)=\exp\left(-i\int_q^p A\right)
+$$
+
+cancels the local phase of $\Psi(p)$. The price is that the dressed wave function depends on the path $\gamma$. That path-dependence is not an annoyance to sweep under the rug; it is the first hint of curvature.
+
+::: {.callout-note title="Problem 6: Wilson-line transformation"}
+The Wilson line is designed to remember how phase changes along a path.
+
+For
+
+$$
+W(q,p;\gamma)=\exp\left(-i\int_q^p A\right),
+$$
+
+use $A_i'=A_i+\partial_i\alpha$ and the fundamental theorem of line integrals to compute $W'(q,p;\gamma)$. Keep both endpoint terms $\alpha(p)$ and $\alpha(q)$; dropping one too early hides the mechanism.
+:::
+
+::: {.callout-note title="Problem 7: A gauge-invariant dressed wave function"}
+Now use the Wilson line to remove the local phase ambiguity at the endpoint.
+
+Assume the reference point $q$ is chosen so that $\alpha(q)=0$ and define
+
+$$
+\widetilde{\Psi}(p)=W(q,p;\gamma)\Psi(p).
+$$
+
+Using the result of the previous problem, verify that $\widetilde{\Psi}(p)$ is gauge-invariant. Then state clearly what new dependence has been introduced by this construction.
+:::
+
+For a closed loop, the reference point and endpoint are the same. The phase factor becomes
+
+$$
+W(\gamma)=\exp\left(-i\oint_\gamma A\right).
+$$
+
+By Stokes' theorem, this can be written as a surface integral of the curvature:
+
+$$
+\oint_\gamma A=\int_\Sigma F,
+\qquad
+\partial\Sigma=\gamma.
+$$
+
+This is the mathematical skeleton of the Aharonov--Bohm effect.
+
+## The Aharonov--Bohm experiment
+
+The Aharonov--Bohm experiment is the moment where this stops looking like notation and starts looking like physics.
+
+Imagine a double-slit-style experiment, but with a long solenoid placed between the two electron paths. The magnetic field can be confined to the inside of the solenoid, so the electrons travel through a region where the local magnetic field is essentially zero. Classically, one might expect no magnetic influence on the electrons along the paths.
+
+But the wave function does not merely carry local force information. It carries phase. As the electron travels, its phase is dressed by a Wilson line. When the two paths are recombined, the relative phase is controlled by the closed-loop quantity
+
+$$
+\Delta\varphi
+=
+-\oint_\gamma A.
+$$
+
+By Stokes' theorem,
+
+$$
+\oint_\gamma A=\int_\Sigma F,
+\qquad
+\partial\Sigma=\gamma.
+$$
+
+In physical units this is proportional to the magnetic flux through the solenoid. So the interference pattern can shift even though the electrons never pass through a region with nonzero local magnetic field.
+
+This is the weird but essential point: the value of $A_i$ at a single point is not directly observable, because it can be changed by a gauge transformation. Nevertheless, the closed-loop phase can be observable. The vector potential is less real than the magnetic field in one sense, because it is gauge-dependent; but it is more fundamental in another sense, because quantum particles couple to the potential itself.
+
+::: {.callout-note title="Problem 8: Interpreting the Aharonov--Bohm phase"}
+The tempting but wrong conclusion is that the Aharonov--Bohm effect proves the value of $A_i$ at a point is directly measurable.
+
+Explain why that cannot be right. Then identify the gauge-invariant quantity that the interference experiment actually measures, and explain why it can be nontrivial even when the local magnetic field vanishes along the electron paths.
+:::
+
+## Curvature and the magnetic field
+
+We have now met a gauge potential $A_i$ and a Wilson-line phase built from it. The next question is what part of $A_i$ is gauge-invariant locally.
+
+The answer is its curvature:
+
+$$
+F_{ij}=\partial_iA_j-\partial_jA_i.
+$$
+
+This is the same antisymmetric combination that appears in the ordinary curl. In fact, in three-dimensional Euclidean language this curvature is just another way of writing the magnetic field. But before we translate it into vector calculus, we should see where it appears naturally in quantum mechanics.
+
+It appears in the failure of covariant derivatives to commute.
+
+That is a major conceptual point. Ordinary partial derivatives commute, so $[\partial_i,\partial_j]=0$. Covariant derivatives generally do not. The commutator is not a nuisance term; it measures curvature.
+
+::: {.callout-note title="Problem 9: Commutator of covariant derivatives"}
+This calculation is the local version of the Wilson-loop story.
+
+Using
+
+$$
+D_i=\partial_i-iA_i,
+$$
+
+compute $D_iD_j\Psi-D_jD_i\Psi$ without skipping the product-rule terms. Show that all terms except the antisymmetric derivative of $A$ cancel, leaving
+
+$$
+[D_i,D_j]\Psi=-iF_{ij}\Psi.
+$$
+:::
+
+::: {.callout-note title="Problem 10: Commutator of covariant momenta"}
+Convert the curvature calculation from covariant derivatives to covariant momenta.
+
+Using $\hat{\pi}_i=-i\hbar D_i$, determine $[\hat{\pi}_i,\hat{\pi}_j]\Psi$ in terms of $F_{ij}$. Track the factor of $i$ and the powers of $\hbar$ explicitly.
+:::
+
+In three-dimensional Euclidean space, the magnetic field is the vector dual to the spatial curvature:
+
+$$
+B^k=\frac{1}{2}\varepsilon^{kij}F_{ij}.
+$$
+
+Equivalently,
+
+$$
+F_{ij}=\varepsilon_{ijk}B^k.
+$$
+
+Thus
+
+$$
+\mathbf{B}=\nabla\times\mathbf{A}.
+$$
+
+Wait what? We started by worrying about an arbitrary local phase in a quantum wave function, and now we are staring at the magnetic field. This is exactly the sort of result that should make you suspicious in the productive way: either we made a sign error, or we have discovered that the usual vector potential was never just a computational convenience.
+
+::: {.callout-note title="Problem 11: The magnetic field from curvature"}
+This is where the antisymmetric tensor becomes the magnetic field students know from vector calculus.
+
+Assume
+
+$$
+F_{ij}=\partial_iA_j-\partial_jA_i,
+\qquad
+B^k=\frac{1}{2}\varepsilon^{kij}F_{ij}.
+$$
+
+Compute the three components $B^1$, $B^2$, and $B^3$ and compare them with the standard components of $\nabla\times\mathbf{A}$.
+:::
+
+::: {.callout-note title="Problem 12: The first Maxwell equation"}
+Use the fact that the magnetic field has appeared as a curl to derive a Maxwell equation.
+
+Starting from
+
+$$
+B^i=\varepsilon^{ijk}\partial_jA_k,
+$$
+
+compute $\partial_iB^i$. Explain why the result vanishes because of the conflict between symmetric second derivatives and the antisymmetry of $\varepsilon^{ijk}$.
+:::
+
+## Why vector calculus is hiding the structure
+
+A lot just happened. We started with the local phase of a quantum wave function and stumbled into something that looks exactly like the magnetic field. That is already strange. It is even stranger that we did it without beginning from classical electrodynamics at all.
+
+At this point it is tempting to say, "Great, $\mathbf{B}=\nabla\times\mathbf{A}$, moving on." But that would hide the real structure.
+
+The cross product is one of the most misleadingly familiar operations in vector calculus. It is useful, but it is also a three-dimensional accident. What we really constructed was not fundamentally a vector. We constructed an antisymmetric object with two lower indices:
+
+$$
+F_{ij}=\partial_iA_j-\partial_jA_i.
+$$
+
+Equivalently, $A_i$ is better understood as the component of a 1-form,
+
+$$
+A=A_i\,dx^i,
+$$
+
+and its curvature is the 2-form
+
+$$
+F=dA=\frac{1}{2}F_{ij}\,dx^i\wedge dx^j.
+$$
+
+In three-dimensional oriented Euclidean space, a 2-form has three independent components, so we can disguise it as a vector by using the Levi-Civita symbol. That disguise is the magnetic field vector. In other dimensions the disguise fails, but the 2-form survives.
+
+This section is partly undoing some damage from multivariable calculus. Gradients, curls, dot products, and cross products are not all equally primitive. The differential $df$ and the exterior derivative $dA$ make sense before any metric is introduced. The gradient and cross product require extra geometric choices.
+
+::: {.callout-note title="Problem 13: Levi-Civita contraction"}
+The following identity is the algebraic engine behind converting between antisymmetric tensors and vectors in three dimensions:
+
+$$
+\varepsilon^{ijk}\varepsilon_{k\ell m}
+=
+\delta^i_{\ell}\delta^j_m-
+\delta^i_m\delta^j_{\ell}.
+$$
+
+Prove it by considering the possible index coincidences and permutations. Then use it to check that the definitions
+
+$$
+B^k=\frac{1}{2}\varepsilon^{k\ell m}F_{\ell m}
+\qquad\text{and}\qquad
+F_{ij}=\varepsilon_{ijk}B^k
+$$
+
+are inverse to each other when $F_{ij}$ is antisymmetric.
+:::
+
+::: {.callout-note title="Problem 14: What is special about three dimensions?"}
+The usual expression $\nabla\times\mathbf{A}$ is familiar, but familiarity is not the same as fundamentality.
+
+Explain why the curl of a vector field is a three-dimensional repackaging of an antisymmetric two-index object. Then identify the object that still makes sense in two, four, or arbitrary dimensions.
+:::
+
+## The spacetime gauge potential
+
+Earlier we restricted to time-independent rephasings because it let us focus on the spatial momentum operator. Now we have to pay that debt.
+
+The easy way forward--with hindsight doing a lot of work--is to return to the Wilson-line dressing factor. In space we integrated
+
+$$
+A_i\,dx^i.
+$$
+
+If the phase can also vary in time, then the line integral should have a time component too. Since $ct$ has the same physical dimension as $x$, $y$, and $z$, define
+
+$$
+x^0=ct,
+\qquad
+\partial_0=\frac{\partial}{\partial x^0}=\frac{1}{c}\frac{\partial}{\partial t}.
+$$
+
+We combine the scalar and vector potentials into the spacetime 1-form
+
+$$
+A=A_\mu\,dx^\mu=-\Phi\,dx^0+A_i\,dx^i.
+$$
+
+Thus
+
+$$
+A_0=-\Phi.
+$$
+
+The sign is a convention, but it is not arbitrary once we decide how we want the electric field and Maxwell equations to come out. We are using the convention
+
+$$
+A_\mu'=A_\mu+\partial_\mu\alpha.
+$$
+
+The repeated-index notation here is Einstein summation convention: repeated upper/lower index pairs are summed. We will use this convention heavily from this point onward.
+
+::: {.callout-note title="Problem 15: Scalar-potential transformation"}
+The spatial transformation law $A_i'=A_i+\partial_i\alpha$ now has to be extended to the time component.
+
+Using
+
+$$
+A_0=-\Phi,
+\qquad
+A_0'=A_0+\partial_0\alpha,
+$$
+
+derive the transformation law for $\Phi$. Be explicit about the conversion
+
+$$
+\partial_0=\frac{1}{c}\frac{\partial}{\partial t}.
+$$
+:::
+
+::: {.callout-note title="Problem 16: Spacetime Wilson line"}
+Repeat the Wilson-line argument in spacetime.
+
+For
+
+$$
+W(q,p;\gamma)=\exp\left(-i\int_\gamma A_\mu\,dx^\mu\right),
+$$
+
+use $A'=A+d\alpha$ to determine how $W$ transforms between endpoints $q$ and $p$. Then explain why $W(q,p;\gamma)\Psi(p)$ is gauge-invariant when $\alpha(q)=0$.
+:::
+
+## The Faraday-Maxwell tensor
+
+Now we return to the question that broke the naive four-dimensional version of Green's theorem. In three dimensions we could write things like
+
+$$
+\oint_\gamma \mathbf{A}\cdot d\mathbf{x}
+=
+\int_\Sigma (\nabla\times\mathbf{A})\cdot \mathbf{n}\,da.
+$$
+
+Looks nice. But in four dimensions the symbols become suspect. What is the vector normal to a surface in spacetime? What is a four-dimensional cross product? Are we claiming Stokes' theorem only works in three dimensions?
+
+The problem is the vector-calculus disguise. The derivative naturally has an index down, so the four-dimensional replacement for the curl is the antisymmetric derivative
+
+$$
+F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu.
+$$
+
+This object has many names: Maxwell tensor, Faraday tensor, Faraday-Maxwell tensor, electromagnetic field-strength tensor. The name matters less than the structure. It is the curvature of the spacetime gauge potential:
+
+$$
+F=dA=\frac{1}{2}F_{\mu\nu}\,dx^\mu\wedge dx^\nu.
+$$
+
+The wedge product is doing the job that the cross product was pretending to do in three dimensions. It remembers orientation and antisymmetry without needing a special three-dimensional accident.
+
+::: {.callout-note title="Problem 17: Gauge invariance of $F_{\mu\nu}$"}
+The Faraday-Maxwell tensor is supposed to be the gauge-invariant curvature of $A$.
+
+Starting from
+
+$$
+A_\mu'=A_\mu+\partial_\mu\alpha,
+$$
+
+compute
+
+$$
+F_{\mu\nu}'=\partial_\mu A_\nu'-\partial_\nu A_\mu'
+$$
+
+and show exactly where the extra terms cancel.
+:::
+
+::: {.callout-note title="Problem 18: Components of $F_{\mu\nu}$"}
+Now translate the spacetime tensor back into electric and magnetic fields.
+
+Using
+
+$$
+A_0=-\Phi,
+\qquad
+F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu,
+$$
+
+compute $F_{0i}$ and $F_{ij}$. Then define $E_i=-F_{0i}$ and verify
+
+$$
+E_i=-\partial_i\Phi-\frac{1}{c}\frac{\partial A_i}{\partial t},
+\qquad
+F_{ij}=\varepsilon_{ijk}B^k.
+$$
+:::
+
+With this convention,
+
+$$
+(F_{\mu\nu})
+=
+\begin{pmatrix}
+0 & -E_x & -E_y & -E_z \\
+E_x & 0 & B_z & -B_y \\
+E_y & -B_z & 0 & B_x \\
+E_z & B_y & -B_x & 0
+\end{pmatrix}.
+$$
+
+## The source-free Maxwell equations
+
+The source-free Maxwell equations are the equations that follow from the simple identity
+
+$$
+dF=0.
+$$
+
+This is not a dynamical assumption yet. Since $F=dA$, it is really the statement
+
+$$
+d^2A=0.
+$$
+
+In vector-calculus language, the same statement becomes two familiar laws:
+
+$$
+\nabla\cdot\mathbf{B}=0,
+\qquad
+\nabla\times\mathbf{E}=-\frac{1}{c}\frac{\partial\mathbf{B}}{\partial t}.
+$$
+
+The first says that magnetic field lines do not begin or end: there are no magnetic monopoles in ordinary Maxwell theory. The second is Faraday's law of induction. The point of this section is to see both laws as different faces of the same compact spacetime equation.
+
+::: {.callout-note title="Problem 19: No magnetic monopoles"}
+Extract the purely spatial part of $dF=0$.
+
+Take the cyclic identity
+
+$$
+\partial_\lambda F_{\mu\nu}
 +\partial_\mu F_{\nu\lambda}
-+\partial_\nu F_{\lambda \mu}=0
-\tag{\dagger}
++\partial_\nu F_{\lambda\mu}=0
 $$
 
-> ### Answer
->
-> a. The Maxwell tensor is $F_{\mu\nu}=\partial_\mu A_\nu - \partial_\nu A_\mu$, and we want to calculate $F_{0i}$ and $F_{ij}$. We will start with
-$$
-F_{ij} = \partial_i A_j - \partial_j A_i =  \varepsilon_{ijk} (\nabla \times {\bf A})^k = \varepsilon_{ijk}{\bf B}^k
-$$
-> so ${\bf B}^k = \frac12 \varepsilon^{lij}F_{ij}$.
-> Similarly,
-$$
-F_{0i} = \partial_0 A_i - \partial_i A_0 =  \left( \frac1c\frac{\partial {\bf A} }{\partial t} + \nabla \phi\right)_i
-$$
-> so evidently $E^i = - \delta^{ij}F_{0j}$, so the electric field is
-$$
-{\bf E} = - \nabla \phi - \frac1c\frac{\partial {\bf A} }{\partial t} 
-$$
-> b. Note that this implies that a magnetic vector potential that is changing in time generates an electric field. If we take the curl of the definition above, we dervive that 
-$$
-\nabla \times {\bf E} = - \nabla \times \nabla \phi - \frac1c\frac{\partial }{\partial t} \nabla \times {\bf A} 
-$$
-> The first term vanishes because "gradients don't curl", and the second term is $-\frac1c\partial {\bf B}/\partial t$. 
->
-> c. We can integrate the whole equation from b. over the surface $\Sigma$. Since the surface is not changing in time, we can switch the order of integration and differentiation of ${\bf B}$ which gives the magnetic flux $\Phi_B(\Sigma)=\int_\Sigma {\bf B}\cdot d{\bf a}$. Thus 
-$$
-\frac{\partial \Phi_B}{\partial t} = - \int_\Sigma \nabla \times {\bf E} \cdot d{\bf a}  
-$$
-> The claimed result now follows from Green's theorem again and the definition of the electromotive force. This is the Faraday-Lentz law of induction.
->
-> d. If all the components are spacial (*i.e.* not the 0-component), then
-$$
-0=\partial_k F_{ij}
-+\partial_i F_{jk}
-+\partial_j F_{ki}
-=\frac1{3!}\varepsilon_{ijk} \varepsilon^{mnp}\partial_p F_{ij}=\frac1{3!}\varepsilon_{ijk} \varepsilon^{mnp}\varepsilon_{mnq}\partial_p B^q
-=\frac1{3}\varepsilon_{ijk} \delta^{p}_{q}\partial_p B^q
-$$
-> but this is proportional to $\nabla \cdot {\bf B}$. Next, we let $\lambda =0$ and $\mu$ and $\nu$ be spacial:
-$$
-0=\partial_0 F_{ij}
-+\partial_i F_{j0}
-+\partial_j F_{0i}
-=\partial_0 F_{ij}
--\partial_i F_{0j}
-+\partial_j F_{0i}
-$$
-> since this is antisymmetric in $ij$, we can pull out an $\varepsilon$. This is equivalent to just contracting the formula with $\varepsilon^{ijk}$, so lets do that (with a factor of $\frac12$ for convenience):
-\begin{align}
-0&=\frac12 \partial_0 \varepsilon^{ijk}F_{ij}
--\frac12\varepsilon^{ijk}\partial_i F_{0j}
-+\frac12\varepsilon^{ijk}\partial_j F_{0i}\cr
-&=\partial_0 B^k + \varepsilon^{ijk}\partial_i E_j
-=\frac 1c \frac\partial{\partial t} B^k + (\nabla \times {\bf E})^k
-\end{align}
-> Taken together, these are the source-free Maxwell equations we were looking for. 
+with all three indices spatial, contract with the Levi-Civita symbol, and show that it is equivalent to
 
-Notice that we casually derived both $\nabla \cdot {\bf B}=0$ and $\partial \Phi_B/\partial t = -c{\mathcal E}$ from a single equation in spacetime. In differential form notation, this equation is simply 
 $$
-dF=0
+\nabla\cdot\mathbf{B}=0.
+$$
+:::
+
+::: {.callout-note title="Problem 20: Faraday's law"}
+Now extract the mixed time-space part of the same identity.
+
+Set one index equal to $0$ and the other two spatial. Use
+
+$$
+F_{0i}=-E_i,
+\qquad
+F_{ij}=\varepsilon_{ijk}B^k,
 $$
 
-> ### Problem
->
-> Check this statement. Recall that the differential $d=dx^\mu \partial_\mu$ of some form has two parts: the derivative $\partial_\mu$ acting on the coefficients and the differential element $dx^\mu$ which has to be wedged with the differential element of the form. 
+to derive
 
-> ### Answer
->
-> The Faraday-Maxwell 2-form is $F=F_{\mu \nu}\ dx^\mu \wedge dx^\nu$, so
 $$
-dF= \partial_\lambda F_{\mu\nu}\ dx^\lambda \wedge \left( dx^\mu \wedge dx^\nu\right) = \partial_\lambda F_{\mu\nu} \ dx^\lambda \wedge  dx^\mu \wedge dx^\nu
-$$
-> But $dx^\lambda \wedge  dx^\mu \wedge dx^\nu$ is totally anti-symmetric on $\lambda$, $\mu$, and $\nu$, and therefore the coefficient of $dF=0$ is just the previous form of the Maxwell equation ($\dagger$), up to a factor of 3. 
-
-> ### Problem
->
-> a. Check that on any differential (*i.e.* of any degree)
->
-$$
-d^2 = 0
-$$
->
-> b. Use this to show that
-$$ 
-dF=0 \quad \Leftrightarrow \quad F=dA
+\nabla\times\mathbf{E}
+=
+-\frac{1}{c}\frac{\partial\mathbf{B}}{\partial t}.
 $$
 
-> ### Answer
->
-> a. A differential form $\omega$ of degree $p$ is of the form $\omega =\omega_{i_1 \cdots i_p}dx^{i_1}\wedge \dots dx^{i_p}$. Therefore
-\begin{align}
-d^2\omega &= d\left(\partial_{j}\omega_{i_1 \cdots i_p}dx^{j}\wedge dx^{i_1}\wedge\dots dx^{i_p}\right)\cr
-&= \partial_k\partial_j \omega_{i_1 \cdots i_p}\ \ dx^{k}\wedge dx^{j}\wedge dx^{i_1}\wedge\dots dx^{i_p}
-\end{align}
-> But the wedge is anti-symmetric in $ij$ and the double partials are symmetric, so the whole thing vanishes. I accidentally did this with spacial indices, but the arguement is the same regardless. 
->
-> b. Since $d^2=0$ on $A$, $dF=d^2A=0$. On the other hand, from multivariable calculus, whenever $dF=0$ in a contractable region of space (*i.e.* it has no "holes"), then there is some set of functions whose derivatives solve this equation. In the case at hand, this means that there is a form of degree 1 which we call $A$ by convention, for which $F=dA$.
+Then interpret the integral form as Faraday's law of induction.
+:::
 
-## Stokes theorem done right
+## Exterior derivatives and Stokes' theorem
 
-We have just defined generalizations of vectors and matrices. In the math(ematical physics) they are called **differential exterior forms**. The number of $dx\wedge$ terms appearing is called the degree of the form, and often we abbreviate to just $p$-forms. The vector with the index down is the component of a 1-form. An antisymmetric matrix with both indices down is a 2-form. A function is a 0-form, *et cetera*. Differential exterior forms of degree $p$ can be paired with appropriately smooth subsets of ${\bf R}^n$: 3-forms can be integrated over volumes, 2-forms over surfaces, 1-forms over lines, and 0-forms can be summed over collections of points. 
+We have now used exterior forms enough that it is worth pausing to name the machinery.
 
-Let $\omega$ be an exterior differential form of degree $p$. Then $d\omega$ is an exterior differential form of degree $p+1$. If $U$ is some $(p+1)$-dimensional subset of ${\bf R}^n$, then $\int_Ud\omega\in {\bf R}$ is some number. Actually, so is $\int_{\partial U}\omega\in {\bf R}$ for that matter. In fact, we have already seen from a handful of examples that these two numbers are equal. This is the general form of the Stokes theorem:
+A differential exterior form is the natural object to integrate over an oriented geometric region. A 0-form is a function. A 1-form integrates over a curve. A 2-form integrates over a surface. A 3-form integrates over a volume. The degree of the form tells you the dimension of the thing it naturally integrates over.
+
+The exterior derivative $d$ raises degree by one:
+
 $$
-\int_Ud\omega = \int_{\partial U}\omega
-\tag{\dagger\dagger}
+\omega\in\Omega^p
+\quad\Longrightarrow\quad
+ d\omega\in\Omega^{p+1}.
 $$
 
-> ### Problem
->
-> Use this form of Stokes' theorm together with the result of the previous problem to show that:
->> The boundary of a boundary is empty.
->
-> In other words show that $\partial^2 U =\emptyset$ for all regions $U$. 
+The general Stokes theorem is
 
-> ### Answer
->
-> ...
-
-## Charges and currents
-
-To proceed, we need to figure out how to get the other Maxwell equations which are Coulomb/Gauß and Ampère's laws. The first is that over any closed surface $\Sigma$, the charge $Q(\Sigma)$ inside that surface is given by integrating the electric field over that surface
 $$
-Q(\Sigma) = \int_\Sigma {\bf E}\cdot d{\bf a}
-$$
-(or $\int {\bf E}\cdot {\bf n}\ da$ if that's more familiar). 
-Let $U$ be the region for which $\Sigma=\partial U$ is the boundary. Then we can rewrite the equation above using the divergence theorem: 
-$$
-Q(U) = \int_U \nabla \cdot {\bf E}\ dv
-$$
-In general the charge $Q$ can be distributed throughout the region $U$, often continuously. Because of this, we define the charge density $\rho({\bf x})$: for any point with coordinates ${\bf x}$, the charge in an infinitesimal box of sides $dx$, $dy$, $dz$ is $dQ=\rho({\bf x})dx\wedge dy\wedge dz$. Thus $Q(\Sigma)=\int_U\rho({\bf x})dx\wedge dy\wedge dz$.
-
-> ### Problem
->
-> a. Show that you can rewrite the Gauß law as
-$$
-\nabla \cdot {\bf E} = \rho
-$$
->
-> b. Suppose this equation is a special case of some 4D equation of the form $\partial_\mu G^{\mu \nu}= j^\nu$, with $G^{\mu \nu}$ some version of $F_{\mu \nu}$, but with the indices up instead of down. Explain how to make sense of this, and what this means for the temporal components of $G^{\mu \nu}$ and $j^\mu$. You should assume that $G$, like $F$, is anti-symmetric.
->
-> c. Write out what the spacial components $\nu=i$ look like in multivariable calculus notation, and discuss what you think it means. Can you identify this equation?
-
-> ### Answer
->
-> a. According to the problem statement
-$$
-\int_U\rho({\bf x})dx\wedge dy\wedge dz = Q(\Sigma) = \int_U \nabla \cdot {\bf E}\ dx\wedge dy\wedge dz
-$$
-> Since this is true for all regions $U$, it must be that the integrands agree: $\rho=\nabla \cdot {\bf E}$.
->
-> b. An equation like $\partial_\mu G^{\mu \nu}=j^\nu$ has temporal components ($\nu=0$) and spacial ones $\nu=j$. Let's look at the temporal ones first: Setting $\nu=0$ results in
-$$
-j^0 = \partial_\mu G^{\mu 0} =\partial_i G^{i 0}
-$$
-> because $G$ is anti-symmetric, which is why there are no $G^{00}$ components.
-> The resulting equation could be the Gauß law provided $\rho\propto j^0$ and the electric field components $E^i\propto G^{0i}$. If it is permissible to scale the components to have values $\pm1$, then, for example $j^0=\rho$ and $G^{0i} = - G^{i0} = -E^i$.
->
-> c. The spacial components of the equation are $\partial_0 G^{0i} +\partial_j G^{ji} = j^i$. By what we just derived, the first term is the time derivative of $-{\bf E}$. We next define a 3-vector $\bf j$ and another one ${\bf G}$ with components $G_k = \frac12 \varepsilon_{kij} G^{ij}$. Then the equation becomes
-$$
--\frac1c \frac {\partial {\bf E}}{\partial t} + \nabla \times {\bf G} = \frac1c {\bf j}
-$$
-> The first factor of $\frac1c$ is needed because $x^0=ct$. We now explain the second such factor and identify the equation. 
-> 
-> This equation looks a lot like Ampère's law: Take a surface $\Sigma$ and define the ${\bf j}$-flux through it to be $I(\Sigma)=\int_\Sigma {\bf j} \cdot d{\bf a}$. Similarly, we define $\Phi_{\bf E}(\Sigma) = \int_\Sigma {\bf E} \cdot d{\bf a}$, so that $\int_\Sigma \nabla \times {\bf G}\cdot d{\bf a} = \int_{\partial \Sigma}{\bf G}\cdot d{\bf \ell}$, so 
-$$
- c\ \int_{\partial \Sigma}{\bf G}\cdot d{\bf \ell} = I + \frac {\partial}{\partial t}\Phi_{\bf E} 
-$$
-> If ${\bf G}={\bf B}$, then this is the law of Ampère with Maxwell's modification called the **[displacement current](https://en.wikipedia.org/wiki/Displacement_current)**.
-
-## The metric of spacetime
-
-In the previous problem, we postulated a second tensor $G$ similar to $F$ but "of the opposite type". In components, we previously found 
-$$
-\left( F_{\mu \nu} \right) 
-= 
-\begin{pmatrix}
-0 & E^x & E^y & E^z \\
--E^x & 0 & B^z & -B^y \\
--E^y & -B^z & 0 & B^x \\
--E^z & B^y & -B^x & 0
-\end{pmatrix}
-$$
-but we also just found
-$$
-\left( G^{\mu \nu} \right) 
-= 
-\begin{pmatrix} 
-0 & -E^x & -E^y & -E^z \\
-E^x & 0 & B^z & -B^y \\
-E^y & -B^z & 0 & B^x \\
-E^z & B^y & -B^x & 0
-\end{pmatrix}
+\int_U d\omega=\int_{\partial U}\omega.
 $$
 
-If we had a spacetime metric $\eta_{\mu\nu}$ and it's inverse $\eta^{\mu\nu}$
-$$
-\eta^{\mu\lambda}\eta_{\lambda\nu}=\delta_\nu^\mu
-=\eta_{\nu\lambda}\eta^{\lambda\mu}
-$$
-then we could define $F^{\mu \nu} = \eta^{\mu\sigma}\eta^{\nu\rho}F_{\sigma \rho}$. If this version of $F$ is independent from $G$ then that would mean that there are two independent electromagnetic fields. Since this is not the case, we know that $G$ must be fixed by $F$. The simplest guess is that we should set $G^{\mu \nu}=\pm F^{\mu \nu}$. 
+This single theorem includes the fundamental theorem of calculus, Green's theorem, the Kelvin-Stokes theorem, and the divergence theorem as special cases. The multivariable-calculus theorems were never separate miracles; they were shadows of one statement.
 
-To be consistent with historical conventions we chose the $+$ sign. This is the correct thing to do in vacuum, but in more complicated materials there is a more complicated relation between $F$ and $G$ called the [constitutive relation](https://en.wikipedia.org/wiki/Constitutive_equation). For this reason, there are two additional symbols traditionally used in electromagnetic theory. The mixed space-time components of $G$ are written as ${\bf D}$ called the electric displacement and ${\bf H}$ called the magnetic intensity. 
+::: {.callout-note title="Problem 21: Why $d^2=0$"}
+Prove the formal identity that has been doing most of the work.
 
-In the remainder of these notes, we will assume the simplest constitutive relation which in components says $G^{\mu\nu} = F^{\mu\nu}$. 
+Let $\omega$ be a $p$-form. Compute $d(d\omega)$ in components and explain why the expression vanishes: the second partial derivatives are symmetric, while the wedge product is antisymmetric.
 
-> ### Problem
->
-> Assuming all this, show that the metric and its inverse have components 
-$$
-\left( \eta_{\mu \nu} \right) 
-= 
-\begin{pmatrix}
--1 & 0 & 0 & 0 \\
-0 & 1 & 0 & 0 \\
-0 & 0 & 1 & 0 \\
-0 & 0 & 0 & 1
-\end{pmatrix}
-= \left( \eta^{\mu \nu} \right) 
-$$
+Then state the local consequence for a closed 2-form: on a contractible region, $dF=0$ implies $F=dA$ for some 1-form $A$.
+:::
 
-> ### Answer
->
-> By comparing the results of our calculations above, we see that the components of $F_{0i}$ are the same as those of ${\bf E}$ and those of $F^{0i}$ the negatives of these. But
-$$
-F^{0i} = \eta^{0\mu} \eta^{i \nu} F_{\mu\nu}
-= \eta^{00} \eta^{i j} F_{0j} + \eta^{0j} \eta^{i0} F_{j0} + \eta^{0j} \eta^{ik} F_{jk}
-$$
-> $F_{jk}$ is some component of the ${\bf B}$ field, so this term should not be there. Since $\eta_{ij}$ is a 3D spacial metric, it's probably required to be $\pm \delta_{ij}$, so we see that we should take $\eta^{0i}=0$. Intuitively, this makes sense because it would be very strange if lifting a spacial index makes it temporal. For example a current would become a charge. This also kills the second term, so we see that either $\eta^{00}=-1$ and $\eta^{ij}=\delta^{ij}$ or $\eta^{00}=1$ and $\eta^{ij}=-\delta^{ij}$. Both choices are possible, but the choices we have already made imply that we must pick the former. 
+::: {.callout-note title="Problem 22: The boundary of a boundary"}
+Use Stokes' theorem and $d^2=0$ to prove the slogan:
 
-This form of the spacetime metric is called the **Minkowski metric**, and we are using what is called the "mostly plus" convention (a.k.a. east-coast metric). The opposite convention (which we cannot take because of choices me made already) is called the "mostly minus" convention (a.k.a. west-coast metric). 
+> the boundary of a boundary is empty.
 
-Our convention has the advantage that it agrees with our intuition about 3D geometry. The other convention has the advantage of minimizing the appearance of certain signs in particle physics calculations. 
+More precisely, argue that $\partial(\partial U)$ must be zero in the sense detected by integrating arbitrary forms over it.
+:::
 
-We can now put it all together and write the Maxwell equations as 
+## Charges, currents, and the sourced Maxwell equations
+
+So far we have derived the two Maxwell equations that come from $F=dA$. These are the source-free equations. To get the other two equations, we need charges and currents.
+
+Gauss's law says that the electric flux through a closed surface measures the charge inside:
+
 $$
-\varepsilon^{\mu\nu\rho\sigma}\partial_\nu F_{\rho \sigma} = 0
-\quad\quad \textrm{and}\quad\quad 
-\partial_\mu F^{\mu \nu} = j^\nu
-$$
-We have already shown that the first is equivalent to 
-$$
-\nabla \cdot {\bf B} = 0
-\quad\quad \textrm{and}\quad\quad 
-\nabla \times {\bf E} = - \frac1c \frac {\partial {\bf B}}{\partial t}
-$$
-and the latter one is
-$$
-\nabla \cdot {\bf E} = \rho
-\quad\quad \textrm{and}\quad\quad 
-c \nabla \times {\bf B} = \frac {\partial {\bf E}} {\partial t} + {\bf j}
+Q(\Sigma)=\int_\Sigma \mathbf{E}\cdot d\mathbf{a}.
 $$
 
-## The Hodge dual
+If $\Sigma=\partial U$, then the divergence theorem rewrites this as
 
-When we are allowed to use both a spacetime metric $\eta$ and a spacetime volume form $\varepsilon$, we can define an operation on called the Hodge duality operation on exterior differential forms. It is denoted by $*$ and is defined to take a $p$-form $\omega$ to an $(n-p)$-form $* \omega$, where $n$ is the dimension of the spacetime (which is equal to the degree of the volume form). In Minkowski space, for example, the components of $* \omega$ are defined by using $p$ factors of the (inverse) Minkowski metric $\eta$ to contract the $p$ indices of $\omega$ with $\varepsilon$. This leaves $n-p$ totally antisymmetric indices on $\varepsilon$ and so defines components of an $(n-p)$-form. Explicitly, 
-\begin{align}
-(* \omega)_{i_1\cdots i_{n-p}}
-&=\frac1{p!} \varepsilon_{i_1\cdots i_{n-p}}{}^{j_i \dots j_p}\omega_{j_1\cdots j_p}
-\cr
-&=\frac1{p!} \varepsilon_{i_1\cdots i_{n-p}j_i \dots j_p}\eta^{j_ik_1} \dots \eta^{j_pk_p}\omega_{k_1\cdots k_p}
-\end{align}
-
-> ### Problem
->
-> a. Calculate $\varepsilon^{0123}$. 
->
-> b. Calculate the Hodge dual of the volume 4-form $\varepsilon$. What important quantity of the spacetime metric does it compute?
->
-> c. Calculate the components of the Hodge dual of the Maxwell tensor. What is the duality operator doing to ${\bf E}$ and ${\bf B}$?
->
-> d. Taking the dual twice in a row takes a $p$-form to a $p$-form. Calculate the components of $** \omega$.
->
-> 
-
-> ### Answer
->
-> a. Raising the indices on $\varepsilon$ gives $\varepsilon^{0123}=\eta^{0\mu}\eta^{1\nu}\eta^{2\rho}\eta^{3\sigma}\varepsilon_{\mu\nu\rho\sigma}
-= \eta^{00}\eta^{11}\eta^{22}\eta^{33}\varepsilon_{0123}$. There is one factor of $\eta^{00}=-1$ and $\varepsilon_{0123}=1$, so $\varepsilon^{0123}=-1$. In 
->
-> b. $*\varepsilon = \frac1{4!} \varepsilon^{\mu \nu \rho\sigma}\varepsilon_{\mu \nu \rho\sigma}=\varepsilon^{0123}\varepsilon_{0123}= -1$. This is the determinant $\det(\eta^{-1})$.
->
-> c. $(*F)_{0i} =\frac12 \varepsilon_{0i}{}^{jk}F_{jk}=\frac12\varepsilon_{ijk}F^{jk}=B_i$. Similarly, $(*F)_{ij} =\frac12 \varepsilon_{ij}{}^{\mu \nu}F_{\mu \nu}= \varepsilon_{ij}{}^{0 k}F_{0k}=-\varepsilon_{ijk}B^k$. This shows that Hodge maps ${\bf E}\to {\bf B}$ and ${\bf B}\to -{\bf E}$.
->
-> d. Doing the operation in part c. twice gives ${\bf E}\to {\bf B}\to -{\bf E}$ so $**$ acts by multiplying by -1. Doing it on a 0-form is also easy because $*1=\varepsilon$, so from part b., $**1=*\varepsilon=-1$, so again, we find that it acts by multiplication by $-1$. A similar calculation on 1-forms gives
-$$(**A)_\mu=\frac1{3!}\frac1{1!}\varepsilon_\mu{}^{\nu\rho\sigma}\varepsilon_{\nu\rho\sigma}{}^\lambda A_\lambda$$
-> Doing the 0 component gives $\varepsilon_0{}^{ijk}\varepsilon_{ijk}{}^0=-\varepsilon_{0 ijk}\varepsilon^{0ijk}=+3!$. Note that permuting the 0 to the front gave an extra sign! Repeating this argument for the spacial components gives the same result. Evidently $**=(-1)^{p+1}$. 
-
-> ### Problem
->
-> a. Show that Maxwell's equations imply that the charge density $\rho$ and current density ${\bf j}$ satisfy the equation
 $$
-\frac1c \frac{\partial \rho}{\partial t}+\nabla \cdot {\bf j} = 0
+Q(U)=\int_U \nabla\cdot\mathbf{E}\,dv.
 $$
->
-> b. Assume that both densities fall off (go to zero) outside of a (potentially enormous) ball as long as that ball is big enough. This is a reasonable physical requirement because if this were not the case then the total charge/current would be infinite. Use this to show that the charge $Q$ integrated over all space (but not time) is **conserved** (meaning it is independent of time). In equations $Q=\int \rho\ dx\wedge dy\wedge dz$ and $\partial Q/\partial t=  0$. ... 
 
-# FINISH THIS
+If charge is distributed continuously, we write
+
+$$
+dQ=\rho(\mathbf{x})\,dx\wedge dy\wedge dz,
+$$
+
+so that
+
+$$
+Q(U)=\int_U \rho\,dx\wedge dy\wedge dz.
+$$
+
+The goal is to recognize Gauss's law and the Ampère-Maxwell law as components of one spacetime equation. With the sign conventions used in this packet, the clean form is
+
+$$
+\partial_\mu F^{\nu\mu}=j^\nu.
+$$
+
+This is equivalent to $\partial_\mu F^{\mu\nu}=-j^\nu$. The difference is not physics; it is bookkeeping forced by the earlier sign conventions.
+
+::: {.callout-note title="Problem 23: Gauss's law"}
+Start with the integral form of Gauss's law and recover the local equation.
+
+If
+
+$$
+Q(U)=\int_U \rho\,d^3x
+\qquad\text{and}\qquad
+Q(U)=\int_U \nabla\cdot\mathbf{E}\,d^3x
+$$
+
+for every reasonable region $U$, explain why the integrands must agree. Then identify the temporal component of
+
+$$
+\partial_\mu F^{\nu\mu}=j^\nu
+$$
+
+that reproduces this result.
+:::
+
+::: {.callout-note title="Problem 24: The Ampère-Maxwell law"}
+Write out the spatial components $\nu=i$ of
+
+$$
+\partial_\mu F^{\nu\mu}=j^\nu.
+$$
+
+Use the conventions
+
+$$
+F^{i0}=-E_i,
+\qquad
+F^{ij}=F_{ij}=\varepsilon_{ijk}B^k,
+\qquad
+j^i=\frac{1}{c}j_{\mathrm{phys}}^i,
+$$
+
+and show that the result is
+
+$$
+c\nabla\times\mathbf{B}
+=
+\frac{\partial\mathbf{E}}{\partial t}+\mathbf{j}_{\mathrm{phys}}.
+$$
+
+Then explain which term is Maxwell's displacement-current correction.
+:::
+
+## The spacetime metric and raising indices
+
+The sourced equation used $F^{\nu\mu}$, but our field strength was originally $F_{\mu\nu}$. Moving indices is not decorative notation. It requires a metric.
+
+In ordinary Euclidean 3-space, the metric is so invisible that students often do not realize it is being used. In spacetime it becomes impossible to hide. We need a bilinear form $\eta_{\mu\nu}$ and its inverse $\eta^{\mu\nu}$ satisfying
+
+$$
+\eta^{\mu\lambda}\eta_{\lambda\nu}=\delta^\mu_\nu.
+$$
+
+Then
+
+$$
+F^{\mu\nu}=\eta^{\mu\rho}\eta^{\nu\sigma}F_{\rho\sigma}.
+$$
+
+If $F^{\mu\nu}$ were independent from $F_{\mu\nu}$, then we would effectively have two electromagnetic fields. In vacuum we do not. So the raising operation must relate them. The signs in that relation force the mostly-plus Minkowski metric:
+
+$$
+\eta_{\mu\nu}=\eta^{\mu\nu}=\mathrm{diag}(-1,1,1,1).
+$$
+
+In materials, this story becomes more complicated and is described by constitutive relations. In vacuum, the metric is the relation.
+
+::: {.callout-note title="Problem 25: Deriving the mostly-plus metric"}
+This problem is about signs, not about memorizing a metric.
+
+Assume the spatial metric is Euclidean and that raising both indices on $F_{\mu\nu}$ should give the $F^{\mu\nu}$ used in the sourced Maxwell equation. Compare the signs of the electric and magnetic components before and after raising indices. Use this comparison to determine why the convention already chosen forces
+
+$$
+\eta_{\mu\nu}=\eta^{\mu\nu}=\mathrm{diag}(-1,1,1,1).
+$$
+:::
+
+## The Hodge star
+
+Once a metric and an orientation are available, there is one more important operation: the Hodge star.
+
+The Hodge star takes a $p$-form in $n$ dimensions to an $(n-p)$-form. It uses the metric to raise indices and the volume form to trade the remaining indices for their complementary set. In four-dimensional spacetime, it maps 2-forms to 2-forms, so it can act directly on the Faraday-Maxwell tensor.
+
+For a $p$-form $\omega$, the component definition is
+
+$$
+(*\omega)_{i_1\cdots i_{n-p}}
+=
+\frac{1}{p!}\varepsilon_{i_1\cdots i_{n-p}}{}^{j_1\cdots j_p}\omega_{j_1\cdots j_p}.
+$$
+
+For electromagnetism, the Hodge star is the operation that exchanges the electric and magnetic parts of the field, with signs determined by the Lorentzian metric. This is also where the metric-dependent half of Maxwell's equations naturally lives.
+
+::: {.callout-note title="Problem 26: Raising the spacetime volume form"}
+The sign of the spacetime volume form changes when all indices are raised with the mostly-plus metric.
+
+Assume
+
+$$
+\varepsilon_{0123}=+1.
+$$
+
+Compute $\varepsilon^{0123}$ and explain which metric component is responsible for the sign.
+:::
+
+::: {.callout-note title="Problem 27: The Hodge dual of $F$"}
+Compute how the Hodge star acts on the electromagnetic field-strength tensor.
+
+Using
+
+$$
+(*F)_{\mu\nu}=\frac{1}{2}\varepsilon_{\mu\nu}{}^{\rho\sigma}F_{\rho\sigma},
+$$
+
+show that
+
+$$
+(*F)_{0i}=B_i,
+\qquad
+(*F)_{ij}=\varepsilon_{ijk}E^k.
+$$
+
+Then describe in words what $*$ does to the electric and magnetic parts of $F$.
+:::
+
+::: {.callout-note title="Problem 28: Applying the Hodge star twice"}
+Apply the Hodge star twice to a 2-form in four-dimensional Minkowski spacetime.
+
+Use the result of the previous problem, or compute directly from the Levi-Civita contractions, to determine the sign in
+
+$$
+**F = ?
+$$
+
+Then compare this with the Euclidean intuition that a ninety-degree rotation twice might give a minus sign.
+:::
+
+In differential-form notation, the vacuum Maxwell equations can be written compactly as
+
+$$
+dF=0,
+\qquad
+d{*F}=J,
+$$
+
+where $J$ is the appropriate current 3-form. This form makes clear that the first equation is metric-independent while the second uses the Hodge star and therefore the metric.
+
+## Charge conservation
+
+The original notebook ended here with a note to finish the argument. This is actually the right place to end, because the final result is one of the strongest consistency checks in the whole packet.
+
+Maxwell's equations should not allow charge to disappear. Locally, charge conservation means that any decrease of charge density in a region must be accounted for by current flowing out of that region. In spacetime notation this is the continuity equation
+
+$$
+\partial_\nu j^\nu=0.
+$$
+
+The remarkable point is that this is not an additional Maxwell equation. It follows from the sourced Maxwell equation and the antisymmetry of $F^{\nu\mu}$.
+
+::: {.callout-note title="Problem 29: Local charge conservation"}
+Derive local charge conservation from the sourced Maxwell equation.
+
+Start with
+
+$$
+\partial_\mu F^{\nu\mu}=j^\nu.
+$$
+
+Take $\partial_\nu$ of both sides and use the antisymmetry of $F^{\nu\mu}$ to show
+
+$$
+\partial_\nu j^\nu=0.
+$$
+
+Finally rewrite this in terms of $\rho$ and $\mathbf{j}_{\mathrm{phys}}$.
+:::
+
+::: {.callout-note title="Problem 30: Conservation of total charge"}
+Turn the local continuity equation into a global conservation law.
+
+Assume $\rho$ and $\mathbf{j}_{\mathrm{phys}}$ fall off fast enough at spatial infinity, or vanish outside a sufficiently large ball. Define
+
+$$
+Q(t)=\int_{\mathbb{R}^3}\rho(t,\mathbf{x})\,d^3x.
+$$
+
+Use the divergence theorem to show that $dQ/dt=0$.
+:::
+
+## Synthesis
+
+::: {.callout-note title="Problem 31: What did local phase force us to introduce?"}
+Write a short conceptual answer, not a calculation.
+
+Starting from the demand that local phase redefinitions should not change the physics, list the new mathematical structures that were forced into the theory: the gauge potential, Wilson lines, curvature, and the electromagnetic field.
+:::
+
+::: {.callout-note title="Problem 32: Geometry versus metric"}
+Separate the two kinds of structure that appeared in this packet.
+
+Which parts of Maxwell theory came from exterior calculus and gauge curvature before any metric was used? Which parts required the spacetime metric, index-raising, or the Hodge star?
+:::
+
+## Further reading
+
+Useful references for context:
+
+- [Gauge theory](https://en.wikipedia.org/wiki/Gauge_theory), for the general framework of local symmetry and gauge fields.
+- [Aharonov--Bohm effect](https://en.wikipedia.org/wiki/Aharonov%E2%80%93Bohm_effect), for the physical experiment motivating Wilson-loop phases.
+- [Electromagnetic tensor](https://en.wikipedia.org/wiki/Electromagnetic_tensor), for standard component conventions.
+- [Differential form](https://en.wikipedia.org/wiki/Differential_form), for the language of $A$, $F=dA$, and $dF=0$.
+- [Hodge star operator](https://en.wikipedia.org/wiki/Hodge_star_operator), for the metric-dependent operation used to write the sourced Maxwell equations.
+
+## Convention summary
+
+The packet used the following sign conventions:
+
+$$
+\Psi'=e^{i\alpha}\Psi,
+\qquad
+D_i=\partial_i-iA_i,
+\qquad
+A_i'=A_i+\partial_i\alpha.
+$$
+
+$$
+\hat{\pi}_i=-i\hbar D_i=
+\hat{p}_i-\hbar A_i.
+$$
+
+$$
+A=A_\mu dx^\mu=-\Phi dx^0+A_i dx^i,
+\qquad
+x^0=ct.
+$$
+
+$$
+F=dA,
+\qquad
+F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu.
+$$
+
+$$
+E_i=-F_{0i},
+\qquad
+F_{ij}=\varepsilon_{ijk}B^k.
+$$
+
+$$
+\eta_{\mu\nu}=\eta^{\mu\nu}=\mathrm{diag}(-1,1,1,1).
+$$
+
+$$
+\partial_\mu F^{\nu\mu}=j^\nu,
+\qquad
+j^0=\rho,
+\qquad
+j^i=\frac{1}{c}j^i_{\mathrm{phys}}.
+$$
+
+With these conventions, Maxwell's equations are
+
+$$
+\nabla\cdot\mathbf{B}=0,
+\qquad
+\nabla\times\mathbf{E}
+=
+-\frac{1}{c}\frac{\partial\mathbf{B}}{\partial t},
+$$
+
+and
+
+$$
+\nabla\cdot\mathbf{E}=\rho,
+\qquad
+c\nabla\times\mathbf{B}
+=
+\frac{\partial\mathbf{E}}{\partial t}
++
+\mathbf{j}_{\mathrm{phys}}.
+$$
