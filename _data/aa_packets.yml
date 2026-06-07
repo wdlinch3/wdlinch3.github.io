@@ -1,13 +1,6 @@
 - id: ss
   title: "AA:SS"
   packets:
-    - id: x_geometry
-      label: x_geometry
-      status: placeholder
-      hub_anchor: "/aa/x/help/#geometry_and_units"
-      current_ids:
-        - x_geometry
-
     - id: ss_celestial_sphere
       label: ss_celestial_sphere
       status: placeholder
@@ -155,6 +148,13 @@
 - id: x
   title: "AA:X"
   packets:
+    - id: x_geometry
+      label: x_geometry
+      status: placeholder
+      hub_anchor: "/aa/x/help/#geometry_and_units"
+      current_ids:
+        - x_geometry
+
     - id: x_dimensional_analysis
       label: x_dimensional_analysis
       status: placeholder
