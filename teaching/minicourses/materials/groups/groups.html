@@ -33,13 +33,19 @@ ul.task-list li input[type="checkbox"] {
 <script src="groups_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="groups_files/libs/quarto-html/anchor.min.js"></script>
 <link href="groups_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="groups_files/libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="groups_files/libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="groups_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="groups_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="groups_files/libs/bootstrap/bootstrap-138a6193a3bd40baf1e627da441a4734.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-</head><body class="quarto-light">\DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}
-\DeclareOldFontCommand{\rm}{\normalfont\rmfamily}{\mathrm}
-\newcommand{\ma}[1]{\begin{pmatrix}#1\end{pmatrix}}
+<link href="groups_files/libs/bootstrap/bootstrap-580f59859ddf617fe2e58b4aca1d3752.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<script>
+window.MathJax = {
+  tex: {
+    macros: {
+      ma: ["\\begin{pmatrix}#1\\end{pmatrix}", 1]
+    }
+  }
+};
+</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -71,13 +77,29 @@ window.Quarto = {
 };
 </script>
 
+</head>
 
-
-
+<body class="quarto-light">
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
 <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="groups.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></div>
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#linear-algebra-in-3d" id="toc-linear-algebra-in-3d" class="nav-link active" data-scroll-target="#linear-algebra-in-3d"><span class="header-section-number">1</span> Linear algebra in 3D</a>
+  <ul class="collapse">
+  <li><a href="#vectors-and-covectors" id="toc-vectors-and-covectors" class="nav-link" data-scroll-target="#vectors-and-covectors"><span class="header-section-number">1.1</span> Vectors and Covectors</a></li>
+  <li><a href="#matrices" id="toc-matrices" class="nav-link" data-scroll-target="#matrices"><span class="header-section-number">1.2</span> Matrices</a></li>
+  </ul></li>
+  <li><a href="#rotations" id="toc-rotations" class="nav-link" data-scroll-target="#rotations"><span class="header-section-number">2</span> Rotations</a>
+  <ul class="collapse">
+  <li><a href="#synthesis" id="toc-synthesis" class="nav-link" data-scroll-target="#synthesis"><span class="header-section-number">2.1</span> Synthesis</a></li>
+  <li><a href="#complex-rotations" id="toc-complex-rotations" class="nav-link" data-scroll-target="#complex-rotations"><span class="header-section-number">2.2</span> Complex rotations</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -100,18 +122,18 @@ window.Quarto = {
 
 
 <p>This is supplemental material for the students of Physics 736-C: Advanced Studies; Mechanics.</p>
-<section id="linear-algebra-in-3d" class="level1">
-<h1>Linear algebra in 3D</h1>
+<section id="linear-algebra-in-3d" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Linear algebra in 3D</h1>
 <p>In class we learned about vectors as objects that have various properties like addition, a zero, and multiplication by real numbers. When we have a dot product, vectors gain additional properties like lengths and relative angles. In these supplemental notes we will work through some material on rotations. To get interesting results, we will work in 3D.</p>
-<section id="vectors-and-covectors" class="level2">
-<h2 class="anchored" data-anchor-id="vectors-and-covectors">Vectors and Covectors</h2>
+<section id="vectors-and-covectors" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="vectors-and-covectors"><span class="header-section-number">1.1</span> Vectors and Covectors</h2>
 <ol type="1">
 <li><p>Let <span class="math inline">\(𝒂 =(a¹, a², a³)^T\)</span>. The <span class="math inline">\({}^T\)</span> stands for “transpose” and means that <span class="math display">\[𝒂 = \ma{a¹\\ a²\\ a³}\]</span> Is a 3-component column vector. Strictly, the qualifier “column” is unnecessary, since–by convention–all vectors are columns. Note that the <span class="math inline">\({}¹, {}²,{}³\)</span> are “upstairs” on the components of <span class="math inline">\(𝒂\)</span>. We write these components as <span class="math inline">\(a^i\)</span> with the “index” <span class="math inline">\(i=1,2,3\)</span>.</p></li>
 <li><p>Dual to vectors are “covectors”. These are row-shaped: <span class="math display">\[α = \ma{α₁, α₂, α₃}\]</span> Note that the <span class="math inline">\({}₁,{}₂,{}₃\)</span> are “downstairs” instead of “upstairs” as on the vector. We write these components of the covector as <span class="math inline">\(α_i\)</span> with the “index” <span class="math inline">\(i=1,2,3\)</span>.</p></li>
 <li><p>The covectors are dual to the vectors in the sense that we can combine the covector with the vector thus: This is an example of “matrix multiplication”. In this case between a <span class="math inline">\(1 × 3\)</span> matrix called a row matrix and a <span class="math inline">\(3 × 1\)</span> matrix called a column matrix. When using components, we write this as <span class="math display">\[α(𝒂) = \sum_{i=1}³  α_i a^i\]</span> where <span class="math inline">\(\sum\)</span> (capital sigma) stands for “sum” and instructs you to take the sum of all the terms <span class="math inline">\(α_i a^i\)</span> for <span class="math inline">\(i=1,2,3\)</span>. When written in this way, we say that the result is given in “components” or “index notation”.</p></li>
 </ol>
-<section id="einstein-summation-convention" class="level4">
-<h4 class="anchored" data-anchor-id="einstein-summation-convention">Einstein summation convention</h4>
+<section id="einstein-summation-convention" class="level4" data-number="1.1.0.1">
+<h4 data-number="1.1.0.1" class="anchored" data-anchor-id="einstein-summation-convention"><span class="header-section-number">1.1.0.1</span> Einstein summation convention</h4>
 <p>The ∑ symbols are cumbersome and unnecessary, especially when multiple contractions are being carried out:</p>
 <ol type="1">
 <li><p>When writing <span class="math inline">\(∑_{i=1}^n\)</span> we are already making the index explicit, and there is exactly one sum for each pair of repeated indices.</p></li>
@@ -121,8 +143,8 @@ window.Quarto = {
 </ol>
 </section>
 </section>
-<section id="matrices" class="level2">
-<h2 class="anchored" data-anchor-id="matrices">Matrices</h2>
+<section id="matrices" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="matrices"><span class="header-section-number">1.2</span> Matrices</h2>
 <p>Vectors and covectors are simple examples of matrices that have one column or row, respectively. In general a matrix can have <span class="math inline">\(m\)</span> rows and <span class="math inline">\(n\)</span> columns: <span class="math display">\[M = \ma{M¹{}_{1} &amp; M¹{}_{2} &amp; \dots &amp;M¹{}_{n}\\
     M²{}_{1} &amp;  M²{}_{2} &amp;  \dots &amp;  M²{}_{n}\\
     \vdots &amp;\vdots &amp;\ddots &amp;\vdots\\
@@ -146,8 +168,8 @@ window.Quarto = {
 </ol>
 </section>
 </section>
-<section id="rotations" class="level1">
-<h1>Rotations</h1>
+<section id="rotations" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Rotations</h1>
 <p>We now use the stuff above to do some problems specific to 2D and 3D.</p>
 <ol type="1">
 <li><p>[]{#SO(2) label=“SO(2)”} Let <span class="math display">\[R₁₂(α) \ := \ma{ \cos(α) &amp; -\sin(α) \\
@@ -213,8 +235,8 @@ A vector space <span class="math inline">\(V\)</span> equipped with an inner pro
 <li><p>By extending all of this to <span class="math inline">\(𝐑^n\)</span>, find the largest group of linear transformations that preserves the Kronecker product.</p></li>
 </ol></li>
 </ol>
-<section id="synthesis" class="level2">
-<h2 class="anchored" data-anchor-id="synthesis">Synthesis</h2>
+<section id="synthesis" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="synthesis"><span class="header-section-number">2.1</span> Synthesis</h2>
 <p>In this section, we studied rotation groups of <span class="math inline">\(𝐑^n\)</span> by looking at some low-dimensional examples. These groups are subgroups<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> of a larger groups of linear transformations of <span class="math inline">\(𝐑^n\)</span>. The largest is called the general linear group of <span class="math inline">\(𝐑^n\)</span>; it is denoted <span class="math inline">\(GL(𝐑^n)\)</span> or <span class="math inline">\(GL(n,𝐑)\)</span>.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> Since group transformations must have inverses, the only condition on such a transformation (besides linearity) is that it be invertible. Equivalently, the determinant of such a transformation is not allowed to vanish. Since this is an “open” condition, the dimension of <span class="math inline">\(GL(𝐑^n)\)</span> is <span class="math inline">\(n²\)</span>.</p>
 <p>There were a few main subgroups of <span class="math inline">\(GL(𝐑^n)\)</span> that we considered:</p>
 <ul>
@@ -258,8 +280,8 @@ A vector space <span class="math inline">\(V\)</span> equipped with an inner pro
 <p><strong>Exercise 8</strong>. <em>With this observation in mind, suppose you have two Lie groups <span class="math inline">\(G\)</span> and <span class="math inline">\(H\)</span> with isomorphic algebras <span class="math inline">\(𝔤 ≃ 𝔥\)</span>. What will be true about their Lie groups <span class="math inline">\(G\)</span> and <span class="math inline">\(H\)</span>?</em></p>
 </div>
 </section>
-<section id="complex-rotations" class="level2">
-<h2 class="anchored" data-anchor-id="complex-rotations">Complex rotations</h2>
+<section id="complex-rotations" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="complex-rotations"><span class="header-section-number">2.2</span> Complex rotations</h2>
 <p>In this section, we relax the assumption that we are working over <span class="math inline">\(𝐑\)</span>. In mathematics (and physics) we often want to do this because the fundamental theorem of algebra is false over <span class="math inline">\(𝐑\)</span> (the field <span class="math inline">\(𝐑\)</span> is not algebraically closed).</p>
 <div class="exercise">
 <p><strong>Exercise 9</strong>. <em>Diagonalize the <span class="math inline">\(2 × 2\)</span> rotation matrix from problem 1 above. Notice that you have to extend to complex-valued entries, that is, we must work over <span class="math inline">\(𝐂\)</span>.</em></p>
