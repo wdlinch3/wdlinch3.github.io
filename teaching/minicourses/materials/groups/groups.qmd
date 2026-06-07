@@ -1,16 +1,32 @@
 ---
 title: "Groups and Rotations"
-render_with_liquid: false
-published: false
 format:
   html:
-    html-math-method: mathjax
+    theme: darkly
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    page-layout: article
+    format-links: false
+    include-in-header:
+      text: |
+        <script>
+        window.MathJax = {
+          tex: {
+            macros: {
+              ma: ["\\begin{pmatrix}#1\\end{pmatrix}", 1]
+            }
+          }
+        };
+        </script>
   pdf:
+    documentclass: article
     pdf-engine: lualatex
-header-includes:
-  - \DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}
-  - \DeclareOldFontCommand{\rm}{\normalfont\rmfamily}{\mathrm}
-  - \newcommand{\ma}[1]{\begin{pmatrix}#1\end{pmatrix}}
+    include-in-header:
+      text: |
+        \DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}
+        \DeclareOldFontCommand{\rm}{\normalfont\rmfamily}{\mathrm}
+        \newcommand{\ma}[1]{\begin{pmatrix}#1\end{pmatrix}}
 ---
 
 This is supplemental material for the students of Physics 736-C:
