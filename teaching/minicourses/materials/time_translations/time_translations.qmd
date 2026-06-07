@@ -5,6 +5,11 @@ published: false
 format:
   html:
     html-math-method: mathjax
+    theme: darkly
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    page-layout: article
   pdf:
     pdf-engine: lualatex
     include-in-header:

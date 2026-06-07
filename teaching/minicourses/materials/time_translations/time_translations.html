@@ -33,10 +33,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="time_translations_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="time_translations_files/libs/quarto-html/anchor.min.js"></script>
 <link href="time_translations_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="time_translations_files/libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="time_translations_files/libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="time_translations_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="time_translations_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="time_translations_files/libs/bootstrap/bootstrap-138a6193a3bd40baf1e627da441a4734.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="time_translations_files/libs/bootstrap/bootstrap-580f59859ddf617fe2e58b4aca1d3752.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -74,7 +74,20 @@ window.Quarto = {
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
 <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="time_translations.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></div>
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#hamiltonian-formulation-of-dynamics" id="toc-hamiltonian-formulation-of-dynamics" class="nav-link active" data-scroll-target="#hamiltonian-formulation-of-dynamics"><span class="header-section-number">0.1</span> Hamiltonian formulation of dynamics</a>
+  <ul class="collapse">
+  <li><a href="#poisson-bracket" id="toc-poisson-bracket" class="nav-link" data-scroll-target="#poisson-bracket"><span class="header-section-number">0.1.1</span> Poisson Bracket</a></li>
+  </ul></li>
+  <li><a href="#recapitulation" id="toc-recapitulation" class="nav-link" data-scroll-target="#recapitulation"><span class="header-section-number">0.2</span> Recapitulation</a></li>
+  <li><a href="#time-dependence" id="toc-time-dependence" class="nav-link" data-scroll-target="#time-dependence"><span class="header-section-number">0.3</span> Time dependence</a></li>
+  <li><a href="#hamiltonian-quantization" id="toc-hamiltonian-quantization" class="nav-link" data-scroll-target="#hamiltonian-quantization"><span class="header-section-number">1</span> Hamiltonian quantization</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="time_translations.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+</div>
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -166,8 +179,8 @@ F=\frac {dp}{dt}
 = \int_\gamma \frac {dK}{dt}dt
 =\left.K\right|_\gamma
 \end{align}\]</span> so we, again recover the work-kinetic energy theorem, but this time for any kinetic energy of the form <span class="math inline">\(K=f(x)v^\alpha\)</span>.</p>
-<section id="hamiltonian-formulation-of-dynamics" class="level2">
-<h2 class="anchored" data-anchor-id="hamiltonian-formulation-of-dynamics">Hamiltonian formulation of dynamics</h2>
+<section id="hamiltonian-formulation-of-dynamics" class="level2" data-number="0.1">
+<h2 data-number="0.1" class="anchored" data-anchor-id="hamiltonian-formulation-of-dynamics"><span class="header-section-number">0.1</span> Hamiltonian formulation of dynamics</h2>
 <p>But wait, what?! <span class="math inline">\(H\)</span> clearly depends on <span class="math inline">\(v\)</span>! What’s going on??</p>
 <blockquote class="blockquote">
 <ol start="4" type="1">
@@ -198,8 +211,8 @@ F=\frac {dp}{dt}
 \frac{df}{dt} &amp;= \frac{\partial f}{\partial x}\frac{dx}{dt} + \frac{\partial f}{\partial p}\frac{dp}{dt}
 =\frac{\partial f}{\partial x}\frac{\partial H}{\partial p} - \frac{\partial f}{\partial p}\frac{\partial H}{\partial x}
 \end{align}\]</span></p>
-<section id="poisson-bracket" class="level3">
-<h3 class="anchored" data-anchor-id="poisson-bracket">Poisson Bracket</h3>
+<section id="poisson-bracket" class="level3" data-number="0.1.1">
+<h3 data-number="0.1.1" class="anchored" data-anchor-id="poisson-bracket"><span class="header-section-number">0.1.1</span> Poisson Bracket</h3>
 <p>Looking at this formula we found in problem 6, we notice an interesting structure that encourages us to introduce the <strong>Poisson bracket</strong>: For any two phase space functions <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span>, define the function <span class="math display">\[
 \{f, g\}=\frac{\partial f}{\partial p}\frac{\partial g}{\partial x} - \frac{\partial f}{\partial x}\frac{\partial g}{\partial p}
 \]</span></p>
@@ -265,13 +278,13 @@ f_{xx}\left(- g_p h_p \right)
 \end{align}\]</span> Now we finally see that all the terms enter twice with opposite signs, so they cancel pairwise.</p>
 </section>
 </section>
-<section id="recapitulation" class="level2">
-<h2 class="anchored" data-anchor-id="recapitulation">Recapitulation</h2>
+<section id="recapitulation" class="level2" data-number="0.2">
+<h2 data-number="0.2" class="anchored" data-anchor-id="recapitulation"><span class="header-section-number">0.2</span> Recapitulation</h2>
 <p>The fundamental equations of Newtonian dynamics can be reformulated as statements about operations on a linear space <span class="math inline">\(\mathscr H\)</span> that almost magically comes with a Poisson bracket <span class="math inline">\(\{\cdot, \cdot\}\)</span>, that promotes it to a very special sort of algebra that is intimately tied to a specific class of differential equations and their solutions. In this formalism, time translations are generated by a distinguished function called the Hamiltonian.</p>
 <p>This space is not just a vector space with an norm (<em>i.e.</em> the Hilbert space part), but a Lie algebra because it automatically comes with a Poisson bracket that satisfies the defining relations of a Lie bracket.</p>
 </section>
-<section id="time-dependence" class="level2">
-<h2 class="anchored" data-anchor-id="time-dependence">Time dependence</h2>
+<section id="time-dependence" class="level2" data-number="0.3">
+<h2 data-number="0.3" class="anchored" data-anchor-id="time-dependence"><span class="header-section-number">0.3</span> Time dependence</h2>
 <p>Hamilton’s formulation of dynamics shows that the time evolution of any function <span class="math inline">\(f\in {\mathscr H}\)</span>, that is any function <span class="math inline">\(f\)</span> on the phase space of <span class="math inline">\(p\)</span>s and <span class="math inline">\(x\)</span>s is generated, through the Poisson Bracket, by the Hamiltonian. This, however, is not the most general behavior because it is always possible to have explicit dependence on time. To describe this situation, we talk about the <em>extended</em> phase space of <span class="math inline">\(x\)</span>s, <span class="math inline">\(p\)</span>s, and <span class="math inline">\(t\)</span>.</p>
 <blockquote class="blockquote">
 <ol start="10" type="1">
@@ -291,8 +304,8 @@ b. Plugging in <span class="math inline">\(f\to H\)</span> gives <span class="ma
 = \frac {\partial H}{\partial t}
 \]</span> The <span class="math inline">\(\{H, H\}=-\{H, H\}\)</span> term vanishes by antisymmetry of P.B., so <span class="math inline">\(\frac {dH}{dt}=0\)</span> iff <span class="math inline">\(\frac {\partial H}{\partial t}=0\)</span>.</p>
 </section>
-<section id="hamiltonian-quantization" class="level1">
-<h1>Hamiltonian quantization</h1>
+<section id="hamiltonian-quantization" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Hamiltonian quantization</h1>
 <blockquote class="blockquote">
 <ol start="11" type="1">
 <li>Suppose we have an algebra of operators <span class="math inline">\(\mathscr O\)</span> with a multiplication that may or may not be associative: For any <span class="math inline">\(f\)</span>, <span class="math inline">\(g\)</span>, <span class="math inline">\(h\in \mathscr O\)</span> <span class="math display">\[
