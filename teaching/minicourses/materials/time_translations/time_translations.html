@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Student release">
+<meta name="dcterms.date" content="2026-05-08">
 
-<title>Time Translations</title>
+<title>Time Translations and Hamiltonian Dynamics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -78,13 +80,17 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#hamiltonian-formulation-of-dynamics" id="toc-hamiltonian-formulation-of-dynamics" class="nav-link active" data-scroll-target="#hamiltonian-formulation-of-dynamics"><span class="header-section-number">0.1</span> Hamiltonian formulation of dynamics</a>
-  <ul class="collapse">
-  <li><a href="#poisson-bracket" id="toc-poisson-bracket" class="nav-link" data-scroll-target="#poisson-bracket"><span class="header-section-number">0.1.1</span> Poisson Bracket</a></li>
-  </ul></li>
-  <li><a href="#recapitulation" id="toc-recapitulation" class="nav-link" data-scroll-target="#recapitulation"><span class="header-section-number">0.2</span> Recapitulation</a></li>
-  <li><a href="#time-dependence" id="toc-time-dependence" class="nav-link" data-scroll-target="#time-dependence"><span class="header-section-number">0.3</span> Time dependence</a></li>
-  <li><a href="#hamiltonian-quantization" id="toc-hamiltonian-quantization" class="nav-link" data-scroll-target="#hamiltonian-quantization"><span class="header-section-number">1</span> Hamiltonian quantization</a></li>
+  <li><a href="#spatial-translations-as-the-model-example" id="toc-spatial-translations-as-the-model-example" class="nav-link active" data-scroll-target="#spatial-translations-as-the-model-example"><span class="header-section-number">1</span> Spatial translations as the model example</a></li>
+  <li><a href="#guessing-the-generator-of-time-translations" id="toc-guessing-the-generator-of-time-translations" class="nav-link" data-scroll-target="#guessing-the-generator-of-time-translations"><span class="header-section-number">2</span> Guessing the generator of time translations</a></li>
+  <li><a href="#momentum-from-kinetic-energy" id="toc-momentum-from-kinetic-energy" class="nav-link" data-scroll-target="#momentum-from-kinetic-energy"><span class="header-section-number">3</span> Momentum from kinetic energy</a></li>
+  <li><a href="#the-legendre-transform-and-the-hamiltonian" id="toc-the-legendre-transform-and-the-hamiltonian" class="nav-link" data-scroll-target="#the-legendre-transform-and-the-hamiltonian"><span class="header-section-number">4</span> The Legendre transform and the Hamiltonian</a></li>
+  <li><a href="#phase-space-and-hamiltons-equations" id="toc-phase-space-and-hamiltons-equations" class="nav-link" data-scroll-target="#phase-space-and-hamiltons-equations"><span class="header-section-number">5</span> Phase space and Hamilton’s equations</a></li>
+  <li><a href="#phase-space-functions-and-the-poisson-bracket" id="toc-phase-space-functions-and-the-poisson-bracket" class="nav-link" data-scroll-target="#phase-space-functions-and-the-poisson-bracket"><span class="header-section-number">6</span> Phase-space functions and the Poisson bracket</a></li>
+  <li><a href="#the-poisson-bracket-as-a-lie-bracket" id="toc-the-poisson-bracket-as-a-lie-bracket" class="nav-link" data-scroll-target="#the-poisson-bracket-as-a-lie-bracket"><span class="header-section-number">7</span> The Poisson bracket as a Lie bracket</a></li>
+  <li><a href="#explicit-time-dependence-and-conservation-of-energy" id="toc-explicit-time-dependence-and-conservation-of-energy" class="nav-link" data-scroll-target="#explicit-time-dependence-and-conservation-of-energy"><span class="header-section-number">8</span> Explicit time dependence and conservation of energy</a></li>
+  <li><a href="#epilogue-toward-hamiltonian-quantization" id="toc-epilogue-toward-hamiltonian-quantization" class="nav-link" data-scroll-target="#epilogue-toward-hamiltonian-quantization"><span class="header-section-number">9</span> Epilogue: toward Hamiltonian quantization</a></li>
+  <li><a href="#synthesis-questions" id="toc-synthesis-questions" class="nav-link" data-scroll-target="#synthesis-questions"><span class="header-section-number">10</span> Synthesis questions</a></li>
+  <li><a href="#source-note-and-further-reading" id="toc-source-note-and-further-reading" class="nav-link" data-scroll-target="#source-note-and-further-reading"><span class="header-section-number">11</span> Source note and further reading</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="time_translations.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
 </div>
@@ -92,14 +98,27 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Time Translations</h1>
+<h1 class="title">Time Translations and Hamiltonian Dynamics</h1>
+<p class="subtitle lead">A guided derivation of why the Hamiltonian generates time evolution</p>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Student release </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 8, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -109,216 +128,540 @@ window.Quarto = {
 </header>
 
 
-<p>In class we learned that the (linear) momentum <span class="math inline">\(p\)</span> is the “generator” of translations in space. (We work in one spacial dimension for simplicity.) Concretely what this meant is that we can construct from <span class="math inline">\(p\)</span> an operator <span class="math inline">\(U\)</span> on the Hilbert space of functions <span class="math inline">\(\{f(x)\}\)</span> of the coordinate <span class="math inline">\(x\)</span> so that <span class="math display">\[
-U(a)f(x) = f(x+a)
-\]</span> Recall that since we want to preserve the Hilbert space norm, <span class="math inline">\(U\)</span> should be unitary. From this and certain limits, we worked out that <span class="math inline">\(U(a)\)</span> could be expressed in terms of the absolutely convergent sum for the exponential <span class="math display">\[
-\exp \left( \frac i\hbar ap \right) = \sum_{n=0}^\infty \frac1{n!} \left( \frac i\hbar ap \right)^n
-\]</span> In other words <span class="math inline">\(U(a)=e^{a \frac {d}{dx} } f(x) = f(x+a)\)</span>.</p>
-<blockquote class="blockquote">
-<ol start="0" type="1">
-<li>Show this explicity by expanding out the exponential and reinterpreting the result as a Taylor series.</li>
-</ol>
-</blockquote>
-<p>The exponential sum is <span class="math display">\[
-e^{ a\frac d{dx} } = \sum_{n=0}^\infty \frac 1{n!} a^n \frac {d^n}{dx^n}
-\]</span> Let <span class="math inline">\(f(x)\)</span> be any smooth function and Taylor expand <span class="math inline">\(f(x+a)\)</span> around some constant <span class="math inline">\(a\)</span>: <span class="math display">\[
-f(x+a)=\sum_{n=0}^\infty \frac 1{n!} a^n f^{(n)}
-\]</span> where <span class="math inline">\(f^{(n)}\)</span> is a common notation for the <span class="math inline">\(n\)</span><sup>th</sup> derivative of <span class="math inline">\(f\)</span>. But then we are done, because these two expansions are identical.</p>
-<p>In this set of notes, we will work out the same set of steps for translations in time. That is, we aim to find the generator of time translations. Time in Newtonian physics is nothing like space. All observers agree on the passing of time, and at any particular moment in time, space is Euclidean. Coordinates like <span class="math inline">\(x\)</span> are merely choices we make to parameterize this space. Time on the other hand defines <em>dynamics</em> though Newton’s Second Law. Because of this, what we will find that the rabbit hole goes far deeper in time…</p>
-<p>So, by complete analogy, we are looking for an operator <span class="math inline">\(U(c)\)</span> that maps functions of time <span class="math inline">\(f(t)\mapsto f(t+c)\)</span> for any constant <span class="math inline">\(c\)</span>. By all the same arguments, this has to have the form <span class="math inline">\(U(c)=e^{c \frac d{dt}}\)</span> which we can write as <span class="math inline">\(e^{-\frac i\hbar ch }\)</span> where <span class="math inline">\(h\)</span> is a Hermitian operation on functions called the generator of time translations. Just as <span class="math inline">\(p\)</span> was the generator of translations, we now need to identify this operator.</p>
-<blockquote class="blockquote">
+<div class="callout callout-style-default callout-important callout-titled" title="How to use this packet">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>How to use this packet
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is not an introductory reading. It is a guided derivation for a student who already knows the basic quantum-mechanical statement that momentum generates spatial translations and is comfortable doing symbolic calculations with Taylor series, partial derivatives, kinetic energy, potential energy, and Newton’s second law.</p>
+<p>Do not read this passively. The problems are the packet. Keep a scratch notebook open and work through the derivations as you read.</p>
+</div>
+</div>
+<p>The goal is to understand, from the classical side, why the Hamiltonian is the object that generates time evolution.</p>
+<p>In quantum mechanics one often says:</p>
 <ol type="1">
-<li>Find the dimensions of the generator <span class="math inline">\(h\)</span>. What real (<em>i.e.</em> has no imaginary part) quantity do you know with these dimensions?</li>
+<li>momentum generates translations in space,</li>
+<li>the Hamiltonian generates translations in time.</li>
 </ol>
-</blockquote>
-<p>Let <span class="math inline">\([A]\)</span> denote “the dimensions of <span class="math inline">\(A\)</span>”. Exponentiation of a dimensionful quantity is meaningless (ask, if you don’t understand this!), so <span class="math inline">\([\frac i\hbar ch]=1\)</span>. The imaginary unit is dimensionless since it is just a number. <span class="math inline">\([\hbar]=[x]\cdot [p]= L \cdot ML/T=ML^2/T\)</span>. Since <span class="math inline">\(c\)</span> enters in <span class="math inline">\(f(t)\mapsto f(t+c)\)</span>, <span class="math inline">\([c]=[t]=T\)</span>. Thus <span class="math inline">\(1=[\frac {ch}\hbar ]=T/(ML^2) \cdot T \cdot [h]\)</span>, which implies <span class="math inline">\([h]=ML^2/T^2\)</span>. But these are the dimensions of mass times velocity-squared, which is an energy. So whatever <span class="math inline">\(h\)</span> is, it must have the dimesions of energy.</p>
-<p>Now to identify what <span class="math inline">\(h\)</span> actually is, we use the observation that the generator of time translations is what we use to write Newton’s second law <span class="math display">\[
-F=\frac {dp}{dt}
-\]</span> and it is unique in that way. We must also recall that the momentum is <em>defined</em> as a derivative of the kinetic energy <span class="math inline">\(K\)</span>.</p>
-<blockquote class="blockquote">
+<p>The first statement is relatively direct. The second statement leads through the Hamiltonian formulation of classical mechanics and then points toward quantization.</p>
+<p>The route through the packet is:</p>
+<ol type="1">
+<li>review spatial translations as the model example,</li>
+<li>infer the dimensions of the generator of time translations,</li>
+<li>recover canonical momentum from kinetic energy,</li>
+<li>build the Hamiltonian by a Legendre transform,</li>
+<li>derive Hamilton’s equations,</li>
+<li>introduce the Poisson bracket,</li>
+<li>recognize the Poisson bracket as a Lie bracket,</li>
+<li>handle explicit time-dependence,</li>
+<li>connect the classical story to the commutator in quantum mechanics.</li>
+</ol>
+<p>Useful external references:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Hamiltonian_mechanics">Hamiltonian mechanics</a>, for the phase-space formulation of classical dynamics.</li>
+<li><a href="https://en.wikipedia.org/wiki/Legendre_transformation">Legendre transformation</a>, for the mathematical operation that replaces velocity by momentum.</li>
+<li><a href="https://en.wikipedia.org/wiki/Poisson_bracket">Poisson bracket</a>, for the bracket structure on phase-space functions.</li>
+<li><a href="https://en.wikipedia.org/wiki/Lie_algebra">Lie algebra</a>, for the abstract algebraic structure behind brackets satisfying the Jacobi identity.</li>
+<li><a href="https://en.wikipedia.org/wiki/Canonical_quantization">Canonical quantization</a>, for the later replacement of Poisson brackets by commutators.</li>
+</ul>
+<p>Throughout the main derivation, we work mostly in one spatial dimension to keep the notation light. The same structure extends to many degrees of freedom by replacing <span class="math inline">\((x,p)\)</span> with <span class="math inline">\((x^i,p_i)\)</span>.</p>
+<section id="spatial-translations-as-the-model-example" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="spatial-translations-as-the-model-example"><span class="header-section-number">1</span> Spatial translations as the model example</h2>
+<p>In class we learned that the linear momentum <span class="math inline">\(p\)</span> is the generator of translations in space. Concretely, from <span class="math inline">\(p\)</span> we can build an operator <span class="math inline">\(U(a)\)</span> on functions of position such that</p>
+<p><span class="math display">\[
+U(a)f(x)=f(x+a).
+\]</span></p>
+<p>Translations should preserve the Hilbert-space norm, so <span class="math inline">\(U(a)\)</span> should be unitary. With the usual position-space representation</p>
+<p><span class="math display">\[
+p=-i\hbar \frac{d}{dx}
+\]</span></p>
+<p>we get</p>
+<p><span class="math display">\[
+\frac{i}{\hbar}ap=a\frac{d}{dx}.
+\]</span></p>
+<p>Thus the translation operator may be written as</p>
+<p><span class="math display">\[
+U(a)=\exp\!\left(\frac{i}{\hbar}ap\right)=\exp\!\left(a\frac{d}{dx}\right).
+\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 0: The exponential translation operator">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 0: The exponential translation operator
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Show explicitly that</p>
+<p><span class="math display">\[
+\exp\!\left(a\frac{d}{dx}\right)f(x)=f(x+a)
+\]</span></p>
+<p>by expanding the exponential and reinterpreting the result as a Taylor series.</p>
+</div>
+</div>
+<p>This calculation is the model for the rest of the packet. We now ask for the analogous generator of translations in time.</p>
+</section>
+<section id="guessing-the-generator-of-time-translations" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="guessing-the-generator-of-time-translations"><span class="header-section-number">2</span> Guessing the generator of time translations</h2>
+<p>We want an operator <span class="math inline">\(U(c)\)</span> that maps a function of time to its translated version:</p>
+<p><span class="math display">\[
+U(c)f(t)=f(t+c).
+\]</span></p>
+<p>By the same Taylor-series argument,</p>
+<p><span class="math display">\[
+U(c)=\exp\!\left(c\frac{d}{dt}\right).
+\]</span></p>
+<p>Write this in the quantum-mechanical form</p>
+<p><span class="math display">\[
+U(c)=\exp\!\left(-\frac{i}{\hbar}ch\right),
+\]</span></p>
+<p>where <span class="math inline">\(h\)</span> is a Hermitian operator. The minus sign is conventional and matches the usual Schrödinger time-evolution convention.</p>
+<p>Comparing the two expressions gives</p>
+<p><span class="math display">\[
+c\frac{d}{dt}=-\frac{i}{\hbar}ch.
+\]</span></p>
+<p>Thus <span class="math inline">\(h\)</span> is the object that should generate translations in time.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 1: Dimensions of the time-translation generator">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 1: Dimensions of the time-translation generator
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Find the physical dimensions of the generator <span class="math inline">\(h\)</span>. What familiar real physical quantity has these dimensions?</p>
+</div>
+</div>
+<p>The dimensional argument strongly suggests that the generator of time translations is the Hamiltonian. To see why, we need to revisit the relationship between kinetic energy, momentum, and Newton’s second law.</p>
+</section>
+<section id="momentum-from-kinetic-energy" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="momentum-from-kinetic-energy"><span class="header-section-number">3</span> Momentum from kinetic energy</h2>
+<p>Newton’s second law is</p>
+<p><span class="math display">\[
+F=\frac{dp}{dt}.
+\]</span></p>
+<p>In Hamiltonian mechanics, momentum is not merely <span class="math inline">\(mv\)</span>. More generally, momentum is defined as the derivative of kinetic energy with respect to velocity.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 2: Momentum as a derivative of kinetic energy">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 2: Momentum as a derivative of kinetic energy
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For a free particle of mass <span class="math inline">\(m\)</span> moving in Euclidean space, the kinetic energy is</p>
+<p><span class="math display">\[
+K=\frac{1}{2}m\mathbf{v}\cdot \mathbf{v}.
+\]</span></p>
+<p>Show that</p>
+<p><span class="math display">\[
+p_i=\frac{\partial K}{\partial v^i}.
+\]</span></p>
+<p>Equivalently,</p>
+<p><span class="math display">\[
+\mathbf{p}=\frac{\partial K}{\partial \mathbf{v}}.
+\]</span></p>
+</div>
+</div>
+<p>In one dimension, this becomes</p>
+<p><span class="math display">\[
+p=\frac{\partial K}{\partial v}.
+\]</span></p>
+<p>This definition is the entrance to Hamiltonian mechanics.</p>
+</section>
+<section id="the-legendre-transform-and-the-hamiltonian" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="the-legendre-transform-and-the-hamiltonian"><span class="header-section-number">4</span> The Legendre transform and the Hamiltonian</h2>
+<p>For a conservative force, there is a potential energy <span class="math inline">\(U(x)\)</span> such that</p>
+<p><span class="math display">\[
+F=-\frac{\partial U}{\partial x}.
+\]</span></p>
+<p>The usual total energy is</p>
+<p><span class="math display">\[
+E=K+U.
+\]</span></p>
+<p>However, Hamiltonian mechanics wants to describe dynamics using position and momentum, not position and velocity. We therefore want an energy function of <span class="math inline">\(x\)</span> and <span class="math inline">\(p\)</span>, not <span class="math inline">\(x\)</span> and <span class="math inline">\(v\)</span>.</p>
+<p>The correct transformation from velocity to momentum is the <strong>Legendre transform</strong>. In one dimension, define</p>
+<p><span class="math display">\[
+H(x,p)=pv-K(x,v)+U(x),
+\]</span></p>
+<p>where</p>
+<p><span class="math display">\[
+p=\frac{\partial K}{\partial v}.
+\]</span></p>
+<p>The velocity <span class="math inline">\(v\)</span> is then to be regarded as the velocity corresponding to the chosen value of <span class="math inline">\(p\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 3: The Legendre transform removes velocity dependence">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 3: The Legendre transform removes velocity dependence
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Treat <span class="math inline">\(p\)</span> and <span class="math inline">\(v\)</span> as independent variables during the partial-derivative calculation, while imposing</p>
+<p><span class="math display">\[
+p=\frac{\partial K}{\partial v}.
+\]</span></p>
+<ol type="1">
+<li>Show that</li>
+</ol>
+<p><span class="math display">\[
+H(x,p)=pv-K(x,v)+U(x)
+\]</span></p>
+<p>is independent of <span class="math inline">\(v\)</span>.</p>
 <ol start="2" type="1">
-<li>If you did not derive this in class, derive explicitly from the example of a free classical particle of mass <span class="math inline">\(m\)</span> and velocity <span class="math inline">\(\bf v\)</span> a formula for <span class="math inline">\(\bf p\)</span> as a derivative of <span class="math inline">\(K\)</span>.</li>
+<li>Suppose</li>
 </ol>
-</blockquote>
-<p>The energy of a free particle is <span class="math inline">\(K=\frac12 m v^2\)</span> where <span class="math inline">\(v=\sqrt{{\bf v} \cdot {\bf v}}\)</span>. Thus, component-by-component writing <span class="math inline">\({\bf v}=(v^i)\)</span> for the 3 differnt directions <span class="math inline">\(i=x,y,z\)</span>, <span class="math inline">\(\frac{\partial K}{\partial v^i}=2\times \frac12 m v_i= mv_i=p_i\)</span>. Thus, component-by-component <span class="math display">\[
-{\bf p} = \frac{\partial K}{\partial {\bf v}}
-\]</span> We can take this formula as the definition of <span class="math inline">\({\bf p}\)</span>. We say that “<span class="math inline">\({\bf p}\)</span> is the momentum canonically conjugate to <span class="math inline">\({\bf x}\)</span>”. (More on this terminology below.)</p>
-<p>Besides the kinetic energy there is another potential energy for any conservative force: If <span class="math inline">\({\bf R}^3\)</span>, <span class="math inline">\(0=\int_\gamma {\bf F}\cdot d{\bf x}=0\)</span> for any closed contour <span class="math inline">\(\gamma\)</span>, then there is a function <span class="math inline">\(U({\bf x})\)</span> such that <span class="math inline">\({\bf F}=-{\nabla}U\)</span>. Importantly, although <span class="math inline">\(K=K(x,v)\)</span> is allowed to depend on <span class="math inline">\(x\)</span>, <span class="math inline">\(U(x)\)</span> is <em>not</em> allowed to depend on <span class="math inline">\(v\)</span>. (I know, unfair right?) Now consider the total energy function <span class="math inline">\(H=K(x,v)+U(x)\)</span>.</p>
-<blockquote class="blockquote">
+<p><span class="math display">\[
+K(x,v)=f(x)v^\alpha
+\]</span></p>
+<p>for some real number <span class="math inline">\(\alpha\)</span>. Show that</p>
+<p><span class="math display">\[
+pv-K=(\alpha-1)K.
+\]</span></p>
 <ol start="3" type="1">
-<li>For this problem, treat <span class="math inline">\(p\)</span> and <span class="math inline">\(v\)</span> as independent variables.<br>
-</li>
+<li>Conclude that if <span class="math inline">\(K\)</span> is quadratic in <span class="math inline">\(v\)</span>, then</li>
 </ol>
-<ol type="a">
-<li>Show that for any kinetic energy, the combination <span class="math display">\[H(x,p)=pv-K(x,v)+U(x)\]</span> is independent of <span class="math inline">\(v\)</span>.<br>
-</li>
-<li>Assume that <span class="math inline">\(K(x,v)=f(x) v^\alpha\)</span> for some real number <span class="math inline">\(\alpha\)</span>. Show that <span class="math inline">\(pv-K=(\alpha -1)K\)</span>.<br>
-</li>
-<li>Combine parts a. and b. to conclude that, if <span class="math inline">\(K\)</span> is quadratic in <span class="math inline">\(v\)</span>, then <span class="math inline">\(H(x,p)=K(x,v)+U(x)\)</span>.</li>
-</ol>
-</blockquote>
-<p>3 a. Just calculate the partial derivative and use the definition of the momentum: <span class="math display">\[
-\frac{\partial H}{\partial v}
-=\frac{\partial }{\partial v}\left[ pv-K(x,v)+U(x) \right]
-=p-\frac{\partial H}{\partial v}
-=p-p
-=0
+<p><span class="math display">\[
+H=K+U.
 \]</span></p>
-<ol start="2" type="a">
-<li><p>If <span class="math inline">\(K=f(x)v^\alpha\)</span>, then <span class="math inline">\(\frac{\partial K}{\partial v}=\alpha f(x)v^{\alpha-1}\)</span> which implies that <span class="math inline">\(v\frac{\partial K}{\partial v}=\alpha K\)</span>. But this is the same as <span class="math inline">\(pv=\alpha K\)</span>, so <span class="math inline">\(pv-K=(\alpha -1)K\)</span>.</p></li>
-<li><p>If <span class="math inline">\(K\)</span> is quadratic in <span class="math inline">\(v\)</span>, then <span class="math inline">\(\alpha=2\)</span>. When that happens, <span class="math inline">\(pv-K=(\alpha -1)K=K\)</span>, so <span class="math inline">\(H(x,p)=pv-K(x,v)+U(x)=K(x,v)+U(x)\)</span>.</p></li>
-</ol>
-<p>This took a lot of effort that seems like it should not have been necessary, so we should go back an look at how <span class="math inline">\(K\)</span> was originally defined.</p>
-<p>Recall that all these energy consideratoins came from work without dissipative forces. Then <span class="math inline">\(F=-\nabla U\)</span> for some <span class="math inline">\(U\)</span> and <span class="math inline">\(\int_\gamma F\cdot dx = - \int_\gamma \nabla U\cdot dx=\left. U\right|_{-\partial \gamma}\)</span>. But <span class="math inline">\(\int_\gamma F\cdot dx = \int_\gamma \dot p \cdot dx = \int_\gamma m \dot v \cdot v dt=\frac m2 \int_\gamma\frac {dv^2}{dt} dt=\left.\frac m2 v^2\right|_{\partial \gamma}\)</span>. Thus <span class="math inline">\(\left[\frac m2 v^2+U\right]_{\partial \gamma}=0\)</span> and this holds along any path <span class="math inline">\(\gamma\)</span> in space. Therefore, <span class="math inline">\(\frac m2 v^2+U =\)</span> constant. This was the original motivation for introducing <span class="math inline">\(K=\frac m2 v^2\)</span>.</p>
-<p>Now in general <span class="math display">\[\begin{align}
-\int_\gamma F\cdot dx &amp;= \int_\gamma \dot p \cdot dx
-= \int_\gamma \frac d{dt}\left(\frac{\partial K}{\partial v}\right) \cdot dx
-= \int_\gamma \frac d{dt}\left(\frac{\partial K}{\partial v}\right) \cdot vdt \cr
-&amp;= \int_\gamma \frac d{dt}\left(\alpha f(x)v^{\alpha -1}\right) \cdot vdt
-= \int_\gamma \frac d{dt}\left(f(x)v^\alpha\right)dt
-= \int_\gamma \frac {dK}{dt}dt
-=\left.K\right|_\gamma
-\end{align}\]</span> so we, again recover the work-kinetic energy theorem, but this time for any kinetic energy of the form <span class="math inline">\(K=f(x)v^\alpha\)</span>.</p>
-<section id="hamiltonian-formulation-of-dynamics" class="level2" data-number="0.1">
-<h2 data-number="0.1" class="anchored" data-anchor-id="hamiltonian-formulation-of-dynamics"><span class="header-section-number">0.1</span> Hamiltonian formulation of dynamics</h2>
-<p>But wait, what?! <span class="math inline">\(H\)</span> clearly depends on <span class="math inline">\(v\)</span>! What’s going on??</p>
-<blockquote class="blockquote">
-<ol start="4" type="1">
-<li>Rewrite the kinetic energy part of the Hamiltonian <span class="math inline">\(H\)</span> for a particle of mass <span class="math inline">\(m\)</span> in terms of momentum. Use this expression to show that <span class="math display">\[
-\frac{d x}{dt} = \frac{\partial H}{\partial p}
-\]</span> Speculate about what this means for the dependence of the total energy on position, velocity, and linear momentum.</li>
-</ol>
-</blockquote>
-<p>The kinetic energy of a particle of mass <span class="math inline">\(m\)</span> is <span class="math inline">\(K=\frac m2 v^2\)</span>. Its momentum is is <span class="math inline">\(p=\partial K/\partial v=mv\)</span>, to <span class="math inline">\(v=\frac pm\)</span>, and <span class="math inline">\(K=\frac12 pv=\frac1{2m}p^2\)</span>. Thus <span class="math inline">\(dx/dt=v=\partial K/\partial p\)</span>, but since the potential energy does not depend on <span class="math inline">\(v\)</span>, it cannot depend on <span class="math inline">\(p\)</span>. Therefore, <span class="math inline">\(dx/dt=\partial H/\partial p\)</span>.</p>
-<blockquote class="blockquote">
-<ol start="6" type="1">
-<li>For a partcile of mass <span class="math inline">\(m\)</span> in Euclidean space, show that Newton II can be re-expressed as <span class="math display">\[
-\frac{d p}{dt} = -\frac {\partial H}{\partial x}
-\]</span></li>
-</ol>
-</blockquote>
-<p>This is again just a calculation: <span class="math display">\[
-\frac{\partial H}{\partial x}=\frac{\partial K}{\partial x}+\frac{\partial U}{\partial x}=-F=-\frac{d p}{dt}
+</div>
+</div>
+<p>This is why the Hamiltonian is often equal to the total energy. But the definition</p>
+<p><span class="math display">\[
+H=pv-K+U
 \]</span></p>
-<p>Congratulations! You have derived Hamiltons “canonical equations”. Let’s recap. The total energy function <span class="math inline">\(H(x,p)\)</span> is a function on the <strong>phase space</strong> of positions and momenta. This space is <span class="math inline">\(2n\)</span>-dimensional when the <strong>configuration space</strong> (a.k.a. “space”, <em>e.g.</em> <span class="math inline">\({\bf R}^3\)</span>) is <span class="math inline">\(n\)</span>-dimensional. In this formulation of Newtonian physics, particle dynamics corresponds to the allowed paths in phase space. If there is no <em>explicit</em> time-dependence in the system (<em>i.e.</em> the system is not being driven with time-dependent forces), then all intersting dynamical quantities can be formulated as functions on this phase space. So all the quantities we care about are phase space functions. (We will return to explicit time-dependence later.)</p>
-<p>In this phase space formulation, the dynamics of any quantity <span class="math inline">\(f(x,p)\)</span> is encoded in Hamilton’s equations. That is, the “Hamiltonian (function)” completely determines the dynamics of the system.</p>
-<blockquote class="blockquote">
-<ol start="7" type="1">
-<li>Let <span class="math inline">\(f(x,p)\)</span> be any differentiable function on the phase space. Use the chain rule and Hamilton’s equations to write a formula for <span class="math inline">\(df/dt\)</span>.</li>
-</ol>
-</blockquote>
-<p><span class="math display">\[\begin{align}
-\frac{df}{dt} &amp;= \frac{\partial f}{\partial x}\frac{dx}{dt} + \frac{\partial f}{\partial p}\frac{dp}{dt}
-=\frac{\partial f}{\partial x}\frac{\partial H}{\partial p} - \frac{\partial f}{\partial p}\frac{\partial H}{\partial x}
-\end{align}\]</span></p>
-<section id="poisson-bracket" class="level3" data-number="0.1.1">
-<h3 data-number="0.1.1" class="anchored" data-anchor-id="poisson-bracket"><span class="header-section-number">0.1.1</span> Poisson Bracket</h3>
-<p>Looking at this formula we found in problem 6, we notice an interesting structure that encourages us to introduce the <strong>Poisson bracket</strong>: For any two phase space functions <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span>, define the function <span class="math display">\[
-\{f, g\}=\frac{\partial f}{\partial p}\frac{\partial g}{\partial x} - \frac{\partial f}{\partial x}\frac{\partial g}{\partial p}
+<p>is more fundamental than the slogan <span class="math inline">\(H=K+U\)</span>, because the Hamiltonian is supposed to be a function on phase space.</p>
+</section>
+<section id="phase-space-and-hamiltons-equations" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="phase-space-and-hamiltons-equations"><span class="header-section-number">5</span> Phase space and Hamilton’s equations</h2>
+<p>The configuration space is the space of configurations. When we are talking about a point particle, it is the space of positions. In one dimension it is coordinatized by <span class="math inline">\(x\)</span>. In <span class="math inline">\(n\)</span> dimensions it is coordinatized by</p>
+<p><span class="math display">\[
+x^1,\ldots,x^n.
 \]</span></p>
-<blockquote class="blockquote">
-<ol start="8" type="1">
-<li>Rewrite your dynamical equation in terms of the Poisson bracket.</li>
-</ol>
-</blockquote>
-<p>Almost by inspection, the equation can be written as <span class="math display">\[
-\frac {df}{dt} = \{H,f\}
+<p>The phase space is the space of positions and momenta. In one dimension it has coordinates</p>
+<p><span class="math display">\[
+(x,p).
 \]</span></p>
-<p>It is important to note that we did not introduce any new structure into the theory “by hand”. (An example of a structure that is just thrown in by hand is the cross product in particle mechanics.) Even the dot product is not a native thing to the vector space <span class="math inline">\({\bf R}^3\)</span>, but added as an assumtion that makes the vector space into an “inner product space” we can Euclidean. The Poisson bracket, by contrast, is a stucture that comes with any phase space <em>automatically</em>. It was handed to us by the math Gods as a gift. This is the reason mathematicians call it “canonical”, and this particular type of canonical structure is called “symplectic” in the math jargon.</p>
-<blockquote class="blockquote">
-<ol start="9" type="1">
-<li>For any 3 phase space functions <span class="math inline">\(f\)</span>, <span class="math inline">\(g\)</span>, and <span class="math inline">\(h\)</span>, check that the Poisson bracket satisfies the following properties:<br>
-</li>
-</ol>
-<ol type="i">
-<li><span class="math inline">\(\{g, f+h\} = \{f, g\}+ \{f, h\}\)</span> and for any real number <span class="math inline">\(c\in {\bf R}\)</span>, <span class="math inline">\(\{f, cg\}=c\{f, g\}\)</span><br>
-</li>
-<li><span class="math inline">\(\{g, f\} = -\{f, g\}\)</span><br>
-</li>
-<li><span class="math inline">\(\{f, \{g, h\}\} + \{g,\{h, f\}\} + \{h, \{f, g\}\} = 0\)</span></li>
-</ol>
-</blockquote>
-<p>The first property just follows from how derivatives behave. The second property is obvious. The third is an annoying calculation: <span class="math display">\[\begin{align}
-\{h,\{f,g\}\}&amp;=
-\left\{h, \frac{\partial f}{\partial p}\frac{\partial g}{\partial x} - \frac{\partial f}{\partial x}\frac{\partial g}{\partial p} \right\}\cr
-&amp;=\left\{h, \frac{\partial f}{\partial p}\right\}\frac{\partial g}{\partial x} - \left\{ h, \frac{\partial f}{\partial x}\right\}\frac{\partial g}{\partial p}
-+\frac{\partial f}{\partial p}\left\{h, \frac{\partial g}{\partial x}\right\} - \frac{\partial f}{\partial x}\left\{ h, \frac{\partial g}{\partial p} \right\}
-\end{align}\]</span> Since this is such a mess, we simplify the notation by writing the derivatives as subscripts: <span class="math display">\[\begin{align}
-\{h,\{f,g\}\}&amp;=\left\{h, f_p\right\}g_x- \left\{ h, f_x\right\}g_p +f_p\left\{h, g_x\right\} - f_x\left\{ h, g_p \right\}\cr
-&amp;=
-h_p f_{xp}g_x - h_xf_{pp}g_x - h_p f_{xx}g_p+h_x f_{px}g_p\cr
-&amp;+f_p h_p g_{xx} - f_p h_x g_{px} - f_x h_p g_{xp}+f_x h_xg_{pp}\cr
-&amp;=
-f_{xx}\left(- g_p h_p \right)
-+f_{xp}\left(g_ph_x +  g_x h_p\right)
-+f_{pp}\left(- g_x h_x\right)\cr
-&amp;+g_{xx}\left(h_p f_p \right)  
-+g_{xp}\left( - h_x f_p  - h_pf_x \right)
-+g_{pp}\left(h_xf_x \right)
-\end{align}\]</span> Now we need to add the cyclic permutations <span class="math inline">\(f\to g\to h\to f\)</span>, but here is what will happen: Note that if we do this permutation to the first line of the result, we get the second line with all the signs switched. This means that when we add up the permutations, the second line gets canceled by the first line of the next permutation, and this repeats, so everything cancels when we add up all three.</p>
-<p>If that was too slick for you, I’ll do it explicitly: <span class="math display">\[\begin{align}
-&amp;f_{xx}\left(- g_p h_p \right)
-+f_{xp}\left(g_ph_x +  g_x h_p\right)
-+f_{pp}\left(- g_x h_x\right)\cr
-&amp;+g_{xx}\left(h_p f_p \right)  
-+g_{xp}\left( - h_x f_p  - h_pf_x \right)
-+g_{pp}\left(h_xf_x \right)\cr~\cr
-&amp;+g_{xx}\left(- h_p f_p \right)
-+g_{xp}\left(h_pf_x +  h_x f_p\right)
-+g_{pp}\left(- h_x f_x\right)\cr
-&amp;+h_{xx}\left(f_p g_p \right)  
-+h_{xp}\left( - f_x g_p  - f_pg_x \right)
-+h_{pp}\left(f_xg_x \right)\cr~\cr
-&amp;+h_{xx}\left(- f_p g_p \right)
-+h_{xp}\left(f_pg_x +  f_x g_p\right)
-+h_{pp}\left(- f_x g_x\right)\cr
-&amp;+f_{xx}\left(g_p h_p \right)  
-+f_{xp}\left( - g_x h_p  - g_p h_x \right)
-+f_{pp}\left(g_xh_x \right)
-\end{align}\]</span> Now we finally see that all the terms enter twice with opposite signs, so they cancel pairwise.</p>
+<p>In <span class="math inline">\(n\)</span> dimensions it has coordinates</p>
+<p><span class="math display">\[
+(x^1,\ldots,x^n,p_1,\ldots,p_n).
+\]</span></p>
+<p>Thus if configuration space is <span class="math inline">\(n\)</span>-dimensional, phase space is <span class="math inline">\(2n\)</span>-dimensional.</p>
+<p>Hamiltonian mechanics says that physical motion is a curve in phase space.</p>
+<p>For a particle of mass <span class="math inline">\(m\)</span> in one dimension,</p>
+<p><span class="math display">\[
+K=\frac{1}{2}mv^2,
+\qquad
+p=mv.
+\]</span></p>
+<p>Solving for <span class="math inline">\(v\)</span>,</p>
+<p><span class="math display">\[
+v=\frac{p}{m}.
+\]</span></p>
+<p>Thus</p>
+<p><span class="math display">\[
+K=\frac{p^2}{2m}.
+\]</span></p>
+<p>The Hamiltonian is therefore</p>
+<p><span class="math display">\[
+H(x,p)=\frac{p^2}{2m}+U(x).
+\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 4: The first Hamilton equation">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 4: The first Hamilton equation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Use</p>
+<p><span class="math display">\[
+H(x,p)=\frac{p^2}{2m}+U(x)
+\]</span></p>
+<p>to show that</p>
+<p><span class="math display">\[
+\frac{dx}{dt}=\frac{\partial H}{\partial p}.
+\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 5: The second Hamilton equation">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 5: The second Hamilton equation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For the same particle, use Newton’s second law and</p>
+<p><span class="math display">\[
+F=-\frac{\partial U}{\partial x}
+\]</span></p>
+<p>to show that</p>
+<p><span class="math display">\[
+\frac{dp}{dt}=-\frac{\partial H}{\partial x}.
+\]</span></p>
+</div>
+</div>
+<p>Together,</p>
+<p><span class="math display">\[
+\boxed{
+\frac{dx}{dt}=\frac{\partial H}{\partial p},
+\qquad
+\frac{dp}{dt}=-\frac{\partial H}{\partial x}.
+}
+\]</span></p>
+<p>These are <strong>Hamilton’s canonical equations</strong>. They say that the Hamiltonian function determines motion through phase space.</p>
 </section>
+<section id="phase-space-functions-and-the-poisson-bracket" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="phase-space-functions-and-the-poisson-bracket"><span class="header-section-number">6</span> Phase-space functions and the Poisson bracket</h2>
+<p>Let <span class="math inline">\(f(x,p)\)</span> be any differentiable function on phase space. For example, <span class="math inline">\(f\)</span> might be <span class="math inline">\(x\)</span>, <span class="math inline">\(p\)</span>, <span class="math inline">\(H\)</span>, <span class="math inline">\(xp\)</span>, <span class="math inline">\(e^{i\frac {xp}\hbar}\)</span> or some more complicated quantity.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 6: Time evolution of a phase-space function">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 6: Time evolution of a phase-space function
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Use the chain rule and Hamilton’s equations to show that</p>
+<p><span class="math display">\[
+\frac{df}{dt}
+=
+\frac{\partial f}{\partial x}\frac{\partial H}{\partial p}
+-
+\frac{\partial f}{\partial p}\frac{\partial H}{\partial x}.
+\]</span></p>
+</div>
+</div>
+<p>This expression is important enough to deserve its own notation. For two phase-space functions <span class="math inline">\(f(x,p)\)</span> and <span class="math inline">\(g(x,p)\)</span>, define the <strong>Poisson bracket</strong></p>
+<p><span class="math display">\[
+\{f,g\}
+=
+\frac{\partial f}{\partial x}\frac{\partial g}{\partial p}
+-
+\frac{\partial f}{\partial p}\frac{\partial g}{\partial x}.
+\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 7: Hamiltonian flow as a Poisson bracket">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 7: Hamiltonian flow as a Poisson bracket
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Use the definition of the Poisson bracket to rewrite the result of Problem 6 as</p>
+<p><span class="math display">\[
+\frac{df}{dt}=\{f,H\}.
+\]</span></p>
+<p>Then compute the basic brackets</p>
+<p><span class="math display">\[
+\{x,p\},\qquad \{x,x\},\qquad \{p,p\}.
+\]</span></p>
+</div>
+</div>
+<p>This is the classical algebraic skeleton that later forms the foundation of quantum mechanics.</p>
 </section>
-<section id="recapitulation" class="level2" data-number="0.2">
-<h2 data-number="0.2" class="anchored" data-anchor-id="recapitulation"><span class="header-section-number">0.2</span> Recapitulation</h2>
-<p>The fundamental equations of Newtonian dynamics can be reformulated as statements about operations on a linear space <span class="math inline">\(\mathscr H\)</span> that almost magically comes with a Poisson bracket <span class="math inline">\(\{\cdot, \cdot\}\)</span>, that promotes it to a very special sort of algebra that is intimately tied to a specific class of differential equations and their solutions. In this formalism, time translations are generated by a distinguished function called the Hamiltonian.</p>
-<p>This space is not just a vector space with an norm (<em>i.e.</em> the Hilbert space part), but a Lie algebra because it automatically comes with a Poisson bracket that satisfies the defining relations of a Lie bracket.</p>
+<section id="the-poisson-bracket-as-a-lie-bracket" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="the-poisson-bracket-as-a-lie-bracket"><span class="header-section-number">7</span> The Poisson bracket as a Lie bracket</h2>
+<p>The Poisson bracket was not added by hand. Once we describe dynamics on phase space using <span class="math inline">\(H(x,p)\)</span>, the bracket appears naturally.</p>
+<p>A bracket operation is called a <strong>Lie bracket</strong> if it is bilinear, antisymmetric, and satisfies the Jacobi identity. We will now define these things and check that the Poisson bracket on space <span class="math inline">\(\mathscr{H}\)</span> of smooth functions on the phase space is a Lie bracket.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 8: Bilinearity and antisymmetry">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 8: Bilinearity and antisymmetry
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For phase-space functions <span class="math inline">\(f\)</span>, <span class="math inline">\(g\)</span>, and <span class="math inline">\(h\)</span>, show that the Poisson bracket satisfies:</p>
+<ol type="1">
+<li>Bilinearity:</li>
+</ol>
+<p><span class="math display">\[
+\{af+bg,h\}=a\{f,h\}+b\{g,h\}
+\]</span></p>
+<p>for constants <span class="math inline">\(a,b\in\mathbb{R}\)</span>, and similarly in the second slot.</p>
+<ol start="2" type="1">
+<li>Antisymmetry:</li>
+</ol>
+<p><span class="math display">\[
+\{f,g\}=-\{g,f\}.
+\]</span></p>
+</div>
+</div>
+<p>The third Lie-bracket identity is the Jacobi identity.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 9: The Jacobi identity for the Poisson bracket">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 9: The Jacobi identity for the Poisson bracket
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Show, or at least check in a convincing way, that the Poisson bracket satisfies the Jacobi identity:</p>
+<p><span class="math display">\[
+\{f,\{g,h\}\}+\{g,\{h,f\}\}+\{h,\{f,g\}\}=0.
+\]</span></p>
+<p>This is an algebraic identity, not an equation of motion.</p>
+</div>
+</div>
+<p>A structure that allows you to multiply its elements together is called an <strong>algebra</strong>. A <strong>Lie algebra</strong> is a vector space that forms an algebra under a bilinear operation that is also a Lie bracket. The phase-space functions form a vector space because you can add functions, multiply functions by numbers, it has a zero function, <em>et cetera</em>. Since all this is coming from the Poisson bracket, we give it the special name <strong>Poisson algebra</strong>: an ordinary commutative algebra of functions equipped with the Lie-bracket structure supplied by the Poisson bracket.</p>
+<p>The Hamiltonian is now not merely an energy function. It is the generator of motion through this algebra:</p>
+<p><span class="math display">\[
+\boxed{\frac{df}{dt}=\{f,H\}.}
+\]</span></p>
+<p>This is the classical version of the statement that time translations are generated by the Hamiltonian.</p>
 </section>
-<section id="time-dependence" class="level2" data-number="0.3">
-<h2 data-number="0.3" class="anchored" data-anchor-id="time-dependence"><span class="header-section-number">0.3</span> Time dependence</h2>
-<p>Hamilton’s formulation of dynamics shows that the time evolution of any function <span class="math inline">\(f\in {\mathscr H}\)</span>, that is any function <span class="math inline">\(f\)</span> on the phase space of <span class="math inline">\(p\)</span>s and <span class="math inline">\(x\)</span>s is generated, through the Poisson Bracket, by the Hamiltonian. This, however, is not the most general behavior because it is always possible to have explicit dependence on time. To describe this situation, we talk about the <em>extended</em> phase space of <span class="math inline">\(x\)</span>s, <span class="math inline">\(p\)</span>s, and <span class="math inline">\(t\)</span>.</p>
-<blockquote class="blockquote">
-<ol start="10" type="1">
-<li><ol type="a">
-<li>Show that for a function on the extended phase space <span class="math display">\[
-\frac {df}{dt} = \frac {\partial f}{\partial t} + \{f,H\}
-\]</span></li>
-</ol></li>
-</ol>
-<ol start="2" type="a">
-<li>Use this to show that, unless the Hamiltonian <span class="math inline">\(H\)</span> depends explicitly on time, it is <strong>conserved</strong>, where “conserved” means constant in time.</li>
-</ol>
-</blockquote>
-<p>9 a. A function on the extended phase space has the form <span class="math inline">\(f(x, p, t)\)</span>. Therefore, <span class="math inline">\(\frac {df}{dt} = \frac {\partial f}{\partial t}+\)</span> parts already there when it does not depend explicitly on <span class="math inline">\(t\)</span>. But we already know these are generated by <span class="math inline">\(H\)</span> through the Poisson bracket. This gives the stated equation.<br>
-b. Plugging in <span class="math inline">\(f\to H\)</span> gives <span class="math display">\[
-\frac {dH}{dt} = \frac {\partial H}{\partial t} + \{H,H\}
-= \frac {\partial H}{\partial t}
-\]</span> The <span class="math inline">\(\{H, H\}=-\{H, H\}\)</span> term vanishes by antisymmetry of P.B., so <span class="math inline">\(\frac {dH}{dt}=0\)</span> iff <span class="math inline">\(\frac {\partial H}{\partial t}=0\)</span>.</p>
+<section id="explicit-time-dependence-and-conservation-of-energy" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="explicit-time-dependence-and-conservation-of-energy"><span class="header-section-number">8</span> Explicit time dependence and conservation of energy</h2>
+<p>The equation</p>
+<p><span class="math display">\[
+\frac{df}{dt}=\{f,H\}
+\]</span></p>
+<p>assumes that <span class="math inline">\(f\)</span> depends on time only through <span class="math inline">\(x(t)\)</span> and <span class="math inline">\(p(t)\)</span>. But a phase-space function may also depend explicitly on time. Then</p>
+<p><span class="math display">\[
+f=f(x,p,t).
+\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 10: Explicit time-dependence">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 10: Explicit time-dependence
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For a function <span class="math inline">\(f(x,p,t)\)</span> on extended phase space, show that</p>
+<p><span class="math display">\[
+\frac{df}{dt}=\frac{\partial f}{\partial t}+\{f,H\}.
+\]</span></p>
+<p>Then use this result to show that the Hamiltonian is conserved when it has no explicit time-dependence.</p>
+</div>
+</div>
+<p>This completes the classical derivation. The Hamiltonian generates time translations because it generates the time evolution of every phase-space function through the Poisson bracket.</p>
 </section>
-<section id="hamiltonian-quantization" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Hamiltonian quantization</h1>
-<blockquote class="blockquote">
-<ol start="11" type="1">
-<li>Suppose we have an algebra of operators <span class="math inline">\(\mathscr O\)</span> with a multiplication that may or may not be associative: For any <span class="math inline">\(f\)</span>, <span class="math inline">\(g\)</span>, <span class="math inline">\(h\in \mathscr O\)</span> <span class="math display">\[
-(h(fg)) \stackrel?= ((hf)g)
-\]</span> and define the <strong>commutator</strong> <span class="math display">\[
-[f,g] = fg - gf
-\]</span> Show that <span class="math inline">\([\cdot, \cdot]\)</span> satisfies the Jabobi identity if the algebra multiplication is associative.</li>
-</ol>
-</blockquote>
-<p>Let’s look at the first of three terms <span class="math display">\[
-[h,[f,g]]=(h(fg)) - ((fg)h) + ((gf)h) - (h(gh))
-\]</span> The other two terms are the permulations <span class="math inline">\(f\to g\to h\to f\)</span> and <span class="math inline">\(f\to h\to g\to f\)</span>.</p>
-<p>An example of an associative algebra is the algebra of matrices with matrix multiplication.</p>
+<section id="epilogue-toward-hamiltonian-quantization" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="epilogue-toward-hamiltonian-quantization"><span class="header-section-number">9</span> Epilogue: toward Hamiltonian quantization</h2>
+<p>In classical Hamiltonian mechanics, the phase-space functions form an algebra equipped with the Poisson bracket. The Poisson bracket is bilinear, antisymmetric, and satisfies the Jacobi identity, so it behaves like a Lie bracket.</p>
+<p>Quantum mechanics replaces classical phase-space functions by operators. Operators can be added and multiplied, but their multiplication is generally not commutative. This gives us a new natural bracket: the commutator.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 11: The commutator Jacobi identity">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 11: The commutator Jacobi identity
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Suppose <span class="math inline">\(\mathscr O\)</span> is an algebra of operators with an associative multiplication. This means that for any <span class="math inline">\(A,B,C\in\mathscr O\)</span>,</p>
+<p><span class="math display">\[
+A(BC)=(AB)C.
+\]</span></p>
+<p>Define the <strong>commutator</strong> by</p>
+<p><span class="math display">\[
+[A,B]=AB-BA.
+\]</span></p>
+<p>Show that the commutator satisfies the Jacobi identity:</p>
+<p><span class="math display">\[
+[A,[B,C]]+[B,[C,A]]+[C,[A,B]]=0.
+\]</span></p>
+<p>This is the operator analogue of one of the defining identities satisfied by the Poisson bracket.</p>
+</div>
+</div>
+<p>This is the natural stopping point for this packet. The next step would be to ask how the classical bracket</p>
+<p><span class="math display">\[
+\{f,g\}
+\]</span></p>
+<p>is related to the quantum bracket</p>
+<p><span class="math display">\[
+[\hat f,\hat g].
+\]</span></p>
+<p>That question leads into canonical quantization and the correspondence</p>
+<p><span class="math display">\[
+[\hat f,\hat g]\sim i\hbar\,\widehat{\{f,g\}}.
+\]</span></p>
+<p>If you want this story to continue into Hamiltonian quantization, ask Dr.&nbsp;Linch and he can write the next installment.</p>
+</section>
+<section id="synthesis-questions" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="synthesis-questions"><span class="header-section-number">10</span> Synthesis questions</h2>
+<div class="callout callout-style-default callout-note callout-titled" title="Synthesis 1: What generates time translations?">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Synthesis 1: What generates time translations?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Explain, in a concise paragraph, why the Hamiltonian is the generator of time translations in classical Hamiltonian mechanics.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Synthesis 2: Phase space versus configuration space">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Synthesis 2: Phase space versus configuration space
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Explain the difference between configuration space and phase space. Why does the Hamiltonian naturally live on phase space?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Synthesis 3: Classical and quantum brackets">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Synthesis 3: Classical and quantum brackets
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Write a short paragraph comparing the Poisson bracket and the commutator. Your answer should include the phrases “antisymmetric,” “Jacobi identity,” “phase-space functions,” and “operators.”</p>
+</div>
+</div>
+</section>
+<section id="source-note-and-further-reading" class="level2" data-number="11">
+<h2 data-number="11" class="anchored" data-anchor-id="source-note-and-further-reading"><span class="header-section-number">11</span> Source note and further reading</h2>
+<p>This packet was adapted from a rough set of notes on time translations, Hamiltonian mechanics, and the Poisson bracket. The present version reorganizes the material into a guided derivation modeled on the minicourse packet <em>Renormalization Without Quantum Field Theory</em>.</p>
+<p>Suggested reading links:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Hamiltonian_mechanics">Hamiltonian mechanics</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Legendre_transformation">Legendre transformation</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Phase_space">Phase space</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Poisson_bracket">Poisson bracket</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Lie_algebra">Lie algebra</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Canonical_quantization">Canonical quantization</a></li>
+</ul>
 </section>
 
 </main>
