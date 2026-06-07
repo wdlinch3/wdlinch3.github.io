@@ -19,6 +19,7 @@
     - id: ss_kepler
       label: ss_kepler
       status: placeholder
+      preview_url: "https://github.com/wdlinch3/aa_assignments/blob/main/aa_ss/ss_kepler1/ss_kepler1.ipynb"
       hub_anchor: "/aa/ss/help/#kepler_and_orbits"
       current_ids:
         - ss_kepler
