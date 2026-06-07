@@ -7,9 +7,10 @@ format:
     html-math-method: mathjax
   pdf:
     pdf-engine: lualatex
-header-includes:
-  - \DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}
-  - \DeclareOldFontCommand{\rm}{\normalfont\rmfamily}{\mathrm}
+    include-in-header:
+      - text: |
+          \DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}
+          \DeclareOldFontCommand{\rm}{\normalfont\rmfamily}{\mathrm}
 execute:
   freeze: auto
 ---
