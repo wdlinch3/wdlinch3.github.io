@@ -3,26 +3,30 @@
   packets:
     - id: ss_geometry
       label: ss_geometry
-      help_url: "/aa/x/help/#geometry_and_units"
+      status: placeholder
+      hub_anchor: "/aa/x/help/#geometry_and_units"
       current_ids:
         - ss_geometry
 
     - id: ss_celestial_sphere
       label: ss_celestial_sphere
-      help_url: "/aa/ss/help/#celestial_sphere"
+      status: placeholder
+      hub_anchor: "/aa/ss/help/#celestial_sphere"
       current_ids:
         - ss_celestial_sphere
 
     - id: ss_aristarchus
       label: ss_aristarchus
+      status: placeholder
       preview_url: "https://github.com/wdlinch3/aa_assignments/blob/main/aa_ss/ss_aristarchus/ss_aristarchus.ipynb"
-      help_url: "/aa/ss/help/#aristarchus"
+      hub_anchor: "/aa/ss/help/#aristarchus"
       current_ids:
         - ss_aristarchus
 
     - id: ss_kepler
       label: ss_kepler
-      help_url: "/aa/ss/help/#kepler_and_orbits"
+      status: placeholder
+      hub_anchor: "/aa/ss/help/#kepler_and_orbits"
       current_ids:
         - ss_kepler
 
@@ -31,30 +35,34 @@
       parts:
         - id: ss_solar_system_1
           label: part i
+          status: placeholder
           preview_url: "https://github.com/wdlinch3/aa_assignments/blob/main/aa_ss/ss_solar_system_1/ss_solar_system_1.ipynb"
-          help_url: "/aa/ss/help/#solar_system"
+          hub_anchor: "/aa/ss/help/#solar_system"
           current_ids:
             - ss_solar_system
             - ss_solar_system_1
         - id: ss_solar_system_2
           label: part ii
+          status: placeholder
           preview_url: "https://github.com/wdlinch3/aa_assignments/blob/main/aa_ss/ss_solar_system_2/ss_solar_system_2_clean.ipynb"
-          help_url: "/aa/ss/help/#solar_system"
+          hub_anchor: "/aa/ss/help/#solar_system"
           current_ids:
             - ss_solar_system
             - ss_solar_system_2
         - id: ss_solar_system_3
           label: part iii
+          status: placeholder
           preview_url: "https://github.com/wdlinch3/aa_assignments/blob/main/aa_ss/ss_solar_system_3/ss_solar_system_3.ipynb"
-          help_url: "/aa/ss/help/#solar_system"
+          hub_anchor: "/aa/ss/help/#solar_system"
           current_ids:
             - ss_solar_system
             - ss_solar_system_3
 
     - id: ss_sol
       label: ss_sol
+      status: placeholder
       preview_url: "https://github.com/wdlinch3/aa_assignments/blob/main/aa_ss/ss_sol/ss_sol.ipynb"
-      help_url: "/aa/ss/help/#sun"
+      hub_anchor: "/aa/ss/help/#sun"
       current_ids:
         - ss_sol
 
@@ -63,15 +71,17 @@
       parts:
         - id: ss_jupiter_1
           label: part i
+          status: placeholder
           preview_url: "https://github.com/wdlinch3/aa_assignments/blob/main/aa_ss/ss_jupiter_1/ss_jupiter_1.ipynb"
-          help_url: "/aa/ss/help/#jupiter"
+          hub_anchor: "/aa/ss/help/#jupiter"
           current_ids:
             - ss_jupiter
             - ss_jupiter_1
         - id: ss_jupiter_2
           label: part ii
+          status: placeholder
           preview_url: "https://github.com/wdlinch3/aa_assignments/blob/main/aa_ss/ss_jupiter_2/ss_jupiter_2.ipynb"
-          help_url: "/aa/ss/help/#jupiter"
+          hub_anchor: "/aa/ss/help/#jupiter"
           current_ids:
             - ss_jupiter
             - ss_jupiter_2
@@ -81,15 +91,17 @@
   packets:
     - id: u_stars_1
       label: u_stars_1
+      status: placeholder
       preview_url: "https://github.com/wdlinch3/aa_assignments/blob/main/aa_u/u_stars_1/u_stars_1.ipynb"
-      help_url: "/aa/u/help/#stars_1"
+      hub_anchor: "/aa/u/help/#stars_1"
       current_ids:
         - u_stars_1
 
     - id: u_ism_and_star_birth
       label: u_ism_and_star_birth
+      status: real_support
       preview_url: "https://github.com/wdlinch3/aa_assignments/blob/main/aa_u/u_ism_and_star_birth/u_ism_and_star_birth.ipynb"
-      help_url: "/aa/u/help/interstellar_matter_and_star_birth.html"
+      support_url: "/aa/u/help/interstellar_matter_and_star_birth.html"
       current_ids:
         - u_ism_and_star_birth
 
@@ -98,24 +110,27 @@
       parts:
         - id: u_stellar_evolution_1
           label: part i
+          status: real_support
           preview_url: "https://github.com/wdlinch3/aa_assignments/blob/main/aa_u/u_stellar_evolution_1/u_stellar_evolution_1.ipynb"
-          help_url: "/aa/u/help/stellar_evolution.html#packet_1"
+          support_url: "/aa/u/help/stellar_evolution.html#packet_1"
           current_url: "/aa/u/help/stellar_evolution.html"
           current_ids:
             - u_stellar_evolution
             - u_stellar_evolution_1
         - id: u_stellar_evolution_2
           label: part ii
+          status: real_support
           preview_url: "https://github.com/wdlinch3/aa_assignments/blob/main/aa_u/u_stellar_evolution_2/u_stellar_evolution_2.ipynb"
-          help_url: "/aa/u/help/stellar_evolution.html#packet_2"
+          support_url: "/aa/u/help/stellar_evolution.html#packet_2"
           current_url: "/aa/u/help/stellar_evolution.html"
           current_ids:
             - u_stellar_evolution
             - u_stellar_evolution_2
         - id: u_stellar_evolution_3
           label: part iii
+          status: real_support
           preview_url: "https://github.com/wdlinch3/aa_assignments/blob/main/aa_u/u_stellar_evolution_3/u_stellar_evolution_3.ipynb"
-          help_url: "/aa/u/help/stellar_evolution.html#packet_3"
+          support_url: "/aa/u/help/stellar_evolution.html#packet_3"
           current_url: "/aa/u/help/stellar_evolution.html"
           current_ids:
             - u_stellar_evolution
@@ -123,15 +138,17 @@
 
     - id: u_galaxies
       label: u_galaxies
+      status: placeholder
       preview_url: "https://github.com/wdlinch3/aa_assignments/blob/main/aa_u/u_galaxies_1/u_galaxies.ipynb"
-      help_url: "/aa/u/help/#galaxies"
+      hub_anchor: "/aa/u/help/#galaxies"
       current_ids:
         - u_galaxies
 
     - id: u_cosmology
       label: u_cosmology
+      status: placeholder
       preview_url: "https://github.com/wdlinch3/aa_assignments/blob/main/aa_u/u_cosmology_1/u_cosmology.ipynb"
-      help_url: "/aa/u/help/#cosmology"
+      hub_anchor: "/aa/u/help/#cosmology"
       current_ids:
         - u_cosmology
 
@@ -140,8 +157,9 @@
   packets:
     - id: x_dimensional_analysis
       label: x_dimensional_analysis
+      status: placeholder
       preview_url: "https://github.com/wdlinch3/aa_assignments/blob/main/aa_x/x_dimensional_analysis/x_dimensional_analysis.ipynb"
-      help_url: "/aa/x/help/#dimensional_analysis"
+      hub_anchor: "/aa/x/help/#dimensional_analysis"
       current_ids:
         - x_dimensional_analysis
 
@@ -150,15 +168,17 @@
       parts:
         - id: x_astrodynamics_1
           label: part i
+          status: placeholder
           preview_url: "https://github.com/wdlinch3/aa_assignments/blob/main/aa_x/x_astrodynamics_1/x_astrodynamics_1.ipynb"
-          help_url: "/aa/x/help/#astrodynamics"
+          hub_anchor: "/aa/x/help/#astrodynamics"
           current_ids:
             - x_astrodynamics
             - x_astrodynamics_1
         - id: x_astrodynamics_2
           label: part ii
+          status: placeholder
           preview_url: "https://github.com/wdlinch3/aa_assignments/blob/main/aa_x/x_astrodynamics_2/x_astrodynamics_2.ipynb"
-          help_url: "/aa/x/help/#astrodynamics"
+          hub_anchor: "/aa/x/help/#astrodynamics"
           current_ids:
             - x_astrodynamics
             - x_astrodynamics_2
@@ -168,22 +188,25 @@
       parts:
         - id: x_waves_and_light_1
           label: part i
+          status: placeholder
           preview_url: "https://github.com/wdlinch3/aa_assignments/blob/main/aa_x/x_waves_and_light_1/x_waves_and_light_1.ipynb"
-          help_url: "/aa/x/help/#waves_and_light"
+          hub_anchor: "/aa/x/help/#waves_and_light"
           current_ids:
             - x_waves_and_light
             - x_waves_and_light_1
         - id: x_waves_and_light_2
           label: part ii
+          status: placeholder
           preview_url: "https://github.com/wdlinch3/aa_assignments/blob/main/aa_x/x_waves_and_light_2/x_waves_and_light_2.ipynb"
-          help_url: "/aa/x/help/#waves_and_light"
+          hub_anchor: "/aa/x/help/#waves_and_light"
           current_ids:
             - x_waves_and_light
             - x_waves_and_light_2
 
     - id: x_spectroscopy
       label: x_spectroscopy
+      status: placeholder
       preview_url: "https://github.com/wdlinch3/aa_assignments/blob/main/aa_x/x_spectroscopy/x_spectroscopy.ipynb"
-      help_url: "/aa/x/help/#spectroscopy"
+      hub_anchor: "/aa/x/help/#spectroscopy"
       current_ids:
         - x_spectroscopy

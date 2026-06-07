@@ -22,14 +22,23 @@
                       {% assign current_match = true %}
                     {% endif %}
                   {% endfor %}
+                  {% assign link_url = part.support_url | default: part.hub_anchor | default: part.placeholder_url %}
+                  {% assign link_label = "hub" %}
+                  {% if part.status == "real_support" %}
+                    {% assign link_label = "help" %}
+                  {% elsif part.status == "missing" %}
+                    {% assign link_label = "missing" %}
+                  {% elsif part.status == "planned" %}
+                    {% assign link_label = "planned" %}
+                  {% endif %}
                   <li>
                     {{ part.label }}
-                    (<a href="{{ part.preview_url }}">preview</a> |
+                    (<a href="{{ part.preview_url }}">preview</a>{% if link_url %} |
                     {% if current_match %}
-                      <a href="{{ part.current_url | default: part.help_url }}">here</a>
+                      <a href="{{ part.current_url | default: link_url }}">here</a>
                     {% else %}
-                      <a href="{{ part.help_url }}">help</a>
-                    {% endif %})
+                      <a href="{{ link_url }}">{{ link_label }}</a>
+                    {% endif %}{% endif %})
                   </li>
                 {% endfor %}
               </ul>
@@ -40,7 +49,16 @@
                   {% assign current_match = true %}
                 {% endif %}
               {% endfor %}
-              ({% if packet.preview_url %}<a href="{{ packet.preview_url }}">preview</a> | {% endif %}{% if current_match %}<a href="{{ packet.current_url | default: packet.help_url }}">here</a>{% else %}<a href="{{ packet.help_url }}">help</a>{% endif %})
+              {% assign link_url = packet.support_url | default: packet.hub_anchor | default: packet.placeholder_url %}
+              {% assign link_label = "hub" %}
+              {% if packet.status == "real_support" %}
+                {% assign link_label = "help" %}
+              {% elsif packet.status == "missing" %}
+                {% assign link_label = "missing" %}
+              {% elsif packet.status == "planned" %}
+                {% assign link_label = "planned" %}
+              {% endif %}
+              ({% if packet.preview_url %}<a href="{{ packet.preview_url }}">preview</a>{% if link_url %} | {% endif %}{% endif %}{% if link_url %}{% if current_match %}<a href="{{ packet.current_url | default: link_url }}">here</a>{% else %}<a href="{{ link_url }}">{{ link_label }}</a>{% endif %}{% endif %})
             {% endif %}
           </li>
         {% endfor %}
