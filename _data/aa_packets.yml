@@ -1,12 +1,12 @@
 - id: ss
   title: "AA:SS"
   packets:
-    - id: ss_geometry
-      label: ss_geometry
+    - id: x_geometry
+      label: x_geometry
       status: placeholder
       hub_anchor: "/aa/x/help/#geometry_and_units"
       current_ids:
-        - ss_geometry
+        - x_geometry
 
     - id: ss_celestial_sphere
       label: ss_celestial_sphere
