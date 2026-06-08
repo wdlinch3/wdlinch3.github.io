@@ -1,9 +1,13 @@
 ---
 title: "Sturm-Liouville and Orthogonal Functions"
 render_with_liquid: false
-published: false
 format:
   html:
+    theme: darkly
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    page-layout: article
     html-math-method: mathjax
   pdf:
     pdf-engine: lualatex
