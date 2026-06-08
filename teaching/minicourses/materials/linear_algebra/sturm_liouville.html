@@ -33,10 +33,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="sturm_liouville_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="sturm_liouville_files/libs/quarto-html/anchor.min.js"></script>
 <link href="sturm_liouville_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="sturm_liouville_files/libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="sturm_liouville_files/libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="sturm_liouville_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="sturm_liouville_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="sturm_liouville_files/libs/bootstrap/bootstrap-138a6193a3bd40baf1e627da441a4734.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="sturm_liouville_files/libs/bootstrap/bootstrap-580f59859ddf617fe2e58b4aca1d3752.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -74,7 +74,21 @@ window.Quarto = {
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
 <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="sturm_liouville.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></div>
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#linear-algebra" id="toc-linear-algebra" class="nav-link active" data-scroll-target="#linear-algebra"><span class="header-section-number">1</span> Linear algebra</a></li>
+  <li><a href="#function-spaces" id="toc-function-spaces" class="nav-link" data-scroll-target="#function-spaces"><span class="header-section-number">2</span> Function Spaces</a>
+  <ul class="collapse">
+  <li><a href="#orthogonal-polynomials" id="toc-orthogonal-polynomials" class="nav-link" data-scroll-target="#orthogonal-polynomials"><span class="header-section-number">2.1</span> Orthogonal Polynomials</a></li>
+  <li><a href="#anti-periodic-functions" id="toc-anti-periodic-functions" class="nav-link" data-scroll-target="#anti-periodic-functions"><span class="header-section-number">2.2</span> (Anti-)Periodic Functions</a></li>
+  <li><a href="#complex-hilbert-spaces-complex-numbers-are-crucial-for-all-life-so-we" id="toc-complex-hilbert-spaces-complex-numbers-are-crucial-for-all-life-so-we" class="nav-link" data-scroll-target="#complex-hilbert-spaces-complex-numbers-are-crucial-for-all-life-so-we"><span class="header-section-number">2.3</span> Complex Hilbert Spaces Complex numbers are crucial for all life, so we</a></li>
+  <li><a href="#continuous-groups-and-harmonic-analysis-the-complex-fourier-series" id="toc-continuous-groups-and-harmonic-analysis-the-complex-fourier-series" class="nav-link" data-scroll-target="#continuous-groups-and-harmonic-analysis-the-complex-fourier-series"><span class="header-section-number">2.4</span> Continuous Groups and Harmonic analysis The complex Fourier series</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="sturm_liouville.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+</div>
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -97,8 +111,8 @@ window.Quarto = {
 
 
 <p>These are notes for a discussion about linear algebra and analysis for the students of the Research Club.</p>
-<section id="linear-algebra" class="level1">
-<h1>Linear algebra</h1>
+<section id="linear-algebra" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Linear algebra</h1>
 <p>Let <span class="math inline">\(V\)</span> be an <span class="math inline">\(𝐑\)</span>-vector space, and recall that a linear operator <span class="math inline">\(L\)</span> on <span class="math inline">\(V\)</span> is a linear map <span class="math display">\[L:V ⟶ V\]</span> An eigenvector of <span class="math inline">\(L\)</span> is a vector <span class="math inline">\(v_λ ∈ V\)</span> such that <span class="math display">\[L v_λ = λ v_λ\]</span> The number <span class="math inline">\(λ ∈ V\)</span> is called the eigenvalue of <span class="math inline">\(L\)</span> associated to the eigenvector <span class="math inline">\(v_λ\)</span>.</p>
 <p>Suppose <span class="math inline">\(V\)</span> is equipped with an inner product <span class="math display">\[\left&lt; ⋅ ,  ⋅ \right&gt; : V×V ⟶  𝐑\]</span> The adjoint <span class="math inline">\(L^\dagger\)</span> of <span class="math inline">\(L\)</span> with respect to the inner product is a linear map <span class="math display">\[L^\dagger :V  ⟶  V\]</span> defined by the formula <span class="math display">\[\left&lt;   v , L^\dagger u \right&gt; = \left&lt;  L v , u \right&gt;  
 \quad \forall \quad
@@ -116,10 +130,10 @@ u,v ∈ V\]</span></p>
 </div>
 <p>Together with the result on orthogonal eigenvectors for self-adjoint operators, we conclude that if we have a vector space equipped with such an operator, we can construct an orthonormal basis of eigenvectors for the vector space.</p>
 </section>
-<section id="function-spaces" class="level1">
-<h1>Function Spaces</h1>
-<section id="orthogonal-polynomials" class="level2">
-<h2 class="anchored" data-anchor-id="orthogonal-polynomials">Orthogonal Polynomials</h2>
+<section id="function-spaces" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Function Spaces</h1>
+<section id="orthogonal-polynomials" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="orthogonal-polynomials"><span class="header-section-number">2.1</span> Orthogonal Polynomials</h2>
 <p>Let <span class="math inline">\(S⊂ 𝐑\)</span> be a subset of the real line and define the space <span class="math inline">\(L²(S)\)</span> of square-integrable functions on <span class="math inline">\(S\)</span>: <span class="math display">\[L²(S) = \left\{
         \ f : S ⟶ 𝐑 \ \Bigg| \int_S  |f(x)|² dx &lt; ∞
     \right\}\]</span> Note that <span class="math inline">\(L²(S)\)</span> is an inner-product space over <span class="math inline">\(𝐑\)</span> with</p>
@@ -135,8 +149,8 @@ Hint: Show that any operator of the form <span class="math inline">\(\frac{d}{dx
 <div class="exercise">
 <p><strong>Exercise 6</strong>. <em>Check this on the first few Legendre polynomials <span class="math inline">\(p_i\)</span> for <span class="math inline">\(i=0, ... , 3\)</span>. What are the eigenvalues?</em></p>
 </div>
-<section id="laplace-equation" class="level4">
-<h4 class="anchored" data-anchor-id="laplace-equation">Laplace equation</h4>
+<section id="laplace-equation" class="level4" data-number="2.1.0.1">
+<h4 data-number="2.1.0.1" class="anchored" data-anchor-id="laplace-equation"><span class="header-section-number">2.1.0.1</span> Laplace equation</h4>
 <p>The Legendre polynomials are famous because they are instrumental to the solution of the Laplace equation <span class="math inline">\(Δ 𝜑  =0\)</span> <em>in three dimensions</em>. In spherical coordinates, the three-dimensional Laplacian operator is <span class="math display">\[Δ = \frac {1}{r²} \frac{∂}{∂r} \left( r² \frac{∂}{∂r}\ ⋅ \right)
     +\frac{1}{r² \sin θ } \frac{∂}{∂θ} \left( \sin θ  \frac{∂}{∂θ}\ ⋅ \right)
     +\frac{1}{r² \sin θ } \frac{∂²}{∂φ²}\]</span> To solve a problem with spherical symmetry, the <em>Ansatz</em> is made that the solution is separable: <span class="math inline">\(𝜑(r, θ, φ) = R(r) Θ(θ) 𝛷(φ)\)</span>. This allows the separation of the Laplace equation into three parts. It can be shown that the <span class="math inline">\(𝛷=\)</span> constant and that the rest of the equation separates into the sum of two parts with one depending only on <span class="math inline">\(r\)</span> and the other only on <span class="math inline">\(θ\)</span>. This means that the two must be equal to the same constant. The <span class="math inline">\(θ\)</span>-dependent part is given by <span class="math display">\[\frac{1}{\sin θ } \frac{d}{dθ} \left( \sin θ  \frac{d Θ}{dθ} \right)  + c Θ = 0.\]</span> (The separation constant is denoted by <span class="math inline">\(c\)</span>.)</p>
@@ -144,16 +158,16 @@ Hint: Show that any operator of the form <span class="math inline">\(\frac{d}{dx
 <p><strong>Exercise 7</strong>. <em>Make the change of variables <span class="math inline">\(x = \cos θ\)</span> to show that this is an eigenvalue equation for the Legendre operator <a href="#LegendreLaplacian" data-reference-type="eqref" data-reference="LegendreLaplacian">[LegendreLaplacian]</a>.</em></p>
 </div>
 </section>
-<section id="an-aside-on-taylor-series" class="level4">
-<h4 class="anchored" data-anchor-id="an-aside-on-taylor-series">An aside on Taylor series</h4>
+<section id="an-aside-on-taylor-series" class="level4" data-number="2.1.0.2">
+<h4 data-number="2.1.0.2" class="anchored" data-anchor-id="an-aside-on-taylor-series"><span class="header-section-number">2.1.0.2</span> An aside on Taylor series</h4>
 <p>The completeness of eigenfunctions of a self-adjoint operator on an infinite-dimensional vector space is striking, but it should not be entirely shocking to a student of calculus. Recall that a real function <span class="math inline">\(f\)</span> of a real variable <span class="math inline">\(x\)</span> is analytic on a domain <span class="math inline">\(D⊂ 𝐑\)</span> if there is a convergent series on <span class="math inline">\(D\)</span> that agrees with the function <span class="math inline">\(f\)</span> on <span class="math inline">\(D\)</span>: <span class="math display">\[f(x) = \sum_{n=0}^∞ a_n x^n \quad \quad \textrm{on}\quad D.\]</span></p>
 <div class="exercise">
 <p><strong>Exercise 8</strong>. <em>Find an expression for the coefficients <span class="math inline">\(\{a_n\}_{n=0}^∞\)</span> in terms of <span class="math inline">\(f\)</span> and its derivatives.</em></p>
 </div>
 </section>
 </section>
-<section id="anti-periodic-functions" class="level2">
-<h2 class="anchored" data-anchor-id="anti-periodic-functions">(Anti-)Periodic Functions</h2>
+<section id="anti-periodic-functions" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="anti-periodic-functions"><span class="header-section-number">2.2</span> (Anti-)Periodic Functions</h2>
 <p>Let <span class="math inline">\(S=(-π, π)\)</span>, and consider the operator <span class="math display">\[L = \frac{d²}{dx²}\]</span> on <span class="math inline">\(L²(S)\)</span>. Then <span class="math display">\[\int g \frac{d²}{dx²} f dx
 = \left. g \frac{df}{dx} \right|_{x=-π}^π  - \int \frac{dg}{dx}\frac{df}{dx}  dx
 = \left. g \frac{df}{dx} \right|_{x=-π}^π  
@@ -167,8 +181,8 @@ Hint: Show that any operator of the form <span class="math inline">\(\frac{d}{dx
 <p><strong>Exercise 10</strong>. <em>Assuming this decomposition of the function and using the orthogonality of the eigen-functions you found above, calculate the <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> coefficients.</em></p>
 </div>
 </section>
-<section id="complex-hilbert-spaces-complex-numbers-are-crucial-for-all-life-so-we" class="level2">
-<h2 class="anchored" data-anchor-id="complex-hilbert-spaces-complex-numbers-are-crucial-for-all-life-so-we">Complex Hilbert Spaces Complex numbers are crucial for all life, so we</h2>
+<section id="complex-hilbert-spaces-complex-numbers-are-crucial-for-all-life-so-we" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="complex-hilbert-spaces-complex-numbers-are-crucial-for-all-life-so-we"><span class="header-section-number">2.3</span> Complex Hilbert Spaces Complex numbers are crucial for all life, so we</h2>
 <p>would like to extend everything in sight to the complex domain. For one thing, that means that the vector spaces above will now be over <span class="math inline">\(𝐂\)</span>. It turns out that the nicest inner product, however, should be real, or “Hermitian” to be more precise: It is linear in the second slot, and anti-linear in the first. Explicitly, <span class="math display">\[\left&lt; v, a u\right&gt;  = a \left&lt; v,  u\right&gt;  \quad \textrm{and} \quad \left&lt; av, u\right&gt;  = ā \left&lt; v,  u\right&gt;\]</span></p>
 <div class="exercise">
 <p><strong>Exercise 11</strong>. <em>Let <span class="math inline">\(V\)</span> be an <span class="math inline">\(n\)</span>-dimensional inner product space over <span class="math inline">\(𝐂\)</span> with Hermitian form <span class="math inline">\(\left&lt;\ ⋅\ ,\ ⋅\ \right&gt;\)</span>. Let <span class="math inline">\(L : V ⟶ V\)</span> be a linear operator on <span class="math inline">\(V\)</span>. Then <span class="math inline">\(L\)</span> has a matrix representation. If <span class="math inline">\(L\)</span> is self-adjoint with respect to the inner product, what is the equivalent condition on its matrix representation?</em></p>
@@ -186,8 +200,8 @@ Hint: Show that any operator of the form <span class="math inline">\(\frac{d}{dx
     \end{cases}\]</span> Use this formula to derive an expression for the Fourier coefficients <span class="math inline">\(\{c_n\}_{n=0}^∞\)</span>.</em></p>
 </div>
 </section>
-<section id="continuous-groups-and-harmonic-analysis-the-complex-fourier-series" class="level2">
-<h2 class="anchored" data-anchor-id="continuous-groups-and-harmonic-analysis-the-complex-fourier-series">Continuous Groups and Harmonic analysis The complex Fourier series</h2>
+<section id="continuous-groups-and-harmonic-analysis-the-complex-fourier-series" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="continuous-groups-and-harmonic-analysis-the-complex-fourier-series"><span class="header-section-number">2.4</span> Continuous Groups and Harmonic analysis The complex Fourier series</h2>
 <p><a href="#ComplexFourierSeries" data-reference-type="eqref" data-reference="ComplexFourierSeries">[ComplexFourierSeries]</a> can be expressed as an integral over a group. In this case, the group <span class="math inline">\(G=𝐙\)</span> is discrete and the integral reduces to a sum, but in general, the group could be continuous and even non-abelian. This is clear already from the formula for the Fourier modes <span class="math display">\[c_n = \int_{𝐑} f(x) e^{-i n x} dx\]</span></p>
 <p>...</p>
 </section>
