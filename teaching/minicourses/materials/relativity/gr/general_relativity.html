@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>General Relativity</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="general_relativity_files/libs/clipboard/clipboard.min.js"></script>
+<script src="general_relativity_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="general_relativity_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="general_relativity_files/libs/quarto-html/popper.min.js"></script>
+<script src="general_relativity_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="general_relativity_files/libs/quarto-html/anchor.min.js"></script>
+<link href="general_relativity_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="general_relativity_files/libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="general_relativity_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="general_relativity_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="general_relativity_files/libs/bootstrap/bootstrap-580f59859ddf617fe2e58b4aca1d3752.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<script>
+window.MathJax = {
+  tex: {
+    tags: "ams",
+    macros: {
+      bf: ["\\mathbf{#1}", 1],
+      rm: ["\\mathrm{#1}", 1]
+    }
+  }
+};
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#intro" id="toc-intro" class="nav-link active" data-scroll-target="#intro"><span class="header-section-number">1</span> Intro</a>
+  <ul class="collapse">
+  <li><a href="#metric" id="toc-metric" class="nav-link" data-scroll-target="#metric"><span class="header-section-number">1.1</span> Metric</a>
+  <ul class="collapse">
+  <li><a href="#curved-space" id="toc-curved-space" class="nav-link" data-scroll-target="#curved-space"><span class="header-section-number">1.1.1</span> Curved space</a></li>
+  </ul></li>
+  <li><a href="#dynamical-gravitational-field" id="toc-dynamical-gravitational-field" class="nav-link" data-scroll-target="#dynamical-gravitational-field"><span class="header-section-number">1.2</span> Dynamical gravitational field</a></li>
+  <li><a href="#maxwells-field-equations-part-i" id="toc-maxwells-field-equations-part-i" class="nav-link" data-scroll-target="#maxwells-field-equations-part-i"><span class="header-section-number">1.3</span> Maxwell’s field equations: Part I</a></li>
+  <li><a href="#energy-momentum-and-mass" id="toc-energy-momentum-and-mass" class="nav-link" data-scroll-target="#energy-momentum-and-mass"><span class="header-section-number">1.4</span> Energy, momentum, and mass</a></li>
+  <li><a href="#maxwells-field-equations-part-ii" id="toc-maxwells-field-equations-part-ii" class="nav-link" data-scroll-target="#maxwells-field-equations-part-ii"><span class="header-section-number">1.5</span> Maxwell’s field equations: Part II</a></li>
+  </ul></li>
+  <li><a href="#gravitation-as-a-field-theory" id="toc-gravitation-as-a-field-theory" class="nav-link" data-scroll-target="#gravitation-as-a-field-theory"><span class="header-section-number">2</span> Gravitation as a field theory</a>
+  <ul class="collapse">
+  <li><a href="#the-covariant-derivative" id="toc-the-covariant-derivative" class="nav-link" data-scroll-target="#the-covariant-derivative"><span class="header-section-number">2.1</span> The covariant derivative</a></li>
+  <li><a href="#the-riemann-curvature-tensor" id="toc-the-riemann-curvature-tensor" class="nav-link" data-scroll-target="#the-riemann-curvature-tensor"><span class="header-section-number">2.2</span> The Riemann curvature tensor</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="general_relativity.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">General Relativity</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>These are notes for the Astronomy and Astrophysics Research Laboratory at TJHSST. They started as an attempt to guide Kevin Boakye in his senior research project on AGNs.</p>
+<section id="intro" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Intro</h1>
+<p>The geometry we learn in middle and high school is Euclidean Geometry. The postulates of Euclidean geometry include an important one that says something equivalent to the following: &gt; For any infinite line <span class="math inline">\(L\)</span> and any point <span class="math inline">\(p\)</span> not on that line, there is another (infinite) line <span class="math inline">\(L'\)</span> through <span class="math inline">\(p\)</span> that does not intersect the original line <span class="math inline">\(L\)</span>. This new line <span class="math inline">\(L'\)</span> is unique. This is called Euclid’s fifth postulate.</p>
+<p>It turns out that this last requirement is important for many familiar consequences in (Euclidean) geometry. For example, it eventually implies Pythagoras’ Theorem and the fact that the sum of the sizes of the interior angles of a triangle add up to <span class="math inline">\(π\)</span> radians. These concepts all require the notion of <strong>length</strong> and <strong>angle</strong>. Conversely, <em>geometry</em> means the measuring of shapes (originally Earth), so let’s take a closer look at both of these concepts.</p>
+<section id="length" class="level4" data-number="1.0.0.1">
+<h4 data-number="1.0.0.1" class="anchored" data-anchor-id="length"><span class="header-section-number">1.0.0.1</span> Length</h4>
+<p>One of the more fundamental of Euclid’s postulates is that between any two distinct points <span class="math inline">\(p\)</span> and <span class="math inline">\(p'\)</span> there is a unique infinite line <span class="math inline">\(L\)</span> that contains both points. By another postulate, there is a line (segment) <span class="math inline">\(ℓ\)</span> that extends between the two points but not beyond. To this line, we can associate a length called the distance between <span class="math inline">\(p\)</span> and <span class="math inline">\(p'\)</span>.</p>
+</section>
+<section id="vectors" class="level4" data-number="1.0.0.2">
+<h4 data-number="1.0.0.2" class="anchored" data-anchor-id="vectors"><span class="header-section-number">1.0.0.2</span> Vectors</h4>
+<p>The notion of length can be augmented with a direction. There is a unique line segment between <span class="math inline">\(p\)</span> and <span class="math inline">\(p'\)</span> but there are two directions associated to it: one directed from <span class="math inline">\(p\)</span> to <span class="math inline">\(p'\)</span> and another directed from <span class="math inline">\(p'\)</span> to <span class="math inline">\(p\)</span>. Each of these defines a <strong>vector</strong>. If the first is called <span class="math inline">\(𝒗\)</span> then the second is called <span class="math inline">\(-𝒗\)</span>. The logic in this nomenclature it at starting from <span class="math inline">\(p\)</span> and following <span class="math inline">\(𝒗\)</span>, we end up at <span class="math inline">\(p'\)</span>. If we then follow <span class="math inline">\(-𝒗\)</span> then we end up back at <span class="math inline">\(p\)</span>, so overall, we went nowhere. This is captured in vector equations by stating that doing these two operations amounts to <span class="math inline">\(𝒗 + (-𝒗)= 𝒗 - 𝒗 = 𝟎\)</span>.</p>
+<p>Note that we can recover the length of a vector <span class="math inline">\(𝒗\)</span> by forgetting about the direction and remembering only the length. To minimize confusing notation, we refer to the length of <span class="math inline">\(𝒗\)</span> as <span class="math inline">\(v\)</span>. That is, it is the same letter but not bold. Sometimes it is useful to make a notation for this “forgetful functor” <span class="math display">\[
+|| 𝒗  || = v
+\]</span></p>
+</section>
+<section id="angle" class="level4" data-number="1.0.0.3">
+<h4 data-number="1.0.0.3" class="anchored" data-anchor-id="angle"><span class="header-section-number">1.0.0.3</span> Angle</h4>
+<p>In the scenario above, if we have a third point <span class="math inline">\(p''∉ L\)</span>, then there is a line (segment) <span class="math inline">\(ℓ'\)</span> with endpoints <span class="math inline">\(p\)</span> and <span class="math inline">\(p''\)</span>. The lines <span class="math inline">\(ℓ\)</span> and <span class="math inline">\(ℓ'\)</span> intersect only at <span class="math inline">\(p\)</span> and in doing so, there is some measure of how close <span class="math inline">\(ℓ\)</span> and <span class="math inline">\(ℓ'\)</span> are in alignment. This measure is called the angle between these lines; we will denote it by the symbol <span class="math inline">\(θ\)</span>.</p>
+<p>Going back to our vectors, let us denote the displacement from <span class="math inline">\(p\)</span> to <span class="math inline">\(p'\)</span> by <span class="math inline">\(𝒗\)</span>, as before, and the displacement from <span class="math inline">\(p\)</span> to <span class="math inline">\(p''\)</span> by <span class="math inline">\(𝒖\)</span>. The line segments being in different directions implies that <span class="math inline">\(𝒗\)</span> and <span class="math inline">\(𝒖\)</span> are not collinear: there is a “nontrivial” angle (<em>i.e.</em> not equal to <span class="math inline">\(0\)</span> or <span class="math inline">\(π\)</span>) between them. This angle is related to the lengths <span class="math inline">\(ℓ\)</span> and <span class="math inline">\(ℓ'\)</span> by the cosine function: <span class="math display">\[
+\cos θ = \frac{𝒗 ∙ 𝒖}{vu}
+\]</span> In this formula, the <span class="math inline">\(v=|| 𝒗 ||\)</span> and <span class="math inline">\(u=|| 𝒖 ||\)</span> refer to the lengths of the vectors <span class="math inline">\(𝒗\)</span> and <span class="math inline">\(𝒖\)</span>.</p>
+</section>
+<section id="inner-product" class="level4" data-number="1.0.0.4">
+<h4 data-number="1.0.0.4" class="anchored" data-anchor-id="inner-product"><span class="header-section-number">1.0.0.4</span> Inner product</h4>
+<p>The “<span class="math inline">\(\cdot\)</span>” in the formula above refers to the “dot product” we learn in math 4. It is related to the length function by the formula: <span class="math display">\[
+𝒗 ∙ 𝒗 = ||𝒗||² = v²
+\quad \quad ⇔ \quad \quad
+||𝒗|| = √{𝒗 ∙ 𝒗}
+\]</span> But we can do more with the dot product because we can use two different vectors. For example, we can compute <span class="math inline">\(𝒗 \cdot 𝒖\)</span> which we learn is the same as <span class="math inline">\(𝒖 \cdot 𝒗\)</span>. Indeed, in math 4 we are given these two vectors in <span class="math inline">\(x\)</span>-, <span class="math inline">\(y\)</span>-, and <span class="math inline">\(z\)</span>-components<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <span class="math display">\[
+\begin{aligned}
+\label{components}
+𝒖 = \left( \begin{array}{c}u¹ \\ u² \\ u³ \end{array}\right)
+\quad \quad {\mathrm{and}} \quad \quad
+𝒗 = \left( \begin{array}{c}v¹ \\ v² \\ v³ \end{array}\right)
+\end{aligned}
+\]</span> In terms of these components, we may explicitly define the dot product between <span class="math inline">\(𝒖\)</span> and <span class="math inline">\(𝒗\)</span> as <span class="math display">\[
+\begin{aligned}
+\label{Euclid}
+𝒖 ∙ 𝒗 = u¹v¹ + u²v² +u³v³
+\end{aligned}
+\]</span></p>
+<p>The dot product is also called the “Euclidean inner product”. It is an operation that takes two vectors and returns a number. In math jargon, such an object is called a <strong>bilinear form</strong>. Since <span class="math inline">\(𝒗 \cdot 𝒖 = 𝒖 \cdot 𝒗\)</span>, this is a <strong>symmetric</strong> bilinear form. It is also <strong>non-degenerate</strong> in this sense: If for any vector <span class="math inline">\(𝒖\)</span> the dot product <span class="math display">\[
+𝒖 ∙ 𝒗 = 0       \quad \quad \textrm{for all } 𝒗,
+\]</span> then <span class="math inline">\(𝒖=𝟎\)</span>. It is important to digest that this is not a condition on <span class="math inline">\(𝒖\)</span> or <span class="math inline">\(𝒗\)</span> because of the “any” and “for all”. Instead, it is a condition on the dot product which says that the dot product does not set to 0 any parts of any vectors. If the dot product between two vectors is <span class="math inline">\(0\)</span> it is because the vectors are orthogonal.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Exercise 1">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Exercise 1
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Show that the Euclidean inner product <span class="math inline">\(\eqref{Euclid}\)</span> is non-degenerate. Hint: Write the vector <span class="math inline">\(𝒖\)</span> in components. Then write any vector <span class="math inline">\(𝒗\)</span> in components and write out the dot product. Show that you can always pick components of <span class="math inline">\(𝒗\)</span> so that <span class="math inline">\(𝒖 \cdot 𝒗 ≠  0\)</span>.</p>
+</div>
+</div>
+</section>
+<section id="metric" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="metric"><span class="header-section-number">1.1</span> Metric</h2>
+<p>A non-degenerate, bilinear form is called a <strong>metric</strong>. As we have just seen, a metric takes two vectors and returns a number. This number is directly related to the geometry of the space: It tells us the lengths of vectors and the angles between them.</p>
+<p>The most general symmetric, bilinear form <span class="math inline">\(g\)</span> can be written explicitly if we use an orthonormal basis to write vectors in components like we did in <span class="math inline">\(\eqref{components}\)</span>. The words mean that we need one factor of <span class="math inline">\(𝒖\)</span> and one of <span class="math inline">\(𝒗\)</span> components each and it being a generally bilinear form can have any numerical factor for each such component: <span class="math display">\[
+\begin{aligned}
+g(𝒖, 𝒗) &amp;= g₁₁ u¹v¹ + g₁₂  u¹v² + g₁₃ u¹v³ \\
+    &amp;+g₂₁ u²v¹ + g₂₂  u²v² + g₂₃ u²v³ \\
+    &amp;+g₃₁ u³v¹ + g₃₂  u³v² + g₃₃ u³v³
+\end{aligned}
+\]</span> Wow, that’s a lot of terms! What happened to the more reasonable rule <span class="math inline">\(\eqref{Euclid}\)</span>??</p>
+<p>Before we answer this, it is useful to simplify some notation.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Exercise 2">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Exercise 2
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Show that <span class="math display">\[
+\begin{aligned}
+g(𝒖, 𝒗) &amp;= ∑_{i=1}³ ∑_{j=1}³ g_{ij} u^i v^j
+\end{aligned}
+\]</span> Show that if <span class="math inline">\(g\)</span> is symmetric, then <span class="math inline">\(g_{ji} = g_{ij}\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Exercise 3">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Exercise 3
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Show that the Euclidean inner product <span class="math inline">\(\eqref{Euclid}\)</span> has <span class="math inline">\(g_{ij}=1\)</span> is <span class="math inline">\(i=j\)</span> and <span class="math inline">\(g_{ij}=0\)</span> otherwise.</p>
+</div>
+</div>
+<p>The components of the Euclidean inner product are so important that they get their own symbol and a weird name: The <em>Kronecker <span class="math inline">\(\delta\)</span> symbol</em> is defined to have <span class="math display">\[
+δ_{ij} =\begin{cases}
+    1&amp; \textrm{ if } i=j\\
+    0&amp; \textrm{ otherwise}
+    \end{cases}
+\]</span> Therefore, we have shown that the components of the Euclidean inner product are those of the Kronecker <span class="math inline">\(\delta\)</span>.</p>
+<section id="curved-space" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="curved-space"><span class="header-section-number">1.1.1</span> Curved space</h3>
+<p>So what if the geometry is not Euclidean? If geometry is determined by the metric, then the answer is easy: There are lots of ways we can generalize the Kronecker metric. Firstly, we can include <strong>off-diagonal</strong> components. These are components of <span class="math inline">\(g_{ij}\)</span> where <span class="math inline">\(j≠i\)</span>. Previously, these were all <span class="math inline">\(0\)</span>, but they could be non-zero, provided only that they are symmetric and non-degenerate.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Exercise 4">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Exercise 4
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Calculate the number of independent components in a symmetric, non-degenerate bilinear form.</p>
+</div>
+</div>
+<p>A second generalization is that each component of the metric can be a <em>function</em> instead of a number. So the 6 components <span class="math inline">\(g_{ij}\)</span> are, in general, a family of 6 functions <span class="math inline">\(g_{ij}(x^k)\)</span>.</p>
+<p>In its most general form, this is what a curved space looks like. In <span class="math inline">\(D\)</span> dimensions it is described by a metric (<em>i.e.</em> a non-degenerate, symmetric, bilinear form) with <span class="math inline">\(\frac12D(D+1)\)</span> components, each of which is a function. This collection of functions tells us the length of any vector and the angle between any two vectors, and thus defines the geometry of the space.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Exercise 5">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Exercise 5
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Verify that a metric in <span class="math inline">\(D\)</span> dimensions has <span class="math inline">\(\frac12D(D+1)\)</span> independent components. Hint: Start with <span class="math inline">\(D=2\)</span> and <span class="math inline">\(D=3\)</span>, and try to generalize.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="dynamical-gravitational-field" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="dynamical-gravitational-field"><span class="header-section-number">1.2</span> Dynamical gravitational field</h2>
+<p>In Newtonian physics, the Universe consists of a flat 3-dimensional Euclidean space together with a universal clock (which itself is a 1-dimensional Euclidean space) with a bunch of stuff (matter) whizzing around in it.</p>
+<p>This whole notion is actually very weird: Who told you how to choose coordinates to write your equations for the whizzing matter and to use your right hand (really?? no lefties allowed??) to determine coordinate systems? The first of these assumptions is built into Newton’s laws. The second is added on <em>ad hoc</em> when you start to think about rotations and E&amp;M.</p>
+<p>Besides that, why is the space fixed and particles run around inside of it? In electricity and magnetism, we learn that these fields have their own geometry like homogeneous fields in capacitors, the radial Coulomb field, dipole fields, and so on. Why not also allow the background space to change (<em>i.e.</em> be dynamical too).</p>
+<p>Newton himself was displeased with the situation dictated by his own laws. As some point, he described his unease thus: &gt; It is inconceivable, that inanimate brute matter should, without the mediation of something else, which is not material, operate upon and affect other matter without mutual contact. That gravity should be innate, inherent, and essential to matter, so that one body may act upon another at a distance, through a vacuum, without the mediation of anything else, by and through which their action and force may be conveyed from one to another, is to me so great an absurdity, that I believe no man who has in philosophical matters a competent faculty of thinking, can ever fall into it. Gravity must be caused by an agent, acting constantly according to certain laws; but whether this agent be material or immaterial, I have left to the consideration of my readers.</p>
+<p>In modern language, Newton is saying that there should be a notion of a field that communicates forces and that gravity should be a field. It is important to understand that the concept of a force-carrying field was not understood until more than half a century later in the much more obvious context of electromagnetic fields. We now understand electromagnetic fields and also understand that the field for gravity is the metric.</p>
+</section>
+<section id="maxwells-field-equations-part-i" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="maxwells-field-equations-part-i"><span class="header-section-number">1.3</span> Maxwell’s field equations: Part I</h2>
+<p>The equations for the electromagnetic field were discovered over a span of almost eight decades of experiment and theory by Coulomb (1785), Ørsted (1820), Faraday (1821), Ampère (1825), Gau (1833), Lenz (1834), Maxwell (1862), and Heaviside (1884). As such, they should probably be called the Coulomb-Ørsted-Faraday-Ampère-Gau-Lenz-Maxwell-Heaviside equations, but nobody has the time for that, so we call them the Maxwell equations for short.</p>
+<p>You can take all the physics you want in high school, but you will not see the most illuminating form of the laws until you study at a university where you will eventually learn that, as Heaviside eventually put it, <span class="math display">\[
+\begin{aligned}
+∇ ∙ 𝑬 = 4πρ
+\quad \quad &amp; \quad \quad
+    ∇ × 𝑬 = -\frac 1c\frac{∂𝑩}{∂t} \\
+∇ ∙ 𝑩 = 0
+    \quad \quad &amp; \quad \quad
+    ∇ × 𝑩 = \frac {4π}c 𝑱 +\frac 1c\frac{∂𝑬}{∂t}
+\end{aligned}
+\]</span> In these equations, the electric and magnetic fields are denoted by <span class="math inline">\(𝑬\)</span> and <span class="math inline">\(𝑩\)</span>, respectively. If there is electrically charged matter present its distribution is described by the charge density by <span class="math inline">\(\rho\)</span> and the current density by <span class="math inline">\(𝑱\)</span>. The factors of <span class="math inline">\(4π\)</span> are the solid angles of a three-dimensional sphere that appear.</p>
+<p>We don’t have time to dwell on this form of the equations. (It is not yet the most illuminating form.) Instead, we will plow through with some observations to motivate some further improvements to this set of laws. (The first improvement was the introduction of the notion of <em>field</em>.)</p>
+<p>The first important observation was that these equations are not consistent with the Newtonian laws. To see this, let’s look at the second equation. The <span class="math inline">\(\nabla\)</span> on the LHS has dimensions of reciprocal length: <span class="math inline">\([\nabla]=\frac 1L\)</span>. The time derivative on the RHS has dimensions of reciprocal time: <span class="math inline">\([\partial/\partial t]=\frac 1T\)</span>, but there is a reciprocal factor of the speed of light.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Exercise 6">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Exercise 6
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Show that the electric and magnetic fields have the same dimensions <span class="math inline">\([𝑬] =[𝑩]\)</span>, and use the first equation to show that these dimensions correspond to “charge per unit area”. Use the fourth equation to determine the units of the current density and explain why these units for <span class="math inline">\(𝑱\)</span> are sensible.</p>
+</div>
+</div>
+<p>This exercise hints at a structure hidden in the field equations that treats space (<span class="math inline">\(\nabla\)</span>) and time (<span class="math inline">\(\partial/\partial t\)</span>) on a similar footing. In fact, the combination <span class="math inline">\(ct\)</span> has dimensions of length. In the following exercises, we will continue to investigate the meaning behind this observation and try to uncover the hidden structure. The punchline will be that there is a symmetry between space and time that differs from that of Newton’s laws. The new symmetry will be called <em>special relativity</em> it replaces the old symmetry which we can call Galilean relativity.</p>
+<p>When there is no electrically charged matter present, <span class="math inline">\(\rho=0\)</span> and <span class="math inline">\(𝑱=0\)</span> .</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Exercise 7">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Exercise 7
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Show that in vacuum, Maxwell’s field equations are symmetric under the replacement <span class="math inline">\(𝑬 → 𝑩\)</span> and <span class="math inline">\(𝑩 → - 𝑬\)</span>. Show that doing this transformation twice in a row is the same as doing nothing.</p>
+</div>
+</div>
+<p>This is an example of a <em>symmetry</em> of the field equations (<em>in vacuo</em>) called electro-magnetic duality. Continuing in vacuum, <span class="math display">\[
+\begin{aligned}
+∇ ∙ 𝑬 = 0
+\quad \quad &amp; \quad \quad
+    ∇ × 𝑬 = -\frac 1c\frac{∂𝑩}{∂t} \\
+∇ ∙ 𝑩 = 0
+    \quad \quad &amp; \quad \quad
+    ∇ × 𝑩 =  \frac 1c\frac{∂𝑬}{∂t}
+\end{aligned}
+\]</span> These equations have an important simplifying structure: They are linear in the electromagnetic field, meaning in the set consisting of both <span class="math inline">\(𝑬\)</span> and <span class="math inline">\(𝑩\)</span> together. This means that every term has exactly one factor of either.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Exercise 8">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Exercise 8
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Prove the principle of <em>superposition</em>: If <span class="math inline">\((𝑬₁ , 𝑩₁)\)</span> and <span class="math inline">\((𝑬₂ , 𝑩₂)\)</span> are two different sets of electromagnetic fields that both solve the vacuum Maxwell equations, then so does the combination <span class="math inline">\((𝑬₁+𝑬₂ , 𝑩₁+𝑩₂)\)</span>.</p>
+</div>
+</div>
+<p>This exercise means that if you have two solutions to the field equations, you can superpose them (add them together) to get another solution. This would not be true if there were <em>non-linear terms</em> like <span class="math inline">\(𝑬 × 𝑩\)</span> in the equations.</p>
+<p>If you take multi-variable calculus, you will learn that the operations <span class="math inline">\(\nabla \cdot\)</span> and <span class="math inline">\(\nabla ×\)</span> can be combined with themselves and each other. The results look messy: For any vector field <span class="math inline">\(𝒗\)</span> <span class="math display">\[
+\label{vecID1}
+∇ ∙ (∇ × 𝒗) = 0
+\]</span></p>
+<p><span class="math display">\[
+\label{vecID2}
+∇ × (∇ × 𝒗) = ∇ (∇ ∙ 𝒗) - ∇² 𝒗
+\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Exercise 9">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Exercise 9
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Using the first of these equations <span class="math inline">\(\eqref{vecID1}\)</span>, show that the second and third vacuum Maxwell equations are compatible. Similarly, show that the first and last equations are compatible. Finally, use the second equation <span class="math inline">\(\eqref{vecID2}\)</span> to combine the second and fourth equations. These simplify because of the first and third vacuum Maxwell equations. Use this to show that both of the following equations hold: <span class="math display">\[
+\left( -\frac 1{c²} \frac {∂²}{∂t²} + ∇²\right) 𝑬 =0
+\quad \quad \textrm{and}\quad \quad
+\left( -\frac 1{c²} \frac {∂²}{∂t²} + ∇²\right) 𝑩 =0
+\]</span></p>
+</div>
+</div>
+<p>Any function <span class="math inline">\(f\)</span> satisfying <span class="math display">\[
+\begin{aligned}
+\left( -\frac 1{c²} \frac {∂²}{∂t²} + ∇²\right) f =0
+\end{aligned}
+\]</span> is said to satisfy <em>the wave equation</em>. To understand why it is called this, let us first simplify to one time and one space dimension.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Exercise 10">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Exercise 10
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Show that in one space and one time dimension, the wave equation reduces to <span class="math display">\[
+\begin{aligned}
+0 = \left( -\frac 1{c²} \frac {∂²}{∂t²} + \frac {∂²}{∂x²}\right) f
+\end{aligned}
+\]</span> Use this to show that <span class="math inline">\(f(t,x) = A\sin(x±ct)\)</span> solves the wave equation.</p>
+</div>
+</div>
+<p>The solution you found above is called a plane wave solution.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Exercise 11">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Exercise 11
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>On <a href="https://desmos.com">desmos.com</a>, plot <span class="math inline">\(y=\sin(x-ct)\)</span>. Make a slider for <span class="math inline">\(c\)</span> with a range <span class="math inline">\([-10,10]\)</span> and a slider for <span class="math inline">\(t\)</span> with a positive range, say <span class="math inline">\([0,10]\)</span>. Set the <span class="math inline">\(t\)</span> slider to repeat (two right arrows) and play the <span class="math inline">\(t\)</span> animation. What do you see? What happens if you increase <span class="math inline">\(c\)</span>? What happens when <span class="math inline">\(c=0\)</span>? What about when <span class="math inline">\(c\)</span> is negative.</p>
+</div>
+</div>
+<p>What you have shown is that <span class="math inline">\(f(t,x) = A\sin(x-ct)\)</span> describes a sinusoidal wave that <em>propagates</em> (a.k.a. travels) to the right with speed <span class="math inline">\(c\)</span>. This is a general property of any solution to the wave equation.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Exercise 12">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Exercise 12
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Go back to the three-dimensional wave equation and show that <span class="math inline">\(f(t,x) = A\sin({\mathbf k}\cdot {\mathbf x} - ω t)\)</span> solves the wave equation provided that <span class="math display">\[
+\label{relDispersion}
+c² {\mathbf k} ∙ {\mathbf k} = ω²
+\]</span></p>
+</div>
+</div>
+<p>The formula above is called the relativistic dispersion relation. The vector <span class="math inline">\(\mathbf{k}\)</span> is called the wave vector and <span class="math inline">\(ω\)</span> is called the frequency. The wave vector determines the direction of the wave’s propagation.</p>
+<p>Taken all together, you have shown that the electromagnetic fields in vacuum are waves that travel as the speed <span class="math inline">\(c\)</span>. Any other inertial observer would come to the same conclusion, so this means that <em>the speed of electromagnetic waves in vacuum is a fundamental constant</em>: All inertial observers agree on the speed of light in vacuum. Just as with any fundamental constant, we can use it to convert units. In this case, we can <em>universally</em> associate a distance <span class="math inline">\(x⁰\)</span> to any time <span class="math inline">\(t\)</span> by defining <span class="math display">\[
+x⁰ = ct
+\]</span> Now that the time has dimensions of length, we can combine it with the other components of position <span class="math display">\[
+{\mathbf x} =\left( \begin{array}{c} x¹ \\ x² \\x³\end{array}\right)
+= \left( \begin{array}{c} x \\ y \\ z\end{array}\right)
+\]</span> Note that the superscript numbers are not powers; they are an index that indicates which component we are referring to. Instead of <span class="math inline">\(\mathbf{x}\)</span>, we can write <span class="math inline">\(x^i\)</span> where <span class="math inline">\(i=1\)</span> for the <span class="math inline">\(x\)</span>-component, <span class="math inline">\(i=2\)</span> for the <span class="math inline">\(y\)</span>-component, and <span class="math inline">\(i=3\)</span> for the <span class="math inline">\(z\)</span>-component. To this, we are adjoining the time component in the combination <span class="math inline">\(ct\)</span> (so it has the dimensions of length) and extend the range of the <span class="math inline">\(i\)</span> index to include <span class="math inline">\(0\)</span>. The tradition is to write the resulting <em>spacetime index</em> as a Greek letter from the middle of the alphabet: <span class="math display">\[
+x^μ = \begin{cases}
+    \quad ct &amp; \textrm{ if } μ = 0\\
+    \quad x &amp; \textrm{ if } μ = 1\\
+    \quad y &amp; \textrm{ if } μ = 2\\
+    \quad z &amp; \textrm{ if } μ = 3\\
+\end{cases}
+\]</span> Similarly, we take derivatives with respect to these coordinates <span class="math display">\[
+∂_μ =\frac ∂{∂x^μ} = \begin{cases}
+    \quad \frac 1c\frac ∂{∂t} &amp; \textrm{ if } μ = 0\\
+    \quad \frac ∂{∂x} &amp; \textrm{ if } μ = 1\\
+    \quad \frac ∂{∂y} &amp; \textrm{ if } μ = 2\\
+    \quad \frac ∂{∂z} &amp; \textrm{ if } μ = 3\\
+\end{cases}
+\]</span> Note that the index is naturally up on <span class="math inline">\(x^\mu\)</span> and down on <span class="math inline">\(\partial_\mu\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Exercise 13">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Exercise 13
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Calculate the components of <span class="math inline">\(\partial_\mu x^\nu\)</span> by checking each <span class="math inline">\(\mu, \nu, =0,1, 2,3\)</span>. Show that <span class="math display">\[
+∂_μ x^ν = δ_μ^ν
+\]</span> where, similarly to before, <span class="math inline">\(\delta_\mu^\nu\)</span> is <span class="math inline">\(1\)</span> if <span class="math inline">\(\mu =\nu\)</span> and <span class="math inline">\(0\)</span> otherwise.</p>
+</div>
+</div>
+<p>Note that if we try to successively take two derivatives of a function <span class="math inline">\(\partial_\mu \partial_\nu f\)</span> then we have two downstairs indices. Note also that <span class="math inline">\(\partial_\nu \partial_\mu f\)</span> so this looks like a symmetric bilinear form. As example of an equation that has two derivatives, let’s see how we can reproduce the wave equation.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Exercise 14">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Exercise 14
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The most general scalar equation constructed from exactly two derivatives can be written as <span class="math display">\[
+∑_{μ =0}³ ∑_{ν =0}³ η^{μν} ∂_μ ∂_ν f = 0
+\]</span> for some set of coefficients <span class="math inline">\(\eta^{\mu\nu}=\eta^{\nu\mu}\)</span>. Calculate what these coefficients are in the case of the wave equation. Define another set of coefficients <span class="math inline">\(\eta_{\mu\nu}\)</span> by requiring that these new coefficients satisfy <span class="math display">\[
+∑_{λ =0}³ η_{μλ }η^{λν} = δ_μ^ν
+\]</span> Argue that both <span class="math inline">\(\eta_{\mu\nu}\)</span> and <span class="math inline">\(\eta^{\mu\nu}\)</span> are non-degenerate.</p>
+</div>
+</div>
+<p>In the previous exercise, you should have found that <span class="math display">\[
+\label{Minkowski}
+(η_{μν}) = \mathrm{diag}(-1, 1,1,1)
+    = \left(\begin{array}{cccc}
+        -1 &amp;0&amp;0&amp;0\\
+        0&amp;1&amp;0&amp;0\\
+        0&amp;0&amp;1&amp;0\\
+        0&amp;0&amp;0&amp;1
+    \end{array}
+    \right)
+\]</span> This is a symmetric and non-degenerate bilinear form, and–as such–a spacetime metric.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Exercise 15">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Exercise 15
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Going back to the relativistic dispersion relation <span class="math inline">\(\eqref{relDispersion}\)</span>, define <span class="math inline">\(k⁰ := ω/c\)</span> and show that the relation is given by <span class="math display">\[
+k² := η_{μν} k^μ k^ν = 0
+\]</span></p>
+</div>
+</div>
+<p>Vectors like <span class="math inline">\(k^\mu\)</span> are called <em>spacetime vectors</em> because they contain both spacial components <span class="math inline">\(\mathbf{k}\)</span> but also another component that corresponds to time, in this case <span class="math inline">\(k⁰=ω/c\)</span>. (Recall that in the case of coordinates, the <span class="math inline">\(\mathbf{x}\)</span> where spacial and the 0-th component <span class="math inline">\(x⁰ = ct\)</span> corresponded to time.) These vectors are also called <em>4-vectors</em> (as opposed to the spacial 3-vectors we are used to from Newtonian mechanics).</p>
+<p>A <em>covector</em> is an object you can pair with a vector to make a number. In terms of indices, since the vector like <span class="math inline">\(k^\mu\)</span> has an index “up”, a covector naturally has an index down, for example <span class="math inline">\(p_\mu\)</span>, so that we can pair them up like <span class="math inline">\(∑_{\mu=0}³ p_\mu k^\mu\)</span> to make a scalar.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Exercise 16">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Exercise 16
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Show that if a vector like <span class="math inline">\(k^\mu\)</span> corresponds to a column <span class="math display">\[
+\left( k^μ \right) =\left( \begin{array}{c} k⁰\\ k¹ \\ k² \\k³\end{array}\right)
+\]</span> then a covector like <span class="math inline">\(p_\mu\)</span> must correspond to a row <span class="math display">\[
+\left( p_μ \right) =\left( p₀ , p₁ , p₂ ,p₃ \right)
+\]</span></p>
+</div>
+</div>
+<p>If you have a vector <span class="math inline">\(k^\mu\)</span> and a metric <span class="math inline">\(g_{\mu\nu}\)</span>, for example, the Minkowski metric, then you can make the covector <span class="math inline">\(k_\mu\)</span> associated to the vector by combining <span class="math display">\[
+k_μ := ∑_{ν =0}³ g_{μν} k^ν
+\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Exercise 17">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Exercise 17
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Fix the metric to be the Minkowski metric <span class="math inline">\(\eqref{Minkowski}\)</span>, and calculate the components of the covector <span class="math inline">\(k_\mu\)</span> in terms of the components of <span class="math inline">\(k^\mu\)</span>. Are they exactly equal?</p>
+</div>
+</div>
+</section>
+<section id="energy-momentum-and-mass" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="energy-momentum-and-mass"><span class="header-section-number">1.4</span> Energy, momentum, and mass</h2>
+<div class="callout callout-style-default callout-note callout-titled" title="Exercise 18">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Exercise 18
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Determine the dimensions of the linear momentum <span class="math inline">\(𝒑\)</span>, the energy <span class="math inline">\(E\)</span>, the mass <span class="math inline">\(m\)</span>, and the speed of light <span class="math inline">\(c\)</span>. Combine these elements into a 4-vector <span class="math inline">\(p^\mu\)</span> and a scalar with units of momentum. Using the Minkowski metric <span class="math inline">\(\eta_{\mu\nu}\)</span> define the square of the momentum <span class="math inline">\(p²\)</span> and construct a formula relating it to the mass. To fix the coefficient in your formula check that when <span class="math inline">\(𝒑=𝟎\)</span>, you find that <span class="math inline">\(E=mc²\)</span> is a solution.</p>
+</div>
+</div>
+<p>A linear transformation is one that takes a vector <span class="math inline">\(𝒖\)</span> to another vector <span class="math inline">\(𝒗\)</span> of the form <span class="math inline">\(𝒖  ↦ 𝒗 = \Lambda(𝒖)\)</span>. Written out in terms of indices, this formula looks like <span class="math inline">\(v^\mu = ∑_{\nu =0}³ \Lambda^\mu{}_\nu u^\nu\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Exercise 19">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Exercise 19
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Suppose a linear transformation preserves the Minkowski square <span class="math inline">\(k²\)</span> of a vector <span class="math inline">\(k^\mu\)</span>. Show that this implies that <span class="math display">\[
+∑_{ρ  =0}³∑_{σ =0}³ Λ^ρ{}_μ η_{ρσ} Λ^σ{}_ν
+=∑_{ρ  =0}³∑_{σ =0}³ (Λ^T)_μ{}^ρ η_{ρσ} Λ^σ{}_ν
+= η_{μν}
+\]</span> Show that as a matrix equation, this reads <span class="math inline">\(\Lambda^T \Lambda = \mathbf{1}\)</span>.</p>
+</div>
+</div>
+<p>A matrix that satisfies <span class="math inline">\(\Lambda^T \Lambda = \mathbf{1}\)</span> is called an orthogonal matrix. It means that the transpose matrix is the inverse <span class="math inline">\(\Lambda^T =\Lambda^{-1}\)</span>. Above you showed that the momentum <span class="math inline">\(p^\mu\)</span> of a particle of mass <span class="math inline">\(m\)</span> satisfies <span class="math display">\[
+p² = - (mc)²
+\]</span> and now you are showing that this relation is unchanged by linear transformations that are orthogonal with respect to the Minkowski metric. Such a transformation is called a <em>Lorentz transformation</em>. When spacetime formulae are written correctly in terms of spacetime vectors, covectors, and tensors with indices contracted with the Minkowski metric, then these equations will automatically transform correctly under Lorentz transformations. We say that the equations are <em>manifestly (Lorentz-)covariant</em>.</p>
+</section>
+<section id="maxwells-field-equations-part-ii" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="maxwells-field-equations-part-ii"><span class="header-section-number">1.5</span> Maxwell’s field equations: Part II</h2>
+<p>In this section, we are going to rewrite the Maxwell equations in a form that make the 4-dimensional spacetime form apparent. When a property is apparent in this way, we say that the property is <em>manifest</em>. We will be seeking a manifestly space-time symmetric form of the Maxwell equations.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Exercise 20">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Exercise 20
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To begin, go back to the Maxwell equations and combine the mass density and current density into a 4-vector <span class="math inline">\(J^\mu\)</span>.</p>
+</div>
+</div>
+<p>Next, we need to combine the electric and magnetic fields, but here we face an apparent problem: <span class="math inline">\(𝑬\)</span> and <span class="math inline">\(𝑩\)</span> cannot be vectors! If they were vectors, then to elevate them to spacetime 4-vectors we would need an additional scalar field each. Since Maxwell’s equations have not such scalars, we cannot make two 4-vectors. What is going on here is that neither of these fields is really a vector.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Exercise 21">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Exercise 21
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Count the number of electromagnetic fields in the combination <span class="math inline">\((𝑬,𝑩)\)</span>. Next, count the number of elements in a 4-dimensional vector, a symmetric <span class="math inline">\(4×4\)</span> matrix, and an antisymmetric <span class="math inline">\(4×4\)</span> matrix. In which of these 4D objects can we embed the electromagnetic fields?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Exercise 22">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Exercise 22
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Argue that in 3D, you can embed the 3 components of a vector <span class="math inline">\(B^k\)</span> into a <span class="math inline">\(3×3\)</span> antisymmetric matrix <span class="math inline">\(B_{ij}\)</span>. Define the Levi-Cevita 3-tensor <span class="math inline">\(\varepsilon_{ijk}\)</span> by the formula <span class="math display">\[
+\begin{aligned}
+𝜀_{ijk} := \begin{cases}
+    +1 &amp; \textrm{ for } (i,j,k)=(1,2,3) \textrm{ or } (2,3,1) \textrm{ or } (3,1,2)\\
+    -1 &amp; \textrm{ for } (i,j,k)=(2,1,3) \textrm{ or } (1,3,2) \textrm{ or } (3,2,1)\\
+    0 &amp; \textrm{ otherwise }
+\end{cases}
+\end{aligned}
+\]</span> Use it to define <span class="math inline">\(B_{ij} = ∑_{k=1}³ \varepsilon_{ijk} B^k\)</span> and calculate the components of the matrix in terms of the components of the vector.</p>
+</div>
+</div>
+<p>Now we are in business: We can lift the 3D magnetic field matrix to an antisymmetric <span class="math inline">\(4×4\)</span> matrix <span class="math inline">\(F_{\mu\nu}\)</span> with exactly enough room left to accommodate the 3 electric field components. When we restrict to spacial components, we recover the magnetic field <span class="math inline">\(F_{ij}=B_{ij}= ∑_{k=1}³ \varepsilon_{ijk} B^k\)</span>. The remaining components must have exactly one time component <span class="math inline">\(F_{0j}\)</span> because, by antisymmetry <span class="math inline">\(F₀₀ ≡ 0\)</span>. As you will demonstrate presently, it turns out that the correct normalization is <span class="math inline">\(F_{0j} = - F_{j0}= - E_j\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Exercise 23">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Exercise 23
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Consider the equation <span class="math display">\[
+\label{MaxSource}
+∑_{μ =0}³ ∂_μ F^{μν}=4π J^ν
+\]</span> Reducing it to 3D notation, we will have a scalar time component and a 3D vector component. Expand these two equations out to show that you recover exactly the correct components of the first and last of Maxwell’s equations, respectively.</p>
+</div>
+</div>
+<p>To find the remaining equations, it helps to elevate the 3D Levi-Cevita tensor to the 4D Levi-Cevita tensor. Define <span class="math inline">\(\varepsilon_{\mu\nu\rho\sigma}\)</span> to be totally antisymmetric in its indices and normalize it so that <span class="math inline">\(\varepsilon_{0ijk} = \varepsilon_{ijk}\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Exercise 24">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Exercise 24
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Raise the indices on the Levi-Cevita symbol using the Minkowski metric to show that <span class="math inline">\(\varepsilon^{0ijk} = - \varepsilon^{ijk}\)</span>.</p>
+</div>
+</div>
+<p>Let’s now find the remaining Maxwell equations!</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Exercise 25">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Exercise 25
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Expand out the equations <span class="math display">\[
+\label{MaxBI}
+∑_{ν =0}³ ∑_{ρ =0}³ ∑_{σ =0}³ 𝜀_{μ ν ρ σ} ∂^ν  F^{ρσ} = 0
+\]</span> into a scalar equation and a 3D vector equation. Show that you recover the third and second Maxwell equations, respectively.</p>
+</div>
+</div>
+<p>Equations <span class="math inline">\(\eqref{MaxSource}\)</span> and <span class="math inline">\(\eqref{MaxBI}\)</span> are the full set of Maxwell equations written in a manifestly Lorentz-covariant form.</p>
+<section id="einstein-summation-convention" class="level4" data-number="1.5.0.1">
+<h4 data-number="1.5.0.1" class="anchored" data-anchor-id="einstein-summation-convention"><span class="header-section-number">1.5.0.1</span> Einstein summation convention</h4>
+<p>The summation signs are pretty annoying to write and they clutter up the notation. Additionally, they are superfluous because whenever they occur they come together with two indices of the type they are summing over, and furthermore, those indices appear in opposite positions with one up and another down. For example, in <span class="math inline">\(\eqref{MaxSource}\)</span> the only summation <span class="math inline">\(∑_{\mu =0}³\)</span> is over the index that appears doubled in the expression <span class="math inline">\(\partial_\mu F^{\mu\nu}\)</span>. Einstein pointed out that this is always the situation and he suggested we just not write the <span class="math inline">\(∑_{\mu =0}³\)</span> part and interpret <span class="math inline">\(\partial_\mu F^{\mu\nu}\)</span> as implying that the <span class="math inline">\(\mu\)</span> index is summed from <span class="math inline">\(0\)</span> to <span class="math inline">\(3\)</span>. In other words <span class="math inline">\(\partial_\mu F^{\mu\nu}\)</span> means <span class="math inline">\(∑_{\mu =0}³\partial_\mu F^{\mu\nu}\)</span>. Similarly, we abbreviate <span class="math inline">\(\eqref{MaxBI}\)</span> to <span class="math inline">\(\varepsilon_{\mu \nu \rho \sigma} \partial^\nu  F^{\rho\sigma} = 0\)</span>. Since the indices <span class="math inline">\(\nu\)</span>, <span class="math inline">\(\rho\)</span>, and <span class="math inline">\(\sigma\)</span> are repeated, this equation means that we are summing over them. In sum (haha… get it?), the Maxwell equations are <span class="math display">\[
+𝜀^{μ ν ρ σ} ∂_ν  F_{ρσ} = 0
+\quad \quad \textrm{and}\quad \quad
+∂_μ F^{μν}=4π J^ν
+\]</span> Note that in the first equation all the indices have been flipped.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Exercise 26">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Exercise 26
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Show that if <span class="math inline">\(\varepsilon_{\mu \nu \rho \sigma} \partial^\nu  F^{\rho\sigma} = 0\)</span> then by raising/lowering indices with the metric we can put it in the equivalent form <span class="math inline">\(\varepsilon^{\mu \nu \rho \sigma} \partial_\nu  F_{\rho\sigma} = 0\)</span>. Furthermore, show that <span class="math inline">\(F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu\)</span> is a solution to this equation. Finally, why is <span class="math inline">\(F_{\mu\nu} \stackrel?= \partial_\mu A_\nu\)</span> not an acceptable solution?</p>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="gravitation-as-a-field-theory" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Gravitation as a field theory</h1>
+<p>In order to fix the problems Newton had with his formulation of gravitation, we have to find a field theory for it. Einstein did this by realizing that the metric is the correct field to use. We need to generalize the constant Minkowski metric <span class="math inline">\(\eta\)</span> to a non-constant spacetime metric <span class="math inline">\(g\)</span> and we need to find a set of equations analogous to Maxwell’s equations for <span class="math inline">\(F\)</span> so that when we solve them (like we did for the wave solutions) we get a solution for the metric <span class="math inline">\(g\)</span> describing the spacetime geometry.</p>
+<p>How do we figure out how to construct this set of differential equations? The idea is quite simple. First we generalize the notion of Lorentz symmetry and apply it to the spacetime metric. Then we need to find something that is covariant under this generalized transformation.</p>
+<p>We introduce the line element <span class="math display">\[
+ds² = g_{μ ν}(x) dx^μ ⊗ dx^ν.
+\]</span> Here and henceforth we are using the Einstein summation convention: the indices <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\nu\)</span> are repeated and are in the correct positions (one up and one down), so this means that we are summing over each from 0 to 3.</p>
+<p>Under a <em>general coordinate transformation</em> the coordinates <span class="math inline">\(x^\mu\)</span> are replaced with new coordinates <span class="math inline">\(y^\mu\)</span>. These new coordinates can depend in an arbitrary way on the old coordinates <span class="math inline">\(x^\mu\)</span>, so they are general functions of <span class="math inline">\(x^\mu\)</span>, which we write as <span class="math inline">\(y^\mu(x^\nu)\)</span>. The only requirement on these functions is that they are smooth and that the Jacobian matrix <span class="math display">\[
+\frac {∂y^μ}{∂x^ν}
+\]</span> is invertible. This guarantees that the transformation <span class="math inline">\(x→y\)</span> is non-singular and that in principle, we can go backwards <span class="math inline">\(y→x\)</span>. If we insist that distances are independent of which coordinate systems we chose to measure them, this means the line element must be invariant under a change of coordinates <span class="math inline">\(x→y(x)\)</span>. But <span class="math inline">\(dx^\mu → dy^\mu = \frac {\partial y^\mu}{\partial x^\nu} dx^\nu\)</span> so the line element <span class="math inline">\(ds²\)</span> transforms by <span class="math display">\[
+g_{μ ν}(x) dx^μ ⊗ dx^ν → g_{μ ν}(y) dy^μ ⊗ dy^ν= g_{μ ν}(y) \frac {∂y^μ}{∂x^ρ} \frac {∂y^ν}{∂x^σ}dx^ρ⊗dx^σ =g_{μ ν}(x) dx^μ ⊗ dx^ν
+\]</span> This means that the metric must transform as <span class="math display">\[
+\label{E:tensor}
+g_{μ ν}(y) =\frac {∂x^ρ}{∂y^μ} g_{ρ σ}(x)  \frac {∂x^σ}{∂y^ν}
+\]</span> where <span class="math inline">\(\frac {\partial x}{\partial y}\)</span> are the inverse Jacobian matrices. This means that as matrices <span class="math display">\[
+\label{E:JacInv}
+\frac {∂x^μ}{∂y^λ} \frac {∂y^λ}{∂x^ν}  = δ_ν^μ
+\quad \textrm{and}\quad
+\frac {∂x^λ}{∂y^μ} \frac {∂y^ν}{∂x^λ} =  δ^ν_μ
+\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Exercise 27">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Exercise 27
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Recall that a metric <span class="math inline">\(g_{\mu \nu}\)</span> is non-degenerate and therefor has an inverse <span class="math inline">\(g^{\mu \nu}\)</span>. Show that <span class="math inline">\(g^{\mu \nu}g_{\mu \nu}=4\)</span> in four spacetime dimensions and <span class="math inline">\(D\)</span> in <span class="math inline">\(D\)</span>-dimensional spacetime. Numbers do not change under general coordinate transformations. Use this and the rule <span class="math inline">\(\eqref{E:tensor}\)</span> to derive a rule for the transformation of <span class="math inline">\(g^{\mu \nu}\)</span>.</p>
+</div>
+</div>
+<p>What you just derived is the transformation rule for a tensor field with two indices up. The rule <span class="math inline">\(\eqref{E:tensor}\)</span> is the rule for a tensor field with two indices down. Similarly, a (co-)vector field transforms by <span class="math display">\[
+v^μ(x) → v^μ(y) = \frac {∂y^μ}{∂x^ν}v^ν(x)
+\quad \textrm{and}\quad
+a_μ(x) → a_μ(y)=\frac {∂x^ν}{∂y^μ} a_ν(x)
+\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Exercise 28">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Exercise 28
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Explain in words how these are different. Use your observations to guess the correct transformation of a more complicated tensor of the form <span class="math display">\[
+T_{μ₁ ... μ_p}^{ν₁ ... ν_q} (x) →
+    T_{μ₁ ... μ_p}^{ν₁ ... ν_q} (y) = ???
+\]</span></p>
+</div>
+</div>
+<section id="the-covariant-derivative" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="the-covariant-derivative"><span class="header-section-number">2.1</span> The covariant derivative</h2>
+<p>Not everything transforms like a tensor. Consider a vector field <span class="math inline">\(v^\mu(x)\)</span> and let’s take its derivative <span class="math inline">\(\partial_\nu\)</span>. To the transformation of <span class="math inline">\(\partial_\nu v^\mu(x)\)</span>, it helps to first undo the shorthand: <span class="math display">\[
+∂_νv^μ(x) = \frac{∂v^μ(x)}{∂x^ν} → \frac{∂v^μ(y)}{∂y^ν}
+    = \frac {∂x^ρ}{∂y^ν}\frac{∂}{∂x^ρ}\left( \frac {∂y^μ}{∂x^σ}v^σ(x)\right)
+    = \frac {∂x^ρ}{∂y^ν}\frac {∂²y^μ}{∂x^ρ∂x^σ} v^σ(x)
+    +\frac {∂x^ρ}{∂y^ν}\frac {∂y^μ}{∂x^σ} \frac{∂v^σ(x)}{∂x^ρ}
+\]</span> The second term on the RHS is the correct transformation for a tensor with one index up and one down, but the first term is all wrong. This is happening because the derivative acts on the Jacobian on its way to acting on the vector field.</p>
+<p>Einstein argued that a good theory should not depend on the coordinates you choose to describe it.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> To develop such a theory, an indispensable tool is the ability to define tensors from other tensors. Specifically, we need to be able to generalize the derivative so that the new derivative of a tensor is also a tensor. This new derivative is called the <em>covariant derivative</em> because it varies (changes under coordinate redefinitions) the same way the tensor does. The coolest symbol in this set of notes is <span class="math inline">\(\nabla\)</span> (by the way, it’s called “nabla” or “del”), so we will use that. The proposal is to replace <span class="math inline">\(\partial_\nu v^\mu→ \nabla_\nu v^\mu\)</span> and insist that <span class="math display">\[
+\label{E:covariantD}
+∇_ν v^μ(y) = \frac {∂x^ρ}{∂y^μ}\frac {∂y^μ}{∂x^σ} ∇_ρv^σ(x)
+\]</span></p>
+<p>Since we are generalizing the derivative, we should try to have the first part of <span class="math inline">\(\nabla_\nu = \partial_\nu + \cdots\)</span>. But recall that the derivative was the part that gave the non-tensor transformation, so to cancel it, we need the <span class="math inline">\(\cdots\)</span> part to also have a non-tensor transformation. In other words, we want <span class="math inline">\(\nabla ~ \partial + \Gamma\)</span> where <span class="math inline">\(\Gamma\)</span> has a non-tensor part to its transformation. If we can do that, then we use it to cancel the analogous part from the first term.</p>
+<p>Next, we will work out how this goes in detail. The calculations are pretty hard-core, but they are typical of calculations in GR. Define the <em>covariant derivative</em> <span class="math display">\[
+\label{E:covariantDerivative}
+∇_ν v^μ(x) := ∂_ν v^μ(x) + Γ^μ _{νλ}(x) v^λ(x)
+\]</span> for some field <span class="math inline">\(\Gamma^\mu _{\nu\lambda}(x)\)</span>. We will show that if, under a coordinate transformation <span class="math display">\[
+Γ^μ _{νλ}(y) = \frac {∂y^μ}{∂x^ρ}\frac {∂x^σ}{∂y^ν}\frac {∂x^τ}{∂y^λ} Γ^ρ_{στ}(x) + \frac {∂²x^ρ}{∂y^ν∂y^λ} \frac {∂y^μ}{∂x^ρ}
+\]</span> then the covariant derivative <span class="math inline">\(\eqref{E:covariantDerivative}\)</span> transforms as <span class="math inline">\(\eqref{E:covariantD}\)</span>, that is, covariantly.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Proof">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Proof
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This proof is a calculation with many steps and calculus tricks. It is okay if you don’t understand it on a first pass. First, we write out the definition of the covariant derivative and the transformation of the terms <span class="math display">\[
+\begin{aligned}
+∇_ν v^μ(y) &amp;= ∂_ν v^μ(y) + Γ^μ _{νλ}(y) v^λ(y) \\
+&amp;= \frac {∂x^ρ}{∂y^ν}\frac {∂²y^μ}{∂x^ρ∂x^σ} v^σ(x)
+    +\frac {∂x^ρ}{∂y^ν}\frac {∂y^μ}{∂x^σ} \frac{∂v^σ(x)}{∂x^ρ} +    Γ^μ _{νλ}(y) \frac {∂y^λ}{∂x^σ}v^σ(x) \\
+\end{aligned}
+\]</span> The second term is the covariant part of the transformation of <span class="math inline">\(\partial v\)</span>. Let’s complete it by writing out the transformation of <span class="math inline">\(\Gamma\)</span> according to the rule above: <span class="math display">\[
+\frac {∂x^ρ}{∂y^ν}\frac {∂y^μ}{∂x^σ} Γ^σ_{ρτ}(x)v^τ (x)
++ \frac {∂²x^ρ}{∂y^ν∂y^λ} \frac {∂y^μ}{∂x^ρ}
+    \frac {∂y^λ}{∂x^σ}v^σ(x)
+\]</span> The structure of the Jacobian terms on <span class="math inline">\(\Gamma\)</span> is exactly that of the terms on <span class="math inline">\(\partial v\)</span> so we can combine them into <span class="math display">\[
+\frac {∂x^ρ}{∂y^ν}\frac {∂²y^μ}{∂x^ρ∂x^σ} v^σ(x)
++\frac {∂x^ρ}{∂y^ν}\frac {∂y^μ}{∂x^σ} \left[
+    \frac{∂v^σ(x)}{∂x^ρ} + Γ^σ_{ρτ}(x)v^τ (x) \right]
+    + \frac {∂²x^ρ}{∂y^ν∂y^λ} \frac {∂y^μ}{∂x^ρ}
+    \frac {∂y^λ}{∂x^σ}v^σ(x)
+\]</span> The term in brackets is <span class="math inline">\(\nabla v\)</span>, so the middle term is the same as the RHS of <span class="math inline">\(\eqref{E:covariantD}\)</span>. Therefore, if we can show that the first and last terms cancel then we are done. In order to see this, we first rewrite these terms writing out the derivatives somewhat more explicitly: <span class="math display">\[
+\frac {∂x^ρ}{∂y^ν}\frac {∂}{∂x^ρ} \left(\frac {∂y^μ}{∂x^σ} \right)v^σ(x)
+    + \frac {∂}{∂y^ν}\left( \frac {∂x^ρ}{∂y^λ} \right)\frac {∂y^μ}{∂x^ρ}
+    \frac {∂y^λ}{∂x^σ}v^σ(x)
+\]</span> On the first term, we use the chain rule from calculus: <span class="math display">\[
+\frac {∂x^ρ}{∂y^ν}\frac {∂}{∂x^ρ} = \frac {∂}{∂y^ν}
+\]</span> On the second term we do something similar: Note that the derivative acts on the first Jacobian matrix which is contracted on the second Jacobian matrix. Recall also that these matrices are inverse to one another and they are contracted, so they satisfy <span class="math inline">\(\eqref{E:JacInv}\)</span>. Now do a calculus trick (related to integration by parts): We take a derivative of this latter equation to get <span class="math display">\[
+0=\frac {∂}{∂y^ν}\left( δ^μ_λ \right)
+=\frac {∂}{∂y^ν}\left( \frac {∂x^ρ}{∂y^λ} \frac {∂y^μ}{∂x^ρ}\right)
+=\frac {∂}{∂y^ν}\left( \frac {∂x^ρ}{∂y^λ} \right)\frac {∂y^μ}{∂x^ρ}
++\frac {∂x^ρ}{∂y^λ} \frac {∂}{∂y^ν}\left( \frac {∂y^μ}{∂x^ρ}\right)
+\]</span> This implies that <span class="math display">\[
+\frac {∂}{∂y^ν}\left( \frac {∂x^ρ}{∂y^λ} \right)\frac {∂y^μ}{∂x^ρ} =
+-\frac {∂x^ρ}{∂y^λ} \frac {∂}{∂y^ν}\left( \frac {∂y^μ}{∂x^ρ}\right)
+\]</span> Taken together, this shows that the last two terms reduce to <span class="math display">\[
+\frac {∂}{∂y^ν} \left(\frac {∂y^μ}{∂x^σ} \right)v^σ(x)
+    -  \frac {∂x^ρ}{∂y^λ} \frac {∂}{∂y^ν}\left(\frac {∂y^μ}{∂x^ρ}\right)
+    \frac {∂y^λ}{∂x^σ}v^σ(x)
+\]</span> In the second term the first and last Jacobians are contracted on the <span class="math inline">\(\lambda\)</span> index, so they reduce to a Kronecker delta again. Thus, the non-covariant terms reduce to <span class="math display">\[
+\frac {∂}{∂y^ν} \left(\frac {∂y^μ}{∂x^σ} \right)v^σ(x)
+    - \frac {∂}{∂y^ν}\left( \frac {∂y^μ}{∂x^σ}\right)v^σ(x) ≡ 0
+\]</span></p>
+</div>
+</div>
+<p>In this proof, we showed that the noncovariant terms in the transformation of <span class="math inline">\(\nabla v\)</span> canceled, leaving only the covariant ones. For this reason, <span class="math inline">\(\nabla v\)</span> transforms covariantly provided <span class="math inline">\(v\)</span> does, thereby justifying the term “covariant derivative”.</p>
+</section>
+<section id="the-riemann-curvature-tensor" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="the-riemann-curvature-tensor"><span class="header-section-number">2.2</span> The Riemann curvature tensor</h2>
+<p>Suppose we have an arbitrary vector <span class="math inline">\(v^\lambda\)</span> and we take two covariant derivatives of it. For example consider <span class="math inline">\(\nabla_\mu \nabla_\nu v^\lambda\)</span>. We could have taken the derivatives in the opposite order: <span class="math inline">\(\nabla_\nu \nabla_\mu v^\lambda\)</span>. What is the difference?</p>
+<p>…</p>
+<p><span class="math display">\[
+R^λ{}_{μνρ} v^ρ = ∇_μ ∇_ν v^λ - ∇_ν ∇_μ v^λ
+\]</span></p>
+<p>It is a tedious exercise to work out the details, but it is not hard to see that the structure of the Riemann tensor is <span class="math display">\[
+{\mathbf{Riem}}~ ∂Γ + Γ Γ
+\]</span></p>
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Note that this requires a choice of <strong>orthonormal</strong> <strong>basis</strong> which in this case is given by a right-handed coordinate system (<span class="math inline">\(x\)</span>-, <span class="math inline">\(y\)</span>-, and <span class="math inline">\(z\)</span>-axes).<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Recall that Newton took the opposite point of view. His first law established a preferred set of coordinates: the Cartesian coordinates of an observer absolutely at rest. This was then generalized to inertial frames of coordinates systems and then, finally, the second law was established in such frames. In Einstein’s theory, the field equations should hold in any system of coordinates.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
