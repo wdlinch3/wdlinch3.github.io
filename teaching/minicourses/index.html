@@ -11,8 +11,8 @@ title: Teaching Minicourses
 
 <p>
   These materials are copied from the public <a href="https://github.com/wdlinch3/minicourses_release">minicourses release repository</a>
-  so the student-facing artifacts can be read from this site. The collection is uneven by design: some minicourses are polished PDF
-  packets, some are rendered web notes, and some are source notebooks for ongoing guided work.
+  so the student-facing artifacts can be read from this site. The collection is uneven by design: some minicourses are rendered web notes
+  with matching PDFs, some are older PDF packets, and some also expose source notebooks or TeX files for guided work.
 </p>
 
 <div class="section-grid">
@@ -26,22 +26,38 @@ title: Teaching Minicourses
     <ul class="plain-links">
       <li><a href="{{ '/teaching/minicourses/materials/groups/groups.html' | relative_url }}">View HTML</a></li>
       <li><a href="{{ '/teaching/minicourses/materials/groups/Groups.pdf' | relative_url }}">Read PDF</a></li>
-      <li><a href="{{ '/teaching/minicourses/materials/groups/Groups.tex' | relative_url }}">TeX source: Rotations</a></li>
+      <li>Source: <a href="{{ '/teaching/minicourses/materials/groups/Groups.tex' | relative_url }}">TeX</a></li>
     </ul>
   </section>
 
   <section class="section-card" id="linear_algebra">
-    <h2>Linear Algebra</h2>
+    <h2>Linear Algebra / Sturm-Liouville</h2>
     <p>
       A Research Club packet on orthogonal functions and the bridge from finite-dimensional linear algebra to analysis. It begins with
       eigenvectors, adjoints, self-adjoint operators, and Gram-Schmidt, then moves into function spaces, orthogonal polynomials,
       Sturm-Liouville problems, Fourier series, spherical symmetry, and complex Hilbert spaces.
     </p>
+    <p>
+      This packet is still in an older render style, so the PDF remains the primary reading copy for now.
+    </p>
     <ul class="plain-links">
       <li><a href="{{ '/teaching/minicourses/materials/linear_algebra/sturm_liouville.pdf' | relative_url }}">Read PDF</a></li>
-      <li><a href="{{ '/teaching/minicourses/materials/linear_algebra/sturm_liouville.html' | relative_url }}">View HTML</a></li>
-      <li><a href="{{ '/teaching/minicourses/materials/linear_algebra/SturmLiouville.tex' | relative_url }}">TeX source</a></li>
-      <li><a href="{{ '/teaching/minicourses/materials/linear_algebra/sturm_liouville.md' | relative_url }}">Source files</a></li>
+      <li><a href="{{ '/teaching/minicourses/materials/linear_algebra/sturm_liouville.html' | relative_url }}">View HTML legacy render</a></li>
+      <li>Source: <a href="{{ '/teaching/minicourses/materials/linear_algebra/sturm_liouville.md' | relative_url }}">Markdown</a>, <a href="{{ '/teaching/minicourses/materials/linear_algebra/SturmLiouville.tex' | relative_url }}">TeX</a></li>
+    </ul>
+  </section>
+
+  <section class="section-card" id="time_translations">
+    <h2>Time Translations</h2>
+    <p>
+      A rendered web packet that develops time evolution by analogy with spatial translations. Starting from momentum as the generator of
+      translations, it asks for the generator of time translations, identifies the role of energy, derives Hamilton's canonical equations,
+      introduces Poisson brackets and conservation of the Hamiltonian, and then turns toward Hamiltonian quantization.
+    </p>
+    <ul class="plain-links">
+      <li><a href="{{ '/teaching/minicourses/materials/time_translations/time_translations.html' | relative_url }}">View HTML</a></li>
+      <li><a href="{{ '/teaching/minicourses/materials/time_translations/time_translations.pdf' | relative_url }}">Read PDF</a></li>
+      <li>Source: <a href="{{ '/teaching/minicourses/materials/time_translations/time_translations.ipynb' | relative_url }}">Notebook</a>, <a href="{{ '/teaching/minicourses/materials/time_translations/time_translations.tex' | relative_url }}">TeX</a></li>
     </ul>
   </section>
 
@@ -54,34 +70,42 @@ title: Teaching Minicourses
       spacetime metric, the Hodge dual, and Maxwell's equations.
     </p>
     <p>
-      The release provides this minicourse as a Jupyter notebook; local HTML and PDF renders are included here for easier reading.
+      The HTML and PDF are the intended reading versions; the notebook remains available for readers who want the source workflow.
     </p>
     <ul class="plain-links">
-      <li><a href="{{ '/teaching/minicourses/materials/qm_to_em/qm_to_em.pdf' | relative_url }}">Read PDF</a></li>
       <li><a href="{{ '/teaching/minicourses/materials/qm_to_em/qm_to_em.html' | relative_url }}">View HTML</a></li>
-      <li><a href="{{ '/teaching/minicourses/materials/qm_to_em/qm_to_em.ipynb' | relative_url }}">Notebook source</a></li>
+      <li><a href="{{ '/teaching/minicourses/materials/qm_to_em/qm_to_em.pdf' | relative_url }}">Read PDF</a></li>
+      <li>Source: <a href="{{ '/teaching/minicourses/materials/qm_to_em/qm_to_em.ipynb' | relative_url }}">Notebook</a></li>
     </ul>
   </section>
 
-  <section class="section-card" id="relativity">
-    <h2>Relativity</h2>
+  <section class="section-card" id="em_forms">
+    <h2>Electromagnetism in Differential Forms</h2>
     <p>
-      Two relativity packets are available. The electromagnetic-forms packet rewrites Maxwell theory from integral and vector-calculus
-      forms into differential forms, the Faraday tensor, the compact Maxwell equations, and the Maxwell action with gauge invariance.
-      The general-relativity packet moves from Newtonian unease about action at a distance to metrics as dynamical fields, Lorentz-covariant
-      Maxwell equations, spacetime geometry, and the coordinate-independent structures needed for general relativity.
+      A relativity-adjacent packet that rewrites Maxwell theory from integral and vector-calculus forms into differential forms, the
+      Faraday tensor, the compact Maxwell equations, and the Maxwell action with gauge invariance.
     </p>
     <ul class="plain-links">
-      <li><a href="{{ '/teaching/minicourses/materials/relativity/em_forms/em_forms.html' | relative_url }}">View HTML: Maxwell Theory and Differential Forms</a></li>
-      <li><a href="{{ '/teaching/minicourses/materials/relativity/em_forms/em_forms.pdf' | relative_url }}">Read PDF: Maxwell Theory and Differential Forms</a></li>
-      <li><a href="{{ '/teaching/minicourses/materials/relativity/gr/GR.pdf' | relative_url }}">Read PDF: General Relativity (not yet in canonical Quarto workflow)</a></li>
-      <li><a href="{{ '/teaching/minicourses/materials/relativity/em_forms/EM.tex' | relative_url }}">TeX source: Maxwell Theory and Differential Forms</a></li>
-      <li><a href="{{ '/teaching/minicourses/materials/relativity/gr/GR.tex' | relative_url }}">TeX source: General Relativity</a></li>
+      <li><a href="{{ '/teaching/minicourses/materials/relativity/em_forms/em_forms.html' | relative_url }}">View HTML</a></li>
+      <li><a href="{{ '/teaching/minicourses/materials/relativity/em_forms/em_forms.pdf' | relative_url }}">Read PDF</a></li>
+      <li>Source: <a href="{{ '/teaching/minicourses/materials/relativity/em_forms/EM.tex' | relative_url }}">TeX</a></li>
+    </ul>
+  </section>
+
+  <section class="section-card" id="general_relativity">
+    <h2>General Relativity</h2>
+    <p>
+      A PDF packet that moves from Newtonian unease about action at a distance to metrics as dynamical fields, Lorentz-covariant Maxwell
+      equations, spacetime geometry, and the coordinate-independent structures needed for general relativity.
+    </p>
+    <ul class="plain-links">
+      <li><a href="{{ '/teaching/minicourses/materials/relativity/gr/GR.pdf' | relative_url }}">Read PDF</a></li>
+      <li>Source: <a href="{{ '/teaching/minicourses/materials/relativity/gr/GR.tex' | relative_url }}">TeX</a></li>
     </ul>
   </section>
 
   <section class="section-card" id="renormalization_packet">
-    <h2>Renormalization Packet</h2>
+    <h2>Renormalization</h2>
     <p>
       A guided derivation of renormalization in a solvable quantum-mechanical model: a nonrelativistic particle in two spatial dimensions
       moving in an attractive delta-function potential. The packet is explicit that it is not passive introductory reading; the problems
@@ -89,23 +113,8 @@ title: Teaching Minicourses
       coupling, the beta function, dimensional transmutation, asymptotic freedom, and the scale anomaly.
     </p>
     <ul class="plain-links">
-      <li><a href="{{ '/teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student_v3.pdf' | relative_url }}">Read PDF</a></li>
       <li><a href="{{ '/teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student_v3.html' | relative_url }}">View HTML</a></li>
-    </ul>
-  </section>
-
-  <section class="section-card" id="time_translations">
-    <h2>Time Translations</h2>
-    <p>
-      A rendered web packet that develops time evolution by analogy with spatial translations. Starting from momentum as the generator of
-      translations, it asks for the generator of time translations, identifies the role of energy, derives Hamilton's canonical equations,
-      introduces Poisson brackets and conservation of the Hamiltonian, and then turns toward Hamiltonian quantization.
-    </p>
-    <ul class="plain-links">
-      <li><a href="{{ '/teaching/minicourses/materials/time_translations/time_translations.pdf' | relative_url }}">Read PDF</a></li>
-      <li><a href="{{ '/teaching/minicourses/materials/time_translations/time_translations.html' | relative_url }}">View HTML</a></li>
-      <li><a href="{{ '/teaching/minicourses/materials/time_translations/time_translations.tex' | relative_url }}">TeX source</a></li>
-      <li><a href="{{ '/teaching/minicourses/materials/time_translations/time_translations.ipynb' | relative_url }}">Notebook source</a></li>
+      <li><a href="{{ '/teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student_v3.pdf' | relative_url }}">Read PDF</a></li>
     </ul>
   </section>
 </div>
@@ -113,8 +122,8 @@ title: Teaching Minicourses
 <section class="note-panel" id="release_source">
   <h2>Release Source</h2>
   <p>
-    This page is a local site snapshot of the current public release materials. Long-term synchronization with the release repository is
-    intentionally left for a later pass.
+    This page is a local site snapshot of selected public release materials, synchronized from the release repository for convenient
+    reading on the teaching site.
   </p>
   <ul class="plain-links">
     <li><a href="https://github.com/wdlinch3/minicourses_release">Public minicourses release repository</a></li>
