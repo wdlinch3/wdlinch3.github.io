@@ -6,22 +6,21 @@ title: Home
   {% include global_nav.html %}
 
   <section>
-    <h2>Quick Links</h2>
-    <ul>
-      <li><a href="mailto:wdlinch3@gmail.com">Email</a></li>
-      <li><a href="/about/cv/">CV</a></li>
-      <li><a href="https://orcid.org/0000-0003-2631-4465">ORCID</a></li>
-      <li><a href="https://inspirehep.net/authors/1019804">INSPIRE</a></li>
-    </ul>
-  </section>
-
-  <section>
     <h2>Daily Use</h2>
     <ul>
       {% assign daily_links = site.data.quick_links | where: "category", "daily_use" | sort: "priority" %}
       {% for link in daily_links %}
         <li><a href="{% if link.external %}{{ link.url }}{% else %}{{ link.url | relative_url }}{% endif %}">{{ link.title }}</a></li>
       {% endfor %}
+    </ul>
+  </section>
+
+  <section>
+    <h2>Quick Links</h2>
+    <ul>
+      <li><a href="/about/cv/">CV</a></li>
+      <li><a href="https://orcid.org/0000-0003-2631-4465">ORCID</a></li>
+      <li><a href="https://inspirehep.net/authors/1019804">INSPIRE</a></li>
     </ul>
   </section>
 </aside>
