@@ -30,7 +30,12 @@ title: Working Links
   <ul class="plain-links">
     {% for link in general_links %}
       {% unless link.audience == "staff" %}
-        <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+        <li>
+          <a href="{{ link.url }}">{{ link.title }}</a>
+          {% if link.description %}
+            <span class="small">&mdash; {{ link.description }}</span>
+          {% endif %}
+        </li>
       {% endunless %}
     {% endfor %}
   </ul>

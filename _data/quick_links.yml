@@ -61,12 +61,13 @@
   external: true
   priority: 10
 
-- title: GitHub
+- title: GitHub profile and repositories
   url: "https://github.com/wdlinch3"
   category: general
   audience: general
   external: true
   priority: 20
+  description: "Public profile and code repositories."
 
 - title: Desmos
   url: "https://www.desmos.com"
@@ -81,3 +82,4 @@
   audience: general
   external: true
   priority: 40
+  description: "Working AI assistant link."

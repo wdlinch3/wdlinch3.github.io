@@ -22,6 +22,12 @@ title: About Me
     <p>Access the current CV landing page, PDF version, and the legacy CV page that remains in place for compatibility.</p>
   </section>
 
+  {% assign github_link = site.data.quick_links | where: "title", "GitHub profile and repositories" | first %}
+  <section class="section-card">
+    <h2><a href="{{ github_link.url }}">GitHub</a></h2>
+    <p>Public profile and repositories for code, course-support material, and site-adjacent projects.</p>
+  </section>
+
   <section class="section-card">
     <h2><a href="/about/links/">Working Links</a></h2>
     <p>A low-prominence page for utility and working links that are useful to keep available but do not belong on the public home page.</p>
