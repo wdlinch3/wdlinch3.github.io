@@ -40,16 +40,18 @@ These are notes for the Astronomy and Astrophysics Research Laboratory at TJHSST
 # Intro
 
 The geometry we learn in middle and high school is Euclidean Geometry. The postulates of Euclidean geometry include an important one that says something equivalent to the following:
+
 > For any infinite line $L$ and any point $p$ not on that line, there is another (infinite) line $L'$ through $p$ that does not intersect the original line $L$. This new line $L'$ is unique.
+
 This is called Euclid's fifth postulate.
 
 It turns out that this last requirement is important for many familiar consequences in (Euclidean) geometry. For example, it eventually implies Pythagoras' Theorem and the fact that the sum of the sizes of the interior angles of a triangle add up to $π$ radians.
 These concepts all require the notion of **length** and **angle**. Conversely, *geometry* means the measuring of shapes (originally Earth), so let's take a closer look at both of these concepts.
 
-#### Length
+#### Length {.unnumbered}
 One of the more fundamental of Euclid's postulates is that between any two distinct points $p$ and $p'$ there is a unique infinite line $L$ that contains both points. By another postulate, there is a line (segment) $ℓ$ that extends between the two points but not beyond. To this line, we can associate a length called the distance between $p$ and $p'$.
 
-#### Vectors
+#### Vectors {.unnumbered}
 The notion of length can be augmented with a direction. There is a unique line segment between $p$ and $p'$ but there are two directions associated to it: one directed from $p$ to $p'$ and another directed from $p'$ to $p$. Each of these defines a **vector**. If the first is called $𝒗$ then the second is called $-𝒗$. The logic in this nomenclature it at starting from $p$ and following $𝒗$, we end up at $p'$. If we then follow $-𝒗$ then we end up back at $p$, so overall, we went nowhere. This is captured in vector equations by stating that doing these two operations amounts to $𝒗 + (-𝒗)= 𝒗 - 𝒗 = 𝟎$.
 
 Note that we can recover the length of a vector $𝒗$ by forgetting about the direction and remembering only the length. To minimize confusing notation, we refer to the length of $𝒗$ as $v$. That is, it is the same letter but not bold. Sometimes it is useful to make a notation for this “forgetful functor”
@@ -57,42 +59,42 @@ $$
 || 𝒗  || = v
 $$
 
-#### Angle
+#### Angle {.unnumbered}
 In the scenario above, if we have a third point $p''∉ L$, then there is a line (segment) $ℓ'$ with endpoints $p$ and $p''$. The lines $ℓ$ and $ℓ'$ intersect only at $p$ and in doing so, there is some measure of how close $ℓ$ and $ℓ'$ are in alignment. This measure is called the angle between these lines; we will denote it by the symbol $θ$.
 
 Going back to our vectors, let us denote the displacement from $p$ to $p'$ by $𝒗$, as before, and the displacement from $p$ to $p''$ by $𝒖$. The line segments being in different directions implies that $𝒗$ and $𝒖$ are not collinear: there is a “nontrivial” angle (*i.e.* not equal to $0$ or $π$) between them. This angle is related to the lengths $ℓ$ and $ℓ'$ by the cosine function:
 $$
-\cos θ = \frac{𝒗 ∙ 𝒖}{vu}
+\cos θ = \frac{𝒗 \cdot 𝒖}{vu}
 $$
 In this formula, the $v=|| 𝒗 ||$ and $u=|| 𝒖 ||$ refer to the lengths of the vectors $𝒗$ and $𝒖$.
 
-#### Inner product
+#### Inner product {.unnumbered}
 The “$\cdot$” in the formula above refers to the "dot product" we learn in math 4. It is related to the length function by the formula:
 $$
-𝒗 ∙ 𝒗 = ||𝒗||² = v²
+𝒗 \cdot 𝒗 = ||𝒗||² = v²
 \quad \quad ⇔ \quad \quad
-||𝒗|| = √{𝒗 ∙ 𝒗}
+||𝒗|| = √{𝒗 \cdot 𝒗}
 $$
 But we can do more with the dot product because we can use two different vectors. For example, we can compute $𝒗 \cdot 𝒖$ which we learn is the same as $𝒖 \cdot 𝒗$. Indeed, in math 4 we are given these two vectors in $x$-, $y$-, and $z$-components^[Note that this requires a choice of **orthonormal** **basis** which in this case is given by a right-handed coordinate system ($x$-, $y$-, and $z$-axes).]
 $$
 \begin{aligned}
-\label{components}
 𝒖 = \left( \begin{array}{c}u¹ \\ u² \\ u³ \end{array}\right)
 \quad \quad {\mathrm{and}} \quad \quad
 𝒗 = \left( \begin{array}{c}v¹ \\ v² \\ v³ \end{array}\right)
 \end{aligned}
+\label{components}
 $$
 In terms of these components, we may explicitly define the dot product between $𝒖$ and $𝒗$ as
 $$
 \begin{aligned}
-\label{Euclid}
-𝒖 ∙ 𝒗 = u¹v¹ + u²v² +u³v³
+𝒖 \cdot 𝒗 = u¹v¹ + u²v² +u³v³
 \end{aligned}
+\label{Euclid}
 $$
 
 The dot product is also called the “Euclidean inner product”. It is an operation that takes two vectors and returns a number. In math jargon, such an object is called a **bilinear form**. Since $𝒗 \cdot 𝒖 = 𝒖 \cdot 𝒗$, this is a **symmetric** bilinear form. It is also **non-degenerate** in this sense: If for any vector $𝒖$ the dot product
 $$
-𝒖 ∙ 𝒗 = 0   	\quad \quad \textrm{for all } 𝒗,
+𝒖 \cdot 𝒗 = 0   	\quad \quad \textrm{for all } 𝒗,
 $$
 then $𝒖=𝟎$. It is important to digest that this is not a condition on $𝒖$ or $𝒗$ because of the “any” and “for all”. Instead, it is a condition on the dot product which says that the dot product does not set to 0 any parts of any vectors. If the dot product between two vectors is $0$ it is because the vectors are orthogonal.
 
@@ -119,7 +121,7 @@ Before we answer this, it is useful to simplify some notation.
 Show that
 $$
 \begin{aligned}
-g(𝒖, 𝒗) &= ∑_{i=1}³ ∑_{j=1}³ g_{ij} u^i v^j
+g(𝒖, 𝒗) &= \sum_{i=1}^{3} \sum_{j=1}^{3} g_{ij} u^i v^j
 \end{aligned}
 $$
 Show that if $g$ is symmetric, then $g_{ji} = g_{ij}$.
@@ -161,6 +163,7 @@ This whole notion is actually very weird: Who told you how to choose coordinates
 Besides that, why is the space fixed and particles run around inside of it? In electricity and magnetism, we learn that these fields have their own geometry like homogeneous fields in capacitors, the radial Coulomb field, dipole fields, and so on. Why not also allow the background space to change (*i.e.* be dynamical too).
 
 Newton himself was displeased with the situation dictated by his own laws. As some point, he described his unease thus:
+
 > It is inconceivable, that inanimate brute matter should, without the mediation of something else, which is not material, operate upon and affect other matter without mutual contact. That gravity should be innate, inherent, and essential to matter, so that one body may act upon another at a distance, through a vacuum, without the mediation of anything else, by and through which their action and force may be conveyed from one to another, is to me so great an absurdity, that I believe no man who has in philosophical matters a competent faculty of thinking, can ever fall into it. Gravity must be caused by an agent, acting constantly according to certain laws; but whether this agent be material or immaterial, I have left to the consideration of my readers.
 
 In modern language, Newton is saying that there should be a notion of a field that communicates forces and that gravity should be a field. It is important to understand that the concept of a force-carrying field was not understood until more than half a century later in the much more obvious context of electromagnetic fields. We now understand electromagnetic fields and also understand that the field for gravity is the metric.
@@ -172,10 +175,10 @@ The equations for the electromagnetic field were discovered over a span of almos
 You can take all the physics you want in high school, but you will not see the most illuminating form of the laws until you study at a university where you will eventually learn that, as Heaviside eventually put it,
 $$
 \begin{aligned}
-∇ ∙ 𝑬 = 4πρ
+∇ \cdot 𝑬 = 4πρ
 \quad \quad & \quad \quad
 	∇ × 𝑬 = -\frac 1c\frac{∂𝑩}{∂t} \\
-∇ ∙ 𝑩 = 0
+∇ \cdot 𝑩 = 0
 	\quad \quad & \quad \quad
 	∇ × 𝑩 = \frac {4π}c 𝑱 +\frac 1c\frac{∂𝑬}{∂t}
 \end{aligned}
@@ -203,10 +206,10 @@ This is an example of a *symmetry* of the field equations (*in vacuo*) called el
 Continuing in vacuum,
 $$
 \begin{aligned}
-∇ ∙ 𝑬 = 0
+∇ \cdot 𝑬 = 0
 \quad \quad & \quad \quad
 	∇ × 𝑬 = -\frac 1c\frac{∂𝑩}{∂t} \\
-∇ ∙ 𝑩 = 0
+∇ \cdot 𝑩 = 0
 	\quad \quad & \quad \quad
 	∇ × 𝑩 =  \frac 1c\frac{∂𝑬}{∂t}
 \end{aligned}
@@ -223,12 +226,12 @@ If you take multi-variable calculus, you will learn that the operations $\nabla 
 The results look messy: For any vector field $𝒗$
 $$
 \label{vecID1}
-∇ ∙ (∇ × 𝒗) = 0
+∇ \cdot (∇ × 𝒗) = 0
 $$
 
 $$
 \label{vecID2}
-∇ × (∇ × 𝒗) = ∇ (∇ ∙ 𝒗) - ∇² 𝒗
+∇ × (∇ × 𝒗) = ∇ (∇ \cdot 𝒗) - ∇² 𝒗
 $$
 
 ::: {.callout-note title="Exercise 9"}
@@ -270,7 +273,7 @@ What you have shown is that $f(t,x) = A\sin(x-ct)$ describes a sinusoidal wave t
 Go back to the three-dimensional wave equation and show that $f(t,x) = A\sin({\mathbf k}\cdot {\mathbf x} - ω t)$ solves the wave equation provided that
 $$
 \label{relDispersion}
-c² {\mathbf k} ∙ {\mathbf k} = ω²
+c² {\mathbf k} \cdot {\mathbf k} = ω²
 $$
 :::
 
@@ -319,11 +322,11 @@ As example of an equation that has two derivatives, let's see how we can reprodu
 ::: {.callout-note title="Exercise 14"}
 The most general scalar equation constructed from exactly two derivatives can be written as
 $$
-∑_{μ =0}³ ∑_{ν =0}³ η^{μν} ∂_μ ∂_ν f = 0
+\sum_{\mu =0}^{3} \sum_{\nu =0}^{3} η^{μν} ∂_μ ∂_ν f = 0
 $$
 for some set of coefficients $\eta^{\mu\nu}=\eta^{\nu\mu}$. Calculate what these coefficients are in the case of the wave equation. Define another set of coefficients $\eta_{\mu\nu}$ by requiring that these new coefficients satisfy
 $$
-∑_{λ =0}³ η_{μλ }η^{λν} = δ_μ^ν
+\sum_{\lambda =0}^{3} η_{μλ }η^{λν} = δ_μ^ν
 $$
 Argue that both $\eta_{\mu\nu}$ and $\eta^{\mu\nu}$ are non-degenerate.
 :::
@@ -352,7 +355,7 @@ $$
 Vectors like $k^\mu$ are called *spacetime vectors* because they contain both spacial components $\mathbf{k}$ but also another component that corresponds to time, in this case $k⁰=ω/c$. (Recall that in the case of coordinates, the $\mathbf{x}$ where spacial and the 0-th component $x⁰ = ct$ corresponded to time.)
 These vectors are also called *4-vectors* (as opposed to the spacial 3-vectors we are used to from Newtonian mechanics).
 
-A *covector* is an object you can pair with a vector to make a number. In terms of indices, since the vector like $k^\mu$ has an index “up”, a covector naturally has an index down, for example $p_\mu$, so that we can pair them up like $∑_{\mu=0}³ p_\mu k^\mu$ to make a scalar.
+A *covector* is an object you can pair with a vector to make a number. In terms of indices, since the vector like $k^\mu$ has an index “up”, a covector naturally has an index down, for example $p_\mu$, so that we can pair them up like $\sum_{\mu=0}^{3} p_\mu k^\mu$ to make a scalar.
 
 ::: {.callout-note title="Exercise 16"}
 Show that if a vector like $k^\mu$ corresponds to a column
@@ -367,7 +370,7 @@ $$
 
 If you have a vector $k^\mu$ and a metric $g_{\mu\nu}$, for example, the Minkowski metric, then you can make the covector $k_\mu$ associated to the vector by combining
 $$
-k_μ := ∑_{ν =0}³ g_{μν} k^ν
+k_μ := \sum_{\nu =0}^{3} g_{μν} k^ν
 $$
 
 ::: {.callout-note title="Exercise 17"}
@@ -380,13 +383,13 @@ Fix the metric to be the Minkowski metric \eqref{Minkowski}, and  calculate the 
 Determine the dimensions of the linear momentum $𝒑$, the energy $E$, the mass $m$, and the speed of light $c$. Combine these elements into a 4-vector $p^\mu$ and a scalar with units of momentum. Using the Minkowski metric $\eta_{\mu\nu}$ define the square of the momentum $p²$ and construct a formula relating it to the mass. To fix the coefficient in your formula check that when $𝒑=𝟎$, you find that $E=mc²$ is a solution.
 :::
 
-A linear transformation is one that takes a vector $𝒖$ to another vector $𝒗$ of the form $𝒖  ↦ 𝒗 = \Lambda(𝒖)$. Written out in terms of indices, this formula looks like $v^\mu = ∑_{\nu =0}³ \Lambda^\mu{}_\nu u^\nu$.
+A linear transformation is one that takes a vector $𝒖$ to another vector $𝒗$ of the form $𝒖  ↦ 𝒗 = \Lambda(𝒖)$. Written out in terms of indices, this formula looks like $v^\mu = \sum_{\nu =0}^{3} \Lambda^\mu{}_\nu u^\nu$.
 
 ::: {.callout-note title="Exercise 19"}
 Suppose a linear transformation preserves the Minkowski square $k²$ of a vector $k^\mu$. Show that this implies that
 $$
-∑_{ρ  =0}³∑_{σ =0}³ Λ^ρ{}_μ η_{ρσ} Λ^σ{}_ν
-=∑_{ρ  =0}³∑_{σ =0}³ (Λ^T)_μ{}^ρ η_{ρσ} Λ^σ{}_ν
+\sum_{\rho  =0}^{3}\sum_{\sigma =0}^{3} Λ^ρ{}_μ η_{ρσ} Λ^σ{}_ν
+=\sum_{\rho  =0}^{3}\sum_{\sigma =0}^{3} (Λ^T)_μ{}^ρ η_{ρσ} Λ^σ{}_ν
 = η_{μν}
 $$
 Show that as a matrix equation, this reads $\Lambda^T \Lambda = \mathbf{1}$.
@@ -423,16 +426,16 @@ $$
 \end{cases}
 \end{aligned}
 $$
-Use it to define $B_{ij} = ∑_{k=1}³ \varepsilon_{ijk} B^k$ and calculate the components of the matrix in terms of the components of the vector.
+Use it to define $B_{ij} = \sum_{k=1}^{3} \varepsilon_{ijk} B^k$ and calculate the components of the matrix in terms of the components of the vector.
 :::
 
-Now we are in business: We can lift the 3D magnetic field matrix to an antisymmetric $4×4$ matrix $F_{\mu\nu}$ with exactly enough room left to accommodate the 3 electric field components. When we restrict to spacial components, we recover the magnetic field  $F_{ij}=B_{ij}= ∑_{k=1}³ \varepsilon_{ijk} B^k$. The remaining components must have exactly one time component $F_{0j}$ because, by antisymmetry $F₀₀ ≡ 0$. As you will demonstrate presently, it turns out that the correct normalization is $F_{0j} = - F_{j0}= - E_j$.
+Now we are in business: We can lift the 3D magnetic field matrix to an antisymmetric $4×4$ matrix $F_{\mu\nu}$ with exactly enough room left to accommodate the 3 electric field components. When we restrict to spacial components, we recover the magnetic field  $F_{ij}=B_{ij}= \sum_{k=1}^{3} \varepsilon_{ijk} B^k$. The remaining components must have exactly one time component $F_{0j}$ because, by antisymmetry $F₀₀ ≡ 0$. As you will demonstrate presently, it turns out that the correct normalization is $F_{0j} = - F_{j0}= - E_j$.
 
 ::: {.callout-note title="Exercise 23"}
 Consider the equation
 $$
 \label{MaxSource}
-∑_{μ =0}³ ∂_μ F^{μν}=4π J^ν
+\sum_{\mu =0}^{3} ∂_μ F^{μν}=4π J^ν
 $$
 Reducing it to 3D notation, we will have a scalar time component and a 3D vector component. Expand these two equations out to show that you recover exactly the correct components of the first and last of Maxwell's equations, respectively.
 :::
@@ -449,15 +452,15 @@ Let's now find the remaining Maxwell equations!
 Expand out the equations
 $$
 \label{MaxBI}
-∑_{ν =0}³ ∑_{ρ =0}³ ∑_{σ =0}³ 𝜀_{μ ν ρ σ} ∂^ν  F^{ρσ} = 0
+\sum_{\nu =0}^{3} \sum_{\rho =0}^{3} \sum_{\sigma =0}^{3} 𝜀_{μ ν ρ σ} ∂^ν  F^{ρσ} = 0
 $$
 into a scalar equation and a 3D vector equation. Show that you recover the third and second Maxwell equations, respectively.
 :::
 
 Equations \eqref{MaxSource} and \eqref{MaxBI} are the full set of Maxwell equations written in a manifestly Lorentz-covariant form.
 
-#### Einstein summation convention
-The summation signs are pretty annoying to write and they clutter up the notation. Additionally, they are superfluous because whenever they occur they come together with two indices of the type they are summing over, and furthermore, those indices appear in opposite positions with one up and another down. For example, in \eqref{MaxSource} the only summation $∑_{\mu =0}³$ is over the index that appears doubled in the expression $\partial_\mu F^{\mu\nu}$. Einstein pointed out that this is always the situation and he suggested we just not write the $∑_{\mu =0}³$ part and interpret $\partial_\mu F^{\mu\nu}$ as implying that the $\mu$ index is summed from $0$ to $3$. In other words $\partial_\mu F^{\mu\nu}$ means $∑_{\mu =0}³\partial_\mu F^{\mu\nu}$. Similarly, we abbreviate \eqref{MaxBI} to $\varepsilon_{\mu \nu \rho \sigma} \partial^\nu  F^{\rho\sigma} = 0$. Since the indices $\nu$, $\rho$, and $\sigma$ are repeated, this equation means that we are summing over them. In sum (haha... get it?), the Maxwell equations are
+#### Einstein summation convention {.unnumbered}
+The summation signs are pretty annoying to write and they clutter up the notation. Additionally, they are superfluous because whenever they occur they come together with two indices of the type they are summing over, and furthermore, those indices appear in opposite positions with one up and another down. For example, in \eqref{MaxSource} the only summation $\sum_{\mu =0}^{3}$ is over the index that appears doubled in the expression $\partial_\mu F^{\mu\nu}$. Einstein pointed out that this is always the situation and he suggested we just not write the $\sum_{\mu =0}^{3}$ part and interpret $\partial_\mu F^{\mu\nu}$ as implying that the $\mu$ index is summed from $0$ to $3$. In other words $\partial_\mu F^{\mu\nu}$ means $\sum_{\mu =0}^{3}\partial_\mu F^{\mu\nu}$. Similarly, we abbreviate \eqref{MaxBI} to $\varepsilon_{\mu \nu \rho \sigma} \partial^\nu  F^{\rho\sigma} = 0$. Since the indices $\nu$, $\rho$, and $\sigma$ are repeated, this equation means that we are summing over them. In sum (haha... get it?), the Maxwell equations are
 $$
 𝜀^{μ ν ρ σ} ∂_ν  F_{ρσ} = 0
 \quad \quad \textrm{and}\quad \quad

@@ -139,47 +139,51 @@ window.Quarto = {
 <p>These are notes for the Astronomy and Astrophysics Research Laboratory at TJHSST. They started as an attempt to guide Kevin Boakye in his senior research project on AGNs.</p>
 <section id="intro" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Intro</h1>
-<p>The geometry we learn in middle and high school is Euclidean Geometry. The postulates of Euclidean geometry include an important one that says something equivalent to the following: &gt; For any infinite line <span class="math inline">\(L\)</span> and any point <span class="math inline">\(p\)</span> not on that line, there is another (infinite) line <span class="math inline">\(L'\)</span> through <span class="math inline">\(p\)</span> that does not intersect the original line <span class="math inline">\(L\)</span>. This new line <span class="math inline">\(L'\)</span> is unique. This is called Euclid’s fifth postulate.</p>
+<p>The geometry we learn in middle and high school is Euclidean Geometry. The postulates of Euclidean geometry include an important one that says something equivalent to the following:</p>
+<blockquote class="blockquote">
+<p>For any infinite line <span class="math inline">\(L\)</span> and any point <span class="math inline">\(p\)</span> not on that line, there is another (infinite) line <span class="math inline">\(L'\)</span> through <span class="math inline">\(p\)</span> that does not intersect the original line <span class="math inline">\(L\)</span>. This new line <span class="math inline">\(L'\)</span> is unique.</p>
+</blockquote>
+<p>This is called Euclid’s fifth postulate.</p>
 <p>It turns out that this last requirement is important for many familiar consequences in (Euclidean) geometry. For example, it eventually implies Pythagoras’ Theorem and the fact that the sum of the sizes of the interior angles of a triangle add up to <span class="math inline">\(π\)</span> radians. These concepts all require the notion of <strong>length</strong> and <strong>angle</strong>. Conversely, <em>geometry</em> means the measuring of shapes (originally Earth), so let’s take a closer look at both of these concepts.</p>
-<section id="length" class="level4" data-number="1.0.0.1">
-<h4 data-number="1.0.0.1" class="anchored" data-anchor-id="length"><span class="header-section-number">1.0.0.1</span> Length</h4>
+<section id="length" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="length">Length</h4>
 <p>One of the more fundamental of Euclid’s postulates is that between any two distinct points <span class="math inline">\(p\)</span> and <span class="math inline">\(p'\)</span> there is a unique infinite line <span class="math inline">\(L\)</span> that contains both points. By another postulate, there is a line (segment) <span class="math inline">\(ℓ\)</span> that extends between the two points but not beyond. To this line, we can associate a length called the distance between <span class="math inline">\(p\)</span> and <span class="math inline">\(p'\)</span>.</p>
 </section>
-<section id="vectors" class="level4" data-number="1.0.0.2">
-<h4 data-number="1.0.0.2" class="anchored" data-anchor-id="vectors"><span class="header-section-number">1.0.0.2</span> Vectors</h4>
+<section id="vectors" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="vectors">Vectors</h4>
 <p>The notion of length can be augmented with a direction. There is a unique line segment between <span class="math inline">\(p\)</span> and <span class="math inline">\(p'\)</span> but there are two directions associated to it: one directed from <span class="math inline">\(p\)</span> to <span class="math inline">\(p'\)</span> and another directed from <span class="math inline">\(p'\)</span> to <span class="math inline">\(p\)</span>. Each of these defines a <strong>vector</strong>. If the first is called <span class="math inline">\(𝒗\)</span> then the second is called <span class="math inline">\(-𝒗\)</span>. The logic in this nomenclature it at starting from <span class="math inline">\(p\)</span> and following <span class="math inline">\(𝒗\)</span>, we end up at <span class="math inline">\(p'\)</span>. If we then follow <span class="math inline">\(-𝒗\)</span> then we end up back at <span class="math inline">\(p\)</span>, so overall, we went nowhere. This is captured in vector equations by stating that doing these two operations amounts to <span class="math inline">\(𝒗 + (-𝒗)= 𝒗 - 𝒗 = 𝟎\)</span>.</p>
 <p>Note that we can recover the length of a vector <span class="math inline">\(𝒗\)</span> by forgetting about the direction and remembering only the length. To minimize confusing notation, we refer to the length of <span class="math inline">\(𝒗\)</span> as <span class="math inline">\(v\)</span>. That is, it is the same letter but not bold. Sometimes it is useful to make a notation for this “forgetful functor” <span class="math display">\[
 || 𝒗  || = v
 \]</span></p>
 </section>
-<section id="angle" class="level4" data-number="1.0.0.3">
-<h4 data-number="1.0.0.3" class="anchored" data-anchor-id="angle"><span class="header-section-number">1.0.0.3</span> Angle</h4>
+<section id="angle" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="angle">Angle</h4>
 <p>In the scenario above, if we have a third point <span class="math inline">\(p''∉ L\)</span>, then there is a line (segment) <span class="math inline">\(ℓ'\)</span> with endpoints <span class="math inline">\(p\)</span> and <span class="math inline">\(p''\)</span>. The lines <span class="math inline">\(ℓ\)</span> and <span class="math inline">\(ℓ'\)</span> intersect only at <span class="math inline">\(p\)</span> and in doing so, there is some measure of how close <span class="math inline">\(ℓ\)</span> and <span class="math inline">\(ℓ'\)</span> are in alignment. This measure is called the angle between these lines; we will denote it by the symbol <span class="math inline">\(θ\)</span>.</p>
 <p>Going back to our vectors, let us denote the displacement from <span class="math inline">\(p\)</span> to <span class="math inline">\(p'\)</span> by <span class="math inline">\(𝒗\)</span>, as before, and the displacement from <span class="math inline">\(p\)</span> to <span class="math inline">\(p''\)</span> by <span class="math inline">\(𝒖\)</span>. The line segments being in different directions implies that <span class="math inline">\(𝒗\)</span> and <span class="math inline">\(𝒖\)</span> are not collinear: there is a “nontrivial” angle (<em>i.e.</em> not equal to <span class="math inline">\(0\)</span> or <span class="math inline">\(π\)</span>) between them. This angle is related to the lengths <span class="math inline">\(ℓ\)</span> and <span class="math inline">\(ℓ'\)</span> by the cosine function: <span class="math display">\[
-\cos θ = \frac{𝒗 ∙ 𝒖}{vu}
+\cos θ = \frac{𝒗 \cdot 𝒖}{vu}
 \]</span> In this formula, the <span class="math inline">\(v=|| 𝒗 ||\)</span> and <span class="math inline">\(u=|| 𝒖 ||\)</span> refer to the lengths of the vectors <span class="math inline">\(𝒗\)</span> and <span class="math inline">\(𝒖\)</span>.</p>
 </section>
-<section id="inner-product" class="level4" data-number="1.0.0.4">
-<h4 data-number="1.0.0.4" class="anchored" data-anchor-id="inner-product"><span class="header-section-number">1.0.0.4</span> Inner product</h4>
+<section id="inner-product" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="inner-product">Inner product</h4>
 <p>The “<span class="math inline">\(\cdot\)</span>” in the formula above refers to the “dot product” we learn in math 4. It is related to the length function by the formula: <span class="math display">\[
-𝒗 ∙ 𝒗 = ||𝒗||² = v²
+𝒗 \cdot 𝒗 = ||𝒗||² = v²
 \quad \quad ⇔ \quad \quad
-||𝒗|| = √{𝒗 ∙ 𝒗}
+||𝒗|| = √{𝒗 \cdot 𝒗}
 \]</span> But we can do more with the dot product because we can use two different vectors. For example, we can compute <span class="math inline">\(𝒗 \cdot 𝒖\)</span> which we learn is the same as <span class="math inline">\(𝒖 \cdot 𝒗\)</span>. Indeed, in math 4 we are given these two vectors in <span class="math inline">\(x\)</span>-, <span class="math inline">\(y\)</span>-, and <span class="math inline">\(z\)</span>-components<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <span class="math display">\[
 \begin{aligned}
-\label{components}
 𝒖 = \left( \begin{array}{c}u¹ \\ u² \\ u³ \end{array}\right)
 \quad \quad {\mathrm{and}} \quad \quad
 𝒗 = \left( \begin{array}{c}v¹ \\ v² \\ v³ \end{array}\right)
 \end{aligned}
+\label{components}
 \]</span> In terms of these components, we may explicitly define the dot product between <span class="math inline">\(𝒖\)</span> and <span class="math inline">\(𝒗\)</span> as <span class="math display">\[
 \begin{aligned}
-\label{Euclid}
-𝒖 ∙ 𝒗 = u¹v¹ + u²v² +u³v³
+𝒖 \cdot 𝒗 = u¹v¹ + u²v² +u³v³
 \end{aligned}
+\label{Euclid}
 \]</span></p>
 <p>The dot product is also called the “Euclidean inner product”. It is an operation that takes two vectors and returns a number. In math jargon, such an object is called a <strong>bilinear form</strong>. Since <span class="math inline">\(𝒗 \cdot 𝒖 = 𝒖 \cdot 𝒗\)</span>, this is a <strong>symmetric</strong> bilinear form. It is also <strong>non-degenerate</strong> in this sense: If for any vector <span class="math inline">\(𝒖\)</span> the dot product <span class="math display">\[
-𝒖 ∙ 𝒗 = 0       \quad \quad \textrm{for all } 𝒗,
+𝒖 \cdot 𝒗 = 0       \quad \quad \textrm{for all } 𝒗,
 \]</span> then <span class="math inline">\(𝒖=𝟎\)</span>. It is important to digest that this is not a condition on <span class="math inline">\(𝒖\)</span> or <span class="math inline">\(𝒗\)</span> because of the “any” and “for all”. Instead, it is a condition on the dot product which says that the dot product does not set to 0 any parts of any vectors. If the dot product between two vectors is <span class="math inline">\(0\)</span> it is because the vectors are orthogonal.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Exercise 1">
 <div class="callout-header d-flex align-content-center">
@@ -218,7 +222,7 @@ g(𝒖, 𝒗) &amp;= g₁₁ u¹v¹ + g₁₂  u¹v² + g₁₃ u¹v³ \\
 <div class="callout-body-container callout-body">
 <p>Show that <span class="math display">\[
 \begin{aligned}
-g(𝒖, 𝒗) &amp;= ∑_{i=1}³ ∑_{j=1}³ g_{ij} u^i v^j
+g(𝒖, 𝒗) &amp;= \sum_{i=1}^{3} \sum_{j=1}^{3} g_{ij} u^i v^j
 \end{aligned}
 \]</span> Show that if <span class="math inline">\(g\)</span> is symmetric, then <span class="math inline">\(g_{ji} = g_{ij}\)</span>.</p>
 </div>
@@ -280,7 +284,10 @@ g(𝒖, 𝒗) &amp;= ∑_{i=1}³ ∑_{j=1}³ g_{ij} u^i v^j
 <p>In Newtonian physics, the Universe consists of a flat 3-dimensional Euclidean space together with a universal clock (which itself is a 1-dimensional Euclidean space) with a bunch of stuff (matter) whizzing around in it.</p>
 <p>This whole notion is actually very weird: Who told you how to choose coordinates to write your equations for the whizzing matter and to use your right hand (really?? no lefties allowed??) to determine coordinate systems? The first of these assumptions is built into Newton’s laws. The second is added on <em>ad hoc</em> when you start to think about rotations and E&amp;M.</p>
 <p>Besides that, why is the space fixed and particles run around inside of it? In electricity and magnetism, we learn that these fields have their own geometry like homogeneous fields in capacitors, the radial Coulomb field, dipole fields, and so on. Why not also allow the background space to change (<em>i.e.</em> be dynamical too).</p>
-<p>Newton himself was displeased with the situation dictated by his own laws. As some point, he described his unease thus: &gt; It is inconceivable, that inanimate brute matter should, without the mediation of something else, which is not material, operate upon and affect other matter without mutual contact. That gravity should be innate, inherent, and essential to matter, so that one body may act upon another at a distance, through a vacuum, without the mediation of anything else, by and through which their action and force may be conveyed from one to another, is to me so great an absurdity, that I believe no man who has in philosophical matters a competent faculty of thinking, can ever fall into it. Gravity must be caused by an agent, acting constantly according to certain laws; but whether this agent be material or immaterial, I have left to the consideration of my readers.</p>
+<p>Newton himself was displeased with the situation dictated by his own laws. As some point, he described his unease thus:</p>
+<blockquote class="blockquote">
+<p>It is inconceivable, that inanimate brute matter should, without the mediation of something else, which is not material, operate upon and affect other matter without mutual contact. That gravity should be innate, inherent, and essential to matter, so that one body may act upon another at a distance, through a vacuum, without the mediation of anything else, by and through which their action and force may be conveyed from one to another, is to me so great an absurdity, that I believe no man who has in philosophical matters a competent faculty of thinking, can ever fall into it. Gravity must be caused by an agent, acting constantly according to certain laws; but whether this agent be material or immaterial, I have left to the consideration of my readers.</p>
+</blockquote>
 <p>In modern language, Newton is saying that there should be a notion of a field that communicates forces and that gravity should be a field. It is important to understand that the concept of a force-carrying field was not understood until more than half a century later in the much more obvious context of electromagnetic fields. We now understand electromagnetic fields and also understand that the field for gravity is the metric.</p>
 </section>
 <section id="maxwells-field-equations-part-i" class="level2" data-number="1.3">
@@ -288,10 +295,10 @@ g(𝒖, 𝒗) &amp;= ∑_{i=1}³ ∑_{j=1}³ g_{ij} u^i v^j
 <p>The equations for the electromagnetic field were discovered over a span of almost eight decades of experiment and theory by Coulomb (1785), Ørsted (1820), Faraday (1821), Ampère (1825), Gau (1833), Lenz (1834), Maxwell (1862), and Heaviside (1884). As such, they should probably be called the Coulomb-Ørsted-Faraday-Ampère-Gau-Lenz-Maxwell-Heaviside equations, but nobody has the time for that, so we call them the Maxwell equations for short.</p>
 <p>You can take all the physics you want in high school, but you will not see the most illuminating form of the laws until you study at a university where you will eventually learn that, as Heaviside eventually put it, <span class="math display">\[
 \begin{aligned}
-∇ ∙ 𝑬 = 4πρ
+∇ \cdot 𝑬 = 4πρ
 \quad \quad &amp; \quad \quad
     ∇ × 𝑬 = -\frac 1c\frac{∂𝑩}{∂t} \\
-∇ ∙ 𝑩 = 0
+∇ \cdot 𝑩 = 0
     \quad \quad &amp; \quad \quad
     ∇ × 𝑩 = \frac {4π}c 𝑱 +\frac 1c\frac{∂𝑬}{∂t}
 \end{aligned}
@@ -328,10 +335,10 @@ g(𝒖, 𝒗) &amp;= ∑_{i=1}³ ∑_{j=1}³ g_{ij} u^i v^j
 </div>
 <p>This is an example of a <em>symmetry</em> of the field equations (<em>in vacuo</em>) called electro-magnetic duality. Continuing in vacuum, <span class="math display">\[
 \begin{aligned}
-∇ ∙ 𝑬 = 0
+∇ \cdot 𝑬 = 0
 \quad \quad &amp; \quad \quad
     ∇ × 𝑬 = -\frac 1c\frac{∂𝑩}{∂t} \\
-∇ ∙ 𝑩 = 0
+∇ \cdot 𝑩 = 0
     \quad \quad &amp; \quad \quad
     ∇ × 𝑩 =  \frac 1c\frac{∂𝑬}{∂t}
 \end{aligned}
@@ -352,11 +359,11 @@ g(𝒖, 𝒗) &amp;= ∑_{i=1}³ ∑_{j=1}³ g_{ij} u^i v^j
 <p>This exercise means that if you have two solutions to the field equations, you can superpose them (add them together) to get another solution. This would not be true if there were <em>non-linear terms</em> like <span class="math inline">\(𝑬 × 𝑩\)</span> in the equations.</p>
 <p>If you take multi-variable calculus, you will learn that the operations <span class="math inline">\(\nabla \cdot\)</span> and <span class="math inline">\(\nabla ×\)</span> can be combined with themselves and each other. The results look messy: For any vector field <span class="math inline">\(𝒗\)</span> <span class="math display">\[
 \label{vecID1}
-∇ ∙ (∇ × 𝒗) = 0
+∇ \cdot (∇ × 𝒗) = 0
 \]</span></p>
 <p><span class="math display">\[
 \label{vecID2}
-∇ × (∇ × 𝒗) = ∇ (∇ ∙ 𝒗) - ∇² 𝒗
+∇ × (∇ × 𝒗) = ∇ (∇ \cdot 𝒗) - ∇² 𝒗
 \]</span></p>
 <div class="callout callout-style-default callout-note callout-titled" title="Exercise 9">
 <div class="callout-header d-flex align-content-center">
@@ -424,7 +431,7 @@ g(𝒖, 𝒗) &amp;= ∑_{i=1}³ ∑_{j=1}³ g_{ij} u^i v^j
 <div class="callout-body-container callout-body">
 <p>Go back to the three-dimensional wave equation and show that <span class="math inline">\(f(t,x) = A\sin({\mathbf k}\cdot {\mathbf x} - ω t)\)</span> solves the wave equation provided that <span class="math display">\[
 \label{relDispersion}
-c² {\mathbf k} ∙ {\mathbf k} = ω²
+c² {\mathbf k} \cdot {\mathbf k} = ω²
 \]</span></p>
 </div>
 </div>
@@ -476,9 +483,9 @@ x^μ = \begin{cases}
 </div>
 <div class="callout-body-container callout-body">
 <p>The most general scalar equation constructed from exactly two derivatives can be written as <span class="math display">\[
-∑_{μ =0}³ ∑_{ν =0}³ η^{μν} ∂_μ ∂_ν f = 0
+\sum_{\mu =0}^{3} \sum_{\nu =0}^{3} η^{μν} ∂_μ ∂_ν f = 0
 \]</span> for some set of coefficients <span class="math inline">\(\eta^{\mu\nu}=\eta^{\nu\mu}\)</span>. Calculate what these coefficients are in the case of the wave equation. Define another set of coefficients <span class="math inline">\(\eta_{\mu\nu}\)</span> by requiring that these new coefficients satisfy <span class="math display">\[
-∑_{λ =0}³ η_{μλ }η^{λν} = δ_μ^ν
+\sum_{\lambda =0}^{3} η_{μλ }η^{λν} = δ_μ^ν
 \]</span> Argue that both <span class="math inline">\(\eta_{\mu\nu}\)</span> and <span class="math inline">\(\eta^{\mu\nu}\)</span> are non-degenerate.</p>
 </div>
 </div>
@@ -509,7 +516,7 @@ k² := η_{μν} k^μ k^ν = 0
 </div>
 </div>
 <p>Vectors like <span class="math inline">\(k^\mu\)</span> are called <em>spacetime vectors</em> because they contain both spacial components <span class="math inline">\(\mathbf{k}\)</span> but also another component that corresponds to time, in this case <span class="math inline">\(k⁰=ω/c\)</span>. (Recall that in the case of coordinates, the <span class="math inline">\(\mathbf{x}\)</span> where spacial and the 0-th component <span class="math inline">\(x⁰ = ct\)</span> corresponded to time.) These vectors are also called <em>4-vectors</em> (as opposed to the spacial 3-vectors we are used to from Newtonian mechanics).</p>
-<p>A <em>covector</em> is an object you can pair with a vector to make a number. In terms of indices, since the vector like <span class="math inline">\(k^\mu\)</span> has an index “up”, a covector naturally has an index down, for example <span class="math inline">\(p_\mu\)</span>, so that we can pair them up like <span class="math inline">\(∑_{\mu=0}³ p_\mu k^\mu\)</span> to make a scalar.</p>
+<p>A <em>covector</em> is an object you can pair with a vector to make a number. In terms of indices, since the vector like <span class="math inline">\(k^\mu\)</span> has an index “up”, a covector naturally has an index down, for example <span class="math inline">\(p_\mu\)</span>, so that we can pair them up like <span class="math inline">\(\sum_{\mu=0}^{3} p_\mu k^\mu\)</span> to make a scalar.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Exercise 16">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -528,7 +535,7 @@ k² := η_{μν} k^μ k^ν = 0
 </div>
 </div>
 <p>If you have a vector <span class="math inline">\(k^\mu\)</span> and a metric <span class="math inline">\(g_{\mu\nu}\)</span>, for example, the Minkowski metric, then you can make the covector <span class="math inline">\(k_\mu\)</span> associated to the vector by combining <span class="math display">\[
-k_μ := ∑_{ν =0}³ g_{μν} k^ν
+k_μ := \sum_{\nu =0}^{3} g_{μν} k^ν
 \]</span></p>
 <div class="callout callout-style-default callout-note callout-titled" title="Exercise 17">
 <div class="callout-header d-flex align-content-center">
@@ -559,7 +566,7 @@ k_μ := ∑_{ν =0}³ g_{μν} k^ν
 <p>Determine the dimensions of the linear momentum <span class="math inline">\(𝒑\)</span>, the energy <span class="math inline">\(E\)</span>, the mass <span class="math inline">\(m\)</span>, and the speed of light <span class="math inline">\(c\)</span>. Combine these elements into a 4-vector <span class="math inline">\(p^\mu\)</span> and a scalar with units of momentum. Using the Minkowski metric <span class="math inline">\(\eta_{\mu\nu}\)</span> define the square of the momentum <span class="math inline">\(p²\)</span> and construct a formula relating it to the mass. To fix the coefficient in your formula check that when <span class="math inline">\(𝒑=𝟎\)</span>, you find that <span class="math inline">\(E=mc²\)</span> is a solution.</p>
 </div>
 </div>
-<p>A linear transformation is one that takes a vector <span class="math inline">\(𝒖\)</span> to another vector <span class="math inline">\(𝒗\)</span> of the form <span class="math inline">\(𝒖  ↦ 𝒗 = \Lambda(𝒖)\)</span>. Written out in terms of indices, this formula looks like <span class="math inline">\(v^\mu = ∑_{\nu =0}³ \Lambda^\mu{}_\nu u^\nu\)</span>.</p>
+<p>A linear transformation is one that takes a vector <span class="math inline">\(𝒖\)</span> to another vector <span class="math inline">\(𝒗\)</span> of the form <span class="math inline">\(𝒖  ↦ 𝒗 = \Lambda(𝒖)\)</span>. Written out in terms of indices, this formula looks like <span class="math inline">\(v^\mu = \sum_{\nu =0}^{3} \Lambda^\mu{}_\nu u^\nu\)</span>.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Exercise 19">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -571,8 +578,8 @@ k_μ := ∑_{ν =0}³ g_{μν} k^ν
 </div>
 <div class="callout-body-container callout-body">
 <p>Suppose a linear transformation preserves the Minkowski square <span class="math inline">\(k²\)</span> of a vector <span class="math inline">\(k^\mu\)</span>. Show that this implies that <span class="math display">\[
-∑_{ρ  =0}³∑_{σ =0}³ Λ^ρ{}_μ η_{ρσ} Λ^σ{}_ν
-=∑_{ρ  =0}³∑_{σ =0}³ (Λ^T)_μ{}^ρ η_{ρσ} Λ^σ{}_ν
+\sum_{\rho  =0}^{3}\sum_{\sigma =0}^{3} Λ^ρ{}_μ η_{ρσ} Λ^σ{}_ν
+=\sum_{\rho  =0}^{3}\sum_{\sigma =0}^{3} (Λ^T)_μ{}^ρ η_{ρσ} Λ^σ{}_ν
 = η_{μν}
 \]</span> Show that as a matrix equation, this reads <span class="math inline">\(\Lambda^T \Lambda = \mathbf{1}\)</span>.</p>
 </div>
@@ -629,10 +636,10 @@ p² = - (mc)²
     0 &amp; \textrm{ otherwise }
 \end{cases}
 \end{aligned}
-\]</span> Use it to define <span class="math inline">\(B_{ij} = ∑_{k=1}³ \varepsilon_{ijk} B^k\)</span> and calculate the components of the matrix in terms of the components of the vector.</p>
+\]</span> Use it to define <span class="math inline">\(B_{ij} = \sum_{k=1}^{3} \varepsilon_{ijk} B^k\)</span> and calculate the components of the matrix in terms of the components of the vector.</p>
 </div>
 </div>
-<p>Now we are in business: We can lift the 3D magnetic field matrix to an antisymmetric <span class="math inline">\(4×4\)</span> matrix <span class="math inline">\(F_{\mu\nu}\)</span> with exactly enough room left to accommodate the 3 electric field components. When we restrict to spacial components, we recover the magnetic field <span class="math inline">\(F_{ij}=B_{ij}= ∑_{k=1}³ \varepsilon_{ijk} B^k\)</span>. The remaining components must have exactly one time component <span class="math inline">\(F_{0j}\)</span> because, by antisymmetry <span class="math inline">\(F₀₀ ≡ 0\)</span>. As you will demonstrate presently, it turns out that the correct normalization is <span class="math inline">\(F_{0j} = - F_{j0}= - E_j\)</span>.</p>
+<p>Now we are in business: We can lift the 3D magnetic field matrix to an antisymmetric <span class="math inline">\(4×4\)</span> matrix <span class="math inline">\(F_{\mu\nu}\)</span> with exactly enough room left to accommodate the 3 electric field components. When we restrict to spacial components, we recover the magnetic field <span class="math inline">\(F_{ij}=B_{ij}= \sum_{k=1}^{3} \varepsilon_{ijk} B^k\)</span>. The remaining components must have exactly one time component <span class="math inline">\(F_{0j}\)</span> because, by antisymmetry <span class="math inline">\(F₀₀ ≡ 0\)</span>. As you will demonstrate presently, it turns out that the correct normalization is <span class="math inline">\(F_{0j} = - F_{j0}= - E_j\)</span>.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Exercise 23">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -645,7 +652,7 @@ p² = - (mc)²
 <div class="callout-body-container callout-body">
 <p>Consider the equation <span class="math display">\[
 \label{MaxSource}
-∑_{μ =0}³ ∂_μ F^{μν}=4π J^ν
+\sum_{\mu =0}^{3} ∂_μ F^{μν}=4π J^ν
 \]</span> Reducing it to 3D notation, we will have a scalar time component and a 3D vector component. Expand these two equations out to show that you recover exactly the correct components of the first and last of Maxwell’s equations, respectively.</p>
 </div>
 </div>
@@ -676,14 +683,14 @@ p² = - (mc)²
 <div class="callout-body-container callout-body">
 <p>Expand out the equations <span class="math display">\[
 \label{MaxBI}
-∑_{ν =0}³ ∑_{ρ =0}³ ∑_{σ =0}³ 𝜀_{μ ν ρ σ} ∂^ν  F^{ρσ} = 0
+\sum_{\nu =0}^{3} \sum_{\rho =0}^{3} \sum_{\sigma =0}^{3} 𝜀_{μ ν ρ σ} ∂^ν  F^{ρσ} = 0
 \]</span> into a scalar equation and a 3D vector equation. Show that you recover the third and second Maxwell equations, respectively.</p>
 </div>
 </div>
 <p>Equations <span class="math inline">\(\eqref{MaxSource}\)</span> and <span class="math inline">\(\eqref{MaxBI}\)</span> are the full set of Maxwell equations written in a manifestly Lorentz-covariant form.</p>
-<section id="einstein-summation-convention" class="level4" data-number="1.5.0.1">
-<h4 data-number="1.5.0.1" class="anchored" data-anchor-id="einstein-summation-convention"><span class="header-section-number">1.5.0.1</span> Einstein summation convention</h4>
-<p>The summation signs are pretty annoying to write and they clutter up the notation. Additionally, they are superfluous because whenever they occur they come together with two indices of the type they are summing over, and furthermore, those indices appear in opposite positions with one up and another down. For example, in <span class="math inline">\(\eqref{MaxSource}\)</span> the only summation <span class="math inline">\(∑_{\mu =0}³\)</span> is over the index that appears doubled in the expression <span class="math inline">\(\partial_\mu F^{\mu\nu}\)</span>. Einstein pointed out that this is always the situation and he suggested we just not write the <span class="math inline">\(∑_{\mu =0}³\)</span> part and interpret <span class="math inline">\(\partial_\mu F^{\mu\nu}\)</span> as implying that the <span class="math inline">\(\mu\)</span> index is summed from <span class="math inline">\(0\)</span> to <span class="math inline">\(3\)</span>. In other words <span class="math inline">\(\partial_\mu F^{\mu\nu}\)</span> means <span class="math inline">\(∑_{\mu =0}³\partial_\mu F^{\mu\nu}\)</span>. Similarly, we abbreviate <span class="math inline">\(\eqref{MaxBI}\)</span> to <span class="math inline">\(\varepsilon_{\mu \nu \rho \sigma} \partial^\nu  F^{\rho\sigma} = 0\)</span>. Since the indices <span class="math inline">\(\nu\)</span>, <span class="math inline">\(\rho\)</span>, and <span class="math inline">\(\sigma\)</span> are repeated, this equation means that we are summing over them. In sum (haha… get it?), the Maxwell equations are <span class="math display">\[
+<section id="einstein-summation-convention" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="einstein-summation-convention">Einstein summation convention</h4>
+<p>The summation signs are pretty annoying to write and they clutter up the notation. Additionally, they are superfluous because whenever they occur they come together with two indices of the type they are summing over, and furthermore, those indices appear in opposite positions with one up and another down. For example, in <span class="math inline">\(\eqref{MaxSource}\)</span> the only summation <span class="math inline">\(\sum_{\mu =0}^{3}\)</span> is over the index that appears doubled in the expression <span class="math inline">\(\partial_\mu F^{\mu\nu}\)</span>. Einstein pointed out that this is always the situation and he suggested we just not write the <span class="math inline">\(\sum_{\mu =0}^{3}\)</span> part and interpret <span class="math inline">\(\partial_\mu F^{\mu\nu}\)</span> as implying that the <span class="math inline">\(\mu\)</span> index is summed from <span class="math inline">\(0\)</span> to <span class="math inline">\(3\)</span>. In other words <span class="math inline">\(\partial_\mu F^{\mu\nu}\)</span> means <span class="math inline">\(\sum_{\mu =0}^{3}\partial_\mu F^{\mu\nu}\)</span>. Similarly, we abbreviate <span class="math inline">\(\eqref{MaxBI}\)</span> to <span class="math inline">\(\varepsilon_{\mu \nu \rho \sigma} \partial^\nu  F^{\rho\sigma} = 0\)</span>. Since the indices <span class="math inline">\(\nu\)</span>, <span class="math inline">\(\rho\)</span>, and <span class="math inline">\(\sigma\)</span> are repeated, this equation means that we are summing over them. In sum (haha… get it?), the Maxwell equations are <span class="math display">\[
 𝜀^{μ ν ρ σ} ∂_ν  F_{ρσ} = 0
 \quad \quad \textrm{and}\quad \quad
 ∂_μ F^{μν}=4π J^ν
