@@ -9,6 +9,10 @@ format:
     number-sections: true
     page-layout: article
     html-math-method: mathjax
+    include-before-body:
+      file: ../_includes/minicourse_nav_before.html
+    include-after-body:
+      file: ../_includes/minicourse_nav_after.html
   pdf:
     pdf-engine: lualatex
 ---

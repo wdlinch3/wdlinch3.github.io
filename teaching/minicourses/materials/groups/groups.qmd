@@ -8,6 +8,10 @@ format:
     number-sections: true
     page-layout: article
     format-links: false
+    include-before-body:
+      file: ../_includes/minicourse_nav_before.html
+    include-after-body:
+      file: ../_includes/minicourse_nav_after.html
     include-in-header:
       text: |
         <script>

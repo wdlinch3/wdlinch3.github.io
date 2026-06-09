@@ -10,6 +10,10 @@ format:
     toc-depth: 3
     number-sections: true
     page-layout: article
+    include-before-body:
+      file: ../_includes/minicourse_nav_before.html
+    include-after-body:
+      file: ../_includes/minicourse_nav_after.html
   pdf:
     documentclass: article
     toc: true
