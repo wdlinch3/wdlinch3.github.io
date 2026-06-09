@@ -12,15 +12,20 @@ format:
     toc-depth: 3
     number-sections: true
     page-layout: article
+    include-before-body:
+      file: ../_includes/minicourse_nav_before.html
+    include-after-body:
+      file: ../_includes/minicourse_nav_after.html
   pdf:
     documentclass: article
     toc: true
     number-sections: true
     geometry:
       - margin=1in
-header-includes:
-  - \DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}
-  - \DeclareOldFontCommand{\rm}{\normalfont\rmfamily}{\mathrm}
+    include-in-header:
+      text: |
+        \DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}
+        \DeclareOldFontCommand{\rm}{\normalfont\rmfamily}{\mathrm}
 execute:
   echo: false
 ---
