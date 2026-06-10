@@ -9,6 +9,10 @@ format:
     page-layout: full
     css:
       - ../assets/css/style.css
+    include-before-body:
+      file: _includes/help_nav_before.html
+    include-after-body:
+      file: _includes/help_nav_after.html
   pdf:
     toc: true
 format-links: false
