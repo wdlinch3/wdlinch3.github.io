@@ -102,6 +102,7 @@ one another.
     by multiplying each column of $N$ into the rows of $M$ sequentially
     according to the rule [\[MatMult\]](#MatMult){reference-type="eqref"
     reference="MatMult"}: In index notation
+    <span id="MatMult"></span>
     $$(MN)^i{}_{k} = \sum_{j=1}³ M^i{}_{j} N^j{}_{k} 
     \quad \text{where} \quad i= 1,\dots , m \quad \text{and} \quad k=1, \dots, p$$
     Note that for the sum to make sense, the second index on $M$ must
@@ -128,7 +129,7 @@ one another.
 
 We now use the stuff above to do some problems specific to 2D and 3D.
 
-1.  []{#SO(2) label="SO(2)"} Let
+1.  <span id="SO(2)"></span> Let
     $$R₁₂(α) \ := \ma{ \cos(α) & -\sin(α) \\
         \sin(α) & \cos(α) }$$
 
@@ -153,7 +154,7 @@ We now use the stuff above to do some problems specific to 2D and 3D.
         2.  What is the meaning of $L₁₂$ (defined below) in this
             interpretation?
 
-2.  []{#so(2) label="so(2)"} Define
+2.  <span id="so(2)"></span> Define
     $$L₁₂\ :=  \left.  {d R₁₂(α) \over d α}\right|_{α=0}$$
 
     1.  Compute what it is explicitly as a matrix.
