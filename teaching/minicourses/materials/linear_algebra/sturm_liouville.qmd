@@ -84,6 +84,8 @@ Let $S⊂ 𝐑$ be a subset of the real line and define the space $L²(S)$ of
 square-integrable functions on $S$: $$L²(S) = \left\{ 
         \ f : S ⟶ 𝐑 \ \Bigg| \int_S  |f(x)|² dx < ∞ 
     \right\}$$ Note that $L²(S)$ is an inner-product space over $𝐑$ with
+<span id="innerprod"></span>
+$$\left< g, f\right> = \int_S g(x) f(x) dx$$
 
 Consider $S=[-1,1]$. Note that any continuous function defined on such a
 set is automatically (square) integrable.
@@ -97,7 +99,10 @@ so that it is a cubic polynomial orthogonal to $p_i$ with $i=0,1$, and
 :::
 
 ::: exercise
-**Exercise 5**. *Consider the operator on $L²(S)$. Show that it is
+**Exercise 5**. *Consider the operator
+<span id="LegendreLaplacian"></span>
+$$L = (x² -1) \frac{d²}{dx²} + 2x \frac{d}{dx}$$
+on $L²(S)$. Show that it is
 self-adjoint with respect to the inner product
 [\[innerprod\]](#innerprod){reference-type="eqref"
 reference="innerprod"}.\
@@ -181,7 +186,12 @@ If the eigenvectors $\{v_n(x)\}_{n∈ 𝐙}$, say of a self-adjoint operator
 span the vector space on which that operator acts, then in the context
 of $L²(S)$, that must mean that it is possible to decompose *any*
 function $f∈ L²(S)$ in a (possibly infinite) sum of these eigenvectors
-$f(x) = \sum_{n∈ 𝐙} c_n v_n(x)$. Alternatively, for some series of real
+$f(x) = \sum_{n∈ 𝐙} c_n v_n(x)$. Alternatively,
+<span id="FourierReal"></span>
+$$f(x) = \sum_{n=0}^∞ \left[
+    a_n \sin(n x) + b_n \cos(n x)
+    \right]$$
+for some series of real
 coefficients $a_n, b_n ∈ 𝐑\ \forall n$. This form is called the Fourier
 series representation of the function $f(x)$. It gives an entire
 function in terms of a series $\{a_n\}_{n=1}^∞$ and $\{b_n\}_{n=0}^∞$ of
@@ -231,6 +241,8 @@ in [\[FourierReal\]](#FourierReal){reference-type="eqref"
 reference="FourierReal"} are now allowed to be complex. Mediate for a
 second on the conclusion that the complex analogue of that result is
 that for a complex-valued function $f$
+<span id="ComplexFourierSeries"></span>
+$$f(x) = \sum_{n∈ 𝐙} c_n e^{inx}$$
 
 ::: exercise
 **Exercise 13**. *For $m, n ∈ 𝐙$, show that[^1]
