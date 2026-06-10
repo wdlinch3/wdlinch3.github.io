@@ -18,9 +18,10 @@ title: Home
   <section>
     <h2>Quick Links</h2>
     <ul>
-      <li><a href="/about/cv/">CV</a></li>
-      <li><a href="https://orcid.org/0000-0003-2631-4465">ORCID</a></li>
-      <li><a href="https://inspirehep.net/authors/1019804">INSPIRE</a></li>
+      {% assign homepage_links = site.data.quick_links | where: "homepage", true | sort: "priority" %}
+      {% for link in homepage_links %}
+        <li><a href="{% if link.external %}{{ link.url }}{% else %}{{ link.url | relative_url }}{% endif %}">{{ link.home_title | default: link.title }}</a></li>
+      {% endfor %}
     </ul>
   </section>
 </aside>
@@ -51,16 +52,6 @@ title: Home
     <section class="portal-card">
       <h2><a href="/research/">Research</a></h2>
       <p>Professional and technical research pages, publications, and current thematic overviews.</p>
-    </section>
-
-    <section class="portal-card">
-      <h2><a href="/about/">About Me</a></h2>
-      <p>Short biography, CV access, and a low-prominence page for working and utility links.</p>
-    </section>
-
-    <section class="portal-card">
-      <h2><a href="/sitemap/">Site Map</a></h2>
-      <p>A manual clickable overview of the current site structure and the new landing pages.</p>
     </section>
   </div>
 </section>

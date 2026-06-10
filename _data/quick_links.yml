@@ -19,7 +19,7 @@
   external: true
   priority: 30
 
-- title: Astronomy and Astrophysics at TJ
+- title: AA@TJ
   url: "/aa/"
   category: daily_use
   audience: students
@@ -68,6 +68,8 @@
   external: true
   priority: 20
   description: "Public profile and code repositories."
+  homepage: true
+  home_title: GitHub
 
 - title: Desmos
   url: "https://www.desmos.com"
@@ -83,3 +85,36 @@
   external: true
   priority: 40
   description: "Working AI assistant link."
+  homepage: true
+
+- title: tjSTAR Presentations
+  url: "https://activities.tjhsst.edu/tjstar/presentations/"
+  category: homepage_quick
+  audience: general
+  external: true
+  priority: 50
+  homepage: true
+
+- title: Astronomy Club
+  url: "https://activities.tjhsst.edu/astronomyclub/"
+  category: homepage_quick
+  audience: students
+  external: true
+  priority: 60
+  homepage: true
+
+- title: About Me
+  url: "/about/"
+  category: homepage_quick
+  audience: general
+  external: false
+  priority: 70
+  homepage: true
+
+- title: Site Map
+  url: "/sitemap/"
+  category: homepage_quick
+  audience: general
+  external: false
+  priority: 80
+  homepage: true
