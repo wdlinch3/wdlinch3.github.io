@@ -158,7 +158,7 @@ window.Quarto = {
     M^m{}_{1} &amp; M^m{}_{2} &amp; \dots &amp; M^m{}_{n}
     }\]</span> This is an example of an <span class="math inline">\(m × n\)</span> matrix. The elements of this matrix are written <span class="math inline">\(M^i{}_{j}\)</span> for <span class="math inline">\(i=1,\dots, m\)</span> and <span class="math inline">\(j=1,\dots, n\)</span>. Sometimes matrices can be multiplied by vectors or covectors or among one another.</p>
 <ol type="1">
-<li><p>An <span class="math inline">\(m × n\)</span> matrix <span class="math inline">\(M^i{}_{j}\)</span> can be multiplied by an <span class="math inline">\(n × p\)</span> matrix <span class="math inline">\(N^j{}_{k}\)</span> to form an <span class="math inline">\(m × p\)</span> matrix <span class="math inline">\((MN)^i{}_{k}\)</span>. This is done by multiplying each column of <span class="math inline">\(N\)</span> into the rows of <span class="math inline">\(M\)</span> sequentially according to the rule <a href="#MatMult" data-reference-type="eqref" data-reference="MatMult">[MatMult]</a>: In index notation <span class="math display">\[(MN)^i{}_{k} = \sum_{j=1}³ M^i{}_{j} N^j{}_{k}
+<li><p>An <span class="math inline">\(m × n\)</span> matrix <span class="math inline">\(M^i{}_{j}\)</span> can be multiplied by an <span class="math inline">\(n × p\)</span> matrix <span class="math inline">\(N^j{}_{k}\)</span> to form an <span class="math inline">\(m × p\)</span> matrix <span class="math inline">\((MN)^i{}_{k}\)</span>. This is done by multiplying each column of <span class="math inline">\(N\)</span> into the rows of <span class="math inline">\(M\)</span> sequentially according to the rule <a href="#MatMult" data-reference-type="eqref" data-reference="MatMult">[MatMult]</a>: In index notation <span id="MatMult"></span> <span class="math display">\[(MN)^i{}_{k} = \sum_{j=1}³ M^i{}_{j} N^j{}_{k}
 \quad \text{where} \quad i= 1,\dots , m \quad \text{and} \quad k=1, \dots, p\]</span> Note that for the sum to make sense, the second index on <span class="math inline">\(M\)</span> must have the same range as the first index on <span class="math inline">\(N\)</span>. After we sum over this index, it disappears and the result does not depend on <span class="math inline">\(n\)</span>.</p></li>
 <li><p>A special case is when an <span class="math inline">\(n× n\)</span> matrix <span class="math inline">\(A\)</span> acts on an <span class="math inline">\(n\)</span>-component vector <span class="math inline">\(\bf u\)</span>: Recall that an <span class="math inline">\(n\)</span>-component vector is an <span class="math inline">\(n×1\)</span> matrix. Then <span class="math display">\[A {\bf u} = \ma{A¹{}_{1} &amp; A¹{}_{2} &amp; \dots &amp;A¹{}_{n}\\
     A²{}_{1} &amp;  A²{}_{2} &amp;  \dots &amp;  A²{}_{n}\\
@@ -179,7 +179,7 @@ window.Quarto = {
 <h1 data-number="2"><span class="header-section-number">2</span> Rotations</h1>
 <p>We now use the stuff above to do some problems specific to 2D and 3D.</p>
 <ol type="1">
-<li><p>[]{#SO(2) label=“SO(2)”} Let <span class="math display">\[R₁₂(α) \ := \ma{ \cos(α) &amp; -\sin(α) \\
+<li><p><span id="SO(2)"></span> Let <span class="math display">\[R₁₂(α) \ := \ma{ \cos(α) &amp; -\sin(α) \\
     \sin(α) &amp; \cos(α) }\]</span></p>
 <ol type="1">
 <li><p>Describe in detail what this matrix does to vectors in <span class="math inline">\(𝐑²\)</span>.</p></li>
@@ -192,7 +192,7 @@ window.Quarto = {
 <li><p>What is the meaning of <span class="math inline">\(L₁₂\)</span> (defined below) in this interpretation?</p></li>
 </ol></li>
 </ol></li>
-<li><p>[]{#so(2) label=“so(2)”} Define <span class="math display">\[L₁₂\ :=  \left.  {d R₁₂(α) \over d α}\right|_{α=0}\]</span></p>
+<li><p><span id="so(2)"></span> Define <span class="math display">\[L₁₂\ :=  \left.  {d R₁₂(α) \over d α}\right|_{α=0}\]</span></p>
 <ol type="1">
 <li><p>Compute what it is explicitly as a matrix.</p></li>
 <li><p>Define <span class="math inline">\((L₁₂)^0 := 𝟏\)</span> to be the (2 × 2) unit matrix, and calculate <span class="math inline">\((L₁₂)^n\)</span> for <span class="math inline">\(n ∈ 𝐍\)</span>.</p></li>
