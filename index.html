@@ -2,30 +2,6 @@
 title: Home
 ---
 
-<aside class="sidebar">
-  {% include global_nav.html %}
-
-  <section>
-    <h2>Daily Use</h2>
-    <ul>
-      {% assign daily_links = site.data.quick_links | where: "category", "daily_use" | sort: "priority" %}
-      {% for link in daily_links %}
-        <li><a href="{% if link.external %}{{ link.url }}{% else %}{{ link.url | relative_url }}{% endif %}">{{ link.title }}</a></li>
-      {% endfor %}
-    </ul>
-  </section>
-
-  <section>
-    <h2>Quick Links</h2>
-    <ul>
-      {% assign homepage_links = site.data.quick_links | where: "homepage", true | sort: "priority" %}
-      {% for link in homepage_links %}
-        <li><a href="{% if link.external %}{{ link.url }}{% else %}{{ link.url | relative_url }}{% endif %}">{{ link.home_title | default: link.title }}</a></li>
-      {% endfor %}
-    </ul>
-  </section>
-</aside>
-
 <section class="content">
   <p class="eyebrow">William D. Linch III</p>
   <h1>Home</h1>
@@ -55,3 +31,27 @@ title: Home
     </section>
   </div>
 </section>
+
+<aside class="sidebar">
+  {% include global_nav.html %}
+
+  <section>
+    <h2>Daily Use</h2>
+    <ul>
+      {% assign daily_links = site.data.quick_links | where: "category", "daily_use" | sort: "priority" %}
+      {% for link in daily_links %}
+        <li><a href="{% if link.external %}{{ link.url }}{% else %}{{ link.url | relative_url }}{% endif %}">{{ link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section>
+    <h2>Quick Links</h2>
+    <ul>
+      {% assign homepage_links = site.data.quick_links | where: "homepage", true | sort: "priority" %}
+      {% for link in homepage_links %}
+        <li><a href="{% if link.external %}{{ link.url }}{% else %}{{ link.url | relative_url }}{% endif %}">{{ link.home_title | default: link.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </section>
+</aside>

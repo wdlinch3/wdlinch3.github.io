@@ -73,6 +73,15 @@ body {
   gap: 48px;
 }
 
+.page:has(> .sidebar) > .content {
+  grid-column: 2;
+}
+
+.page:has(> .sidebar) > .sidebar {
+  grid-column: 1;
+  grid-row: 1;
+}
+
 .sidebar,
 .section-sidebar {
   position: sticky;
@@ -286,6 +295,12 @@ mjx-container {
   .page:has(> .sidebar) {
     grid-template-columns: 1fr;
     gap: 24px;
+  }
+
+  .page:has(> .sidebar) > .content,
+  .page:has(> .sidebar) > .sidebar {
+    grid-column: auto;
+    grid-row: auto;
   }
 
   .sidebar,
