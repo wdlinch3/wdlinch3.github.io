@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="360" viewBox="0 0 720 360">
+  <rect width="100%" height="100%" fill="white"/>
+  <circle cx="360" cy="180" r="130" fill="none" stroke="black" stroke-width="2"/>
+  <ellipse cx="360" cy="180" rx="130" ry="36" fill="none" stroke="black" stroke-width="1.5" stroke-dasharray="7 6"/>
+  <path d="M360 50 C290 95 260 130 250 180 C260 230 290 265 360 310" fill="none" stroke="black" stroke-width="2"/>
+  <path d="M360 50 C430 95 460 130 470 180 C460 230 430 265 360 310" fill="none" stroke="black" stroke-width="2"/>
+  <circle cx="360" cy="50" r="5" fill="black"/>
+  <circle cx="360" cy="310" r="5" fill="black"/>
+  <text x="373" y="55" font-family="serif" font-size="18">N</text>
+  <text x="373" y="315" font-family="serif" font-size="18">S</text>
+  <text x="190" y="110" font-family="serif" font-size="18">north patch</text>
+  <text x="415" y="265" font-family="serif" font-size="18">south patch</text>
+  <text x="250" y="188" font-family="serif" font-size="18">overlap</text>
+  <text x="108" y="335" font-family="serif" font-size="16">A_N and A_S are different local potentials whose curvatures agree on the overlap.</text>
+</svg>

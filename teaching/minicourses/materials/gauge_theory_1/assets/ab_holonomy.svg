@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="300" viewBox="0 0 720 300">
+  <rect width="100%" height="100%" fill="white"/>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="black"/>
+    </marker>
+  </defs>
+  <circle cx="360" cy="150" r="36" fill="#dddddd" stroke="black" stroke-width="2"/>
+  <text x="360" y="155" text-anchor="middle" font-family="serif" font-size="18">flux</text>
+  <text x="360" y="177" text-anchor="middle" font-family="serif" font-size="16">region</text>
+  <path d="M90,150 C210,40 510,40 630,150" fill="none" stroke="black" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M90,150 C210,260 510,260 630,150" fill="none" stroke="black" stroke-width="3" marker-end="url(#arrow)"/>
+  <circle cx="90" cy="150" r="5" fill="black"/>
+  <circle cx="630" cy="150" r="5" fill="black"/>
+  <text x="82" y="135" font-family="serif" font-size="18">source</text>
+  <text x="613" y="135" font-family="serif" font-size="18">screen</text>
+  <text x="330" y="55" font-family="serif" font-size="18">path α</text>
+  <text x="330" y="270" font-family="serif" font-size="18">path β</text>
+  <text x="200" y="25" font-family="serif" font-size="16">The electron paths remain outside the flux region.</text>
+</svg>
