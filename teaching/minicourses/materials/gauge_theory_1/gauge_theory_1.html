@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Wm. D. Linch, III">
+<meta name="dcterms.date" content="2026-06-13">
+
+<title>Gauge Fields: From Quantum Phase to the Geometry of Force</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="gauge_theory_1_files/libs/clipboard/clipboard.min.js"></script>
+<script src="gauge_theory_1_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="gauge_theory_1_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="gauge_theory_1_files/libs/quarto-html/popper.min.js"></script>
+<script src="gauge_theory_1_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="gauge_theory_1_files/libs/quarto-html/anchor.min.js"></script>
+<link href="gauge_theory_1_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="gauge_theory_1_files/libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="gauge_theory_1_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="gauge_theory_1_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="gauge_theory_1_files/libs/bootstrap/bootstrap-580f59859ddf617fe2e58b4aca1d3752.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#orientation" id="toc-orientation" class="nav-link active" data-scroll-target="#orientation"><span class="header-section-number">1</span> Orientation</a></li>
+  <li><a href="#what-you-need-to-know" id="toc-what-you-need-to-know" class="nav-link" data-scroll-target="#what-you-need-to-know"><span class="header-section-number">2</span> What you need to know</a></li>
+  <li><a href="#phase-is-not-a-name-it-is-a-consequence" id="toc-phase-is-not-a-name-it-is-a-consequence" class="nav-link" data-scroll-target="#phase-is-not-a-name-it-is-a-consequence"><span class="header-section-number">3</span> Phase is not a name; it is a consequence</a></li>
+  <li><a href="#conventions-after-the-first-obstruction" id="toc-conventions-after-the-first-obstruction" class="nav-link" data-scroll-target="#conventions-after-the-first-obstruction"><span class="header-section-number">4</span> Conventions after the first obstruction</a></li>
+  <li><a href="#first-gauge-invariant-building-blocks" id="toc-first-gauge-invariant-building-blocks" class="nav-link" data-scroll-target="#first-gauge-invariant-building-blocks"><span class="header-section-number">5</span> First gauge-invariant building blocks</a></li>
+  <li><a href="#curvature-from-the-commutator-of-covariant-derivatives" id="toc-curvature-from-the-commutator-of-covariant-derivatives" class="nav-link" data-scroll-target="#curvature-from-the-commutator-of-covariant-derivatives"><span class="header-section-number">6</span> Curvature from the commutator of covariant derivatives</a></li>
+  <li><a href="#a-short-bridge-to-differential-forms" id="toc-a-short-bridge-to-differential-forms" class="nav-link" data-scroll-target="#a-short-bridge-to-differential-forms"><span class="header-section-number">7</span> A short bridge to differential forms</a></li>
+  <li><a href="#wilson-lines-and-the-aharonovbohm-rest-stop" id="toc-wilson-lines-and-the-aharonovbohm-rest-stop" class="nav-link" data-scroll-target="#wilson-lines-and-the-aharonovbohm-rest-stop"><span class="header-section-number">8</span> Wilson lines and the Aharonov–Bohm rest stop</a></li>
+  <li><a href="#from-one-component-to-two-discovering-unitary-transformations" id="toc-from-one-component-to-two-discovering-unitary-transformations" class="nav-link" data-scroll-target="#from-one-component-to-two-discovering-unitary-transformations"><span class="header-section-number">9</span> From one component to two: discovering unitary transformations</a></li>
+  <li><a href="#inner-products-invariants-and-dynamics" id="toc-inner-products-invariants-and-dynamics" class="nav-link" data-scroll-target="#inner-products-invariants-and-dynamics"><span class="header-section-number">10</span> Inner products, invariants, and dynamics</a></li>
+  <li><a href="#local-expressions-gauge-choices-and-global-quantities" id="toc-local-expressions-gauge-choices-and-global-quantities" class="nav-link" data-scroll-target="#local-expressions-gauge-choices-and-global-quantities"><span class="header-section-number">11</span> Local expressions, gauge choices, and global quantities</a></li>
+  <li><a href="#map-of-nearby-territories" id="toc-map-of-nearby-territories" class="nav-link" data-scroll-target="#map-of-nearby-territories"><span class="header-section-number">12</span> Map of nearby territories</a></li>
+  <li><a href="#synthesis-questions" id="toc-synthesis-questions" class="nav-link" data-scroll-target="#synthesis-questions"><span class="header-section-number">13</span> Synthesis questions</a></li>
+  <li><a href="#appendix-a-forms-epsilon-the-metric-volume-and-the-hodge-star" id="toc-appendix-a-forms-epsilon-the-metric-volume-and-the-hodge-star" class="nav-link" data-scroll-target="#appendix-a-forms-epsilon-the-metric-volume-and-the-hodge-star"><span class="header-section-number">14</span> Appendix A: Forms, <span class="math inline">\(\epsilon\)</span>, the metric, volume, and the Hodge star</a></li>
+  <li><a href="#source-note-and-further-reading" id="toc-source-note-and-further-reading" class="nav-link" data-scroll-target="#source-note-and-further-reading"><span class="header-section-number">15</span> Source note and further reading</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="gauge_theory_1.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Gauge Fields: From Quantum Phase to the Geometry of Force</h1>
+<p class="subtitle lead">Student derivation packet</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Wm. D. Linch, III </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 13, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-important callout-titled" title="How to use this packet">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>How to use this packet
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is not an introductory reading. It is a guided derivation packet. The calculation is the main way the student learns the ideas.</p>
+<p>The packet is designed around attempt, obstruction, repair, and reinterpretation. Work through the problems actively; most of the concepts are introduced because a calculation forces them to appear.</p>
+</div>
+</div>
+<section id="orientation" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="orientation"><span class="header-section-number">1</span> Orientation</h2>
+<p>Modern physics describes the fundamental interactions, in modern language, using gauge fields and closely related geometric structures. That slogan is deliberately simple. Gravity requires qualifications, because it is usually introduced as spacetime geometry rather than as an ordinary Yang–Mills gauge field. The purpose of the slogan is not to settle every technical qualification at the beginning; its purpose is to point toward the structure we are going to uncover.</p>
+<p>The destination is visible from the beginning:</p>
+<p><span class="math display">\[
+\begin{array}{c}
+\text{local quantum phase}\\[3pt]
+\Downarrow\\[3pt]
+\text{covariant derivative}\\[3pt]
+\Downarrow\\[3pt]
+\text{connection}\\[3pt]
+\Downarrow\\[3pt]
+\text{curvature}\\[3pt]
+\Downarrow\\[3pt]
+\text{field strength and holonomy}\\[3pt]
+\Downarrow\\[3pt]
+\text{gauge-invariant dynamics.}
+\end{array}
+\]</span></p>
+<p>We will not begin with principal bundles. We will also not begin by classifying all forces. The quickest honest entrance is a small quantum-mechanical annoyance: multiplying a wavefunction by an unobservable phase does not change probabilities, but derivatives notice if the phase varies from point to point. The first part of the packet makes you repair that failure. Only after the repair has been forced will we name it geometrically.</p>
+<p>The one-component case is the abelian training case. The two-component nonabelian case will then be built from matrices that preserve a Hermitian inner product. Only after that will we specialize to the determinant-one subgroup and the Pauli matrices. Standard Model and condensed-matter directions are saved for the end as a map of nearby territory.</p>
+</section>
+<section id="what-you-need-to-know" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="what-you-need-to-know"><span class="header-section-number">2</span> What you need to know</h2>
+<p>You should be comfortable with complex numbers, partial derivatives, matrix multiplication, Hermitian inner products, and basic quantum wavefunctions. You do not need prior knowledge of quantum field theory, principal bundles, differential forms, Lie groups, Yang–Mills theory, or the Standard Model.</p>
+<p>That last sentence has consequences for the packet. We will not use words such as <span class="math inline">\(U(1)\)</span>, <span class="math inline">\(U(2)\)</span>, <span class="math inline">\(SU(2)\)</span>, curvature, Hodge star, or Lie algebra as if they are already familiar. Each one will appear only after a calculation creates a reason to name it. Differential forms require a little compact machinery, so a short appendix on <span class="math inline">\(dx^\mu\)</span>, wedge products, <span class="math inline">\(\epsilon\)</span>, the spacetime metric, volume forms, and the Hodge star is included near the end. The main text will introduce just enough of that language when it is first used.</p>
+<p>We will use units and conventions chosen to expose the geometry rather than obscure it with constants. In particular, the connection one-form will be normalized so that its integral along a path is a phase. Constants and charge normalizations are not part of the first-pass structure.</p>
+</section>
+<section id="phase-is-not-a-name-it-is-a-consequence" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="phase-is-not-a-name-it-is-a-consequence"><span class="header-section-number">3</span> Phase is not a name; it is a consequence</h2>
+<p>It is tempting to start by saying that a wavefunction may be multiplied by a phase. But for this packet, even that should be earned. Start with a complex scalar wavefunction <span class="math inline">\(\psi(x)\)</span> and ask which complex numbers can multiply it without changing the pointwise density.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 1: Derive phases from density preservation">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 1: Derive phases from density preservation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(z\in\mathbf{C}\)</span> be a nonzero complex number and define</p>
+<p><span class="math display">\[
+\psi'(x)=z\psi(x).
+\]</span></p>
+<ol type="1">
+<li>Compute <span class="math inline">\(\overline{\psi'}\psi'\)</span> in terms of <span class="math inline">\(\bar\psi\psi\)</span> and <span class="math inline">\(z\)</span>.</li>
+<li>Find the condition on <span class="math inline">\(z\)</span> that makes <span class="math inline">\(\overline{\psi'}\psi'=\bar\psi\psi\)</span> for every <span class="math inline">\(\psi\)</span>.</li>
+<li>Show that every such <span class="math inline">\(z\)</span> can be written as <span class="math inline">\(z=e^{i\alpha}\)</span> for some real <span class="math inline">\(\alpha\)</span>, at least up to adding multiples of <span class="math inline">\(2\pi\)</span>.</li>
+</ol>
+<p>The set of complex numbers satisfying this condition is called <span class="math inline">\(U(1)\)</span>. At this point, that name only means “unit complex numbers under multiplication.” Note that <span class="math inline">\(\alpha\)</span> parameterizes a circle, since <span class="math inline">\(\alpha\)</span> is identified with <span class="math inline">\(\alpha+2\pi\)</span>. We say that <span class="math inline">\(U(1)\)</span> is 1-dimensional and has the topology of a circle. We write this as <span class="math inline">\(U(1)\cong S^1\)</span>.</p>
+</div>
+</div>
+<p>The previous problem did not use derivatives. It only used the Hermitian square of the wavefunction. Nothing in that argument required the same phase choice at every point. So now make the phase local and see what breaks.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 2: Local phase leaves the density alone, but derivatives notice">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 2: Local phase leaves the density alone, but derivatives notice
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(\alpha(x)\)</span> be a real-valued function and let</p>
+<p><span class="math display">\[
+\psi'(x)=e^{i\alpha(x)}\psi(x).
+\]</span></p>
+<ol type="1">
+<li>Show directly that <span class="math inline">\(\overline{\psi'}\psi'=\bar\psi\psi\)</span> pointwise.</li>
+<li>Compute <span class="math inline">\(\partial_\mu\psi'\)</span> using the product rule.</li>
+<li>Identify exactly which term prevents <span class="math inline">\(\partial_\mu\psi\)</span> from transforming in the same way as <span class="math inline">\(\psi\)</span>.</li>
+</ol>
+</div>
+</div>
+<p>The failure is not philosophical; it is a product-rule term. This is why the next step should not be memorized. You can force it. We look for a new derivative that absorbs the unwanted term and therefore transforms the way the field itself transforms.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 3: Force the covariant derivative">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 3: Force the covariant derivative
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Define a modified derivative by</p>
+<p><span class="math display">\[
+D_\mu\psi=(\partial_\mu-iA_\mu)\psi.
+\]</span></p>
+<p>Assume <span class="math inline">\(\psi'=e^{i\alpha}\psi\)</span>. Find the transformation law for <span class="math inline">\(A_\mu\)</span> that makes</p>
+<p><span class="math display">\[
+D'_\mu\psi'=e^{i\alpha}D_\mu\psi.
+\]</span></p>
+<p>Do not guess the sign. Compute it.</p>
+</div>
+</div>
+</section>
+<section id="conventions-after-the-first-obstruction" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="conventions-after-the-first-obstruction"><span class="header-section-number">4</span> Conventions after the first obstruction</h2>
+<p>Now that <span class="math inline">\(A_\mu\)</span> and <span class="math inline">\(D_\mu\)</span> have appeared, we collect the conventions that will be used from here onward.</p>
+<p>The basic local expression is</p>
+<p><span class="math display">\[
+D_\mu=\partial_\mu-iA_\mu.
+\]</span></p>
+<p>The one-component local gauge transformation is</p>
+<p><span class="math display">\[
+\psi\mapsto \psi'=e^{i\alpha}\psi,
+\qquad
+A_\mu\mapsto A'_\mu=A_\mu+\partial_\mu\alpha.
+\]</span></p>
+<p>The expression above uses the common physics normalization in the one-component abelian case: the local potential <span class="math inline">\(A_\mu\)</span> is real-valued and</p>
+<p><span class="math display">\[
+D_\mu=\partial_\mu-iA_\mu.
+\]</span></p>
+<p>Equivalently, the mathematical local connection one-form is anti-Hermitian-valued:</p>
+<p><span class="math display">\[
+A_{\mathrm{conn}}=-iA_{\mathrm{phys}},
+\qquad
+A_{\mathrm{phys}}=A_\mu dx^\mu.
+\]</span></p>
+<p>When the distinction matters, <span class="math inline">\(A_{\mathrm{phys}}\)</span> denotes the real abelian physics potential and <span class="math inline">\(A_{\mathrm{conn}}\)</span> denotes the anti-Hermitian connection form. Most of the packet suppresses these subscripts and uses straight <span class="math inline">\(A\)</span> and <span class="math inline">\(F\)</span> for the connection-like object and its curvature in the context at hand. The point is continuity, not a new notation.</p>
+<p>In the nonabelian section the same symbol <span class="math inline">\(A\)</span> becomes Lie-algebra-valued, and with anti-Hermitian generators the covariant derivative has the clean form</p>
+<p><span class="math display">\[
+D=d+A,
+\qquad
+F=dA+A\wedge A.
+\]</span></p>
+<p>This is not a new concept. It is the same connection idea written in the convention that generalizes cleanly from the one-component phase case to <span class="math inline">\(SU(2)\)</span>. Physicists often say that <span class="math inline">\(A\)</span> is the connection. The more precise mathematical statement is that <span class="math inline">\(D\)</span> is the connection, while <span class="math inline">\(A\)</span> is a local connection one-form after choosing a gauge or local trivialization.</p>
+<p>The real abelian one-form is normalized so that its line integral gives a phase. Its components carry whatever inverse-coordinate dimensions are needed so that the integral is dimensionless. We will not insert charge parameters or unit-system constants into the first definition of <span class="math inline">\(D_\mu\)</span>.</p>
+<p>For spacetime index contractions we use the mostly-plus convention</p>
+<p><span class="math display">\[
+\eta_{\mu\nu}=\mathrm{diag}(-1,+1,+1,+1).
+\]</span></p>
+<p>This metric is what raises and lowers spacetime indices such as <span class="math inline">\(\mu,\nu\)</span>. It is not the same structure as the Hermitian inner product on the representation space or the invariant inner product on a Lie algebra.</p>
+<p>A complex scalar field will be used as the working matter field. This is not a realistic electron. Real electrons are spinor fields. A scalar field isolates the gauge idea without forcing us to introduce spinors, gamma matrices, or Lorentz representation theory.</p>
+</section>
+<section id="first-gauge-invariant-building-blocks" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="first-gauge-invariant-building-blocks"><span class="header-section-number">5</span> First gauge-invariant building blocks</h2>
+<p>The covariant derivative is useful because it transforms like the field. But physics is not made only from covariant objects. Local observable quantities and Lagrangian densities must be gauge-invariant. The first examples are deliberately simple. In this section the raised spacetime index in <span class="math inline">\(D^\mu\)</span> is raised with the mostly-plus spacetime metric stated above.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 4: Construct the first gauge-invariant local scalar">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 4: Construct the first gauge-invariant local scalar
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Assume <span class="math inline">\(D_\mu\psi\)</span> transforms covariantly:</p>
+<p><span class="math display">\[
+D_\mu\psi\mapsto e^{i\alpha}D_\mu\psi.
+\]</span></p>
+<p>Show that</p>
+<p><span class="math display">\[
+\overline{D_\mu\psi}\,D^\mu\psi
+\]</span></p>
+<p>is invariant under the local phase transformation. Then explain why <span class="math inline">\(\bar\psi\psi\)</span> and <span class="math inline">\(\overline{D_\mu\psi}\,D^\mu\psi\)</span> are different kinds of local gauge-invariant building blocks.</p>
+</div>
+</div>
+</section>
+<section id="curvature-from-the-commutator-of-covariant-derivatives" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="curvature-from-the-commutator-of-covariant-derivatives"><span class="header-section-number">6</span> Curvature from the commutator of covariant derivatives</h2>
+<p>A covariant derivative tells us how to compare nearby values of a field. The next question is whether comparisons commute. If we move first in the <span class="math inline">\(\mu\)</span> direction and then in the <span class="math inline">\(\nu\)</span> direction, do we get the same result as moving in the opposite order?</p>
+<p>The failure of covariant derivatives to commute is the curvature. In electromagnetism this curvature is the field strength.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 5: Compute the abelian curvature $F_{\mu\nu}$">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 5: Compute the abelian curvature <span class="math inline">\(F_{\mu\nu}\)</span>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For the one-component covariant derivative</p>
+<p><span class="math display">\[
+D_\mu=\partial_\mu-iA_\mu,
+\]</span></p>
+<p>compute <span class="math inline">\([D_\mu,D_\nu]\psi\)</span> explicitly. Show that it can be written as</p>
+<p><span class="math display">\[
+[D_\mu,D_\nu]\psi=-iF_{\mu\nu}\psi
+\]</span></p>
+<p>and identify <span class="math inline">\(F_{\mu\nu}\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 6: Gauge invariance of the abelian field strength $F_{\mu\nu}$">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 6: Gauge invariance of the abelian field strength <span class="math inline">\(F_{\mu\nu}\)</span>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Use</p>
+<p><span class="math display">\[
+A'_\mu=A_\mu+\partial_\mu\alpha
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu
+\]</span></p>
+<p>to show that <span class="math inline">\(F'_{\mu\nu}=F_{\mu\nu}\)</span>.</p>
+</div>
+</div>
+</section>
+<section id="a-short-bridge-to-differential-forms" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="a-short-bridge-to-differential-forms"><span class="header-section-number">7</span> A short bridge to differential forms</h2>
+<p>The packet promised not to assume differential forms. We now need a small amount of form language because it is the natural way to express curvature and holonomy. The appendix gives a fuller reference, but the essential rules are these.</p>
+<p>The symbols <span class="math inline">\(dx^\mu\)</span> are basis one-forms. A one-form looks locally like</p>
+<p><span class="math display">\[
+A=A_\mu dx^\mu.
+\]</span></p>
+<p>The wedge product is antisymmetric:</p>
+<p><span class="math display">\[
+dx^\mu\wedge dx^\nu=-dx^\nu\wedge dx^\mu,
+\qquad
+dx^\mu\wedge dx^\mu=0.
+\]</span></p>
+<p>The exterior derivative turns a one-form into a two-form:</p>
+<p><span class="math display">\[
+d(A_\mu dx^\mu)=(\partial_\nu A_\mu)dx^\nu\wedge dx^\mu.
+\]</span></p>
+<p>This is not new physics. It is a compact way to store antisymmetric component information.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 7: Recover the components of $F$ from $F=dA$">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 7: Recover the components of <span class="math inline">\(F\)</span> from <span class="math inline">\(F=dA\)</span>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Starting from</p>
+<p><span class="math display">\[
+A=A_\mu dx^\mu,
+\]</span></p>
+<p>compute <span class="math inline">\(dA\)</span> and show that</p>
+<p><span class="math display">\[
+dA=\frac12(\partial_\mu A_\nu-\partial_\nu A_\mu)dx^\mu\wedge dx^\nu.
+\]</span></p>
+<p>Then explain why this agrees with the curvature found from <span class="math inline">\([D_\mu,D_\nu]\)</span>.</p>
+</div>
+</div>
+<p>Before the next problem, we need one more rule of form calculus. The exterior derivative satisfies</p>
+<p><span class="math display">\[
+d^2=0.
+\]</span></p>
+<p>For an ordinary scalar function this is the statement that mixed partial derivatives commute, packaged antisymmetrically. For example, if <span class="math inline">\(A=A_\mu dx^\mu\)</span>, then <span class="math inline">\(d(dA)\)</span> contains terms proportional to</p>
+<p><span class="math display">\[
+\partial_\lambda\partial_\mu A_\nu\,dx^\lambda\wedge dx^\mu\wedge dx^\nu,
+\]</span></p>
+<p>and the symmetric second derivatives are killed by the antisymmetric wedge product.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 8: The abelian Bianchi identity $dF=0$">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 8: The abelian Bianchi identity <span class="math inline">\(dF=0\)</span>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Use <span class="math inline">\(F=dA\)</span> and <span class="math inline">\(d^2=0\)</span> to prove</p>
+<p><span class="math display">\[
+dF=0.
+\]</span></p>
+<p>Then show that this is equivalent to the component identity using antisymmetrization over three indices:</p>
+<p><span class="math display">\[
+\partial_{[\lambda}F_{\mu\nu]}=0.
+\]</span></p>
+<p>(The antisymmetric part of an object <span class="math inline">\(X_{\mu_1 \dots \mu_p}\)</span> is denoted <span class="math inline">\(X_{[\mu_1 \dots \mu_p]}\)</span>. It is the average over all signed permutations of the displayed indices, with an overall factor of <span class="math inline">\(1/p!\)</span>. For example, <span class="math inline">\(T_{[\mu\nu]}=\frac12(T_{\mu\nu}-T_{\nu\mu})\)</span>.)</p>
+<p>Finally, choose the oriented coordinate volume form</p>
+<p><span class="math display">\[
+\mathrm{vol}=dt\wedge dx\wedge dy\wedge dz
+=dx^0\wedge dx^1\wedge dx^2\wedge dx^3.
+\]</span></p>
+<p>We define the upper-index Levi-Civita symbol by</p>
+<p><span class="math display">\[
+\epsilon^{0123}=+1,
+\]</span></p>
+<p>with antisymmetry determining all other components. Thus</p>
+<p><span class="math display">\[
+dx^\mu\wedge dx^\nu\wedge dx^\rho \wedge dx^\sigma= \epsilon^{\mu\nu\rho\sigma}\,\mathrm{vol}.
+\]</span></p>
+<p>Show that the same identity may be written in the equivalent form</p>
+<p><span class="math display">\[
+\epsilon^{\mu\nu\rho\sigma} \partial_\rho F_{\mu \nu}=0.
+\]</span></p>
+<p>Because we use mostly-plus signature, lowering all four indices gives <span class="math inline">\(\epsilon_{0123}=-1\)</span>. The appendix explains this sign.</p>
+</div>
+</div>
+<p>The identity <span class="math inline">\(dF=0\)</span> did not need a metric. It followed from <span class="math inline">\(F=dA\)</span> and <span class="math inline">\(d^2=0\)</span>. The other half of Maxwell theory needs more structure. To write the sourced field equation, spacetime must supply a metric, an orientation, and therefore a volume form. These let us define the Hodge star <span class="math inline">\(*\)</span>, which turns a two-form in four dimensions into another two-form.</p>
+<p>With that extra structure, the sourced field equation can be written as the differential-form equation</p>
+<p><span class="math display">\[
+d(*F)=j.
+\]</span></p>
+<p>Here <span class="math inline">\(j\)</span> is a current three-form. The equation is compact, but it is not magic: the star is where the spacetime metric and orientation enter. The appendix gives the component rules and the role of <span class="math inline">\(\epsilon^{\mu\nu\rho\sigma}\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 9: Locate the metric in $d(*F)=j$">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 9: Locate the metric in <span class="math inline">\(d(*F)=j\)</span>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The equation</p>
+<p><span class="math display">\[
+dF=0
+\]</span></p>
+<p>can be written without a metric. The equation</p>
+<p><span class="math display">\[
+d(*F)=j
+\]</span></p>
+<p>cannot.</p>
+<ol type="1">
+<li>Explain why <span class="math inline">\(dF=0\)</span> only needs the exterior derivative.</li>
+<li>Explain why <span class="math inline">\(*F\)</span> requires a spacetime metric and an orientation.</li>
+<li>In four spacetime dimensions, if <span class="math inline">\(F\)</span> is a two-form, what degree form is <span class="math inline">\(*F\)</span>? What degree form is <span class="math inline">\(d(*F)\)</span>?</li>
+</ol>
+</div>
+</div>
+</section>
+<section id="wilson-lines-and-the-aharonovbohm-rest-stop" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="wilson-lines-and-the-aharonovbohm-rest-stop"><span class="header-section-number">8</span> Wilson lines and the Aharonov–Bohm rest stop</h2>
+<p>The local field strength <span class="math inline">\(F\)</span> is gauge-invariant in the abelian theory, but the connection also controls how phase is transported along paths. This is where the Aharonov–Bohm effect becomes a useful rest stop.</p>
+<p>The point is not to make the vector potential “more real” than the field strength. The point is subtler: a connection compares phase along a path, and a closed path can remember something global about the region it encloses.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/ab_holonomy.png" class="img-fluid figure-img" alt="Two paths from a source to a screen passing around an excluded flux region."></p>
+<figcaption>Two paths encircling an inaccessible flux region.</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 10: Gauge transformation of a Wilson line $W(\gamma)$">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 10: Gauge transformation of a Wilson line <span class="math inline">\(W(\gamma)\)</span>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For an oriented path <span class="math inline">\(\gamma\)</span> from point <span class="math inline">\(p\)</span> to point <span class="math inline">\(q\)</span>, define the abelian Wilson line</p>
+<p><span class="math display">\[
+W(\gamma)=\exp\left(i\int_\gamma A\right).
+\]</span></p>
+<p>Under the gauge transformation <span class="math inline">\(A\mapsto A+d\alpha\)</span>, show that</p>
+<p><span class="math display">\[
+W(\gamma)\mapsto e^{i\alpha(q)}W(\gamma)e^{-i\alpha(p)}.
+\]</span></p>
+<p>Then conclude that <span class="math inline">\(W(\gamma)\)</span> is gauge-invariant when <span class="math inline">\(\gamma\)</span> is closed.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 11: Flux from holonomy with the orientation made explicit">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 11: Flux from holonomy with the orientation made explicit
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(\gamma=\partial\Sigma\)</span> be the oriented boundary of an oriented surface <span class="math inline">\(\Sigma\)</span>. Stokes’ theorem says</p>
+<p><span class="math display">\[
+\oint_{\partial\Sigma}A=\int_\Sigma dA.
+\]</span></p>
+<ol type="1">
+<li>Use <span class="math inline">\(F=dA\)</span> to show</li>
+</ol>
+<p><span class="math display">\[
+\oint_\gamma A=\int_\Sigma F.
+\]</span></p>
+<ol start="2" type="1">
+<li>Suppose two paths <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> go from the same initial point <span class="math inline">\(p\)</span> to the same final point <span class="math inline">\(q\)</span>. Define the closed loop</li>
+</ol>
+<p><span class="math display">\[
+\gamma=\beta\circ\alpha^{-1},
+\]</span></p>
+<p>meaning: traverse <span class="math inline">\(\alpha\)</span> backward and <span class="math inline">\(\beta\)</span> forward. Show that</p>
+<p><span class="math display">\[
+\oint_\gamma A=\int_\beta A-\int_\alpha A.
+\]</span></p>
+<ol start="3" type="1">
+<li>In the Aharonov–Bohm setup, explain why this formula lets a wavefunction detect an inaccessible flux region even when the local field strength vanishes along the particle’s path.</li>
+</ol>
+</div>
+</div>
+</section>
+<section id="from-one-component-to-two-discovering-unitary-transformations" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="from-one-component-to-two-discovering-unitary-transformations"><span class="header-section-number">9</span> From one component to two: discovering unitary transformations</h2>
+<p>The one-component theory began with complex numbers preserving <span class="math inline">\(\bar\psi\psi\)</span>. The two-component theory should begin the same way. Do not start with the name of a group. Start with a vector, a Hermitian inner product, and a transformation that preserves it.</p>
+<p>Let the same field symbol <span class="math inline">\(\psi(x)\)</span> now denote a two-component internal vector:</p>
+<p><span class="math display">\[
+\psi(x)=\begin{pmatrix}\psi^1(x)\\ \psi^2(x)\end{pmatrix}.
+\]</span></p>
+<p>The index <span class="math inline">\(i=1,2\)</span> labels components in an internal representation space <span class="math inline">\(V\cong\mathbf{C}^2\)</span>. It is not a spacetime index and it is not a spin index in this packet.</p>
+<p>The Hermitian inner product on <span class="math inline">\(V\)</span> is</p>
+<p><span class="math display">\[
+\langle \psi,\chi\rangle_V=\bar\psi_i\chi^i.
+\]</span></p>
+<p>Here <span class="math inline">\(\bar{\psi^i}\)</span> denotes the ordinary complex conjugate of the complex number <span class="math inline">\(\psi^i\)</span>, while <span class="math inline">\(\bar\psi_i\)</span> denotes the adjoint component with respect to the Hermitian inner product. In an orthonormal basis these may have the same numerical entries, but they play different geometric roles.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 12: Derive $U^\dagger U=\mathbf{1}$ from inner-product preservation">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 12: Derive <span class="math inline">\(U^\dagger U=\mathbf{1}\)</span> from inner-product preservation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let</p>
+<p><span class="math display">\[
+{\psi'}^i=U^i{}_j\psi^j,
+\]</span></p>
+<p>where <span class="math inline">\(U\)</span> is a complex <span class="math inline">\(2\times2\)</span> matrix. Require the Hermitian inner product to be preserved for all <span class="math inline">\(\psi,\chi\in\mathbf{C}^2\)</span>:</p>
+<p><span class="math display">\[
+\langle U\psi,U\chi\rangle_V=\langle\psi,\chi\rangle_V.
+\]</span></p>
+<ol type="1">
+<li>Show that this condition implies</li>
+</ol>
+<p><span class="math display">\[
+U^\dagger U=\mathbf{1}.
+\]</span></p>
+<ol start="2" type="1">
+<li>Matrices satisfying this condition are called <strong>unitary</strong>. They form a group called <span class="math inline">\(U(2)\)</span>. Determine the number of real parameters in a general element of <span class="math inline">\(U(2)\)</span>.</li>
+<li>Show that if <span class="math inline">\(U=e^{i\alpha}\mathbf{1}\)</span>, this contains the one-component phase rotation from the earlier abelian theory as a special case.</li>
+<li>Imposing <span class="math inline">\(\det U=1\)</span> gives the subgroup called <span class="math inline">\(SU(2)\)</span>. Show that every element of <span class="math inline">\(SU(2)\)</span> can be written as</li>
+</ol>
+<p><span class="math display">\[
+U=
+\begin{pmatrix}
+a &amp; b\\
+-\bar b &amp; \bar a
+\end{pmatrix},
+\qquad
+|a|^2+|b|^2=1.
+\]</span></p>
+<p>How many real parameters are required?</p>
+</div>
+</div>
+<p>The nomenclature is as follows. The letter <span class="math inline">\(U\)</span> means unitary. The word <strong>special</strong> means determinant one. The group <span class="math inline">\(SU(2)\)</span> is therefore the special unitary subgroup of <span class="math inline">\(U(2)\)</span>.</p>
+<p>A <strong>group</strong> is the collection of full transformations, such as the matrices <span class="math inline">\(U\)</span> acting on <span class="math inline">\(\psi\)</span>. Here “full” means finite rather than infinitesimal; it does not mean that the collection has only finitely many elements. A <strong>representation</strong> is the rule by which those group elements act on a vector space such as <span class="math inline">\(V\cong\mathbf{C}^2\)</span>. A <strong>Lie algebra</strong> is the infinitesimal version of the group: it records the directions in which one may move away from the identity element. We will keep these three notions separate.</p>
+<p>The notation <span class="math inline">\(\mathfrak{su}(2)\)</span> is part of a standard typographical convention. Lie groups are often written with capital Roman letters, such as <span class="math inline">\(SU(2)\)</span>, while their Lie algebras are written with lowercase fraktur letters, such as <span class="math inline">\(\mathfrak{su}(2)\)</span>. The fraktur font is not decoration. It is a warning label: <span class="math inline">\(SU(2)\)</span> is the group of transformations, while <span class="math inline">\(\mathfrak{su}(2)\)</span> is the vector space of infinitesimal generators together with a bracket operation. The exponential map connects the two stories locally: an infinitesimal generator <span class="math inline">\(X\in\mathfrak{su}(2)\)</span> produces group elements such as <span class="math inline">\(e^X\in SU(2)\)</span>. But the group and the Lie algebra are not the same kind of object.</p>
+<p>For a matrix group, the Lie algebra of <span class="math inline">\(SU(2)\)</span> is the space of traceless anti-Hermitian matrices. That convention is the standard mathematical one. It differs from a common physics convention in which the Pauli matrices divided by <span class="math inline">\(2\)</span> are called generators even though they are Hermitian. In this packet we use the anti-Hermitian basis</p>
+<p><span class="math display">\[
+t_a=-\frac{i}{2}\sigma_a.
+\]</span></p>
+<p>Then <span class="math inline">\(t_a^\dagger=-t_a\)</span>, <span class="math inline">\(\mathrm{tr}(t_a)=0\)</span>, and <span class="math inline">\(t_a\in\mathfrak{su}(2)\)</span>. The Pauli matrices themselves are</p>
+<p><span class="math display">\[
+\sigma_1=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix},\qquad
+\sigma_2=\begin{pmatrix}0&amp;-i\\i&amp;0\end{pmatrix},\qquad
+\sigma_3=\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}.
+\]</span></p>
+<p>They are familiar from spin, but here they act on the two-dimensional internal label of the components <span class="math inline">\(\psi^i\)</span>, not necessarily on spin-up and spin-down states.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 13: Pauli matrices and anti-Hermitian generators">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 13: Pauli matrices and anti-Hermitian generators
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Define</p>
+<p><span class="math display">\[
+t_a=-\frac{i}{2}\sigma_a.
+\]</span></p>
+<ol type="1">
+<li>Show that each <span class="math inline">\(t_a\)</span> is anti-Hermitian and traceless.</li>
+<li>Compute enough products of Pauli matrices to show</li>
+</ol>
+<p><span class="math display">\[
+[\sigma_a,\sigma_b]=2i f_{ab}{}^c\sigma_c,
+\]</span></p>
+<p>where <span class="math inline">\(f_{12}{}^3=f_{23}{}^1=f_{31}{}^2=1\)</span> and the coefficients are antisymmetric in the lower labels. 3. Use this to prove</p>
+<p><span class="math display">\[
+[t_a,t_b]=f_{ab}{}^c t_c.
+\]</span></p>
+<p>What changed when we passed from the Hermitian matrices <span class="math inline">\(\sigma_a/2\)</span> to the anti-Hermitian basis <span class="math inline">\(t_a\)</span>?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 14: Write the $SU(2)$ covariant derivative with all indices visible">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 14: Write the <span class="math inline">\(SU(2)\)</span> covariant derivative with all indices visible
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let the local connection one-form be anti-Hermitian-valued:</p>
+<p><span class="math display">\[
+A_\mu=A_\mu^a t_a,
+\qquad
+(A_\mu)^i{}_j=A_\mu^a(t_a)^i{}_j.
+\]</span></p>
+<p>Define</p>
+<p><span class="math display">\[
+(D_\mu\psi)^i=\partial_\mu\psi^i+(A_\mu)^i{}_j\psi^j.
+\]</span></p>
+<ol type="1">
+<li>Explain which indices are spacetime indices, which are internal representation indices, and which are Lie-algebra basis labels. Explicitly state the range of each type of label.</li>
+<li>Temporarily enlarge from <span class="math inline">\(SU(2)\)</span> to <span class="math inline">\(U(2)\)</span>. Show that if <span class="math inline">\(A_\mu\)</span> were proportional to the central anti-Hermitian identity direction <span class="math inline">\(i\mathbf{1}\)</span>, this would reduce to two copies of the abelian phase-connection formula.</li>
+<li>Explain why a general <span class="math inline">\(SU(2)\)</span> connection can mix <span class="math inline">\(\psi^1\)</span> and <span class="math inline">\(\psi^2\)</span>.</li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 15: Derive the nonabelian gauge transformation law">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 15: Derive the nonabelian gauge transformation law
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(\psi'=U\psi\)</span>, where <span class="math inline">\(U(x)\in SU(2)\)</span>, and let</p>
+<p><span class="math display">\[
+D_\mu=\partial_\mu+A_\mu,
+\qquad
+D'_\mu=\partial_\mu+A'_\mu.
+\]</span></p>
+<p>Require</p>
+<p><span class="math display">\[
+D'_\mu\psi'=U D_\mu\psi.
+\]</span></p>
+<ol type="1">
+<li>Derive the transformation law</li>
+</ol>
+<p><span class="math display">\[
+A'_\mu=UA_\mu U^{-1}-(\partial_\mu U)U^{-1}.
+\]</span></p>
+<ol start="2" type="1">
+<li>Explain why this is the nonabelian analogue of the abelian transformation law for the local connection one-form.</li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 16: Nonabelian curvature from $[D_\mu,D_\nu]$">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 16: Nonabelian curvature from <span class="math inline">\([D_\mu,D_\nu]\)</span>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Using</p>
+<p><span class="math display">\[
+D_\mu=\partial_\mu+A_\mu,
+\]</span></p>
+<p>where <span class="math inline">\(A_\mu\)</span> is matrix-valued, compute <span class="math inline">\([D_\mu,D_\nu]\psi\)</span> and show that</p>
+<p><span class="math display">\[
+[D_\mu,D_\nu]\psi=F_{\mu\nu}\psi
+\]</span></p>
+<p>with</p>
+<p><span class="math display">\[
+F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu+[A_\mu,A_\nu].
+\]</span></p>
+<p>Then expand <span class="math inline">\([A_\mu,A_\nu]\)</span> in the <span class="math inline">\(t_a\)</span> basis for <span class="math inline">\(SU(2)\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 17: Curvature transforms covariantly">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 17: Curvature transforms covariantly
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Use the transformation law from the previous problem to show that</p>
+<p><span class="math display">\[
+F'_{\mu\nu}=UF_{\mu\nu}U^{-1}.
+\]</span></p>
+<p>A direct component expansion is possible but unpleasant. A cleaner route is to use the operator statement</p>
+<p><span class="math display">\[
+D'_\mu=U D_\mu U^{-1}.
+\]</span></p>
+<p>Apply this to the commutator <span class="math inline">\([D'_\mu,D'_\nu]\)</span>.</p>
+</div>
+</div>
+<p>The new commutator term is the whole nonabelian story in miniature. Maxwell theory is linear in the potential. Yang–Mills curvature is not. This nonlinearity is one reason nonabelian gauge theories can behave very differently from electromagnetism.</p>
+<p>Before discussing dynamics, however, there is another purely geometric identity to prove. In the abelian case it was <span class="math inline">\(dF=0\)</span>. In the nonabelian case ordinary <span class="math inline">\(d\)</span> is replaced by the covariant derivative.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 18: The Jacobi identity for matrix commutators">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 18: The Jacobi identity for matrix commutators
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For arbitrary square matrices <span class="math inline">\(X,Y,Z\)</span>, prove directly from associativity of matrix multiplication that</p>
+<p><span class="math display">\[
+[X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0.
+\]</span></p>
+<p>Then apply this identity to the basis elements <span class="math inline">\(t_a\)</span> of <span class="math inline">\(\mathfrak{su}(2)\)</span>. Using</p>
+<p><span class="math display">\[
+[t_a,t_b]=f_{ab}{}^c t_c,
+\]</span></p>
+<p>show that the Jacobi identity implies the structure-constant identity</p>
+<p><span class="math display">\[
+f_{[ab}{}^d f_{c]d}{}^e=0.
+\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 19: The $SU(2)$ Bianchi identity $DF=0$ by explicit calculation">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 19: The <span class="math inline">\(SU(2)\)</span> Bianchi identity <span class="math inline">\(DF=0\)</span> by explicit calculation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For an adjoint-valued field <span class="math inline">\(X=X^a t_a\)</span>, define</p>
+<p><span class="math display">\[
+(D_\lambda X)^a=\partial_\lambda X^a+f_{bc}{}^aA_\lambda^bX^c.
+\]</span></p>
+<p>The covariant Bianchi identity is</p>
+<p><span class="math display">\[
+(D_\lambda F_{\mu\nu})^a+(D_\mu F_{\nu\lambda})^a+(D_\nu F_{\lambda\mu})^a=0.
+\]</span></p>
+<p>Use</p>
+<p><span class="math display">\[
+F_{\mu\nu}^a=\partial_\mu A_\nu^a-\partial_\nu A_\mu^a+f_{bc}{}^aA_\mu^bA_\nu^c
+\]</span></p>
+<p>to prove the identity. Organize the calculation into: second-derivative terms, terms with one derivative of <span class="math inline">\(A\)</span> times one <span class="math inline">\(A\)</span>, and cubic terms in <span class="math inline">\(A\)</span>. Use the Jacobi identity from the previous problem for the cubic terms.</p>
+</div>
+</div>
+<p>The nonabelian Bianchi identity is the first serious calculation where the pieces must cooperate: spacetime derivatives, matrix commutators, the representation, and the Lie algebra bracket all matter. After doing the indexed calculation, the compressed geometric statement is</p>
+<p><span class="math display">\[
+DF=0.
+\]</span></p>
+<p>In local form notation one writes</p>
+<p><span class="math display">\[
+F=dA+A\wedge A,
+\]</span></p>
+<p>with the understanding that <span class="math inline">\(A\)</span> is matrix-valued and wedge multiplication also includes matrix multiplication.</p>
+</section>
+<section id="inner-products-invariants-and-dynamics" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="inner-products-invariants-and-dynamics"><span class="header-section-number">10</span> Inner products, invariants, and dynamics</h2>
+<p>The commutator made <span class="math inline">\(\mathfrak{su}(2)\)</span> into a Lie algebra suitable for defining nonabelian curvature. Dynamics requires another structure: a way to pair Lie-algebra-valued objects and produce scalar quantities.</p>
+<p>This is where we separate the antisymmetric part of Pauli multiplication from the symmetric part. The commutator gave the Lie bracket. The anticommutator reveals the trace pairing.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 20: The anticommutator and the Lie-algebra inner product">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 20: The anticommutator and the Lie-algebra inner product
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Prove</p>
+<p><span class="math display">\[
+\{\sigma_a,\sigma_b\}=2\delta_{ab}\mathbf{1}.
+\]</span></p>
+<p>Use this to show</p>
+<p><span class="math display">\[
+\mathrm{tr}(\sigma_a\sigma_b)=2\delta_{ab}
+\]</span></p>
+<p>and, for <span class="math inline">\(t_a=-i\sigma_a/2\)</span>,</p>
+<p><span class="math display">\[
+-2\,\mathrm{tr}(t_at_b)=\delta_{ab}.
+\]</span></p>
+<p>Explain what this trace pairing lets us do that the commutator alone did not.</p>
+</div>
+</div>
+<p>Now the available structures should be kept separate. There is a Hermitian inner product on the representation space <span class="math inline">\(V\)</span>:</p>
+<p><span class="math display">\[
+\langle \psi,\chi\rangle_V=\bar\psi_i\chi^i.
+\]</span></p>
+<p>There is also an invariant inner product on the Lie algebra, written</p>
+<p><span class="math display">\[
+\langle X,Y\rangle_{\mathfrak g}.
+\]</span></p>
+<p>In the 2-dimensional representation of <span class="math inline">\(SU(2)\)</span> this can be realized by the positive trace pairing <span class="math inline">\(\langle X,Y\rangle_{\mathfrak g}=-2\,\mathrm{tr}(XY)\)</span> on anti-Hermitian matrices. Finally, there is the spacetime metric or Hodge star, which contracts spacetime indices or turns forms into complementary forms.</p>
+<p>Gauge-covariant objects are useful building blocks. Gauge-invariant objects are candidates for local observables, Lagrangian densities, and field equations.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 21: Build gauge-invariant local quantities">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 21: Build gauge-invariant local quantities
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You now have three kinds of structure available:</p>
+<ol type="1">
+<li>the Hermitian inner product on the representation space <span class="math inline">\(V\)</span>,</li>
+<li>the invariant inner product on the Lie algebra <span class="math inline">\(\mathfrak g\)</span>,</li>
+<li>the spacetime metric or Hodge star.</li>
+</ol>
+<p>Construct local gauge-invariant scalar quantities from the following covariant building blocks:</p>
+<p><span class="math display">\[
+\psi,
+\qquad
+D_\mu\psi,
+\qquad
+F_{\mu\nu}.
+\]</span></p>
+<p>Your answer should include at least one matter-field quantity, one derivative matter-field quantity, and one pure gauge-field quantity.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 22: From invariant scalars to field equations">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 22: From invariant scalars to field equations
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A connection <span class="math inline">\(D\)</span> gives local comparison. Its curvature <span class="math inline">\(F\)</span> gives field strength. Dynamics requires a field equation.</p>
+<p>Using the gauge-invariant local quantities you constructed, explain why a natural Yang–Mills-type gauge-field equation is</p>
+<p><span class="math display">\[
+D(*F)=j.
+\]</span></p>
+<p>Then explain how this differs from merely saying <span class="math inline">\(F=dA\)</span> or <span class="math inline">\(F=dA+A\wedge A\)</span>.</p>
+</div>
+</div>
+</section>
+<section id="local-expressions-gauge-choices-and-global-quantities" class="level2" data-number="11">
+<h2 data-number="11" class="anchored" data-anchor-id="local-expressions-gauge-choices-and-global-quantities"><span class="header-section-number">11</span> Local expressions, gauge choices, and global quantities</h2>
+<p>The connection <span class="math inline">\(D\)</span> is the geometric object. The local one-form <span class="math inline">\(A\)</span> is what <span class="math inline">\(D\)</span> looks like after a gauge choice. On overlapping patches, different local potentials describe the same connection if they are related by the appropriate gauge transformation.</p>
+<p>A sloppy slogan says “<span class="math inline">\(A\)</span> is local and <span class="math inline">\(F\)</span> is global.” We will not use that slogan. A more careful statement is this: <span class="math inline">\(A\)</span> is gauge-variant and patch-dependent. In abelian theory, <span class="math inline">\(F=dA\)</span> is gauge-invariant and may be globally defined as a curvature form on the relevant punctured space, but <span class="math inline">\(F\)</span> is still a local differential form in the sense that it can be evaluated pointwise. A genuinely global quantity is a period of the curvature, such as</p>
+<p><span class="math display">\[
+\int_{S^2}\iota^*F,
+\]</span></p>
+<p>where <span class="math inline">\(\iota:S^2\hookrightarrow \mathbf{R}^3\setminus\{0\}\)</span> includes a sphere surrounding the puncture.</p>
+<p>The final challenge problem uses the Wu–Yang/Dirac monopole patching description to make this distinction concrete.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/monopole_patches.png" class="img-fluid figure-img" alt="A sphere with northern and southern patches and an overlap region."></p>
+<figcaption>Northern and southern patches on a sphere surrounding a monopole.</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Problem 23: Optional challenge: the Wu--Yang/Dirac monopole as a patching problem">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Problem 23: Optional challenge: the Wu–Yang/Dirac monopole as a patching problem
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Cover a sphere surrounding the origin by two angular-coordinate patches. On the northern patch, away from the south pole, use coordinates <span class="math inline">\((\theta,\phi)\)</span> and define</p>
+<p><span class="math display">\[
+A_N=g(1-\cos\theta)d\phi.
+\]</span></p>
+<p>On the southern patch, away from the north pole, use angular coordinates with the same local expression for <span class="math inline">\(d\phi\)</span> on the overlap and define</p>
+<p><span class="math display">\[
+A_S=-g(1+\cos\theta)d\phi.
+\]</span></p>
+<p>The coordinate <span class="math inline">\(\phi\)</span> is not a globally defined smooth function on <span class="math inline">\(S^2\)</span>. That is not a defect in the problem; it is the point of the problem.</p>
+<ol type="1">
+<li>Compute <span class="math inline">\(F_N=dA_N\)</span> and <span class="math inline">\(F_S=dA_S\)</span>.</li>
+<li>Show that the two curvatures agree on the overlap.</li>
+<li>Compute <span class="math inline">\(A_N-A_S\)</span> on the overlap and write it as <span class="math inline">\(d\alpha\)</span>.</li>
+<li>Compute the flux</li>
+</ol>
+<p><span class="math display">\[
+\int_{S^2}F.
+\]</span></p>
+<ol start="5" type="1">
+<li>If a unit-charged wavefunction transforms by <span class="math inline">\(e^{i\alpha}\)</span> on the overlap, explain why single-valuedness under <span class="math inline">\(\phi\mapsto\phi+2\pi\)</span> gives a quantization condition on <span class="math inline">\(g\)</span>.</li>
+</ol>
+</div>
+</div>
+</section>
+<section id="map-of-nearby-territories" class="level2" data-number="12">
+<h2 data-number="12" class="anchored" data-anchor-id="map-of-nearby-territories"><span class="header-section-number">12</span> Map of nearby territories</h2>
+<p>The machinery in this packet is not only the language of elementary particle physics. It is a general mathematical pattern.</p>
+<p>In particle physics, the Standard Model uses gauge groups organized schematically as</p>
+<p><span class="math display">\[
+SU(3)\times SU(2)\times U(1),
+\]</span></p>
+<p>with matter fields transforming in representations of those groups and gauge fields serving as connections. The observed photon, <span class="math inline">\(W^\pm\)</span>, <span class="math inline">\(Z\)</span>, and gluons require additional structure beyond this packet, especially electroweak symmetry breaking.</p>
+<p>In condensed matter and quantum mechanics, closely related connections appear as Berry connections. The base space may be parameter space or momentum space rather than spacetime. Curvature becomes Berry curvature; holonomy becomes Berry phase; integrals of curvature lead toward Chern numbers, flux quantization, vortices, quantum Hall physics, and topological phases.</p>
+<p>That is a natural follow-up packet. In this packet you calculated your way to the following dictionary:</p>
+<p><span class="math display">\[
+\begin{array}{c|c}
+\text{physics language} &amp; \text{geometric language}\\
+\hline
+\text{gauge-covariant derivative} &amp; \text{connection }D\\
+\text{real abelian }A_{\mathrm{phys}} &amp; \text{physics normalization}\\
+\text{local }A &amp; \text{connection one-form in a chosen gauge}\\
+\text{field strength }F &amp; \text{curvature }D^2\\
+\text{Wilson loop} &amp; \text{holonomy}\\
+\text{gauge-invariant scalar} &amp; \text{paired/contracted covariant object}\\
+\text{Yang--Mills equation} &amp; \text{dynamics for curvature}
+\end{array}
+\]</span></p>
+<p>The bridge between gauge theory and the language of bundles, connections, and curvature is often called the <a href="https://en.wikipedia.org/wiki/Wu%E2%80%93Yang_dictionary">Wu–Yang dictionary</a>. Yang–Mills theory itself was introduced in 1954 by C. N. Yang and Robert Mills, both physicists. Wu and Yang later emphasized, in 1975, that the gauge potentials and field strengths used by particle theorists are naturally understood as local connection one-forms and curvatures on fiber bundles. That dictionary is the geometric language this packet has been building toward.</p>
+</section>
+<section id="synthesis-questions" class="level2" data-number="13">
+<h2 data-number="13" class="anchored" data-anchor-id="synthesis-questions"><span class="header-section-number">13</span> Synthesis questions</h2>
+<ol type="1">
+<li>Why is <span class="math inline">\(D\)</span>, rather than <span class="math inline">\(A\)</span>, the cleanest object to call the connection?</li>
+<li>In the abelian theory, why is <span class="math inline">\(F\)</span> gauge-invariant? In the nonabelian theory, why is this statement replaced by gauge covariance?</li>
+<li>Which parts of the construction required a representation-space inner product? Which required a Lie-algebra inner product? Which required a spacetime metric or Hodge star?</li>
+<li>In the <span class="math inline">\(SU(2)\)</span> calculation, what role did the commutator play? What role did the anticommutator/trace pairing play?</li>
+<li>Why is the Aharonov–Bohm effect better understood as a holonomy effect than as a local force effect?</li>
+<li>What did the Dirac monopole problem teach that the local formula <span class="math inline">\(F=dA\)</span> hides?</li>
+</ol>
+</section>
+<section id="appendix-a-forms-epsilon-the-metric-volume-and-the-hodge-star" class="level2" data-number="14">
+<h2 data-number="14" class="anchored" data-anchor-id="appendix-a-forms-epsilon-the-metric-volume-and-the-hodge-star"><span class="header-section-number">14</span> Appendix A: Forms, <span class="math inline">\(\epsilon\)</span>, the metric, volume, and the Hodge star</h2>
+<p>This appendix is a compact reference for the form notation used in the packet. It is not a full course in differential forms, but it fixes the conventions needed to keep signs under control.</p>
+<p>A <span class="math inline">\(k\)</span>-form is an antisymmetric object that can be integrated over an oriented <span class="math inline">\(k\)</span>-dimensional surface. In local coordinates, a one-form is written</p>
+<p><span class="math display">\[
+A=A_\mu dx^\mu,
+\]</span></p>
+<p>and a two-form is written</p>
+<p><span class="math display">\[
+F=\frac12F_{\mu\nu}dx^\mu\wedge dx^\nu.
+\]</span></p>
+<p>The wedge product is antisymmetric:</p>
+<p><span class="math display">\[
+dx^\mu\wedge dx^\nu=-dx^\nu\wedge dx^\mu.
+\]</span></p>
+<p>That is why a two-form has antisymmetric components:</p>
+<p><span class="math display">\[
+F_{\mu\nu}=-F_{\nu\mu}.
+\]</span></p>
+<p>More generally, interchanging two one-form factors changes the sign. If two factors are identical, the expression vanishes:</p>
+<p><span class="math display">\[
+dx^\mu\wedge dx^\mu=0
+\]</span></p>
+<p>with no sum on <span class="math inline">\(\mu\)</span>.</p>
+<p>The exterior derivative satisfies</p>
+<p><span class="math display">\[
+d^2=0
+\]</span></p>
+<p>and the graded product rule</p>
+<p><span class="math display">\[
+d(\alpha\wedge\beta)=d\alpha\wedge\beta+(-1)^k\alpha\wedge d\beta
+\]</span></p>
+<p>when <span class="math inline">\(\alpha\)</span> is a <span class="math inline">\(k\)</span>-form. For a one-form <span class="math inline">\(A=A_\mu dx^\mu\)</span>,</p>
+<p><span class="math display">\[
+dA=(\partial_\nu A_\mu)dx^\nu\wedge dx^\mu
+=\frac12(\partial_\mu A_\nu-\partial_\nu A_\mu)dx^\mu\wedge dx^\nu.
+\]</span></p>
+<p>An orientation chooses which ordered coordinate volume is positive. In four coordinates</p>
+<p><span class="math display">\[
+x^0=t,\qquad x^1=x,\qquad x^2=y,\qquad x^3=z,
+\]</span></p>
+<p>we use the oriented coordinate volume form</p>
+<p><span class="math display">\[
+\mathrm{vol}=dt\wedge dx\wedge dy\wedge dz
+=dx^0\wedge dx^1\wedge dx^2\wedge dx^3.
+\]</span></p>
+<p>We fix the upper-index Levi-Civita symbol by declaring</p>
+<p><span class="math display">\[
+\epsilon^{0123}=+1,
+\]</span></p>
+<p>with total antisymmetry determining all other components. Equivalently,</p>
+<p><span class="math display">\[
+dx^\mu\wedge dx^\nu\wedge dx^\rho\wedge dx^\sigma
+=\epsilon^{\mu\nu\rho\sigma}\,\mathrm{vol}.
+\]</span></p>
+<p>This convention is adapted to the oriented coordinate volume form. It is also the convention used in the main text.</p>
+<p>Now bring in the mostly-plus spacetime metric</p>
+<p><span class="math display">\[
+\eta_{\mu\nu}=\mathrm{diag}(-1,+1,+1,+1).
+\]</span></p>
+<p>Lowering all four indices introduces one minus sign:</p>
+<p><span class="math display">\[
+\epsilon_{0123}
+=\eta_{00}\eta_{11}\eta_{22}\eta_{33}\epsilon^{0123}
+=-1.
+\]</span></p>
+<p>This is the sign trap. In mostly-plus signature, the statements <span class="math inline">\(\epsilon^{0123}=+1\)</span> and <span class="math inline">\(\epsilon_{0123}=+1\)</span> cannot both hold if the upper- and lower-index objects are related by the metric. In this packet we take <span class="math inline">\(\epsilon^{0123}=+1\)</span> and compute <span class="math inline">\(\epsilon_{0123}=-1\)</span>.</p>
+<p>The Hodge star <span class="math inline">\(*\)</span> requires more than orientation. It also requires a metric. The metric gives inner products of basis one-forms and lets us raise and lower spacetime indices. The Hodge star is defined by</p>
+<p><span class="math display">\[
+\beta\wedge *\alpha=\langle \beta,\alpha\rangle\,\mathrm{vol}
+\]</span></p>
+<p>for forms <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> of the same degree. Here <span class="math inline">\(\langle \beta,\alpha\rangle\)</span> is the inner product on forms induced by the spacetime metric. For one-forms</p>
+<p><span class="math display">\[
+\alpha=\alpha_\mu dx^\mu,
+\qquad
+\beta=\beta_\mu dx^\mu,
+\]</span></p>
+<p>the induced inner product is</p>
+<p><span class="math display">\[
+\langle \beta,\alpha\rangle=g^{\mu\nu}\beta_\mu\alpha_\nu.
+\]</span></p>
+<p>For two-forms</p>
+<p><span class="math display">\[
+\alpha=\frac12\alpha_{\mu\nu}dx^\mu\wedge dx^\nu,
+\qquad
+\beta=\frac12\beta_{\mu\nu}dx^\mu\wedge dx^\nu,
+\]</span></p>
+<p>the induced inner product is</p>
+<p><span class="math display">\[
+\langle \beta,\alpha\rangle
+=\frac12\beta_{\mu\nu}\alpha^{\mu\nu}.
+\]</span></p>
+<p>The factor of <span class="math inline">\(1/2\)</span> appears because the components of a two-form are antisymmetric, so each unordered index pair would otherwise be counted twice.</p>
+<p>In four dimensions, <span class="math inline">\(*\)</span> sends <span class="math inline">\(k\)</span>-forms to <span class="math inline">\((4-k)\)</span>-forms. In particular,</p>
+<p><span class="math display">\[
+*: \Omega^2\to\Omega^2.
+\]</span></p>
+<p>With our orientation and mostly-plus metric, the star on basis one-forms satisfies</p>
+<p><span class="math display">\[
+*dt=-dx\wedge dy\wedge dz,
+\]</span></p>
+<p>because <span class="math inline">\(dt\wedge *dt=\langle dt,dt\rangle\mathrm{vol}=-\mathrm{vol}\)</span>, while</p>
+<p><span class="math display">\[
+*dx=-dt\wedge dy\wedge dz,
+\]</span></p>
+<p>because <span class="math inline">\(dx\wedge(-dt\wedge dy\wedge dz)=\mathrm{vol}\)</span>. Similarly,</p>
+<p><span class="math display">\[
+*dy=dt\wedge dx\wedge dz,
+\qquad
+*dz=-dt\wedge dx\wedge dy.
+\]</span></p>
+<p>For two-forms, representative examples are</p>
+<p><span class="math display">\[
+*(dt\wedge dx)=-dy\wedge dz,
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+*(dy\wedge dz)=dt\wedge dx.
+\]</span></p>
+<p>These signs imply</p>
+<p><span class="math display">\[
+*^2=-1
+\]</span></p>
+<p>on two-forms in Lorentzian four-dimensional spacetime with mostly-plus signature. In contrast, in Euclidean four-space the corresponding sign would be different. This is why Hodge-star signs should not be copied from one signature convention to another without checking.</p>
+<p>With these conventions, one may write</p>
+<p><span class="math display">\[
+*(dx^\mu\wedge dx^\nu)
+=\frac12\epsilon_{\mu\nu}{}^{\rho\sigma}
+dx^\rho\wedge dx^\sigma,
+\]</span></p>
+<p>where the mixed-index epsilon is obtained from <span class="math inline">\(\epsilon^{\mu\nu\rho\sigma}\)</span> by lowering and raising with the spacetime metric. This formula is meaningful only after the convention for <span class="math inline">\(\epsilon\)</span> and the metric signature have both been fixed. The important structural point for this packet is that <span class="math inline">\(dF=0\)</span> does not require the metric, while <span class="math inline">\(d(*F)=j\)</span> or <span class="math inline">\(D(*F)=j\)</span> does.</p>
+</section>
+<section id="source-note-and-further-reading" class="level2" data-number="15">
+<h2 data-number="15" class="anchored" data-anchor-id="source-note-and-further-reading"><span class="header-section-number">15</span> Source note and further reading</h2>
+<p>This packet was built from lecture notes on the gauge principle and connections, together with a prior guided packet on deriving electromagnetism from local quantum phase covariance. The purpose is not to replace a textbook treatment of gauge theory, but to provide a calculational bridge from quantum mechanics and linear algebra to the geometry of connections and curvature.</p>
+<p>Useful next references, depending on direction:</p>
+<ul>
+<li>David Tong’s lecture notes on gauge theory and quantum field theory, for a physics-facing continuation.</li>
+<li>Baez and Muniain, <em>Gauge Fields, Knots and Gravity</em>, for a geometry-facing introduction.</li>
+<li>Frankel, <em>The Geometry of Physics</em>, for differential forms, connections, and curvature.</li>
+<li>Nakahara, <em>Geometry, Topology and Physics</em>, for a more advanced mathematical-physics treatment.</li>
+<li>A focused introduction to Berry phase and Berry curvature, if the next goal is condensed-matter or topological applications.</li>
+</ul>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
