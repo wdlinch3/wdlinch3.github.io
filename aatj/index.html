@@ -1,0 +1,196 @@
+---
+title: Astronomy and Astrophysics at TJ
+---
+
+<p class="eyebrow">Astronomy and Astrophysics at TJ</p>
+<h1>Astronomy and Astrophysics at TJ</h1>
+
+<p class="small">
+  Astronomy and Astrophysics at TJ brings together student organizations,
+  advanced coursework, and senior research for students interested in the
+  physical universe.
+</p>
+
+<nav class="context-links" aria-label="Astronomy and Astrophysics context links">
+  <a href="{{ '/' | relative_url }}">Home</a>
+  <a href="{{ '/teaching/' | relative_url }}">Teaching</a>
+  <a href="{{ '/aa/' | relative_url }}">Advanced Astronomy</a>
+  <a href="https://activities.tjhsst.edu/astro/">Laboratory for Astronomy &amp; Astrophysics Research</a>
+  <a href="https://activities.tjhsst.edu/astronomyclub/">Astronomy Club</a>
+</nav>
+
+<section class="program-map" aria-labelledby="program-map-title">
+  <h2 id="program-map-title">Program map</h2>
+  <p>
+    Astronomy and Astrophysics at TJ is organized as a progression from student
+    organizations, to advanced coursework, to senior research.
+  </p>
+
+  <div class="visual-tree" aria-label="Astronomy and Astrophysics at TJ structure">
+    <div class="tree-root">Astronomy and Astrophysics at TJ</div>
+
+    <div class="tree-branches">
+      <section class="tree-branch">
+        <h3>Student Organizations</h3>
+        <div class="tree-leaves">
+          <a href="https://activities.tjhsst.edu/astronomyclub/">Astronomy Club</a>
+          <span>Astronomy Competition Team</span>
+        </div>
+      </section>
+
+      <section class="tree-branch">
+        <h3>Advanced Astronomy</h3>
+        <div class="tree-leaves">
+          <a href="{{ '/aa/' | relative_url }}">Advanced Astronomy overview</a>
+          <a href="{{ '/aa/ss/' | relative_url }}">AA:SS — Solar System</a>
+          <a href="{{ '/aa/u/' | relative_url }}">AA:U — Universe</a>
+          <a href="{{ '/aa/x/' | relative_url }}">AA:X — Shared modules</a>
+        </div>
+      </section>
+
+      <section class="tree-branch">
+        <h3>Senior Research</h3>
+        <div class="tree-leaves">
+          <a href="https://activities.tjhsst.edu/astro/">Laboratory for Astronomy &amp; Astrophysics Research</a>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>
+
+<style>
+  .context-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin: 0 0 1.5rem;
+    font-size: 0.92rem;
+  }
+
+  .context-links a {
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 0.25rem 0.65rem;
+    background: rgba(255, 255, 255, 0.025);
+  }
+
+  .program-map {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+    margin: 1.5rem 0;
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .program-map h2 {
+    margin-top: 0;
+  }
+
+  .visual-tree {
+    margin-top: 1.4rem;
+  }
+
+  .tree-root {
+    width: min(100%, 24rem);
+    margin: 0 auto 1.8rem;
+    border: 1px solid var(--link);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    text-align: center;
+    font-weight: 700;
+    background: rgba(138, 180, 255, 0.08);
+    position: relative;
+  }
+
+  .tree-root::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -1.8rem;
+    width: 1px;
+    height: 1.8rem;
+    background: var(--border);
+  }
+
+  .tree-branches {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    position: relative;
+  }
+
+  .tree-branches::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 16.67%;
+    right: 16.67%;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .tree-branch {
+    padding-top: 1rem;
+    position: relative;
+  }
+
+  .tree-branch::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 1px;
+    height: 1rem;
+    background: var(--border);
+  }
+
+  .tree-branch h3 {
+    margin: 0 0 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.55rem 0.7rem;
+    text-align: center;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .tree-leaves {
+    display: grid;
+    gap: 0.55rem;
+  }
+
+  .tree-leaves a,
+  .tree-leaves span {
+    display: block;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.5rem 0.65rem;
+    background: rgba(255, 255, 255, 0.02);
+    line-height: 1.3;
+  }
+
+  .tree-leaves span {
+    color: var(--muted);
+  }
+
+  @media (max-width: 760px) {
+    .tree-root {
+      margin-bottom: 1rem;
+    }
+
+    .tree-root::after,
+    .tree-branches::before,
+    .tree-branch::before {
+      display: none;
+    }
+
+    .tree-branches {
+      grid-template-columns: 1fr;
+      gap: 0.9rem;
+    }
+
+    .tree-branch {
+      padding-top: 0;
+    }
+  }
+</style>
