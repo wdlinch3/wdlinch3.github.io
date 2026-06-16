@@ -16,34 +16,47 @@ title: Home
 
   <div class="portal-grid">
     <section class="portal-card">
-      <h2><a href="/teaching/">Teaching</a></h2>
-      <p>Advanced Astronomy, guided-study materials, and course-related resource hubs.</p>
+      <h2><a href="{{ '/aatj/' | relative_url }}">AA@TJ</a></h2>
+      <p>The astronomy and astrophysics ecosystem at Thomas Jefferson High School: student organizations, Advanced Astronomy as used at TJ, and the senior research laboratory.</p>
+      <ul class="plain-links">
+        <li><a href="{{ '/aatj/' | relative_url }}">AA@TJ overview</a></li>
+        <li><a href="{{ '/aa/' | relative_url }}">Advanced Astronomy</a></li>
+        <li><a href="https://activities.tjhsst.edu/astro/">Astro Lab</a></li>
+        <li><a href="https://activities.tjhsst.edu/astronomyclub/">Astronomy Club</a></li>
+        <li>Astronomy Competition Team</li>
+      </ul>
     </section>
 
     <section class="portal-card">
-      <h2><a href="/talks_and_lectures/">Talks &amp; Writings</a></h2>
-      <p>Research talks, teaching talks, and selected writings collected from existing site assets.</p>
+      <h2><a href="{{ '/teaching/' | relative_url }}">Teaching</a></h2>
+      <p>Course materials, minicourses, and instructional resources developed through my work as a teacher of physics and mathematics.</p>
+      <ul class="plain-links">
+        <li><a href="{{ '/teaching/' | relative_url }}">Teaching overview</a></li>
+        <li>
+          <a href="{{ '/aa/' | relative_url }}">Advanced Astronomy</a>
+          <ul>
+            <li><a href="{{ '/aa/packets/' | relative_url }}">AA packets</a></li>
+          </ul>
+        </li>
+        <li><a href="{{ '/teaching/minicourses/' | relative_url }}">Minicourses</a></li>
+      </ul>
     </section>
 
     <section class="portal-card">
-      <h2><a href="/research/">Research</a></h2>
-      <p>Professional and technical research pages, publications, and current thematic overviews.</p>
+      <h2><a href="{{ '/research/' | relative_url }}">Research</a></h2>
+      <p>Published work, research talks, technical notes, and expository material in theoretical and mathematical physics.</p>
+      <ul class="plain-links">
+        <li><a href="{{ '/research/' | relative_url }}">Research overview</a></li>
+        <li><a href="{{ '/research/publications.html' | relative_url }}">Published work</a></li>
+        <li><a href="{{ '/talks_and_lectures/#research_talks' | relative_url }}">Research talks</a></li>
+        <li><a href="{{ '/research/compactification/' | relative_url }}">Expository notes</a></li>
+      </ul>
     </section>
   </div>
 </section>
 
 <aside class="sidebar">
   {% include global_nav.html %}
-
-  <section>
-    <h2>Quick Links</h2>
-    <ul>
-      {% assign homepage_quick_links = site.data.quick_links | where: "homepage_section", "quick_links" | sort: "homepage_priority" %}
-      {% for link in homepage_quick_links %}
-        <li><a href="{% if link.external %}{{ link.url }}{% else %}{{ link.url | relative_url }}{% endif %}">{{ link.home_title | default: link.title }}</a></li>
-      {% endfor %}
-    </ul>
-  </section>
 
   <section>
     <h2>External Working Links</h2>
