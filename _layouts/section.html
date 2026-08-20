@@ -59,6 +59,8 @@
 
     <aside class="section-sidebar section-sidebar-right">
       {% case page.nav_section %}
+      {% when "projects" %}
+        {% include projects_context_nav.html %}
       {% when "natural_philosophy" %}
         {% include natural_philosophy_context_nav.html %}
       {% when "teaching" %}

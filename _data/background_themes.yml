@@ -12,6 +12,13 @@ natural_philosophy:
   position: center center
   size: cover
 
+projects:
+  image: /assets/images/backgrounds/blackboard.png
+  overlay: 0.25
+  opacity: 0.65
+  position: center center
+  size: cover
+
 research:
   image: /assets/images/backgrounds/blackboard.png
   overlay: 0.25

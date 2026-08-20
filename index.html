@@ -52,6 +52,17 @@ title: Home
         <li><a href="{{ '/research/compactification/' | relative_url }}">Expository notes</a></li>
       </ul>
     </section>
+
+    <section class="portal-card">
+      <h2><a href="{{ '/projects/' | relative_url }}">Projects</a></h2>
+      <p>Self-contained interactive demonstrations, chaptered guides, and other web-based work.</p>
+      <ul class="plain-links">
+        {% assign projects = site.data.projects | sort: "priority" %}
+        {% for project in projects %}
+          <li><a href="{{ project.url | relative_url }}">{{ project.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </section>
   </div>
 </section>
 

@@ -1,0 +1,12 @@
+<nav aria-label="Projects navigation">
+  <section>
+    <h2>Projects</h2>
+    <ul>
+      <li><a href="{{ '/projects/' | relative_url }}">All projects</a></li>
+      {% assign projects = site.data.projects | sort: "priority" %}
+      {% for project in projects %}
+        <li><a href="{{ project.url | relative_url }}">{{ project.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </section>
+</nav>

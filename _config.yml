@@ -15,6 +15,13 @@ defaults:
       bg_theme: natural_philosophy
 
   - scope:
+      path: "projects"
+    values:
+      layout: section
+      nav_section: projects
+      bg_theme: projects
+
+  - scope:
       path: "teaching"
     values:
       layout: section

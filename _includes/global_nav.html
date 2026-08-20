@@ -2,11 +2,10 @@
   <section>
     <h2>Navigate</h2>
     <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/teaching/">Teaching</a></li>
-      <li><a href="/research/">Research</a></li>
-      <li><a href="/about/">About Me</a></li>
-      <li><a href="/sitemap/">Site Map</a></li>
+      {% assign global_nav_items = site.data.site_nav | where: "global", true | sort: "priority" %}
+      {% for item in global_nav_items %}
+        <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
+      {% endfor %}
     </ul>
   </section>
 </nav>
