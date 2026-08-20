@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Sources and further study – A Field Guide to Electronic Dance Music</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./method-and-uncertainty.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-b9eaee60a963b5d74e9d33cc267de6a6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-aa873432a3c62897e6c2091c0d30a948.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./sources.html"><span class="chapter-title">Sources and further study</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">A Field Guide to Electronic Dance Music</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A Field Guide to Electronic Dance Music</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Main sequence</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/01-prehistory.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">I. Dance-floor and machine prehistory, 1970–1983</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/02-local-inventions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">II. Local inventions: house, garage, electro, and techno, 1983–1988</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/03-rave-ecology.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">III. Rave becomes an ecology, 1988–1992</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/04-specialization.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">IV. Specialization and acceleration, 1992–1995</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/05-mature-scenes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">V. Mature scenes and sharp branches, 1995–1999</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/06-post-rave.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">VI. Post-rave recombination, 1998–2004</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/07-global-bass.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">VII. Internet circulation and global bass exchange, 2004–2010</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/08-festival-convergence.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">VIII. Festival convergence and its countercurrents, 2010–2015</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/09-global-plurality.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">IX. Global club plurality and revival, 2015–2022</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Fringe routes</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./fringe/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Fringe routes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./fringe/01-roots.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A. Additional roots and missing links</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./fringe/02-hard-psychedelic.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B. The hard and psychedelic edge</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./fringe/03-listening-breaks.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">C. Listening music, broken beats, and rhythmic extremity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./fringe/04-festival-mutations.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">D. Festival-era mutations omitted from the main road</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./fringe/05-city-global.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E. City-club and global tassels</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./fringe/06-compressed-continuities.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">F. Continuities the main road compresses</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./comparisons.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Comparison exercises</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./spotify.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Listen on Spotify</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./method-and-uncertainty.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Sources, versions, and remaining uncertainty</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sources.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Sources and further study</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#broad-histories-and-method" id="toc-broad-histories-and-method" class="nav-link active" data-scroll-target="#broad-histories-and-method">Broad histories and method</a></li>
+  <li><a href="#disco-house-garage-electro-and-techno" id="toc-disco-house-garage-electro-and-techno" class="nav-link" data-scroll-target="#disco-house-garage-electro-and-techno">Disco, house, garage, electro, and techno</a></li>
+  <li><a href="#rave-hardcore-hardstyle-and-trance" id="toc-rave-hardcore-hardstyle-and-trance" class="nav-link" data-scroll-target="#rave-hardcore-hardstyle-and-trance">Rave, hardcore, hardstyle, and trance</a></li>
+  <li><a href="#hardcore-continuum-jungle-drum-bass-garage-grime-and-dubstep" id="toc-hardcore-continuum-jungle-drum-bass-garage-grime-and-dubstep" class="nav-link" data-scroll-target="#hardcore-continuum-jungle-drum-bass-garage-grime-and-dubstep">Hardcore continuum, jungle, drum &amp; bass, garage, grime, and dubstep</a></li>
+  <li><a href="#ambient-idm-breaks-and-blog-era-scenes" id="toc-ambient-idm-breaks-and-blog-era-scenes" class="nav-link" data-scroll-target="#ambient-idm-breaks-and-blog-era-scenes">Ambient, IDM, breaks, and blog-era scenes</a></li>
+  <li><a href="#united-states-city-club-lineages" id="toc-united-states-city-club-lineages" class="nav-link" data-scroll-target="#united-states-city-club-lineages">United States city-club lineages</a></li>
+  <li><a href="#africa-and-the-african-diaspora" id="toc-africa-and-the-african-diaspora" class="nav-link" data-scroll-target="#africa-and-the-african-diaspora">Africa and the African diaspora</a></li>
+  <li><a href="#latin-america-caribbean-swana-and-asian-club-routes" id="toc-latin-america-caribbean-swana-and-asian-club-routes" class="nav-link" data-scroll-target="#latin-america-caribbean-swana-and-asian-club-routes">Latin America, Caribbean, SWANA, and Asian club routes</a></li>
+  <li><a href="#compressed-continuities-added-after-adversarial-review" id="toc-compressed-continuities-added-after-adversarial-review" class="nav-link" data-scroll-target="#compressed-continuities-added-after-adversarial-review">Compressed continuities added after adversarial review</a></li>
+  <li><a href="#metadata-and-platform-audit-notes" id="toc-metadata-and-platform-audit-notes" class="nav-link" data-scroll-target="#metadata-and-platform-audit-notes">Metadata and platform audit notes</a></li>
+  <li><a href="#release-level-version-checks-used-in-the-spotify-audit" id="toc-release-level-version-checks-used-in-the-spotify-audit" class="nav-link" data-scroll-target="#release-level-version-checks-used-in-the-spotify-audit">Release-level version checks used in the Spotify audit</a></li>
+  <li><a href="#spotify-implementation-references" id="toc-spotify-implementation-references" class="nav-link" data-scroll-target="#spotify-implementation-references">Spotify implementation references</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">Sources and further study</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>This bibliography supports the historical framing and track choices in the chaptered Quarto source set anchored by <code>edm_field_guide.qmd</code>. Genre classifications are scene- and time-dependent; a link here supports a historical relationship or listening claim, not a claim that one source has final authority over a genre.</p>
+<section id="broad-histories-and-method" class="level2">
+<h2 class="anchored" data-anchor-id="broad-histories-and-method">Broad histories and method</h2>
+<ul>
+<li>Ewa Mazierska, Tony Rigg, and Les Gillon, eds., <a href="https://www.bloomsbury.com/uk/evolution-of-electronic-dance-music-9781501366369/"><em>The Evolution of Electronic Dance Music</em></a>.</li>
+<li>Robin James et al., <a href="https://academic.oup.com/edited-volume/35416"><em>The Oxford Handbook of Electronic Dance Music</em></a>.</li>
+<li>Simon Reynolds, <a href="https://www.routledge.com/link/link/p/book/9781138135352"><em>Generation Ecstasy</em></a>.</li>
+<li>Matt Anniss, <a href="https://books.google.com/books?id=hGErEAAAQBAJ"><em>Join the Future: Bleep Techno and the Birth of British Bass Music</em></a>.</li>
+<li>Matthew Youngblood et al., <a href="https://arxiv.org/abs/2011.02460">network analysis of electronic-music genre communities and cross-lineage transmission</a>.</li>
+<li>University of York, <a href="https://www.york.ac.uk/students/studying/manage/programmes/module-catalogue/module/MUS00195H/">Dance Music Cultures module description and core bibliography</a>.</li>
+</ul>
+</section>
+<section id="disco-house-garage-electro-and-techno" class="level2">
+<h2 class="anchored" data-anchor-id="disco-house-garage-electro-and-techno">Disco, house, garage, electro, and techno</h2>
+<ul>
+<li>Smithsonian Libraries, <a href="https://www.si.edu/object/do-you-remember-house-chicagos-queer-color-undergrounds-micah-salkind%3Asiris_sil_1160644"><em>Do You Remember House? Chicago’s Queer of Color Undergrounds</em></a>.</li>
+<li>Chicago cultural history overview, <a href="https://www.choosechicago.com/blog/nightlife/your-guide-to-chicago-house-music-history-venues-events-and-more/">house-music history and principal pioneers</a>.</li>
+<li>Red Bull Music Academy Daily, <a href="https://daily.redbullmusicacademy.com/2016/06/electronic-music-mixtapes/">Chicago house milestones, including “On and On” and “Acid Tracks”</a>.</li>
+<li>DJ Pierre interview, <a href="https://daily.redbullmusicacademy.com/2012/12/dj-pierre-interview/">first-person acid-house history</a>.</li>
+<li>Red Bull Music Academy Daily, <a href="https://daily.redbullmusicacademy.com/2016/05/the-music-got-me-a-brief-history-of-the-birth-of-house-in-new-york-city/">birth of house in New York City</a>.</li>
+<li>Larry Heard interview, <a href="https://daily.redbullmusicacademy.com/2017/02/larry-heard-fingers-inc/">Kraftwerk/electro influence and early Fingers work</a>.</li>
+<li>Detroit Historical Society, <a href="https://www.detroithistorical.org/learn/online-research/encyclopedia-of-detroit/atkins-juan">Juan Atkins</a>.</li>
+<li>Red Bull Music Academy Daily, <a href="https://daily.redbullmusicacademy.com/2014/07/roots-of-techno-feature/">Detroit’s pre-techno club history</a>.</li>
+<li>Beatportal, <a href="https://www.beatportal.com/articles/40294-beatports-definitive-history-of-techno">definitive history of techno</a>.</li>
+<li>Red Bull Music Academy Daily, <a href="https://daily.redbullmusicacademy.com/2019/05/robert-hood-minimal-nation-track-by-track/">Robert Hood’s <em>Minimal Nation</em> track by track</a>.</li>
+<li>Red Bull Music Academy Daily, <a href="https://daily.redbullmusicacademy.com/2017/05/ghettotech-oral-history">ghettotech oral history</a>.</li>
+</ul>
+</section>
+<section id="rave-hardcore-hardstyle-and-trance" class="level2">
+<h2 class="anchored" data-anchor-id="rave-hardcore-hardstyle-and-trance">Rave, hardcore, hardstyle, and trance</h2>
+<ul>
+<li>Beatportal, <a href="https://www.beatportal.com/articles/51518-beatports-definitive-history-of-trance">definitive history of trance</a>.</li>
+<li>Resident Advisor, <a href="https://ra.co/features/3896">trance history feature</a>.</li>
+<li>Dancecult, <a href="https://dj.dancecult.net/index.php/dancecult/article/view/328">scholarly Goa-trance study</a>.</li>
+<li>DJ Mag, <a href="https://djmag.com/features/gabber-30-hard-fast-and-louder-ever">gabber at thirty</a>.</li>
+<li>Red Bull Music Academy Daily, <a href="https://daily.redbullmusicacademy.com/2015/08/happy-hardcore-feature/">happy-hardcore history</a>.</li>
+<li>Netherlands Institute for Sound and Vision, <a href="https://artsandculture.google.com/story/a-brief-history-of-gabber-the-netherlands-institute-for-sound-and-vision/ugXxcmEzFVvjKQ?hl=en">brief history of gabber</a>.</li>
+<li>Parvati Records, <a href="https://parvati-records.com/kindzadza-waves-from-outer-space-cd/">KinDzaDza’s original <em>Waves from Outer Space</em> release</a>.</li>
+<li>Roland, <a href="https://articles.roland.com/pump-up-the-jam-technotronic/">production and authorship history of Technotronic’s “Pump Up the Jam”</a>.</li>
+</ul>
+</section>
+<section id="hardcore-continuum-jungle-drum-bass-garage-grime-and-dubstep" class="level2">
+<h2 class="anchored" data-anchor-id="hardcore-continuum-jungle-drum-bass-garage-grime-and-dubstep">Hardcore continuum, jungle, drum &amp; bass, garage, grime, and dubstep</h2>
+<ul>
+<li>Beatportal, <a href="https://www.beatportal.com/articles/4445-beatports-definitive-history-of-drum-bass">definitive history of drum &amp; bass</a>.</li>
+<li>Red Bull, <a href="https://www.redbull.com/gb-en/history-of-drum-and-bass-music">history of drum &amp; bass</a>.</li>
+<li>Cambridge, <a href="https://www.cambridge.org/core/services/aop-cambridge-core/content/view/1020DB48EE1412C54303B86312E39CCA/S0261143000007765a.pdf/into-the-jungle.pdf">“Into the Jungle”</a>.</li>
+<li>Dreem Teem interview, <a href="https://daily.redbullmusicacademy.com/2018/01/dreem-teem-interview/">birth and popularization of UK garage</a>.</li>
+<li>Red Bull Music Academy, <a href="https://www.redbullmusicacademy.com/lectures/todd-edwards/">Todd Edwards lecture</a>.</li>
+<li>Red Bull Music Academy Daily, <a href="https://daily.redbullmusicacademy.com/2019/04/tarik-nashnush-ukg-locked-on/">Locked On and 2-step history</a>.</li>
+<li>National Portrait Gallery, <a href="https://www.npg.org.uk/collections/about/photographs-collection/featured-collections-archive/garage-and-grime-musicians/">garage-to-grime and bass-lineage overview</a>.</li>
+<li>Red Bull Music Academy Daily, <a href="https://daily.redbullmusicacademy.com/2017/04/dmz-anti-war-dub-feature/">Digital Mystikz and “Anti War Dub”</a>.</li>
+<li>Red Bull Music Academy, <a href="https://www.redbullmusicacademy.com/lectures/skream-zen-skreamism/">Skream lecture</a>.</li>
+<li>Beatportal, <a href="https://www.beatportal.com/articles/399902-the-lasting-legacy-of-uk-funky">UK funky history</a>.</li>
+<li>DJ Mag, <a href="https://djmag.com/features/history-bassline">history of UK bassline</a>.</li>
+</ul>
+</section>
+<section id="ambient-idm-breaks-and-blog-era-scenes" class="level2">
+<h2 class="anchored" data-anchor-id="ambient-idm-breaks-and-blog-era-scenes">Ambient, IDM, breaks, and blog-era scenes</h2>
+<ul>
+<li>The Quietus, <a href="https://thequietus.com/interviews/artificial-intelligence-warp-oral-history-anniversary/">Warp <em>Artificial Intelligence</em> oral history and “electronic listening music” terminology</a>.</li>
+<li>Red Bull Music Academy Daily, <a href="https://daily.redbullmusicacademy.com/loop-history/">loop and break history</a>.</li>
+<li>Resident Advisor, <a href="https://ra.co/features/series/history-in-ten-tracks">History in Ten Tracks series</a>.</li>
+<li>Bandcamp Daily, <a href="https://daily.bandcamp.com/lists/venetian-snares-guide">Venetian Snares guide</a>.</li>
+</ul>
+</section>
+<section id="united-states-city-club-lineages" class="level2">
+<h2 class="anchored" data-anchor-id="united-states-city-club-lineages">United States city-club lineages</h2>
+<ul>
+<li>Bandcamp Daily, <a href="https://daily.bandcamp.com/scene-report/ballroom-vogue-kiki-music">ballroom/vogue/kiki music</a>.</li>
+<li>Red Bull Music Academy Daily, <a href="https://daily.redbullmusicacademy.com/2015/10/interview-rp-boo/">RP Boo interview and “Baby Come On” history</a>.</li>
+<li>Red Bull Music Academy Daily, <a href="https://daily.redbullmusicacademy.com/2014/07/sing-sing-a-loop-history/">the “Sing Sing” loop in Baltimore club</a>.</li>
+<li>The FADER, <a href="https://www.thefader.com/2014/06/12/the-skys-the-limit-an-oral-history-of-jersey-club">oral history of Jersey club</a>.</li>
+<li>Bandcamp Daily, <a href="https://daily.bandcamp.com/scene-report/jersey-club-music-on-bandcamp">Jersey club scene history</a>.</li>
+<li>Know Wave, <a href="https://know-wave.com/katey-red/">Katey Red history</a>.</li>
+</ul>
+</section>
+<section id="africa-and-the-african-diaspora" class="level2">
+<h2 class="anchored" data-anchor-id="africa-and-the-african-diaspora">Africa and the African diaspora</h2>
+<ul>
+<li>Journal of Musical Arts in Africa, <a href="https://journals.co.za/doi/abs/10.2989/18121004.2021.2020964">gqom in relation to kwaito history</a>.</li>
+<li>Bandcamp Daily, <a href="https://daily.bandcamp.com/scene-report/gqom-club-sound-label-profile">gqom scene report</a>.</li>
+<li>Red Bull Music Academy Daily, <a href="https://daily.redbullmusicacademy.com/2017/02/gqom-hashtags-feature/">gqom history</a>.</li>
+<li>SAMRO, <a href="https://old.samro.org.za/wp-content/uploads/2022/11/SAMRO-Notes-Vol-2-Final-Spread-Hi-res.pdf">South African industry/history discussion of amapiano</a>.</li>
+<li>Cambridge University Press, <a href="https://www.cambridge.org/core/journals/african-studies-review/article/abs/anatomy-of-kuduro-articulating-the-angolan-body-politic-after-the-war/32194C5B593D85C9ADC2D8E0CC312E62">kuduro as Luandan music-and-dance culture</a>.</li>
+<li>Música Angola, <a href="https://musicaangola.ao/kuduro/">Angolan kuduro history</a>.</li>
+<li>The Guardian, <a href="https://www.theguardian.com/music/2023/sep/15/dj-znobia-inventor-vol-1-review-raw-minimalist-kuduro-to-shake-the-dancefloor">DJ Znobia retrospective</a>.</li>
+<li>Príncipe, <a href="https://principediscos.wordpress.com/2012/05/16/p001-dj-marfox-eu-sei-quem-sou/">DJ Marfox, “Eu Sei Quem Sou”</a>.</li>
+<li>Bandcamp Daily, <a href="https://daily.bandcamp.com/features/sisso-maiko-nyege-nyege-interview">singeli producers Sisso and Maiko</a>.</li>
+<li>Bandcamp Daily, <a href="https://daily.bandcamp.com/features/coco-em-kilumi-interview">Coco Em interview</a>.</li>
+<li>The Quietus, <a href="https://thequietus.com/articles/18230-eek-feat-islam-chipsy-kahraba-review">Islam Chipsy &amp; EEK, <em>Kahraba</em></a>.</li>
+<li>The Quietus, <a href="https://thequietus.com/interviews/islam-chipsy-eek-interview/">Islam Chipsy interview distinguishing his live wedding-performance practice from mahraganat</a>.</li>
+</ul>
+</section>
+<section id="latin-america-caribbean-swana-and-asian-club-routes" class="level2">
+<h2 class="anchored" data-anchor-id="latin-america-caribbean-swana-and-asian-club-routes">Latin America, Caribbean, SWANA, and Asian club routes</h2>
+<ul>
+<li>University of Chicago, <a href="https://knowledge.uchicago.edu/record/15668">scholarly work on baile funk’s Miami-bass/electro/freestyle relationships</a>.</li>
+<li>Bandcamp Daily, <a href="https://daily.bandcamp.com/lists/the-manic-joyous-sound-of-brazils-funk-carioca">funk carioca guide</a>.</li>
+<li>Transatlantica, <a href="https://journals.openedition.org/transatlantica/7596?lang=en">tribal guarachero as a transnational scene</a>.</li>
+<li>Bandcamp Daily, <a href="https://daily.bandcamp.com/scene-report/the-women-of-south-west-asian-and-north-african-electronic-music">women in South West Asian and North African electronic music</a>.</li>
+<li>Bandcamp Daily, <a href="https://daily.bandcamp.com/scene-report/taipei-club-music-scene-report">Taipei club-scene collision/deconstruction</a>.</li>
+<li>Bandcamp Daily, <a href="https://daily.bandcamp.com/scene-report/do-hits-label-profile">Do Hits and Chinese club networks</a>.</li>
+<li>Eastern Margins, <a href="https://easternmargins.com/release/em021-dj-love-sherwin-tuna-budots-world-reloaded/">DJ Love, <em>Budots World (Reloaded)</em></a>.</li>
+<li>Bandcamp Daily, <a href="https://daily.bandcamp.com/scene-report/manila-electronic-scene-report">Manila electronic-scene report</a>.</li>
+<li>Warp, <a href="https://autechre.warp.net/release/202833-autechre-incunabula">Autechre’s <em>Incunabula</em> release metadata</a>.</li>
+<li>DJ Plead, <a href="https://djplead.bandcamp.com/track/dj-plead-salt-and-pepper">“Salt and Pepper” artist release page</a>.</li>
+<li>Deena Abdelwahed, <a href="https://deenabdelwahed.bandcamp.com/album/klabb"><em>Klabb</em> EP and “Klabb V2” release metadata</a>.</li>
+<li>Charlotte de Witte, <a href="https://charlottedewittemusic.bandcamp.com/track/sgadi-li-mi">“Sgadi Li Mi” on <em>Return to Nowhere</em> (2020)</a>.</li>
+<li>Wonderwheel Recordings, <a href="https://www.youtube.com/watch?v=ALO40b-qIdQ">“Ilaló” and the 2018 <em>Bienaventuranza</em> release</a>.</li>
+<li>SVBKVLT release metadata for 33EMYBW’s <a href="https://music.apple.com/us/album/arthropods/1480165155"><em>Arthropods</em> (2019)</a>.</li>
+</ul>
+</section>
+<section id="compressed-continuities-added-after-adversarial-review" class="level2">
+<h2 class="anchored" data-anchor-id="compressed-continuities-added-after-adversarial-review">Compressed continuities added after adversarial review</h2>
+<ul>
+<li>Library of Congress, <a href="https://blogs.loc.gov/now-see-hear/2024/09/gasolina/">“Gasolina” and its National Recording Registry context</a>.</li>
+<li>Red Bull Music Academy Daily, <a href="https://daily.redbullmusicacademy.com/2013/07/dembow-a-loop-history/">“Dembow: A Loop History”</a>.</li>
+<li>Grammy.com, <a href="https://www.grammy.com/news/the-evolution-of-reggateon-in-10-songs-videos-bad-bunny-daddy-yankee-ivy-queen/">reggaetón’s evolution through ten tracks, including El General</a>.</li>
+<li>Beatportal, <a href="https://www.beatportal.com/articles/24450-a-short-history-of-the-foghorn-the-most-divisive-sound-in-drum-bass">history of the foghorn sound in drum &amp; bass</a>.</li>
+<li>Beatportal, <a href="https://www.beatportal.com/playlists/382875-dj-hazard-picks-the-5-most-important-tracks-of-his-career">DJ Hazard on “Mr Happy”</a>.</li>
+<li>UKF, <a href="https://ukf.com/read/infekts-guide-to-riddim/">INFEKT’s guide to riddim</a>.</li>
+<li>INFEKT, <a href="https://infektdubstep.com/2020/05/27/my-story/">artist account of his development and the “Orgalorg” release</a>.</li>
+<li>DUPLOC, <a href="https://duploc.bandcamp.com/album/duploc100">label context for contemporary deep dubstep and 140</a>.</li>
+</ul>
+</section>
+<section id="metadata-and-platform-audit-notes" class="level2">
+<h2 class="anchored" data-anchor-id="metadata-and-platform-audit-notes">Metadata and platform audit notes</h2>
+<ul>
+<li>DJ Tameil’s “Dat Butt”: oral histories often place the self-release in 2001; catalog records may use 2002.</li>
+<li>KinDzaDza’s “Dasty Ho”: use the original <em>Waves from Outer Space</em> CD version, not a similarly titled later issue.</li>
+<li>Energy 52: use the Three ’N One Remix of “Café del Mar” from 1997, not an unspecified original or modern remake.</li>
+<li>Age of Love: use the 1992 Watch Out for Stella Club Mix.</li>
+<li>Tina Moore: use the Kelly G Bump-N-Go Vocal Mix.</li>
+<li>Early white-label hardcore, Baltimore-club, bounce, and footwork records may have archival versions whose streaming dates reflect reissue rather than creation.</li>
+<li>Spotify entity review is complete for all 158 rows: 146 requested recordings are accepted and playable in the authenticated United States catalog, while 12 requested versions are explicitly unavailable. The track-order-verified 146-track Spotify edition preserves manifest-relative order and omits those 12 rows rather than substituting neighboring edits, remixes, re-recordings, or DJ-mix excerpts. Spotify currently reports its profile visibility as public despite documented API privacy requests; the Spotify client’s <strong>Make private</strong> action remains pending.</li>
+<li>The unavailable set is documented on the book’s <strong>Listen on Spotify</strong> page and in <code>spotify_resolution.csv</code>, including exact-but-unplayable entities for Shy FX &amp; UK Apachi’s 1994 “Original Nuttah” and Oliver Heldens’s full original “Gecko.”</li>
+</ul>
+</section>
+<section id="release-level-version-checks-used-in-the-spotify-audit" class="level2">
+<h2 class="anchored" data-anchor-id="release-level-version-checks-used-in-the-spotify-audit">Release-level version checks used in the Spotify audit</h2>
+<ul>
+<li>Axis Records, <a href="https://www.axisrecords.com/product/the-bells/">Jeff Mills, <em>The Bells</em> original 12-inch</a>.</li>
+<li>Bleep, <a href="https://bleep.com/release/42443-jesse-saunders-on-and-on?lang=en_GB">Jesse Saunders, “On &amp; On” original 12-inch vocal mix</a>.</li>
+<li>Resident Advisor, <a href="https://audio.ra.co/media/00-25/tracks/20-1.html">Digital Mystikz, “Anti War Dub” release and authorship context</a>.</li>
+<li>Boomkat, <a href="https://boomkat.com/products/anti-war-dub-b9b1f408-bb90-4b95-98b8-9cc416c4433f">Mala featuring Spen G, “Anti War Dub” catalog-credit clarification</a>.</li>
+<li>Spotify, <a href="https://open.spotify.com/track/4TOqdHhUdvSIjSjvUyOtuc">Katey Red’s archived 2000 “Melpomeme Block Party (Punk Under Pressure)” entity</a>.</li>
+<li>Evolution Records, <a href="https://evolutionrecords.net/releases/page45">Scott Brown back-catalog context</a>.</li>
+</ul>
+</section>
+<section id="spotify-implementation-references" class="level2">
+<h2 class="anchored" data-anchor-id="spotify-implementation-references">Spotify implementation references</h2>
+<ul>
+<li>Spotify for Developers, <a href="https://developer.spotify.com/documentation/web-api/tutorials/code-pkce-flow">Authorization Code with PKCE</a>.</li>
+<li>Spotify for Developers, <a href="https://developer.spotify.com/documentation/web-api/reference/create-playlist">Create Playlist</a>.</li>
+<li>Spotify for Developers, <a href="https://developer.spotify.com/documentation/web-api/reference/add-items-to-playlist">Add Items to Playlist</a>.</li>
+<li>Spotify for Developers, <a href="https://developer.spotify.com/documentation/web-api/reference/get-playlists-items">Get Playlist Items</a>.</li>
+<li>Spotify for Developers, <a href="https://developer.spotify.com/documentation/web-api/concepts/track-relinking">Track Relinking</a>.</li>
+<li>Spotify for Developers, <a href="https://developer.spotify.com/documentation/web-api/tutorials/february-2026-migration-guide">February 2026 Web API migration guide</a>.</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./method-and-uncertainty.html" class="pagination-link" aria-label="Sources, versions, and remaining uncertainty">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Sources, versions, and remaining uncertainty</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

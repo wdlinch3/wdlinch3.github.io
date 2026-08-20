@@ -1,0 +1,17 @@
+- title: A Field Guide to Electronic Dance Music
+  url: /projects/edm-field-guide/
+  kind: Chaptered Quarto book
+  status: Published
+  priority: 10
+  description: A beginner-accessible historical listening course through major electronic-dance families, regional scenes, contested boundaries, and 158 annotated selections.
+  details: Includes search, chapter navigation, comparisons, sources, and exact Spotify links for 146 available recordings; 12 unavailable versions remain explicitly documented.
+  source_artifact: /Users/wdlinch3/Documents/ChatGPT/music
+
+- title: Sun–Jupiter Lagrange-Point Explorer
+  url: /interactive-demos/sun-jupiter-lagrange/
+  kind: Interactive scientific demonstration
+  status: Published
+  priority: 20
+  description: A browser-based CR3BP exploration of the Sun–Jupiter rotating frame, effective potential, Lagrange points, and zero-velocity structure.
+  details: Retains its established public URL and is cataloged here without moving or duplicating the deployed application.
+  source_artifact: interactive-demos/sun-jupiter-lagrange/

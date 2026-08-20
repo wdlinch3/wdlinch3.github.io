@@ -1,0 +1,1729 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Listen on Spotify – A Field Guide to Electronic Dance Music</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./method-and-uncertainty.html" rel="next">
+<link href="./comparisons.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-b9eaee60a963b5d74e9d33cc267de6a6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-aa873432a3c62897e6c2091c0d30a948.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./spotify.html"><span class="chapter-title">Listen on Spotify</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">A Field Guide to Electronic Dance Music</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A Field Guide to Electronic Dance Music</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Main sequence</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/01-prehistory.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">I. Dance-floor and machine prehistory, 1970–1983</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/02-local-inventions.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">II. Local inventions: house, garage, electro, and techno, 1983–1988</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/03-rave-ecology.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">III. Rave becomes an ecology, 1988–1992</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/04-specialization.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">IV. Specialization and acceleration, 1992–1995</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/05-mature-scenes.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">V. Mature scenes and sharp branches, 1995–1999</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/06-post-rave.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">VI. Post-rave recombination, 1998–2004</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/07-global-bass.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">VII. Internet circulation and global bass exchange, 2004–2010</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/08-festival-convergence.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">VIII. Festival convergence and its countercurrents, 2010–2015</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapters/09-global-plurality.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">IX. Global club plurality and revival, 2015–2022</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Fringe routes</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./fringe/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Fringe routes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./fringe/01-roots.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">A. Additional roots and missing links</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./fringe/02-hard-psychedelic.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">B. The hard and psychedelic edge</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./fringe/03-listening-breaks.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">C. Listening music, broken beats, and rhythmic extremity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./fringe/04-festival-mutations.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">D. Festival-era mutations omitted from the main road</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./fringe/05-city-global.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">E. City-club and global tassels</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./fringe/06-compressed-continuities.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">F. Continuities the main road compresses</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./comparisons.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Comparison exercises</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./spotify.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Listen on Spotify</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./method-and-uncertainty.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Sources, versions, and remaining uncertainty</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sources.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Sources and further study</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#verification-rules" id="toc-verification-rules" class="nav-link active" data-scroll-target="#verification-rules">Verification rules</a></li>
+  <li><a href="#verified-track-links" id="toc-verified-track-links" class="nav-link" data-scroll-target="#verified-track-links">Verified track links</a></li>
+  <li><a href="#exact-version-catalog-gaps" id="toc-exact-version-catalog-gaps" class="nav-link" data-scroll-target="#exact-version-catalog-gaps">Exact-version catalog gaps</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">Listen on Spotify</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>The Spotify implementation is built from the researched manifest rather than generated from a descriptive prompt. The track-order-verified Spotify edition contains the 146 requested recordings currently playable in the account’s United States catalog, in their original manifest-relative order. The 12 unavailable exact versions remain in the 158-track curriculum and are explicitly marked in their guide entries and in the catalog-gap table below.</p>
+<section id="verification-rules" class="level2">
+<h2 class="anchored" data-anchor-id="verification-rules">Verification rules</h2>
+<ul>
+<li>The track title, credited artist, requested mix or version, duration, and release context must agree.</li>
+<li>A merely similar recording does not count as an exact match.</li>
+<li>Market relinking, alternate reissues, and unavailable originals remain explicit decisions.</li>
+<li>The shared account’s listening history is not evidence about William’s preferences.</li>
+<li>An empty or partially populated playlist shell is never reported as complete.</li>
+</ul>
+<p>Current literal status: first-party PKCE authorization and the full catalog-resolution pass are complete. The 146-track Spotify edition has been created and read back successfully in exact relative order. No neighboring edit, remix, re-recording, or DJ-mix excerpt was substituted for the 12 omitted versions. Spotify still reports the playlist as public after accepting its documented API privacy requests; selecting <strong>Make private</strong> in a Spotify client, followed by another API verification, is the remaining account-level step.</p>
+<!-- Generated by scripts/build_spotify_links.py; edit spotify_resolution.csv instead. -->
+<p><strong>Track-order-verified Spotify edition:</strong> <a href="https://open.spotify.com/playlist/52q2mPyF01eQYoSAIiPKxp">146-track playlist</a>. The complete API readback matches the approved 146-URI sequence exactly. Spotify still reports the playlist as public despite documented privacy-update requests; use the Spotify client’s <strong>Make private</strong> command, then rerun verification.</p>
+</section>
+<section id="verified-track-links" class="level2">
+<h2 class="anchored" data-anchor-id="verified-track-links">Verified track links</h2>
+<p>These links follow the manifest’s exact global order. A link identifies the reviewed recording, not merely a title search.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Order</th>
+<th>Researched selection</th>
+<th>Spotify recording</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td>King Tubby — “Dub from the Roots” (album version)</td>
+<td><a href="https://open.spotify.com/track/5e59hbW92JjVoqf2fnBSWy">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td>Donna Summer — “I Feel Love” (original 12-inch version)</td>
+<td><a href="https://open.spotify.com/track/7B7lf3sIze5VR2WuYttn18">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td>Yellow Magic Orchestra — “Rydeen” (album version)</td>
+<td><a href="https://open.spotify.com/track/0RAXoT7hwOoqAXI95ryxT5">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td>Kraftwerk — “Numbers” (album version)</td>
+<td><a href="https://open.spotify.com/track/7l6zV8bdJs6LtYMdjAn2BJ">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6</td>
+<td>Patrick Cowley feat. Sylvester — “Do Ya Wanna Funk” (12-inch version)</td>
+<td><a href="https://open.spotify.com/track/03bPizm2zHjY4AdSR2SJpR">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">7</td>
+<td>Afrika Bambaataa &amp; the Soulsonic Force — “Planet Rock” (original 12-inch version)</td>
+<td><a href="https://open.spotify.com/track/5aD3fAa1fy8XUesj3lgr19">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8</td>
+<td>Cybotron — “Clear” (original version)</td>
+<td><a href="https://open.spotify.com/track/2SAxKE5inx2L97qM3rfrr5">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">9</td>
+<td>Shannon — “Let the Music Play” (12-inch version)</td>
+<td><a href="https://open.spotify.com/track/3tWaj9DJqVclcOmDJtOBlU">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">10</td>
+<td>Jesse Saunders — “On and On” (original 12-inch version)</td>
+<td><a href="https://open.spotify.com/track/5pQUQUi23TTkdNLOQJO8r6">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">11</td>
+<td>Model 500 — “No UFO’s” (original version)</td>
+<td><a href="https://open.spotify.com/track/1Ro7L7RPp5P8heOfW4EQKA">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">12</td>
+<td>MC A.D.E. — “Bass Rock Express” (original 12-inch version)</td>
+<td><a href="https://open.spotify.com/track/0s5QZyozbPX0KgxJL9YSeN">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">13</td>
+<td>Mr.&nbsp;Fingers — “Mystery of Love” (original version)</td>
+<td><a href="https://open.spotify.com/track/1E8hMeQvfgvQPjN3BZ2viF">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">14</td>
+<td>Marshall Jefferson — “Move Your Body (The House Music Anthem)” (original version)</td>
+<td><a href="https://open.spotify.com/track/3aWW1oqfrF1fsLJ0ynB2hi">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">15</td>
+<td>Adonis — “No Way Back” (original version)</td>
+<td><a href="https://open.spotify.com/track/7nQaBI1NTv5kpPyeMruTTK">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">16</td>
+<td>Phuture — “Acid Tracks” (original 12-inch version)</td>
+<td><a href="https://open.spotify.com/track/2aLXJJ2zOsBJlGTxiG0yMi">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">17</td>
+<td>Frankie Knuckles feat. Jamie Principle — “Your Love” (original version)</td>
+<td><a href="https://open.spotify.com/track/0vryyKyxCFXT0gg670yNEw">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">18</td>
+<td>Joe Smooth feat. Anthony Thomas — “Promised Land” (original club mix)</td>
+<td><a href="https://open.spotify.com/track/796T2ROxTNibXRjVhjSzCa">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">19</td>
+<td>Rhythim Is Rhythim — “Strings of Life” (original version)</td>
+<td><a href="https://open.spotify.com/track/0vBg4JYmBIyNgk1R3R0cX6">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">20</td>
+<td>Ten City — “Devotion” (original club version)</td>
+<td><a href="https://open.spotify.com/track/340YDZMetwJq6sby0pH4gr">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">21</td>
+<td>Inner City — “Good Life” (original version)</td>
+<td><a href="https://open.spotify.com/track/5sJiLlgQKBL81QCTOkoLB5">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">22</td>
+<td>A Guy Called Gerald — “Voodoo Ray” (original version)</td>
+<td><a href="https://open.spotify.com/track/6GmMFUzQdT9axTJ8aVkUZ2">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">23</td>
+<td>Technotronic feat. Ya Kid K — “Pump Up the Jam” (original 12-inch version)</td>
+<td><a href="https://open.spotify.com/track/21qnJAMtzC6S5SESuqQLEK">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">24</td>
+<td>Lil Louis — “French Kiss” (original 12-inch version)</td>
+<td><a href="https://open.spotify.com/track/7hnqJYCKZFW7vMoykaraZG">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">25</td>
+<td>4hero — “Mr Kirk’s Nightmare” (original version)</td>
+<td><a href="https://open.spotify.com/track/6El7IY5WIj6iqWbQZwbC40">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">26</td>
+<td>Joey Beltram — “Energy Flash” (original version)</td>
+<td><a href="https://open.spotify.com/track/46ddej1ibGIgs58H0wakoK">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">27</td>
+<td>The Orb — “Little Fluffy Clouds” (original version)</td>
+<td><a href="https://open.spotify.com/track/7H8OEVxkCgIvAvWp1MZBxw">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">28</td>
+<td>LFO — “LFO” (Leeds Warehouse Mix)</td>
+<td><a href="https://open.spotify.com/track/5AMGYRhiqZoCYkJEK3yqgi">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">29</td>
+<td>Mescalinum United — “We Have Arrived” (original version)</td>
+<td><a href="https://open.spotify.com/track/6jg7l0KCQbmqy7rDdGi6N7">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">30</td>
+<td>Masters at Work — “The Ha Dance” (original version)</td>
+<td><a href="https://open.spotify.com/track/4x1E99Fe36e06M5YbLBgMC">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">32</td>
+<td>The Future Sound of London — “Papua New Guinea” (original 12-inch version)</td>
+<td><a href="https://open.spotify.com/track/5zh23oMbATQlWbwEe5U0KG">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">33</td>
+<td>SL2 — “On a Ragga Tip” (original version)</td>
+<td><a href="https://open.spotify.com/track/3IqJLxzmPEmEbqy4djgQ49">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">34</td>
+<td>Age of Love — “The Age of Love” (Watch Out for Stella Club Mix)</td>
+<td><a href="https://open.spotify.com/track/4u88MrYJ8ZCnmUdjITNGKz">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">35</td>
+<td>Euromasters — “Amsterdam Waar Lech Dat Dan?” (original version)</td>
+<td><a href="https://open.spotify.com/track/1HDUwC2GSgLawKyVTTKO5r">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">36</td>
+<td>Aphex Twin — “Xtal” (album version)</td>
+<td><a href="https://open.spotify.com/track/7o2AeQZzfCERsRmOM86EcB">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">37</td>
+<td>Orbital — “Halcyon + On + On” (album version)</td>
+<td><a href="https://open.spotify.com/track/5xcunlfaZvD9BDQsLONI7A">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">38</td>
+<td>Hardfloor — “Acperience 1” (original version)</td>
+<td><a href="https://open.spotify.com/track/2IQ61J0AFfjnxBm4lQEU0W">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">39</td>
+<td>2 Unlimited — “No Limit” (Extended Mix)</td>
+<td><a href="https://open.spotify.com/track/1Iliw12oB5w4ALHiVqj4VB">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">40</td>
+<td>Origin Unknown — “Valley of the Shadows” (original version)</td>
+<td><a href="https://open.spotify.com/track/6fzwardfFs6sVfNA5R1ypt">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">41</td>
+<td>Plastikman — “Spastik” (original version)</td>
+<td><a href="https://open.spotify.com/track/553HOkDZQktOEBKvxTBPS1">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">42</td>
+<td>Basic Channel — “Quadrant Dub I” (original version)</td>
+<td><a href="https://open.spotify.com/track/0dC0x8MaaASf0zenCVA4zc">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">44</td>
+<td>Goldie — “Inner City Life” (original version)</td>
+<td><a href="https://open.spotify.com/track/0O7xFEqePrcTUgOi4qe0uB">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">45</td>
+<td>Union Jack — “Two Full Moons and a Trout” (original version)</td>
+<td><a href="https://open.spotify.com/track/5cP7CvOiWxPF44bRws62Ae">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">46</td>
+<td>Robert Hood — “Minus” (original version)</td>
+<td><a href="https://open.spotify.com/track/0YLEO6hUj8uO3RrJTHMPkD">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">47</td>
+<td>Hallucinogen — “LSD” (original version)</td>
+<td><a href="https://open.spotify.com/track/65vtVvFUoYVLZRvvBsJlQM">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">50</td>
+<td>Todd Edwards — “Saved My Life” (original version)</td>
+<td><a href="https://open.spotify.com/track/6MzbkttG6AVU8lXwxLqtic">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">51</td>
+<td>DJ Zinc — “Super Sharp Shooter” (original version)</td>
+<td><a href="https://open.spotify.com/track/5F1E5uRR1cZ6zKMLVjgOyF">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">52</td>
+<td>The Chemical Brothers — “Block Rockin’ Beats” (original version)</td>
+<td><a href="https://open.spotify.com/track/1FNvrp5K02oThumS6gllzp">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">53</td>
+<td>Daft Punk — “Revolution 909” (album version)</td>
+<td><a href="https://open.spotify.com/track/5pgZpHqfv4TSomtkfGZGrG">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">54</td>
+<td>Roni Size / Reprazent — “Brown Paper Bag” (album version)</td>
+<td><a href="https://open.spotify.com/track/3ZQs8RHO3lPZoUwpavPENL">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">55</td>
+<td>Jeff Mills — “The Bells” (original version)</td>
+<td><a href="https://open.spotify.com/track/3hvBwTnQFcTvDvcabMw985">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">56</td>
+<td>Double 99 — “RipGroove” (original version)</td>
+<td><a href="https://open.spotify.com/track/48ha6RZcXoYGzmWhCO7Ust">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">57</td>
+<td>Tina Moore — “Never Gonna Let You Go” (Kelly G Bump-N-Go Vocal Mix)</td>
+<td><a href="https://open.spotify.com/track/1wwdZALZhTeDkMHqQpTy6E">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">58</td>
+<td>Energy 52 — “Café del Mar” (Three ’N One Remix)</td>
+<td><a href="https://open.spotify.com/track/3CleFb6zdsgndKKHgE3DJc">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">59</td>
+<td>RP Boo — “Baby Come On” (original / archival version)</td>
+<td><a href="https://open.spotify.com/track/0rzohlbJIrpvIHFAgPztfG">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">60</td>
+<td>Miss Kittin &amp; The Hacker — “Frank Sinatra” (original version)</td>
+<td><a href="https://open.spotify.com/track/3sExpgNIBo9ZZh5r8NFQGJ">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">61</td>
+<td>Ed Rush &amp; Optical — “Bacteria” (original version)</td>
+<td><a href="https://open.spotify.com/track/0cW9LR6eX9BoCkY1arL6YJ">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">62</td>
+<td>Sasha — “Xpander” (original version)</td>
+<td><a href="https://open.spotify.com/track/76mh0rcSJpNhoCCqazptWm">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">63</td>
+<td>Dem 2 — “Destiny” (original version)</td>
+<td><a href="https://open.spotify.com/track/2tkdZAo4R4vF6TSc5BvA8r">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">64</td>
+<td>Bad Company — “The Nine” (original version)</td>
+<td><a href="https://open.spotify.com/track/4SQfru2JwRHATPltjQFLEL">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">66</td>
+<td>Masters at Work feat. India — “To Be in Love” (MAW club version)</td>
+<td><a href="https://open.spotify.com/track/6fIuAfvlas2lhsMiHDT6PF">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">67</td>
+<td>Wookie — “Battle” (original version)</td>
+<td><a href="https://open.spotify.com/track/1Y8R1CKdai0oycCf6K0sjh">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">68</td>
+<td>Delerium feat. Sarah McLachlan — “Silence” (Tiësto’s In Search of Sunrise Remix)</td>
+<td><a href="https://open.spotify.com/track/7tU5JvCfG0t3PHG7mchPjv">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">69</td>
+<td>Calibre — “Mr Maverick” (original version)</td>
+<td><a href="https://open.spotify.com/track/5jPGG0sycNwxFNMIf4exGY">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">70</td>
+<td>Fischerspooner — “Emerge” (original version)</td>
+<td><a href="https://open.spotify.com/track/3vyKSb9sAdXl0kQ1KnS9fY">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">71</td>
+<td>Horsepower Productions — “Gorgon Sound” (original version)</td>
+<td><a href="https://open.spotify.com/track/6mZfaJ1FGUpHv72WbCgBt0">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">72</td>
+<td>Benny Benassi presents The Biz — “Satisfaction” (original version)</td>
+<td><a href="https://open.spotify.com/track/5JZnjM9ijpit0d5zjT8MM7">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">73</td>
+<td>Wiley — “Eskimo” (original version)</td>
+<td><a href="https://open.spotify.com/track/5XRhQZweGbmOQUF3ug04dA">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">74</td>
+<td>Dizzee Rascal — “I Luv U” (album version)</td>
+<td><a href="https://open.spotify.com/track/4EqqHNzPaLpdVk7FgdQHXo">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">76</td>
+<td>Deize Tigrona — “Injeção” (original version)</td>
+<td><a href="https://open.spotify.com/track/1aNkPu1ZajXlERTZwHMvHh">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">77</td>
+<td>Skream — “Midnight Request Line” (original version)</td>
+<td><a href="https://open.spotify.com/track/75zs01TZIdJsYKZnHmUj6B">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">78</td>
+<td>Rod Lee — “Dance My Pain Away” (original version)</td>
+<td><a href="https://open.spotify.com/track/6MP8D1BNhOBRix0GDRP2SO">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">79</td>
+<td>Pendulum — “Slam” (original version)</td>
+<td><a href="https://open.spotify.com/track/5cw39FV9eXL3IuLxwpG8Z1">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">80</td>
+<td>Justice — “Waters of Nazareth” (original version)</td>
+<td><a href="https://open.spotify.com/track/0WGLjl3EIjf9MjJFJ90yX9">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">81</td>
+<td>Digital Mystikz — “Anti War Dub” (original version)</td>
+<td><a href="https://open.spotify.com/track/4gVyYO3lwkhhjQXp4oabwy">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">82</td>
+<td>Burial — “Archangel” (album version)</td>
+<td><a href="https://open.spotify.com/track/55gnBQAhU5rGzLsXTAx2MM">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">83</td>
+<td>T2 feat. Jodie Aysha — “Heartbroken” (original version)</td>
+<td><a href="https://open.spotify.com/track/1Y1lfD897czmPqULtHS7E7">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">84</td>
+<td>Showtek — “F.T.S.” (original version)</td>
+<td><a href="https://open.spotify.com/track/5CLruz22PAlhr07V7ULV5u">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">85</td>
+<td>Buraka Som Sistema feat. DJ Znobia, M.I.A., Saborosa &amp; Puto Prata — “Sound of Kuduro” (original version)</td>
+<td><a href="https://open.spotify.com/track/0pKhBNnBdZtPA8lqKZ4xpi">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">86</td>
+<td>Noisia — “Stigma” (original version)</td>
+<td><a href="https://open.spotify.com/track/6SiCueEHUE5rU4zPvGVlQu">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">87</td>
+<td>Black Coffee feat. Bucie — “Superman” (original version)</td>
+<td><a href="https://open.spotify.com/track/752l1xT5G1OHzg71ZBnTyZ">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">88</td>
+<td>Munchi — “Sandungueo” (original version)</td>
+<td><a href="https://open.spotify.com/track/4SMZZNomVSOEnH7ZvJwHql">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">89</td>
+<td>Roska — “Squark” (original version)</td>
+<td><a href="https://open.spotify.com/track/3VXxh5TNRHJB1VmTkolhik">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">90</td>
+<td>Skrillex — “Scary Monsters and Nice Sprites” (original version)</td>
+<td><a href="https://open.spotify.com/track/4rwpZEcnalkuhPyGkEdhu0">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">91</td>
+<td>Swedish House Mafia — “One” (original version)</td>
+<td><a href="https://open.spotify.com/track/4xr1Azj8mCbz6u8CITf8ef">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">92</td>
+<td>3BallMTY feat. América Sierra &amp; El Bebeto — “Inténtalo” (original version)</td>
+<td><a href="https://open.spotify.com/track/1G1oltHy7huusOr9eoUUQM">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">93</td>
+<td>Avicii — “Levels” (original version)</td>
+<td><a href="https://open.spotify.com/track/6Xe9wT5xeZETPwtaP2ynUz">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">94</td>
+<td>Rustie — “After Light” (album version)</td>
+<td><a href="https://open.spotify.com/track/6GIYthsbMugsQBedauATa9">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">95</td>
+<td>TNGHT — “Higher Ground” (original version)</td>
+<td><a href="https://open.spotify.com/track/3PRPiS8XO5BDwtBePgAlVM">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">96</td>
+<td>Flume — “Holdin On” (album version)</td>
+<td><a href="https://open.spotify.com/track/0IW97aCIWMRHc16XLnCCC5">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">97</td>
+<td>DJ Rashad — “Let It Go” (album version)</td>
+<td><a href="https://open.spotify.com/track/15TeVse95M39M1iB5vrhhh">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">98</td>
+<td>Martin Garrix — “Animals” (original version)</td>
+<td><a href="https://open.spotify.com/track/0A9mHc7oYUoCECqByV8cQR">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">99</td>
+<td>Tchami feat. Kaleem Taylor — “Promesses” (original version)</td>
+<td><a href="https://open.spotify.com/track/6tAHl2xT4iCBBGD7K6sWtq">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">100</td>
+<td>RL Grime — “Core” (original version)</td>
+<td><a href="https://open.spotify.com/track/097ivRfD5gBHjqhwEMifOT">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">101</td>
+<td>Nozinja — “Tsekeleke” (original mix)</td>
+<td><a href="https://open.spotify.com/track/0ogaTCfzZjftLJyCkCt0eW">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">102</td>
+<td>Kygo feat. Conrad Sewell — “Firestone” (original version)</td>
+<td><a href="https://open.spotify.com/track/1I8tHoNBFTuoJAlh4hfVVE">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">103</td>
+<td>UNIIQU3 — “Yo (I’m Lit)” (original version)</td>
+<td><a href="https://open.spotify.com/track/2M54zjwoKv8zzQW9BKN1CD">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">105</td>
+<td>DJ Lag — “Ice Drop” (original version)</td>
+<td><a href="https://open.spotify.com/track/1AUkzwumfpusZ9wkUVSaQX">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">106</td>
+<td>Jlin — “Black Origami” (album version)</td>
+<td><a href="https://open.spotify.com/track/63NMFg8yL81gmSZxwUtqVV">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">107</td>
+<td>Charlotte de Witte — “Sgadi Li Mi” (original version)</td>
+<td><a href="https://open.spotify.com/track/7yjOcwS2yfuxJPYuzSAPVL">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">108</td>
+<td>Kabza De Small feat. Leehleza — “Umshove” (original version)</td>
+<td><a href="https://open.spotify.com/track/1Ubsm0mdSJ8KMUQywSEjpT">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">109</td>
+<td>Bamba Pana — “Linga Linga” (album version)</td>
+<td><a href="https://open.spotify.com/track/0SdkwQbcTyK99k3jExpWre">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">110</td>
+<td>DJ Plead — “Salt and Pepper” (original version)</td>
+<td><a href="https://open.spotify.com/track/19MYu5B0eBWGF7ahbh2ai6">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">111</td>
+<td>FISHER — “Losing It” (original version)</td>
+<td><a href="https://open.spotify.com/track/6ho0GyrWZN3mhi9zVRW7xi">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">112</td>
+<td>MFR Souls feat. DJ Maphorisa, Kabza De Small &amp; Sha Sha — “Love You Tonight” (original version)</td>
+<td><a href="https://open.spotify.com/track/2NbUnaGrjwRuRjZ5EPyOR5">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">113</td>
+<td>Nia Archives — “Baianá” (original version)</td>
+<td><a href="https://open.spotify.com/track/7B0gxo0jQCy5Lk93RIODAC">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">114</td>
+<td>Safety Trance feat. Arca — “El Alma Que Te Trajo” (original version)</td>
+<td><a href="https://open.spotify.com/track/5pGz6FrmpHjOuso83azbik">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">F01</td>
+<td>The Peech Boys — “Don’t Make Me Wait” (original version)</td>
+<td><a href="https://open.spotify.com/track/14vzRSq7BF44nRzwGqGqj9">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">F02</td>
+<td>Klein + M.B.O. — “Dirty Talk” (European Connection version)</td>
+<td><a href="https://open.spotify.com/track/016UIc9fZfCJocABc6bqux">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">F04</td>
+<td>A Split-Second — “Flesh” (original version at slowed club speed)</td>
+<td><a href="https://open.spotify.com/track/2s0lndhJ7f1Sg1oChArGmD">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">F05</td>
+<td>Nitzer Ebb — “Join in the Chant” (original version)</td>
+<td><a href="https://open.spotify.com/track/34vs8Nv1UbY63eWgMR1Tb2">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">F06</td>
+<td>808 State — “Pacific State” (original version)</td>
+<td><a href="https://open.spotify.com/track/5viwTjaaO8fmVWzTLjuXaM">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">F07</td>
+<td>DJ Marlboro — “Melô da Mulher Feia” (original version)</td>
+<td><a href="https://open.spotify.com/track/0x80xxyP0Dautya4eU5hPN">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">F09</td>
+<td>Rotterdam Termination Source — “Poing” (original version)</td>
+<td><a href="https://open.spotify.com/track/14GhuH7xkBJ9hlqB850sH4">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">F10</td>
+<td>The KGB’s — “Fahrenheit” (original version)</td>
+<td><a href="https://open.spotify.com/track/4Y01VvHYSlIKTwsplzj1c1">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">F11</td>
+<td>Dr.&nbsp;Peacock — “Trip to Ireland” (original version)</td>
+<td><a href="https://open.spotify.com/track/6u8pHCsBSo1rahkWXUxPzW">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">F12</td>
+<td>KinDzaDza — “Dasty Ho” (Waves from Outer Space CD version)</td>
+<td><a href="https://open.spotify.com/track/766nlO0LQvd3el6Wdlxz0B">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">F13</td>
+<td>Autechre — “Bike” (album version)</td>
+<td><a href="https://open.spotify.com/track/3Om7xxNAn64xJOuU9WVKtp">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">F14</td>
+<td>Massive Attack — “Unfinished Sympathy” (album version)</td>
+<td><a href="https://open.spotify.com/track/28jaG0nLqlijtHGQzZqGWK">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">F15</td>
+<td>Boards of Canada — “Roygbiv” (album version)</td>
+<td><a href="https://open.spotify.com/track/5Hf2h59YLInKlic7ooWZVd">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">F16</td>
+<td>µ-Ziq — “Hasty Boom Alert” (album version)</td>
+<td><a href="https://open.spotify.com/track/4miEA9U9PZKBYryATLzCKC">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">F17</td>
+<td>Venetian Snares — “Hajnal” (album version)</td>
+<td><a href="https://open.spotify.com/track/2XwtDuafQn9bwzntvAhs6P">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">F18</td>
+<td>Fatboy Slim — “The Rockafeller Skank” (original version)</td>
+<td><a href="https://open.spotify.com/track/7mCQK9YB25WZw1saUjfL4e">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">F19</td>
+<td>Stanton Warriors — “Da Antidote” (original version)</td>
+<td><a href="https://open.spotify.com/track/5M8iaNg4osHmw19PNo7XeA">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">F20</td>
+<td>Wolfgang Gartner — “Wolfgang’s 5th Symphony” (original version)</td>
+<td><a href="https://open.spotify.com/track/5cUvXmo66nfSDzweNao7BF">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">F22</td>
+<td>Dillon Francis — “Masta Blasta” (original version)</td>
+<td><a href="https://open.spotify.com/track/6vjQTGw36JwJuv3V6UrVxV">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">F23</td>
+<td>REZZ — “Edge” (original version)</td>
+<td><a href="https://open.spotify.com/track/5pusGtgNOBo2PnRMWuz8L2">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">F24</td>
+<td>Deena Abdelwahed — “Klabb V2” (EP version)</td>
+<td><a href="https://open.spotify.com/track/4T337xtWmPVGzV1XP8fAog">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">F25</td>
+<td>CRRDR — “Rompe Rodillas” (original version)</td>
+<td><a href="https://open.spotify.com/track/6fRe8rMImVmGlBzBklglB6">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">F26</td>
+<td>Wayne Smith — “Under Mi Sleng Teng” (original version)</td>
+<td><a href="https://open.spotify.com/track/6SGoxcaJ2HoEZcXPNqUPen">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">F27</td>
+<td>DJ Assault — “Sex on the Beach” (original version)</td>
+<td><a href="https://open.spotify.com/track/4erJBoqNtQtSgwTmnSGY7A">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">F28</td>
+<td>Katey Red — “Melpomene Block Party” (original / archival version)</td>
+<td><a href="https://open.spotify.com/track/4TOqdHhUdvSIjSjvUyOtuc">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">F30</td>
+<td>DJ Mujava — “Township Funk” (Warp version)</td>
+<td><a href="https://open.spotify.com/track/0EN8KF256ZGQOctxVVwA20">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">F31</td>
+<td>DJ Marfox — “Eu Sei Quem Sou” (original version)</td>
+<td><a href="https://open.spotify.com/track/0gq3ddBFrsgldbi0T3rtFT">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">F32</td>
+<td>Chancha Via Circuito — “Ilaló” (album version)</td>
+<td><a href="https://open.spotify.com/track/36MwyyD3Bf7RHlq1zqmfMr">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">F33</td>
+<td>Coco Em — “Kilumi” (album version)</td>
+<td><a href="https://open.spotify.com/track/4tQIba8802mGfRm1H2L6eM">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">F34</td>
+<td>33EMYBW — “Arthropods Continent” (album version)</td>
+<td><a href="https://open.spotify.com/track/1u4o3cuSkV8FJPfM9pZFn8">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">F35</td>
+<td>DJ Haram — “No Idol” (original version)</td>
+<td><a href="https://open.spotify.com/track/361HOLAyt7t5wMcnSqTrXl">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">F36</td>
+<td>DJ Love (Sherwin Tuna) — “Budots 2 Bomb” (Budots World (Reloaded) version)</td>
+<td><a href="https://open.spotify.com/track/5bEjRgml8ZJeDE2nCqvTJ4">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">F37</td>
+<td>El General — “Tu Pun Pun” (original recording)</td>
+<td><a href="https://open.spotify.com/track/5MIWYWguyDnxBlCQT9V4Kt">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">F38</td>
+<td>Daddy Yankee — “Gasolina” (album version)</td>
+<td><a href="https://open.spotify.com/track/5YoITs1m0q8UOQ4AW7N5ga">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">F39</td>
+<td>DJ Hazard &amp; D*Minds — “Mr Happy” (original mix)</td>
+<td><a href="https://open.spotify.com/track/2vg5YDfcWlj4eK6wPPeCyu">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">F40</td>
+<td>Benny L — “Low Blow” (original version)</td>
+<td><a href="https://open.spotify.com/track/2u5KM7aEny1gdewqSy4zMD">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">F41</td>
+<td>Gray — “Told You (Soundboy)” (original version)</td>
+<td><a href="https://open.spotify.com/track/6MKW5vwfK2rS9T38paeI4x">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">F42</td>
+<td>INFEKT — “Orgalorg” (original version)</td>
+<td><a href="https://open.spotify.com/track/63WVUdcOb0JTwGELasGI1n">Open reviewed recording</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">F43</td>
+<td>MARAUDA — “Casket” (VIP)</td>
+<td><a href="https://open.spotify.com/track/2yCo1OjpZARjOSfHaistBa">Open reviewed recording</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">F44</td>
+<td>Hamdi — “Skanka” (DUPLOC version)</td>
+<td><a href="https://open.spotify.com/track/0vIWAmpjLwCC4DVJxAjRZW">Open reviewed recording</a></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="exact-version-catalog-gaps" class="level2">
+<h2 class="anchored" data-anchor-id="exact-version-catalog-gaps">Exact-version catalog gaps</h2>
+<p>These rows stay in the curriculum and manifest. They are omitted from playlist creation unless the exact recording becomes playable; no neighboring edit, remix, re-recording, or DJ-mix excerpt is substituted.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Order</th>
+<th>Requested recording</th>
+<th>Why it remains blocked</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td>D-Train — “You’re the One for Me” (12-inch vocal version)</td>
+<td>The documented 1981 12-inch vocal is about 6:59; Spotify search exposes 4:09 album edits, later Labor of Love mixes, or a 7:25 mastermix, but no matching playable original vocal master.</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">31</td>
+<td>Lennie De Ice — “We Are I.E.” (original version)</td>
+<td>The 1991 original runs about 7:41; Spotify exposes later remixes and a 4:58 Original Extended Edit, not the requested full original.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">43</td>
+<td>Shy FX &amp; UK Apachi — “Original Nuttah” (original version)</td>
+<td>The exact 1994 5:12 Spotify entity <a href="https://open.spotify.com/track/53mh7POQqTXj2Cfh7phP5b">exact Spotify entity</a> is unplayable in the authenticated US market; Original Nuttah 25 is a later re-recording.</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">48</td>
+<td>LTJ Bukem — “Horizons” (original version)</td>
+<td>The full 1995 original is not exposed as a playable entity; the discoverable 4:18 Spotify item is a shortened DJ-mix compilation excerpt.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">49</td>
+<td>Scott Brown — “Now Is the Time” (original version)</td>
+<td>Spotify exposes continuous DJ mixes containing the track but no separately playable original recording.</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">65</td>
+<td>MJ Cole — “Sincere” (original version)</td>
+<td>The documented 1998 vocal mix is about 5:46; available entities are the later Re-Cue’D version, remixes, or a duration-mismatched compilation master.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">75</td>
+<td>Ricardo Villalobos — “Easy Lee” (original version)</td>
+<td>Spotify exposes the 2025 Random Factor remix, not Villalobos’s requested original Easy Lee recording.</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">104</td>
+<td>Islam Chipsy &amp; EEK — “Kahraba” (album version)</td>
+<td>No playable Spotify entity matching Islam Chipsy &amp; EEK’s requested album recording was returned.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">F03</td>
+<td>The KLF — “What Time Is Love?” (Pure Trance Original)</td>
+<td>The 7:05-7:10 1988 Pure Trance Original is absent; Spotify exposes Live at Trancentral and America versions only.</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">F08</td>
+<td>Human Resource — “Dominator” (original version)</td>
+<td>The original club mix runs about 4:54; available plain-title entities are short edits or later collaborations, while the famous Beltram mix is a distinct remix.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">F21</td>
+<td>Oliver Heldens — “Gecko” (original version)</td>
+<td>The exact 4:42 original entity <a href="https://open.spotify.com/track/55RUi0pvDvRiDxEz6hw81Q">exact Spotify entity</a> is unplayable in the authenticated US market; the playable 2:46 entity is an edit.</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">F29</td>
+<td>DJ Tameil — “Dat Butt” (original EP version)</td>
+<td>No playable Spotify entity matching DJ Tameil’s requested original EP recording was found.</td>
+</tr>
+</tbody>
+</table>
+<p>Ledger verdicts: 135 accepted after review; 11 direct exact matches; 12 unavailable.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./comparisons.html" class="pagination-link" aria-label="Comparison exercises">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Comparison exercises</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./method-and-uncertainty.html" class="pagination-link" aria-label="Sources, versions, and remaining uncertainty">
+        <span class="nav-page-text"><span class="chapter-title">Sources, versions, and remaining uncertainty</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

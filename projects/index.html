@@ -1,0 +1,23 @@
+---
+title: Projects
+---
+
+<p class="eyebrow">Projects</p>
+<h1>Projects</h1>
+
+<p class="small">
+  A durable public home for interactive demonstrations, chaptered guides, and other self-contained web projects.
+</p>
+
+<div class="section-grid">
+  {% assign projects = site.data.projects | sort: "priority" %}
+  {% for project in projects %}
+    <article class="section-card">
+      <p class="eyebrow">{{ project.kind }} · {{ project.status }}</p>
+      <h2><a href="{{ project.url | relative_url }}">{{ project.title }}</a></h2>
+      <p>{{ project.description }}</p>
+      <p class="small">{{ project.details }}</p>
+      <p><a href="{{ project.url | relative_url }}">Open project →</a></p>
+    </article>
+  {% endfor %}
+</div>

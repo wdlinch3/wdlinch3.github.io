@@ -1,0 +1,47 @@
+- title: Home
+  url: /
+  global: true
+  sitemap: true
+  priority: 10
+
+- title: Projects
+  url: /projects/
+  global: true
+  sitemap: true
+  priority: 20
+
+- title: Natural Philosophy
+  url: /natural_philosophy/
+  global: false
+  sitemap: true
+  priority: 30
+
+- title: Teaching
+  url: /teaching/
+  global: true
+  sitemap: true
+  priority: 40
+
+- title: Talks & Writings
+  url: /talks_and_lectures/
+  global: false
+  sitemap: true
+  priority: 50
+
+- title: Research
+  url: /research/
+  global: true
+  sitemap: true
+  priority: 60
+
+- title: About Me
+  url: /about/
+  global: true
+  sitemap: true
+  priority: 70
+
+- title: Site Map
+  url: /sitemap/
+  global: true
+  sitemap: false
+  priority: 80
