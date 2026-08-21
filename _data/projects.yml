@@ -7,6 +7,15 @@
   details: Includes search, chapter navigation, comparisons, sources, and exact Spotify links for 146 available recordings; 12 unavailable versions remain explicitly documented.
   source_artifact: /Users/wdlinch3/Documents/ChatGPT/music
 
+- title: The Message and the Method
+  url: /projects/hip-hop-field-guide/
+  kind: Chaptered Quarto book
+  status: Working edition
+  priority: 15
+  description: A surprise, expert-facing historical field guide to hip-hop and rap, designed around substantive messages, deep routes, exact versions, and an eventual SoundCloud listening course.
+  details: The public scaffold contains the introduction, coverage architecture, SoundCloud policy, research method, and 17 unpromoted recognition candidates; no playlist or finalized tracklist exists yet.
+  source_artifact: /Users/wdlinch3/Documents/ChatGPT/music/hip-hop-field-guide
+
 - title: Sun–Jupiter Lagrange-Point Explorer
   url: /interactive-demos/sun-jupiter-lagrange/
   kind: Interactive scientific demonstration
