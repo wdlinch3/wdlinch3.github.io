@@ -42,15 +42,15 @@
 
     * { box-sizing: border-box; }
 
-    html, body { margin: 0; min-height: 100%; background: var(--page); color: var(--text); }
+    html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: var(--page); color: var(--text); }
 
     body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
 
     a { color: var(--accent); }
 
     .app {
-      min-height: 100vh;
-      min-height: 100dvh;
+      height: 100vh;
+      height: 100dvh;
       display: grid;
       grid-template-rows: auto minmax(0, 1fr);
     }
@@ -62,7 +62,7 @@
       z-index: 2;
     }
 
-    .topline, .toolbar, .status-filters, .legend {
+    .topline, .toolbar, .status-filters, .legend, .view-buttons {
       display: flex;
       align-items: center;
       gap: 0.65rem;
@@ -155,6 +155,17 @@
     .relations { padding-left: 1.1rem; margin: 0.35rem 0; }
     .relations li { margin: 0.38rem 0; line-height: 1.35; }
     .relation { color: var(--muted); font-size: 0.78rem; }
+    .relation-link {
+      min-height: auto;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      color: var(--accent);
+      text-align: left;
+      text-decoration: underline;
+    }
+    .relation-link:hover { background: transparent; text-decoration-thickness: 2px; }
 
     #result-list { display: grid; gap: 0.2rem; margin-top: 0.45rem; }
     #result-list button {
@@ -175,7 +186,8 @@
     .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
     @media (max-width: 820px) {
-      .app { display: block; }
+      html, body { height: auto; overflow: auto; }
+      .app { display: block; height: auto; min-height: 100vh; min-height: 100dvh; }
       main { display: block; }
       .graph-wrap { height: 64vh; min-height: 28rem; border-bottom: 1px solid var(--border); }
       aside { overflow: visible; border-left: 0; }
@@ -200,7 +212,7 @@
           <div class="summary">179 genres · 184 relationships · 10 broad pillars</div>
         </div>
         <nav class="navlinks" aria-label="Project navigation">
-          <a href="../index.html">Read the guide</a>
+          <a href="../index.html">Project home</a>
           <a href="../spotify.html">Listen on Spotify</a>
           <a href="../downloads/edm-obsidian-atlas.zip">Download Obsidian atlas</a>
         </nav>
@@ -223,8 +235,10 @@
           <label><input type="checkbox" name="status" value="unrepresented" checked> Neighbors</label>
           <label><input type="checkbox" name="status" value="candidate" checked> Proposals</label>
         </fieldset>
-        <button type="button" id="fit">Fit visible</button>
-        <button type="button" id="reset">Reset</button>
+        <div class="view-buttons" aria-label="Map viewport controls">
+          <button type="button" id="fit">Fit visible</button>
+          <button type="button" id="reset">Reset</button>
+        </div>
       </div>
     </header>
 
@@ -6173,9 +6187,30 @@
         return;
       }
 
+      // Keep pillar labels as ordinary nodes rather than Cytoscape compound
+      // parents. Hiding a compound parent implicitly hides its children, which
+      // made filters impossible to restore reliably in Safari and Chromium.
+      const flatNodes = graph.nodes.map(node => {
+        if (node.data.kind === 'genre') {
+          const data = { ...node.data };
+          delete data.parent;
+          return { ...node, data };
+        }
+        const children = genreNodes.filter(child => child.data.pillar === node.data.pillar);
+        const xs = children.map(child => child.position.x);
+        const ys = children.map(child => child.position.y);
+        return {
+          ...node,
+          position: {
+            x: (Math.min(...xs) + Math.max(...xs)) / 2,
+            y: Math.min(...ys) - 120
+          }
+        };
+      });
+
       const cy = window.cytoscape({
         container: document.getElementById('genre-graph'),
-        elements: [...graph.nodes, ...graph.edges],
+        elements: [...flatNodes, ...graph.edges],
         layout: { name: 'preset', fit: true, padding: 72 },
         minZoom: 0.08,
         maxZoom: 2.8,
@@ -6184,17 +6219,17 @@
             selector: 'node[kind="pillar"]',
             style: {
               'background-color': color('--surface-2'),
-              'background-opacity': 0.42,
+              'background-opacity': 0.96,
               'border-color': color('--border'),
               'border-width': 1,
+              'width': 420,
+              'height': 46,
               'label': 'data(label)',
-              'text-valign': 'top',
+              'text-valign': 'center',
               'text-halign': 'center',
-              'text-margin-y': 18,
-              'font-size': 22,
+              'font-size': 18,
               'font-weight': 600,
               'color': color('--text'),
-              'padding': 42,
               'shape': 'round-rectangle'
             }
           },
@@ -6263,7 +6298,7 @@
           .map(edge => {
             const otherId = direction === 'in' ? edge.data('source') : edge.data('target');
             const relation = relationLabel(edge.data('relation'));
-            return `<li>${escapeHtml(titleById.get(otherId))}${relation ? ` <span class="relation">— ${escapeHtml(relation)}</span>` : ''}</li>`;
+            return `<li><a class="relation-link" href="#${escapeHtml(otherId)}" data-node-id="${escapeHtml(otherId)}">${escapeHtml(titleById.get(otherId))}</a>${relation ? ` <span class="relation">— ${escapeHtml(relation)}</span>` : ''}</li>`;
           })
           .sort((a, b) => a.localeCompare(b));
         return `<ul class="relations">${rows.join('')}</ul>`;
@@ -6275,13 +6310,18 @@
         })[character]);
       }
 
+      function showDefaultDetail() {
+        detail.innerHTML = '<h2>Choose a genre</h2><p>Select a node or use the searchable list. Its immediate inputs and routes onward will appear here.</p><p class="detail-meta">The graph is a qualified navigation aid, not a claim that genres form a perfectly clean family tree.</p>';
+      }
+
       function selectNode(id, fit = true) {
         const node = cy.getElementById(id);
         if (!node.length || !node.visible()) return;
         clearHighlight();
         selectedId = id;
         const neighborhood = node.closedNeighborhood();
-        cy.elements().not(neighborhood).not(node.parent()).addClass('dimmed');
+        const pillar = cy.nodes('[kind="pillar"]').filter(candidate => candidate.data('pillar') === node.data('pillar'));
+        cy.elements().not(neighborhood).not(pillar).addClass('dimmed');
         neighborhood.addClass('neighbor');
         node.addClass('selected');
 
@@ -6296,8 +6336,15 @@
           ${relationList(outgoing, 'out')}
         `;
         announcer.textContent = `${node.data('title')} selected; ${incoming.length} inputs and ${outgoing.length} routes onward.`;
-        if (fit) cy.animate({ fit: { eles: neighborhood.union(node.parent()), padding: 85 }, duration: 350 });
+        if (fit) setViewport(neighborhood.union(pillar), 85, true);
         rebuildResults();
+      }
+
+      function navigateToNode(id, { fit = true, clearSearch = false } = {}) {
+        if (clearSearch) search.value = '';
+        const hash = `#${id}`;
+        if (location.hash !== hash) history.pushState({ genre: id }, '', hash);
+        selectNode(id, fit);
       }
 
       function activeStatuses() {
@@ -6306,6 +6353,60 @@
 
       function visibleGenreNodes() {
         return genreNodes.filter(node => cy.getElementById(node.data.id).visible());
+      }
+
+      function visibleElements() {
+        return cy.nodes().filter(node => node.visible());
+      }
+
+      function viewportFor(elements, padding) {
+        const nodes = elements.nodes().filter(node => node.visible());
+        if (!nodes.length) return null;
+        const bounds = nodes.reduce((box, node) => {
+          const position = node.position();
+          const pillar = node.data('kind') === 'pillar';
+          const halfWidth = pillar ? 225 : 90;
+          const halfHeight = pillar ? 28 : 45;
+          return {
+            x1: Math.min(box.x1, position.x - halfWidth),
+            y1: Math.min(box.y1, position.y - halfHeight),
+            x2: Math.max(box.x2, position.x + halfWidth),
+            y2: Math.max(box.y2, position.y + halfHeight)
+          };
+        }, { x1: Infinity, y1: Infinity, x2: -Infinity, y2: -Infinity });
+        const container = document.getElementById('genre-graph');
+        const availableWidth = Math.max(1, container.clientWidth - 2 * padding);
+        const availableHeight = Math.max(1, container.clientHeight - 2 * padding);
+        const width = Math.max(1, bounds.x2 - bounds.x1);
+        const height = Math.max(1, bounds.y2 - bounds.y1);
+        const zoom = Math.max(cy.minZoom(), Math.min(cy.maxZoom(), availableWidth / width, availableHeight / height));
+        return {
+          zoom,
+          pan: {
+            x: container.clientWidth / 2 - zoom * (bounds.x1 + bounds.x2) / 2,
+            y: container.clientHeight / 2 - zoom * (bounds.y1 + bounds.y2) / 2
+          }
+        };
+      }
+
+      function setViewport(elements, padding = 65, animate = false) {
+        const viewport = viewportFor(elements, padding);
+        if (!viewport) return;
+        cy.stop();
+        cy.resize();
+        if (animate) cy.animate({ ...viewport, duration: 350 });
+        else cy.viewport(viewport);
+      }
+
+      function fitVisible() {
+        const visible = visibleElements();
+        setViewport(visible, 65);
+      }
+
+      function scheduleFitVisible() {
+        // Allow both Cytoscape's style pass and the browser's canvas renderer
+        // to settle before measuring the new visible bounds.
+        requestAnimationFrame(() => requestAnimationFrame(fitVisible));
       }
 
       function applyFilters() {
@@ -6318,15 +6419,17 @@
             show ? node.show() : node.hide();
           });
           cy.nodes('[kind="pillar"]').forEach(parent => {
-            parent.children(':visible').length ? parent.show() : parent.hide();
+            const hasVisibleGenre = cy.nodes('[kind="genre"]')
+              .filter(node => node.data('pillar') === parent.data('pillar'))
+              .some(node => node.visible());
+            hasVisibleGenre ? parent.show() : parent.hide();
           });
           cy.edges().forEach(edge => {
             edge.source().visible() && edge.target().visible() ? edge.show() : edge.hide();
           });
         });
         rebuildResults();
-        const visible = cy.nodes('[kind="genre"]:visible').union(cy.nodes('[kind="pillar"]:visible'));
-        if (visible.length) cy.fit(visible, 65);
+        scheduleFitVisible();
       }
 
       function matchedNodes() {
@@ -6352,7 +6455,7 @@
           button.textContent = node.data.title;
           button.dataset.nodeId = node.data.id;
           if (node.data.id === selectedId) button.setAttribute('aria-current', 'true');
-          button.addEventListener('click', () => selectNode(node.data.id));
+          button.addEventListener('click', () => navigateToNode(node.data.id));
           resultList.append(button);
         });
         if (matches.length > 60) {
@@ -6363,7 +6466,7 @@
         }
       }
 
-      cy.on('tap', 'node[kind="genre"]', event => selectNode(event.target.id(), false));
+      cy.on('tap', 'node[kind="genre"]', event => navigateToNode(event.target.id(), { fit: false }));
       cy.on('tap', event => {
         if (event.target === cy) {
           clearHighlight();
@@ -6371,29 +6474,48 @@
         }
       });
 
+      detail.addEventListener('click', event => {
+        const link = event.target.closest('.relation-link');
+        if (link) {
+          event.preventDefault();
+          navigateToNode(link.dataset.nodeId, { clearSearch: true });
+        }
+      });
+
       search.addEventListener('input', rebuildResults);
       search.addEventListener('keydown', event => {
         if (event.key === 'Enter') {
           const first = matchedNodes()[0];
-          if (first) selectNode(first.data.id);
+          if (first) navigateToNode(first.data.id);
         }
       });
       pillarFilter.addEventListener('change', applyFilters);
       document.querySelectorAll('input[name="status"]').forEach(input => input.addEventListener('change', applyFilters));
-      document.getElementById('fit').addEventListener('click', () => {
-        const visible = cy.nodes('[kind="genre"]:visible').union(cy.nodes('[kind="pillar"]:visible'));
-        if (visible.length) cy.fit(visible, 65);
-      });
+      document.getElementById('fit').addEventListener('click', fitVisible);
       document.getElementById('reset').addEventListener('click', () => {
         search.value = '';
         pillarFilter.value = 'all';
         document.querySelectorAll('input[name="status"]').forEach(input => { input.checked = true; });
-        detail.innerHTML = '<h2>Choose a genre</h2><p>Select a node or use the searchable list. Its immediate inputs and routes onward will appear here.</p><p class="detail-meta">The graph is a qualified navigation aid, not a claim that genres form a perfectly clean family tree.</p>';
+        showDefaultDetail();
+        history.replaceState(null, '', `${location.pathname}${location.search}`);
         applyFilters();
       });
 
-      window.addEventListener('resize', () => { cy.resize(); });
+      window.addEventListener('popstate', () => {
+        const id = decodeURIComponent(location.hash.slice(1));
+        if (id && nodeById.has(id)) selectNode(id);
+        else {
+          clearHighlight();
+          showDefaultDetail();
+          rebuildResults();
+        }
+      });
+
+      window.addEventListener('resize', () => { cy.resize(); scheduleFitVisible(); });
       rebuildResults();
+      scheduleFitVisible();
+      const initialId = decodeURIComponent(location.hash.slice(1));
+      if (initialId && nodeById.has(initialId)) selectNode(initialId, false);
     })();
   </script>
 </body>
