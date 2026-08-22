@@ -1,0 +1,26 @@
+---
+title: Advanced Astronomy Resources
+---
+
+<p class="eyebrow">aa@tj · Advanced Astronomy</p>
+<h1>Advanced Astronomy resources</h1>
+
+<p class="small kicker">
+  Student-facing guides and course references for Advanced Astronomy at TJ.
+  This collection will expand as additional reviewed materials become ready.
+</p>
+
+<p>
+  <a href="{{ '/tj/' | relative_url }}">TJ program resources</a>
+</p>
+
+<div class="portal-grid">
+  {% assign resources = site.data.tj_program.resources | where: "program", "adv_astro" | where: "published", true | sort: "order" %}
+  {% for resource in resources %}
+    <section class="portal-card">
+      <p class="eyebrow">{{ resource.kind }}</p>
+      <h2><a href="{{ resource.url | relative_url }}">{{ resource.title }}</a></h2>
+      <p>{{ resource.description }}</p>
+    </section>
+  {% endfor %}
+</div>

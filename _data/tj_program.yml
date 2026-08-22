@@ -1,0 +1,33 @@
+programs:
+  - id: adv_astro
+    title: Advanced Astronomy
+    url: /tj/adv_astro/
+    description: Student-facing guides and course references for Advanced Astronomy at TJ.
+    order: 10
+    published: true
+
+  - id: research
+    title: Research
+    url: /tj/research/
+    description: Resources for TJ research classes and programs.
+    order: 20
+    published: false
+
+resources:
+  - id: jupyter_instructions
+    program: adv_astro
+    title: Jupyter Notebook for Advanced Astronomy
+    url: /tj/adv_astro/jupyter_instructions/
+    kind: Student guide
+    description: Instructions for launching Jupyter, selecting the AA kernel, and using Markdown, LaTeX, and Python in course notebooks.
+    order: 10
+    published: true
+
+  - id: learning_objectives
+    program: adv_astro
+    title: Advanced Astronomy learning objectives
+    url: /tj/adv_astro/learning_objectives/
+    kind: Course reference
+    description: Current learning objectives for the Advanced Astronomy sequence.
+    order: 20
+    published: false
