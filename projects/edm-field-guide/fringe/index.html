@@ -513,7 +513,8 @@ ul.task-list li input[type="checkbox"] {
   });
 
   if (location.hash.startsWith('#track-')) {
-    requestAnimationFrame(() => document.querySelector(location.hash)?.scrollIntoView());
+    const targetId = decodeURIComponent(location.hash.slice(1));
+    requestAnimationFrame(() => document.getElementById(targetId)?.scrollIntoView());
   }
 })();
 </script>
