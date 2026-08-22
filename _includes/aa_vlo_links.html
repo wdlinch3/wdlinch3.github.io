@@ -1,0 +1,18 @@
+{% assign vlo_items = site.data.aa_vlos | where: "published", true %}
+{% if include.course %}
+  {% assign vlo_items = vlo_items | where: "id", include.course %}
+{% endif %}
+
+<div class="aa-grid">
+  {% for vlo in vlo_items %}
+  <section class="aa-card">
+    <h3><a href="{{ vlo.html_url | relative_url }}">{{ vlo.course }} learning objectives</a></h3>
+    <p>{{ vlo.description }}</p>
+    <p class="small">
+      <a href="{{ vlo.html_url | relative_url }}">Read as HTML</a>
+      ·
+      <a href="{{ vlo.pdf_url | relative_url }}">Download PDF</a>
+    </p>
+  </section>
+  {% endfor %}
+</div>
