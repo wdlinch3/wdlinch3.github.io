@@ -1,0 +1,26 @@
+---
+title: TJ Program Resources
+---
+
+<p class="eyebrow">aa@tj</p>
+<h1>TJ program resources</h1>
+
+<p class="small kicker">
+  A growing collection of student-facing course and research materials from
+  the Astronomy and Astrophysics at TJ program.
+</p>
+
+<div class="portal-grid">
+  {% assign programs = site.data.tj_program.programs | where: "published", true | sort: "order" %}
+  {% for program in programs %}
+    <section class="portal-card">
+      <h2><a href="{{ program.url | relative_url }}">{{ program.title }}</a></h2>
+      <p>{{ program.description }}</p>
+    </section>
+  {% endfor %}
+</div>
+
+<p class="small">
+  Additional program areas will appear here as reviewed materials become ready
+  for students.
+</p>
