@@ -42,6 +42,39 @@
   border-radius: 0.45rem;
 }
 
+.project-route-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.9rem;
+  margin: 0 0 1.25rem;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--bs-border-color);
+  border-radius: 0.45rem;
+  background: color-mix(in srgb, var(--bs-body-bg) 94%, var(--bs-primary) 6%);
+  font-size: 0.86rem;
+}
+
+.project-route-nav a {
+  white-space: normal;
+}
+
+.track-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.8rem;
+  margin-top: 0.38rem;
+  font-size: 0.83rem;
+}
+
+.track-links::before {
+  content: "Links:";
+  color: var(--bs-secondary-color);
+}
+
+[id^="track-"] {
+  scroll-margin-top: 1rem;
+}
+
 @media (max-width: 900px) {
   .edm-hub-grid {
     grid-template-columns: 1fr;
@@ -53,5 +86,9 @@
 
   .edm-map-feature > p:first-child {
     grid-row: auto;
+  }
+
+  .project-route-nav {
+    gap: 0.55rem 0.8rem;
   }
 }
