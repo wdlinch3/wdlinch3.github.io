@@ -1,0 +1,6401 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Interactive map of 179 electronic-dance genres and 184 broad historical relationships.">
+  <title>Interactive EDM Genre Network</title>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape@3.30.4/dist/cytoscape.min.js" integrity="sha384-H3uzGzTfGHUAumB8+s4GEdfFwzAceN9wCCndN8AXubWKFIPuBSWKKtWDx7RhSf/z" crossorigin="anonymous"></script>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --page: #f5f7fa;
+      --surface: #ffffff;
+      --surface-2: #e9edf2;
+      --text: #17202a;
+      --muted: #55616f;
+      --border: #c8d0da;
+      --accent: #136f63;
+      --accent-soft: #d6eee9;
+      --represented: #16875f;
+      --unrepresented: #687381;
+      --candidate: #a66b00;
+      --focus: #2667d8;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --page: #11151b;
+        --surface: #1a2028;
+        --surface-2: #252d37;
+        --text: #edf1f5;
+        --muted: #aeb8c4;
+        --border: #3d4855;
+        --accent: #64c7b3;
+        --accent-soft: #153c36;
+        --represented: #4bc393;
+        --unrepresented: #9aa5b1;
+        --candidate: #e2b24c;
+        --focus: #82aaff;
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body { margin: 0; min-height: 100%; background: var(--page); color: var(--text); }
+
+    body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+
+    a { color: var(--accent); }
+
+    .app {
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr);
+    }
+
+    header {
+      padding: 0.8rem 1rem 0.7rem;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      z-index: 2;
+    }
+
+    .topline, .toolbar, .status-filters, .legend {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      flex-wrap: wrap;
+    }
+
+    .topline { justify-content: space-between; margin-bottom: 0.7rem; }
+
+    h1 { margin: 0; font-size: clamp(1.15rem, 2vw, 1.55rem); font-weight: 650; }
+
+    .summary { color: var(--muted); font-size: 0.9rem; }
+
+    .navlinks { display: flex; gap: 0.85rem; flex-wrap: wrap; font-size: 0.9rem; }
+
+    .toolbar { align-items: end; }
+
+    label.control { display: grid; gap: 0.28rem; color: var(--muted); font-size: 0.78rem; }
+
+    input[type="search"], select, button {
+      min-height: 2.25rem;
+      border: 1px solid var(--border);
+      border-radius: 0.38rem;
+      background: var(--page);
+      color: var(--text);
+      font: inherit;
+    }
+
+    input[type="search"] { width: min(22rem, 74vw); padding: 0.45rem 0.65rem; }
+    select { max-width: min(28rem, 86vw); padding: 0.4rem 2rem 0.4rem 0.55rem; }
+    button { cursor: pointer; padding: 0.42rem 0.72rem; }
+    button:hover { background: var(--surface-2); }
+    button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    .status-filters {
+      min-height: 2.25rem;
+      padding: 0.32rem 0.55rem;
+      border: 1px solid var(--border);
+      border-radius: 0.38rem;
+      background: var(--page);
+    }
+
+    .status-filters label { display: flex; gap: 0.3rem; align-items: center; font-size: 0.84rem; }
+
+    main {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(18rem, 22rem);
+    }
+
+    .graph-wrap { position: relative; min-width: 0; min-height: 34rem; background: var(--page); }
+    #genre-graph { position: absolute; inset: 0; }
+
+    .graph-note {
+      position: absolute;
+      left: 0.7rem;
+      bottom: 0.65rem;
+      max-width: min(34rem, calc(100% - 1.4rem));
+      padding: 0.38rem 0.55rem;
+      color: var(--muted);
+      background: color-mix(in srgb, var(--surface) 88%, transparent);
+      border: 1px solid var(--border);
+      border-radius: 0.35rem;
+      font-size: 0.75rem;
+      pointer-events: none;
+    }
+
+    aside {
+      min-height: 0;
+      overflow: auto;
+      padding: 1rem;
+      background: var(--surface);
+      border-left: 1px solid var(--border);
+    }
+
+    aside h2 { margin: 0 0 0.35rem; font-size: 1.15rem; }
+    aside h3 { margin: 1.1rem 0 0.35rem; font-size: 0.95rem; }
+    aside p { margin: 0.3rem 0 0.7rem; line-height: 1.45; }
+    .detail-meta { color: var(--muted); font-size: 0.86rem; }
+
+    .legend { margin: 0.9rem 0; color: var(--muted); font-size: 0.78rem; }
+    .legend span { display: inline-flex; align-items: center; gap: 0.3rem; }
+    .mark { width: 0.72rem; height: 0.72rem; display: inline-block; background: currentColor; }
+    .mark.represented { color: var(--represented); border-radius: 50%; }
+    .mark.unrepresented { color: var(--unrepresented); transform: rotate(45deg); }
+    .mark.candidate { color: var(--candidate); clip-path: polygon(25% 7%,75% 7%,100% 50%,75% 93%,25% 93%,0 50%); }
+
+    .relations { padding-left: 1.1rem; margin: 0.35rem 0; }
+    .relations li { margin: 0.38rem 0; line-height: 1.35; }
+    .relation { color: var(--muted); font-size: 0.78rem; }
+
+    #result-list { display: grid; gap: 0.2rem; margin-top: 0.45rem; }
+    #result-list button {
+      width: 100%;
+      min-height: auto;
+      padding: 0.42rem 0.5rem;
+      text-align: left;
+      background: transparent;
+      border-color: transparent;
+      color: var(--text);
+    }
+    #result-list button:hover, #result-list button[aria-current="true"] {
+      background: var(--accent-soft);
+      border-color: var(--border);
+    }
+
+    .result-count { color: var(--muted); font-size: 0.8rem; }
+    .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+    @media (max-width: 820px) {
+      .app { display: block; }
+      main { display: block; }
+      .graph-wrap { height: 64vh; min-height: 28rem; border-bottom: 1px solid var(--border); }
+      aside { overflow: visible; border-left: 0; }
+      input[type="search"] { width: min(100%, 28rem); }
+    }
+
+    @media (max-width: 520px) {
+      header { padding: 0.7rem; }
+      .toolbar { align-items: stretch; }
+      label.control, label.control input, label.control select { width: 100%; }
+      .status-filters { width: 100%; }
+      .graph-wrap { height: 58vh; min-height: 24rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="topline">
+        <div>
+          <h1>Interactive EDM Genre Network</h1>
+          <div class="summary">179 genres · 184 relationships · 10 broad pillars</div>
+        </div>
+        <nav class="navlinks" aria-label="Project navigation">
+          <a href="../index.html">Read the guide</a>
+          <a href="../spotify.html">Listen on Spotify</a>
+          <a href="../downloads/edm-obsidian-atlas.zip">Download Obsidian atlas</a>
+        </nav>
+      </div>
+
+      <div class="toolbar" aria-label="Genre map controls">
+        <label class="control" for="search">
+          Find a genre
+          <input id="search" type="search" autocomplete="off" placeholder="Try jump-up, techno, or garage">
+        </label>
+        <label class="control" for="pillar-filter">
+          Pillar
+          <select id="pillar-filter">
+            <option value="all">All ten pillars</option>
+          </select>
+        </label>
+        <fieldset class="status-filters">
+          <legend class="visually-hidden">Atlas status</legend>
+          <label><input type="checkbox" name="status" value="represented" checked> Represented</label>
+          <label><input type="checkbox" name="status" value="unrepresented" checked> Neighbors</label>
+          <label><input type="checkbox" name="status" value="candidate" checked> Proposals</label>
+        </fieldset>
+        <button type="button" id="fit">Fit visible</button>
+        <button type="button" id="reset">Reset</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="graph-wrap" aria-label="Interactive genre relationship graph">
+        <div id="genre-graph"></div>
+        <div class="graph-note">Solid arrows show broad lineage or influence; dashed arrows show exchange. Positions are fixed so returning to the map does not scramble it.</div>
+        <noscript><p>This map requires JavaScript. Use the downloadable Obsidian atlas or the chaptered guide instead.</p></noscript>
+      </section>
+
+      <aside aria-live="polite">
+        <section id="detail">
+          <h2>Choose a genre</h2>
+          <p>Select a node or use the searchable list. Its immediate inputs and routes onward will appear here.</p>
+          <p class="detail-meta">The graph is a qualified navigation aid, not a claim that genres form a perfectly clean family tree.</p>
+        </section>
+
+        <div class="legend" aria-label="Map legend">
+          <span><i class="mark represented"></i> represented</span>
+          <span><i class="mark unrepresented"></i> neighbor</span>
+          <span><i class="mark candidate"></i> proposal</span>
+        </div>
+
+        <section aria-labelledby="browse-heading">
+          <h3 id="browse-heading">Browse visible genres</h3>
+          <div class="result-count" id="result-count"></div>
+          <div id="result-list"></div>
+        </section>
+      </aside>
+    </main>
+  </div>
+
+  <div id="announcer" class="visually-hidden" aria-live="polite"></div>
+  <script id="genre-data" type="application/json">{
+  "metadata": {
+    "title": "EDM Genre Network",
+    "nodeCount": 179,
+    "edgeCount": 184,
+    "pillarCount": 10,
+    "authority": "Generated navigation layer. Qualified historical claims remain in the Quarto field guide and genre atlas."
+  },
+  "nodes": [
+    {
+      "data": {
+        "id": "pillar-1",
+        "label": "1. Disco, house, US garage, and techno",
+        "kind": "pillar",
+        "pillar": 1
+      }
+    },
+    {
+      "data": {
+        "id": "genre-disco-electronic-disco",
+        "label": "Disco / electronic disco",
+        "title": "Disco / electronic disco",
+        "kind": "genre",
+        "parent": "pillar-1",
+        "pillar": 1,
+        "pillarLabel": "1. Disco, house, US garage, and techno",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 130,
+        "y": 150
+      }
+    },
+    {
+      "data": {
+        "id": "genre-boogie-post-disco",
+        "label": "Boogie / post-disco",
+        "title": "Boogie / post-disco",
+        "kind": "genre",
+        "parent": "pillar-1",
+        "pillar": 1,
+        "pillarLabel": "1. Disco, house, US garage, and techno",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 130,
+        "y": 255
+      }
+    },
+    {
+      "data": {
+        "id": "genre-hi-nrg",
+        "label": "Hi-NRG",
+        "title": "Hi-NRG",
+        "kind": "genre",
+        "parent": "pillar-1",
+        "pillar": 1,
+        "pillarLabel": "1. Disco, house, US garage, and techno",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 130,
+        "y": 360
+      }
+    },
+    {
+      "data": {
+        "id": "genre-italo-disco",
+        "label": "Italo disco",
+        "title": "Italo disco",
+        "kind": "genre",
+        "parent": "pillar-1",
+        "pillar": 1,
+        "pillarLabel": "1. Disco, house, US garage, and techno",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 130,
+        "y": 465
+      }
+    },
+    {
+      "data": {
+        "id": "genre-balearic-beat",
+        "label": "Balearic beat",
+        "title": "Balearic beat",
+        "kind": "genre",
+        "parent": "pillar-1",
+        "pillar": 1,
+        "pillarLabel": "1. Disco, house, US garage, and techno",
+        "status": "unrepresented",
+        "statusLabel": "Important neighbor without a dedicated current selection"
+      },
+      "position": {
+        "x": 130,
+        "y": 570
+      }
+    },
+    {
+      "data": {
+        "id": "genre-italo-house",
+        "label": "Italo house",
+        "title": "Italo house",
+        "kind": "genre",
+        "parent": "pillar-1",
+        "pillar": 1,
+        "pillarLabel": "1. Disco, house, US garage, and techno",
+        "status": "unrepresented",
+        "statusLabel": "Important neighbor without a dedicated current selection"
+      },
+      "position": {
+        "x": 130,
+        "y": 675
+      }
+    },
+    {
+      "data": {
+        "id": "genre-chicago-house",
+        "label": "Chicago house",
+        "title": "Chicago house",
+        "kind": "genre",
+        "parent": "pillar-1",
+        "pillar": 1,
+        "pillarLabel": "1. Disco, house, US garage, and techno",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 375,
+        "y": 150
+      }
+    },
+    {
+      "data": {
+        "id": "genre-jack-track",
+        "label": "Jack track",
+        "title": "Jack track",
+        "kind": "genre",
+        "parent": "pillar-1",
+        "pillar": 1,
+        "pillarLabel": "1. Disco, house, US garage, and techno",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 375,
+        "y": 255
+      }
+    },
+    {
+      "data": {
+        "id": "genre-piano-house",
+        "label": "Piano house",
+        "title": "Piano house",
+        "kind": "genre",
+        "parent": "pillar-1",
+        "pillar": 1,
+        "pillarLabel": "1. Disco, house, US garage, and techno",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 375,
+        "y": 360
+      }
+    },
+    {
+      "data": {
+        "id": "genre-deep-house",
+        "label": "Deep house",
+        "title": "Deep house",
+        "kind": "genre",
+        "parent": "pillar-1",
+        "pillar": 1,
+        "pillarLabel": "1. Disco, house, US garage, and techno",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 375,
+        "y": 465
+      }
+    },
+    {
+      "data": {
+        "id": "genre-acid-house",
+        "label": "Acid house",
+        "title": "Acid house",
+        "kind": "genre",
+        "parent": "pillar-1",
+        "pillar": 1,
+        "pillarLabel": "1. Disco, house, US garage, and techno",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 375,
+        "y": 570
+      }
+    },
+    {
+      "data": {
+        "id": "genre-vocal-gospel-soulful-house",
+        "label": "Vocal / gospel / soulful house",
+        "title": "Vocal / gospel / soulful house",
+        "kind": "genre",
+        "parent": "pillar-1",
+        "pillar": 1,
+        "pillarLabel": "1. Disco, house, US garage, and techno",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 375,
+        "y": 675
+      }
+    },
+    {
+      "data": {
+        "id": "genre-us-garage-garage-house",
+        "label": "US garage / garage house",
+        "title": "US garage / garage house",
+        "kind": "genre",
+        "parent": "pillar-1",
+        "pillar": 1,
+        "pillarLabel": "1. Disco, house, US garage, and techno",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 375,
+        "y": 780
+      }
+    },
+    {
+      "data": {
+        "id": "genre-cut-up-garage-house",
+        "label": "Cut-up garage house",
+        "title": "Cut-up garage house",
+        "kind": "genre",
+        "parent": "pillar-1",
+        "pillar": 1,
+        "pillarLabel": "1. Disco, house, US garage, and techno",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 375,
+        "y": 885
+      }
+    },
+    {
+      "data": {
+        "id": "genre-french-touch-filter-house",
+        "label": "French touch / filter house",
+        "title": "French touch / filter house",
+        "kind": "genre",
+        "parent": "pillar-1",
+        "pillar": 1,
+        "pillarLabel": "1. Disco, house, US garage, and techno",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 620,
+        "y": 150
+      }
+    },
+    {
+      "data": {
+        "id": "genre-minimal-microhouse",
+        "label": "Minimal / microhouse",
+        "title": "Minimal / microhouse",
+        "kind": "genre",
+        "parent": "pillar-1",
+        "pillar": 1,
+        "pillarLabel": "1. Disco, house, US garage, and techno",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 620,
+        "y": 255
+      }
+    },
+    {
+      "data": {
+        "id": "genre-progressive-house",
+        "label": "Progressive house",
+        "title": "Progressive house",
+        "kind": "genre",
+        "parent": "pillar-1",
+        "pillar": 1,
+        "pillarLabel": "1. Disco, house, US garage, and techno",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 620,
+        "y": 360
+      }
+    },
+    {
+      "data": {
+        "id": "genre-tech-house",
+        "label": "Tech house",
+        "title": "Tech house",
+        "kind": "genre",
+        "parent": "pillar-1",
+        "pillar": 1,
+        "pillarLabel": "1. Disco, house, US garage, and techno",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 620,
+        "y": 465
+      }
+    },
+    {
+      "data": {
+        "id": "genre-south-african-afro-house",
+        "label": "South African / Afro house",
+        "title": "South African / Afro house",
+        "kind": "genre",
+        "parent": "pillar-1",
+        "pillar": 1,
+        "pillarLabel": "1. Disco, house, US garage, and techno",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 620,
+        "y": 570
+      }
+    },
+    {
+      "data": {
+        "id": "genre-detroit-techno",
+        "label": "Detroit techno",
+        "title": "Detroit techno",
+        "kind": "genre",
+        "parent": "pillar-1",
+        "pillar": 1,
+        "pillarLabel": "1. Disco, house, US garage, and techno",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 620,
+        "y": 675
+      }
+    },
+    {
+      "data": {
+        "id": "genre-minimal-techno",
+        "label": "Minimal techno",
+        "title": "Minimal techno",
+        "kind": "genre",
+        "parent": "pillar-1",
+        "pillar": 1,
+        "pillarLabel": "1. Disco, house, US garage, and techno",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 620,
+        "y": 780
+      }
+    },
+    {
+      "data": {
+        "id": "genre-loop-techno",
+        "label": "Loop techno",
+        "title": "Loop techno",
+        "kind": "genre",
+        "parent": "pillar-1",
+        "pillar": 1,
+        "pillarLabel": "1. Disco, house, US garage, and techno",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 620,
+        "y": 885
+      }
+    },
+    {
+      "data": {
+        "id": "genre-dub-techno",
+        "label": "Dub techno",
+        "title": "Dub techno",
+        "kind": "genre",
+        "parent": "pillar-1",
+        "pillar": 1,
+        "pillarLabel": "1. Disco, house, US garage, and techno",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 865,
+        "y": 150
+      }
+    },
+    {
+      "data": {
+        "id": "genre-bleep-techno",
+        "label": "Bleep techno",
+        "title": "Bleep techno",
+        "kind": "genre",
+        "parent": "pillar-1",
+        "pillar": 1,
+        "pillarLabel": "1. Disco, house, US garage, and techno",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 865,
+        "y": 255
+      }
+    },
+    {
+      "data": {
+        "id": "genre-acid-techno",
+        "label": "Acid techno",
+        "title": "Acid techno",
+        "kind": "genre",
+        "parent": "pillar-1",
+        "pillar": 1,
+        "pillarLabel": "1. Disco, house, US garage, and techno",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 865,
+        "y": 360
+      }
+    },
+    {
+      "data": {
+        "id": "genre-hard-techno",
+        "label": "Hard techno",
+        "title": "Hard techno",
+        "kind": "genre",
+        "parent": "pillar-1",
+        "pillar": 1,
+        "pillarLabel": "1. Disco, house, US garage, and techno",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 865,
+        "y": 465
+      }
+    },
+    {
+      "data": {
+        "id": "genre-birmingham-industrial-techno",
+        "label": "Birmingham / industrial techno",
+        "title": "Birmingham / industrial techno",
+        "kind": "genre",
+        "parent": "pillar-1",
+        "pillar": 1,
+        "pillarLabel": "1. Disco, house, US garage, and techno",
+        "status": "unrepresented",
+        "statusLabel": "Important neighbor without a dedicated current selection"
+      },
+      "position": {
+        "x": 865,
+        "y": 570
+      }
+    },
+    {
+      "data": {
+        "id": "genre-schranz",
+        "label": "Schranz",
+        "title": "Schranz",
+        "kind": "genre",
+        "parent": "pillar-1",
+        "pillar": 1,
+        "pillarLabel": "1. Disco, house, US garage, and techno",
+        "status": "unrepresented",
+        "statusLabel": "Important neighbor without a dedicated current selection"
+      },
+      "position": {
+        "x": 865,
+        "y": 675
+      }
+    },
+    {
+      "data": {
+        "id": "pillar-2",
+        "label": "2. Rave, hardcore, hard dance, and trance",
+        "kind": "pillar",
+        "pillar": 2
+      }
+    },
+    {
+      "data": {
+        "id": "genre-uk-european-rave-ecology",
+        "label": "UK / European rave ecology",
+        "title": "UK / European rave ecology",
+        "kind": "genre",
+        "parent": "pillar-2",
+        "pillar": 2,
+        "pillarLabel": "2. Rave, hardcore, hard dance, and trance",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 1380,
+        "y": 150
+      }
+    },
+    {
+      "data": {
+        "id": "genre-new-beat",
+        "label": "New beat",
+        "title": "New beat",
+        "kind": "genre",
+        "parent": "pillar-2",
+        "pillar": 2,
+        "pillarLabel": "2. Rave, hardcore, hard dance, and trance",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 1380,
+        "y": 255
+      }
+    },
+    {
+      "data": {
+        "id": "genre-eurodance-hip-house-crossover",
+        "label": "Eurodance / hip-house crossover",
+        "title": "Eurodance / hip-house crossover",
+        "kind": "genre",
+        "parent": "pillar-2",
+        "pillar": 2,
+        "pillarLabel": "2. Rave, hardcore, hard dance, and trance",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 1380,
+        "y": 360
+      }
+    },
+    {
+      "data": {
+        "id": "genre-the-prodigy-rave-to-big-beat-bridge",
+        "label": "The Prodigy: rave-to-big-beat bridge",
+        "title": "The Prodigy: rave-to-big-beat bridge",
+        "kind": "genre",
+        "parent": "pillar-2",
+        "pillar": 2,
+        "pillarLabel": "2. Rave, hardcore, hard dance, and trance",
+        "status": "candidate",
+        "statusLabel": "Proposed bridge or boundary case for a future edition"
+      },
+      "position": {
+        "x": 1380,
+        "y": 465
+      }
+    },
+    {
+      "data": {
+        "id": "genre-breakbeat-hardcore",
+        "label": "Breakbeat hardcore",
+        "title": "Breakbeat hardcore",
+        "kind": "genre",
+        "parent": "pillar-2",
+        "pillar": 2,
+        "pillarLabel": "2. Rave, hardcore, hard dance, and trance",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 1625,
+        "y": 150
+      }
+    },
+    {
+      "data": {
+        "id": "genre-hardcore-techno",
+        "label": "Hardcore techno",
+        "title": "Hardcore techno",
+        "kind": "genre",
+        "parent": "pillar-2",
+        "pillar": 2,
+        "pillarLabel": "2. Rave, hardcore, hard dance, and trance",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 1625,
+        "y": 255
+      }
+    },
+    {
+      "data": {
+        "id": "genre-happy-hardcore",
+        "label": "Happy hardcore",
+        "title": "Happy hardcore",
+        "kind": "genre",
+        "parent": "pillar-2",
+        "pillar": 2,
+        "pillarLabel": "2. Rave, hardcore, hard dance, and trance",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 1625,
+        "y": 360
+      }
+    },
+    {
+      "data": {
+        "id": "genre-gabber",
+        "label": "Gabber",
+        "title": "Gabber",
+        "kind": "genre",
+        "parent": "pillar-2",
+        "pillar": 2,
+        "pillarLabel": "2. Rave, hardcore, hard dance, and trance",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 1625,
+        "y": 465
+      }
+    },
+    {
+      "data": {
+        "id": "genre-free-tekno-tribe-hardtek",
+        "label": "Free tekno / tribe / hardtek",
+        "title": "Free tekno / tribe / hardtek",
+        "kind": "genre",
+        "parent": "pillar-2",
+        "pillar": 2,
+        "pillarLabel": "2. Rave, hardcore, hard dance, and trance",
+        "status": "unrepresented",
+        "statusLabel": "Important neighbor without a dedicated current selection"
+      },
+      "position": {
+        "x": 1625,
+        "y": 570
+      }
+    },
+    {
+      "data": {
+        "id": "genre-later-uk-hardcore",
+        "label": "Later UK hardcore",
+        "title": "Later UK hardcore",
+        "kind": "genre",
+        "parent": "pillar-2",
+        "pillar": 2,
+        "pillarLabel": "2. Rave, hardcore, hard dance, and trance",
+        "status": "unrepresented",
+        "statusLabel": "Important neighbor without a dedicated current selection"
+      },
+      "position": {
+        "x": 1625,
+        "y": 675
+      }
+    },
+    {
+      "data": {
+        "id": "genre-makina-bouncy-techno-donk",
+        "label": "Makina / bouncy techno / donk",
+        "title": "Makina / bouncy techno / donk",
+        "kind": "genre",
+        "parent": "pillar-2",
+        "pillar": 2,
+        "pillarLabel": "2. Rave, hardcore, hard dance, and trance",
+        "status": "unrepresented",
+        "statusLabel": "Important neighbor without a dedicated current selection"
+      },
+      "position": {
+        "x": 1625,
+        "y": 780
+      }
+    },
+    {
+      "data": {
+        "id": "genre-frenchcore",
+        "label": "Frenchcore",
+        "title": "Frenchcore",
+        "kind": "genre",
+        "parent": "pillar-2",
+        "pillar": 2,
+        "pillarLabel": "2. Rave, hardcore, hard dance, and trance",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 1870,
+        "y": 150
+      }
+    },
+    {
+      "data": {
+        "id": "genre-hardstyle",
+        "label": "Hardstyle",
+        "title": "Hardstyle",
+        "kind": "genre",
+        "parent": "pillar-2",
+        "pillar": 2,
+        "pillarLabel": "2. Rave, hardcore, hard dance, and trance",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 1870,
+        "y": 255
+      }
+    },
+    {
+      "data": {
+        "id": "genre-early-trance",
+        "label": "Early trance",
+        "title": "Early trance",
+        "kind": "genre",
+        "parent": "pillar-2",
+        "pillar": 2,
+        "pillarLabel": "2. Rave, hardcore, hard dance, and trance",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 1870,
+        "y": 360
+      }
+    },
+    {
+      "data": {
+        "id": "genre-progressive-acid-trance",
+        "label": "Progressive / acid trance",
+        "title": "Progressive / acid trance",
+        "kind": "genre",
+        "parent": "pillar-2",
+        "pillar": 2,
+        "pillarLabel": "2. Rave, hardcore, hard dance, and trance",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 1870,
+        "y": 465
+      }
+    },
+    {
+      "data": {
+        "id": "genre-classic-uplifting-vocal-trance",
+        "label": "Classic / uplifting / vocal trance",
+        "title": "Classic / uplifting / vocal trance",
+        "kind": "genre",
+        "parent": "pillar-2",
+        "pillar": 2,
+        "pillarLabel": "2. Rave, hardcore, hard dance, and trance",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 1870,
+        "y": 570
+      }
+    },
+    {
+      "data": {
+        "id": "genre-hard-trance-tech-trance",
+        "label": "Hard trance / tech trance",
+        "title": "Hard trance / tech trance",
+        "kind": "genre",
+        "parent": "pillar-2",
+        "pillar": 2,
+        "pillarLabel": "2. Rave, hardcore, hard dance, and trance",
+        "status": "unrepresented",
+        "statusLabel": "Important neighbor without a dedicated current selection"
+      },
+      "position": {
+        "x": 1870,
+        "y": 675
+      }
+    },
+    {
+      "data": {
+        "id": "genre-goa-trance-psytrance",
+        "label": "Goa trance / psytrance",
+        "title": "Goa trance / psytrance",
+        "kind": "genre",
+        "parent": "pillar-2",
+        "pillar": 2,
+        "pillarLabel": "2. Rave, hardcore, hard dance, and trance",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 2115,
+        "y": 150
+      }
+    },
+    {
+      "data": {
+        "id": "genre-darkpsy",
+        "label": "Darkpsy",
+        "title": "Darkpsy",
+        "kind": "genre",
+        "parent": "pillar-2",
+        "pillar": 2,
+        "pillarLabel": "2. Rave, hardcore, hard dance, and trance",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 2115,
+        "y": 255
+      }
+    },
+    {
+      "data": {
+        "id": "genre-full-on-progressive-psy",
+        "label": "Full-on / progressive psy",
+        "title": "Full-on / progressive psy",
+        "kind": "genre",
+        "parent": "pillar-2",
+        "pillar": 2,
+        "pillarLabel": "2. Rave, hardcore, hard dance, and trance",
+        "status": "unrepresented",
+        "statusLabel": "Important neighbor without a dedicated current selection"
+      },
+      "position": {
+        "x": 2115,
+        "y": 360
+      }
+    },
+    {
+      "data": {
+        "id": "pillar-3",
+        "label": "3. Breakbeat, jungle, drum & bass, and breaks",
+        "kind": "pillar",
+        "pillar": 3
+      }
+    },
+    {
+      "data": {
+        "id": "genre-breakbeat-method",
+        "label": "Breakbeat method",
+        "title": "Breakbeat method",
+        "kind": "genre",
+        "parent": "pillar-3",
+        "pillar": 3,
+        "pillarLabel": "3. Breakbeat, jungle, drum & bass, and breaks",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 2630,
+        "y": 150
+      }
+    },
+    {
+      "data": {
+        "id": "genre-funk-breaks-hip-hop-sampling",
+        "label": "Funk breaks / hip-hop sampling",
+        "title": "Funk breaks / hip-hop sampling",
+        "kind": "genre",
+        "parent": "pillar-3",
+        "pillar": 3,
+        "pillarLabel": "3. Breakbeat, jungle, drum & bass, and breaks",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 2630,
+        "y": 255
+      }
+    },
+    {
+      "data": {
+        "id": "genre-big-beat",
+        "label": "Big beat",
+        "title": "Big beat",
+        "kind": "genre",
+        "parent": "pillar-3",
+        "pillar": 3,
+        "pillarLabel": "3. Breakbeat, jungle, drum & bass, and breaks",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 2630,
+        "y": 360
+      }
+    },
+    {
+      "data": {
+        "id": "genre-nu-skool-breaks",
+        "label": "Nu-skool breaks",
+        "title": "Nu-skool breaks",
+        "kind": "genre",
+        "parent": "pillar-3",
+        "pillar": 3,
+        "pillarLabel": "3. Breakbeat, jungle, drum & bass, and breaks",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 2630,
+        "y": 465
+      }
+    },
+    {
+      "data": {
+        "id": "genre-florida-breaks",
+        "label": "Florida breaks",
+        "title": "Florida breaks",
+        "kind": "genre",
+        "parent": "pillar-3",
+        "pillar": 3,
+        "pillarLabel": "3. Breakbeat, jungle, drum & bass, and breaks",
+        "status": "unrepresented",
+        "statusLabel": "Important neighbor without a dedicated current selection"
+      },
+      "position": {
+        "x": 2630,
+        "y": 570
+      }
+    },
+    {
+      "data": {
+        "id": "genre-broken-beat-bruk",
+        "label": "Broken beat / bruk",
+        "title": "Broken beat / bruk",
+        "kind": "genre",
+        "parent": "pillar-3",
+        "pillar": 3,
+        "pillarLabel": "3. Breakbeat, jungle, drum & bass, and breaks",
+        "status": "unrepresented",
+        "statusLabel": "Important neighbor without a dedicated current selection"
+      },
+      "position": {
+        "x": 2630,
+        "y": 675
+      }
+    },
+    {
+      "data": {
+        "id": "genre-jungle",
+        "label": "Jungle",
+        "title": "Jungle",
+        "kind": "genre",
+        "parent": "pillar-3",
+        "pillar": 3,
+        "pillarLabel": "3. Breakbeat, jungle, drum & bass, and breaks",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 2875,
+        "y": 150
+      }
+    },
+    {
+      "data": {
+        "id": "genre-ragga-jungle",
+        "label": "Ragga jungle",
+        "title": "Ragga jungle",
+        "kind": "genre",
+        "parent": "pillar-3",
+        "pillar": 3,
+        "pillarLabel": "3. Breakbeat, jungle, drum & bass, and breaks",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 2875,
+        "y": 255
+      }
+    },
+    {
+      "data": {
+        "id": "genre-dark-jungle",
+        "label": "Dark jungle",
+        "title": "Dark jungle",
+        "kind": "genre",
+        "parent": "pillar-3",
+        "pillar": 3,
+        "pillarLabel": "3. Breakbeat, jungle, drum & bass, and breaks",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 2875,
+        "y": 360
+      }
+    },
+    {
+      "data": {
+        "id": "genre-atmospheric-jungle",
+        "label": "Atmospheric jungle",
+        "title": "Atmospheric jungle",
+        "kind": "genre",
+        "parent": "pillar-3",
+        "pillar": 3,
+        "pillarLabel": "3. Breakbeat, jungle, drum & bass, and breaks",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 2875,
+        "y": 465
+      }
+    },
+    {
+      "data": {
+        "id": "genre-jump-up-jungle",
+        "label": "Jump-up jungle",
+        "title": "Jump-up jungle",
+        "kind": "genre",
+        "parent": "pillar-3",
+        "pillar": 3,
+        "pillarLabel": "3. Breakbeat, jungle, drum & bass, and breaks",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 2875,
+        "y": 570
+      }
+    },
+    {
+      "data": {
+        "id": "genre-m-beat-feat-general-levy-incredible",
+        "label": "M-Beat feat. General Levy — Incredible",
+        "title": "M-Beat feat. General Levy — Incredible",
+        "kind": "genre",
+        "parent": "pillar-3",
+        "pillar": 3,
+        "pillarLabel": "3. Breakbeat, jungle, drum & bass, and breaks",
+        "status": "candidate",
+        "statusLabel": "Proposed bridge or boundary case for a future edition"
+      },
+      "position": {
+        "x": 2875,
+        "y": 675
+      }
+    },
+    {
+      "data": {
+        "id": "genre-new-jungle-revival",
+        "label": "New-jungle revival",
+        "title": "New-jungle revival",
+        "kind": "genre",
+        "parent": "pillar-3",
+        "pillar": 3,
+        "pillarLabel": "3. Breakbeat, jungle, drum & bass, and breaks",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 2875,
+        "y": 780
+      }
+    },
+    {
+      "data": {
+        "id": "genre-drum-bass",
+        "label": "Drum & bass",
+        "title": "Drum & bass",
+        "kind": "genre",
+        "parent": "pillar-3",
+        "pillar": 3,
+        "pillarLabel": "3. Breakbeat, jungle, drum & bass, and breaks",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 3120,
+        "y": 150
+      }
+    },
+    {
+      "data": {
+        "id": "genre-atmospheric-d-b",
+        "label": "Atmospheric D&B",
+        "title": "Atmospheric D&B",
+        "kind": "genre",
+        "parent": "pillar-3",
+        "pillar": 3,
+        "pillarLabel": "3. Breakbeat, jungle, drum & bass, and breaks",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 3120,
+        "y": 255
+      }
+    },
+    {
+      "data": {
+        "id": "genre-jazzstep",
+        "label": "Jazzstep",
+        "title": "Jazzstep",
+        "kind": "genre",
+        "parent": "pillar-3",
+        "pillar": 3,
+        "pillarLabel": "3. Breakbeat, jungle, drum & bass, and breaks",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 3120,
+        "y": 360
+      }
+    },
+    {
+      "data": {
+        "id": "genre-techstep",
+        "label": "Techstep",
+        "title": "Techstep",
+        "kind": "genre",
+        "parent": "pillar-3",
+        "pillar": 3,
+        "pillarLabel": "3. Breakbeat, jungle, drum & bass, and breaks",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 3120,
+        "y": 465
+      }
+    },
+    {
+      "data": {
+        "id": "genre-neurofunk",
+        "label": "Neurofunk",
+        "title": "Neurofunk",
+        "kind": "genre",
+        "parent": "pillar-3",
+        "pillar": 3,
+        "pillarLabel": "3. Breakbeat, jungle, drum & bass, and breaks",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 3120,
+        "y": 570
+      }
+    },
+    {
+      "data": {
+        "id": "genre-liquid-funk",
+        "label": "Liquid funk",
+        "title": "Liquid funk",
+        "kind": "genre",
+        "parent": "pillar-3",
+        "pillar": 3,
+        "pillarLabel": "3. Breakbeat, jungle, drum & bass, and breaks",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 3120,
+        "y": 675
+      }
+    },
+    {
+      "data": {
+        "id": "genre-dancefloor-d-b",
+        "label": "Dancefloor D&B",
+        "title": "Dancefloor D&B",
+        "kind": "genre",
+        "parent": "pillar-3",
+        "pillar": 3,
+        "pillarLabel": "3. Breakbeat, jungle, drum & bass, and breaks",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 3120,
+        "y": 780
+      }
+    },
+    {
+      "data": {
+        "id": "genre-jump-up-d-b",
+        "label": "Jump-up D&B",
+        "title": "Jump-up D&B",
+        "kind": "genre",
+        "parent": "pillar-3",
+        "pillar": 3,
+        "pillarLabel": "3. Breakbeat, jungle, drum & bass, and breaks",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 3365,
+        "y": 150
+      }
+    },
+    {
+      "data": {
+        "id": "genre-foghorn-era-jump-up-tendency",
+        "label": "Foghorn-era jump-up tendency",
+        "title": "Foghorn-era jump-up tendency",
+        "kind": "genre",
+        "parent": "pillar-3",
+        "pillar": 3,
+        "pillarLabel": "3. Breakbeat, jungle, drum & bass, and breaks",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 3365,
+        "y": 255
+      }
+    },
+    {
+      "data": {
+        "id": "genre-drumfunk",
+        "label": "Drumfunk",
+        "title": "Drumfunk",
+        "kind": "genre",
+        "parent": "pillar-3",
+        "pillar": 3,
+        "pillarLabel": "3. Breakbeat, jungle, drum & bass, and breaks",
+        "status": "unrepresented",
+        "statusLabel": "Important neighbor without a dedicated current selection"
+      },
+      "position": {
+        "x": 3365,
+        "y": 360
+      }
+    },
+    {
+      "data": {
+        "id": "genre-halftime-d-b",
+        "label": "Halftime D&B",
+        "title": "Halftime D&B",
+        "kind": "genre",
+        "parent": "pillar-3",
+        "pillar": 3,
+        "pillarLabel": "3. Breakbeat, jungle, drum & bass, and breaks",
+        "status": "unrepresented",
+        "statusLabel": "Important neighbor without a dedicated current selection"
+      },
+      "position": {
+        "x": 3365,
+        "y": 465
+      }
+    },
+    {
+      "data": {
+        "id": "genre-crossbreed",
+        "label": "Crossbreed",
+        "title": "Crossbreed",
+        "kind": "genre",
+        "parent": "pillar-3",
+        "pillar": 3,
+        "pillarLabel": "3. Breakbeat, jungle, drum & bass, and breaks",
+        "status": "unrepresented",
+        "statusLabel": "Important neighbor without a dedicated current selection"
+      },
+      "position": {
+        "x": 3365,
+        "y": 570
+      }
+    },
+    {
+      "data": {
+        "id": "genre-sambass",
+        "label": "Sambass",
+        "title": "Sambass",
+        "kind": "genre",
+        "parent": "pillar-3",
+        "pillar": 3,
+        "pillarLabel": "3. Breakbeat, jungle, drum & bass, and breaks",
+        "status": "unrepresented",
+        "statusLabel": "Important neighbor without a dedicated current selection"
+      },
+      "position": {
+        "x": 3365,
+        "y": 675
+      }
+    },
+    {
+      "data": {
+        "id": "pillar-4",
+        "label": "4. UK garage, grime, dubstep, and UK bass",
+        "kind": "pillar",
+        "pillar": 4
+      }
+    },
+    {
+      "data": {
+        "id": "genre-uk-garage",
+        "label": "UK garage",
+        "title": "UK garage",
+        "kind": "genre",
+        "parent": "pillar-4",
+        "pillar": 4,
+        "pillarLabel": "4. UK garage, grime, dubstep, and UK bass",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 3880,
+        "y": 150
+      }
+    },
+    {
+      "data": {
+        "id": "genre-speed-garage",
+        "label": "Speed garage",
+        "title": "Speed garage",
+        "kind": "genre",
+        "parent": "pillar-4",
+        "pillar": 4,
+        "pillarLabel": "4. UK garage, grime, dubstep, and UK bass",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 3880,
+        "y": 255
+      }
+    },
+    {
+      "data": {
+        "id": "genre-2-step",
+        "label": "2-step",
+        "title": "2-step",
+        "kind": "genre",
+        "parent": "pillar-4",
+        "pillar": 4,
+        "pillarLabel": "4. UK garage, grime, dubstep, and UK bass",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 3880,
+        "y": 360
+      }
+    },
+    {
+      "data": {
+        "id": "genre-dark-2-step",
+        "label": "Dark 2-step",
+        "title": "Dark 2-step",
+        "kind": "genre",
+        "parent": "pillar-4",
+        "pillar": 4,
+        "pillarLabel": "4. UK garage, grime, dubstep, and UK bass",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 3880,
+        "y": 465
+      }
+    },
+    {
+      "data": {
+        "id": "genre-bassline-4x4",
+        "label": "Bassline / 4x4",
+        "title": "Bassline / 4x4",
+        "kind": "genre",
+        "parent": "pillar-4",
+        "pillar": 4,
+        "pillarLabel": "4. UK garage, grime, dubstep, and UK bass",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 3880,
+        "y": 570
+      }
+    },
+    {
+      "data": {
+        "id": "genre-grime-eski",
+        "label": "Grime / eski",
+        "title": "Grime / eski",
+        "kind": "genre",
+        "parent": "pillar-4",
+        "pillar": 4,
+        "pillarLabel": "4. UK garage, grime, dubstep, and UK bass",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 4125,
+        "y": 150
+      }
+    },
+    {
+      "data": {
+        "id": "genre-proto-dubstep",
+        "label": "Proto-dubstep",
+        "title": "Proto-dubstep",
+        "kind": "genre",
+        "parent": "pillar-4",
+        "pillar": 4,
+        "pillarLabel": "4. UK garage, grime, dubstep, and UK bass",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 4125,
+        "y": 255
+      }
+    },
+    {
+      "data": {
+        "id": "genre-dubstep",
+        "label": "Dubstep",
+        "title": "Dubstep",
+        "kind": "genre",
+        "parent": "pillar-4",
+        "pillar": 4,
+        "pillarLabel": "4. UK garage, grime, dubstep, and UK bass",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 4125,
+        "y": 360
+      }
+    },
+    {
+      "data": {
+        "id": "genre-roots-deep-dubstep",
+        "label": "Roots / deep dubstep",
+        "title": "Roots / deep dubstep",
+        "kind": "genre",
+        "parent": "pillar-4",
+        "pillar": 4,
+        "pillarLabel": "4. UK garage, grime, dubstep, and UK bass",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 4125,
+        "y": 465
+      }
+    },
+    {
+      "data": {
+        "id": "genre-post-dubstep-future-garage",
+        "label": "Post-dubstep / future garage",
+        "title": "Post-dubstep / future garage",
+        "kind": "genre",
+        "parent": "pillar-4",
+        "pillar": 4,
+        "pillarLabel": "4. UK garage, grime, dubstep, and UK bass",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 4125,
+        "y": 570
+      }
+    },
+    {
+      "data": {
+        "id": "genre-brostep",
+        "label": "Brostep",
+        "title": "Brostep",
+        "kind": "genre",
+        "parent": "pillar-4",
+        "pillar": 4,
+        "pillarLabel": "4. UK garage, grime, dubstep, and UK bass",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 4370,
+        "y": 150
+      }
+    },
+    {
+      "data": {
+        "id": "genre-riddim-dubstep-trench",
+        "label": "Riddim dubstep / trench",
+        "title": "Riddim dubstep / trench",
+        "kind": "genre",
+        "parent": "pillar-4",
+        "pillar": 4,
+        "pillarLabel": "4. UK garage, grime, dubstep, and UK bass",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 4370,
+        "y": 255
+      }
+    },
+    {
+      "data": {
+        "id": "genre-modern-tearout",
+        "label": "Modern tearout",
+        "title": "Modern tearout",
+        "kind": "genre",
+        "parent": "pillar-4",
+        "pillar": 4,
+        "pillarLabel": "4. UK garage, grime, dubstep, and UK bass",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 4370,
+        "y": 360
+      }
+    },
+    {
+      "data": {
+        "id": "genre-contemporary-deep-140",
+        "label": "Contemporary deep 140",
+        "title": "Contemporary deep 140",
+        "kind": "genre",
+        "parent": "pillar-4",
+        "pillar": 4,
+        "pillarLabel": "4. UK garage, grime, dubstep, and UK bass",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 4370,
+        "y": 465
+      }
+    },
+    {
+      "data": {
+        "id": "genre-uk-funky",
+        "label": "UK funky",
+        "title": "UK funky",
+        "kind": "genre",
+        "parent": "pillar-4",
+        "pillar": 4,
+        "pillarLabel": "4. UK garage, grime, dubstep, and UK bass",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 4615,
+        "y": 150
+      }
+    },
+    {
+      "data": {
+        "id": "genre-hard-drum-percussive-club",
+        "label": "Hard drum / percussive club",
+        "title": "Hard drum / percussive club",
+        "kind": "genre",
+        "parent": "pillar-4",
+        "pillar": 4,
+        "pillarLabel": "4. UK garage, grime, dubstep, and UK bass",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 4615,
+        "y": 255
+      }
+    },
+    {
+      "data": {
+        "id": "genre-wonky-maximalist-bass",
+        "label": "Wonky / maximalist bass",
+        "title": "Wonky / maximalist bass",
+        "kind": "genre",
+        "parent": "pillar-4",
+        "pillar": 4,
+        "pillarLabel": "4. UK garage, grime, dubstep, and UK bass",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 4615,
+        "y": 360
+      }
+    },
+    {
+      "data": {
+        "id": "pillar-5",
+        "label": "5. Electro, hip-hop bass, and US city-club systems",
+        "kind": "pillar",
+        "pillar": 5
+      }
+    },
+    {
+      "data": {
+        "id": "genre-electro-hip-hop",
+        "label": "Electro / hip-hop",
+        "title": "Electro / hip-hop",
+        "kind": "genre",
+        "parent": "pillar-5",
+        "pillar": 5,
+        "pillarLabel": "5. Electro, hip-hop bass, and US city-club systems",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 5130,
+        "y": 150
+      }
+    },
+    {
+      "data": {
+        "id": "genre-miami-bass",
+        "label": "Miami bass",
+        "title": "Miami bass",
+        "kind": "genre",
+        "parent": "pillar-5",
+        "pillar": 5,
+        "pillarLabel": "5. Electro, hip-hop bass, and US city-club systems",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 5130,
+        "y": 255
+      }
+    },
+    {
+      "data": {
+        "id": "genre-freestyle",
+        "label": "Freestyle",
+        "title": "Freestyle",
+        "kind": "genre",
+        "parent": "pillar-5",
+        "pillar": 5,
+        "pillarLabel": "5. Electro, hip-hop bass, and US city-club systems",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 5130,
+        "y": 360
+      }
+    },
+    {
+      "data": {
+        "id": "genre-detroit-electro",
+        "label": "Detroit electro",
+        "title": "Detroit electro",
+        "kind": "genre",
+        "parent": "pillar-5",
+        "pillar": 5,
+        "pillarLabel": "5. Electro, hip-hop bass, and US city-club systems",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 5130,
+        "y": 465
+      }
+    },
+    {
+      "data": {
+        "id": "genre-southern-hip-hop-trap",
+        "label": "Southern hip-hop trap",
+        "title": "Southern hip-hop trap",
+        "kind": "genre",
+        "parent": "pillar-5",
+        "pillar": 5,
+        "pillarLabel": "5. Electro, hip-hop bass, and US city-club systems",
+        "status": "unrepresented",
+        "statusLabel": "Important neighbor without a dedicated current selection"
+      },
+      "position": {
+        "x": 5130,
+        "y": 570
+      }
+    },
+    {
+      "data": {
+        "id": "genre-ghetto-house",
+        "label": "Ghetto house",
+        "title": "Ghetto house",
+        "kind": "genre",
+        "parent": "pillar-5",
+        "pillar": 5,
+        "pillarLabel": "5. Electro, hip-hop bass, and US city-club systems",
+        "status": "unrepresented",
+        "statusLabel": "Important neighbor without a dedicated current selection"
+      },
+      "position": {
+        "x": 5375,
+        "y": 150
+      }
+    },
+    {
+      "data": {
+        "id": "genre-ghettotech",
+        "label": "Ghettotech",
+        "title": "Ghettotech",
+        "kind": "genre",
+        "parent": "pillar-5",
+        "pillar": 5,
+        "pillarLabel": "5. Electro, hip-hop bass, and US city-club systems",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 5375,
+        "y": 255
+      }
+    },
+    {
+      "data": {
+        "id": "genre-juke",
+        "label": "Juke",
+        "title": "Juke",
+        "kind": "genre",
+        "parent": "pillar-5",
+        "pillar": 5,
+        "pillarLabel": "5. Electro, hip-hop bass, and US city-club systems",
+        "status": "unrepresented",
+        "statusLabel": "Important neighbor without a dedicated current selection"
+      },
+      "position": {
+        "x": 5375,
+        "y": 360
+      }
+    },
+    {
+      "data": {
+        "id": "genre-footwork",
+        "label": "Footwork",
+        "title": "Footwork",
+        "kind": "genre",
+        "parent": "pillar-5",
+        "pillar": 5,
+        "pillarLabel": "5. Electro, hip-hop bass, and US city-club systems",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 5375,
+        "y": 465
+      }
+    },
+    {
+      "data": {
+        "id": "genre-post-footwork-abstraction",
+        "label": "Post-footwork abstraction",
+        "title": "Post-footwork abstraction",
+        "kind": "genre",
+        "parent": "pillar-5",
+        "pillar": 5,
+        "pillarLabel": "5. Electro, hip-hop bass, and US city-club systems",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 5375,
+        "y": 570
+      }
+    },
+    {
+      "data": {
+        "id": "genre-baltimore-club",
+        "label": "Baltimore club",
+        "title": "Baltimore club",
+        "kind": "genre",
+        "parent": "pillar-5",
+        "pillar": 5,
+        "pillarLabel": "5. Electro, hip-hop bass, and US city-club systems",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 5620,
+        "y": 150
+      }
+    },
+    {
+      "data": {
+        "id": "genre-jersey-club",
+        "label": "Jersey club",
+        "title": "Jersey club",
+        "kind": "genre",
+        "parent": "pillar-5",
+        "pillar": 5,
+        "pillarLabel": "5. Electro, hip-hop bass, and US city-club systems",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 5620,
+        "y": 255
+      }
+    },
+    {
+      "data": {
+        "id": "genre-new-orleans-bounce",
+        "label": "New Orleans bounce",
+        "title": "New Orleans bounce",
+        "kind": "genre",
+        "parent": "pillar-5",
+        "pillar": 5,
+        "pillarLabel": "5. Electro, hip-hop bass, and US city-club systems",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 5620,
+        "y": 360
+      }
+    },
+    {
+      "data": {
+        "id": "genre-ballroom-vogue-beats",
+        "label": "Ballroom / vogue beats",
+        "title": "Ballroom / vogue beats",
+        "kind": "genre",
+        "parent": "pillar-5",
+        "pillar": 5,
+        "pillarLabel": "5. Electro, hip-hop bass, and US city-club systems",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 5620,
+        "y": 465
+      }
+    },
+    {
+      "data": {
+        "id": "genre-festival-trap",
+        "label": "Festival trap",
+        "title": "Festival trap",
+        "kind": "genre",
+        "parent": "pillar-5",
+        "pillar": 5,
+        "pillarLabel": "5. Electro, hip-hop bass, and US city-club systems",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 5865,
+        "y": 150
+      }
+    },
+    {
+      "data": {
+        "id": "genre-midtempo-bass",
+        "label": "Midtempo bass",
+        "title": "Midtempo bass",
+        "kind": "genre",
+        "parent": "pillar-5",
+        "pillar": 5,
+        "pillarLabel": "5. Electro, hip-hop bass, and US city-club systems",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 5865,
+        "y": 255
+      }
+    },
+    {
+      "data": {
+        "id": "genre-future-bass",
+        "label": "Future bass",
+        "title": "Future bass",
+        "kind": "genre",
+        "parent": "pillar-5",
+        "pillar": 5,
+        "pillarLabel": "5. Electro, hip-hop bass, and US city-club systems",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 5865,
+        "y": 360
+      }
+    },
+    {
+      "data": {
+        "id": "pillar-6",
+        "label": "6. Industrial dance and experimental electronic music",
+        "kind": "pillar",
+        "pillar": 6
+      }
+    },
+    {
+      "data": {
+        "id": "genre-early-industrial-experimentation",
+        "label": "Early industrial experimentation",
+        "title": "Early industrial experimentation",
+        "kind": "genre",
+        "parent": "pillar-6",
+        "pillar": 6,
+        "pillarLabel": "6. Industrial dance and experimental electronic music",
+        "status": "unrepresented",
+        "statusLabel": "Important neighbor without a dedicated current selection"
+      },
+      "position": {
+        "x": 130,
+        "y": 1250
+      }
+    },
+    {
+      "data": {
+        "id": "genre-electronic-body-music",
+        "label": "Electronic body music",
+        "title": "Electronic body music",
+        "kind": "genre",
+        "parent": "pillar-6",
+        "pillar": 6,
+        "pillarLabel": "6. Industrial dance and experimental electronic music",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 130,
+        "y": 1355
+      }
+    },
+    {
+      "data": {
+        "id": "genre-industrial-techno-rhythmic-noise",
+        "label": "Industrial techno / rhythmic noise",
+        "title": "Industrial techno / rhythmic noise",
+        "kind": "genre",
+        "parent": "pillar-6",
+        "pillar": 6,
+        "pillarLabel": "6. Industrial dance and experimental electronic music",
+        "status": "unrepresented",
+        "statusLabel": "Important neighbor without a dedicated current selection"
+      },
+      "position": {
+        "x": 130,
+        "y": 1460
+      }
+    },
+    {
+      "data": {
+        "id": "genre-nine-inch-nails-industrial-rock-boundary",
+        "label": "Nine Inch Nails / industrial-rock boundary",
+        "title": "Nine Inch Nails / industrial-rock boundary",
+        "kind": "genre",
+        "parent": "pillar-6",
+        "pillar": 6,
+        "pillarLabel": "6. Industrial dance and experimental electronic music",
+        "status": "candidate",
+        "statusLabel": "Proposed bridge or boundary case for a future edition"
+      },
+      "position": {
+        "x": 130,
+        "y": 1565
+      }
+    },
+    {
+      "data": {
+        "id": "genre-electroclash",
+        "label": "Electroclash",
+        "title": "Electroclash",
+        "kind": "genre",
+        "parent": "pillar-6",
+        "pillar": 6,
+        "pillarLabel": "6. Industrial dance and experimental electronic music",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 375,
+        "y": 1250
+      }
+    },
+    {
+      "data": {
+        "id": "genre-idm-electronic-listening-music",
+        "label": "IDM / electronic listening music",
+        "title": "IDM / electronic listening music",
+        "kind": "genre",
+        "parent": "pillar-6",
+        "pillar": 6,
+        "pillarLabel": "6. Industrial dance and experimental electronic music",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 375,
+        "y": 1355
+      }
+    },
+    {
+      "data": {
+        "id": "genre-ambient-techno",
+        "label": "Ambient techno",
+        "title": "Ambient techno",
+        "kind": "genre",
+        "parent": "pillar-6",
+        "pillar": 6,
+        "pillarLabel": "6. Industrial dance and experimental electronic music",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 375,
+        "y": 1460
+      }
+    },
+    {
+      "data": {
+        "id": "genre-downtempo",
+        "label": "Downtempo",
+        "title": "Downtempo",
+        "kind": "genre",
+        "parent": "pillar-6",
+        "pillar": 6,
+        "pillarLabel": "6. Industrial dance and experimental electronic music",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 375,
+        "y": 1565
+      }
+    },
+    {
+      "data": {
+        "id": "genre-drill-n-bass",
+        "label": "Drill'n'bass",
+        "title": "Drill'n'bass",
+        "kind": "genre",
+        "parent": "pillar-6",
+        "pillar": 6,
+        "pillarLabel": "6. Industrial dance and experimental electronic music",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 620,
+        "y": 1250
+      }
+    },
+    {
+      "data": {
+        "id": "genre-breakcore",
+        "label": "Breakcore",
+        "title": "Breakcore",
+        "kind": "genre",
+        "parent": "pillar-6",
+        "pillar": 6,
+        "pillarLabel": "6. Industrial dance and experimental electronic music",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 620,
+        "y": 1355
+      }
+    },
+    {
+      "data": {
+        "id": "genre-trip-hop-boundary",
+        "label": "Trip-hop boundary",
+        "title": "Trip-hop boundary",
+        "kind": "genre",
+        "parent": "pillar-6",
+        "pillar": 6,
+        "pillarLabel": "6. Industrial dance and experimental electronic music",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 620,
+        "y": 1460
+      }
+    },
+    {
+      "data": {
+        "id": "genre-experimental-deconstructed-club",
+        "label": "Experimental / deconstructed club",
+        "title": "Experimental / deconstructed club",
+        "kind": "genre",
+        "parent": "pillar-6",
+        "pillar": 6,
+        "pillarLabel": "6. Industrial dance and experimental electronic music",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 620,
+        "y": 1565
+      }
+    },
+    {
+      "data": {
+        "id": "genre-post-club-diasporic-percussive-work",
+        "label": "Post-club / diasporic percussive work",
+        "title": "Post-club / diasporic percussive work",
+        "kind": "genre",
+        "parent": "pillar-6",
+        "pillar": 6,
+        "pillarLabel": "6. Industrial dance and experimental electronic music",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 865,
+        "y": 1250
+      }
+    },
+    {
+      "data": {
+        "id": "pillar-7",
+        "label": "7. Festival EDM constellation",
+        "kind": "pillar",
+        "pillar": 7
+      }
+    },
+    {
+      "data": {
+        "id": "genre-electro-house",
+        "label": "Electro house",
+        "title": "Electro house",
+        "kind": "genre",
+        "parent": "pillar-7",
+        "pillar": 7,
+        "pillarLabel": "7. Festival EDM constellation",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 1380,
+        "y": 1250
+      }
+    },
+    {
+      "data": {
+        "id": "genre-festival-progressive-house",
+        "label": "Festival progressive house",
+        "title": "Festival progressive house",
+        "kind": "genre",
+        "parent": "pillar-7",
+        "pillar": 7,
+        "pillarLabel": "7. Festival EDM constellation",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 1380,
+        "y": 1355
+      }
+    },
+    {
+      "data": {
+        "id": "genre-festival-tech-house",
+        "label": "Festival tech house",
+        "title": "Festival tech house",
+        "kind": "genre",
+        "parent": "pillar-7",
+        "pillar": 7,
+        "pillarLabel": "7. Festival EDM constellation",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 1380,
+        "y": 1460
+      }
+    },
+    {
+      "data": {
+        "id": "genre-dance-pop-pop-edm-ecosystem",
+        "label": "Dance-pop / pop-EDM ecosystem",
+        "title": "Dance-pop / pop-EDM ecosystem",
+        "kind": "genre",
+        "parent": "pillar-7",
+        "pillar": 7,
+        "pillarLabel": "7. Festival EDM constellation",
+        "status": "unrepresented",
+        "statusLabel": "Important neighbor without a dedicated current selection"
+      },
+      "position": {
+        "x": 1380,
+        "y": 1565
+      }
+    },
+    {
+      "data": {
+        "id": "genre-big-room-house",
+        "label": "Big-room house",
+        "title": "Big-room house",
+        "kind": "genre",
+        "parent": "pillar-7",
+        "pillar": 7,
+        "pillarLabel": "7. Festival EDM constellation",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 1625,
+        "y": 1250
+      }
+    },
+    {
+      "data": {
+        "id": "genre-complextro",
+        "label": "Complextro",
+        "title": "Complextro",
+        "kind": "genre",
+        "parent": "pillar-7",
+        "pillar": 7,
+        "pillarLabel": "7. Festival EDM constellation",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 1625,
+        "y": 1355
+      }
+    },
+    {
+      "data": {
+        "id": "genre-future-house",
+        "label": "Future house",
+        "title": "Future house",
+        "kind": "genre",
+        "parent": "pillar-7",
+        "pillar": 7,
+        "pillarLabel": "7. Festival EDM constellation",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 1625,
+        "y": 1460
+      }
+    },
+    {
+      "data": {
+        "id": "genre-tropical-house",
+        "label": "Tropical house",
+        "title": "Tropical house",
+        "kind": "genre",
+        "parent": "pillar-7",
+        "pillar": 7,
+        "pillarLabel": "7. Festival EDM constellation",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 1625,
+        "y": 1565
+      }
+    },
+    {
+      "data": {
+        "id": "genre-festival-scale-build-breakdown-and-drop",
+        "label": "Festival-scale build, breakdown, and drop",
+        "title": "Festival-scale build, breakdown, and drop",
+        "kind": "genre",
+        "parent": "pillar-7",
+        "pillar": 7,
+        "pillarLabel": "7. Festival EDM constellation",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 1870,
+        "y": 1250
+      }
+    },
+    {
+      "data": {
+        "id": "pillar-8",
+        "label": "8. Caribbean and Latin electronic-dance routes",
+        "kind": "pillar",
+        "pillar": 8
+      }
+    },
+    {
+      "data": {
+        "id": "genre-dub-soundsystem",
+        "label": "Dub / soundsystem",
+        "title": "Dub / soundsystem",
+        "kind": "genre",
+        "parent": "pillar-8",
+        "pillar": 8,
+        "pillarLabel": "8. Caribbean and Latin electronic-dance routes",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 2630,
+        "y": 1250
+      }
+    },
+    {
+      "data": {
+        "id": "genre-digital-dancehall",
+        "label": "Digital dancehall",
+        "title": "Digital dancehall",
+        "kind": "genre",
+        "parent": "pillar-8",
+        "pillar": 8,
+        "pillarLabel": "8. Caribbean and Latin electronic-dance routes",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 2630,
+        "y": 1355
+      }
+    },
+    {
+      "data": {
+        "id": "genre-reggae-en-espa-ol",
+        "label": "Reggae en español",
+        "title": "Reggae en español",
+        "kind": "genre",
+        "parent": "pillar-8",
+        "pillar": 8,
+        "pillarLabel": "8. Caribbean and Latin electronic-dance routes",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 2630,
+        "y": 1460
+      }
+    },
+    {
+      "data": {
+        "id": "genre-cumbia-histories",
+        "label": "Cumbia histories",
+        "title": "Cumbia histories",
+        "kind": "genre",
+        "parent": "pillar-8",
+        "pillar": 8,
+        "pillarLabel": "8. Caribbean and Latin electronic-dance routes",
+        "status": "unrepresented",
+        "statusLabel": "Important neighbor without a dedicated current selection"
+      },
+      "position": {
+        "x": 2630,
+        "y": 1565
+      }
+    },
+    {
+      "data": {
+        "id": "genre-soca-bouyon-shatta",
+        "label": "Soca / bouyon / shatta",
+        "title": "Soca / bouyon / shatta",
+        "kind": "genre",
+        "parent": "pillar-8",
+        "pillar": 8,
+        "pillarLabel": "8. Caribbean and Latin electronic-dance routes",
+        "status": "unrepresented",
+        "statusLabel": "Important neighbor without a dedicated current selection"
+      },
+      "position": {
+        "x": 2630,
+        "y": 1670
+      }
+    },
+    {
+      "data": {
+        "id": "genre-puerto-rican-reggaet-n",
+        "label": "Puerto Rican reggaetón",
+        "title": "Puerto Rican reggaetón",
+        "kind": "genre",
+        "parent": "pillar-8",
+        "pillar": 8,
+        "pillarLabel": "8. Caribbean and Latin electronic-dance routes",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 2875,
+        "y": 1250
+      }
+    },
+    {
+      "data": {
+        "id": "genre-dominican-dembow-as-genre",
+        "label": "Dominican dembow as genre",
+        "title": "Dominican dembow as genre",
+        "kind": "genre",
+        "parent": "pillar-8",
+        "pillar": 8,
+        "pillarLabel": "8. Caribbean and Latin electronic-dance routes",
+        "status": "unrepresented",
+        "statusLabel": "Important neighbor without a dedicated current selection"
+      },
+      "position": {
+        "x": 2875,
+        "y": 1355
+      }
+    },
+    {
+      "data": {
+        "id": "genre-funk-carioca-roots",
+        "label": "Funk carioca roots",
+        "title": "Funk carioca roots",
+        "kind": "genre",
+        "parent": "pillar-8",
+        "pillar": 8,
+        "pillarLabel": "8. Caribbean and Latin electronic-dance routes",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 2875,
+        "y": 1460
+      }
+    },
+    {
+      "data": {
+        "id": "genre-tamborz-o-era-funk-carioca",
+        "label": "Tamborzão-era funk carioca",
+        "title": "Tamborzão-era funk carioca",
+        "kind": "genre",
+        "parent": "pillar-8",
+        "pillar": 8,
+        "pillarLabel": "8. Caribbean and Latin electronic-dance routes",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 2875,
+        "y": 1565
+      }
+    },
+    {
+      "data": {
+        "id": "genre-digital-cumbia",
+        "label": "Digital cumbia",
+        "title": "Digital cumbia",
+        "kind": "genre",
+        "parent": "pillar-8",
+        "pillar": 8,
+        "pillarLabel": "8. Caribbean and Latin electronic-dance routes",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 2875,
+        "y": 1670
+      }
+    },
+    {
+      "data": {
+        "id": "genre-neoperreo-queer-latin-club",
+        "label": "Neoperreo / queer Latin club",
+        "title": "Neoperreo / queer Latin club",
+        "kind": "genre",
+        "parent": "pillar-8",
+        "pillar": 8,
+        "pillarLabel": "8. Caribbean and Latin electronic-dance routes",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 3120,
+        "y": 1250
+      }
+    },
+    {
+      "data": {
+        "id": "genre-moombahton",
+        "label": "Moombahton",
+        "title": "Moombahton",
+        "kind": "genre",
+        "parent": "pillar-8",
+        "pillar": 8,
+        "pillarLabel": "8. Caribbean and Latin electronic-dance routes",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 3120,
+        "y": 1355
+      }
+    },
+    {
+      "data": {
+        "id": "genre-mandel-o-bruxaria",
+        "label": "Mandelão / bruxaria",
+        "title": "Mandelão / bruxaria",
+        "kind": "genre",
+        "parent": "pillar-8",
+        "pillar": 8,
+        "pillarLabel": "8. Caribbean and Latin electronic-dance routes",
+        "status": "unrepresented",
+        "statusLabel": "Important neighbor without a dedicated current selection"
+      },
+      "position": {
+        "x": 3120,
+        "y": 1460
+      }
+    },
+    {
+      "data": {
+        "id": "genre-tribal-guarachero",
+        "label": "Tribal guarachero",
+        "title": "Tribal guarachero",
+        "kind": "genre",
+        "parent": "pillar-8",
+        "pillar": 8,
+        "pillarLabel": "8. Caribbean and Latin electronic-dance routes",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 3120,
+        "y": 1565
+      }
+    },
+    {
+      "data": {
+        "id": "genre-colombian-edm-guaracha",
+        "label": "Colombian EDM guaracha",
+        "title": "Colombian EDM guaracha",
+        "kind": "genre",
+        "parent": "pillar-8",
+        "pillar": 8,
+        "pillarLabel": "8. Caribbean and Latin electronic-dance routes",
+        "status": "unrepresented",
+        "statusLabel": "Important neighbor without a dedicated current selection"
+      },
+      "position": {
+        "x": 3120,
+        "y": 1670
+      }
+    },
+    {
+      "data": {
+        "id": "genre-latin-core-deconstructed-latin-club",
+        "label": "Latin core / deconstructed Latin club",
+        "title": "Latin core / deconstructed Latin club",
+        "kind": "genre",
+        "parent": "pillar-8",
+        "pillar": 8,
+        "pillarLabel": "8. Caribbean and Latin electronic-dance routes",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 3365,
+        "y": 1250
+      }
+    },
+    {
+      "data": {
+        "id": "pillar-9",
+        "label": "9. African and Afro-diasporic electronic-dance routes",
+        "kind": "pillar",
+        "pillar": 9
+      }
+    },
+    {
+      "data": {
+        "id": "genre-south-african-house",
+        "label": "South African house",
+        "title": "South African house",
+        "kind": "genre",
+        "parent": "pillar-9",
+        "pillar": 9,
+        "pillarLabel": "9. African and Afro-diasporic electronic-dance routes",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 3880,
+        "y": 1250
+      }
+    },
+    {
+      "data": {
+        "id": "genre-kwaito",
+        "label": "Kwaito",
+        "title": "Kwaito",
+        "kind": "genre",
+        "parent": "pillar-9",
+        "pillar": 9,
+        "pillarLabel": "9. African and Afro-diasporic electronic-dance routes",
+        "status": "unrepresented",
+        "statusLabel": "Important neighbor without a dedicated current selection"
+      },
+      "position": {
+        "x": 3880,
+        "y": 1355
+      }
+    },
+    {
+      "data": {
+        "id": "genre-angolan-urban-dance-histories",
+        "label": "Angolan urban dance histories",
+        "title": "Angolan urban dance histories",
+        "kind": "genre",
+        "parent": "pillar-9",
+        "pillar": 9,
+        "pillarLabel": "9. African and Afro-diasporic electronic-dance routes",
+        "status": "unrepresented",
+        "statusLabel": "Important neighbor without a dedicated current selection"
+      },
+      "position": {
+        "x": 3880,
+        "y": 1460
+      }
+    },
+    {
+      "data": {
+        "id": "genre-west-african-electronic-popular-dance-histories",
+        "label": "West African electronic popular-dance histories",
+        "title": "West African electronic popular-dance histories",
+        "kind": "genre",
+        "parent": "pillar-9",
+        "pillar": 9,
+        "pillarLabel": "9. African and Afro-diasporic electronic-dance routes",
+        "status": "unrepresented",
+        "statusLabel": "Important neighbor without a dedicated current selection"
+      },
+      "position": {
+        "x": 3880,
+        "y": 1565
+      }
+    },
+    {
+      "data": {
+        "id": "genre-bacardi-pretoria-house",
+        "label": "Bacardi / Pretoria house",
+        "title": "Bacardi / Pretoria house",
+        "kind": "genre",
+        "parent": "pillar-9",
+        "pillar": 9,
+        "pillarLabel": "9. African and Afro-diasporic electronic-dance routes",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 4125,
+        "y": 1250
+      }
+    },
+    {
+      "data": {
+        "id": "genre-gqom",
+        "label": "Gqom",
+        "title": "Gqom",
+        "kind": "genre",
+        "parent": "pillar-9",
+        "pillar": 9,
+        "pillarLabel": "9. African and Afro-diasporic electronic-dance routes",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 4125,
+        "y": 1355
+      }
+    },
+    {
+      "data": {
+        "id": "genre-kuduro",
+        "label": "Kuduro",
+        "title": "Kuduro",
+        "kind": "genre",
+        "parent": "pillar-9",
+        "pillar": 9,
+        "pillarLabel": "9. African and Afro-diasporic electronic-dance routes",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 4125,
+        "y": 1460
+      }
+    },
+    {
+      "data": {
+        "id": "genre-coup-d-cal",
+        "label": "Coupé-décalé",
+        "title": "Coupé-décalé",
+        "kind": "genre",
+        "parent": "pillar-9",
+        "pillar": 9,
+        "pillarLabel": "9. African and Afro-diasporic electronic-dance routes",
+        "status": "unrepresented",
+        "statusLabel": "Important neighbor without a dedicated current selection"
+      },
+      "position": {
+        "x": 4125,
+        "y": 1565
+      }
+    },
+    {
+      "data": {
+        "id": "genre-azonto-era-electronic-dance-pop",
+        "label": "Azonto-era electronic dance-pop",
+        "title": "Azonto-era electronic dance-pop",
+        "kind": "genre",
+        "parent": "pillar-9",
+        "pillar": 9,
+        "pillarLabel": "9. African and Afro-diasporic electronic-dance routes",
+        "status": "unrepresented",
+        "statusLabel": "Important neighbor without a dedicated current selection"
+      },
+      "position": {
+        "x": 4125,
+        "y": 1670
+      }
+    },
+    {
+      "data": {
+        "id": "genre-amapiano",
+        "label": "Amapiano",
+        "title": "Amapiano",
+        "kind": "genre",
+        "parent": "pillar-9",
+        "pillar": 9,
+        "pillarLabel": "9. African and Afro-diasporic electronic-dance routes",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 4370,
+        "y": 1250
+      }
+    },
+    {
+      "data": {
+        "id": "genre-lisbon-batida",
+        "label": "Lisbon batida",
+        "title": "Lisbon batida",
+        "kind": "genre",
+        "parent": "pillar-9",
+        "pillar": 9,
+        "pillarLabel": "9. African and Afro-diasporic electronic-dance routes",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 4370,
+        "y": 1355
+      }
+    },
+    {
+      "data": {
+        "id": "genre-tarraxo-tarraxinha",
+        "label": "Tarraxo / tarraxinha",
+        "title": "Tarraxo / tarraxinha",
+        "kind": "genre",
+        "parent": "pillar-9",
+        "pillar": 9,
+        "pillarLabel": "9. African and Afro-diasporic electronic-dance routes",
+        "status": "unrepresented",
+        "statusLabel": "Important neighbor without a dedicated current selection"
+      },
+      "position": {
+        "x": 4370,
+        "y": 1460
+      }
+    },
+    {
+      "data": {
+        "id": "genre-afrobeats-afropop-boundary",
+        "label": "Afrobeats / Afropop boundary",
+        "title": "Afrobeats / Afropop boundary",
+        "kind": "genre",
+        "parent": "pillar-9",
+        "pillar": 9,
+        "pillarLabel": "9. African and Afro-diasporic electronic-dance routes",
+        "status": "unrepresented",
+        "statusLabel": "Important neighbor without a dedicated current selection"
+      },
+      "position": {
+        "x": 4370,
+        "y": 1565
+      }
+    },
+    {
+      "data": {
+        "id": "genre-shangaan-electro",
+        "label": "Shangaan electro",
+        "title": "Shangaan electro",
+        "kind": "genre",
+        "parent": "pillar-9",
+        "pillar": 9,
+        "pillarLabel": "9. African and Afro-diasporic electronic-dance routes",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 4615,
+        "y": 1250
+      }
+    },
+    {
+      "data": {
+        "id": "genre-singeli",
+        "label": "Singeli",
+        "title": "Singeli",
+        "kind": "genre",
+        "parent": "pillar-9",
+        "pillar": 9,
+        "pillarLabel": "9. African and Afro-diasporic electronic-dance routes",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 4615,
+        "y": 1355
+      }
+    },
+    {
+      "data": {
+        "id": "genre-kenyan-global-club-routes",
+        "label": "Kenyan global-club routes",
+        "title": "Kenyan global-club routes",
+        "kind": "genre",
+        "parent": "pillar-9",
+        "pillar": 9,
+        "pillarLabel": "9. African and Afro-diasporic electronic-dance routes",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 4615,
+        "y": 1460
+      }
+    },
+    {
+      "data": {
+        "id": "pillar-10",
+        "label": "10. SWANA, South Asian, East Asian, and Southeast Asian routes",
+        "kind": "pillar",
+        "pillar": 10
+      }
+    },
+    {
+      "data": {
+        "id": "genre-egyptian-shaabi-histories",
+        "label": "Egyptian shaabi histories",
+        "title": "Egyptian shaabi histories",
+        "kind": "genre",
+        "parent": "pillar-10",
+        "pillar": 10,
+        "pillarLabel": "10. SWANA, South Asian, East Asian, and Southeast Asian routes",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 5130,
+        "y": 1250
+      }
+    },
+    {
+      "data": {
+        "id": "genre-islam-chipsy-eek-live-electronic-practice",
+        "label": "Islam Chipsy & EEK live-electronic practice",
+        "title": "Islam Chipsy & EEK live-electronic practice",
+        "kind": "genre",
+        "parent": "pillar-10",
+        "pillar": 10,
+        "pillarLabel": "10. SWANA, South Asian, East Asian, and Southeast Asian routes",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 5130,
+        "y": 1355
+      }
+    },
+    {
+      "data": {
+        "id": "genre-mahraganat-electro-shaabi",
+        "label": "Mahraganat / electro-shaabi",
+        "title": "Mahraganat / electro-shaabi",
+        "kind": "genre",
+        "parent": "pillar-10",
+        "pillar": 10,
+        "pillarLabel": "10. SWANA, South Asian, East Asian, and Southeast Asian routes",
+        "status": "unrepresented",
+        "statusLabel": "Important neighbor without a dedicated current selection"
+      },
+      "position": {
+        "x": 5130,
+        "y": 1460
+      }
+    },
+    {
+      "data": {
+        "id": "genre-levantine-dabke-traditions",
+        "label": "Levantine dabke traditions",
+        "title": "Levantine dabke traditions",
+        "kind": "genre",
+        "parent": "pillar-10",
+        "pillar": 10,
+        "pillarLabel": "10. SWANA, South Asian, East Asian, and Southeast Asian routes",
+        "status": "unrepresented",
+        "statusLabel": "Important neighbor without a dedicated current selection"
+      },
+      "position": {
+        "x": 5130,
+        "y": 1565
+      }
+    },
+    {
+      "data": {
+        "id": "genre-electronic-dabke",
+        "label": "Electronic dabke",
+        "title": "Electronic dabke",
+        "kind": "genre",
+        "parent": "pillar-10",
+        "pillar": 10,
+        "pillarLabel": "10. SWANA, South Asian, East Asian, and Southeast Asian routes",
+        "status": "unrepresented",
+        "statusLabel": "Important neighbor without a dedicated current selection"
+      },
+      "position": {
+        "x": 5130,
+        "y": 1670
+      }
+    },
+    {
+      "data": {
+        "id": "genre-swana-rhythmic-knowledge",
+        "label": "SWANA rhythmic knowledge",
+        "title": "SWANA rhythmic knowledge",
+        "kind": "genre",
+        "parent": "pillar-10",
+        "pillar": 10,
+        "pillarLabel": "10. SWANA, South Asian, East Asian, and Southeast Asian routes",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 5375,
+        "y": 1250
+      }
+    },
+    {
+      "data": {
+        "id": "genre-south-asian-popular-and-diasporic-dance-histories",
+        "label": "South Asian popular and diasporic dance histories",
+        "title": "South Asian popular and diasporic dance histories",
+        "kind": "genre",
+        "parent": "pillar-10",
+        "pillar": 10,
+        "pillarLabel": "10. SWANA, South Asian, East Asian, and Southeast Asian routes",
+        "status": "unrepresented",
+        "statusLabel": "Important neighbor without a dedicated current selection"
+      },
+      "position": {
+        "x": 5375,
+        "y": 1355
+      }
+    },
+    {
+      "data": {
+        "id": "genre-asian-underground-desi-bass",
+        "label": "Asian Underground / desi bass",
+        "title": "Asian Underground / desi bass",
+        "kind": "genre",
+        "parent": "pillar-10",
+        "pillar": 10,
+        "pillarLabel": "10. SWANA, South Asian, East Asian, and Southeast Asian routes",
+        "status": "unrepresented",
+        "statusLabel": "Important neighbor without a dedicated current selection"
+      },
+      "position": {
+        "x": 5375,
+        "y": 1460
+      }
+    },
+    {
+      "data": {
+        "id": "genre-goa-party-ecology",
+        "label": "Goa party ecology",
+        "title": "Goa party ecology",
+        "kind": "genre",
+        "parent": "pillar-10",
+        "pillar": 10,
+        "pillarLabel": "10. SWANA, South Asian, East Asian, and Southeast Asian routes",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 5375,
+        "y": 1565
+      }
+    },
+    {
+      "data": {
+        "id": "genre-japanese-technopop",
+        "label": "Japanese technopop",
+        "title": "Japanese technopop",
+        "kind": "genre",
+        "parent": "pillar-10",
+        "pillar": 10,
+        "pillarLabel": "10. SWANA, South Asian, East Asian, and Southeast Asian routes",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 5620,
+        "y": 1250
+      }
+    },
+    {
+      "data": {
+        "id": "genre-j-core",
+        "label": "J-core",
+        "title": "J-core",
+        "kind": "genre",
+        "parent": "pillar-10",
+        "pillar": 10,
+        "pillarLabel": "10. SWANA, South Asian, East Asian, and Southeast Asian routes",
+        "status": "unrepresented",
+        "statusLabel": "Important neighbor without a dedicated current selection"
+      },
+      "position": {
+        "x": 5620,
+        "y": 1355
+      }
+    },
+    {
+      "data": {
+        "id": "genre-funkot",
+        "label": "Funkot",
+        "title": "Funkot",
+        "kind": "genre",
+        "parent": "pillar-10",
+        "pillar": 10,
+        "pillarLabel": "10. SWANA, South Asian, East Asian, and Southeast Asian routes",
+        "status": "unrepresented",
+        "statusLabel": "Important neighbor without a dedicated current selection"
+      },
+      "position": {
+        "x": 5620,
+        "y": 1460
+      }
+    },
+    {
+      "data": {
+        "id": "genre-vinahouse",
+        "label": "Vinahouse",
+        "title": "Vinahouse",
+        "kind": "genre",
+        "parent": "pillar-10",
+        "pillar": 10,
+        "pillarLabel": "10. SWANA, South Asian, East Asian, and Southeast Asian routes",
+        "status": "unrepresented",
+        "statusLabel": "Important neighbor without a dedicated current selection"
+      },
+      "position": {
+        "x": 5620,
+        "y": 1565
+      }
+    },
+    {
+      "data": {
+        "id": "genre-budots",
+        "label": "Budots",
+        "title": "Budots",
+        "kind": "genre",
+        "parent": "pillar-10",
+        "pillar": 10,
+        "pillarLabel": "10. SWANA, South Asian, East Asian, and Southeast Asian routes",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 5620,
+        "y": 1670
+      }
+    },
+    {
+      "data": {
+        "id": "genre-shanghai-experimental-club",
+        "label": "Shanghai experimental club",
+        "title": "Shanghai experimental club",
+        "kind": "genre",
+        "parent": "pillar-10",
+        "pillar": 10,
+        "pillarLabel": "10. SWANA, South Asian, East Asian, and Southeast Asian routes",
+        "status": "represented",
+        "statusLabel": "Represented in the 158-track curriculum"
+      },
+      "position": {
+        "x": 5865,
+        "y": 1250
+      }
+    },
+    {
+      "data": {
+        "id": "genre-chinese-electronic-music-networks",
+        "label": "Chinese electronic-music networks",
+        "title": "Chinese electronic-music networks",
+        "kind": "genre",
+        "parent": "pillar-10",
+        "pillar": 10,
+        "pillarLabel": "10. SWANA, South Asian, East Asian, and Southeast Asian routes",
+        "status": "unrepresented",
+        "statusLabel": "Important neighbor without a dedicated current selection"
+      },
+      "position": {
+        "x": 5865,
+        "y": 1355
+      }
+    },
+    {
+      "data": {
+        "id": "genre-visayan-popular-dance-ecology",
+        "label": "Visayan popular-dance ecology",
+        "title": "Visayan popular-dance ecology",
+        "kind": "genre",
+        "parent": "pillar-10",
+        "pillar": 10,
+        "pillarLabel": "10. SWANA, South Asian, East Asian, and Southeast Asian routes",
+        "status": "unrepresented",
+        "statusLabel": "Important neighbor without a dedicated current selection"
+      },
+      "position": {
+        "x": 5865,
+        "y": 1460
+      }
+    }
+  ],
+  "edges": [
+    {
+      "data": {
+        "id": "edge-001",
+        "source": "genre-disco-electronic-disco",
+        "target": "genre-boogie-post-disco",
+        "sourceTitle": "Disco / electronic disco",
+        "targetTitle": "Boogie / post-disco",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-002",
+        "source": "genre-disco-electronic-disco",
+        "target": "genre-hi-nrg",
+        "sourceTitle": "Disco / electronic disco",
+        "targetTitle": "Hi-NRG",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-003",
+        "source": "genre-disco-electronic-disco",
+        "target": "genre-italo-disco",
+        "sourceTitle": "Disco / electronic disco",
+        "targetTitle": "Italo disco",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-004",
+        "source": "genre-disco-electronic-disco",
+        "target": "genre-balearic-beat",
+        "sourceTitle": "Disco / electronic disco",
+        "targetTitle": "Balearic beat",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-005",
+        "source": "genre-boogie-post-disco",
+        "target": "genre-chicago-house",
+        "sourceTitle": "Boogie / post-disco",
+        "targetTitle": "Chicago house",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-006",
+        "source": "genre-boogie-post-disco",
+        "target": "genre-us-garage-garage-house",
+        "sourceTitle": "Boogie / post-disco",
+        "targetTitle": "US garage / garage house",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-007",
+        "source": "genre-chicago-house",
+        "target": "genre-jack-track",
+        "sourceTitle": "Chicago house",
+        "targetTitle": "Jack track",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-008",
+        "source": "genre-chicago-house",
+        "target": "genre-piano-house",
+        "sourceTitle": "Chicago house",
+        "targetTitle": "Piano house",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-009",
+        "source": "genre-chicago-house",
+        "target": "genre-deep-house",
+        "sourceTitle": "Chicago house",
+        "targetTitle": "Deep house",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-010",
+        "source": "genre-chicago-house",
+        "target": "genre-acid-house",
+        "sourceTitle": "Chicago house",
+        "targetTitle": "Acid house",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-011",
+        "source": "genre-chicago-house",
+        "target": "genre-vocal-gospel-soulful-house",
+        "sourceTitle": "Chicago house",
+        "targetTitle": "Vocal / gospel / soulful house",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-012",
+        "source": "genre-us-garage-garage-house",
+        "target": "genre-vocal-gospel-soulful-house",
+        "sourceTitle": "US garage / garage house",
+        "targetTitle": "Vocal / gospel / soulful house",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-013",
+        "source": "genre-us-garage-garage-house",
+        "target": "genre-cut-up-garage-house",
+        "sourceTitle": "US garage / garage house",
+        "targetTitle": "Cut-up garage house",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-014",
+        "source": "genre-chicago-house",
+        "target": "genre-french-touch-filter-house",
+        "sourceTitle": "Chicago house",
+        "targetTitle": "French touch / filter house",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-015",
+        "source": "genre-chicago-house",
+        "target": "genre-minimal-microhouse",
+        "sourceTitle": "Chicago house",
+        "targetTitle": "Minimal / microhouse",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-016",
+        "source": "genre-chicago-house",
+        "target": "genre-progressive-house",
+        "sourceTitle": "Chicago house",
+        "targetTitle": "Progressive house",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-017",
+        "source": "genre-chicago-house",
+        "target": "genre-tech-house",
+        "sourceTitle": "Chicago house",
+        "targetTitle": "Tech house",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-018",
+        "source": "genre-chicago-house",
+        "target": "genre-south-african-afro-house",
+        "sourceTitle": "Chicago house",
+        "targetTitle": "South African / Afro house",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-019",
+        "source": "genre-electro-hip-hop",
+        "target": "genre-detroit-techno",
+        "sourceTitle": "Electro / hip-hop",
+        "targetTitle": "Detroit techno",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-020",
+        "source": "genre-italo-disco",
+        "target": "genre-detroit-techno",
+        "sourceTitle": "Italo disco",
+        "targetTitle": "Detroit techno",
+        "relation": "exchange",
+        "edgeKind": "exchange"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-021",
+        "source": "genre-chicago-house",
+        "target": "genre-detroit-techno",
+        "sourceTitle": "Chicago house",
+        "targetTitle": "Detroit techno",
+        "relation": "exchange",
+        "edgeKind": "exchange"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-022",
+        "source": "genre-detroit-techno",
+        "target": "genre-minimal-techno",
+        "sourceTitle": "Detroit techno",
+        "targetTitle": "Minimal techno",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-023",
+        "source": "genre-detroit-techno",
+        "target": "genre-loop-techno",
+        "sourceTitle": "Detroit techno",
+        "targetTitle": "Loop techno",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-024",
+        "source": "genre-detroit-techno",
+        "target": "genre-dub-techno",
+        "sourceTitle": "Detroit techno",
+        "targetTitle": "Dub techno",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-025",
+        "source": "genre-detroit-techno",
+        "target": "genre-bleep-techno",
+        "sourceTitle": "Detroit techno",
+        "targetTitle": "Bleep techno",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-026",
+        "source": "genre-detroit-techno",
+        "target": "genre-acid-techno",
+        "sourceTitle": "Detroit techno",
+        "targetTitle": "Acid techno",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-027",
+        "source": "genre-detroit-techno",
+        "target": "genre-hard-techno",
+        "sourceTitle": "Detroit techno",
+        "targetTitle": "Hard techno",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-028",
+        "source": "genre-detroit-techno",
+        "target": "genre-birmingham-industrial-techno",
+        "sourceTitle": "Detroit techno",
+        "targetTitle": "Birmingham / industrial techno",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-029",
+        "source": "genre-hard-techno",
+        "target": "genre-schranz",
+        "sourceTitle": "Hard techno",
+        "targetTitle": "Schranz",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-030",
+        "source": "genre-italo-house",
+        "target": "genre-chicago-house",
+        "sourceTitle": "Italo house",
+        "targetTitle": "Chicago house",
+        "relation": "exchange",
+        "edgeKind": "exchange"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-031",
+        "source": "genre-acid-house",
+        "target": "genre-uk-european-rave-ecology",
+        "sourceTitle": "Acid house",
+        "targetTitle": "UK / European rave ecology",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-032",
+        "source": "genre-detroit-techno",
+        "target": "genre-uk-european-rave-ecology",
+        "sourceTitle": "Detroit techno",
+        "targetTitle": "UK / European rave ecology",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-033",
+        "source": "genre-new-beat",
+        "target": "genre-uk-european-rave-ecology",
+        "sourceTitle": "New beat",
+        "targetTitle": "UK / European rave ecology",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-034",
+        "source": "genre-electronic-body-music",
+        "target": "genre-new-beat",
+        "sourceTitle": "Electronic body music",
+        "targetTitle": "New beat",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-035",
+        "source": "genre-uk-european-rave-ecology",
+        "target": "genre-breakbeat-hardcore",
+        "sourceTitle": "UK / European rave ecology",
+        "targetTitle": "Breakbeat hardcore",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-036",
+        "source": "genre-uk-european-rave-ecology",
+        "target": "genre-hardcore-techno",
+        "sourceTitle": "UK / European rave ecology",
+        "targetTitle": "Hardcore techno",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-037",
+        "source": "genre-uk-european-rave-ecology",
+        "target": "genre-eurodance-hip-house-crossover",
+        "sourceTitle": "UK / European rave ecology",
+        "targetTitle": "Eurodance / hip-house crossover",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-038",
+        "source": "genre-breakbeat-hardcore",
+        "target": "genre-happy-hardcore",
+        "sourceTitle": "Breakbeat hardcore",
+        "targetTitle": "Happy hardcore",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-039",
+        "source": "genre-hardcore-techno",
+        "target": "genre-gabber",
+        "sourceTitle": "Hardcore techno",
+        "targetTitle": "Gabber",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-040",
+        "source": "genre-hardcore-techno",
+        "target": "genre-free-tekno-tribe-hardtek",
+        "sourceTitle": "Hardcore techno",
+        "targetTitle": "Free tekno / tribe / hardtek",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-041",
+        "source": "genre-gabber",
+        "target": "genre-frenchcore",
+        "sourceTitle": "Gabber",
+        "targetTitle": "Frenchcore",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-042",
+        "source": "genre-gabber",
+        "target": "genre-hardstyle",
+        "sourceTitle": "Gabber",
+        "targetTitle": "Hardstyle",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-043",
+        "source": "genre-happy-hardcore",
+        "target": "genre-later-uk-hardcore",
+        "sourceTitle": "Happy hardcore",
+        "targetTitle": "Later UK hardcore",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-044",
+        "source": "genre-happy-hardcore",
+        "target": "genre-makina-bouncy-techno-donk",
+        "sourceTitle": "Happy hardcore",
+        "targetTitle": "Makina / bouncy techno / donk",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-045",
+        "source": "genre-detroit-techno",
+        "target": "genre-early-trance",
+        "sourceTitle": "Detroit techno",
+        "targetTitle": "Early trance",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-046",
+        "source": "genre-acid-house",
+        "target": "genre-early-trance",
+        "sourceTitle": "Acid house",
+        "targetTitle": "Early trance",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-047",
+        "source": "genre-early-trance",
+        "target": "genre-progressive-acid-trance",
+        "sourceTitle": "Early trance",
+        "targetTitle": "Progressive / acid trance",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-048",
+        "source": "genre-early-trance",
+        "target": "genre-classic-uplifting-vocal-trance",
+        "sourceTitle": "Early trance",
+        "targetTitle": "Classic / uplifting / vocal trance",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-049",
+        "source": "genre-early-trance",
+        "target": "genre-hard-trance-tech-trance",
+        "sourceTitle": "Early trance",
+        "targetTitle": "Hard trance / tech trance",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-050",
+        "source": "genre-early-trance",
+        "target": "genre-goa-trance-psytrance",
+        "sourceTitle": "Early trance",
+        "targetTitle": "Goa trance / psytrance",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-051",
+        "source": "genre-goa-trance-psytrance",
+        "target": "genre-darkpsy",
+        "sourceTitle": "Goa trance / psytrance",
+        "targetTitle": "Darkpsy",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-052",
+        "source": "genre-goa-trance-psytrance",
+        "target": "genre-full-on-progressive-psy",
+        "sourceTitle": "Goa trance / psytrance",
+        "targetTitle": "Full-on / progressive psy",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-053",
+        "source": "genre-breakbeat-hardcore",
+        "target": "genre-the-prodigy-rave-to-big-beat-bridge",
+        "sourceTitle": "Breakbeat hardcore",
+        "targetTitle": "The Prodigy: rave-to-big-beat bridge",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-054",
+        "source": "genre-the-prodigy-rave-to-big-beat-bridge",
+        "target": "genre-big-beat",
+        "sourceTitle": "The Prodigy: rave-to-big-beat bridge",
+        "targetTitle": "Big beat",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-055",
+        "source": "genre-funk-breaks-hip-hop-sampling",
+        "target": "genre-breakbeat-method",
+        "sourceTitle": "Funk breaks / hip-hop sampling",
+        "targetTitle": "Breakbeat method",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-056",
+        "source": "genre-breakbeat-method",
+        "target": "genre-breakbeat-hardcore",
+        "sourceTitle": "Breakbeat method",
+        "targetTitle": "Breakbeat hardcore",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-057",
+        "source": "genre-breakbeat-method",
+        "target": "genre-big-beat",
+        "sourceTitle": "Breakbeat method",
+        "targetTitle": "Big beat",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-058",
+        "source": "genre-breakbeat-method",
+        "target": "genre-nu-skool-breaks",
+        "sourceTitle": "Breakbeat method",
+        "targetTitle": "Nu-skool breaks",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-059",
+        "source": "genre-breakbeat-method",
+        "target": "genre-florida-breaks",
+        "sourceTitle": "Breakbeat method",
+        "targetTitle": "Florida breaks",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-060",
+        "source": "genre-breakbeat-hardcore",
+        "target": "genre-jungle",
+        "sourceTitle": "Breakbeat hardcore",
+        "targetTitle": "Jungle",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-061",
+        "source": "genre-dub-soundsystem",
+        "target": "genre-jungle",
+        "sourceTitle": "Dub / soundsystem",
+        "targetTitle": "Jungle",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-062",
+        "source": "genre-jungle",
+        "target": "genre-ragga-jungle",
+        "sourceTitle": "Jungle",
+        "targetTitle": "Ragga jungle",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-063",
+        "source": "genre-jungle",
+        "target": "genre-dark-jungle",
+        "sourceTitle": "Jungle",
+        "targetTitle": "Dark jungle",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-064",
+        "source": "genre-jungle",
+        "target": "genre-atmospheric-jungle",
+        "sourceTitle": "Jungle",
+        "targetTitle": "Atmospheric jungle",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-065",
+        "source": "genre-jungle",
+        "target": "genre-jump-up-jungle",
+        "sourceTitle": "Jungle",
+        "targetTitle": "Jump-up jungle",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-066",
+        "source": "genre-jungle",
+        "target": "genre-drum-bass",
+        "sourceTitle": "Jungle",
+        "targetTitle": "Drum & bass",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-067",
+        "source": "genre-jungle",
+        "target": "genre-new-jungle-revival",
+        "sourceTitle": "Jungle",
+        "targetTitle": "New-jungle revival",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-068",
+        "source": "genre-ragga-jungle",
+        "target": "genre-m-beat-feat-general-levy-incredible",
+        "sourceTitle": "Ragga jungle",
+        "targetTitle": "M-Beat feat. General Levy — Incredible",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-069",
+        "source": "genre-drum-bass",
+        "target": "genre-atmospheric-d-b",
+        "sourceTitle": "Drum & bass",
+        "targetTitle": "Atmospheric D&B",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-070",
+        "source": "genre-drum-bass",
+        "target": "genre-jazzstep",
+        "sourceTitle": "Drum & bass",
+        "targetTitle": "Jazzstep",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-071",
+        "source": "genre-drum-bass",
+        "target": "genre-techstep",
+        "sourceTitle": "Drum & bass",
+        "targetTitle": "Techstep",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-072",
+        "source": "genre-techstep",
+        "target": "genre-neurofunk",
+        "sourceTitle": "Techstep",
+        "targetTitle": "Neurofunk",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-073",
+        "source": "genre-drum-bass",
+        "target": "genre-liquid-funk",
+        "sourceTitle": "Drum & bass",
+        "targetTitle": "Liquid funk",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-074",
+        "source": "genre-drum-bass",
+        "target": "genre-dancefloor-d-b",
+        "sourceTitle": "Drum & bass",
+        "targetTitle": "Dancefloor D&B",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-075",
+        "source": "genre-drum-bass",
+        "target": "genre-jump-up-d-b",
+        "sourceTitle": "Drum & bass",
+        "targetTitle": "Jump-up D&B",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-076",
+        "source": "genre-jump-up-d-b",
+        "target": "genre-foghorn-era-jump-up-tendency",
+        "sourceTitle": "Jump-up D&B",
+        "targetTitle": "Foghorn-era jump-up tendency",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-077",
+        "source": "genre-drum-bass",
+        "target": "genre-drumfunk",
+        "sourceTitle": "Drum & bass",
+        "targetTitle": "Drumfunk",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-078",
+        "source": "genre-drum-bass",
+        "target": "genre-halftime-d-b",
+        "sourceTitle": "Drum & bass",
+        "targetTitle": "Halftime D&B",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-079",
+        "source": "genre-drum-bass",
+        "target": "genre-crossbreed",
+        "sourceTitle": "Drum & bass",
+        "targetTitle": "Crossbreed",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-080",
+        "source": "genre-drum-bass",
+        "target": "genre-sambass",
+        "sourceTitle": "Drum & bass",
+        "targetTitle": "Sambass",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-081",
+        "source": "genre-jungle",
+        "target": "genre-broken-beat-bruk",
+        "sourceTitle": "Jungle",
+        "targetTitle": "Broken beat / bruk",
+        "relation": "exchange",
+        "edgeKind": "exchange"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-082",
+        "source": "genre-south-african-afro-house",
+        "target": "genre-broken-beat-bruk",
+        "sourceTitle": "South African / Afro house",
+        "targetTitle": "Broken beat / bruk",
+        "relation": "exchange",
+        "edgeKind": "exchange"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-083",
+        "source": "genre-us-garage-garage-house",
+        "target": "genre-uk-garage",
+        "sourceTitle": "US garage / garage house",
+        "targetTitle": "UK garage",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-084",
+        "source": "genre-jungle",
+        "target": "genre-uk-garage",
+        "sourceTitle": "Jungle",
+        "targetTitle": "UK garage",
+        "relation": "exchange",
+        "edgeKind": "exchange"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-085",
+        "source": "genre-uk-garage",
+        "target": "genre-speed-garage",
+        "sourceTitle": "UK garage",
+        "targetTitle": "Speed garage",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-086",
+        "source": "genre-speed-garage",
+        "target": "genre-2-step",
+        "sourceTitle": "Speed garage",
+        "targetTitle": "2-step",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-087",
+        "source": "genre-2-step",
+        "target": "genre-dark-2-step",
+        "sourceTitle": "2-step",
+        "targetTitle": "Dark 2-step",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-088",
+        "source": "genre-speed-garage",
+        "target": "genre-bassline-4x4",
+        "sourceTitle": "Speed garage",
+        "targetTitle": "Bassline / 4x4",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-089",
+        "source": "genre-2-step",
+        "target": "genre-grime-eski",
+        "sourceTitle": "2-step",
+        "targetTitle": "Grime / eski",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-090",
+        "source": "genre-2-step",
+        "target": "genre-proto-dubstep",
+        "sourceTitle": "2-step",
+        "targetTitle": "Proto-dubstep",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-091",
+        "source": "genre-proto-dubstep",
+        "target": "genre-dubstep",
+        "sourceTitle": "Proto-dubstep",
+        "targetTitle": "Dubstep",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-092",
+        "source": "genre-dub-soundsystem",
+        "target": "genre-dubstep",
+        "sourceTitle": "Dub / soundsystem",
+        "targetTitle": "Dubstep",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-093",
+        "source": "genre-dubstep",
+        "target": "genre-roots-deep-dubstep",
+        "sourceTitle": "Dubstep",
+        "targetTitle": "Roots / deep dubstep",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-094",
+        "source": "genre-dubstep",
+        "target": "genre-brostep",
+        "sourceTitle": "Dubstep",
+        "targetTitle": "Brostep",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-095",
+        "source": "genre-dubstep",
+        "target": "genre-post-dubstep-future-garage",
+        "sourceTitle": "Dubstep",
+        "targetTitle": "Post-dubstep / future garage",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-096",
+        "source": "genre-brostep",
+        "target": "genre-riddim-dubstep-trench",
+        "sourceTitle": "Brostep",
+        "targetTitle": "Riddim dubstep / trench",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-097",
+        "source": "genre-brostep",
+        "target": "genre-modern-tearout",
+        "sourceTitle": "Brostep",
+        "targetTitle": "Modern tearout",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-098",
+        "source": "genre-roots-deep-dubstep",
+        "target": "genre-contemporary-deep-140",
+        "sourceTitle": "Roots / deep dubstep",
+        "targetTitle": "Contemporary deep 140",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-099",
+        "source": "genre-uk-garage",
+        "target": "genre-uk-funky",
+        "sourceTitle": "UK garage",
+        "targetTitle": "UK funky",
+        "relation": "exchange",
+        "edgeKind": "exchange"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-100",
+        "source": "genre-grime-eski",
+        "target": "genre-uk-funky",
+        "sourceTitle": "Grime / eski",
+        "targetTitle": "UK funky",
+        "relation": "exchange",
+        "edgeKind": "exchange"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-101",
+        "source": "genre-uk-funky",
+        "target": "genre-hard-drum-percussive-club",
+        "sourceTitle": "UK funky",
+        "targetTitle": "Hard drum / percussive club",
+        "relation": "exchange",
+        "edgeKind": "exchange"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-102",
+        "source": "genre-post-dubstep-future-garage",
+        "target": "genre-wonky-maximalist-bass",
+        "sourceTitle": "Post-dubstep / future garage",
+        "targetTitle": "Wonky / maximalist bass",
+        "relation": "exchange",
+        "edgeKind": "exchange"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-103",
+        "source": "genre-wonky-maximalist-bass",
+        "target": "genre-future-bass",
+        "sourceTitle": "Wonky / maximalist bass",
+        "targetTitle": "Future bass",
+        "relation": "exchange",
+        "edgeKind": "exchange"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-104",
+        "source": "genre-electro-hip-hop",
+        "target": "genre-miami-bass",
+        "sourceTitle": "Electro / hip-hop",
+        "targetTitle": "Miami bass",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-105",
+        "source": "genre-electro-hip-hop",
+        "target": "genre-freestyle",
+        "sourceTitle": "Electro / hip-hop",
+        "targetTitle": "Freestyle",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-106",
+        "source": "genre-electro-hip-hop",
+        "target": "genre-detroit-electro",
+        "sourceTitle": "Electro / hip-hop",
+        "targetTitle": "Detroit electro",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-107",
+        "source": "genre-miami-bass",
+        "target": "genre-ghetto-house",
+        "sourceTitle": "Miami bass",
+        "targetTitle": "Ghetto house",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-108",
+        "source": "genre-detroit-electro",
+        "target": "genre-ghettotech",
+        "sourceTitle": "Detroit electro",
+        "targetTitle": "Ghettotech",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-109",
+        "source": "genre-ghetto-house",
+        "target": "genre-juke",
+        "sourceTitle": "Ghetto house",
+        "targetTitle": "Juke",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-110",
+        "source": "genre-juke",
+        "target": "genre-footwork",
+        "sourceTitle": "Juke",
+        "targetTitle": "Footwork",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-111",
+        "source": "genre-footwork",
+        "target": "genre-post-footwork-abstraction",
+        "sourceTitle": "Footwork",
+        "targetTitle": "Post-footwork abstraction",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-112",
+        "source": "genre-funk-breaks-hip-hop-sampling",
+        "target": "genre-baltimore-club",
+        "sourceTitle": "Funk breaks / hip-hop sampling",
+        "targetTitle": "Baltimore club",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-113",
+        "source": "genre-baltimore-club",
+        "target": "genre-jersey-club",
+        "sourceTitle": "Baltimore club",
+        "targetTitle": "Jersey club",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-114",
+        "source": "genre-funk-breaks-hip-hop-sampling",
+        "target": "genre-new-orleans-bounce",
+        "sourceTitle": "Funk breaks / hip-hop sampling",
+        "targetTitle": "New Orleans bounce",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-115",
+        "source": "genre-disco-electronic-disco",
+        "target": "genre-ballroom-vogue-beats",
+        "sourceTitle": "Disco / electronic disco",
+        "targetTitle": "Ballroom / vogue beats",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-116",
+        "source": "genre-southern-hip-hop-trap",
+        "target": "genre-festival-trap",
+        "sourceTitle": "Southern hip-hop trap",
+        "targetTitle": "Festival trap",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-117",
+        "source": "genre-festival-trap",
+        "target": "genre-midtempo-bass",
+        "sourceTitle": "Festival trap",
+        "targetTitle": "Midtempo bass",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-118",
+        "source": "genre-festival-trap",
+        "target": "genre-future-bass",
+        "sourceTitle": "Festival trap",
+        "targetTitle": "Future bass",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-119",
+        "source": "genre-early-industrial-experimentation",
+        "target": "genre-electronic-body-music",
+        "sourceTitle": "Early industrial experimentation",
+        "targetTitle": "Electronic body music",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-120",
+        "source": "genre-electronic-body-music",
+        "target": "genre-electroclash",
+        "sourceTitle": "Electronic body music",
+        "targetTitle": "Electroclash",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-121",
+        "source": "genre-electronic-body-music",
+        "target": "genre-industrial-techno-rhythmic-noise",
+        "sourceTitle": "Electronic body music",
+        "targetTitle": "Industrial techno / rhythmic noise",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-122",
+        "source": "genre-electronic-body-music",
+        "target": "genre-nine-inch-nails-industrial-rock-boundary",
+        "sourceTitle": "Electronic body music",
+        "targetTitle": "Nine Inch Nails / industrial-rock boundary",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-123",
+        "source": "genre-nine-inch-nails-industrial-rock-boundary",
+        "target": "genre-idm-electronic-listening-music",
+        "sourceTitle": "Nine Inch Nails / industrial-rock boundary",
+        "targetTitle": "IDM / electronic listening music",
+        "relation": "remix exchange",
+        "edgeKind": "exchange"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-124",
+        "source": "genre-dub-soundsystem",
+        "target": "genre-nine-inch-nails-industrial-rock-boundary",
+        "sourceTitle": "Dub / soundsystem",
+        "targetTitle": "Nine Inch Nails / industrial-rock boundary",
+        "relation": "studio exchange",
+        "edgeKind": "exchange"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-125",
+        "source": "genre-detroit-techno",
+        "target": "genre-idm-electronic-listening-music",
+        "sourceTitle": "Detroit techno",
+        "targetTitle": "IDM / electronic listening music",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-126",
+        "source": "genre-idm-electronic-listening-music",
+        "target": "genre-ambient-techno",
+        "sourceTitle": "IDM / electronic listening music",
+        "targetTitle": "Ambient techno",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-127",
+        "source": "genre-idm-electronic-listening-music",
+        "target": "genre-downtempo",
+        "sourceTitle": "IDM / electronic listening music",
+        "targetTitle": "Downtempo",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-128",
+        "source": "genre-breakbeat-method",
+        "target": "genre-drill-n-bass",
+        "sourceTitle": "Breakbeat method",
+        "targetTitle": "Drill'n'bass",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-129",
+        "source": "genre-drill-n-bass",
+        "target": "genre-breakcore",
+        "sourceTitle": "Drill'n'bass",
+        "targetTitle": "Breakcore",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-130",
+        "source": "genre-funk-breaks-hip-hop-sampling",
+        "target": "genre-trip-hop-boundary",
+        "sourceTitle": "Funk breaks / hip-hop sampling",
+        "targetTitle": "Trip-hop boundary",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-131",
+        "source": "genre-idm-electronic-listening-music",
+        "target": "genre-experimental-deconstructed-club",
+        "sourceTitle": "IDM / electronic listening music",
+        "targetTitle": "Experimental / deconstructed club",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-132",
+        "source": "genre-industrial-techno-rhythmic-noise",
+        "target": "genre-experimental-deconstructed-club",
+        "sourceTitle": "Industrial techno / rhythmic noise",
+        "targetTitle": "Experimental / deconstructed club",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-133",
+        "source": "genre-experimental-deconstructed-club",
+        "target": "genre-post-club-diasporic-percussive-work",
+        "sourceTitle": "Experimental / deconstructed club",
+        "targetTitle": "Post-club / diasporic percussive work",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-134",
+        "source": "genre-chicago-house",
+        "target": "genre-electro-house",
+        "sourceTitle": "Chicago house",
+        "targetTitle": "Electro house",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-135",
+        "source": "genre-chicago-house",
+        "target": "genre-festival-progressive-house",
+        "sourceTitle": "Chicago house",
+        "targetTitle": "Festival progressive house",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-136",
+        "source": "genre-chicago-house",
+        "target": "genre-festival-tech-house",
+        "sourceTitle": "Chicago house",
+        "targetTitle": "Festival tech house",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-137",
+        "source": "genre-electro-house",
+        "target": "genre-big-room-house",
+        "sourceTitle": "Electro house",
+        "targetTitle": "Big-room house",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-138",
+        "source": "genre-electro-house",
+        "target": "genre-complextro",
+        "sourceTitle": "Electro house",
+        "targetTitle": "Complextro",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-139",
+        "source": "genre-chicago-house",
+        "target": "genre-future-house",
+        "sourceTitle": "Chicago house",
+        "targetTitle": "Future house",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-140",
+        "source": "genre-chicago-house",
+        "target": "genre-tropical-house",
+        "sourceTitle": "Chicago house",
+        "targetTitle": "Tropical house",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-141",
+        "source": "genre-progressive-acid-trance",
+        "target": "genre-festival-progressive-house",
+        "sourceTitle": "Progressive / acid trance",
+        "targetTitle": "Festival progressive house",
+        "relation": "exchange",
+        "edgeKind": "exchange"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-142",
+        "source": "genre-big-beat",
+        "target": "genre-festival-scale-build-breakdown-and-drop",
+        "sourceTitle": "Big beat",
+        "targetTitle": "Festival-scale build, breakdown, and drop",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-143",
+        "source": "genre-festival-progressive-house",
+        "target": "genre-festival-scale-build-breakdown-and-drop",
+        "sourceTitle": "Festival progressive house",
+        "targetTitle": "Festival-scale build, breakdown, and drop",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-144",
+        "source": "genre-big-room-house",
+        "target": "genre-festival-scale-build-breakdown-and-drop",
+        "sourceTitle": "Big-room house",
+        "targetTitle": "Festival-scale build, breakdown, and drop",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-145",
+        "source": "genre-brostep",
+        "target": "genre-festival-scale-build-breakdown-and-drop",
+        "sourceTitle": "Brostep",
+        "targetTitle": "Festival-scale build, breakdown, and drop",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-146",
+        "source": "genre-festival-trap",
+        "target": "genre-festival-scale-build-breakdown-and-drop",
+        "sourceTitle": "Festival trap",
+        "targetTitle": "Festival-scale build, breakdown, and drop",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-147",
+        "source": "genre-dub-soundsystem",
+        "target": "genre-digital-dancehall",
+        "sourceTitle": "Dub / soundsystem",
+        "targetTitle": "Digital dancehall",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-148",
+        "source": "genre-digital-dancehall",
+        "target": "genre-reggae-en-espa-ol",
+        "sourceTitle": "Digital dancehall",
+        "targetTitle": "Reggae en español",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-149",
+        "source": "genre-digital-dancehall",
+        "target": "genre-puerto-rican-reggaet-n",
+        "sourceTitle": "Digital dancehall",
+        "targetTitle": "Puerto Rican reggaetón",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-150",
+        "source": "genre-reggae-en-espa-ol",
+        "target": "genre-puerto-rican-reggaet-n",
+        "sourceTitle": "Reggae en español",
+        "targetTitle": "Puerto Rican reggaetón",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-151",
+        "source": "genre-puerto-rican-reggaet-n",
+        "target": "genre-dominican-dembow-as-genre",
+        "sourceTitle": "Puerto Rican reggaetón",
+        "targetTitle": "Dominican dembow as genre",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-152",
+        "source": "genre-puerto-rican-reggaet-n",
+        "target": "genre-neoperreo-queer-latin-club",
+        "sourceTitle": "Puerto Rican reggaetón",
+        "targetTitle": "Neoperreo / queer Latin club",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-153",
+        "source": "genre-puerto-rican-reggaet-n",
+        "target": "genre-moombahton",
+        "sourceTitle": "Puerto Rican reggaetón",
+        "targetTitle": "Moombahton",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-154",
+        "source": "genre-miami-bass",
+        "target": "genre-funk-carioca-roots",
+        "sourceTitle": "Miami bass",
+        "targetTitle": "Funk carioca roots",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-155",
+        "source": "genre-funk-carioca-roots",
+        "target": "genre-tamborz-o-era-funk-carioca",
+        "sourceTitle": "Funk carioca roots",
+        "targetTitle": "Tamborzão-era funk carioca",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-156",
+        "source": "genre-tamborz-o-era-funk-carioca",
+        "target": "genre-mandel-o-bruxaria",
+        "sourceTitle": "Tamborzão-era funk carioca",
+        "targetTitle": "Mandelão / bruxaria",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-157",
+        "source": "genre-cumbia-histories",
+        "target": "genre-digital-cumbia",
+        "sourceTitle": "Cumbia histories",
+        "targetTitle": "Digital cumbia",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-158",
+        "source": "genre-cumbia-histories",
+        "target": "genre-tribal-guarachero",
+        "sourceTitle": "Cumbia histories",
+        "targetTitle": "Tribal guarachero",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-159",
+        "source": "genre-tribal-guarachero",
+        "target": "genre-colombian-edm-guaracha",
+        "sourceTitle": "Tribal guarachero",
+        "targetTitle": "Colombian EDM guaracha",
+        "relation": "exchange",
+        "edgeKind": "exchange"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-160",
+        "source": "genre-puerto-rican-reggaet-n",
+        "target": "genre-latin-core-deconstructed-latin-club",
+        "sourceTitle": "Puerto Rican reggaetón",
+        "targetTitle": "Latin core / deconstructed Latin club",
+        "relation": "exchange",
+        "edgeKind": "exchange"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-161",
+        "source": "genre-funk-carioca-roots",
+        "target": "genre-latin-core-deconstructed-latin-club",
+        "sourceTitle": "Funk carioca roots",
+        "targetTitle": "Latin core / deconstructed Latin club",
+        "relation": "exchange",
+        "edgeKind": "exchange"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-162",
+        "source": "genre-soca-bouyon-shatta",
+        "target": "genre-latin-core-deconstructed-latin-club",
+        "sourceTitle": "Soca / bouyon / shatta",
+        "targetTitle": "Latin core / deconstructed Latin club",
+        "relation": "exchange",
+        "edgeKind": "exchange"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-163",
+        "source": "genre-south-african-house",
+        "target": "genre-kwaito",
+        "sourceTitle": "South African house",
+        "targetTitle": "Kwaito",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-164",
+        "source": "genre-kwaito",
+        "target": "genre-bacardi-pretoria-house",
+        "sourceTitle": "Kwaito",
+        "targetTitle": "Bacardi / Pretoria house",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-165",
+        "source": "genre-south-african-house",
+        "target": "genre-gqom",
+        "sourceTitle": "South African house",
+        "targetTitle": "Gqom",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-166",
+        "source": "genre-south-african-house",
+        "target": "genre-amapiano",
+        "sourceTitle": "South African house",
+        "targetTitle": "Amapiano",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-167",
+        "source": "genre-south-african-afro-house",
+        "target": "genre-amapiano",
+        "sourceTitle": "South African / Afro house",
+        "targetTitle": "Amapiano",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-168",
+        "source": "genre-bacardi-pretoria-house",
+        "target": "genre-amapiano",
+        "sourceTitle": "Bacardi / Pretoria house",
+        "targetTitle": "Amapiano",
+        "relation": "exchange",
+        "edgeKind": "exchange"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-169",
+        "source": "genre-angolan-urban-dance-histories",
+        "target": "genre-kuduro",
+        "sourceTitle": "Angolan urban dance histories",
+        "targetTitle": "Kuduro",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-170",
+        "source": "genre-kuduro",
+        "target": "genre-lisbon-batida",
+        "sourceTitle": "Kuduro",
+        "targetTitle": "Lisbon batida",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-171",
+        "source": "genre-tarraxo-tarraxinha",
+        "target": "genre-lisbon-batida",
+        "sourceTitle": "Tarraxo / tarraxinha",
+        "targetTitle": "Lisbon batida",
+        "relation": "exchange",
+        "edgeKind": "exchange"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-172",
+        "source": "genre-west-african-electronic-popular-dance-histories",
+        "target": "genre-coup-d-cal",
+        "sourceTitle": "West African electronic popular-dance histories",
+        "targetTitle": "Coupé-décalé",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-173",
+        "source": "genre-west-african-electronic-popular-dance-histories",
+        "target": "genre-azonto-era-electronic-dance-pop",
+        "sourceTitle": "West African electronic popular-dance histories",
+        "targetTitle": "Azonto-era electronic dance-pop",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-174",
+        "source": "genre-afrobeats-afropop-boundary",
+        "target": "genre-amapiano",
+        "sourceTitle": "Afrobeats / Afropop boundary",
+        "targetTitle": "Amapiano",
+        "relation": "exchange",
+        "edgeKind": "exchange"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-175",
+        "source": "genre-egyptian-shaabi-histories",
+        "target": "genre-islam-chipsy-eek-live-electronic-practice",
+        "sourceTitle": "Egyptian shaabi histories",
+        "targetTitle": "Islam Chipsy & EEK live-electronic practice",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-176",
+        "source": "genre-egyptian-shaabi-histories",
+        "target": "genre-mahraganat-electro-shaabi",
+        "sourceTitle": "Egyptian shaabi histories",
+        "targetTitle": "Mahraganat / electro-shaabi",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-177",
+        "source": "genre-levantine-dabke-traditions",
+        "target": "genre-electronic-dabke",
+        "sourceTitle": "Levantine dabke traditions",
+        "targetTitle": "Electronic dabke",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-178",
+        "source": "genre-swana-rhythmic-knowledge",
+        "target": "genre-hard-drum-percussive-club",
+        "sourceTitle": "SWANA rhythmic knowledge",
+        "targetTitle": "Hard drum / percussive club",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-179",
+        "source": "genre-swana-rhythmic-knowledge",
+        "target": "genre-post-club-diasporic-percussive-work",
+        "sourceTitle": "SWANA rhythmic knowledge",
+        "targetTitle": "Post-club / diasporic percussive work",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-180",
+        "source": "genre-goa-party-ecology",
+        "target": "genre-goa-trance-psytrance",
+        "sourceTitle": "Goa party ecology",
+        "targetTitle": "Goa trance / psytrance",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-181",
+        "source": "genre-south-asian-popular-and-diasporic-dance-histories",
+        "target": "genre-asian-underground-desi-bass",
+        "sourceTitle": "South Asian popular and diasporic dance histories",
+        "targetTitle": "Asian Underground / desi bass",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-182",
+        "source": "genre-japanese-technopop",
+        "target": "genre-j-core",
+        "sourceTitle": "Japanese technopop",
+        "targetTitle": "J-core",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-183",
+        "source": "genre-visayan-popular-dance-ecology",
+        "target": "genre-budots",
+        "sourceTitle": "Visayan popular-dance ecology",
+        "targetTitle": "Budots",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-184",
+        "source": "genre-chinese-electronic-music-networks",
+        "target": "genre-shanghai-experimental-club",
+        "sourceTitle": "Chinese electronic-music networks",
+        "targetTitle": "Shanghai experimental club",
+        "relation": "broad lineage or influence",
+        "edgeKind": "lineage"
+      }
+    }
+  ],
+  "positions": {
+    "Disco / electronic disco": {
+      "x": 130,
+      "y": 150
+    },
+    "Boogie / post-disco": {
+      "x": 130,
+      "y": 255
+    },
+    "Hi-NRG": {
+      "x": 130,
+      "y": 360
+    },
+    "Italo disco": {
+      "x": 130,
+      "y": 465
+    },
+    "Balearic beat": {
+      "x": 130,
+      "y": 570
+    },
+    "Italo house": {
+      "x": 130,
+      "y": 675
+    },
+    "Chicago house": {
+      "x": 375,
+      "y": 150
+    },
+    "Jack track": {
+      "x": 375,
+      "y": 255
+    },
+    "Piano house": {
+      "x": 375,
+      "y": 360
+    },
+    "Deep house": {
+      "x": 375,
+      "y": 465
+    },
+    "Acid house": {
+      "x": 375,
+      "y": 570
+    },
+    "Vocal / gospel / soulful house": {
+      "x": 375,
+      "y": 675
+    },
+    "US garage / garage house": {
+      "x": 375,
+      "y": 780
+    },
+    "Cut-up garage house": {
+      "x": 375,
+      "y": 885
+    },
+    "French touch / filter house": {
+      "x": 620,
+      "y": 150
+    },
+    "Minimal / microhouse": {
+      "x": 620,
+      "y": 255
+    },
+    "Progressive house": {
+      "x": 620,
+      "y": 360
+    },
+    "Tech house": {
+      "x": 620,
+      "y": 465
+    },
+    "South African / Afro house": {
+      "x": 620,
+      "y": 570
+    },
+    "Detroit techno": {
+      "x": 620,
+      "y": 675
+    },
+    "Minimal techno": {
+      "x": 620,
+      "y": 780
+    },
+    "Loop techno": {
+      "x": 620,
+      "y": 885
+    },
+    "Dub techno": {
+      "x": 865,
+      "y": 150
+    },
+    "Bleep techno": {
+      "x": 865,
+      "y": 255
+    },
+    "Acid techno": {
+      "x": 865,
+      "y": 360
+    },
+    "Hard techno": {
+      "x": 865,
+      "y": 465
+    },
+    "Birmingham / industrial techno": {
+      "x": 865,
+      "y": 570
+    },
+    "Schranz": {
+      "x": 865,
+      "y": 675
+    },
+    "UK / European rave ecology": {
+      "x": 1380,
+      "y": 150
+    },
+    "New beat": {
+      "x": 1380,
+      "y": 255
+    },
+    "Eurodance / hip-house crossover": {
+      "x": 1380,
+      "y": 360
+    },
+    "The Prodigy: rave-to-big-beat bridge": {
+      "x": 1380,
+      "y": 465
+    },
+    "Breakbeat hardcore": {
+      "x": 1625,
+      "y": 150
+    },
+    "Hardcore techno": {
+      "x": 1625,
+      "y": 255
+    },
+    "Happy hardcore": {
+      "x": 1625,
+      "y": 360
+    },
+    "Gabber": {
+      "x": 1625,
+      "y": 465
+    },
+    "Free tekno / tribe / hardtek": {
+      "x": 1625,
+      "y": 570
+    },
+    "Later UK hardcore": {
+      "x": 1625,
+      "y": 675
+    },
+    "Makina / bouncy techno / donk": {
+      "x": 1625,
+      "y": 780
+    },
+    "Frenchcore": {
+      "x": 1870,
+      "y": 150
+    },
+    "Hardstyle": {
+      "x": 1870,
+      "y": 255
+    },
+    "Early trance": {
+      "x": 1870,
+      "y": 360
+    },
+    "Progressive / acid trance": {
+      "x": 1870,
+      "y": 465
+    },
+    "Classic / uplifting / vocal trance": {
+      "x": 1870,
+      "y": 570
+    },
+    "Hard trance / tech trance": {
+      "x": 1870,
+      "y": 675
+    },
+    "Goa trance / psytrance": {
+      "x": 2115,
+      "y": 150
+    },
+    "Darkpsy": {
+      "x": 2115,
+      "y": 255
+    },
+    "Full-on / progressive psy": {
+      "x": 2115,
+      "y": 360
+    },
+    "Breakbeat method": {
+      "x": 2630,
+      "y": 150
+    },
+    "Funk breaks / hip-hop sampling": {
+      "x": 2630,
+      "y": 255
+    },
+    "Big beat": {
+      "x": 2630,
+      "y": 360
+    },
+    "Nu-skool breaks": {
+      "x": 2630,
+      "y": 465
+    },
+    "Florida breaks": {
+      "x": 2630,
+      "y": 570
+    },
+    "Broken beat / bruk": {
+      "x": 2630,
+      "y": 675
+    },
+    "Jungle": {
+      "x": 2875,
+      "y": 150
+    },
+    "Ragga jungle": {
+      "x": 2875,
+      "y": 255
+    },
+    "Dark jungle": {
+      "x": 2875,
+      "y": 360
+    },
+    "Atmospheric jungle": {
+      "x": 2875,
+      "y": 465
+    },
+    "Jump-up jungle": {
+      "x": 2875,
+      "y": 570
+    },
+    "M-Beat feat. General Levy — Incredible": {
+      "x": 2875,
+      "y": 675
+    },
+    "New-jungle revival": {
+      "x": 2875,
+      "y": 780
+    },
+    "Drum & bass": {
+      "x": 3120,
+      "y": 150
+    },
+    "Atmospheric D&B": {
+      "x": 3120,
+      "y": 255
+    },
+    "Jazzstep": {
+      "x": 3120,
+      "y": 360
+    },
+    "Techstep": {
+      "x": 3120,
+      "y": 465
+    },
+    "Neurofunk": {
+      "x": 3120,
+      "y": 570
+    },
+    "Liquid funk": {
+      "x": 3120,
+      "y": 675
+    },
+    "Dancefloor D&B": {
+      "x": 3120,
+      "y": 780
+    },
+    "Jump-up D&B": {
+      "x": 3365,
+      "y": 150
+    },
+    "Foghorn-era jump-up tendency": {
+      "x": 3365,
+      "y": 255
+    },
+    "Drumfunk": {
+      "x": 3365,
+      "y": 360
+    },
+    "Halftime D&B": {
+      "x": 3365,
+      "y": 465
+    },
+    "Crossbreed": {
+      "x": 3365,
+      "y": 570
+    },
+    "Sambass": {
+      "x": 3365,
+      "y": 675
+    },
+    "UK garage": {
+      "x": 3880,
+      "y": 150
+    },
+    "Speed garage": {
+      "x": 3880,
+      "y": 255
+    },
+    "2-step": {
+      "x": 3880,
+      "y": 360
+    },
+    "Dark 2-step": {
+      "x": 3880,
+      "y": 465
+    },
+    "Bassline / 4x4": {
+      "x": 3880,
+      "y": 570
+    },
+    "Grime / eski": {
+      "x": 4125,
+      "y": 150
+    },
+    "Proto-dubstep": {
+      "x": 4125,
+      "y": 255
+    },
+    "Dubstep": {
+      "x": 4125,
+      "y": 360
+    },
+    "Roots / deep dubstep": {
+      "x": 4125,
+      "y": 465
+    },
+    "Post-dubstep / future garage": {
+      "x": 4125,
+      "y": 570
+    },
+    "Brostep": {
+      "x": 4370,
+      "y": 150
+    },
+    "Riddim dubstep / trench": {
+      "x": 4370,
+      "y": 255
+    },
+    "Modern tearout": {
+      "x": 4370,
+      "y": 360
+    },
+    "Contemporary deep 140": {
+      "x": 4370,
+      "y": 465
+    },
+    "UK funky": {
+      "x": 4615,
+      "y": 150
+    },
+    "Hard drum / percussive club": {
+      "x": 4615,
+      "y": 255
+    },
+    "Wonky / maximalist bass": {
+      "x": 4615,
+      "y": 360
+    },
+    "Electro / hip-hop": {
+      "x": 5130,
+      "y": 150
+    },
+    "Miami bass": {
+      "x": 5130,
+      "y": 255
+    },
+    "Freestyle": {
+      "x": 5130,
+      "y": 360
+    },
+    "Detroit electro": {
+      "x": 5130,
+      "y": 465
+    },
+    "Southern hip-hop trap": {
+      "x": 5130,
+      "y": 570
+    },
+    "Ghetto house": {
+      "x": 5375,
+      "y": 150
+    },
+    "Ghettotech": {
+      "x": 5375,
+      "y": 255
+    },
+    "Juke": {
+      "x": 5375,
+      "y": 360
+    },
+    "Footwork": {
+      "x": 5375,
+      "y": 465
+    },
+    "Post-footwork abstraction": {
+      "x": 5375,
+      "y": 570
+    },
+    "Baltimore club": {
+      "x": 5620,
+      "y": 150
+    },
+    "Jersey club": {
+      "x": 5620,
+      "y": 255
+    },
+    "New Orleans bounce": {
+      "x": 5620,
+      "y": 360
+    },
+    "Ballroom / vogue beats": {
+      "x": 5620,
+      "y": 465
+    },
+    "Festival trap": {
+      "x": 5865,
+      "y": 150
+    },
+    "Midtempo bass": {
+      "x": 5865,
+      "y": 255
+    },
+    "Future bass": {
+      "x": 5865,
+      "y": 360
+    },
+    "Early industrial experimentation": {
+      "x": 130,
+      "y": 1250
+    },
+    "Electronic body music": {
+      "x": 130,
+      "y": 1355
+    },
+    "Industrial techno / rhythmic noise": {
+      "x": 130,
+      "y": 1460
+    },
+    "Nine Inch Nails / industrial-rock boundary": {
+      "x": 130,
+      "y": 1565
+    },
+    "Electroclash": {
+      "x": 375,
+      "y": 1250
+    },
+    "IDM / electronic listening music": {
+      "x": 375,
+      "y": 1355
+    },
+    "Ambient techno": {
+      "x": 375,
+      "y": 1460
+    },
+    "Downtempo": {
+      "x": 375,
+      "y": 1565
+    },
+    "Drill'n'bass": {
+      "x": 620,
+      "y": 1250
+    },
+    "Breakcore": {
+      "x": 620,
+      "y": 1355
+    },
+    "Trip-hop boundary": {
+      "x": 620,
+      "y": 1460
+    },
+    "Experimental / deconstructed club": {
+      "x": 620,
+      "y": 1565
+    },
+    "Post-club / diasporic percussive work": {
+      "x": 865,
+      "y": 1250
+    },
+    "Electro house": {
+      "x": 1380,
+      "y": 1250
+    },
+    "Festival progressive house": {
+      "x": 1380,
+      "y": 1355
+    },
+    "Festival tech house": {
+      "x": 1380,
+      "y": 1460
+    },
+    "Dance-pop / pop-EDM ecosystem": {
+      "x": 1380,
+      "y": 1565
+    },
+    "Big-room house": {
+      "x": 1625,
+      "y": 1250
+    },
+    "Complextro": {
+      "x": 1625,
+      "y": 1355
+    },
+    "Future house": {
+      "x": 1625,
+      "y": 1460
+    },
+    "Tropical house": {
+      "x": 1625,
+      "y": 1565
+    },
+    "Festival-scale build, breakdown, and drop": {
+      "x": 1870,
+      "y": 1250
+    },
+    "Dub / soundsystem": {
+      "x": 2630,
+      "y": 1250
+    },
+    "Digital dancehall": {
+      "x": 2630,
+      "y": 1355
+    },
+    "Reggae en español": {
+      "x": 2630,
+      "y": 1460
+    },
+    "Cumbia histories": {
+      "x": 2630,
+      "y": 1565
+    },
+    "Soca / bouyon / shatta": {
+      "x": 2630,
+      "y": 1670
+    },
+    "Puerto Rican reggaetón": {
+      "x": 2875,
+      "y": 1250
+    },
+    "Dominican dembow as genre": {
+      "x": 2875,
+      "y": 1355
+    },
+    "Funk carioca roots": {
+      "x": 2875,
+      "y": 1460
+    },
+    "Tamborzão-era funk carioca": {
+      "x": 2875,
+      "y": 1565
+    },
+    "Digital cumbia": {
+      "x": 2875,
+      "y": 1670
+    },
+    "Neoperreo / queer Latin club": {
+      "x": 3120,
+      "y": 1250
+    },
+    "Moombahton": {
+      "x": 3120,
+      "y": 1355
+    },
+    "Mandelão / bruxaria": {
+      "x": 3120,
+      "y": 1460
+    },
+    "Tribal guarachero": {
+      "x": 3120,
+      "y": 1565
+    },
+    "Colombian EDM guaracha": {
+      "x": 3120,
+      "y": 1670
+    },
+    "Latin core / deconstructed Latin club": {
+      "x": 3365,
+      "y": 1250
+    },
+    "South African house": {
+      "x": 3880,
+      "y": 1250
+    },
+    "Kwaito": {
+      "x": 3880,
+      "y": 1355
+    },
+    "Angolan urban dance histories": {
+      "x": 3880,
+      "y": 1460
+    },
+    "West African electronic popular-dance histories": {
+      "x": 3880,
+      "y": 1565
+    },
+    "Bacardi / Pretoria house": {
+      "x": 4125,
+      "y": 1250
+    },
+    "Gqom": {
+      "x": 4125,
+      "y": 1355
+    },
+    "Kuduro": {
+      "x": 4125,
+      "y": 1460
+    },
+    "Coupé-décalé": {
+      "x": 4125,
+      "y": 1565
+    },
+    "Azonto-era electronic dance-pop": {
+      "x": 4125,
+      "y": 1670
+    },
+    "Amapiano": {
+      "x": 4370,
+      "y": 1250
+    },
+    "Lisbon batida": {
+      "x": 4370,
+      "y": 1355
+    },
+    "Tarraxo / tarraxinha": {
+      "x": 4370,
+      "y": 1460
+    },
+    "Afrobeats / Afropop boundary": {
+      "x": 4370,
+      "y": 1565
+    },
+    "Shangaan electro": {
+      "x": 4615,
+      "y": 1250
+    },
+    "Singeli": {
+      "x": 4615,
+      "y": 1355
+    },
+    "Kenyan global-club routes": {
+      "x": 4615,
+      "y": 1460
+    },
+    "Egyptian shaabi histories": {
+      "x": 5130,
+      "y": 1250
+    },
+    "Islam Chipsy & EEK live-electronic practice": {
+      "x": 5130,
+      "y": 1355
+    },
+    "Mahraganat / electro-shaabi": {
+      "x": 5130,
+      "y": 1460
+    },
+    "Levantine dabke traditions": {
+      "x": 5130,
+      "y": 1565
+    },
+    "Electronic dabke": {
+      "x": 5130,
+      "y": 1670
+    },
+    "SWANA rhythmic knowledge": {
+      "x": 5375,
+      "y": 1250
+    },
+    "South Asian popular and diasporic dance histories": {
+      "x": 5375,
+      "y": 1355
+    },
+    "Asian Underground / desi bass": {
+      "x": 5375,
+      "y": 1460
+    },
+    "Goa party ecology": {
+      "x": 5375,
+      "y": 1565
+    },
+    "Japanese technopop": {
+      "x": 5620,
+      "y": 1250
+    },
+    "J-core": {
+      "x": 5620,
+      "y": 1355
+    },
+    "Funkot": {
+      "x": 5620,
+      "y": 1460
+    },
+    "Vinahouse": {
+      "x": 5620,
+      "y": 1565
+    },
+    "Budots": {
+      "x": 5620,
+      "y": 1670
+    },
+    "Shanghai experimental club": {
+      "x": 5865,
+      "y": 1250
+    },
+    "Chinese electronic-music networks": {
+      "x": 5865,
+      "y": 1355
+    },
+    "Visayan popular-dance ecology": {
+      "x": 5865,
+      "y": 1460
+    }
+  }
+}</script>
+  <script>
+    (() => {
+      const graph = JSON.parse(document.getElementById('genre-data').textContent);
+      const rootStyle = getComputedStyle(document.documentElement);
+      const color = name => rootStyle.getPropertyValue(name).trim();
+      const genreNodes = graph.nodes.filter(node => node.data.kind === 'genre');
+      const nodeById = new Map(genreNodes.map(node => [node.data.id, node]));
+      const titleById = new Map(genreNodes.map(node => [node.data.id, node.data.title]));
+      const search = document.getElementById('search');
+      const pillarFilter = document.getElementById('pillar-filter');
+      const detail = document.getElementById('detail');
+      const resultList = document.getElementById('result-list');
+      const resultCount = document.getElementById('result-count');
+      const announcer = document.getElementById('announcer');
+      let selectedId = null;
+
+      const pillarLabels = [...new Map(genreNodes.map(node => [node.data.pillar, node.data.pillarLabel])).entries()];
+      pillarLabels.forEach(([number, label]) => {
+        const option = document.createElement('option');
+        option.value = String(number);
+        option.textContent = label;
+        pillarFilter.append(option);
+      });
+
+      if (typeof window.cytoscape !== 'function') {
+        detail.innerHTML = '<h2>Map library unavailable</h2><p>The interactive canvas could not load. The complete genre index remains available below, and the guide and Obsidian atlas remain usable.</p>';
+        resultCount.textContent = `${genreNodes.length} genres`;
+        genreNodes
+          .sort((a, b) => a.data.title.localeCompare(b.data.title))
+          .forEach(node => {
+            const item = document.createElement('div');
+            item.textContent = node.data.title;
+            resultList.append(item);
+          });
+        return;
+      }
+
+      const cy = window.cytoscape({
+        container: document.getElementById('genre-graph'),
+        elements: [...graph.nodes, ...graph.edges],
+        layout: { name: 'preset', fit: true, padding: 72 },
+        minZoom: 0.08,
+        maxZoom: 2.8,
+        wheelSensitivity: 0.22,
+        style: [
+          {
+            selector: 'node[kind="pillar"]',
+            style: {
+              'background-color': color('--surface-2'),
+              'background-opacity': 0.42,
+              'border-color': color('--border'),
+              'border-width': 1,
+              'label': 'data(label)',
+              'text-valign': 'top',
+              'text-halign': 'center',
+              'text-margin-y': 18,
+              'font-size': 22,
+              'font-weight': 600,
+              'color': color('--text'),
+              'padding': 42,
+              'shape': 'round-rectangle'
+            }
+          },
+          {
+            selector: 'node[kind="genre"]',
+            style: {
+              'width': 20,
+              'height': 20,
+              'label': 'data(label)',
+              'font-size': 15,
+              'color': color('--text'),
+              'text-wrap': 'wrap',
+              'text-max-width': 150,
+              'text-valign': 'top',
+              'text-halign': 'center',
+              'text-margin-y': -13,
+              'text-background-color': color('--page'),
+              'text-background-opacity': 0.82,
+              'text-background-padding': 2,
+              'min-zoomed-font-size': 8,
+              'border-width': 1.5,
+              'border-color': color('--page')
+            }
+          },
+          { selector: 'node[status="represented"]', style: { 'background-color': color('--represented'), 'shape': 'ellipse' } },
+          { selector: 'node[status="unrepresented"]', style: { 'background-color': color('--unrepresented'), 'shape': 'diamond' } },
+          { selector: 'node[status="candidate"]', style: { 'background-color': color('--candidate'), 'shape': 'hexagon' } },
+          {
+            selector: 'edge',
+            style: {
+              'width': 1.4,
+              'line-color': color('--muted'),
+              'target-arrow-color': color('--muted'),
+              'target-arrow-shape': 'triangle',
+              'arrow-scale': 0.7,
+              'curve-style': 'bezier',
+              'opacity': 0.45
+            }
+          },
+          { selector: 'edge[edgeKind="exchange"]', style: { 'line-style': 'dashed', 'opacity': 0.62 } },
+          { selector: '.dimmed', style: { 'opacity': 0.10, 'text-opacity': 0.06 } },
+          { selector: '.neighbor', style: { 'opacity': 0.95, 'text-opacity': 1 } },
+          {
+            selector: '.selected',
+            style: {
+              'width': 31,
+              'height': 31,
+              'border-width': 4,
+              'border-color': color('--focus'),
+              'z-index': 100
+            }
+          }
+        ]
+      });
+
+      const relationLabel = value => value === 'broad lineage or influence' ? '' : value;
+
+      function clearHighlight() {
+        cy.elements().removeClass('dimmed neighbor selected');
+        selectedId = null;
+      }
+
+      function relationList(edges, direction) {
+        if (!edges.length) return '<p class="detail-meta">None shown in this first-pass map.</p>';
+        const rows = edges
+          .map(edge => {
+            const otherId = direction === 'in' ? edge.data('source') : edge.data('target');
+            const relation = relationLabel(edge.data('relation'));
+            return `<li>${escapeHtml(titleById.get(otherId))}${relation ? ` <span class="relation">— ${escapeHtml(relation)}</span>` : ''}</li>`;
+          })
+          .sort((a, b) => a.localeCompare(b));
+        return `<ul class="relations">${rows.join('')}</ul>`;
+      }
+
+      function escapeHtml(value) {
+        return String(value).replace(/[&<>'"]/g, character => ({
+          '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
+        })[character]);
+      }
+
+      function selectNode(id, fit = true) {
+        const node = cy.getElementById(id);
+        if (!node.length || !node.visible()) return;
+        clearHighlight();
+        selectedId = id;
+        const neighborhood = node.closedNeighborhood();
+        cy.elements().not(neighborhood).not(node.parent()).addClass('dimmed');
+        neighborhood.addClass('neighbor');
+        node.addClass('selected');
+
+        const incoming = node.incomers('edge').filter(edge => edge.visible()).toArray();
+        const outgoing = node.outgoers('edge').filter(edge => edge.visible()).toArray();
+        detail.innerHTML = `
+          <h2>${escapeHtml(node.data('title'))}</h2>
+          <p class="detail-meta">${escapeHtml(node.data('statusLabel'))}<br>${escapeHtml(node.data('pillarLabel'))}</p>
+          <h3>Broad inputs and antecedents</h3>
+          ${relationList(incoming, 'in')}
+          <h3>Routes onward</h3>
+          ${relationList(outgoing, 'out')}
+        `;
+        announcer.textContent = `${node.data('title')} selected; ${incoming.length} inputs and ${outgoing.length} routes onward.`;
+        if (fit) cy.animate({ fit: { eles: neighborhood.union(node.parent()), padding: 85 }, duration: 350 });
+        rebuildResults();
+      }
+
+      function activeStatuses() {
+        return new Set([...document.querySelectorAll('input[name="status"]:checked')].map(input => input.value));
+      }
+
+      function visibleGenreNodes() {
+        return genreNodes.filter(node => cy.getElementById(node.data.id).visible());
+      }
+
+      function applyFilters() {
+        clearHighlight();
+        const pillar = pillarFilter.value;
+        const statuses = activeStatuses();
+        cy.batch(() => {
+          cy.nodes('[kind="genre"]').forEach(node => {
+            const show = (pillar === 'all' || String(node.data('pillar')) === pillar) && statuses.has(node.data('status'));
+            show ? node.show() : node.hide();
+          });
+          cy.nodes('[kind="pillar"]').forEach(parent => {
+            parent.children(':visible').length ? parent.show() : parent.hide();
+          });
+          cy.edges().forEach(edge => {
+            edge.source().visible() && edge.target().visible() ? edge.show() : edge.hide();
+          });
+        });
+        rebuildResults();
+        const visible = cy.nodes('[kind="genre"]:visible').union(cy.nodes('[kind="pillar"]:visible'));
+        if (visible.length) cy.fit(visible, 65);
+      }
+
+      function matchedNodes() {
+        const query = search.value.trim().toLocaleLowerCase();
+        return visibleGenreNodes()
+          .filter(node => !query || node.data.title.toLocaleLowerCase().includes(query))
+          .sort((a, b) => {
+            if (!query) return a.data.title.localeCompare(b.data.title);
+            const aTitle = a.data.title.toLocaleLowerCase();
+            const bTitle = b.data.title.toLocaleLowerCase();
+            const rank = title => title === query ? 0 : title.startsWith(query) ? 1 : title.split(/\s+/).some(word => word.startsWith(query)) ? 2 : 3;
+            return rank(aTitle) - rank(bTitle) || aTitle.indexOf(query) - bTitle.indexOf(query) || aTitle.length - bTitle.length || aTitle.localeCompare(bTitle);
+          });
+      }
+
+      function rebuildResults() {
+        const matches = matchedNodes();
+        resultCount.textContent = `${matches.length} shown`;
+        resultList.replaceChildren();
+        matches.slice(0, 60).forEach(node => {
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.textContent = node.data.title;
+          button.dataset.nodeId = node.data.id;
+          if (node.data.id === selectedId) button.setAttribute('aria-current', 'true');
+          button.addEventListener('click', () => selectNode(node.data.id));
+          resultList.append(button);
+        });
+        if (matches.length > 60) {
+          const note = document.createElement('p');
+          note.className = 'detail-meta';
+          note.textContent = 'Type in the search box to narrow the remaining results.';
+          resultList.append(note);
+        }
+      }
+
+      cy.on('tap', 'node[kind="genre"]', event => selectNode(event.target.id(), false));
+      cy.on('tap', event => {
+        if (event.target === cy) {
+          clearHighlight();
+          rebuildResults();
+        }
+      });
+
+      search.addEventListener('input', rebuildResults);
+      search.addEventListener('keydown', event => {
+        if (event.key === 'Enter') {
+          const first = matchedNodes()[0];
+          if (first) selectNode(first.data.id);
+        }
+      });
+      pillarFilter.addEventListener('change', applyFilters);
+      document.querySelectorAll('input[name="status"]').forEach(input => input.addEventListener('change', applyFilters));
+      document.getElementById('fit').addEventListener('click', () => {
+        const visible = cy.nodes('[kind="genre"]:visible').union(cy.nodes('[kind="pillar"]:visible'));
+        if (visible.length) cy.fit(visible, 65);
+      });
+      document.getElementById('reset').addEventListener('click', () => {
+        search.value = '';
+        pillarFilter.value = 'all';
+        document.querySelectorAll('input[name="status"]').forEach(input => { input.checked = true; });
+        detail.innerHTML = '<h2>Choose a genre</h2><p>Select a node or use the searchable list. Its immediate inputs and routes onward will appear here.</p><p class="detail-meta">The graph is a qualified navigation aid, not a claim that genres form a perfectly clean family tree.</p>';
+        applyFilters();
+      });
+
+      window.addEventListener('resize', () => { cy.resize(); });
+      rebuildResults();
+    })();
+  </script>
+</body>
+</html>
