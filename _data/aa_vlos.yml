@@ -1,0 +1,17 @@
+- id: ss
+  course: "AA:SS"
+  title: "Advanced Astronomy: Solar System learning objectives"
+  description: "Current semester-one learning objectives for Solar System and its shared geometry prerequisite."
+  html_url: "/aa/vlo/ss/"
+  pdf_url: "/aa/vlo/ss/vlo_aa_ss.pdf"
+  source: "support-files/aa@tj_general_info/vlo/vlo_aa_ss.qmd"
+  published: true
+
+- id: x
+  course: "AA:X"
+  title: "Advanced Astronomy shared learning objectives"
+  description: "Current shared mathematics and physics objectives used across the Advanced Astronomy courses."
+  html_url: "/aa/vlo/x/"
+  pdf_url: "/aa/vlo/x/vlo_aa_x.pdf"
+  source: "support-files/aa@tj_general_info/vlo/vlo_aa_x.qmd"
+  published: true
