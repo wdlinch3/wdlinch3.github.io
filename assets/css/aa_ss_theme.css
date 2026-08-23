@@ -1,0 +1,151 @@
+/* Shared visual treatment for the AA:SS overview and current-class pages. */
+:root {
+  --bg: #0a0818;
+  --text: #f5f2fb;
+  --muted: #afb6cb;
+  --link: #67cbd8;
+  --border: rgba(146, 156, 205, 0.22);
+  --aa-surface: rgba(22, 18, 42, 0.74);
+  --aa-accent: #c95da9;
+}
+
+body {
+  background-color: var(--bg);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.45;
+  background-repeat: no-repeat;
+  background-image:
+    radial-gradient(circle at 14% 5%, rgba(76, 58, 156, 0.24), transparent 30rem),
+    radial-gradient(circle at 93% 86%, rgba(157, 58, 134, 0.14), transparent 34rem),
+    radial-gradient(circle at 7% 16%, rgba(245, 246, 255, 0.72) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 23% 7%, rgba(149, 217, 232, 0.64) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 42% 28%, rgba(255, 244, 198, 0.58) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 68% 12%, rgba(245, 246, 255, 0.7) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 83% 42%, rgba(151, 211, 229, 0.52) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 94% 74%, rgba(245, 246, 255, 0.6) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 31% 85%, rgba(255, 244, 198, 0.5) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 56% 69%, rgba(245, 246, 255, 0.52) 0 1px, transparent 1.5px);
+}
+
+.aa-page {
+  position: relative;
+  z-index: 1;
+}
+
+.aa-sidebar h2,
+.aa-content h1,
+.aa-content h2,
+.aa-content h3 {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+.aa-sidebar h2 {
+  border-bottom: 0;
+  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.aa-content h1 {
+  color: var(--text);
+  letter-spacing: -0.035em;
+}
+
+.aa-content > h1 + .small,
+.aa-eyebrow {
+  color: #82d5e0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.aa-resource-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.aa-card,
+.aa-resource-card,
+.aa-current-class,
+.aa-working-note {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+  background: var(--aa-surface) !important;
+  box-shadow: 0 14px 32px rgba(1, 0, 12, 0.18);
+}
+
+.aa-current-class {
+  margin: 1.5rem 0;
+  border-color: rgba(103, 203, 216, 0.62);
+  background:
+    linear-gradient(145deg, rgba(103, 203, 216, 0.12), rgba(32, 27, 53, 0.96)) !important;
+}
+
+.aa-card h3,
+.aa-resource-card h3,
+.aa-current-class h2 {
+  margin-top: 0;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.aa-status-pill {
+  display: inline-block;
+  margin: 0 0 0.65rem;
+  border: 1px solid rgba(103, 203, 216, 0.55);
+  border-radius: 999px;
+  padding: 0.2rem 0.65rem;
+  color: #9be5ed;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.aa-primary-link {
+  display: inline-block;
+  border: 1px solid rgba(103, 203, 216, 0.72);
+  border-radius: 7px;
+  padding: 0.5rem 0.8rem;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.aa-resource-card p:last-child,
+.aa-current-class p:last-child,
+.aa-working-note p:last-child {
+  margin-bottom: 0;
+}
+
+.aa-sidebar a:focus-visible,
+.aa-content a:focus-visible {
+  outline: 2px solid var(--aa-accent);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+@media (max-width: 900px) {
+  body::before {
+    opacity: 0.28;
+  }
+}

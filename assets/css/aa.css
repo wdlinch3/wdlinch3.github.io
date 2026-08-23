@@ -16,6 +16,10 @@
   padding-right: 24px;
 }
 
+.aa-nav-disclosure > summary {
+  display: none;
+}
+
 .aa-sidebar h2 {
   font-size: 1.05em;
   margin: 0 0 0.5em 0;
@@ -91,6 +95,24 @@
     border-bottom: 1px solid var(--border);
     padding-right: 0;
     padding-bottom: 1em;
+  }
+
+  .aa-nav-disclosure > summary {
+    display: list-item;
+    width: fit-content;
+    color: var(--link);
+    cursor: pointer;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-weight: 700;
+  }
+
+  .aa-nav-disclosure[open] > summary {
+    margin-bottom: 1rem;
+  }
+
+  .aa-nav-disclosure > summary:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
   }
 
   .aa-content {

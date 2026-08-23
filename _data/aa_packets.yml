@@ -3,6 +3,8 @@
   packets:
     - id: ss_celestial_sphere
       label: ss_celestial_sphere
+      title: Celestial Sphere
+      description: "Motion on the sky, seasons, eclipses, celestial coordinates, and angular reasoning."
       status: placeholder
       hub_anchor: "/aa/ss/help/#celestial_sphere"
       current_ids:
@@ -10,6 +12,8 @@
 
     - id: ss_aristarchus
       label: ss_aristarchus
+      title: Aristarchus and Eratosthenes
+      description: "Geometric inference of sizes and distances in the Sun–Earth–Moon system."
       status: placeholder
       preview_url: "https://github.com/wdlinch3/aa_assignments/blob/main/aa_ss/ss_aristarchus/ss_aristarchus.ipynb"
       hub_anchor: "/aa/ss/help/#aristarchus"
@@ -18,6 +22,8 @@
 
     - id: ss_kepler
       label: ss_kepler
+      title: Kepler and Orbits
+      description: "Ellipses, Kepler’s laws, the two-body problem, and orbital dynamics."
       status: placeholder
       preview_url: "https://github.com/wdlinch3/aa_assignments/blob/main/aa_ss/ss_kepler1/ss_kepler1.ipynb"
       hub_anchor: "/aa/ss/help/#kepler_and_orbits"
@@ -26,6 +32,8 @@
 
     - id: ss_solar_system
       label: ss_solar_system
+      title: Solar-System Structure and Formation
+      description: "Planetary structure, planet formation, small bodies, and the nebular hypothesis."
       parts:
         - id: ss_solar_system_1
           label: part i
@@ -54,6 +62,8 @@
 
     - id: ss_sol
       label: ss_sol
+      title: The Sun
+      description: "Solar structure, radiation, the solar wind, and fusion."
       status: placeholder
       preview_url: "https://github.com/wdlinch3/aa_assignments/blob/main/aa_ss/ss_sol/ss_sol.ipynb"
       hub_anchor: "/aa/ss/help/#sun"
@@ -62,6 +72,8 @@
 
     - id: ss_jupiter
       label: ss_jupiter
+      title: Jupiter
+      description: "Rotating frames, giant-planet physics, Lagrange points, and the Jovian system."
       parts:
         - id: ss_jupiter_1
           label: part i

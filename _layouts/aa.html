@@ -27,6 +27,9 @@
 
   <link rel="stylesheet" href="/assets/css/style.css">
   <link rel="stylesheet" href="/assets/css/aa.css?v=2">
+  {% if page.page_css %}
+  <link rel="stylesheet" href="{{ page.page_css | relative_url }}">
+  {% endif %}
 
   <script>
     MathJax = {
@@ -48,7 +51,15 @@
 {% endif %}
     <main class="aa-page">
     <aside class="aa-sidebar">
-      {% include aa_nav.html %}
+      <details class="aa-nav-disclosure" open>
+        <summary>AA navigation</summary>
+        <script>
+          if (window.matchMedia("(max-width: 900px)").matches) {
+            document.currentScript.parentElement.removeAttribute("open");
+          }
+        </script>
+        {% include aa_nav.html %}
+      </details>
     </aside>
 
     <section class="aa-content">
