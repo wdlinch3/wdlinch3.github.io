@@ -1,6 +1,7 @@
 ---
 title: "AA: Solar System"
 layout: aa
+page_css: /assets/css/aa_ss_theme.css
 ---
 
 <style>
@@ -53,6 +54,14 @@ layout: aa
   The point is to understand how celestial motions work, how sizes and distances can be inferred,
   how the Solar System formed, and how physical reasoning lets us go from observation to explanation.
 </p>
+
+{% assign current_class = site.data.aa_courses.ss.current %}
+<section class="aa-current-class" aria-labelledby="current-class-title">
+  <p class="aa-status-pill">{{ current_class.status_label }}</p>
+  <h2 id="current-class-title">Current class · {{ current_class.school_year }}</h2>
+  <p>{{ current_class.status_note }}</p>
+  <p><a class="aa-primary-link" href="{{ current_class.url | relative_url }}">Open the {{ current_class.short_year }} class page</a></p>
+</section>
 
 <h2>What kind of course this is</h2>
 
