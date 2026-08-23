@@ -1,5 +1,8 @@
 title: William D. Linch III
 
+exclude:
+  - _courseware
+
 defaults:
   - scope:
       path: ""
