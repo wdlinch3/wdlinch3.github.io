@@ -76,6 +76,89 @@ body::before {
   margin: 1.5rem 0;
 }
 
+.aa-class-link-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin: 1.25rem 0 2.25rem;
+  padding: 0;
+  list-style: none;
+}
+
+.aa-class-link-list li {
+  margin: 0;
+}
+
+.aa-class-link-list a,
+.aa-class-link-pending {
+  display: inline-block;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.45rem 0.8rem;
+  background: var(--aa-surface);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.aa-class-link-pending {
+  color: var(--muted);
+}
+
+.aa-lesson-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.25rem 0;
+}
+
+.aa-lesson-card,
+.aa-lesson-card-link {
+  min-height: 11rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+  background: var(--aa-surface);
+  box-shadow: 0 14px 32px rgba(1, 0, 12, 0.18);
+}
+
+.aa-lesson-card-link {
+  display: block;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.aa-lesson-card-link:hover,
+.aa-lesson-card-link:focus-visible {
+  border-color: rgba(103, 203, 216, 0.72);
+  color: var(--text);
+}
+
+.aa-lesson-card h3,
+.aa-lesson-card-link h3 {
+  margin-top: 0;
+}
+
+.aa-lesson-card p:last-child,
+.aa-lesson-card-link p:last-child {
+  margin-bottom: 0;
+}
+
+.aa-lesson-card-pending {
+  color: var(--muted);
+}
+
+.aa-card-status {
+  display: inline-block;
+  margin-bottom: 0.65rem;
+  color: #9be5ed;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .aa-card,
 .aa-resource-card,
 .aa-current-class,
@@ -147,5 +230,14 @@ body::before {
 @media (max-width: 900px) {
   body::before {
     opacity: 0.28;
+  }
+
+  .aa-lesson-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .aa-lesson-card,
+  .aa-lesson-card-link {
+    min-height: 0;
   }
 }

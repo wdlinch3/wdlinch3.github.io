@@ -1,93 +1,55 @@
 ---
 title: "AA:SS 2026–2027"
 layout: aa
+compact: true
 page_css: /assets/css/aa_ss_theme.css
 ---
 
 {% assign current_class = site.data.aa_courses.ss.current %}
-{% assign daily_links = site.data.quick_links | where: "category", "daily_use" %}
-{% assign ss_packets = site.data.aa_packets | where: "id", "ss" | first %}
 
-<p class="aa-eyebrow">Advanced Astronomy · Current class</p>
-<h1>AA: Solar System · {{ current_class.school_year }}</h1>
-
-<p class="aa-status-pill">{{ current_class.status_label }}</p>
+<p class="aa-eyebrow">Advanced Astronomy · {{ current_class.school_year }}</p>
+<h1>AA: Solar System</h1>
 
 <p>
-  This is the working home for the current AA:SS class. Use it for the course’s public resources,
-  learning objectives, packet sequence, and technical help.
+  A small collection of the links and web readings we are using in class.
 </p>
 
-<aside class="aa-working-note" aria-label="Page status">
-  <p><strong>Available now:</strong> {{ current_class.status_note }}</p>
-  <p>Assignments, deadlines, grades, and protected class communication remain in Schoology and SIS.</p>
-</aside>
+<nav aria-label="Class links">
+  <ul class="aa-class-link-list">
+    {% for item in current_class.links %}
+      {% assign source_link = nil %}
+      {% if item.quick_link_title %}
+        {% assign source_link = site.data.quick_links | where: "title", item.quick_link_title | first %}
+      {% endif %}
+      {% assign link_title = item.title | default: source_link.title %}
+      {% assign link_url = item.url | default: source_link.url %}
+      <li>
+        {% if link_url %}
+          <a href="{{ link_url | relative_url }}">{{ link_title }}</a>
+        {% else %}
+          <span class="aa-class-link-pending">{{ link_title }} · coming soon</span>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</nav>
 
-<h2>Start here</h2>
+<h2>Web readings</h2>
 
-<div class="aa-resource-grid">
-  {% for item in daily_links %}
-  <section class="aa-resource-card">
-    <h3><a href="{{ item.url | relative_url }}">{{ item.title }}</a></h3>
-    {% if item.description %}<p>{{ item.description }}</p>{% endif %}
-    {% if item.title == "Schoology" %}<p>Assignments, deadlines, class announcements, and submitted work.</p>{% endif %}
-    {% if item.title == "ION" %}<p>TJ schedule and school-day information.</p>{% endif %}
-    {% if item.title == "SIS" %}<p>Official grades and student records.</p>{% endif %}
-    {% if item.title == "AA packets" %}<p>The public packet map for AA:SS, AA:U, and AA:X.</p>{% endif %}
-    {% if item.title == "AA assignments repo" %}<p>Public student notebooks and assignment files.</p>{% endif %}
-    {% if item.title == "Jupyter / Python / LaTeX help" %}<p>Setup and troubleshooting guidance for the course tools.</p>{% endif %}
-  </section>
-  {% endfor %}
-</div>
-
-<h2>Course documents</h2>
-
-{% include aa_vlo_links.html course="ss" %}
-
-<div class="aa-resource-grid">
-  <section class="aa-resource-card">
-    <h3><a href="{{ '/aa/ss/orientation.html' | relative_url }}">AA:SS orientation</a></h3>
-    <p>How to approach the course as a quantitative, physics-based astronomy class.</p>
-  </section>
-  <section class="aa-resource-card">
-    <h3><a href="https://lms.fcps.edu/home">Syllabus and current calendar</a></h3>
-    <p>The syllabus and time-sensitive class calendar are distributed through Schoology.</p>
-  </section>
-</div>
-
-<h2>AA:SS sequence</h2>
-
-<p>
-  Each unit hub is available now. Notebook previews and web readings will be linked as their
-  student-facing editions are ready.
-</p>
-
-<div class="aa-resource-grid">
-  {% for packet in ss_packets.packets %}
-    {% assign unit_url = packet.hub_anchor %}
-    {% if packet.parts %}
-      {% assign first_part = packet.parts | first %}
-      {% assign unit_url = first_part.hub_anchor %}
+<div class="aa-lesson-grid">
+  {% for lesson in current_class.lessons %}
+    {% if lesson.url %}
+      <a class="aa-lesson-card-link" href="{{ lesson.url | relative_url }}">
+        <span class="aa-card-status">Available now</span>
+        <h3>{{ lesson.title }}</h3>
+        <p>{{ lesson.description }}</p>
+      </a>
+    {% else %}
+      <section class="aa-lesson-card aa-lesson-card-pending">
+        <span class="aa-card-status">Coming soon</span>
+        <h3>{{ lesson.title }}</h3>
+        <p>{{ lesson.description }}</p>
+      </section>
     {% endif %}
-  <section class="aa-resource-card">
-    <h3><a href="{{ unit_url | relative_url }}">{{ packet.title | default: packet.label }}</a></h3>
-    {% if packet.description %}<p>{{ packet.description }}</p>{% endif %}
-    <p class="small">Unit hub available · additional web materials in progress</p>
-  </section>
   {% endfor %}
 </div>
-
-<h2>Shared AA:X foundations</h2>
-
-<div class="aa-resource-grid">
-  <section class="aa-resource-card">
-    <h3><a href="{{ '/aa/x/help/#geometry_and_units' | relative_url }}">Geometry and units</a></h3>
-    <p>The shared geometry foundation used early in AA:SS. Its web packet is currently being prepared.</p>
-  </section>
-  <section class="aa-resource-card">
-    <h3><a href="{{ '/aa/x/help/' | relative_url }}">AA:X packet hub</a></h3>
-    <p>Dimensional analysis, astrodynamics, waves and light, spectroscopy, and other shared material.</p>
-  </section>
-</div>
-
-<p><a href="{{ '/aa/ss/' | relative_url }}">Return to the AA:SS course overview</a></p>
