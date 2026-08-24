@@ -24,3 +24,12 @@
   description: A browser-based CR3BP exploration of the Sun–Jupiter rotating frame, effective potential, Lagrange points, and zero-velocity structure.
   details: Retains its established public URL and is cataloged here without moving or duplicating the deployed application.
   source_artifact: interactive-demos/sun-jupiter-lagrange/
+
+- title: Radian Circle
+  url: https://radian-circle.wdlinch3.chatgpt.site/
+  kind: Interactive geometry laboratory
+  status: Published
+  priority: 25
+  description: A draggable circle laboratory connecting radian angle to radius and arc length in the Advanced Astronomy geometry sequence.
+  details: Students can vary or lock the angle and radius independently while on-diagram measurements update; unit-circle landmarks snap to exact multiples of π.
+  source_artifact: /Users/wdlinch3/Documents/github/radian-arc-lab
