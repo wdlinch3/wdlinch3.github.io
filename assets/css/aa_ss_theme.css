@@ -148,6 +148,32 @@ body::before {
   color: var(--muted);
 }
 
+.aa-lesson-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1rem;
+}
+
+.aa-lesson-actions a {
+  display: inline-block;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.55rem 0.7rem;
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1.25;
+  text-decoration: none;
+}
+
+.aa-lesson-actions a:hover,
+.aa-lesson-actions a:focus-visible {
+  border-color: rgba(103, 203, 216, 0.72);
+  color: #9be5ed;
+}
+
 .aa-card-status {
   display: inline-block;
   margin-bottom: 0.65rem;

@@ -39,11 +39,17 @@ page_css: /assets/css/aa_ss_theme.css
 <div class="aa-lesson-grid">
   {% for lesson in current_class.lessons %}
     {% if lesson.url %}
-      <a class="aa-lesson-card-link" href="{{ lesson.url | relative_url }}">
+      <section class="aa-lesson-card">
         <span class="aa-card-status">Available now</span>
         <h3>{{ lesson.title }}</h3>
         <p>{{ lesson.description }}</p>
-      </a>
+        <div class="aa-lesson-actions">
+          <a href="{{ lesson.url | relative_url }}">Read online</a>
+          {% if lesson.files_url %}
+            <a href="{{ lesson.files_url }}">Notebook files</a>
+          {% endif %}
+        </div>
+      </section>
     {% else %}
       <section class="aa-lesson-card aa-lesson-card-pending">
         <span class="aa-card-status">Coming soon</span>

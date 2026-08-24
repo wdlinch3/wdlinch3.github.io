@@ -14,6 +14,7 @@ ss:
     lessons:
       - title: Geometry
         url: "/aa/x/geometry/"
+        files_url: "https://github.com/wdlinch3/aa_assignments/tree/main/aa_x/x_geometry"
         status: available
         description: "Triangles, radians, parallax, and small-angle reasoning."
       - title: Celestial Navigation

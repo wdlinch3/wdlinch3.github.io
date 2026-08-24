@@ -163,7 +163,9 @@
   packets:
     - id: x_geometry
       label: x_geometry
-      status: placeholder
+      status: real_support
+      preview_url: "https://github.com/wdlinch3/aa_assignments/blob/main/aa_x/x_geometry/x_geometry.ipynb"
+      support_url: "/aa/x/geometry/"
       hub_anchor: "/aa/x/help/#geometry_and_units"
       current_ids:
         - x_geometry
