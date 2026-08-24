@@ -3,5 +3,22 @@ ss:
     school_year: "2026–2027"
     short_year: "2026–27"
     url: "/aa/ss/2026-2027/"
-    status_label: "Live working page"
-    status_note: "Core course links are live. New readings, packet editions, and class resources will be added as they are ready."
+    status_label: "Working class page"
+    links:
+      - quick_link_title: ION
+      - quick_link_title: Astronomy Club
+      - title: Astronomy Team
+        status: coming_soon
+      - title: William D. Linch III
+        url: "/"
+    lessons:
+      - title: Geometry
+        url: "/aa/x/geometry/"
+        status: available
+        description: "Triangles, radians, parallax, and small-angle reasoning."
+      - title: Celestial Navigation
+        status: coming_soon
+        description: "Web reading in progress."
+      - title: Aristarchus
+        status: coming_soon
+        description: "Web reading in progress."

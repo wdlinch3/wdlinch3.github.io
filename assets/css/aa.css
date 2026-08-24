@@ -45,6 +45,15 @@
   max-width: 850px;
 }
 
+.aa-page-compact {
+  display: block;
+  max-width: 900px;
+}
+
+.aa-page-compact .aa-content {
+  max-width: none;
+}
+
 /* Packet tree */
 
 .packet-tree section {
