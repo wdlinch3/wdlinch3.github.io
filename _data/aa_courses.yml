@@ -18,8 +18,9 @@ ss:
         status: available
         description: "Triangles, radians, parallax, and small-angle reasoning."
       - title: Celestial Navigation
-        status: coming_soon
-        description: "Web reading in progress."
+        url: "/aa/ss/2026-2027/celestial-navigation/part-1/"
+        status: available
+        description: "Celestial Sphere I: a source-faithful web edition of the original packet."
       - title: Aristarchus
         status: coming_soon
         description: "Web reading in progress."
