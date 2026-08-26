@@ -23,6 +23,7 @@ ss:
             new_tab: true
       - title: Celestial Navigation
         url: "/aa/ss/2026-2027/celestial-navigation/part-1/"
+        files_url: "https://github.com/wdlinch3/aa_assignments/tree/main/aa_ss/ss_celestial_sphere1"
         status: available
         description: "Celestial Sphere I: a source-faithful web edition of the original packet."
         resources:
