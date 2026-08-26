@@ -33,3 +33,12 @@
   description: A draggable circle laboratory connecting radian angle to radius and arc length in the Advanced Astronomy geometry sequence.
   details: Students can vary or lock the angle and radius independently while on-diagram measurements update; unit-circle landmarks snap to exact multiples of π.
   source_artifact: /Users/wdlinch3/Documents/github/radian-arc-lab
+
+- title: Linked-View Celestial Sphere
+  url: https://linked-view-celestial-sphere.wdlinch3.chatgpt.site/
+  kind: Interactive astronomy laboratory
+  status: Published
+  priority: 30
+  description: A linked celestial-sphere and horizon laboratory connecting right ascension and declination to hour angle, altitude, and azimuth.
+  details: Students can vary observer latitude, Local Sidereal Time, and target coordinates while both views and all coordinate readouts update from one idealized astronomical state.
+  source_artifact: /Users/wdlinch3/.codex/visualizations/2026/08/24/01a03176-fce5-7012-bb69-1356620c2bb3/linked-view-celestial-sphere
