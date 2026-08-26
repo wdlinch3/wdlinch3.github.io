@@ -48,6 +48,9 @@ page_css: /assets/css/aa_ss_theme.css
           {% if lesson.files_url %}
             <a href="{{ lesson.files_url }}">Notebook files</a>
           {% endif %}
+          {% for resource in lesson.resources %}
+            <a href="{{ resource.url }}"{% if resource.new_tab %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ resource.label }}</a>
+          {% endfor %}
         </div>
       </section>
     {% else %}

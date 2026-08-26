@@ -16,7 +16,11 @@ ss:
         url: "/aa/x/geometry/"
         files_url: "https://github.com/wdlinch3/aa_assignments/tree/main/aa_x/x_geometry"
         status: available
-        description: "Triangles, radians, parallax, and small-angle reasoning."
+        description: "Triangles, radians, parallax, small-angle reasoning, and an interactive radians laboratory."
+        resources:
+          - label: Radian lab
+            url: "https://radian-circle.wdlinch3.chatgpt.site/"
+            new_tab: true
       - title: Celestial Navigation
         url: "/aa/ss/2026-2027/celestial-navigation/part-1/"
         status: available
