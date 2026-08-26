@@ -34,6 +34,23 @@ page_css: /assets/css/aa_ss_theme.css
   </ul>
 </nav>
 
+{% if current_class.guides %}
+  <h2>Jupyter Instructions</h2>
+
+  <div class="aa-resource-grid">
+    {% for guide in current_class.guides %}
+      <section class="aa-resource-card">
+        <p>{{ guide.description }}</p>
+        <p>
+          <a class="aa-primary-link" href="{{ guide.url | relative_url }}">
+            {{ guide.action_label | default: "Read online" }}
+          </a>
+        </p>
+      </section>
+    {% endfor %}
+  </div>
+{% endif %}
+
 <h2>Web readings</h2>
 
 <div class="aa-lesson-grid">

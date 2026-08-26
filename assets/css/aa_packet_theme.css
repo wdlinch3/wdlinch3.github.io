@@ -1,0 +1,106 @@
+:root {
+  color-scheme: dark;
+  --packet-bg: #0a0818;
+  --packet-text: #f5f2fb;
+  --packet-muted: #afb6cb;
+  --packet-link: #67cbd8;
+  --packet-border: rgba(146, 156, 205, 0.28);
+  --packet-surface: rgba(22, 18, 42, 0.82);
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--packet-bg);
+  color: var(--packet-text);
+  font-family: Georgia, serif;
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.42;
+  background-image:
+    radial-gradient(circle at 14% 5%, rgba(76, 58, 156, 0.24), transparent 30rem),
+    radial-gradient(circle at 93% 86%, rgba(157, 58, 134, 0.14), transparent 34rem),
+    radial-gradient(circle at 7% 16%, rgba(245, 246, 255, 0.72) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 42% 28%, rgba(255, 244, 198, 0.58) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 83% 42%, rgba(151, 211, 229, 0.52) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 31% 85%, rgba(255, 244, 198, 0.5) 0 1px, transparent 1.5px);
+}
+
+h1,
+h2,
+h3,
+.sidebar-title,
+#toc-title {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+a,
+.nav-link {
+  color: var(--packet-link);
+}
+
+#quarto-document-content {
+  max-width: 50rem;
+}
+
+.packet-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1rem;
+  max-width: 50rem;
+  margin: 0 auto 1.5rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--packet-border);
+  border-radius: 9px;
+  background: var(--packet-surface);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.9rem;
+}
+
+.packet-nav span {
+  margin-left: auto;
+  color: var(--packet-muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+figure {
+  max-width: 36rem;
+  margin: 1.75rem auto;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.cell-output,
+pre,
+.sourceCode,
+.math.display {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+@media (max-width: 767px) {
+  body {
+    font-size: 17px;
+  }
+
+  .packet-nav span {
+    width: 100%;
+    margin-left: 0;
+  }
+}
