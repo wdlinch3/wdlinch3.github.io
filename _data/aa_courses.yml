@@ -11,6 +11,11 @@ ss:
         status: coming_soon
       - title: William D. Linch III
         url: "/"
+    guides:
+      - title: Jupyter Instructions
+        url: "/tj/adv_astro/jupyter_instructions/"
+        action_label: Open Jupyter Instructions
+        description: "How to open, run, upload, and save the Jupyter notebooks used in Advanced Astronomy."
     lessons:
       - title: Geometry
         url: "/aa/x/geometry/"
@@ -31,5 +36,7 @@ ss:
             url: "https://linked-view-celestial-sphere.wdlinch3.chatgpt.site/"
             new_tab: true
       - title: Aristarchus
-        status: coming_soon
-        description: "Web reading in progress."
+        url: "/aa/ss/aristarchus/"
+        files_url: "https://github.com/wdlinch3/aa_assignments/tree/main/aa_ss/ss_aristarchus"
+        status: available
+        description: "Relative sizes and distances in the Sun–Earth–Moon system, followed by Eratosthenes’ measurement of Earth."
