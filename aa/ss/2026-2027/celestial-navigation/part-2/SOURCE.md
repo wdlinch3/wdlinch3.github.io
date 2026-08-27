@@ -7,14 +7,16 @@
 - Historical editable authority: `/Users/wdlinch3/Documents/github/aa_class/aa_ss/source/ss_celestial_sphere2/ss_celestial_sphere2.docx`
 - Historical editable authority SHA-256: `50efcf79f59b9166bffbe3a10850c8dabb6c69442e982efa565af3a4b425ec46`
 - Student notebook render source: `/Users/wdlinch3/Documents/github/aa_assignments/aa_ss/ss_celestial_sphere2/ss_celestial_sphere2.ipynb`
-- Student notebook render source SHA-256: `e948568b214444b6751e1bcce9a223b23b5c9e950667ce03ed946efa7cdb7f81`
+- Student notebook render source SHA-256: `fddfc055dc60612eb8590408c5829bd18f5e1fdf97b08ab80b4ecf1c25f82d4a`
 - Shared packet-theme source: `/assets/css/aa_packet_theme.css`
 - Shared packet-theme SHA-256: `15ee51de020c11dd3faa06faa86bcbb2ae4b5199ab65946a4db5d4c4cf157dc2`
-- Rendered HTML SHA-256: `fa06b0af46e0eb464ae6fd3da3c60d7c31ea2430675f9fbb7b63e588ae614331`
+- Rendered HTML SHA-256: `9f50470f0fc5d6c755bd80e0311c169089504aad1306d3d07926d6b84ce6b691`
 - Rendered with Quarto 1.9.37 as self-contained HTML.
 
 The notebook's visible instructional wording, order, numbering, links,
 equations, figures, spelling, grammar, and scientific claims are preserved.
+Its opening topic list uses compact spacing, and each numbered problem is
+represented as a blockquoted `Problem` heading to match Celestial Sphere I.
 The web publication adds only the shared AA packet stylesheet and packet
 navigation. It does not reuse or incorporate the separate pedagogical rewrite
 retained as `ss_celestial_sphere2_old.ipynb`.
