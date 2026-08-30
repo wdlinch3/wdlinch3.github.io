@@ -26,20 +26,20 @@ ss:
           - label: Radian lab
             url: "https://radian-circle.wdlinch3.chatgpt.site/"
             new_tab: true
-      - title: Celestial Navigation I
-        url: "/aa/ss/2026-2027/celestial-navigation/part-1/"
-        files_url: "https://github.com/wdlinch3/aa_assignments/tree/main/aa_ss/ss_celestial_sphere1"
+      - title: Celestial Navigation
         status: available
-        description: "Celestial Sphere I: a source-faithful web edition of the original packet."
+        description: "Spherical coordinates on Earth and the sky; horizontal and equatorial coordinate systems; angular measurement; daily and annual celestial motion; and the ecliptic, equinoxes, and solstices."
+        parts:
+          - label: Part I
+            url: "/aa/ss/2026-2027/celestial-navigation/part-1/"
+            files_url: "https://github.com/wdlinch3/aa_assignments/tree/main/aa_ss/ss_celestial_sphere1"
+          - label: Part II
+            url: "/aa/ss/2026-2027/celestial-navigation/part-2/"
+            files_url: "https://github.com/wdlinch3/aa_assignments/tree/main/aa_ss/ss_celestial_sphere2"
         resources:
           - label: Celestial sphere demo
             url: "https://linked-view-celestial-sphere.wdlinch3.chatgpt.site/"
             new_tab: true
-      - title: Celestial Navigation II
-        url: "/aa/ss/2026-2027/celestial-navigation/part-2/"
-        files_url: "https://github.com/wdlinch3/aa_assignments/tree/main/aa_ss/ss_celestial_sphere2"
-        status: available
-        description: "Celestial Sphere II: a verbatim web edition of the original packet."
       - title: Aristarchus
         url: "/aa/ss/aristarchus/"
         files_url: "https://github.com/wdlinch3/aa_assignments/tree/main/aa_ss/ss_aristarchus"
