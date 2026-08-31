@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#06101d">
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/aa_ss_class.css' | relative_url }}">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="site-mark" aria-label="Advanced Astronomy">
+        <a class="site-mark-kicker" href="{{ '/aa/' | relative_url }}">Advanced Astronomy</a>
+        <span class="site-mark-separator" aria-hidden="true">/</span>
+        <a class="site-name" href="{{ '/aa/ss/' | relative_url }}">Solar System</a>
+      </div>
+
+      <nav aria-label="Course navigation">
+        <ul>
+          <li><a href="{{ '/aa/ss/2026-2027/' | relative_url }}" aria-current="page">Class</a></li>
+          <li><a href="{{ '/aa/ss/' | relative_url }}">AA:SS</a></li>
+          <li><a href="{{ '/aa/packets/' | relative_url }}">Packets</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <nav class="family-strip" aria-label="Astro at TJ">
+    <div class="family-inner">
+      <span class="family-label">Astro at TJ</span>
+      <ul>
+        <li><a class="family-current" href="{{ '/aa/ss/2026-2027/' | relative_url }}" aria-current="page">Classes</a></li>
+        <li><a href="https://activities.tjhsst.edu/astro/">Research Lab</a></li>
+        <li><a href="https://activities.tjhsst.edu/astronomyclub/">Astro Club</a></li>
+        <li><a href="https://activities.tjhsst.edu/astroteam/">Astro Team</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main" class="class-shell">
+    {{ content }}
+  </main>
+
+  <footer class="site-footer">
+    <p><a href="{{ '/aa/' | relative_url }}">Advanced Astronomy</a> at Thomas Jefferson High School for Science and Technology</p>
+  </footer>
+</body>
+</html>
