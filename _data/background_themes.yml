@@ -69,7 +69,7 @@ aa_universe:
   size: cover
 
 aa_solar_system:
-  image: /assets/images/backgrounds/jupiter.jpg
+  image: /assets/images/backgrounds/blackboard.png
   overlay: 0.25
   opacity: 0.65
   position: center center

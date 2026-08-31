@@ -8,9 +8,9 @@ ss:
       - quick_link_title: ION
       - quick_link_title: Astronomy Club
       - title: Astronomy Team
-        status: coming_soon
+        url: "https://activities.tjhsst.edu/astroteam/"
       - title: William D. Linch III
-        url: "/"
+        url: "https://wdlinch3.github.io/"
     guides:
       - title: Jupyter Instructions
         url: "/tj/adv_astro/jupyter_instructions/"
