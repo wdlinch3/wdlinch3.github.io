@@ -15,12 +15,12 @@ title: Advanced Astronomy Resources
 </p>
 
 <div class="portal-grid">
-  {% assign resources = site.data.tj_program.resources | where: "program", "adv_astro" | where: "published", true | sort: "order" %}
-  {% for resource in resources %}
+{% assign resources = site.data.tj_program.resources | where: "program", "adv_astro" | where: "published", true | sort: "order" %}
+{% for resource in resources %}
     <section class="portal-card">
       <p class="eyebrow">{{ resource.kind }}</p>
       <h2><a href="{{ resource.url | relative_url }}">{{ resource.title }}</a></h2>
       <p>{{ resource.description }}</p>
     </section>
-  {% endfor %}
+{% endfor %}
 </div>
