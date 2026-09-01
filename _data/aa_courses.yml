@@ -11,11 +11,13 @@ ss:
         url: "https://activities.tjhsst.edu/astroteam/"
       - title: William D. Linch III
         url: "https://activities.tjhsst.edu/astro/contact/index.html"
-    guides:
-      - title: Jupyter Instructions
-        url: "/tj/adv_astro/jupyter_instructions/"
-        action_label: Open Jupyter Instructions
-        description: "How to open, run, upload, and save the Jupyter notebooks used in Advanced Astronomy."
+    software_help:
+      title: Software help
+      description: "Quick guides for the software used in Advanced Astronomy."
+      resource_ids:
+        - jupyter_instructions
+        - latex_instructions
+        - python_instructions
     lessons:
       - title: Geometry
         url: "/aa/x/geometry/"
