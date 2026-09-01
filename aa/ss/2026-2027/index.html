@@ -32,20 +32,23 @@ layout: aa_ss_class
   </ul>
 </nav>
 
-{% if current_class.guides %}
-  <h2>Jupyter Instructions</h2>
+{% if current_class.software_help %}
+  <h2>{{ current_class.software_help.title }}</h2>
 
   <div class="aa-resource-grid">
-    {% for guide in current_class.guides %}
-      <section class="aa-resource-card">
-        <p>{{ guide.description }}</p>
-        <p>
-          <a class="aa-primary-link" href="{{ guide.url | relative_url }}">
-            {{ guide.action_label | default: "Read online" }}
-          </a>
-        </p>
-      </section>
-    {% endfor %}
+    <section class="aa-resource-card">
+      <p>{{ current_class.software_help.description }}</p>
+      <nav class="aa-guide-actions" aria-label="Software help guides">
+{% for resource_id in current_class.software_help.resource_ids %}
+{% assign guide = site.data.tj_program.resources | where: "id", resource_id | first %}
+{% if guide and guide.published %}
+            <a class="aa-guide-link" href="{{ guide.url | relative_url }}">
+              {{ guide.button_label | default: guide.title }}
+            </a>
+{% endif %}
+{% endfor %}
+      </nav>
+    </section>
   </div>
 {% endif %}
 

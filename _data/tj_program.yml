@@ -16,11 +16,32 @@ programs:
 resources:
   - id: jupyter_instructions
     program: adv_astro
-    title: Jupyter Notebook for Advanced Astronomy
+    title: Jupyter for Advanced Astronomy
+    button_label: Jupyter
     url: /tj/adv_astro/jupyter_instructions/
     kind: Student guide
-    description: Instructions for launching Jupyter, selecting the AA kernel, and using Markdown, LaTeX, and Python in course notebooks.
+    description: Instructions for launching Jupyter, selecting the AA kernel, and working with course notebooks.
     order: 10
+    published: true
+
+  - id: latex_instructions
+    program: adv_astro
+    title: LaTeX quick-start
+    button_label: LaTeX
+    url: /tj/adv_astro/latex_instructions/
+    kind: Student guide
+    description: A quick reference for writing mathematics in Markdown cells and course documents.
+    order: 20
+    published: true
+
+  - id: python_instructions
+    program: adv_astro
+    title: Python quick-start
+    button_label: Python
+    url: /tj/adv_astro/python_instructions/
+    kind: Student guide
+    description: A short introduction to Python with examples students can run in the browser.
+    order: 30
     published: true
 
   - id: learning_objectives
@@ -29,5 +50,5 @@ resources:
     url: /tj/adv_astro/learning_objectives/
     kind: Course reference
     description: Current learning objectives for the Advanced Astronomy sequence.
-    order: 20
+    order: 40
     published: false

@@ -300,6 +300,7 @@ nav ul {
 .aa-class-link-list a,
 .aa-class-link-pending,
 .aa-primary-link,
+.aa-guide-link,
 .aa-lesson-actions a {
   display: inline-flex;
   align-items: center;
@@ -317,6 +318,7 @@ nav ul {
 
 .aa-class-link-list a:hover,
 .aa-primary-link:hover,
+.aa-guide-link:hover,
 .aa-lesson-actions a:hover {
   border-color: rgba(155, 216, 255, 0.65);
   background: rgba(103, 196, 255, 0.12);
@@ -370,6 +372,13 @@ nav ul {
 }
 
 .aa-lesson-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 1rem;
+}
+
+.aa-guide-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.55rem;
