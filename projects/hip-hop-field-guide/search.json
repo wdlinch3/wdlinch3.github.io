@@ -434,7 +434,7 @@
     "href": "manifest_audit.html#remaining-completion-gate",
     "title": "Manifest and adversarial audit",
     "section": "Remaining completion gate",
-    "text": "Remaining completion gate\nThis is the major-subtask audit, not the final whole-product audit. Completion still requires exact-order account playlist readback, cross-browser map and link testing, rendered-source agreement, public deployment verification, and one last adversarial pass across the assembled bundle.\nProject home · Start listening · Literal status",
+    "text": "Remaining completion gate\nThis is the major-subtask audit, not the final whole-product audit. Rendered-source agreement, public deployment, live URL retrieval, and Chromium map interaction checks have passed. Completion still requires correcting the two disclosed playlist placements, cross-browser map and link testing, a confirming exact-order account readback, and one last adversarial pass across the assembled bundle.\nProject home · Start listening · Literal status",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Manifest and adversarial audit</span>"
     ]
@@ -2915,7 +2915,7 @@
     "href": "status.html#still-in-progress",
     "title": "Literal project status",
     "section": "Still in progress",
-    "text": "Still in progress\n\nthe public one-click SoundCloud playlist contains all 198 intended recordings with no extras; its authoritative readback has a 196-of-198 ordered subsequence, with Cymande’s “Bra” and Lady B’s “To the Beat Y’all” still requiring final placement\nthe web-native map must pass its cross-browser interaction audit\nthe rendered bundle must be copied into the isolated website worktree, built with Jekyll, published, and checked at its public URL\nthe final whole-product adversarial audit must pass before the status becomes complete\n\nTom has not been contacted. Public availability of the working URL does not constitute the reveal.",
+    "text": "Still in progress\n\nthe public one-click SoundCloud playlist contains all 198 intended recordings with no extras; its authoritative readback has a 196-of-198 ordered subsequence, with Cymande’s “Bra” and Lady B’s “To the Beat Y’all” still requiring final placement\nthe web-native map must pass its cross-browser interaction audit\nthe final whole-product adversarial audit must pass before the status becomes complete\n\nThe rendered bundle was published through website PR #90, passed the GitHub Pages deployment, and was fetched successfully from its public home, listening, and interactive-map URLs. The map also passed its Chromium interaction checks for selection, filtering, repeated Fit/Reset use, fixed layout, and guide-anchor navigation. This is publication verification, not final project completion.\nTom has not been contacted. Public availability of the working URL does not constitute the reveal.",
     "crumbs": [
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Literal project status</span>"
     ]
