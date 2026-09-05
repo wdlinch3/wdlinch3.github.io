@@ -1,0 +1,23 @@
+{
+  "playlist_url": "https://soundcloud.com/wdlinch3/sets/the-message-and-the-method-a",
+  "recorded_at": "2026-08-23",
+  "live_track_count": 198,
+  "manifest_playable_total": 198,
+  "verified_new_suffix": {
+    "playable_indices": "31-198",
+    "guide_positions": "40-220 with manifest gaps preserved",
+    "last_track": "Seedhe Maut — Namastute"
+  },
+  "known_prefix_order_anomalies": [
+    "Cymande — Bra is present at live position 30 and belongs at playable position 9.",
+    "Lady B — To The Beat Ya'll (T.T.B.Y) is present at live position 20 and belongs at playable position 16."
+  ],
+  "sequence_audit": {
+    "live_editor_count": 198,
+    "longest_common_subsequence": 196,
+    "membership_missing": 0,
+    "membership_extra": 0,
+    "order_repairs_remaining": 2
+  },
+  "status": "membership_verified_order_normalization_pending"
+}
