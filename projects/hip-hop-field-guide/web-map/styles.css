@@ -1,0 +1,72 @@
+:root {
+  color-scheme: dark light;
+  --bg: #10141b;
+  --panel: #171d27;
+  --text: #edf2f7;
+  --muted: #aeb8c7;
+  --line: #6c7686;
+  --era: #ef8354;
+  --scene: #49b6a8;
+  --production: #5f9eea;
+  --practice: #c184e8;
+  --circulation: #e5b94c;
+  --context: #9aa4b3;
+  --focus: #fff;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.45 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+a { color: #8ec7ff; }
+header { min-height: 96px; padding: 14px 20px; display: flex; justify-content: space-between; gap: 24px; align-items: center; border-bottom: 1px solid #313a48; background: #121822; }
+h1 { font-size: 1.45rem; margin: .15rem 0; }
+header p { margin: 0; color: var(--muted); }
+nav { display: flex; gap: 14px; flex-wrap: wrap; }
+.toolbar { min-height: 54px; display: flex; gap: 10px; align-items: center; padding: 8px 16px; border-bottom: 1px solid #313a48; background: var(--panel); flex-wrap: wrap; }
+button { border: 1px solid #536071; border-radius: 6px; background: #242d3b; color: var(--text); padding: 7px 11px; font: inherit; cursor: pointer; }
+button:hover, button:focus-visible { border-color: #9ecbff; outline: none; }
+.hint { color: var(--muted); font-size: .9rem; }
+fieldset { border: 0; display: flex; gap: 10px; align-items: center; margin: 0; padding: 0 0 0 10px; }
+legend { float: left; margin-right: 8px; color: var(--muted); }
+label { white-space: nowrap; font-size: .9rem; }
+main { height: calc(100vh - 151px); min-height: 520px; display: grid; grid-template-columns: minmax(0, 1fr) 330px; }
+.graph-wrap { position: relative; overflow: hidden; border-right: 1px solid #313a48; }
+svg { width: 100%; height: 100%; display: block; touch-action: none; background: radial-gradient(circle at center, #192130, #0f141c); }
+.edge { stroke: var(--line); stroke-opacity: .28; stroke-width: 1.2; vector-effect: non-scaling-stroke; }
+.edge.active { stroke: #f3f7ff; stroke-opacity: .75; stroke-width: 2; }
+.node { cursor: pointer; }
+.node circle { stroke: #0b0f15; stroke-width: 2; vector-effect: non-scaling-stroke; }
+.node text { fill: var(--text); font-size: 13px; paint-order: stroke; stroke: #10141b; stroke-width: 3px; stroke-linejoin: round; pointer-events: all; }
+.node.era circle { fill: var(--era); }
+.node.scene circle { fill: var(--scene); }
+.node.production circle { fill: var(--production); }
+.node.practice circle { fill: var(--practice); }
+.node.circulation circle { fill: var(--circulation); }
+.node.context circle { fill: var(--context); stroke-dasharray: 3 2; }
+.node.dim, .edge.dim { opacity: .08; }
+.node.selected circle { stroke: var(--focus); stroke-width: 4; }
+.hidden { display: none; }
+.zoom-controls { position: absolute; right: 14px; bottom: 14px; display: grid; gap: 6px; }
+.zoom-controls button { font-size: 1.3rem; width: 38px; height: 38px; padding: 0; }
+aside { padding: 20px; overflow: auto; background: var(--panel); }
+aside h2 { margin-top: 0; font-size: 1.2rem; }
+aside .kind { text-transform: uppercase; letter-spacing: .08em; font-size: .75rem; color: var(--muted); }
+aside ul { padding-left: 1.2rem; }
+aside li { margin-bottom: .5rem; }
+@media (max-width: 850px) {
+  header { align-items: flex-start; flex-direction: column; gap: 8px; }
+  .toolbar { align-items: flex-start; }
+  fieldset { width: 100%; flex-wrap: wrap; padding-left: 0; }
+  legend { width: 100%; margin-bottom: .2rem; }
+  main { height: auto; grid-template-columns: 1fr; }
+  .graph-wrap { height: 68vh; border-right: 0; border-bottom: 1px solid #313a48; }
+  aside { min-height: 250px; }
+  .hint { display: none; }
+}
+@media (prefers-color-scheme: light) {
+  :root { --bg: #f4f7fb; --panel: #fff; --text: #17202c; --muted: #566276; --line: #8994a4; --focus: #111; }
+  header, .toolbar { background: #fff; border-color: #ccd5e0; }
+  .graph-wrap { border-color: #ccd5e0; }
+  svg { background: radial-gradient(circle at center, #fff, #edf2f7); }
+  .node text { stroke: #f4f7fb; }
+  button { background: #edf2f7; color: #17202c; border-color: #9ba8b9; }
+  aside { background: #fff; }
+}

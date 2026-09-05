@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Interactive Hip-Hop Network</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div>
+      <a href="../index.html">← Project home</a>
+      <h1>Interactive Hip-Hop Network</h1>
+      <p>Fixed positions; clicking never rearranges the graph.</p>
+    </div>
+    <nav aria-label="Project navigation"><a href="../soundcloud.html">Listen</a><a href="../introduction.html">Read</a><a href="../taxonomy.html">Taxonomy</a></nav>
+  </header>
+  <section class="toolbar" aria-label="Map controls">
+    <button id="fit" type="button">Fit visible</button>
+    <button id="reset" type="button">Reset</button>
+    <span class="hint">Wheel or +/− to zoom · drag empty space to pan · Esc clears selection</span>
+    <fieldset id="filters"><legend>Show</legend></fieldset>
+  </section>
+  <main>
+    <section class="graph-wrap" aria-label="Dot-and-line network">
+      <svg id="graph" role="img" aria-labelledby="graph-title graph-desc" tabindex="0">
+        <title id="graph-title">Hip-hop history, scene, production, practice, and circulation network</title>
+        <desc id="graph-desc">A fixed-position network. Select a node to reveal an explanation and guide examples.</desc>
+        <g id="viewport"><g id="edges"></g><g id="nodes"></g></g>
+      </svg>
+      <div class="zoom-controls"><button id="zoom-in" aria-label="Zoom in">+</button><button id="zoom-out" aria-label="Zoom out">−</button></div>
+    </section>
+    <aside id="details" aria-live="polite">
+      <h2>How to read the map</h2>
+      <p>Lines mean that the concept appears in that historical block of the guide. They do not claim a single-parent genre lineage.</p>
+      <p>Select a dot to isolate its direct connections and open guide examples. Use the checkboxes to hide whole coordinate types; the layout remains unchanged.</p>
+    </aside>
+  </main>
+  <script src="data.js"></script>
+  <script src="map.js"></script>
+</body>
+</html>
