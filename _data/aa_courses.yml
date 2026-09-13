@@ -5,6 +5,8 @@ ss:
     url: "/aa/ss/2026-2027/"
     status_label: "Working class page"
     links:
+      - title: Schoology
+        url: "https://lms.fcps.edu/course/8496409949/materials"
       - quick_link_title: ION
       - quick_link_title: Astronomy Club
       - title: Astronomy Team
