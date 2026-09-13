@@ -14,21 +14,21 @@ layout: aa_ss_class
 
 <nav aria-label="Class links">
   <ul class="aa-class-link-list">
-    {% for item in current_class.links %}
-      {% assign source_link = nil %}
-      {% if item.quick_link_title %}
-        {% assign source_link = site.data.quick_links | where: "title", item.quick_link_title | first %}
-      {% endif %}
-      {% assign link_title = item.title | default: source_link.title %}
-      {% assign link_url = item.url | default: source_link.url %}
+    {%- for item in current_class.links %}
+      {%- assign source_link = nil %}
+      {%- if item.quick_link_title %}
+        {%- assign source_link = site.data.quick_links | where: "title", item.quick_link_title | first %}
+      {%- endif %}
+      {%- assign link_title = item.title | default: source_link.title %}
+      {%- assign link_url = item.url | default: source_link.url %}
       <li>
-        {% if link_url %}
+        {%- if link_url %}
           <a href="{{ link_url | relative_url }}">{{ link_title }}</a>
-        {% else %}
+        {%- else %}
           <span class="aa-class-link-pending">{{ link_title }} · coming soon</span>
-        {% endif %}
+        {%- endif %}
       </li>
-    {% endfor %}
+    {%- endfor %}
   </ul>
 </nav>
 
