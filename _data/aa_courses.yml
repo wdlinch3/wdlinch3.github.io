@@ -49,3 +49,6 @@ ss:
         files_url: "https://github.com/wdlinch3/aa_assignments/tree/main/aa_ss/ss_aristarchus"
         status: available
         description: "Relative sizes and distances in the Sun–Earth–Moon system, followed by Eratosthenes’ measurement of Earth."
+        resources:
+          - label: Download assignment (.zip)
+            url: "https://raw.githubusercontent.com/wdlinch3/aa_assignments/main/aa_ss/ss_aristarchus.zip"
