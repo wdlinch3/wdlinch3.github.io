@@ -75,9 +75,9 @@ layout: aa_ss_class
               <a href="{{ lesson.files_url }}">Notebook files</a>
             {% endif %}
           {% endif %}
-          {% for resource in lesson.resources %}
+{% for resource in lesson.resources %}
             <a href="{{ resource.url }}"{% if resource.new_tab %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ resource.label }}</a>
-          {% endfor %}
+{% endfor %}
         </div>
       </section>
     {% else %}
