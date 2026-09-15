@@ -23,7 +23,7 @@ ss:
     lessons:
       - title: Geometry
         url: "/aa/x/geometry/"
-        files_url: "https://github.com/wdlinch3/aa_assignments/tree/main/aa_x/x_geometry"
+        download_url: "/aa/assignments/x_geometry.zip"
         status: available
         description: "Triangles, radians, parallax, small-angle reasoning, and an interactive radians laboratory."
         resources:
@@ -36,19 +36,16 @@ ss:
         parts:
           - label: Part I
             url: "/aa/ss/2026-2027/celestial-navigation/part-1/"
-            files_url: "https://github.com/wdlinch3/aa_assignments/tree/main/aa_ss/ss_celestial_sphere1"
+            download_url: "/aa/assignments/ss_celestial_sphere1.zip"
           - label: Part II
             url: "/aa/ss/2026-2027/celestial-navigation/part-2/"
-            files_url: "https://github.com/wdlinch3/aa_assignments/tree/main/aa_ss/ss_celestial_sphere2"
+            download_url: "/aa/assignments/ss_celestial_sphere2.zip"
         resources:
           - label: Celestial sphere demo
             url: "https://linked-view-celestial-sphere.wdlinch3.chatgpt.site/"
             new_tab: true
       - title: Aristarchus
         url: "/aa/ss/aristarchus/"
-        files_url: "https://github.com/wdlinch3/aa_assignments/tree/main/aa_ss/ss_aristarchus"
+        download_url: "/aa/assignments/ss_aristarchus.zip"
         status: available
         description: "Relative sizes and distances in the Sun–Earth–Moon system, followed by Eratosthenes’ measurement of Earth."
-        resources:
-          - label: Download assignment (.zip)
-            url: "https://raw.githubusercontent.com/wdlinch3/aa_assignments/main/aa_ss/ss_aristarchus.zip"
