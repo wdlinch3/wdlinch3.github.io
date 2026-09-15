@@ -65,14 +65,14 @@ layout: aa_ss_class
           {% if lesson.parts %}
             {% for part in lesson.parts %}
               <a href="{{ part.url | relative_url }}">{{ part.label }} reading</a>
-              {% if part.files_url %}
-                <a href="{{ part.files_url }}">{{ part.label }} notebook</a>
+              {% if part.download_url %}
+                <a href="{{ part.download_url | relative_url }}">{{ part.label }} assignment (.zip)</a>
               {% endif %}
             {% endfor %}
           {% else %}
             <a href="{{ lesson.url | relative_url }}">Read online</a>
-            {% if lesson.files_url %}
-              <a href="{{ lesson.files_url }}">Notebook files</a>
+            {% if lesson.download_url %}
+              <a href="{{ lesson.download_url | relative_url }}">Download assignment (.zip)</a>
             {% endif %}
           {% endif %}
 {% for resource in lesson.resources %}
