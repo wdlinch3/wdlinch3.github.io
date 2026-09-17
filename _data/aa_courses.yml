@@ -49,3 +49,8 @@ ss:
         download_url: "/aa/assignments/ss_aristarchus.zip"
         status: available
         description: "Relative sizes and distances in the Sun–Earth–Moon system, followed by Eratosthenes’ measurement of Earth."
+      - title: Dimensional Analysis
+        url: "/aa/x/dimensional_analysis/"
+        download_url: "/aa/assignments/x_dimensional_analysis.zip"
+        status: available
+        description: "Dimensions and units, scaling relations, and applications to gravity, oscillations, and planetary orbits."

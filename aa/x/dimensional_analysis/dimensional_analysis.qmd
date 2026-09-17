@@ -1,0 +1,225 @@
+---
+title: "Toolbox: Dimensional Analysis"
+format:
+  html:
+    theme: darkly
+    css: ../../../assets/css/aa_packet_theme.css
+    embed-resources: true
+    toc: true
+    toc-depth: 2
+    code-tools: false
+    output-file: index.html
+execute:
+  enabled: false
+---
+
+<nav class="packet-nav" aria-label="Packet navigation">
+<a href="/aa/ss/2026-2027/">AA:SS class page</a>
+<a href="/aa/assignments/x_dimensional_analysis.zip">Download assignment (.zip)</a>
+<a href="/">Home</a>
+</nav>
+
+In this toolbox, we will learn one of the most basic, powerful, and near-universally-applicable techniques in the physicists' (and therefore astrophysicists') arsenal. What a(n astro)physicist calls "dimensional analysis" is different from what you may have done in chemistry (which I would call "unit conversions" or something instead). The outline for the material in this packet is as follows:
+
+- Dimensions *vs.* Units
+
+- Applications:
+
+  - Newton's Law of Universal Gravitation: Surface gravity
+
+  - The period of a mass on a Hookeian spring
+
+  - The period of a pendulum
+
+  - Kepler III and central mass
+
+  - Kepler II and orbital speed (circular orbit)
+
+The hard sciences are founded on the ability to make measurements. How
+well we can make measurements depends on technology, and the types of
+measurement are varied, but they can all be organized in terms of the
+**dimensions** of what is being measured. Some examples of measurements
+or estimates of magnitudes we make every day are
+
+- Distance measurements (distance in space between students during
+  passing)
+
+- Time measurements (distance in time between now and lunch)
+
+- Mass measurements (usually called weight measurements until your
+  physics teacher gets all cranky about force *vs.* mass)
+
+- Force measurements (How hard should I push on this heavy door to get
+  it open?)
+
+- Speed measurements (How fast is the bus driving?)
+
+- Temperature measurements (Why is it always hot/cold in the
+  planetarium?)
+
+> ### Problem 1.
+>
+> Make a list of five more such quantities that you often estimate or measure.
+
+The list can go on for a very long time, but most of the concepts on the
+resulting list are expressible in terms of more fundamental ones. For
+example, speed measurements are expressible in terms of distances in
+space as they change in time. Force measurements are expressible in
+terms of masses, distances, and times (the unit of force is
+$\frac{kg \cdot m}{s^{2}}$).
+
+# Dimensions and units
+
+To organize our list, we introduce the concept of **dimensions**. These
+can be fundamental such as the dimensions of mass $M$, length $L$, and
+time $T$, or composite such as the dimensions of speed which are
+$\frac{L}{T} = L\cdot T^{- 1}$. According to the previous parenthetical
+remark, forces have dimensions of
+$\frac{M \cdot L}{T^{2}} = M\cdot L\cdot T^{- 2}$. In order to talk about
+dimensions, we will use the following notation:
+
+> *For a quantity* $X$*, the dimensions of* $X$ *will be denoted by*
+> $\lbrack X\rbrack$*. So, for example, if* $F$ *denotes a force, then*
+> $\lbrack F\rbrack = M\ L\ T^{- 2}$*.*
+
+> ### Problem 2.
+>
+> What are the dimensions of distance, velocity, acceleration, and (linear) momentum?
+
+Dimensions are a fixed property of a quantity, but the conventions we
+use to measure them are varied. These latter conventions are called
+**units**. For example, yards are a unit of measure of length. Meters
+and kilometers are competing units for the same dimension.
+
+> ### Problem 3.
+>
+> Give three units for each of the three fundamental dimensions.
+
+Conventional agreements on which units to use are called "systems of
+units (of measurement)". The metric system is an example, as is the
+Imperial system of units. In this country, we are still clinging to the
+"United States customary (system of) units". In science education, the
+standard is called the International System of units, or SI units from
+the French *Système international d\'unités*.
+
+To do dimensional analysis, you can use the dimensions of length, time,
+and mass, or--equivalently--you can fix a system of units and use those.
+However, please make an effort to distinguish a **unit** from a
+**dimension**.
+
+> ### Problem 4.
+>
+> In class we will talk about Newton's Law of Universal gravitation.
+    This says that two objects with masses $m_{1}$ and $m_{2}$ separated
+    by a distance $r$ attract each other with a force given by
+<div style = "text-align: center">$F = G_{N}\ \frac{m_{1}\ m_{2}}{r^{2}}$</div><div style = "text-align: right">(1)</div>
+
+> In this formula, $G_{N}$ is a constant that determines the strength of
+> the gravitational force called **Newton's constant**. Find the
+> dimensions ${\lbrack G}_{N}\rbrack$ of this constant. What are the SI
+> units of $G_{N}$?
+
+> ### Problem 5.
+>
+> We learn in middle school that objects in free-fall near the surface of the Earth accelerate at a rate of $g \approx 9.8\ m/s^{2}$. This is called the **surface gravity** of Earth.
+>
+> a) Use dimensional analysis to guess a formula for $g$ in terms of Newton's constant $G_{N}$, the mass $M_{\oplus}$ of the Earth, and the radius $R_{\oplus}$ of the Earth. (Hint: In problem 4 you should have found that $\lbrack G_{N}\rbrack = M^{- 1}\ L^{3}\ T^{- 2}$. Multiply by appropriate powers of mass $M_{\oplus}$ and radius $R_{\oplus}$ to make a combination with dimensions of acceleration.)
+>
+> b) Newton's constant has a value of $G_{N} = 6.67 \times 10^{- 11}\ m^{3}\ kg^{- 1}s^{- 2}$. If $R_{\oplus} = 6400\ km$ and $M_{\oplus} = 6.0 \times 10^{24}\ kg\ $, what do you get for the surface gravity $g$? (To check your answer define a variable called $g$ and plug these values into your formula ***in SI units***.)
+
+## Proportionality and equality
+
+In the previous problem, you should have found that the combination
+$G_{N}M_{\oplus}R_{\oplus}^{-2}$ has the correct dimensions to be an
+acceleration. From this we conclude that the acceleration due to gravity
+at the surface of the Earth $g$ must be proportional to this
+combination. We write this as
+
+$$
+g \propto \frac{G_{N}M_{\oplus}}{R_\oplus^2}
+$$
+
+
+Now in general if $Y \propto X$ for any variables or combinations of
+variables $X$ and $Y$, then this means that there is a quantity $c$ (usually a real number)
+independent of the variables in $X$ and $Y$ such that $Y = cX$. Going
+back to our gravitational case, this means that there is a real,
+dimensionless number $c$ such that $g = c\ G_{N}M_{\oplus}R_{\oplus}^{- 2}$. In class we will *derive* this formula by combining Newton's second law with his law of universal gravitation to find that, in this case, $c = 1$.
+
+This is the generic situation: You can often fix the overall form of a
+physical relation by dimensional analysis (and some basic physical intuition) alone, but you will be left with a proportionality constant that is a pure number like $1$, $\frac{1}{2}$, $2\pi$, $\sqrt{2}$, *et cetera*. You cannot determine this number from dimensional analysis, because it is dimensionless. If you want to find the value of the proportionality constant, you will either have to measure it, or learn how to derive your formula from first principles.
+
+> ### Problem 6.
+>
+> A spring is called Hookean if the force $F$ you must exert on the
+    spring to stretch it is proportional to the length $\Delta x$ by
+    which you stretch it. In formulas $F \propto \Delta x$. (This will
+    be true of most springs provided you don't stretch them too much.)
+    As before, this means that there is some constant Hooke called $k$
+    independent of $F$ and $\Delta x$ such that
+
+<div style = "text-align: right">(2)</div>
+<div style = "text-align: center">$F = k\ \Delta x$</div>
+
+> a.  Find the dimensions $\lbrack k\rbrack$ of the spring constant $k$.
+>
+> b.  If you attach a mass $m$ to the spring, stretch it, and release, the
+    mass will bounce back and forth as it stretches/compresses the
+    spring in a motion called "simple harmonic oscillation". Using
+    dimensional analysis, find a formula for the period $P$ of this
+    oscillation. Express it as an equality with the constant of
+    proportionality denoted by $c$.
+
+> N.B: In the previous problem, it was actually a *good* thing that there was no other parameter $\tau$ (this is the Greek lower-case letter tau) with the dimensions of time in the problem. For suppose there had been. Then the parameter $\xi=\sqrt{\frac m{k \tau}}$ would have been *dimensionless* $[\xi]=1$. This would have invalidated our conclusion that $P$ was proportional to $\sqrt{\frac mk}$, because $f(\xi)\sqrt{\frac mk}$ would have the dimensions of time *for any function $f$ of $\xi$!* When this situation arises, the best you can do is admit that there could be a whole unknown function $f(\xi)$ in your answer, and you cannot proceed to conclude much else without more input.
+
+> ### Problem 7.
+>
+> Consider a pendulum consisting of a bob of mass $m$ on a very light
+    rod of length $\ell$. When the pendulum is displaced by a small
+    angle from its resting position and released, it swings back and
+    forth in a regular motion called "simple harmonic motion" because the bob is pulled down by our surface gravity $g \approx 9.8\ m/s^{2}$. The time it takes to swing and come back is called the **period** of the oscillation. It is denoted by $P$.
+
+
+> a) Using dimensional analysis and the variables given, write a formula for the period. Express your answer as an equality with the constant of proportionality denoted by $c$.
+>
+> b) What physical characteristic of the pendulum is irrelevant to the period?
+
+In the previous problems, you found formulae for the periods of a mass
+on a spring and a simple pendulum. Dimensional analysis tells you the
+general form of the period, but not the coefficient.[^2] In the two
+cases above, the coefficient can be worked out from calculus to be
+$c = 2\pi \approx 6.3$. This should serve as a warning that the
+coefficient is not always $1$ or close to $1$.
+
+> ### Problem 8.
+>
+> Recall that Kepler's Third Law states that for any planet orbiting the Sun, the ratio of the square of the period to the cube of the semi-major axis is the same number as for any other planet: $\frac{P^{2}}{a^{3}} = K$ for some constant $K$ independent of the planet.
+>
+> a.  Find the dimensions of $K$.
+>
+> b.  Write a formula for $K$ in terms of Newton's constant and the mass $M_{\odot}$ of the Sun.
+>
+> c.  In class, we will show that the proportionality constant in your formula is $c = 4\pi^2$. Solve your equation for the period and note that it depends only on the size of the orbit and the mass of the Sun.
+
+> ### Problem 9.
+>
+> Kepler's Second Law states that the area swept out per unit time by a line connecting the Sun to an orbiting object is a constant.
+>
+> a) Argue that this implies that the speed of an orbiting body can only be constant if the orbit is circular.
+>
+> b) For a circular orbit of radius $r$, argue that that speed $v_{orbit}$ of the orbiter is proportional to $\sqrt{\frac {GM}r}$ where $M$ is the mass of the **principal** body (*i.e.* the one being orbited).
+>
+> c) In class, we will derive that the constant of proportionality is $c = 1$. If the International Space Station (ISS) is orbiting at an altitude of $400\ km$, use the values in Problem 5 above to show that the speed of the ISS is about $7700\ m/s$.
+>
+> d) How long does it take the ISS to orbit once? (Give your answer in whole minutes.)
+
+[^1]: Actually, this analysis does not hold up under closer inspection. The reason is that in this case there actually *is* another dimensionless parameter, namely the angle from which you released the bob to start the pendulum. Since radians are not dimensionful: $\pi$ radians is the ratio of the circumference $C$ of a disk to its diameter $D$. Both have the dimensions of length, so $\left[ \frac CD \right]=1$. Because of this, the actual period of a pendulum is $P=f(\theta) \sqrt{\frak \ell g}$ for a very complicated function $f(\theta)$. (See [this Wikipedia page](https://en.wikipedia.org/wiki/Pendulum#Period_of_oscillation) for more.)
+
+[^2]: Actually, the situation is often worse: In the case of the
+    pendulum, there is a hidden dimensionless variable which is the
+    starting angle. Since angles have no physical dimension, the period
+    could depend on an arbitrary function of this variable. In fact, it
+    does so for arbitrarily large starting angles (I can show you the
+    messy function for this), but it turns out that at small angles this
+    dependence goes away. For this reason, the small-angle pendulum is
+    also called a "simple" pendulum. Ask me if you want to know more.
