@@ -2,6 +2,8 @@ title: William D. Linch III
 
 exclude:
   - _courseware
+  - aa/x/dimensional_analysis/dimensional_analysis.qmd
+  - aa/x/dimensional_analysis/SOURCE.md
 
 defaults:
   - scope:
