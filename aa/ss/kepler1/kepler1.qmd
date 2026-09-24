@@ -1,0 +1,254 @@
+---
+title: "Kepler’s Laws (Part I)"
+format:
+  html:
+    theme: darkly
+    css: ../../../assets/css/aa_packet_theme.css
+    embed-resources: true
+    toc: true
+    toc-depth: 2
+    code-tools: false
+    output-file: index.html
+execute:
+  enabled: false
+---
+
+<nav class="packet-nav" aria-label="Packet navigation">
+<a href="/aa/ss/2026-2027/">AA:SS class page</a>
+<a href="/aa/assignments/ss_kepler1.zip">Download assignment (.zip)</a>
+<a href="/">Home</a>
+</nav>
+
+- Kepler's Laws in brief
+
+- Constructions and representations of ellipses
+
+  - Geometric method
+
+    - (semi-)major/minor axes, foci, and eccentricity
+
+    - apsides
+
+  - Algebraic method
+
+    - Cartesian
+
+    - Polar
+
+  - Conic sections
+
+[Tycho Brahe](https://en.wikipedia.org/wiki/Tycho_Brahe)
+hired [Johannes Kepler](https://en.wikipedia.org/wiki/Johannes_Kepler) to
+study his data on the motion of celestial objects and figure out what
+they meant. It took Kepler 20 years, but he eventually managed to come
+up with the following organization:
+
+1.  A planet's orbit around the Sun is an **ellipse** with the Sun at
+    one **focus** (and nothing at the other).
+
+2.  The (imaginary) line connecting the planet to the Sun sweeps out
+    equal areas in equal times.
+
+3.  The square of the period $P$ of a planet's orbit is proportional to
+    the cube of the length of its **semi-major axis** $a$.
+
+In this packet, we will explore the meaning of these statements and
+investigate their validity. As usual, terms in bold are concepts you
+will need to know for summative evaluations.
+
+# Ellipses
+
+In order to understand Kepler's Laws, we will need to understand
+ellipses. There are a few formulations of ellipses:
+
+- as stretched out circles
+
+- as a locus of points with fixed distance from certain points
+
+- as solutions to algebraic equations
+
+- as conic sections
+
+Proving that they are all equivalent is a difficult task that we will
+not attempt to undertake in detail, but knowing that they are all equivalent will
+help us to gain a deeper understanding of them, and we will do some
+exercises and see some demonstrations of the relations between them.
+
+## Geometric Method
+
+In class, we discussed the geometric construction of ellipses as a locus
+of points a certain distance from two **foci**: Take two distinct points
+$F_{1}$ and $F_{2}$ and take a third distinct point $P$. Let $\ell_{1}$
+denote the length of the line $F_{1}P$ and let $\ell_{2}$ denote the
+length of the line $F_{2}P$. The sum $\ell_{1} + \ell_{2}$ is the sum of
+the distances between $P$ and the foci $F_{1}$ and $F_{2}$. Now consider
+the collection of all points for which the analog of the quantity
+$\ell_{1} + \ell_{2}$ gives the same value as it did for $P$. This
+collection of points is an ellipse with $F_{1}$ as one focus and $F_{2}$
+as the other.
+
+> ### Problem 1.
+>
+> In this exercise, you will make 6 ellipses of various shapes and sizes using card stock (letter paper size), 2 push pins, and 2 loops of string. (Some organization is needed to get all 6 ellipses on the same sheet, so *read all instructions before you start*.)
+>
+> a) Using cardboard matting (provided in class), prick the push pins into your paper. These will be the foci $F_{1}$ and $F_{2}$. Make a short loop of string that fits around your pins. Then take a pencil and pull the loop so that it makes a triangle with vertices $F_{1}$, $F_{2}$, and your pencil tip (called it $P$). Keeping the string taut, trace out an ellipse with your pencil.
+>
+> b) Repeat this two more times with the same loop but with different distances between the foci.
+>
+> c) Make a new loop of a different size and repeat the steps above to make a total of 6 ellipses.
+>
+> d) For each ellipse, draw the line segment passing through the foci and ending on the ellipse. Find the **center** of that line and through that point, draw an orthogonal line segment ending on the ellipse. These are called the axes of the ellipse.
+
+In this exercise, do not let your ellipses overlap! Make sure you leave enough room to fit all of them. If they do not fit, just get a new page and keep working.
+
+One of the axes in part d of this problem is longer than the other. The
+longer axis is the **major axis** of the ellipse and the shorter one is
+the **minor axis**. These are the analogues of the diameter of a circle.
+More convenient notions are the analogs of the radius: these half-axes
+are called the **semi-major axis** and **semi-minor axis**. Note that if
+the lengths of these axes are equal, then the ellipse becomes a circle
+and the foci merge to become the center of the circle.
+
+> ### Problem 2.
+>
+> For each ellipse you made in problem 1, measure and write down the
+>
+> a.  distance from the center of the ellipse to the foci
+>
+> b.  length of the semi-major axis
+>
+> c.  length of the semi-minor axis
+
+## Algebraic Method
+
+Geometric methods are good for constructing ellipses, but if we want to
+plot and manipulate them, algebraic methods are more useful. As our
+starting point, consider the set of solutions to the equation
+
+
+$$
+\left( \frac{x}{a} \right)^{2} + \left( \frac{y}{b} \right)^{2} = 1 \tag{1}
+$$
+
+
+which we recognize as a generalization (stretching) of a circle.
+
+> ### Problem 3.
+>
+> Plot this on Desmos.[^1] Make sliders for $a$ and $b$. What happens when $a \rightarrow b$? What happens when $a \rightarrow \infty$? What's the difference between $a > b$ and $a < b$? To what do $a$ and $b$ correspond in your ellipse?
+
+By convention, we will assume $b \leq a$. As before, we call the
+semi-axis with length $a$ the **semi-major axis** and the semi-axis with
+length $b$ the **semi-minor axis**. How much the circle is stretched
+depends on how different $b$ is from $a$. In other words, it depends on
+how much $\frac{b}{a}$ differs from $1$. A convenient combination used
+to quantify the deviation from a circle is the **eccentricity**
+
+
+$$
+e =\sqrt{1-\left(\frac{b}{a}\right)^2} \quad \quad\textrm{(eccentricity)} \tag{2}
+$$
+
+
+
+> ### Problem 4.
+>
+> In your Desmos ellipse model, change the limits on your sliders so that $b \leq a$. Define a new parameter called $E$ that calculates the eccentricity of your ellipse. (Why can't you define it to be $e$? Hint: Type $e$ and see what it does.[^2]) Vary your $a$ and $b$ until you are convinced you understand what is happening with the eccentricity. The eccentricity is bounded in value between what and what?
+
+> ### Problem 5.
+>
+> By squaring and rearranging the definition (2) of the eccentricity, write a new parameterization of an ellipse in terms of $a$ and $e$ and test it out on Desmos. This is the parameterization used in astronomy. What is happening to the ellipse as $e$ approaches $1$ from below? (Hint: You can successively put in $0.9$, $0.99$,$0.999$, *etc.* for the value by hand if the slider is too difficult to manipulate.)
+
+The **foci** of the ellipse come together when $e \rightarrow 0$ and
+migrate out to the points $(x,y) = ( \pm a,\ 0)$ when $e \rightarrow 1$.
+This suggests that the foci might be at points on the $x$-axis a
+distance $c = e\ a$.
+
+> ### Problem 6.
+>
+> Plot the points $( \pm e\ a,\ 0)$ in addition to your ellipse and move the sliders around. Shift your ellipse so that the focus on the left becomes the origin for any value of $a$ and $e$. We will often assume the ellipse is arranged in this way.
+
+With the left focus singled out for star placement, the point $( - a,0)$
+is the closest point on the ellipse to this focus. This position is
+called **periapsis**. When there is actually a star at the focus, the
+corresponding point on an orbit is called **periastron**.When that star
+is our star, it is called **perihelion**. Similarly, the point on the
+other side of the ellipse farthest from the left focus is called
+**apoapsis**, **apastron**, or, **aphelion**. When we are referring to
+either of these points, the appropriate terminology is
+[**apsis**](https://en.wikipedia.org/wiki/Apsis) and the
+plural is **apsides**.
+
+> ### Problem 7.
+>
+> If the distance from the center to a focus is $ea$, what is the distance from the focus to periapsis? What is the distance from the focus to apoapsis? Draw a picture of a sufficiently-elliptical ellipse[^3] and label the distances $a$, $b$, $c = ea$, and $(1 - e)a$. Also draw the line connecting the point $(0,b)$ to either focus and show it has length $a$.
+
+## Polar parameterization
+
+If you have taken trigonometry, you will be familiar with the identity
+$\sin^{2}(\theta) + \cos^{2}(\theta) = 1$.
+
+> ### Problem 8.
+>
+> If you have taken trig, prove this identity geometrically from Pythagoras's Theorem. If you have not taken trig, do the following things on Desmos:
+>
+> a. Draw the graph for $\sin(x)$. Note that it is periodic. Draw the points $(2\pi\ m,0)$ with $m = 0, \pm 1, \pm 2$, and keep doing that until you have convinced yourself you know what is going on.
+>
+> b. Repeat this exercise for $\cos(x)$.
+>
+> c. Define the functions $f(x) = \sin^{2}(x)$ and $g(x) = \cos^{2}(x)$ and plot them. Note that they look similar, but they are bounded between 0 and 1.[^4]
+>
+> d. Graph the function $f + g$. What does it equal?
+
+> ### Problem 9.
+>
+> Use this property of the sine and cosine to solve the equation for the ellipse in terms of $a$, $b$, $\sin\theta$, and $\cos\theta$. Define the radial coordinate $r =\sqrt{x^2 + y^2}$ and calculate its value. Rewrite all terms with $b$ in it, in terms of $a$ and $e$.
+
+You have now found the ellipse in radial variables, but these are with
+respect to the center of the ellipse and the angle of the ray through
+that center to the point on the ellipse. A more useful parameterization
+has one focus as the origin with the angle being that of the rays
+through that focus relative to the semi-major axis:
+
+
+$$
+r = \frac{a(1 - e^{2})}{1 - e\cos\theta} \tag{3}
+$$
+
+
+> ### Problem 10.
+>
+> Go back to your ellipse from problem 6, and plot another in the form (3). Modify your formula so you get the same ellipse.
+
+## Conic Sections
+
+One of the coolest ways to get ellipses is by taking a 2-dimensional
+cone (technically *half* a cone) and slicing it with a flat
+2-dimensional plane. Such a construction is called a **conic section**.
+Generically, when you slice a 2D shape with another 2D shape, you will
+get a 1D shape where the two objects intersect. So slicing a 2D cone
+with a 2D plane results in a 1D curve. There are various general
+positions of the plane relative to the cone that result in qualitatively
+different shapes. Altogether, there are 4 conic sections: circle,
+ellipse, parabola, and hyperbola.
+
+> ### Problem 11.
+>
+> Construct a model of the cone using the pink cardstock in the back of the room. Take a copy of the green cardstock and cut out the indicated shapes. Explain how to use the green part to show that the conic sections are exactly those stated. What is special about the circle and the hyperbola?
+
+[^1]: If you have not already done so, please sign up for a Desmos
+    account so that you can save your work. There will be many occasions
+    in which we will either return to old work for reference or use it
+    to make new models.
+
+[^2]: In these notes we will continue to use the lowercase *e* for
+    eccentricity even though you must remember to type *E* in Desmos. We
+    do this because nowhere in the math or astronomy literature is the
+    capital *E* used for this concept.
+
+[^3]: You can use your cardstock ellipses from problem 1 for this by
+    carefully cutting out the ellipses from that problem so that you
+    have a template for tracing ellipses.
+
+[^4]: Bonus points for anyone who can show that these are sinusoidal
+    curves. (Hint: The proof uses angle theorems from trig.)
