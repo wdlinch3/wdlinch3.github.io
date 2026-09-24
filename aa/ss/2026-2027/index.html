@@ -32,6 +32,18 @@ layout: aa_ss_class
   </ul>
 </nav>
 
+{% if current_class.textbook %}
+<section class="aa-lesson-card" aria-labelledby="course-textbook-title">
+  <h2 id="course-textbook-title">{{ current_class.textbook.title }}</h2>
+  <p>{{ current_class.textbook.description }}</p>
+  <div class="aa-lesson-actions">
+    <a href="{{ current_class.textbook.reading_url }}">Read online</a>
+    <a href="{{ current_class.textbook.pdf_url }}">Download textbook (PDF)</a>
+    <a href="{{ current_class.textbook.book_url }}">{{ current_class.textbook.publisher }} book page</a>
+  </div>
+</section>
+{% endif %}
+
 {% if current_class.software_help %}
   <h2>{{ current_class.software_help.title }}</h2>
 

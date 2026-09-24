@@ -13,6 +13,13 @@ ss:
         url: "https://activities.tjhsst.edu/astroteam/"
       - title: William D. Linch III
         url: "https://activities.tjhsst.edu/astro/contact/index.html"
+    textbook:
+      title: "Course textbook: Astronomy 2e"
+      publisher: "OpenStax"
+      book_url: "https://openstax.org/details/books/astronomy-2e"
+      description: "Read our course textbook online, or download the free PDF to study offline."
+      reading_url: "https://openstax.org/books/astronomy-2e/pages/1-introduction"
+      pdf_url: "https://assets.openstax.org/oscms-prodcms/media/documents/astronomy-2e_-_WEB.pdf"
     software_help:
       title: Software help
       description: "Quick guides for the software used in Advanced Astronomy."
@@ -54,3 +61,8 @@ ss:
         download_url: "/aa/assignments/x_dimensional_analysis.zip"
         status: available
         description: "Dimensions and units, scaling relations, and applications to gravity, oscillations, and planetary orbits."
+      - title: "Kepler’s Laws (Part I)"
+        url: "/aa/ss/kepler1/"
+        download_url: "/aa/assignments/ss_kepler1.zip"
+        status: available
+        description: "Kepler’s laws, geometric and algebraic constructions of ellipses, eccentricity, apsides, and conic sections."
