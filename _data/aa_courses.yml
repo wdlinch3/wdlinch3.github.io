@@ -66,6 +66,10 @@ ss:
         download_url: "/aa/assignments/ss_kepler1.zip"
         status: available
         description: "Kepler’s laws, geometric and algebraic constructions of ellipses, eccentricity, apsides, and conic sections."
+        resources:
+          - label: Kepler two-body demo
+            url: "https://kepler-two-body-lab.wdlinch3.chatgpt.site"
+            new_tab: true
       - title: "Astrodynamics (Part I)"
         url: "/aa/x/astrodynamics_1/"
         download_url: "/aa/assignments/x_astrodynamics_1.zip"
