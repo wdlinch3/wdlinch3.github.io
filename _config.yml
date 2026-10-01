@@ -1,6 +1,8 @@
 title: William D. Linch III
 
 exclude:
+  - aa/x/astrodynamics_1/astrodynamics_1.qmd
+  - aa/x/astrodynamics_1/SOURCE.md
   - _courseware
   - aa/ss/kepler1/kepler1.qmd
   - aa/ss/kepler1/SOURCE.md
