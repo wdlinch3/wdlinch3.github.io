@@ -67,6 +67,8 @@ ss:
         status: available
         description: "Kepler’s laws, geometric and algebraic constructions of ellipses, eccentricity, apsides, and conic sections."
         resources:
+          - label: Student PDF
+            url: "/aa/ss/kepler1/ss_kepler1.pdf"
           - label: Kepler two-body demo
             url: "https://kepler-two-body-lab.wdlinch3.chatgpt.site"
             new_tab: true

@@ -1,5 +1,6 @@
 ---
 title: "Kepler’s Laws (Part I)"
+format-links: false
 format:
   html:
     theme: darkly
@@ -9,15 +10,34 @@ format:
     toc-depth: 2
     code-tools: false
     output-file: index.html
+  pdf:
+    documentclass: article
+    pdf-engine: lualatex
+    papersize: letter
+    fontsize: 11pt
+    geometry:
+      - margin=1in
+    colorlinks: true
+    toc: false
+    include-in-header:
+      text: |
+        \usepackage{etoolbox}
+        \usepackage{needspace}
+        \BeforeBeginEnvironment{quote}{\Needspace{14\baselineskip}}
+    keep-tex: false
+    output-file: ss_kepler1.pdf
 execute:
   enabled: false
 ---
 
+::: {.content-visible when-format="html"}
 <nav class="packet-nav" aria-label="Packet navigation">
 <a href="/aa/ss/2026-2027/">AA:SS class page</a>
 <a href="/aa/assignments/ss_kepler1.zip">Download assignment (.zip)</a>
+<a href="/aa/ss/kepler1/ss_kepler1.pdf">Student PDF</a>
 <a href="/">Home</a>
 </nav>
+:::
 
 - Kepler's Laws in brief
 
@@ -125,11 +145,9 @@ Geometric methods are good for constructing ellipses, but if we want to
 plot and manipulate them, algebraic methods are more useful. As our
 starting point, consider the set of solutions to the equation
 
-
 $$
 \left( \frac{x}{a} \right)^{2} + \left( \frac{y}{b} \right)^{2} = 1 \tag{1}
 $$
-
 
 which we recognize as a generalization (stretching) of a circle.
 
@@ -144,12 +162,9 @@ depends on how different $b$ is from $a$. In other words, it depends on
 how much $\frac{b}{a}$ differs from $1$. A convenient combination used
 to quantify the deviation from a circle is the **eccentricity**
 
-
 $$
 e =\sqrt{1-\left(\frac{b}{a}\right)^2} \quad \quad\textrm{(eccentricity)} \tag{2}
 $$
-
-
 
 > ### Problem 4.
 >
@@ -168,10 +183,10 @@ distance $c = e\ a$.
 >
 > Plot the points $( \pm e\ a,\ 0)$ in addition to your ellipse and move the sliders around. Shift your ellipse so that the focus on the left becomes the origin for any value of $a$ and $e$. We will often assume the ellipse is arranged in this way.
 
-With the left focus singled out for star placement, the point $( - a,0)$
+With the left focus singled out for star placement, the point $(-(1-e)a,0)$
 is the closest point on the ellipse to this focus. This position is
 called **periapsis**. When there is actually a star at the focus, the
-corresponding point on an orbit is called **periastron**.When that star
+corresponding point on an orbit is called **periastron**. When that star
 is our star, it is called **perihelion**. Similarly, the point on the
 other side of the ellipse farthest from the left focus is called
 **apoapsis**, **apastron**, or, **aphelion**. When we are referring to
@@ -186,39 +201,53 @@ plural is **apsides**.
 ## Polar parameterization
 
 If you have taken trigonometry, you will be familiar with the identity
-$\sin^{2}(\theta) + \cos^{2}(\theta) = 1$.
+$\sin^{2}(t) + \cos^{2}(t) = 1$.
 
 > ### Problem 8.
 >
-> If you have taken trig, prove this identity geometrically from Pythagoras's Theorem. If you have not taken trig, do the following things on Desmos:
+> If you have taken trig, verify this identity geometrically from Pythagoras's Theorem. If you have not taken trig, do the following things on Desmos:
 >
 > a. Draw the graph for $\sin(x)$. Note that it is periodic. Draw the points $(2\pi\ m,0)$ with $m = 0, \pm 1, \pm 2$, and keep doing that until you have convinced yourself you know what is going on.
 >
 > b. Repeat this exercise for $\cos(x)$.
 >
-> c. Define the functions $f(x) = \sin^{2}(x)$ and $g(x) = \cos^{2}(x)$ and plot them. Note that they look similar, but they are bounded between 0 and 1.[^4]
+> c. Define the functions $f(x) = \sin^{2}(x)$ and $g(x) = \cos^{2}(x)$ and plot them. Note that they look similar and that they are bounded between 0 and 1.[^4]
 >
 > d. Graph the function $f + g$. What does it equal?
 
 > ### Problem 9.
 >
-> Use this property of the sine and cosine to solve the equation for the ellipse in terms of $a$, $b$, $\sin\theta$, and $\cos\theta$. Define the radial coordinate $r =\sqrt{x^2 + y^2}$ and calculate its value. Rewrite all terms with $b$ in it, in terms of $a$ and $e$.
+> Use this property of the sine and cosine to solve the equation for the ellipse in terms of $a$, $b$, $\sin t$, and $\cos t$. Define the radial coordinate $r =\sqrt{x^2 + y^2}$ and calculate it out, rewriting all terms with $b$ in it in terms of $a$ and $e$.
 
-You have now found the ellipse in radial variables, but these are with
-respect to the center of the ellipse and the angle of the ray through
-that center to the point on the ellipse. A more useful parameterization
-has one focus as the origin with the angle being that of the rays
-through that focus relative to the semi-major axis:
+## Algebro-geometric synthesis
 
+You have now found the ellipse in a parameterization resembling radial variables, but these are not the most convenient variables for a geometric description or the description of orbital motion. For starters, $r=0$ is at the center of the ellipse, whereas Kepler's first law places the primary body at one of the foci. Furthermore, and surprisingly (to me at least), $t$ is not the angle subtended by the semi-major axis and the line connecting the point on the ellipse with the center. Instead, it is a parameter, called the *eccentric anomaly* (usually labeled $E$ in astronomy), that has a far-from-obvious geometrical interpretation discovered by a seventeenth-century polymath named [Philippe de La Hire](https://en.wikipedia.org/wiki/Philippe_de_La_Hire).
+
+![](Images/anomalies.png){width=300px fig-alt="Eccentric anomaly diagram showing the ellipse and two auxiliary circles."}
+
+In the diagram above, $t$ denotes the [eccentric anomaly](https://en.wikipedia.org/wiki/Eccentric_anomaly). The ray from the origin does not intersect the point $P$ on the ellipse.
+
+[Desmos](https://www.desmos.com/calculator/5qnnz0weqs)
+
+A more useful parameterization has one focus as the origin with the angle $\theta$ being that between the ray through that focus to the point on the ellipse and the semi-major axis. This obvious/naïve angle is called the *true anomaly* (often labeled by $\nu$ or $f$). Henceforth, the radial distance (between the point on the ellipse and the focus) will be denoted by $r$ and $\theta$ will denote the true anomaly. In these variables, the equation for the ellipse is given by
 
 $$
 r = \frac{a(1 - e^{2})}{1 - e\cos\theta} \tag{3}
 $$
 
-
 > ### Problem 10.
 >
 > Go back to your ellipse from problem 6, and plot another in the form (3). Modify your formula so you get the same ellipse.
+
+Note that in the two parameterizations of the ellipse, $r$ denotes the "obvious" thing. The two different anomalies are each "obvious" or "naïve" definitions in different mathematical contexts. In the algebraic context (the one we started with as a set of solutions to a quadratic equation in the plane), it was more natural to define the eccentric anomaly $t$ as the parameter along the solution set. In the geometric context (based on distances and angles), the true anomaly $\theta$ is the one that is apparent. A formula relating the eccentric anomaly to the true anomaly is
+
+$$
+\cos t= - \frac{e-\cos \theta}{1-e \cos \theta}
+$$
+
+If you are very interested, you can use it to derive the form (3) from your previous work, but you should remember to first shift the origin from the center to the focus. For more about these anomalies and how to translate between them, you could start [here](https://en.wikipedia.org/wiki/Eccentric_anomaly), but I warn you that it's a rabbit hole!
+
+Warning: All my anomalies are off by $\pi$. For graphical reasons, I shifted the ellipses to the right so that most of it has positive values of $x$. However, astronomers naturally start the anomalies as periapsis not apoapsis, so my $\theta =0$ is would be $\theta=\pi$ in the astronomy literature. If your explorations lead you to strange signs, this is probably the reason.
 
 ## Conic Sections
 
@@ -236,19 +265,14 @@ ellipse, parabola, and hyperbola.
 >
 > Construct a model of the cone using the pink cardstock in the back of the room. Take a copy of the green cardstock and cut out the indicated shapes. Explain how to use the green part to show that the conic sections are exactly those stated. What is special about the circle and the hyperbola?
 
-[^1]: If you have not already done so, please sign up for a Desmos
-    account so that you can save your work. There will be many occasions
-    in which we will either return to old work for reference or use it
-    to make new models.
+## Additional Material
 
-[^2]: In these notes we will continue to use the lowercase *e* for
-    eccentricity even though you must remember to type *E* in Desmos. We
-    do this because nowhere in the math or astronomy literature is the
-    capital *E* used for this concept.
+It is not difficult to motivate the definition of an ellipse from the 4 constructions mentioned above, but if we give 4 different definitions, we should prove that they are all equivalent. It may not be too difficult to imagine that if we stretch out a circle, the center separates into two foci and we get the geometrical construction. It is also not hard to see that the algebraic definition is doing the same thing. However, showing that these are equivalent to the compact conic sections is another matter. The first proof was given in 1822 and uses a construction called [Dandelin spheres](https://en.wikipedia.org/wiki/Dandelin_spheres). It is explained beautifully in this 3Blue1Brown [video](https://www.youtube.com/watch?v=pQa_tWZmlGs). I highly recommend it to anyone interested in what a real mathematics proof looks like.
 
-[^3]: You can use your cardstock ellipses from problem 1 for this by
-    carefully cutting out the ellipses from that problem so that you
-    have a template for tracing ellipses.
+[^1]: If you have not already done so, please sign up for a Desmos account so that you can save your work. There will be many occasions in which we will either return to old work for reference or use it to make new models.
 
-[^4]: Bonus points for anyone who can show that these are sinusoidal
-    curves. (Hint: The proof uses angle theorems from trig.)
+[^2]: In these notes we will continue to use the lowercase $e$ for eccentricity even though you must remember to type $E$ in Desmos. We do this because nowhere in the math or astronomy literature is the capital $E$ used for this concept.
+
+[^3]: You can use your cardstock ellipses from problem 1 for this by carefully cutting out the ellipses from that problem so that you have a template for tracing ellipses.
+
+[^4]: "Bonus points" for anyone who can show that these are sinusoidal curves. (Hint: The proof uses angle theorems from trig.)
