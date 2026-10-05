@@ -221,9 +221,9 @@ $\sin^{2}(t) + \cos^{2}(t) = 1$.
 
 ## Algebro-geometric synthesis
 
-You have now found the ellipse in a parameterization resembling radial variables, but these are not the most convenient variables for a geometric description or the description of orbital motion. For starters, $r=0$ is at the center of the ellipse, whereas Kepler's first law places the primary body at one of the foci. Furthermore, and surprisingly (to me at least), $t$ is not the angle subtended by the semi-major axis and the line connecting the point on the ellipse with the center. Instead, it is a parameter, called the *eccentric anomaly* (usually labeled $E$ in astronomy), that has a far-from-obvious geometrical interpretation discovered by a seventeenth-century polymath named [Philippe de La Hire](https://en.wikipedia.org/wiki/Philippe_de_La_Hire).
+You have now found the ellipse in a parameterization resembling radial variables, but these are not the most convenient variables for a geometric description or the description of orbital motion. For starters, $r=0$ is at the center of the ellipse, whereas Kepler's first law places the primary body at one of the foci. Furthermore, and surprisingly (to me at least), $t$ is not the angle subtended by the semi-major axis and the line connecting the point on the ellipse with the center. Instead, it is a parameter, called the *eccentric anomaly* (usually labeled $E$ in astronomy), that has a less-than-obvious geometrical interpretation discovered by a seventeenth-century polymath named [Philippe de La Hire](https://en.wikipedia.org/wiki/Philippe_de_La_Hire).
 
-![](Images/anomalies.png){width=300px fig-alt="Eccentric anomaly diagram showing the ellipse and two auxiliary circles."}
+![](Images/anomalies.png){width=300px fig-alt="Eccentric and true anomaly diagram." fig-cap=""}
 
 In the diagram above, $t$ denotes the [eccentric anomaly](https://en.wikipedia.org/wiki/Eccentric_anomaly). The ray from the origin does not intersect the point $P$ on the ellipse.
 
@@ -248,6 +248,86 @@ $$
 If you are very interested, you can use it to derive the form (3) from your previous work, but you should remember to first shift the origin from the center to the focus. For more about these anomalies and how to translate between them, you could start [here](https://en.wikipedia.org/wiki/Eccentric_anomaly), but I warn you that it's a rabbit hole!
 
 Warning: All my anomalies are off by $\pi$. For graphical reasons, I shifted the ellipses to the right so that most of it has positive values of $x$. However, astronomers naturally start the anomalies as periapsis not apoapsis, so my $\theta =0$ is would be $\theta=\pi$ in the astronomy literature. If your explorations lead you to strange signs, this is probably the reason.
+
+### Anomaly matching
+
+This is the "solution" to a question I did not ask you. I am writing it for those who really want to carry through the derivations and compare anomalies.
+
+Firstly, my anomalies are off by a summand of $\pi$. Switching to astronomer conventions, define the eccentric anomally by $E=t+\pi$ and the true anomaly by $f=\theta +\pi$. Notice that the signs and cosines will have opposite signs in these variables. Next, let's start with the algebraic definitions, but shift the origin to the left focus (my convention, not astro convention). Then $x=a\left(e+\cos t\right)$ and $y=b\sin t= a\sqrt{1-e^2}\sin t$, so repeatedly using $\sin^2t+\cos^2t=1$,
+
+$$
+\begin{aligned}
+r^2 &=a^2 \left[
+    e^2 +2e\cos t +\cos^2 t + \left(1-e^2\right) \sin^2t
+\right]\cr
+   &=a^2 \left[ 1+ e^2 +2e\cos t -e^2\sin^2t
+\right] \cr
+   &=a^2 \left[ 1+ e^2 +2e\cos t -e^2\left(1-\cos^2t \right)
+\right]\cr
+   &=a^2 \left[ 1 +2e\cos t + e^2\cos^2t
+\right]\cr
+   &=a^2 \left[ 1 + e\cos t
+\right]^2
+\end{aligned}
+$$
+
+we find the satisfying result that
+
+$$
+\boxed{r=a\left( 1+e\cos t\right)}
+$$
+
+Now we must replace this with the true anomaly using the equation for $\cos t$ above. Then
+
+$$
+\begin{aligned}
+r &= a\left( 1 - e \frac{e-\cos \theta}{1-e \cos \theta} \right)\cr
+    &=a\frac{1-e \cos \theta - e^2 + e\cos \theta}{1-e \cos \theta}
+\end{aligned}
+$$
+
+and we recover the polar form we plotted in problem 10.
+
+![](Images/anomalies2.png){width=650px fig-alt="Eccentric and true anomaly diagram." fig-cap=""}
+
+Eccentric and true anomaly ([desmos link](https://www.desmos.com/calculator/pf93gkir7b)): The ellipse with semi-major axis $a$ and semi-minor $b$ is in orange. The blue and red circles have radii $a$ and $b$, respectively. The eccentric anomaly is desribed by the $t$ parameter which is the angle between the back ray and the $+x$-direction. You can clearly see that it does not correspond to the dotted orange line through the point $P$ with coordinates $\pmatrix{x\\y}=\pmatrix{a\cos t\\ b\sin t}$ on the ellipse.  Instead, it goes through both $A$ with coordinates $a\pmatrix{\cos t\\ \sin t}$ and $B$ with coordinates $b\pmatrix{\cos t\\ \sin t}$.
+
+Let's call the angle corresponding to the dotted line $\phi$. Then you can see from the diagram that $\tan \phi$ is smaller than $\tan t$ by a factor of $b/a$. Thus,
+
+$$
+\tan \phi = \frac {b}{a} \tan t
+$$
+
+If you solve it for $t$ and plug it into your parameterization, you will get the correct ellipse as I'm demonstrating here:
+
+![](Images/anomalies3.png){width=500px fig-alt="Eccentric and true anomaly diagram." fig-cap=""}
+
+Note, however, that this still not the true anomaly. To get that, what we really want is the angle $\theta$ of the orange line from the left focus makes with the $+x$-axis. (Yes, I am still using the wrong convention for the purposes of teaching. Sorry!) <!---Doing the trig for that gives
+
+$$
+\left( ea +a\cos t \right) \tan\theta
+    = a\cos t \tan\phi
+    = b \sin t
+$$
+
+or
+
+$$
+\tan \theta = \frac{b}{a}\frac{\sin t}{e +\cos t} = \sqrt{1-e^2}\frac{\sin t}{e +\cos t}
+$$
+
+--->
+
+A final annoying thing is that neither of these are directly related to the physical time parameter of an object in orbit around the attracting focus. The parameter that is directly proportional to this time is called the *mean anomaly* $M$. It is related to the eccentric anomaly by the formula
+
+$$
+M = t+e\sin t
+$$
+
+This is called [Kepler's equation](https://en.wikipedia.org/wiki/Kepler's_equation).
+The bummer about this is that it is a transcendental equation for eccentric anomaly $t$: That's bad news because the radius has a simple expression in terms of the eccentric anomaly, so it is impossible to get a formula in "closed form" for the motion in terms of the physical time!
+
+As eccentric as the eccentric anomaly is, it is a more straightforward parameterization of the *shape* of the orbit than using the true anomaly and much simpler than using the mean anomaly (bascially time).
 
 ## Conic Sections
 
