@@ -1,62 +1,45 @@
-# Kepler I student release — 2026-10-05
+# Kepler I corrected student release — 2026-10-04
+
+Authority: current original `aa_class/aa_ss/source/ss_kepler1/ss_kepler1.ipynb`, snapshotted unchanged. No redesign, source edits, or execution of the instructor notebook.
 
 School class: https://astro2627.sites.tjhsst.edu/ss/2026-2027/
 School reading: https://astro2627.sites.tjhsst.edu/ss/kepler1/
 School ZIP: https://astro2627.sites.tjhsst.edu/assignments/ss_kepler1.zip
-School student PDF: https://astro2627.sites.tjhsst.edu/ss/kepler1/ss_kepler1.pdf
-Website-source routes use the `/aa/` prefix; the Director builder removes it.
+Website-source URLs have an additional `/aa` prefix.
 
-## Authority and provenance
+## Metadata and source fidelity
 
-The current original instructor notebook is `aa_class/aa_ss/source/ss_kepler1/ss_kepler1.ipynb` in the local parent workspace. It was snapshotted unchanged for this release; no notebook content or metadata was edited, and the notebook was not executed. Experimental redesign materials were not used.
+The author removed nbgrader metadata from cell `31ea8975-292d-4ef0-ba2b-f7093338cfad` (formerly grade ID `cell-d0c2e23acc4fd903`, solution/grade true, task/locked false, points 0). Its Anomaly matching discussion is now intentionally visible, together with Images/anomalies2.png and Images/anomalies3.png. Fresh nbgrader generation preserves all 27 cells and exact text/order of all 16 non-solution cells. The remaining 11 solutions become YOUR ANSWER HERE. No code outputs or instructor tests are published.
 
-The private snapshot, staging config, generation evidence, previous canonical release, and complete release record are in `aa_class/instructor_reviews/ss_kepler1/2026-10-05-release/`. The final run record records the exact public-assignment, website, Director, and observed server revisions.
+The ZIP allowlist is ss_kepler1.ipynb and Images/anomalies.png, Images/anomalies2.png, Images/anomalies3.png under one ss_kepler1 directory. Notebook validation, cell comparison, archive extraction/hash checks, and public-release checker passed (errors=0 reviews=0).
 
-| Artifact | SHA256 |
-| --- | --- |
-| Current instructor snapshot | `f6cc97668579cbb9e501932f7ed8cb4afc3513dfe61769a49125a80f1922acca` |
-| Generated student notebook | `40b345ec06e97714927c08f21346296ed7cd645afe8c51c63a7a013a9f941d12` |
-| Student ZIP | `b8dc85bf8520059bef47f79858e1ab980aa9e32b15b882f8f07b4c0ed3c06676` |
-| Reading QMD | `8f679a555d4b24681a283f483ad442e5a159d7eea1c6300579cbdeef87438340` |
-| Rendered HTML | `8cea07ef9627412bb7c57ae2786feda48c2fc0041c6184e4d51fd388672aba82` |
-| Student PDF | `4ba25d50823165673d6ebdcf5591588b3751d09d17596dd077237ec8dfd444c6` |
-| Student figure Images/anomalies.png | `3dabc7296d16765107b5ff5eec525647aa84e0491ecbaeda173adf5a5e26aa16` |
+## Reading and card
 
-## Transformations
+Reading derives from the generated student notebook, omitting placeholders and duplicate title, preserving original problem blockquotes and shared theme. Display delimiters are normalized; only the newly visible discussion has blockquote wrappers removed to keep its displays at top level, and its align environments are wrapped as aligned display math. Image wrappers become Markdown images with equivalent widths and accessibility text without added visible captions. Source wording and mathematical conventions are preserved without scientific rewriting.
 
-Nbgrader 0.9.5 generated all 27 cells. All 12 solution cells, including the supplemental anomaly derivation, become `YOUR ANSWER HERE`. The other 15 cells preserve exact source text and order. There are 11 problems, four footnotes, no code outputs, and one student image dependency. Grade IDs remain stable and unique. The ZIP allowlist is exactly `ss_kepler1/ss_kepler1.ipynb` and `ss_kepler1/Images/anomalies.png`; it excludes all instructor diagrams, old exports, and redesign material.
+Only the Student PDF resource was removed from the card; Read online, Download assignment (.zip), Kepler two-body demo, ordering, description, and other cards are unchanged. The existing PDF artifact and reading navigation link are retained; that PDF is the previous 2026-10-05-release snapshot and has not been regenerated in this correction. It omits the newly visible discussion. The notebook ZIP and HTML are the current corrected release.
 
-The reading is derived from the generated student notebook's non-solution cells. It omits the duplicate title and answer-entry placeholders, normalizes display-math delimiters and trailing Markdown whitespace, and converts the existing HTML image wrapper to Markdown image syntax with equivalent width plus alt text so the same figure appears in HTML and PDF. All instructional wording, equations, problem order, links, and footnotes are retained. The student PDF is seven pages using the course's article/one-inch-margin convention; a print-only space reservation keeps problem headings with their text. It contains no solutions. No instructor PDF is part of this public release.
+## Hashes
 
-Existing card routes, description, and demo link are preserved; the requested student PDF link is added to the existing shared manifest entry. Shared HTML styling is unchanged. Quarto vendor JavaScript is not modified.
+- Instructor snapshot: `31e91c5a60bbbcd3f4e00b48263b4915d2953d21e63cf7b0fbaca1c7be2d583f`
+- Student notebook: `0e36f35854ea7531513a2472c13c9e67b72069dafa6d710f3c653af6a4e22159`
+- Assignment ZIP: `770d665a1e454744f0186b9e7b75f6415a9fe7d222eb81ddbe1b1a17a9f7a7d1`
+- Reading QMD: `6d3a1b90e7e1107f597753a8f1277eaea9e618239af4ac41220b3a7f3af7a874`
+- Rendered HTML: `753eba2fe937757ec52dba71e4664a8e93470c467d9a725db575781012a9e5b1`
 
-## Rebuild commands
+## Rebuild
 
-From the isolated staging course root in the private run record (with explicit `aa_ss` course ID and `source` / `release` directories):
+Private evidence and staged course configuration: `aa_class/instructor_reviews/ss_kepler1/2026-10-04-correction/`.
 
 ```sh
+# From isolated staging, explicit course_id aa_ss and source/release directories:
 nbgrader generate_assignment ss_kepler1 --notebook ss_kepler1 --force --no-db
-```
-
-Install the generated allowlist into `aa_class/aa_ss/release/ss_kepler1/` and the public `aa_assignments/aa_ss/ss_kepler1/`; package it into the same ZIP bytes for the assignment repository and website. From the public-assignment checkout:
-
-```sh
+# From public assignment checkout:
 python3 tools/check_public_release.py --release-root /Users/wdlinch3/Documents/github/aa_class aa_ss/ss_kepler1
-```
-
-From this website root, with a writable TeX cache if needed:
-
-```sh
+# From website checkout:
 quarto render aa/ss/kepler1/kepler1.qmd --to html
-quarto render aa/ss/kepler1/kepler1.qmd --to pdf
 bundle exec jekyll build
 git diff --check
 ```
 
-Quarto 1.9.37 and LuaHBTeX / TeX Live 2026 were used. The QMD and this provenance file remain excluded from Jekyll output. Build Director from the exact merged website commit using its `scripts/build_from_source.py`, then run `scripts/check_site.py` before publication.
-
-## Validation and limits
-
-Notebook validation, exact cell comparison, ZIP integrity/extraction/hash comparison, dependency path/case checks, and public release checker passed (`errors=0 reviews=0`). PDF text/figure checks and rendered-page inspection passed. Local HTTP browser checks at 1440px and 390px confirmed the card links, all 11 problems, 106 rendered math expressions, one loaded figure, zero math/browser errors, and no page overflow. Wide mobile display equations retain the shared theme's horizontal scrolling.
-
-This is a source-faithful build, not a scientific rewrite or comprehensive physics audit. Existing wording and coordinate conventions are preserved. The instructor-only anomaly discussion is suppressed rather than amended. See the private run record for completed CI, Director, and live freshness verification.
+Build Director with scripts/build_from_source.py using the exact merged website SHA; run scripts/check_site.py and fast-forward /site/public. The private RELEASE.md records published revisions and anonymous verification. QMD/provenance remain excluded from Jekyll output.
