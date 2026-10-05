@@ -17,7 +17,7 @@ The ZIP allowlist is ss_kepler1.ipynb and Images/anomalies.png, Images/anomalies
 
 Reading derives from the generated student notebook, omitting placeholders and duplicate title, preserving original problem blockquotes and shared theme. Display delimiters are normalized; only the newly visible discussion has blockquote wrappers removed to keep its displays at top level, and its align environments are wrapped as aligned display math. Image wrappers become Markdown images with equivalent widths and accessibility text without added visible captions. Source wording and mathematical conventions are preserved without scientific rewriting.
 
-Only the Student PDF resource was removed from the card; Read online, Download assignment (.zip), Kepler two-body demo, ordering, description, and other cards are unchanged. The existing PDF artifact and reading navigation link are retained; that PDF is the previous 2026-10-05-release snapshot and has not been regenerated in this correction. It omits the newly visible discussion. The notebook ZIP and HTML are the current corrected release.
+Only the Student PDF resource was removed from the card; Read online, Download assignment (.zip), Kepler two-body demo, ordering, description, and other cards are unchanged. The existing PDF was refreshed on 2026-10-05 from the corrected student reading, including Anomaly matching and all three diagrams. The other 11 solutions remain suppressed. The reading navigation link is unchanged; the class card still has no PDF link. HTML, ZIP, original QMD, notebook metadata and instructional wording are unchanged.
 
 ## Hashes
 
@@ -43,3 +43,14 @@ git diff --check
 ```
 
 Build Director with scripts/build_from_source.py using the exact merged website SHA; run scripts/check_site.py and fast-forward /site/public. The private RELEASE.md records published revisions and anonymous verification. QMD/provenance remain excluded from Jekyll output.
+
+## PDF consistency update — 2026-10-05
+
+PDF SHA256: `edc86dc82bc22b93debbe00708cd14003aa8ae47247c453723a1901aa4a70fac`.
+Public PDF: https://astro2627.sites.tjhsst.edu/ss/kepler1/ss_kepler1.pdf
+
+Ten letter-size pages, all 11 problems and three diagrams. All ten rendered pages were visually inspected; text extraction confirms the intentionally visible discussion. The existing validated student source excludes the other 11 solution cells. No nbgrader rerun was needed.
+
+A private print-staging copy converts four legacy `\pmatrix{...}` wrappers, accepted by MathJax but rejected by amsmath, to equivalent `\begin{pmatrix}...\end{pmatrix}` environments. Entries and surrounding text are unchanged. The original QMD and HTML stay byte-identical.
+
+Rebuild: copy the current kepler1.qmd and Images directory into private staging, perform the four balanced-brace matrix-wrapper replacements, then run `quarto render kepler1.qmd --to pdf -M latex-auto-install:false` with TEXMFVAR and TEXMFCACHE set to writable absolute paths. Install the resulting ss_kepler1.pdf here. Quarto 1.9.37, LuaHBTeX 1.24.0 / TeX Live 2026. Private print input, logs, rendered pages and verification evidence: `aa_class/instructor_reviews/ss_kepler1/2026-10-05-pdf-consistency/`.
