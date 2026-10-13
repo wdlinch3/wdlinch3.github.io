@@ -75,3 +75,8 @@ ss:
         download_url: "/aa/assignments/x_astrodynamics_1.zip"
         status: available
         description: "Newton’s laws, circular motion, gravitation, orbital speeds and periods, and measuring celestial masses."
+      - title: "Astrodynamics (Part II)"
+        url: "/aa/x/astrodynamics_2/"
+        download_url: "/aa/assignments/x_astrodynamics_2.zip"
+        status: available
+        description: "Potential and kinetic energy, gravitational forces from potential-energy slopes, conservation of mechanical energy, escape speed, and the Schwarzschild radius."
