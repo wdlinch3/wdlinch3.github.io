@@ -24,4 +24,4 @@ Website routes: /aa/x/astrodynamics_2/ and /aa/assignments/x_astrodynamics_2.zip
 Intended school routes: https://astro2627.sites.tjhsst.edu/x/astrodynamics_2/ and https://astro2627.sites.tjhsst.edu/assignments/x_astrodynamics_2.zip.
 Class: https://astro2627.sites.tjhsst.edu/ss/2026-2027/.
 
-This preparation is local only. Publication and Director update require the user's next explicit instruction after the build report.
+The local build was verified before publication was authorized. Publication/deployment revisions and live verification are recorded in the private workflow run; a source commit alone does not establish school deployment.
