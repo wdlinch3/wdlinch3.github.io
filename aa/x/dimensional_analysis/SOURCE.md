@@ -35,6 +35,10 @@ Quarto 1.9.37 embeds required assets. No separate support folder or PDF is publi
 
 ## Review note
 
-The source note after Problem 6 calls `sqrt(m/(k*tau))` dimensionless; dimensional consistency requires `sqrt(m/(k*tau^2))`. This source wording is preserved pending instructor direction.
+The source note after Problem 6 calls `sqrt(m/(k*tau))` dimensionless; dimensional consistency requires `sqrt(m/(k*tau^2))`. This historical issue was resolved in the reading-only correction below; the earlier assignment ZIP is unchanged.
 
 Validation: nbformat validation and the existing release checker passed for all 22 cells; ZIP integrity and byte identity passed; Jekyll build passed. Chromium checks at 1440px and 390px verified the card-to-reading interaction, ZIP HTTP 200, nine problem headings, no math errors, no page overflow, and no runtime errors.
+
+## Reading-only correction — 2026-10-13
+
+Reconciled the author-corrected passage with the current instructor notebook (SHA256 `b7ec805acf7519211f731f13c0ea618a2556ee97fed3027c7a6668b12116ad1d`). Existing QMD changed only at this passage and HTML rerendered. Canonical notebook and assignment ZIP have not been rereleased; their prior hashes above remain valid. Private record: `aa_class/aa_x/source/x_dimensional_analysis/workflow_runs/2026-10-13_reading_corrections/record.md`.

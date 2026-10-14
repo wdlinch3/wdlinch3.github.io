@@ -170,7 +170,7 @@ physical relation by dimensional analysis (and some basic physical intuition) al
     oscillation. Express it as an equality with the constant of
     proportionality denoted by $c$.
 
-> N.B: In the previous problem, it was actually a *good* thing that there was no other parameter $\tau$ (this is the Greek lower-case letter tau) with the dimensions of time in the problem. For suppose there had been. Then the parameter $\xi=\sqrt{\frac m{k \tau}}$ would have been *dimensionless* $[\xi]=1$. This would have invalidated our conclusion that $P$ was proportional to $\sqrt{\frac mk}$, because $f(\xi)\sqrt{\frac mk}$ would have the dimensions of time *for any function $f$ of $\xi$!* When this situation arises, the best you can do is admit that there could be a whole unknown function $f(\xi)$ in your answer, and you cannot proceed to conclude much else without more input.
+> N.B: In the previous problem, it was actually a *good* thing that there was no other parameter $\tau$ (this is the Greek lower-case letter tau) with the dimensions of time in the problem. For suppose there had been. Then the parameter $\xi=\frac{1}{\tau}\sqrt{\frac {m}{k}}$ would have been *dimensionless* $[\xi]=1$. This would have invalidated our conclusion that $P$ was proportional to $\sqrt{\frac mk}$, because $f(\xi)\sqrt{\frac mk}$ would have the dimensions of time *for any function $f$ of $\xi$!* When this situation arises, the best you can do is admit that there could be a whole unknown function $f(\xi)$ in your answer, and you cannot proceed to conclude much else without more input.
 
 > ### Problem 7.
 >

@@ -40,3 +40,7 @@ Prior scientific/editorial review notes remain instructor-local. In particular,
 finite versus instantaneous velocity, the velocity/acceleration direction sentence,
 independent lunar-acceleration data and mass-measurement scope warrant later author
 review. These are preserved rather than silently rewritten in this release.
+
+## Reading-only correction — 2026-10-13
+
+Reconciled the author-corrected passage with the current instructor notebook (SHA256 `7ce9fab800c558cab696159dc75e37e963f5b232111d9cdd838b3b02b6b18513`). Existing QMD changed only at this passage and HTML rerendered. Canonical notebook and assignment ZIP have not been rereleased; their prior hashes above remain valid. Private record: `aa_class/aa_x/source/x_astrodynamics_1/workflow_runs/2026-10-13_reading_corrections/record.md`.
