@@ -117,7 +117,7 @@ We will now explain in more detail where this result comes from. Consider the di
 
 The rest of the diagram is supposed to show how the velocity vector changed. Define the change in vector $\Delta \vec{v}=\vec{v}_2-\vec{v}_1$. To visualize it, we have moved $\vec{v}_2$ to the point on the circle midway between $A$ and $B$. Similarly we have moved $\vec{v}_1$, but we have also flipped it over to represent $-\vec{v}_1$. Vectors are added “tip to tail”, so the sum of the two vectors gives the size and direction of the vector $\Delta\vec{v}=\vec{v}_2-\vec{v}_1$.
 
-Now recall that the acceleration vector [(3)](#a) is in the direction of $\vec{v}$, which is pointing directly toward the center of the circle. Such a direction is called **centripetal**-meaning toward the center-so the acceleration of a particle in uniform circular motion is centripetal.
+Now recall that the acceleration vector [(3)](#a) is in the direction of $\Delta \vec{v}$, which is pointing directly toward the center of the circle. Such a direction is called **centripetal**-meaning toward the center-so the acceleration of a particle in uniform circular motion is centripetal.
 
 The size of the centripetal acceleration is often denoted $a_c$. Dimensional analysis implies that $a_c\propto v^2/r$. We will now show that, in fact
 <a id="eq:a_c"></a>

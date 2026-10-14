@@ -54,3 +54,9 @@ Ten letter-size pages, all 11 problems and three diagrams. All ten rendered page
 A private print-staging copy converts four legacy `\pmatrix{...}` wrappers, accepted by MathJax but rejected by amsmath, to equivalent `\begin{pmatrix}...\end{pmatrix}` environments. Entries and surrounding text are unchanged. The original QMD and HTML stay byte-identical.
 
 Rebuild: copy the current kepler1.qmd and Images directory into private staging, perform the four balanced-brace matrix-wrapper replacements, then run `quarto render kepler1.qmd --to pdf -M latex-auto-install:false` with TEXMFVAR and TEXMFCACHE set to writable absolute paths. Install the resulting ss_kepler1.pdf here. Quarto 1.9.37, LuaHBTeX 1.24.0 / TeX Live 2026. Private print input, logs, rendered pages and verification evidence: `aa_class/instructor_reviews/ss_kepler1/2026-10-05-pdf-consistency/`.
+
+## Reading-only correction — 2026-10-13
+
+Reconciled the author-corrected passage with the current instructor notebook (SHA256 `14ef56a767755d0d0bd25957430d5a4f3c135db14a68556a47c72f34d304eb8e`). Existing QMD changed only at this passage and HTML rerendered. Canonical notebook and assignment ZIP have not been rereleased; their prior hashes above remain valid. Private record: `aa_class/aa_ss/source/ss_kepler1/workflow_runs/2026-10-13_reading_corrections/record.md`.
+
+The linked student PDF was rerendered with the same corrected Problem 11 and the existing print-only pmatrix adaptation; ten pages visually inspected.
