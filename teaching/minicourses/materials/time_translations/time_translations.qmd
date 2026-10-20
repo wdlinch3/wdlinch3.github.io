@@ -528,7 +528,7 @@ Write a short paragraph comparing the Poisson bracket and the commutator. Your a
 
 ## Source note and further reading
 
-This packet was adapted from a rough set of notes on time translations, Hamiltonian mechanics, and the Poisson bracket. The present version reorganizes the material into a guided derivation modeled on the minicourse packet *Renormalization Without Quantum Field Theory*.
+This packet was adapted from a rough set of notes on time translations, Hamiltonian mechanics, and the Poisson bracket. The present version reorganizes the material into a guided derivation modeled on the minicourse packet *[Renormalization Without Quantum Field Theory](../renormalization_packet/renormalization_without_qft_student_v3.html)*.
 
 Suggested reading links:
 
