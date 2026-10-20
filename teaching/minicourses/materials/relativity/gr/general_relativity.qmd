@@ -55,6 +55,7 @@ One of the more fundamental of Euclid's postulates is that between any two disti
 The notion of length can be augmented with a direction. There is a unique line segment between $p$ and $p'$ but there are two directions associated to it: one directed from $p$ to $p'$ and another directed from $p'$ to $p$. Each of these defines a **vector**. If the first is called $𝒗$ then the second is called $-𝒗$. The logic in this nomenclature it at starting from $p$ and following $𝒗$, we end up at $p'$. If we then follow $-𝒗$ then we end up back at $p$, so overall, we went nowhere. This is captured in vector equations by stating that doing these two operations amounts to $𝒗 + (-𝒗)= 𝒗 - 𝒗 = 𝟎$.
 
 Note that we can recover the length of a vector $𝒗$ by forgetting about the direction and remembering only the length. To minimize confusing notation, we refer to the length of $𝒗$ as $v$. That is, it is the same letter but not bold. Sometimes it is useful to make a notation for this “forgetful functor”
+
 $$
 || 𝒗  || = v
 $$
@@ -63,49 +64,57 @@ $$
 In the scenario above, if we have a third point $p''∉ L$, then there is a line (segment) $ℓ'$ with endpoints $p$ and $p''$. The lines $ℓ$ and $ℓ'$ intersect only at $p$ and in doing so, there is some measure of how close $ℓ$ and $ℓ'$ are in alignment. This measure is called the angle between these lines; we will denote it by the symbol $θ$.
 
 Going back to our vectors, let us denote the displacement from $p$ to $p'$ by $𝒗$, as before, and the displacement from $p$ to $p''$ by $𝒖$. The line segments being in different directions implies that $𝒗$ and $𝒖$ are not collinear: there is a “nontrivial” angle (*i.e.* not equal to $0$ or $π$) between them. This angle is related to the lengths $ℓ$ and $ℓ'$ by the cosine function:
+
 $$
 \cos θ = \frac{𝒗 \cdot 𝒖}{vu}
 $$
+
 In this formula, the $v=|| 𝒗 ||$ and $u=|| 𝒖 ||$ refer to the lengths of the vectors $𝒗$ and $𝒖$.
 
 #### Inner product {.unnumbered}
 The “$\cdot$” in the formula above refers to the "dot product" we learn in math 4. It is related to the length function by the formula:
+
 $$
 𝒗 \cdot 𝒗 = ||𝒗||² = v²
 \quad \quad ⇔ \quad \quad
 ||𝒗|| = √{𝒗 \cdot 𝒗}
 $$
+
 But we can do more with the dot product because we can use two different vectors. For example, we can compute $𝒗 \cdot 𝒖$ which we learn is the same as $𝒖 \cdot 𝒗$. Indeed, in math 4 we are given these two vectors in $x$-, $y$-, and $z$-components^[Note that this requires a choice of **orthonormal** **basis** which in this case is given by a right-handed coordinate system ($x$-, $y$-, and $z$-axes).]
+
 $$
 \begin{aligned}
 𝒖 = \left( \begin{array}{c}u¹ \\ u² \\ u³ \end{array}\right)
 \quad \quad {\mathrm{and}} \quad \quad
 𝒗 = \left( \begin{array}{c}v¹ \\ v² \\ v³ \end{array}\right)
 \end{aligned}
-\label{components}
-$$
+$$ {#eq-components}
+
 In terms of these components, we may explicitly define the dot product between $𝒖$ and $𝒗$ as
+
 $$
 \begin{aligned}
 𝒖 \cdot 𝒗 = u¹v¹ + u²v² +u³v³
 \end{aligned}
-\label{Euclid}
-$$
+$$ {#eq-euclid}
 
 The dot product is also called the “Euclidean inner product”. It is an operation that takes two vectors and returns a number. In math jargon, such an object is called a **bilinear form**. Since $𝒗 \cdot 𝒖 = 𝒖 \cdot 𝒗$, this is a **symmetric** bilinear form. It is also **non-degenerate** in this sense: If for any vector $𝒖$ the dot product
+
 $$
 𝒖 \cdot 𝒗 = 0   	\quad \quad \textrm{for all } 𝒗,
 $$
+
 then $𝒖=𝟎$. It is important to digest that this is not a condition on $𝒖$ or $𝒗$ because of the “any” and “for all”. Instead, it is a condition on the dot product which says that the dot product does not set to 0 any parts of any vectors. If the dot product between two vectors is $0$ it is because the vectors are orthogonal.
 
 ::: {.callout-note title="Exercise 1"}
-Show that the Euclidean inner product \eqref{Euclid} is non-degenerate. Hint: Write the vector $𝒖$ in components. Then write any vector $𝒗$ in components and write out the dot product. Show that you can always pick components of $𝒗$ so that $𝒖 \cdot 𝒗 ≠  0$.
+Show that the Euclidean inner product ([-@eq-euclid]) is non-degenerate. Hint: Write the vector $𝒖$ in components. Then write any vector $𝒗$ in components and write out the dot product. Show that you can always pick components of $𝒗$ so that $𝒖 \cdot 𝒗 ≠  0$.
 :::
 
 ## Metric
 A non-degenerate, bilinear form is called a **metric**. As we have just seen, a metric takes two vectors and returns a number. This number is directly related to the geometry of the space: It tells us the lengths of vectors and the angles between them.
 
-The most general symmetric, bilinear form $g$ can be written explicitly if we use an orthonormal basis to write vectors in components like we did in \eqref{components}. The words mean that we need one factor of $𝒖$ and one of $𝒗$ components each and it being a generally bilinear form can have any numerical factor for each such component:
+The most general symmetric, bilinear form $g$ can be written explicitly if we use an orthonormal basis to write vectors in components like we did in ([-@eq-components]). The words mean that we need one factor of $𝒖$ and one of $𝒗$ components each and it being a generally bilinear form can have any numerical factor for each such component:
+
 $$
 \begin{aligned}
 g(𝒖, 𝒗) &= g₁₁ u¹v¹ + g₁₂  u¹v² + g₁₃ u¹v³ \\
@@ -113,31 +122,36 @@ g(𝒖, 𝒗) &= g₁₁ u¹v¹ + g₁₂  u¹v² + g₁₃ u¹v³ \\
 	&+g₃₁ u³v¹ + g₃₂  u³v² + g₃₃ u³v³
 \end{aligned}
 $$
-Wow, that's a lot of terms! What happened to the more reasonable rule \eqref{Euclid}??
+
+Wow, that's a lot of terms! What happened to the more reasonable rule ([-@eq-euclid])??
 
 Before we answer this, it is useful to simplify some notation.
 
 ::: {.callout-note title="Exercise 2"}
 Show that
+
 $$
 \begin{aligned}
 g(𝒖, 𝒗) &= \sum_{i=1}^{3} \sum_{j=1}^{3} g_{ij} u^i v^j
 \end{aligned}
 $$
+
 Show that if $g$ is symmetric, then $g_{ji} = g_{ij}$.
 :::
 
 ::: {.callout-note title="Exercise 3"}
-Show that the Euclidean inner product \eqref{Euclid} has $g_{ij}=1$ is $i=j$ and $g_{ij}=0$ otherwise.
+Show that the Euclidean inner product ([-@eq-euclid]) has $g_{ij}=1$ is $i=j$ and $g_{ij}=0$ otherwise.
 :::
 
 The components of the Euclidean inner product are so important that they get their own symbol and a weird name: The *Kronecker $\delta$ symbol* is defined to have
+
 $$
 δ_{ij} =\begin{cases}
 	1& \textrm{ if } i=j\\
 	0& \textrm{ otherwise}
 	\end{cases}
 $$
+
 Therefore, we have shown that the components of the Euclidean inner product are those of the Kronecker $\delta$.
 
 ### Curved space
@@ -173,6 +187,7 @@ In modern language, Newton is saying that there should be a notion of a field th
 The equations for the electromagnetic field were discovered over a span of almost eight decades of experiment and theory by Coulomb (1785), Ørsted (1820), Faraday (1821), Ampère (1825), Gau\ss{} (1833), Lenz (1834), Maxwell (1862), and Heaviside (1884). As such, they should probably be called the Coulomb-Ørsted-Faraday-Ampère-Gau\ss{}-Lenz-Maxwell-Heaviside equations, but nobody has the time for that, so we call them the Maxwell equations for short.
 
 You can take all the physics you want in high school, but you will not see the most illuminating form of the laws until you study at a university where you will eventually learn that, as Heaviside eventually put it,
+
 $$
 \begin{aligned}
 ∇ \cdot 𝑬 = 4πρ
@@ -183,6 +198,7 @@ $$
 	∇ × 𝑩 = \frac {4π}c 𝑱 +\frac 1c\frac{∂𝑬}{∂t}
 \end{aligned}
 $$
+
 In these equations, the electric and magnetic fields are denoted by $𝑬$ and $𝑩$, respectively. If there is electrically charged matter present its distribution is described by the charge density by $\rho$ and the current density by $𝑱$. The factors of $4π$ are the solid angles of a three-dimensional sphere that appear.
 
 We don't have time to dwell on this form of the equations. (It is not yet the most illuminating form.) Instead, we will plow through with some observations to motivate some further improvements to this set of laws. (The first improvement was the introduction of the notion of *field*.)
@@ -204,6 +220,7 @@ Show that in vacuum, Maxwell's field equations are symmetric under the replaceme
 
 This is an example of a *symmetry* of the field equations (*in vacuo*) called electro-magnetic duality.
 Continuing in vacuum,
+
 $$
 \begin{aligned}
 ∇ \cdot 𝑬 = 0
@@ -214,6 +231,7 @@ $$
 	∇ × 𝑩 =  \frac 1c\frac{∂𝑬}{∂t}
 \end{aligned}
 $$
+
 These equations have an important simplifying structure: They are linear in the electromagnetic field, meaning in the set consisting of both $𝑬$ and $𝑩$ together. This means that every term has exactly one factor of either.
 
 ::: {.callout-note title="Exercise 8"}
@@ -224,40 +242,47 @@ This exercise means that if you have two solutions to the field equations, you c
 
 If you take multi-variable calculus, you will learn that the operations $\nabla \cdot$ and $\nabla ×$ can be combined with themselves and each other.
 The results look messy: For any vector field $𝒗$
-$$
-\label{vecID1}
-∇ \cdot (∇ × 𝒗) = 0
-$$
 
 $$
-\label{vecID2}
-∇ × (∇ × 𝒗) = ∇ (∇ \cdot 𝒗) - ∇² 𝒗
+∇ \cdot (∇ × 𝒗) = 0
+$$ {#eq-vecid1}
+
+
+
 $$
+∇ × (∇ × 𝒗) = ∇ (∇ \cdot 𝒗) - ∇² 𝒗
+$$ {#eq-vecid2}
 
 ::: {.callout-note title="Exercise 9"}
-Using the first of these equations \eqref{vecID1}, show that the second and third vacuum Maxwell equations are compatible. Similarly, show that the first and last equations are compatible. Finally, use the second equation \eqref{vecID2} to combine the second and fourth equations. These simplify because of the first and third vacuum Maxwell equations. Use this to show that both of the following equations hold:
+Using the first of these equations ([-@eq-vecid1]), show that the second and third vacuum Maxwell equations are compatible. Similarly, show that the first and last equations are compatible. Finally, use the second equation ([-@eq-vecid2]) to combine the second and fourth equations. These simplify because of the first and third vacuum Maxwell equations. Use this to show that both of the following equations hold:
+
 $$
 \left( -\frac 1{c²} \frac {∂²}{∂t²} + ∇²\right) 𝑬 =0
 \quad \quad \textrm{and}\quad \quad
 \left( -\frac 1{c²} \frac {∂²}{∂t²} + ∇²\right) 𝑩 =0
 $$
+
 :::
 
 Any function $f$ satisfying
+
 $$
 \begin{aligned}
 \left( -\frac 1{c²} \frac {∂²}{∂t²} + ∇²\right) f =0
 \end{aligned}
 $$
+
 is said to satisfy *the wave equation*. To understand why it is called this, let us first simplify to one time and one space dimension.
 
 ::: {.callout-note title="Exercise 10"}
 Show that in one space and one time dimension, the wave equation reduces to
+
 $$
 \begin{aligned}
 0 = \left( -\frac 1{c²} \frac {∂²}{∂t²} + \frac {∂²}{∂x²}\right) f
 \end{aligned}
 $$
+
 Use this to show that $f(t,x) = A\sin(x±ct)$ solves the wave equation.
 :::
 
@@ -271,24 +296,30 @@ What you have shown is that $f(t,x) = A\sin(x-ct)$ describes a sinusoidal wave t
 
 ::: {.callout-note title="Exercise 12"}
 Go back to the three-dimensional wave equation and show that $f(t,x) = A\sin({\mathbf k}\cdot {\mathbf x} - ω t)$ solves the wave equation provided that
+
 $$
-\label{relDispersion}
 c² {\mathbf k} \cdot {\mathbf k} = ω²
-$$
+$$ {#eq-reldispersion}
+
 :::
 
 The formula above is called the relativistic dispersion relation. The vector $\mathbf{k}$ is called the wave vector and $ω$ is called the frequency. The wave vector determines the direction of the wave's propagation.
 
 Taken all together, you have shown that the electromagnetic fields in vacuum are waves that travel as the speed $c$. Any other inertial observer would come to the same conclusion, so this means that *the speed of electromagnetic waves in vacuum is a fundamental constant*: All inertial observers agree on the speed of light in vacuum. Just as with any fundamental constant, we can use it to convert units. In this case, we can *universally* associate a distance $x⁰$ to any time $t$ by defining
+
 $$
 x⁰ = ct
 $$
+
 Now that the time has dimensions of length, we can combine it with the other components of position
+
 $$
 {\mathbf x} =\left( \begin{array}{c} x¹ \\ x² \\x³\end{array}\right)
 = \left( \begin{array}{c} x \\ y \\ z\end{array}\right)
 $$
+
 Note that the superscript numbers are not powers; they are an index that indicates which component we are referring to. Instead of $\mathbf{x}$, we can write $x^i$ where $i=1$ for the $x$-component, $i=2$ for the $y$-component, and $i=3$ for the $z$-component. To this, we are adjoining the time component in the combination $ct$ (so it has the dimensions of length) and extend the range of the $i$ index to include $0$. The tradition is to write the resulting *spacetime index* as a Greek letter from the middle of the alphabet:
+
 $$
 x^μ = \begin{cases}
 	\quad ct & \textrm{ if } μ = 0\\
@@ -297,7 +328,9 @@ x^μ = \begin{cases}
 	\quad z & \textrm{ if } μ = 3\\
 \end{cases}
 $$
+
 Similarly, we take derivatives with respect to these coordinates
+
 $$
 ∂_μ =\frac ∂{∂x^μ} = \begin{cases}
 	\quad \frac 1c\frac ∂{∂t} & \textrm{ if } μ = 0\\
@@ -306,13 +339,16 @@ $$
 	\quad \frac ∂{∂z} & \textrm{ if } μ = 3\\
 \end{cases}
 $$
+
 Note that the index is naturally up on $x^\mu$ and down on $\partial_\mu$.
 
 ::: {.callout-note title="Exercise 13"}
 Calculate the components of $\partial_\mu x^\nu$ by checking each $\mu, \nu, =0,1, 2,3$. Show that
+
 $$
 ∂_μ x^ν = δ_μ^ν
 $$
+
 where, similarly to before, $\delta_\mu^\nu$ is $1$ if $\mu =\nu$ and $0$ otherwise.
 :::
 
@@ -321,19 +357,23 @@ As example of an equation that has two derivatives, let's see how we can reprodu
 
 ::: {.callout-note title="Exercise 14"}
 The most general scalar equation constructed from exactly two derivatives can be written as
+
 $$
 \sum_{\mu =0}^{3} \sum_{\nu =0}^{3} η^{μν} ∂_μ ∂_ν f = 0
 $$
+
 for some set of coefficients $\eta^{\mu\nu}=\eta^{\nu\mu}$. Calculate what these coefficients are in the case of the wave equation. Define another set of coefficients $\eta_{\mu\nu}$ by requiring that these new coefficients satisfy
+
 $$
 \sum_{\lambda =0}^{3} η_{μλ }η^{λν} = δ_μ^ν
 $$
+
 Argue that both $\eta_{\mu\nu}$ and $\eta^{\mu\nu}$ are non-degenerate.
 :::
 
 In the previous exercise, you should have found that
+
 $$
-\label{Minkowski}
 (η_{μν}) = \mathrm{diag}(-1, 1,1,1)
 	= \left(\begin{array}{cccc}
 		-1 &0&0&0\\
@@ -342,14 +382,17 @@ $$
 		0&0&0&1
 	\end{array}
 	\right)
-$$
+$$ {#eq-minkowski}
+
 This is a symmetric and non-degenerate bilinear form, and--as such--a spacetime metric.
 
 ::: {.callout-note title="Exercise 15"}
-Going back to the relativistic dispersion relation \eqref{relDispersion}, define $k⁰ := ω/c$ and show that the relation is given by
+Going back to the relativistic dispersion relation ([-@eq-reldispersion]), define $k⁰ := ω/c$ and show that the relation is given by
+
 $$
 k² := η_{μν} k^μ k^ν = 0
 $$
+
 :::
 
 Vectors like $k^\mu$ are called *spacetime vectors* because they contain both spacial components $\mathbf{k}$ but also another component that corresponds to time, in this case $k⁰=ω/c$. (Recall that in the case of coordinates, the $\mathbf{x}$ where spacial and the 0-th component $x⁰ = ct$ corresponded to time.)
@@ -359,22 +402,27 @@ A *covector* is an object you can pair with a vector to make a number. In terms 
 
 ::: {.callout-note title="Exercise 16"}
 Show that if a vector like $k^\mu$ corresponds to a column
+
 $$
 \left( k^μ \right) =\left( \begin{array}{c} k⁰\\ k¹ \\ k² \\k³\end{array}\right)
 $$
+
 then a covector like $p_\mu$ must correspond to a row
+
 $$
 \left( p_μ \right) =\left( p₀ , p₁ , p₂ ,p₃ \right)
 $$
+
 :::
 
 If you have a vector $k^\mu$ and a metric $g_{\mu\nu}$, for example, the Minkowski metric, then you can make the covector $k_\mu$ associated to the vector by combining
+
 $$
 k_μ := \sum_{\nu =0}^{3} g_{μν} k^ν
 $$
 
 ::: {.callout-note title="Exercise 17"}
-Fix the metric to be the Minkowski metric \eqref{Minkowski}, and  calculate the components of the covector $k_\mu$ in terms of the components of $k^\mu$. Are they exactly equal?
+Fix the metric to be the Minkowski metric ([-@eq-minkowski]), and  calculate the components of the covector $k_\mu$ in terms of the components of $k^\mu$. Are they exactly equal?
 :::
 
 ## Energy, momentum, and mass
@@ -387,19 +435,23 @@ A linear transformation is one that takes a vector $𝒖$ to another vector $�
 
 ::: {.callout-note title="Exercise 19"}
 Suppose a linear transformation preserves the Minkowski square $k²$ of a vector $k^\mu$. Show that this implies that
+
 $$
 \sum_{\rho  =0}^{3}\sum_{\sigma =0}^{3} Λ^ρ{}_μ η_{ρσ} Λ^σ{}_ν
 =\sum_{\rho  =0}^{3}\sum_{\sigma =0}^{3} (Λ^T)_μ{}^ρ η_{ρσ} Λ^σ{}_ν
 = η_{μν}
 $$
+
 Show that as a matrix equation, this reads $\Lambda^T \Lambda = \mathbf{1}$.
 :::
 
 A matrix that satisfies $\Lambda^T \Lambda = \mathbf{1}$ is called an orthogonal matrix. It means that the transpose matrix is the inverse $\Lambda^T =\Lambda^{-1}$.
 Above you showed that the momentum $p^\mu$ of a particle of mass $m$ satisfies
+
 $$
 p² = - (mc)²
 $$
+
 and now you are showing that this relation is unchanged by linear transformations that are orthogonal with respect to the Minkowski metric. Such a transformation is called a *Lorentz transformation*. When spacetime formulae are written correctly in terms of spacetime vectors, covectors, and tensors with indices contracted with the Minkowski metric, then these equations will automatically transform correctly under Lorentz transformations. We say that the equations are *manifestly (Lorentz-)covariant*.
 
 ## Maxwell's field equations: Part II
@@ -417,6 +469,7 @@ Count the number of electromagnetic fields in the combination $(𝑬,𝑩)$. Nex
 
 ::: {.callout-note title="Exercise 22"}
 Argue that in 3D, you can embed the 3 components of a vector $B^k$ into a $3×3$ antisymmetric matrix $B_{ij}$. Define the Levi-Cevita 3-tensor $\varepsilon_{ijk}$ by the formula
+
 $$
 \begin{aligned}
 𝜀_{ijk} := \begin{cases}
@@ -426,6 +479,7 @@ $$
 \end{cases}
 \end{aligned}
 $$
+
 Use it to define $B_{ij} = \sum_{k=1}^{3} \varepsilon_{ijk} B^k$ and calculate the components of the matrix in terms of the components of the vector.
 :::
 
@@ -433,10 +487,11 @@ Now we are in business: We can lift the 3D magnetic field matrix to an antisymme
 
 ::: {.callout-note title="Exercise 23"}
 Consider the equation
+
 $$
-\label{MaxSource}
 \sum_{\mu =0}^{3} ∂_μ F^{μν}=4π J^ν
-$$
+$$ {#eq-maxsource}
+
 Reducing it to 3D notation, we will have a scalar time component and a 3D vector component. Expand these two equations out to show that you recover exactly the correct components of the first and last of Maxwell's equations, respectively.
 :::
 
@@ -450,22 +505,25 @@ Let's now find the remaining Maxwell equations!
 
 ::: {.callout-note title="Exercise 25"}
 Expand out the equations
+
 $$
-\label{MaxBI}
 \sum_{\nu =0}^{3} \sum_{\rho =0}^{3} \sum_{\sigma =0}^{3} 𝜀_{μ ν ρ σ} ∂^ν  F^{ρσ} = 0
-$$
+$$ {#eq-maxbi}
+
 into a scalar equation and a 3D vector equation. Show that you recover the third and second Maxwell equations, respectively.
 :::
 
-Equations \eqref{MaxSource} and \eqref{MaxBI} are the full set of Maxwell equations written in a manifestly Lorentz-covariant form.
+Equations ([-@eq-maxsource]) and ([-@eq-maxbi]) are the full set of Maxwell equations written in a manifestly Lorentz-covariant form.
 
 #### Einstein summation convention {.unnumbered}
-The summation signs are pretty annoying to write and they clutter up the notation. Additionally, they are superfluous because whenever they occur they come together with two indices of the type they are summing over, and furthermore, those indices appear in opposite positions with one up and another down. For example, in \eqref{MaxSource} the only summation $\sum_{\mu =0}^{3}$ is over the index that appears doubled in the expression $\partial_\mu F^{\mu\nu}$. Einstein pointed out that this is always the situation and he suggested we just not write the $\sum_{\mu =0}^{3}$ part and interpret $\partial_\mu F^{\mu\nu}$ as implying that the $\mu$ index is summed from $0$ to $3$. In other words $\partial_\mu F^{\mu\nu}$ means $\sum_{\mu =0}^{3}\partial_\mu F^{\mu\nu}$. Similarly, we abbreviate \eqref{MaxBI} to $\varepsilon_{\mu \nu \rho \sigma} \partial^\nu  F^{\rho\sigma} = 0$. Since the indices $\nu$, $\rho$, and $\sigma$ are repeated, this equation means that we are summing over them. In sum (haha... get it?), the Maxwell equations are
+The summation signs are pretty annoying to write and they clutter up the notation. Additionally, they are superfluous because whenever they occur they come together with two indices of the type they are summing over, and furthermore, those indices appear in opposite positions with one up and another down. For example, in ([-@eq-maxsource]) the only summation $\sum_{\mu =0}^{3}$ is over the index that appears doubled in the expression $\partial_\mu F^{\mu\nu}$. Einstein pointed out that this is always the situation and he suggested we just not write the $\sum_{\mu =0}^{3}$ part and interpret $\partial_\mu F^{\mu\nu}$ as implying that the $\mu$ index is summed from $0$ to $3$. In other words $\partial_\mu F^{\mu\nu}$ means $\sum_{\mu =0}^{3}\partial_\mu F^{\mu\nu}$. Similarly, we abbreviate ([-@eq-maxbi]) to $\varepsilon_{\mu \nu \rho \sigma} \partial^\nu  F^{\rho\sigma} = 0$. Since the indices $\nu$, $\rho$, and $\sigma$ are repeated, this equation means that we are summing over them. In sum (haha... get it?), the Maxwell equations are
+
 $$
 𝜀^{μ ν ρ σ} ∂_ν  F_{ρσ} = 0
 \quad \quad \textrm{and}\quad \quad
 ∂_μ F^{μν}=4π J^ν
 $$
+
 Note that in the first equation all the indices have been flipped.
 
 ::: {.callout-note title="Exercise 26"}
@@ -478,37 +536,45 @@ In order to fix the problems Newton had with his formulation of gravitation, we 
 How do we figure out how to construct this set of differential equations? The idea is quite simple. First we generalize the notion of Lorentz symmetry and apply it to the spacetime metric. Then we need to find something that is covariant under this generalized transformation.
 
 We introduce the line element
+
 $$
 ds² = g_{μ ν}(x) dx^μ ⊗ dx^ν.
 $$
+
 Here and henceforth we are using the Einstein summation convention: the indices $\mu$ and $\nu$ are repeated and are in the correct positions (one up and one down), so this means that we are summing over each from 0 to 3.
 
 Under a *general coordinate transformation* the coordinates $x^\mu$ are replaced with new coordinates $y^\mu$. These new coordinates can depend in an arbitrary way on the old coordinates $x^\mu$, so they are general functions of $x^\mu$, which we write as $y^\mu(x^\nu)$. The only requirement on these functions is that they are smooth and that the Jacobian matrix
+
 $$
 \frac {∂y^μ}{∂x^ν}
 $$
+
 is invertible. This guarantees that the transformation $x→y$ is non-singular and that in principle, we can go backwards $y→x$. If we insist that distances are independent of which coordinate systems we chose to measure them, this means the line element must be invariant under a change of coordinates $x→y(x)$. But $dx^\mu → dy^\mu = \frac {\partial y^\mu}{\partial x^\nu} dx^\nu$ so the line element $ds²$ transforms by
+
 $$
 g_{μ ν}(x) dx^μ ⊗ dx^ν → g_{μ ν}(y) dy^μ ⊗ dy^ν= g_{μ ν}(y) \frac {∂y^μ}{∂x^ρ} \frac {∂y^ν}{∂x^σ}dx^ρ⊗dx^σ =g_{μ ν}(x) dx^μ ⊗ dx^ν
 $$
+
 This means that the metric must transform as
+
 $$
-\label{E:tensor}
 g_{μ ν}(y) =\frac {∂x^ρ}{∂y^μ} g_{ρ σ}(x)  \frac {∂x^σ}{∂y^ν}
-$$
+$$ {#eq-e-tensor}
+
 where $\frac {\partial x}{\partial y}$ are the inverse Jacobian matrices. This means that as matrices
+
 $$
-\label{E:JacInv}
 \frac {∂x^μ}{∂y^λ} \frac {∂y^λ}{∂x^ν}  = δ_ν^μ
 \quad \textrm{and}\quad
 \frac {∂x^λ}{∂y^μ} \frac {∂y^ν}{∂x^λ} =  δ^ν_μ
-$$
+$$ {#eq-e-jacinv}
 
 ::: {.callout-note title="Exercise 27"}
-Recall that a metric $g_{\mu \nu}$ is non-degenerate and therefor has an inverse $g^{\mu \nu}$. Show that $g^{\mu \nu}g_{\mu \nu}=4$ in four spacetime dimensions and $D$ in $D$-dimensional spacetime. Numbers do not change under general coordinate transformations. Use this and the rule \eqref{E:tensor} to derive a rule for the transformation of $g^{\mu \nu}$.
+Recall that a metric $g_{\mu \nu}$ is non-degenerate and therefor has an inverse $g^{\mu \nu}$. Show that $g^{\mu \nu}g_{\mu \nu}=4$ in four spacetime dimensions and $D$ in $D$-dimensional spacetime. Numbers do not change under general coordinate transformations. Use this and the rule ([-@eq-e-tensor]) to derive a rule for the transformation of $g^{\mu \nu}$.
 :::
 
-What you just derived is the transformation rule for a tensor field with two indices up. The rule \eqref{E:tensor} is the rule for a tensor field with two indices down. Similarly, a (co-)vector field transforms by
+What you just derived is the transformation rule for a tensor field with two indices up. The rule ([-@eq-e-tensor]) is the rule for a tensor field with two indices down. Similarly, a (co-)vector field transforms by
+
 $$
 v^μ(x) → v^μ(y) = \frac {∂y^μ}{∂x^ν}v^ν(x)
 \quad \textrm{and}\quad
@@ -517,46 +583,54 @@ $$
 
 ::: {.callout-note title="Exercise 28"}
 Explain in words how these are different. Use your observations to guess the correct transformation of a more complicated tensor of the form
+
 $$
 T_{μ₁ ... μ_p}^{ν₁ ... ν_q} (x) →
 	T_{μ₁ ... μ_p}^{ν₁ ... ν_q} (y) = ???
 $$
+
 :::
 
 ## The covariant derivative
 
 Not everything transforms like a tensor. Consider a vector field $v^\mu(x)$ and let's take its derivative $\partial_\nu$. To the transformation of $\partial_\nu v^\mu(x)$, it helps to first undo the shorthand:
+
 $$
 ∂_νv^μ(x) = \frac{∂v^μ(x)}{∂x^ν} → \frac{∂v^μ(y)}{∂y^ν}
 	= \frac {∂x^ρ}{∂y^ν}\frac{∂}{∂x^ρ}\left( \frac {∂y^μ}{∂x^σ}v^σ(x)\right)
 	= \frac {∂x^ρ}{∂y^ν}\frac {∂²y^μ}{∂x^ρ∂x^σ} v^σ(x)
 	+\frac {∂x^ρ}{∂y^ν}\frac {∂y^μ}{∂x^σ} \frac{∂v^σ(x)}{∂x^ρ}
 $$
+
 The second term on the RHS is the correct transformation for a tensor with one index up and one down, but the first term is all wrong. This is happening because the derivative acts on the Jacobian on its way to acting on the vector field.
 
 Einstein argued that a good theory should not depend on the coordinates you choose to describe it.^[Recall that Newton took the opposite point of view. His first law established a preferred set of coordinates: the Cartesian coordinates of an observer absolutely at rest. This was then generalized to inertial frames of coordinates systems and then, finally, the second law was established in such frames. In Einstein's theory, the field equations should hold in any system of coordinates.]
 To develop such a theory, an indispensable tool is the ability to define tensors from other tensors. Specifically, we need to be able to generalize the derivative so that the new derivative of a tensor is also a tensor. This new derivative is called the *covariant derivative* because it varies (changes under coordinate redefinitions) the same way the tensor does. The coolest symbol in this set of notes is $\nabla$ (by the way, it's called “nabla” or “del”), so we will use that. The proposal is to replace $\partial_\nu v^\mu→ \nabla_\nu v^\mu$ and insist that
+
 $$
-\label{E:covariantD}
 ∇_ν v^μ(y) = \frac {∂x^ρ}{∂y^μ}\frac {∂y^μ}{∂x^σ} ∇_ρv^σ(x)
-$$
+$$ {#eq-e-covariantd}
 
 Since we are generalizing the derivative, we should try to have the first part of $\nabla_\nu = \partial_\nu + \cdots$. But recall that the derivative was the part that gave the non-tensor transformation, so to cancel it, we need the $\cdots$ part to also have a non-tensor transformation. In other words, we want $\nabla ~ \partial + \Gamma$ where $\Gamma$ has a non-tensor part to its transformation. If we can do that, then we use it to cancel the analogous part from the first term.
 
 Next, we will work out how this goes in detail. The calculations are pretty hard-core, but they are typical of calculations in GR.
 Define the *covariant derivative*
+
 $$
-\label{E:covariantDerivative}
 ∇_ν v^μ(x) := ∂_ν v^μ(x) + Γ^μ _{νλ}(x) v^λ(x)
-$$
+$$ {#eq-e-covariantderivative}
+
 for some field $\Gamma^\mu _{\nu\lambda}(x)$. We will show that if, under a coordinate transformation
+
 $$
 Γ^μ _{νλ}(y) = \frac {∂y^μ}{∂x^ρ}\frac {∂x^σ}{∂y^ν}\frac {∂x^τ}{∂y^λ} Γ^ρ_{στ}(x) + \frac {∂²x^ρ}{∂y^ν∂y^λ} \frac {∂y^μ}{∂x^ρ}
 $$
-then the covariant derivative \eqref{E:covariantDerivative} transforms as \eqref{E:covariantD}, that is, covariantly.
+
+then the covariant derivative ([-@eq-e-covariantderivative]) transforms as ([-@eq-e-covariantd]), that is, covariantly.
 
 ::: {.callout-tip title="Proof"}
 This proof is a calculation with many steps and calculus tricks. It is okay if you don't understand it on a first pass. First, we write out the definition of the covariant derivative and the transformation of the terms
+
 $$
 \begin{aligned}
 ∇_ν v^μ(y) &= ∂_ν v^μ(y) + Γ^μ _{νλ}(y) v^λ(y) \\
@@ -564,13 +638,17 @@ $$
 	+\frac {∂x^ρ}{∂y^ν}\frac {∂y^μ}{∂x^σ} \frac{∂v^σ(x)}{∂x^ρ} + 	Γ^μ _{νλ}(y) \frac {∂y^λ}{∂x^σ}v^σ(x) \\
 \end{aligned}
 $$
+
 The second term is the covariant part of the transformation of $\partial v$. Let's complete it by writing out the transformation of $\Gamma$ according to the rule above:
+
 $$
 \frac {∂x^ρ}{∂y^ν}\frac {∂y^μ}{∂x^σ} Γ^σ_{ρτ}(x)v^τ (x)
 + \frac {∂²x^ρ}{∂y^ν∂y^λ} \frac {∂y^μ}{∂x^ρ}
 	\frac {∂y^λ}{∂x^σ}v^σ(x)
 $$
+
 The structure of the Jacobian terms on $\Gamma$ is exactly that of the terms on $\partial v$ so we can combine them into
+
 $$
 \frac {∂x^ρ}{∂y^ν}\frac {∂²y^μ}{∂x^ρ∂x^σ} v^σ(x)
 +\frac {∂x^ρ}{∂y^ν}\frac {∂y^μ}{∂x^σ} \left[
@@ -578,40 +656,53 @@ $$
 	+ \frac {∂²x^ρ}{∂y^ν∂y^λ} \frac {∂y^μ}{∂x^ρ}
 	\frac {∂y^λ}{∂x^σ}v^σ(x)
 $$
-The term in brackets is $\nabla v$, so the middle term is the same as the RHS of \eqref{E:covariantD}. Therefore, if we can show that the first and last terms cancel then we are done. In order to see this, we first rewrite these terms writing out the derivatives
+
+The term in brackets is $\nabla v$, so the middle term is the same as the RHS of ([-@eq-e-covariantd]). Therefore, if we can show that the first and last terms cancel then we are done. In order to see this, we first rewrite these terms writing out the derivatives
 somewhat more explicitly:
+
 $$
 \frac {∂x^ρ}{∂y^ν}\frac {∂}{∂x^ρ} \left(\frac {∂y^μ}{∂x^σ} \right)v^σ(x)
 	+ \frac {∂}{∂y^ν}\left( \frac {∂x^ρ}{∂y^λ} \right)\frac {∂y^μ}{∂x^ρ}
 	\frac {∂y^λ}{∂x^σ}v^σ(x)
 $$
+
 On the first term, we use the chain rule from calculus:
+
 $$
 \frac {∂x^ρ}{∂y^ν}\frac {∂}{∂x^ρ} = \frac {∂}{∂y^ν}
 $$
-On the second term we do something similar: Note that the derivative acts on the first Jacobian matrix which is contracted on the second Jacobian matrix. Recall also that these matrices are inverse to one another and they are contracted, so they satisfy \eqref{E:JacInv}. Now do a calculus trick (related to integration by parts): We take a derivative of this latter equation to get
+
+On the second term we do something similar: Note that the derivative acts on the first Jacobian matrix which is contracted on the second Jacobian matrix. Recall also that these matrices are inverse to one another and they are contracted, so they satisfy ([-@eq-e-jacinv]). Now do a calculus trick (related to integration by parts): We take a derivative of this latter equation to get
+
 $$
 0=\frac {∂}{∂y^ν}\left( δ^μ_λ \right)
 =\frac {∂}{∂y^ν}\left( \frac {∂x^ρ}{∂y^λ} \frac {∂y^μ}{∂x^ρ}\right)
 =\frac {∂}{∂y^ν}\left( \frac {∂x^ρ}{∂y^λ} \right)\frac {∂y^μ}{∂x^ρ}
 +\frac {∂x^ρ}{∂y^λ} \frac {∂}{∂y^ν}\left( \frac {∂y^μ}{∂x^ρ}\right)
 $$
+
 This implies that
+
 $$
 \frac {∂}{∂y^ν}\left( \frac {∂x^ρ}{∂y^λ} \right)\frac {∂y^μ}{∂x^ρ} =
 -\frac {∂x^ρ}{∂y^λ} \frac {∂}{∂y^ν}\left( \frac {∂y^μ}{∂x^ρ}\right)
 $$
+
 Taken together, this shows that the last two terms reduce to
+
 $$
 \frac {∂}{∂y^ν} \left(\frac {∂y^μ}{∂x^σ} \right)v^σ(x)
 	-  \frac {∂x^ρ}{∂y^λ} \frac {∂}{∂y^ν}\left(\frac {∂y^μ}{∂x^ρ}\right)
 	\frac {∂y^λ}{∂x^σ}v^σ(x)
 $$
+
 In the second term the first and last Jacobians are contracted on the $\lambda$ index, so they reduce to a Kronecker delta again. Thus, the non-covariant terms reduce to
+
 $$
 \frac {∂}{∂y^ν} \left(\frac {∂y^μ}{∂x^σ} \right)v^σ(x)
 	- \frac {∂}{∂y^ν}\left( \frac {∂y^μ}{∂x^σ}\right)v^σ(x) ≡ 0
 $$
+
 :::
 
 In this proof, we showed that the noncovariant terms in the transformation of $\nabla v$ canceled, leaving only the covariant ones. For this reason, $\nabla v$ transforms covariantly provided $v$ does, thereby justifying the term “covariant derivative”.
@@ -627,6 +718,7 @@ R^λ{}_{μνρ} v^ρ = ∇_μ ∇_ν v^λ - ∇_ν ∇_μ v^λ
 $$
 
 It is a tedious exercise to work out the details, but it is not hard to see that the structure of the Riemann tensor is
+
 $$
 {\mathbf{Riem}}~ ∂Γ + Γ Γ
 $$

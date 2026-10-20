@@ -152,39 +152,47 @@ window.Quarto = {
 <section id="vectors" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="vectors">Vectors</h4>
 <p>The notion of length can be augmented with a direction. There is a unique line segment between <span class="math inline">\(p\)</span> and <span class="math inline">\(p'\)</span> but there are two directions associated to it: one directed from <span class="math inline">\(p\)</span> to <span class="math inline">\(p'\)</span> and another directed from <span class="math inline">\(p'\)</span> to <span class="math inline">\(p\)</span>. Each of these defines a <strong>vector</strong>. If the first is called <span class="math inline">\(𝒗\)</span> then the second is called <span class="math inline">\(-𝒗\)</span>. The logic in this nomenclature it at starting from <span class="math inline">\(p\)</span> and following <span class="math inline">\(𝒗\)</span>, we end up at <span class="math inline">\(p'\)</span>. If we then follow <span class="math inline">\(-𝒗\)</span> then we end up back at <span class="math inline">\(p\)</span>, so overall, we went nowhere. This is captured in vector equations by stating that doing these two operations amounts to <span class="math inline">\(𝒗 + (-𝒗)= 𝒗 - 𝒗 = 𝟎\)</span>.</p>
-<p>Note that we can recover the length of a vector <span class="math inline">\(𝒗\)</span> by forgetting about the direction and remembering only the length. To minimize confusing notation, we refer to the length of <span class="math inline">\(𝒗\)</span> as <span class="math inline">\(v\)</span>. That is, it is the same letter but not bold. Sometimes it is useful to make a notation for this “forgetful functor” <span class="math display">\[
+<p>Note that we can recover the length of a vector <span class="math inline">\(𝒗\)</span> by forgetting about the direction and remembering only the length. To minimize confusing notation, we refer to the length of <span class="math inline">\(𝒗\)</span> as <span class="math inline">\(v\)</span>. That is, it is the same letter but not bold. Sometimes it is useful to make a notation for this “forgetful functor”</p>
+<p><span class="math display">\[
 || 𝒗  || = v
 \]</span></p>
 </section>
 <section id="angle" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="angle">Angle</h4>
 <p>In the scenario above, if we have a third point <span class="math inline">\(p''∉ L\)</span>, then there is a line (segment) <span class="math inline">\(ℓ'\)</span> with endpoints <span class="math inline">\(p\)</span> and <span class="math inline">\(p''\)</span>. The lines <span class="math inline">\(ℓ\)</span> and <span class="math inline">\(ℓ'\)</span> intersect only at <span class="math inline">\(p\)</span> and in doing so, there is some measure of how close <span class="math inline">\(ℓ\)</span> and <span class="math inline">\(ℓ'\)</span> are in alignment. This measure is called the angle between these lines; we will denote it by the symbol <span class="math inline">\(θ\)</span>.</p>
-<p>Going back to our vectors, let us denote the displacement from <span class="math inline">\(p\)</span> to <span class="math inline">\(p'\)</span> by <span class="math inline">\(𝒗\)</span>, as before, and the displacement from <span class="math inline">\(p\)</span> to <span class="math inline">\(p''\)</span> by <span class="math inline">\(𝒖\)</span>. The line segments being in different directions implies that <span class="math inline">\(𝒗\)</span> and <span class="math inline">\(𝒖\)</span> are not collinear: there is a “nontrivial” angle (<em>i.e.</em> not equal to <span class="math inline">\(0\)</span> or <span class="math inline">\(π\)</span>) between them. This angle is related to the lengths <span class="math inline">\(ℓ\)</span> and <span class="math inline">\(ℓ'\)</span> by the cosine function: <span class="math display">\[
+<p>Going back to our vectors, let us denote the displacement from <span class="math inline">\(p\)</span> to <span class="math inline">\(p'\)</span> by <span class="math inline">\(𝒗\)</span>, as before, and the displacement from <span class="math inline">\(p\)</span> to <span class="math inline">\(p''\)</span> by <span class="math inline">\(𝒖\)</span>. The line segments being in different directions implies that <span class="math inline">\(𝒗\)</span> and <span class="math inline">\(𝒖\)</span> are not collinear: there is a “nontrivial” angle (<em>i.e.</em> not equal to <span class="math inline">\(0\)</span> or <span class="math inline">\(π\)</span>) between them. This angle is related to the lengths <span class="math inline">\(ℓ\)</span> and <span class="math inline">\(ℓ'\)</span> by the cosine function:</p>
+<p><span class="math display">\[
 \cos θ = \frac{𝒗 \cdot 𝒖}{vu}
-\]</span> In this formula, the <span class="math inline">\(v=|| 𝒗 ||\)</span> and <span class="math inline">\(u=|| 𝒖 ||\)</span> refer to the lengths of the vectors <span class="math inline">\(𝒗\)</span> and <span class="math inline">\(𝒖\)</span>.</p>
+\]</span></p>
+<p>In this formula, the <span class="math inline">\(v=|| 𝒗 ||\)</span> and <span class="math inline">\(u=|| 𝒖 ||\)</span> refer to the lengths of the vectors <span class="math inline">\(𝒗\)</span> and <span class="math inline">\(𝒖\)</span>.</p>
 </section>
 <section id="inner-product" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="inner-product">Inner product</h4>
-<p>The “<span class="math inline">\(\cdot\)</span>” in the formula above refers to the “dot product” we learn in math 4. It is related to the length function by the formula: <span class="math display">\[
+<p>The “<span class="math inline">\(\cdot\)</span>” in the formula above refers to the “dot product” we learn in math 4. It is related to the length function by the formula:</p>
+<p><span class="math display">\[
 𝒗 \cdot 𝒗 = ||𝒗||² = v²
 \quad \quad ⇔ \quad \quad
 ||𝒗|| = √{𝒗 \cdot 𝒗}
-\]</span> But we can do more with the dot product because we can use two different vectors. For example, we can compute <span class="math inline">\(𝒗 \cdot 𝒖\)</span> which we learn is the same as <span class="math inline">\(𝒖 \cdot 𝒗\)</span>. Indeed, in math 4 we are given these two vectors in <span class="math inline">\(x\)</span>-, <span class="math inline">\(y\)</span>-, and <span class="math inline">\(z\)</span>-components<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <span class="math display">\[
+\]</span></p>
+<p>But we can do more with the dot product because we can use two different vectors. For example, we can compute <span class="math inline">\(𝒗 \cdot 𝒖\)</span> which we learn is the same as <span class="math inline">\(𝒖 \cdot 𝒗\)</span>. Indeed, in math 4 we are given these two vectors in <span class="math inline">\(x\)</span>-, <span class="math inline">\(y\)</span>-, and <span class="math inline">\(z\)</span>-components<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p><span id="eq-components"><span class="math display">\[
 \begin{aligned}
 𝒖 = \left( \begin{array}{c}u¹ \\ u² \\ u³ \end{array}\right)
 \quad \quad {\mathrm{and}} \quad \quad
 𝒗 = \left( \begin{array}{c}v¹ \\ v² \\ v³ \end{array}\right)
 \end{aligned}
-\label{components}
-\]</span> In terms of these components, we may explicitly define the dot product between <span class="math inline">\(𝒖\)</span> and <span class="math inline">\(𝒗\)</span> as <span class="math display">\[
+\tag{1}\]</span></span></p>
+<p>In terms of these components, we may explicitly define the dot product between <span class="math inline">\(𝒖\)</span> and <span class="math inline">\(𝒗\)</span> as</p>
+<p><span id="eq-euclid"><span class="math display">\[
 \begin{aligned}
 𝒖 \cdot 𝒗 = u¹v¹ + u²v² +u³v³
 \end{aligned}
-\label{Euclid}
-\]</span></p>
-<p>The dot product is also called the “Euclidean inner product”. It is an operation that takes two vectors and returns a number. In math jargon, such an object is called a <strong>bilinear form</strong>. Since <span class="math inline">\(𝒗 \cdot 𝒖 = 𝒖 \cdot 𝒗\)</span>, this is a <strong>symmetric</strong> bilinear form. It is also <strong>non-degenerate</strong> in this sense: If for any vector <span class="math inline">\(𝒖\)</span> the dot product <span class="math display">\[
+\tag{2}\]</span></span></p>
+<p>The dot product is also called the “Euclidean inner product”. It is an operation that takes two vectors and returns a number. In math jargon, such an object is called a <strong>bilinear form</strong>. Since <span class="math inline">\(𝒗 \cdot 𝒖 = 𝒖 \cdot 𝒗\)</span>, this is a <strong>symmetric</strong> bilinear form. It is also <strong>non-degenerate</strong> in this sense: If for any vector <span class="math inline">\(𝒖\)</span> the dot product</p>
+<p><span class="math display">\[
 𝒖 \cdot 𝒗 = 0       \quad \quad \textrm{for all } 𝒗,
-\]</span> then <span class="math inline">\(𝒖=𝟎\)</span>. It is important to digest that this is not a condition on <span class="math inline">\(𝒖\)</span> or <span class="math inline">\(𝒗\)</span> because of the “any” and “for all”. Instead, it is a condition on the dot product which says that the dot product does not set to 0 any parts of any vectors. If the dot product between two vectors is <span class="math inline">\(0\)</span> it is because the vectors are orthogonal.</p>
+\]</span></p>
+<p>then <span class="math inline">\(𝒖=𝟎\)</span>. It is important to digest that this is not a condition on <span class="math inline">\(𝒖\)</span> or <span class="math inline">\(𝒗\)</span> because of the “any” and “for all”. Instead, it is a condition on the dot product which says that the dot product does not set to 0 any parts of any vectors. If the dot product between two vectors is <span class="math inline">\(0\)</span> it is because the vectors are orthogonal.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Exercise 1">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -195,20 +203,22 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Show that the Euclidean inner product <span class="math inline">\(\eqref{Euclid}\)</span> is non-degenerate. Hint: Write the vector <span class="math inline">\(𝒖\)</span> in components. Then write any vector <span class="math inline">\(𝒗\)</span> in components and write out the dot product. Show that you can always pick components of <span class="math inline">\(𝒗\)</span> so that <span class="math inline">\(𝒖 \cdot 𝒗 ≠  0\)</span>.</p>
+<p>Show that the Euclidean inner product (<a href="#eq-euclid" class="quarto-xref">2</a>) is non-degenerate. Hint: Write the vector <span class="math inline">\(𝒖\)</span> in components. Then write any vector <span class="math inline">\(𝒗\)</span> in components and write out the dot product. Show that you can always pick components of <span class="math inline">\(𝒗\)</span> so that <span class="math inline">\(𝒖 \cdot 𝒗 ≠  0\)</span>.</p>
 </div>
 </div>
 </section>
 <section id="metric" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="metric"><span class="header-section-number">1.1</span> Metric</h2>
 <p>A non-degenerate, bilinear form is called a <strong>metric</strong>. As we have just seen, a metric takes two vectors and returns a number. This number is directly related to the geometry of the space: It tells us the lengths of vectors and the angles between them.</p>
-<p>The most general symmetric, bilinear form <span class="math inline">\(g\)</span> can be written explicitly if we use an orthonormal basis to write vectors in components like we did in <span class="math inline">\(\eqref{components}\)</span>. The words mean that we need one factor of <span class="math inline">\(𝒖\)</span> and one of <span class="math inline">\(𝒗\)</span> components each and it being a generally bilinear form can have any numerical factor for each such component: <span class="math display">\[
+<p>The most general symmetric, bilinear form <span class="math inline">\(g\)</span> can be written explicitly if we use an orthonormal basis to write vectors in components like we did in (<a href="#eq-components" class="quarto-xref">1</a>). The words mean that we need one factor of <span class="math inline">\(𝒖\)</span> and one of <span class="math inline">\(𝒗\)</span> components each and it being a generally bilinear form can have any numerical factor for each such component:</p>
+<p><span class="math display">\[
 \begin{aligned}
 g(𝒖, 𝒗) &amp;= g₁₁ u¹v¹ + g₁₂  u¹v² + g₁₃ u¹v³ \\
     &amp;+g₂₁ u²v¹ + g₂₂  u²v² + g₂₃ u²v³ \\
     &amp;+g₃₁ u³v¹ + g₃₂  u³v² + g₃₃ u³v³
 \end{aligned}
-\]</span> Wow, that’s a lot of terms! What happened to the more reasonable rule <span class="math inline">\(\eqref{Euclid}\)</span>??</p>
+\]</span></p>
+<p>Wow, that’s a lot of terms! What happened to the more reasonable rule (<a href="#eq-euclid" class="quarto-xref">2</a>)??</p>
 <p>Before we answer this, it is useful to simplify some notation.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Exercise 2">
 <div class="callout-header d-flex align-content-center">
@@ -220,11 +230,13 @@ g(𝒖, 𝒗) &amp;= g₁₁ u¹v¹ + g₁₂  u¹v² + g₁₃ u¹v³ \\
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Show that <span class="math display">\[
+<p>Show that</p>
+<p><span class="math display">\[
 \begin{aligned}
 g(𝒖, 𝒗) &amp;= \sum_{i=1}^{3} \sum_{j=1}^{3} g_{ij} u^i v^j
 \end{aligned}
-\]</span> Show that if <span class="math inline">\(g\)</span> is symmetric, then <span class="math inline">\(g_{ji} = g_{ij}\)</span>.</p>
+\]</span></p>
+<p>Show that if <span class="math inline">\(g\)</span> is symmetric, then <span class="math inline">\(g_{ji} = g_{ij}\)</span>.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="Exercise 3">
@@ -237,15 +249,17 @@ g(𝒖, 𝒗) &amp;= \sum_{i=1}^{3} \sum_{j=1}^{3} g_{ij} u^i v^j
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Show that the Euclidean inner product <span class="math inline">\(\eqref{Euclid}\)</span> has <span class="math inline">\(g_{ij}=1\)</span> is <span class="math inline">\(i=j\)</span> and <span class="math inline">\(g_{ij}=0\)</span> otherwise.</p>
+<p>Show that the Euclidean inner product (<a href="#eq-euclid" class="quarto-xref">2</a>) has <span class="math inline">\(g_{ij}=1\)</span> is <span class="math inline">\(i=j\)</span> and <span class="math inline">\(g_{ij}=0\)</span> otherwise.</p>
 </div>
 </div>
-<p>The components of the Euclidean inner product are so important that they get their own symbol and a weird name: The <em>Kronecker <span class="math inline">\(\delta\)</span> symbol</em> is defined to have <span class="math display">\[
+<p>The components of the Euclidean inner product are so important that they get their own symbol and a weird name: The <em>Kronecker <span class="math inline">\(\delta\)</span> symbol</em> is defined to have</p>
+<p><span class="math display">\[
 δ_{ij} =\begin{cases}
     1&amp; \textrm{ if } i=j\\
     0&amp; \textrm{ otherwise}
     \end{cases}
-\]</span> Therefore, we have shown that the components of the Euclidean inner product are those of the Kronecker <span class="math inline">\(\delta\)</span>.</p>
+\]</span></p>
+<p>Therefore, we have shown that the components of the Euclidean inner product are those of the Kronecker <span class="math inline">\(\delta\)</span>.</p>
 <section id="curved-space" class="level3" data-number="1.1.1">
 <h3 data-number="1.1.1" class="anchored" data-anchor-id="curved-space"><span class="header-section-number">1.1.1</span> Curved space</h3>
 <p>So what if the geometry is not Euclidean? If geometry is determined by the metric, then the answer is easy: There are lots of ways we can generalize the Kronecker metric. Firstly, we can include <strong>off-diagonal</strong> components. These are components of <span class="math inline">\(g_{ij}\)</span> where <span class="math inline">\(j≠i\)</span>. Previously, these were all <span class="math inline">\(0\)</span>, but they could be non-zero, provided only that they are symmetric and non-degenerate.</p>
@@ -293,7 +307,8 @@ g(𝒖, 𝒗) &amp;= \sum_{i=1}^{3} \sum_{j=1}^{3} g_{ij} u^i v^j
 <section id="maxwells-field-equations-part-i" class="level2" data-number="1.3">
 <h2 data-number="1.3" class="anchored" data-anchor-id="maxwells-field-equations-part-i"><span class="header-section-number">1.3</span> Maxwell’s field equations: Part I</h2>
 <p>The equations for the electromagnetic field were discovered over a span of almost eight decades of experiment and theory by Coulomb (1785), Ørsted (1820), Faraday (1821), Ampère (1825), Gau (1833), Lenz (1834), Maxwell (1862), and Heaviside (1884). As such, they should probably be called the Coulomb-Ørsted-Faraday-Ampère-Gau-Lenz-Maxwell-Heaviside equations, but nobody has the time for that, so we call them the Maxwell equations for short.</p>
-<p>You can take all the physics you want in high school, but you will not see the most illuminating form of the laws until you study at a university where you will eventually learn that, as Heaviside eventually put it, <span class="math display">\[
+<p>You can take all the physics you want in high school, but you will not see the most illuminating form of the laws until you study at a university where you will eventually learn that, as Heaviside eventually put it,</p>
+<p><span class="math display">\[
 \begin{aligned}
 ∇ \cdot 𝑬 = 4πρ
 \quad \quad &amp; \quad \quad
@@ -302,7 +317,8 @@ g(𝒖, 𝒗) &amp;= \sum_{i=1}^{3} \sum_{j=1}^{3} g_{ij} u^i v^j
     \quad \quad &amp; \quad \quad
     ∇ × 𝑩 = \frac {4π}c 𝑱 +\frac 1c\frac{∂𝑬}{∂t}
 \end{aligned}
-\]</span> In these equations, the electric and magnetic fields are denoted by <span class="math inline">\(𝑬\)</span> and <span class="math inline">\(𝑩\)</span>, respectively. If there is electrically charged matter present its distribution is described by the charge density by <span class="math inline">\(\rho\)</span> and the current density by <span class="math inline">\(𝑱\)</span>. The factors of <span class="math inline">\(4π\)</span> are the solid angles of a three-dimensional sphere that appear.</p>
+\]</span></p>
+<p>In these equations, the electric and magnetic fields are denoted by <span class="math inline">\(𝑬\)</span> and <span class="math inline">\(𝑩\)</span>, respectively. If there is electrically charged matter present its distribution is described by the charge density by <span class="math inline">\(\rho\)</span> and the current density by <span class="math inline">\(𝑱\)</span>. The factors of <span class="math inline">\(4π\)</span> are the solid angles of a three-dimensional sphere that appear.</p>
 <p>We don’t have time to dwell on this form of the equations. (It is not yet the most illuminating form.) Instead, we will plow through with some observations to motivate some further improvements to this set of laws. (The first improvement was the introduction of the notion of <em>field</em>.)</p>
 <p>The first important observation was that these equations are not consistent with the Newtonian laws. To see this, let’s look at the second equation. The <span class="math inline">\(\nabla\)</span> on the LHS has dimensions of reciprocal length: <span class="math inline">\([\nabla]=\frac 1L\)</span>. The time derivative on the RHS has dimensions of reciprocal time: <span class="math inline">\([\partial/\partial t]=\frac 1T\)</span>, but there is a reciprocal factor of the speed of light.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Exercise 6">
@@ -333,7 +349,8 @@ g(𝒖, 𝒗) &amp;= \sum_{i=1}^{3} \sum_{j=1}^{3} g_{ij} u^i v^j
 <p>Show that in vacuum, Maxwell’s field equations are symmetric under the replacement <span class="math inline">\(𝑬 → 𝑩\)</span> and <span class="math inline">\(𝑩 → - 𝑬\)</span>. Show that doing this transformation twice in a row is the same as doing nothing.</p>
 </div>
 </div>
-<p>This is an example of a <em>symmetry</em> of the field equations (<em>in vacuo</em>) called electro-magnetic duality. Continuing in vacuum, <span class="math display">\[
+<p>This is an example of a <em>symmetry</em> of the field equations (<em>in vacuo</em>) called electro-magnetic duality. Continuing in vacuum,</p>
+<p><span class="math display">\[
 \begin{aligned}
 ∇ \cdot 𝑬 = 0
 \quad \quad &amp; \quad \quad
@@ -342,7 +359,8 @@ g(𝒖, 𝒗) &amp;= \sum_{i=1}^{3} \sum_{j=1}^{3} g_{ij} u^i v^j
     \quad \quad &amp; \quad \quad
     ∇ × 𝑩 =  \frac 1c\frac{∂𝑬}{∂t}
 \end{aligned}
-\]</span> These equations have an important simplifying structure: They are linear in the electromagnetic field, meaning in the set consisting of both <span class="math inline">\(𝑬\)</span> and <span class="math inline">\(𝑩\)</span> together. This means that every term has exactly one factor of either.</p>
+\]</span></p>
+<p>These equations have an important simplifying structure: They are linear in the electromagnetic field, meaning in the set consisting of both <span class="math inline">\(𝑬\)</span> and <span class="math inline">\(𝑩\)</span> together. This means that every term has exactly one factor of either.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Exercise 8">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -357,14 +375,13 @@ g(𝒖, 𝒗) &amp;= \sum_{i=1}^{3} \sum_{j=1}^{3} g_{ij} u^i v^j
 </div>
 </div>
 <p>This exercise means that if you have two solutions to the field equations, you can superpose them (add them together) to get another solution. This would not be true if there were <em>non-linear terms</em> like <span class="math inline">\(𝑬 × 𝑩\)</span> in the equations.</p>
-<p>If you take multi-variable calculus, you will learn that the operations <span class="math inline">\(\nabla \cdot\)</span> and <span class="math inline">\(\nabla ×\)</span> can be combined with themselves and each other. The results look messy: For any vector field <span class="math inline">\(𝒗\)</span> <span class="math display">\[
-\label{vecID1}
+<p>If you take multi-variable calculus, you will learn that the operations <span class="math inline">\(\nabla \cdot\)</span> and <span class="math inline">\(\nabla ×\)</span> can be combined with themselves and each other. The results look messy: For any vector field <span class="math inline">\(𝒗\)</span></p>
+<p><span id="eq-vecid1"><span class="math display">\[
 ∇ \cdot (∇ × 𝒗) = 0
-\]</span></p>
-<p><span class="math display">\[
-\label{vecID2}
+\tag{3}\]</span></span></p>
+<p><span id="eq-vecid2"><span class="math display">\[
 ∇ × (∇ × 𝒗) = ∇ (∇ \cdot 𝒗) - ∇² 𝒗
-\]</span></p>
+\tag{4}\]</span></span></p>
 <div class="callout callout-style-default callout-note callout-titled" title="Exercise 9">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -375,18 +392,21 @@ g(𝒖, 𝒗) &amp;= \sum_{i=1}^{3} \sum_{j=1}^{3} g_{ij} u^i v^j
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Using the first of these equations <span class="math inline">\(\eqref{vecID1}\)</span>, show that the second and third vacuum Maxwell equations are compatible. Similarly, show that the first and last equations are compatible. Finally, use the second equation <span class="math inline">\(\eqref{vecID2}\)</span> to combine the second and fourth equations. These simplify because of the first and third vacuum Maxwell equations. Use this to show that both of the following equations hold: <span class="math display">\[
+<p>Using the first of these equations (<a href="#eq-vecid1" class="quarto-xref">3</a>), show that the second and third vacuum Maxwell equations are compatible. Similarly, show that the first and last equations are compatible. Finally, use the second equation (<a href="#eq-vecid2" class="quarto-xref">4</a>) to combine the second and fourth equations. These simplify because of the first and third vacuum Maxwell equations. Use this to show that both of the following equations hold:</p>
+<p><span class="math display">\[
 \left( -\frac 1{c²} \frac {∂²}{∂t²} + ∇²\right) 𝑬 =0
 \quad \quad \textrm{and}\quad \quad
 \left( -\frac 1{c²} \frac {∂²}{∂t²} + ∇²\right) 𝑩 =0
 \]</span></p>
 </div>
 </div>
-<p>Any function <span class="math inline">\(f\)</span> satisfying <span class="math display">\[
+<p>Any function <span class="math inline">\(f\)</span> satisfying</p>
+<p><span class="math display">\[
 \begin{aligned}
 \left( -\frac 1{c²} \frac {∂²}{∂t²} + ∇²\right) f =0
 \end{aligned}
-\]</span> is said to satisfy <em>the wave equation</em>. To understand why it is called this, let us first simplify to one time and one space dimension.</p>
+\]</span></p>
+<p>is said to satisfy <em>the wave equation</em>. To understand why it is called this, let us first simplify to one time and one space dimension.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Exercise 10">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -397,11 +417,13 @@ g(𝒖, 𝒗) &amp;= \sum_{i=1}^{3} \sum_{j=1}^{3} g_{ij} u^i v^j
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Show that in one space and one time dimension, the wave equation reduces to <span class="math display">\[
+<p>Show that in one space and one time dimension, the wave equation reduces to</p>
+<p><span class="math display">\[
 \begin{aligned}
 0 = \left( -\frac 1{c²} \frac {∂²}{∂t²} + \frac {∂²}{∂x²}\right) f
 \end{aligned}
-\]</span> Use this to show that <span class="math inline">\(f(t,x) = A\sin(x±ct)\)</span> solves the wave equation.</p>
+\]</span></p>
+<p>Use this to show that <span class="math inline">\(f(t,x) = A\sin(x±ct)\)</span> solves the wave equation.</p>
 </div>
 </div>
 <p>The solution you found above is called a plane wave solution.</p>
@@ -429,33 +451,41 @@ g(𝒖, 𝒗) &amp;= \sum_{i=1}^{3} \sum_{j=1}^{3} g_{ij} u^i v^j
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Go back to the three-dimensional wave equation and show that <span class="math inline">\(f(t,x) = A\sin({\mathbf k}\cdot {\mathbf x} - ω t)\)</span> solves the wave equation provided that <span class="math display">\[
-\label{relDispersion}
+<p>Go back to the three-dimensional wave equation and show that <span class="math inline">\(f(t,x) = A\sin({\mathbf k}\cdot {\mathbf x} - ω t)\)</span> solves the wave equation provided that</p>
+<p><span id="eq-reldispersion"><span class="math display">\[
 c² {\mathbf k} \cdot {\mathbf k} = ω²
-\]</span></p>
+\tag{5}\]</span></span></p>
 </div>
 </div>
 <p>The formula above is called the relativistic dispersion relation. The vector <span class="math inline">\(\mathbf{k}\)</span> is called the wave vector and <span class="math inline">\(ω\)</span> is called the frequency. The wave vector determines the direction of the wave’s propagation.</p>
-<p>Taken all together, you have shown that the electromagnetic fields in vacuum are waves that travel as the speed <span class="math inline">\(c\)</span>. Any other inertial observer would come to the same conclusion, so this means that <em>the speed of electromagnetic waves in vacuum is a fundamental constant</em>: All inertial observers agree on the speed of light in vacuum. Just as with any fundamental constant, we can use it to convert units. In this case, we can <em>universally</em> associate a distance <span class="math inline">\(x⁰\)</span> to any time <span class="math inline">\(t\)</span> by defining <span class="math display">\[
+<p>Taken all together, you have shown that the electromagnetic fields in vacuum are waves that travel as the speed <span class="math inline">\(c\)</span>. Any other inertial observer would come to the same conclusion, so this means that <em>the speed of electromagnetic waves in vacuum is a fundamental constant</em>: All inertial observers agree on the speed of light in vacuum. Just as with any fundamental constant, we can use it to convert units. In this case, we can <em>universally</em> associate a distance <span class="math inline">\(x⁰\)</span> to any time <span class="math inline">\(t\)</span> by defining</p>
+<p><span class="math display">\[
 x⁰ = ct
-\]</span> Now that the time has dimensions of length, we can combine it with the other components of position <span class="math display">\[
+\]</span></p>
+<p>Now that the time has dimensions of length, we can combine it with the other components of position</p>
+<p><span class="math display">\[
 {\mathbf x} =\left( \begin{array}{c} x¹ \\ x² \\x³\end{array}\right)
 = \left( \begin{array}{c} x \\ y \\ z\end{array}\right)
-\]</span> Note that the superscript numbers are not powers; they are an index that indicates which component we are referring to. Instead of <span class="math inline">\(\mathbf{x}\)</span>, we can write <span class="math inline">\(x^i\)</span> where <span class="math inline">\(i=1\)</span> for the <span class="math inline">\(x\)</span>-component, <span class="math inline">\(i=2\)</span> for the <span class="math inline">\(y\)</span>-component, and <span class="math inline">\(i=3\)</span> for the <span class="math inline">\(z\)</span>-component. To this, we are adjoining the time component in the combination <span class="math inline">\(ct\)</span> (so it has the dimensions of length) and extend the range of the <span class="math inline">\(i\)</span> index to include <span class="math inline">\(0\)</span>. The tradition is to write the resulting <em>spacetime index</em> as a Greek letter from the middle of the alphabet: <span class="math display">\[
+\]</span></p>
+<p>Note that the superscript numbers are not powers; they are an index that indicates which component we are referring to. Instead of <span class="math inline">\(\mathbf{x}\)</span>, we can write <span class="math inline">\(x^i\)</span> where <span class="math inline">\(i=1\)</span> for the <span class="math inline">\(x\)</span>-component, <span class="math inline">\(i=2\)</span> for the <span class="math inline">\(y\)</span>-component, and <span class="math inline">\(i=3\)</span> for the <span class="math inline">\(z\)</span>-component. To this, we are adjoining the time component in the combination <span class="math inline">\(ct\)</span> (so it has the dimensions of length) and extend the range of the <span class="math inline">\(i\)</span> index to include <span class="math inline">\(0\)</span>. The tradition is to write the resulting <em>spacetime index</em> as a Greek letter from the middle of the alphabet:</p>
+<p><span class="math display">\[
 x^μ = \begin{cases}
     \quad ct &amp; \textrm{ if } μ = 0\\
     \quad x &amp; \textrm{ if } μ = 1\\
     \quad y &amp; \textrm{ if } μ = 2\\
     \quad z &amp; \textrm{ if } μ = 3\\
 \end{cases}
-\]</span> Similarly, we take derivatives with respect to these coordinates <span class="math display">\[
+\]</span></p>
+<p>Similarly, we take derivatives with respect to these coordinates</p>
+<p><span class="math display">\[
 ∂_μ =\frac ∂{∂x^μ} = \begin{cases}
     \quad \frac 1c\frac ∂{∂t} &amp; \textrm{ if } μ = 0\\
     \quad \frac ∂{∂x} &amp; \textrm{ if } μ = 1\\
     \quad \frac ∂{∂y} &amp; \textrm{ if } μ = 2\\
     \quad \frac ∂{∂z} &amp; \textrm{ if } μ = 3\\
 \end{cases}
-\]</span> Note that the index is naturally up on <span class="math inline">\(x^\mu\)</span> and down on <span class="math inline">\(\partial_\mu\)</span>.</p>
+\]</span></p>
+<p>Note that the index is naturally up on <span class="math inline">\(x^\mu\)</span> and down on <span class="math inline">\(\partial_\mu\)</span>.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Exercise 13">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -466,9 +496,11 @@ x^μ = \begin{cases}
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Calculate the components of <span class="math inline">\(\partial_\mu x^\nu\)</span> by checking each <span class="math inline">\(\mu, \nu, =0,1, 2,3\)</span>. Show that <span class="math display">\[
+<p>Calculate the components of <span class="math inline">\(\partial_\mu x^\nu\)</span> by checking each <span class="math inline">\(\mu, \nu, =0,1, 2,3\)</span>. Show that</p>
+<p><span class="math display">\[
 ∂_μ x^ν = δ_μ^ν
-\]</span> where, similarly to before, <span class="math inline">\(\delta_\mu^\nu\)</span> is <span class="math inline">\(1\)</span> if <span class="math inline">\(\mu =\nu\)</span> and <span class="math inline">\(0\)</span> otherwise.</p>
+\]</span></p>
+<p>where, similarly to before, <span class="math inline">\(\delta_\mu^\nu\)</span> is <span class="math inline">\(1\)</span> if <span class="math inline">\(\mu =\nu\)</span> and <span class="math inline">\(0\)</span> otherwise.</p>
 </div>
 </div>
 <p>Note that if we try to successively take two derivatives of a function <span class="math inline">\(\partial_\mu \partial_\nu f\)</span> then we have two downstairs indices. Note also that <span class="math inline">\(\partial_\nu \partial_\mu f\)</span> so this looks like a symmetric bilinear form. As example of an equation that has two derivatives, let’s see how we can reproduce the wave equation.</p>
@@ -482,15 +514,19 @@ x^μ = \begin{cases}
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The most general scalar equation constructed from exactly two derivatives can be written as <span class="math display">\[
+<p>The most general scalar equation constructed from exactly two derivatives can be written as</p>
+<p><span class="math display">\[
 \sum_{\mu =0}^{3} \sum_{\nu =0}^{3} η^{μν} ∂_μ ∂_ν f = 0
-\]</span> for some set of coefficients <span class="math inline">\(\eta^{\mu\nu}=\eta^{\nu\mu}\)</span>. Calculate what these coefficients are in the case of the wave equation. Define another set of coefficients <span class="math inline">\(\eta_{\mu\nu}\)</span> by requiring that these new coefficients satisfy <span class="math display">\[
+\]</span></p>
+<p>for some set of coefficients <span class="math inline">\(\eta^{\mu\nu}=\eta^{\nu\mu}\)</span>. Calculate what these coefficients are in the case of the wave equation. Define another set of coefficients <span class="math inline">\(\eta_{\mu\nu}\)</span> by requiring that these new coefficients satisfy</p>
+<p><span class="math display">\[
 \sum_{\lambda =0}^{3} η_{μλ }η^{λν} = δ_μ^ν
-\]</span> Argue that both <span class="math inline">\(\eta_{\mu\nu}\)</span> and <span class="math inline">\(\eta^{\mu\nu}\)</span> are non-degenerate.</p>
+\]</span></p>
+<p>Argue that both <span class="math inline">\(\eta_{\mu\nu}\)</span> and <span class="math inline">\(\eta^{\mu\nu}\)</span> are non-degenerate.</p>
 </div>
 </div>
-<p>In the previous exercise, you should have found that <span class="math display">\[
-\label{Minkowski}
+<p>In the previous exercise, you should have found that</p>
+<p><span id="eq-minkowski"><span class="math display">\[
 (η_{μν}) = \mathrm{diag}(-1, 1,1,1)
     = \left(\begin{array}{cccc}
         -1 &amp;0&amp;0&amp;0\\
@@ -499,7 +535,8 @@ x^μ = \begin{cases}
         0&amp;0&amp;0&amp;1
     \end{array}
     \right)
-\]</span> This is a symmetric and non-degenerate bilinear form, and–as such–a spacetime metric.</p>
+\tag{6}\]</span></span></p>
+<p>This is a symmetric and non-degenerate bilinear form, and–as such–a spacetime metric.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Exercise 15">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -510,7 +547,8 @@ x^μ = \begin{cases}
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Going back to the relativistic dispersion relation <span class="math inline">\(\eqref{relDispersion}\)</span>, define <span class="math inline">\(k⁰ := ω/c\)</span> and show that the relation is given by <span class="math display">\[
+<p>Going back to the relativistic dispersion relation (<a href="#eq-reldispersion" class="quarto-xref">5</a>), define <span class="math inline">\(k⁰ := ω/c\)</span> and show that the relation is given by</p>
+<p><span class="math display">\[
 k² := η_{μν} k^μ k^ν = 0
 \]</span></p>
 </div>
@@ -527,14 +565,18 @@ k² := η_{μν} k^μ k^ν = 0
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Show that if a vector like <span class="math inline">\(k^\mu\)</span> corresponds to a column <span class="math display">\[
+<p>Show that if a vector like <span class="math inline">\(k^\mu\)</span> corresponds to a column</p>
+<p><span class="math display">\[
 \left( k^μ \right) =\left( \begin{array}{c} k⁰\\ k¹ \\ k² \\k³\end{array}\right)
-\]</span> then a covector like <span class="math inline">\(p_\mu\)</span> must correspond to a row <span class="math display">\[
+\]</span></p>
+<p>then a covector like <span class="math inline">\(p_\mu\)</span> must correspond to a row</p>
+<p><span class="math display">\[
 \left( p_μ \right) =\left( p₀ , p₁ , p₂ ,p₃ \right)
 \]</span></p>
 </div>
 </div>
-<p>If you have a vector <span class="math inline">\(k^\mu\)</span> and a metric <span class="math inline">\(g_{\mu\nu}\)</span>, for example, the Minkowski metric, then you can make the covector <span class="math inline">\(k_\mu\)</span> associated to the vector by combining <span class="math display">\[
+<p>If you have a vector <span class="math inline">\(k^\mu\)</span> and a metric <span class="math inline">\(g_{\mu\nu}\)</span>, for example, the Minkowski metric, then you can make the covector <span class="math inline">\(k_\mu\)</span> associated to the vector by combining</p>
+<p><span class="math display">\[
 k_μ := \sum_{\nu =0}^{3} g_{μν} k^ν
 \]</span></p>
 <div class="callout callout-style-default callout-note callout-titled" title="Exercise 17">
@@ -547,7 +589,7 @@ k_μ := \sum_{\nu =0}^{3} g_{μν} k^ν
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Fix the metric to be the Minkowski metric <span class="math inline">\(\eqref{Minkowski}\)</span>, and calculate the components of the covector <span class="math inline">\(k_\mu\)</span> in terms of the components of <span class="math inline">\(k^\mu\)</span>. Are they exactly equal?</p>
+<p>Fix the metric to be the Minkowski metric (<a href="#eq-minkowski" class="quarto-xref">6</a>), and calculate the components of the covector <span class="math inline">\(k_\mu\)</span> in terms of the components of <span class="math inline">\(k^\mu\)</span>. Are they exactly equal?</p>
 </div>
 </div>
 </section>
@@ -577,16 +619,20 @@ k_μ := \sum_{\nu =0}^{3} g_{μν} k^ν
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Suppose a linear transformation preserves the Minkowski square <span class="math inline">\(k²\)</span> of a vector <span class="math inline">\(k^\mu\)</span>. Show that this implies that <span class="math display">\[
+<p>Suppose a linear transformation preserves the Minkowski square <span class="math inline">\(k²\)</span> of a vector <span class="math inline">\(k^\mu\)</span>. Show that this implies that</p>
+<p><span class="math display">\[
 \sum_{\rho  =0}^{3}\sum_{\sigma =0}^{3} Λ^ρ{}_μ η_{ρσ} Λ^σ{}_ν
 =\sum_{\rho  =0}^{3}\sum_{\sigma =0}^{3} (Λ^T)_μ{}^ρ η_{ρσ} Λ^σ{}_ν
 = η_{μν}
-\]</span> Show that as a matrix equation, this reads <span class="math inline">\(\Lambda^T \Lambda = \mathbf{1}\)</span>.</p>
+\]</span></p>
+<p>Show that as a matrix equation, this reads <span class="math inline">\(\Lambda^T \Lambda = \mathbf{1}\)</span>.</p>
 </div>
 </div>
-<p>A matrix that satisfies <span class="math inline">\(\Lambda^T \Lambda = \mathbf{1}\)</span> is called an orthogonal matrix. It means that the transpose matrix is the inverse <span class="math inline">\(\Lambda^T =\Lambda^{-1}\)</span>. Above you showed that the momentum <span class="math inline">\(p^\mu\)</span> of a particle of mass <span class="math inline">\(m\)</span> satisfies <span class="math display">\[
+<p>A matrix that satisfies <span class="math inline">\(\Lambda^T \Lambda = \mathbf{1}\)</span> is called an orthogonal matrix. It means that the transpose matrix is the inverse <span class="math inline">\(\Lambda^T =\Lambda^{-1}\)</span>. Above you showed that the momentum <span class="math inline">\(p^\mu\)</span> of a particle of mass <span class="math inline">\(m\)</span> satisfies</p>
+<p><span class="math display">\[
 p² = - (mc)²
-\]</span> and now you are showing that this relation is unchanged by linear transformations that are orthogonal with respect to the Minkowski metric. Such a transformation is called a <em>Lorentz transformation</em>. When spacetime formulae are written correctly in terms of spacetime vectors, covectors, and tensors with indices contracted with the Minkowski metric, then these equations will automatically transform correctly under Lorentz transformations. We say that the equations are <em>manifestly (Lorentz-)covariant</em>.</p>
+\]</span></p>
+<p>and now you are showing that this relation is unchanged by linear transformations that are orthogonal with respect to the Minkowski metric. Such a transformation is called a <em>Lorentz transformation</em>. When spacetime formulae are written correctly in terms of spacetime vectors, covectors, and tensors with indices contracted with the Minkowski metric, then these equations will automatically transform correctly under Lorentz transformations. We say that the equations are <em>manifestly (Lorentz-)covariant</em>.</p>
 </section>
 <section id="maxwells-field-equations-part-ii" class="level2" data-number="1.5">
 <h2 data-number="1.5" class="anchored" data-anchor-id="maxwells-field-equations-part-ii"><span class="header-section-number">1.5</span> Maxwell’s field equations: Part II</h2>
@@ -628,7 +674,8 @@ p² = - (mc)²
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Argue that in 3D, you can embed the 3 components of a vector <span class="math inline">\(B^k\)</span> into a <span class="math inline">\(3×3\)</span> antisymmetric matrix <span class="math inline">\(B_{ij}\)</span>. Define the Levi-Cevita 3-tensor <span class="math inline">\(\varepsilon_{ijk}\)</span> by the formula <span class="math display">\[
+<p>Argue that in 3D, you can embed the 3 components of a vector <span class="math inline">\(B^k\)</span> into a <span class="math inline">\(3×3\)</span> antisymmetric matrix <span class="math inline">\(B_{ij}\)</span>. Define the Levi-Cevita 3-tensor <span class="math inline">\(\varepsilon_{ijk}\)</span> by the formula</p>
+<p><span class="math display">\[
 \begin{aligned}
 𝜀_{ijk} := \begin{cases}
     +1 &amp; \textrm{ for } (i,j,k)=(1,2,3) \textrm{ or } (2,3,1) \textrm{ or } (3,1,2)\\
@@ -636,7 +683,8 @@ p² = - (mc)²
     0 &amp; \textrm{ otherwise }
 \end{cases}
 \end{aligned}
-\]</span> Use it to define <span class="math inline">\(B_{ij} = \sum_{k=1}^{3} \varepsilon_{ijk} B^k\)</span> and calculate the components of the matrix in terms of the components of the vector.</p>
+\]</span></p>
+<p>Use it to define <span class="math inline">\(B_{ij} = \sum_{k=1}^{3} \varepsilon_{ijk} B^k\)</span> and calculate the components of the matrix in terms of the components of the vector.</p>
 </div>
 </div>
 <p>Now we are in business: We can lift the 3D magnetic field matrix to an antisymmetric <span class="math inline">\(4×4\)</span> matrix <span class="math inline">\(F_{\mu\nu}\)</span> with exactly enough room left to accommodate the 3 electric field components. When we restrict to spacial components, we recover the magnetic field <span class="math inline">\(F_{ij}=B_{ij}= \sum_{k=1}^{3} \varepsilon_{ijk} B^k\)</span>. The remaining components must have exactly one time component <span class="math inline">\(F_{0j}\)</span> because, by antisymmetry <span class="math inline">\(F₀₀ ≡ 0\)</span>. As you will demonstrate presently, it turns out that the correct normalization is <span class="math inline">\(F_{0j} = - F_{j0}= - E_j\)</span>.</p>
@@ -650,10 +698,11 @@ p² = - (mc)²
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Consider the equation <span class="math display">\[
-\label{MaxSource}
+<p>Consider the equation</p>
+<p><span id="eq-maxsource"><span class="math display">\[
 \sum_{\mu =0}^{3} ∂_μ F^{μν}=4π J^ν
-\]</span> Reducing it to 3D notation, we will have a scalar time component and a 3D vector component. Expand these two equations out to show that you recover exactly the correct components of the first and last of Maxwell’s equations, respectively.</p>
+\tag{7}\]</span></span></p>
+<p>Reducing it to 3D notation, we will have a scalar time component and a 3D vector component. Expand these two equations out to show that you recover exactly the correct components of the first and last of Maxwell’s equations, respectively.</p>
 </div>
 </div>
 <p>To find the remaining equations, it helps to elevate the 3D Levi-Cevita tensor to the 4D Levi-Cevita tensor. Define <span class="math inline">\(\varepsilon_{\mu\nu\rho\sigma}\)</span> to be totally antisymmetric in its indices and normalize it so that <span class="math inline">\(\varepsilon_{0ijk} = \varepsilon_{ijk}\)</span>.</p>
@@ -681,20 +730,23 @@ p² = - (mc)²
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Expand out the equations <span class="math display">\[
-\label{MaxBI}
+<p>Expand out the equations</p>
+<p><span id="eq-maxbi"><span class="math display">\[
 \sum_{\nu =0}^{3} \sum_{\rho =0}^{3} \sum_{\sigma =0}^{3} 𝜀_{μ ν ρ σ} ∂^ν  F^{ρσ} = 0
-\]</span> into a scalar equation and a 3D vector equation. Show that you recover the third and second Maxwell equations, respectively.</p>
+\tag{8}\]</span></span></p>
+<p>into a scalar equation and a 3D vector equation. Show that you recover the third and second Maxwell equations, respectively.</p>
 </div>
 </div>
-<p>Equations <span class="math inline">\(\eqref{MaxSource}\)</span> and <span class="math inline">\(\eqref{MaxBI}\)</span> are the full set of Maxwell equations written in a manifestly Lorentz-covariant form.</p>
+<p>Equations (<a href="#eq-maxsource" class="quarto-xref">7</a>) and (<a href="#eq-maxbi" class="quarto-xref">8</a>) are the full set of Maxwell equations written in a manifestly Lorentz-covariant form.</p>
 <section id="einstein-summation-convention" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="einstein-summation-convention">Einstein summation convention</h4>
-<p>The summation signs are pretty annoying to write and they clutter up the notation. Additionally, they are superfluous because whenever they occur they come together with two indices of the type they are summing over, and furthermore, those indices appear in opposite positions with one up and another down. For example, in <span class="math inline">\(\eqref{MaxSource}\)</span> the only summation <span class="math inline">\(\sum_{\mu =0}^{3}\)</span> is over the index that appears doubled in the expression <span class="math inline">\(\partial_\mu F^{\mu\nu}\)</span>. Einstein pointed out that this is always the situation and he suggested we just not write the <span class="math inline">\(\sum_{\mu =0}^{3}\)</span> part and interpret <span class="math inline">\(\partial_\mu F^{\mu\nu}\)</span> as implying that the <span class="math inline">\(\mu\)</span> index is summed from <span class="math inline">\(0\)</span> to <span class="math inline">\(3\)</span>. In other words <span class="math inline">\(\partial_\mu F^{\mu\nu}\)</span> means <span class="math inline">\(\sum_{\mu =0}^{3}\partial_\mu F^{\mu\nu}\)</span>. Similarly, we abbreviate <span class="math inline">\(\eqref{MaxBI}\)</span> to <span class="math inline">\(\varepsilon_{\mu \nu \rho \sigma} \partial^\nu  F^{\rho\sigma} = 0\)</span>. Since the indices <span class="math inline">\(\nu\)</span>, <span class="math inline">\(\rho\)</span>, and <span class="math inline">\(\sigma\)</span> are repeated, this equation means that we are summing over them. In sum (haha… get it?), the Maxwell equations are <span class="math display">\[
+<p>The summation signs are pretty annoying to write and they clutter up the notation. Additionally, they are superfluous because whenever they occur they come together with two indices of the type they are summing over, and furthermore, those indices appear in opposite positions with one up and another down. For example, in (<a href="#eq-maxsource" class="quarto-xref">7</a>) the only summation <span class="math inline">\(\sum_{\mu =0}^{3}\)</span> is over the index that appears doubled in the expression <span class="math inline">\(\partial_\mu F^{\mu\nu}\)</span>. Einstein pointed out that this is always the situation and he suggested we just not write the <span class="math inline">\(\sum_{\mu =0}^{3}\)</span> part and interpret <span class="math inline">\(\partial_\mu F^{\mu\nu}\)</span> as implying that the <span class="math inline">\(\mu\)</span> index is summed from <span class="math inline">\(0\)</span> to <span class="math inline">\(3\)</span>. In other words <span class="math inline">\(\partial_\mu F^{\mu\nu}\)</span> means <span class="math inline">\(\sum_{\mu =0}^{3}\partial_\mu F^{\mu\nu}\)</span>. Similarly, we abbreviate (<a href="#eq-maxbi" class="quarto-xref">8</a>) to <span class="math inline">\(\varepsilon_{\mu \nu \rho \sigma} \partial^\nu  F^{\rho\sigma} = 0\)</span>. Since the indices <span class="math inline">\(\nu\)</span>, <span class="math inline">\(\rho\)</span>, and <span class="math inline">\(\sigma\)</span> are repeated, this equation means that we are summing over them. In sum (haha… get it?), the Maxwell equations are</p>
+<p><span class="math display">\[
 𝜀^{μ ν ρ σ} ∂_ν  F_{ρσ} = 0
 \quad \quad \textrm{and}\quad \quad
 ∂_μ F^{μν}=4π J^ν
-\]</span> Note that in the first equation all the indices have been flipped.</p>
+\]</span></p>
+<p>Note that in the first equation all the indices have been flipped.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Exercise 26">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -715,22 +767,29 @@ p² = - (mc)²
 <h1 data-number="2"><span class="header-section-number">2</span> Gravitation as a field theory</h1>
 <p>In order to fix the problems Newton had with his formulation of gravitation, we have to find a field theory for it. Einstein did this by realizing that the metric is the correct field to use. We need to generalize the constant Minkowski metric <span class="math inline">\(\eta\)</span> to a non-constant spacetime metric <span class="math inline">\(g\)</span> and we need to find a set of equations analogous to Maxwell’s equations for <span class="math inline">\(F\)</span> so that when we solve them (like we did for the wave solutions) we get a solution for the metric <span class="math inline">\(g\)</span> describing the spacetime geometry.</p>
 <p>How do we figure out how to construct this set of differential equations? The idea is quite simple. First we generalize the notion of Lorentz symmetry and apply it to the spacetime metric. Then we need to find something that is covariant under this generalized transformation.</p>
-<p>We introduce the line element <span class="math display">\[
+<p>We introduce the line element</p>
+<p><span class="math display">\[
 ds² = g_{μ ν}(x) dx^μ ⊗ dx^ν.
-\]</span> Here and henceforth we are using the Einstein summation convention: the indices <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\nu\)</span> are repeated and are in the correct positions (one up and one down), so this means that we are summing over each from 0 to 3.</p>
-<p>Under a <em>general coordinate transformation</em> the coordinates <span class="math inline">\(x^\mu\)</span> are replaced with new coordinates <span class="math inline">\(y^\mu\)</span>. These new coordinates can depend in an arbitrary way on the old coordinates <span class="math inline">\(x^\mu\)</span>, so they are general functions of <span class="math inline">\(x^\mu\)</span>, which we write as <span class="math inline">\(y^\mu(x^\nu)\)</span>. The only requirement on these functions is that they are smooth and that the Jacobian matrix <span class="math display">\[
+\]</span></p>
+<p>Here and henceforth we are using the Einstein summation convention: the indices <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\nu\)</span> are repeated and are in the correct positions (one up and one down), so this means that we are summing over each from 0 to 3.</p>
+<p>Under a <em>general coordinate transformation</em> the coordinates <span class="math inline">\(x^\mu\)</span> are replaced with new coordinates <span class="math inline">\(y^\mu\)</span>. These new coordinates can depend in an arbitrary way on the old coordinates <span class="math inline">\(x^\mu\)</span>, so they are general functions of <span class="math inline">\(x^\mu\)</span>, which we write as <span class="math inline">\(y^\mu(x^\nu)\)</span>. The only requirement on these functions is that they are smooth and that the Jacobian matrix</p>
+<p><span class="math display">\[
 \frac {∂y^μ}{∂x^ν}
-\]</span> is invertible. This guarantees that the transformation <span class="math inline">\(x→y\)</span> is non-singular and that in principle, we can go backwards <span class="math inline">\(y→x\)</span>. If we insist that distances are independent of which coordinate systems we chose to measure them, this means the line element must be invariant under a change of coordinates <span class="math inline">\(x→y(x)\)</span>. But <span class="math inline">\(dx^\mu → dy^\mu = \frac {\partial y^\mu}{\partial x^\nu} dx^\nu\)</span> so the line element <span class="math inline">\(ds²\)</span> transforms by <span class="math display">\[
+\]</span></p>
+<p>is invertible. This guarantees that the transformation <span class="math inline">\(x→y\)</span> is non-singular and that in principle, we can go backwards <span class="math inline">\(y→x\)</span>. If we insist that distances are independent of which coordinate systems we chose to measure them, this means the line element must be invariant under a change of coordinates <span class="math inline">\(x→y(x)\)</span>. But <span class="math inline">\(dx^\mu → dy^\mu = \frac {\partial y^\mu}{\partial x^\nu} dx^\nu\)</span> so the line element <span class="math inline">\(ds²\)</span> transforms by</p>
+<p><span class="math display">\[
 g_{μ ν}(x) dx^μ ⊗ dx^ν → g_{μ ν}(y) dy^μ ⊗ dy^ν= g_{μ ν}(y) \frac {∂y^μ}{∂x^ρ} \frac {∂y^ν}{∂x^σ}dx^ρ⊗dx^σ =g_{μ ν}(x) dx^μ ⊗ dx^ν
-\]</span> This means that the metric must transform as <span class="math display">\[
-\label{E:tensor}
+\]</span></p>
+<p>This means that the metric must transform as</p>
+<p><span id="eq-e-tensor"><span class="math display">\[
 g_{μ ν}(y) =\frac {∂x^ρ}{∂y^μ} g_{ρ σ}(x)  \frac {∂x^σ}{∂y^ν}
-\]</span> where <span class="math inline">\(\frac {\partial x}{\partial y}\)</span> are the inverse Jacobian matrices. This means that as matrices <span class="math display">\[
-\label{E:JacInv}
+\tag{9}\]</span></span></p>
+<p>where <span class="math inline">\(\frac {\partial x}{\partial y}\)</span> are the inverse Jacobian matrices. This means that as matrices</p>
+<p><span id="eq-e-jacinv"><span class="math display">\[
 \frac {∂x^μ}{∂y^λ} \frac {∂y^λ}{∂x^ν}  = δ_ν^μ
 \quad \textrm{and}\quad
 \frac {∂x^λ}{∂y^μ} \frac {∂y^ν}{∂x^λ} =  δ^ν_μ
-\]</span></p>
+\tag{10}\]</span></span></p>
 <div class="callout callout-style-default callout-note callout-titled" title="Exercise 27">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -741,10 +800,11 @@ g_{μ ν}(y) =\frac {∂x^ρ}{∂y^μ} g_{ρ σ}(x)  \frac {∂x^σ}{∂y^ν}
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Recall that a metric <span class="math inline">\(g_{\mu \nu}\)</span> is non-degenerate and therefor has an inverse <span class="math inline">\(g^{\mu \nu}\)</span>. Show that <span class="math inline">\(g^{\mu \nu}g_{\mu \nu}=4\)</span> in four spacetime dimensions and <span class="math inline">\(D\)</span> in <span class="math inline">\(D\)</span>-dimensional spacetime. Numbers do not change under general coordinate transformations. Use this and the rule <span class="math inline">\(\eqref{E:tensor}\)</span> to derive a rule for the transformation of <span class="math inline">\(g^{\mu \nu}\)</span>.</p>
+<p>Recall that a metric <span class="math inline">\(g_{\mu \nu}\)</span> is non-degenerate and therefor has an inverse <span class="math inline">\(g^{\mu \nu}\)</span>. Show that <span class="math inline">\(g^{\mu \nu}g_{\mu \nu}=4\)</span> in four spacetime dimensions and <span class="math inline">\(D\)</span> in <span class="math inline">\(D\)</span>-dimensional spacetime. Numbers do not change under general coordinate transformations. Use this and the rule (<a href="#eq-e-tensor" class="quarto-xref">9</a>) to derive a rule for the transformation of <span class="math inline">\(g^{\mu \nu}\)</span>.</p>
 </div>
 </div>
-<p>What you just derived is the transformation rule for a tensor field with two indices up. The rule <span class="math inline">\(\eqref{E:tensor}\)</span> is the rule for a tensor field with two indices down. Similarly, a (co-)vector field transforms by <span class="math display">\[
+<p>What you just derived is the transformation rule for a tensor field with two indices up. The rule (<a href="#eq-e-tensor" class="quarto-xref">9</a>) is the rule for a tensor field with two indices down. Similarly, a (co-)vector field transforms by</p>
+<p><span class="math display">\[
 v^μ(x) → v^μ(y) = \frac {∂y^μ}{∂x^ν}v^ν(x)
 \quad \textrm{and}\quad
 a_μ(x) → a_μ(y)=\frac {∂x^ν}{∂y^μ} a_ν(x)
@@ -759,7 +819,8 @@ a_μ(x) → a_μ(y)=\frac {∂x^ν}{∂y^μ} a_ν(x)
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Explain in words how these are different. Use your observations to guess the correct transformation of a more complicated tensor of the form <span class="math display">\[
+<p>Explain in words how these are different. Use your observations to guess the correct transformation of a more complicated tensor of the form</p>
+<p><span class="math display">\[
 T_{μ₁ ... μ_p}^{ν₁ ... ν_q} (x) →
     T_{μ₁ ... μ_p}^{ν₁ ... ν_q} (y) = ???
 \]</span></p>
@@ -767,23 +828,28 @@ T_{μ₁ ... μ_p}^{ν₁ ... ν_q} (x) →
 </div>
 <section id="the-covariant-derivative" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="the-covariant-derivative"><span class="header-section-number">2.1</span> The covariant derivative</h2>
-<p>Not everything transforms like a tensor. Consider a vector field <span class="math inline">\(v^\mu(x)\)</span> and let’s take its derivative <span class="math inline">\(\partial_\nu\)</span>. To the transformation of <span class="math inline">\(\partial_\nu v^\mu(x)\)</span>, it helps to first undo the shorthand: <span class="math display">\[
+<p>Not everything transforms like a tensor. Consider a vector field <span class="math inline">\(v^\mu(x)\)</span> and let’s take its derivative <span class="math inline">\(\partial_\nu\)</span>. To the transformation of <span class="math inline">\(\partial_\nu v^\mu(x)\)</span>, it helps to first undo the shorthand:</p>
+<p><span class="math display">\[
 ∂_νv^μ(x) = \frac{∂v^μ(x)}{∂x^ν} → \frac{∂v^μ(y)}{∂y^ν}
     = \frac {∂x^ρ}{∂y^ν}\frac{∂}{∂x^ρ}\left( \frac {∂y^μ}{∂x^σ}v^σ(x)\right)
     = \frac {∂x^ρ}{∂y^ν}\frac {∂²y^μ}{∂x^ρ∂x^σ} v^σ(x)
     +\frac {∂x^ρ}{∂y^ν}\frac {∂y^μ}{∂x^σ} \frac{∂v^σ(x)}{∂x^ρ}
-\]</span> The second term on the RHS is the correct transformation for a tensor with one index up and one down, but the first term is all wrong. This is happening because the derivative acts on the Jacobian on its way to acting on the vector field.</p>
-<p>Einstein argued that a good theory should not depend on the coordinates you choose to describe it.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> To develop such a theory, an indispensable tool is the ability to define tensors from other tensors. Specifically, we need to be able to generalize the derivative so that the new derivative of a tensor is also a tensor. This new derivative is called the <em>covariant derivative</em> because it varies (changes under coordinate redefinitions) the same way the tensor does. The coolest symbol in this set of notes is <span class="math inline">\(\nabla\)</span> (by the way, it’s called “nabla” or “del”), so we will use that. The proposal is to replace <span class="math inline">\(\partial_\nu v^\mu→ \nabla_\nu v^\mu\)</span> and insist that <span class="math display">\[
-\label{E:covariantD}
-∇_ν v^μ(y) = \frac {∂x^ρ}{∂y^μ}\frac {∂y^μ}{∂x^σ} ∇_ρv^σ(x)
 \]</span></p>
+<p>The second term on the RHS is the correct transformation for a tensor with one index up and one down, but the first term is all wrong. This is happening because the derivative acts on the Jacobian on its way to acting on the vector field.</p>
+<p>Einstein argued that a good theory should not depend on the coordinates you choose to describe it.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> To develop such a theory, an indispensable tool is the ability to define tensors from other tensors. Specifically, we need to be able to generalize the derivative so that the new derivative of a tensor is also a tensor. This new derivative is called the <em>covariant derivative</em> because it varies (changes under coordinate redefinitions) the same way the tensor does. The coolest symbol in this set of notes is <span class="math inline">\(\nabla\)</span> (by the way, it’s called “nabla” or “del”), so we will use that. The proposal is to replace <span class="math inline">\(\partial_\nu v^\mu→ \nabla_\nu v^\mu\)</span> and insist that</p>
+<p><span id="eq-e-covariantd"><span class="math display">\[
+∇_ν v^μ(y) = \frac {∂x^ρ}{∂y^μ}\frac {∂y^μ}{∂x^σ} ∇_ρv^σ(x)
+\tag{11}\]</span></span></p>
 <p>Since we are generalizing the derivative, we should try to have the first part of <span class="math inline">\(\nabla_\nu = \partial_\nu + \cdots\)</span>. But recall that the derivative was the part that gave the non-tensor transformation, so to cancel it, we need the <span class="math inline">\(\cdots\)</span> part to also have a non-tensor transformation. In other words, we want <span class="math inline">\(\nabla ~ \partial + \Gamma\)</span> where <span class="math inline">\(\Gamma\)</span> has a non-tensor part to its transformation. If we can do that, then we use it to cancel the analogous part from the first term.</p>
-<p>Next, we will work out how this goes in detail. The calculations are pretty hard-core, but they are typical of calculations in GR. Define the <em>covariant derivative</em> <span class="math display">\[
-\label{E:covariantDerivative}
+<p>Next, we will work out how this goes in detail. The calculations are pretty hard-core, but they are typical of calculations in GR. Define the <em>covariant derivative</em></p>
+<p><span id="eq-e-covariantderivative"><span class="math display">\[
 ∇_ν v^μ(x) := ∂_ν v^μ(x) + Γ^μ _{νλ}(x) v^λ(x)
-\]</span> for some field <span class="math inline">\(\Gamma^\mu _{\nu\lambda}(x)\)</span>. We will show that if, under a coordinate transformation <span class="math display">\[
+\tag{12}\]</span></span></p>
+<p>for some field <span class="math inline">\(\Gamma^\mu _{\nu\lambda}(x)\)</span>. We will show that if, under a coordinate transformation</p>
+<p><span class="math display">\[
 Γ^μ _{νλ}(y) = \frac {∂y^μ}{∂x^ρ}\frac {∂x^σ}{∂y^ν}\frac {∂x^τ}{∂y^λ} Γ^ρ_{στ}(x) + \frac {∂²x^ρ}{∂y^ν∂y^λ} \frac {∂y^μ}{∂x^ρ}
-\]</span> then the covariant derivative <span class="math inline">\(\eqref{E:covariantDerivative}\)</span> transforms as <span class="math inline">\(\eqref{E:covariantD}\)</span>, that is, covariantly.</p>
+\]</span></p>
+<p>then the covariant derivative (<a href="#eq-e-covariantderivative" class="quarto-xref">12</a>) transforms as (<a href="#eq-e-covariantd" class="quarto-xref">11</a>), that is, covariantly.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Proof">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -794,41 +860,58 @@ T_{μ₁ ... μ_p}^{ν₁ ... ν_q} (x) →
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This proof is a calculation with many steps and calculus tricks. It is okay if you don’t understand it on a first pass. First, we write out the definition of the covariant derivative and the transformation of the terms <span class="math display">\[
+<p>This proof is a calculation with many steps and calculus tricks. It is okay if you don’t understand it on a first pass. First, we write out the definition of the covariant derivative and the transformation of the terms</p>
+<p><span class="math display">\[
 \begin{aligned}
 ∇_ν v^μ(y) &amp;= ∂_ν v^μ(y) + Γ^μ _{νλ}(y) v^λ(y) \\
 &amp;= \frac {∂x^ρ}{∂y^ν}\frac {∂²y^μ}{∂x^ρ∂x^σ} v^σ(x)
     +\frac {∂x^ρ}{∂y^ν}\frac {∂y^μ}{∂x^σ} \frac{∂v^σ(x)}{∂x^ρ} +    Γ^μ _{νλ}(y) \frac {∂y^λ}{∂x^σ}v^σ(x) \\
 \end{aligned}
-\]</span> The second term is the covariant part of the transformation of <span class="math inline">\(\partial v\)</span>. Let’s complete it by writing out the transformation of <span class="math inline">\(\Gamma\)</span> according to the rule above: <span class="math display">\[
+\]</span></p>
+<p>The second term is the covariant part of the transformation of <span class="math inline">\(\partial v\)</span>. Let’s complete it by writing out the transformation of <span class="math inline">\(\Gamma\)</span> according to the rule above:</p>
+<p><span class="math display">\[
 \frac {∂x^ρ}{∂y^ν}\frac {∂y^μ}{∂x^σ} Γ^σ_{ρτ}(x)v^τ (x)
 + \frac {∂²x^ρ}{∂y^ν∂y^λ} \frac {∂y^μ}{∂x^ρ}
     \frac {∂y^λ}{∂x^σ}v^σ(x)
-\]</span> The structure of the Jacobian terms on <span class="math inline">\(\Gamma\)</span> is exactly that of the terms on <span class="math inline">\(\partial v\)</span> so we can combine them into <span class="math display">\[
+\]</span></p>
+<p>The structure of the Jacobian terms on <span class="math inline">\(\Gamma\)</span> is exactly that of the terms on <span class="math inline">\(\partial v\)</span> so we can combine them into</p>
+<p><span class="math display">\[
 \frac {∂x^ρ}{∂y^ν}\frac {∂²y^μ}{∂x^ρ∂x^σ} v^σ(x)
 +\frac {∂x^ρ}{∂y^ν}\frac {∂y^μ}{∂x^σ} \left[
     \frac{∂v^σ(x)}{∂x^ρ} + Γ^σ_{ρτ}(x)v^τ (x) \right]
     + \frac {∂²x^ρ}{∂y^ν∂y^λ} \frac {∂y^μ}{∂x^ρ}
     \frac {∂y^λ}{∂x^σ}v^σ(x)
-\]</span> The term in brackets is <span class="math inline">\(\nabla v\)</span>, so the middle term is the same as the RHS of <span class="math inline">\(\eqref{E:covariantD}\)</span>. Therefore, if we can show that the first and last terms cancel then we are done. In order to see this, we first rewrite these terms writing out the derivatives somewhat more explicitly: <span class="math display">\[
+\]</span></p>
+<p>The term in brackets is <span class="math inline">\(\nabla v\)</span>, so the middle term is the same as the RHS of (<a href="#eq-e-covariantd" class="quarto-xref">11</a>). Therefore, if we can show that the first and last terms cancel then we are done. In order to see this, we first rewrite these terms writing out the derivatives somewhat more explicitly:</p>
+<p><span class="math display">\[
 \frac {∂x^ρ}{∂y^ν}\frac {∂}{∂x^ρ} \left(\frac {∂y^μ}{∂x^σ} \right)v^σ(x)
     + \frac {∂}{∂y^ν}\left( \frac {∂x^ρ}{∂y^λ} \right)\frac {∂y^μ}{∂x^ρ}
     \frac {∂y^λ}{∂x^σ}v^σ(x)
-\]</span> On the first term, we use the chain rule from calculus: <span class="math display">\[
+\]</span></p>
+<p>On the first term, we use the chain rule from calculus:</p>
+<p><span class="math display">\[
 \frac {∂x^ρ}{∂y^ν}\frac {∂}{∂x^ρ} = \frac {∂}{∂y^ν}
-\]</span> On the second term we do something similar: Note that the derivative acts on the first Jacobian matrix which is contracted on the second Jacobian matrix. Recall also that these matrices are inverse to one another and they are contracted, so they satisfy <span class="math inline">\(\eqref{E:JacInv}\)</span>. Now do a calculus trick (related to integration by parts): We take a derivative of this latter equation to get <span class="math display">\[
+\]</span></p>
+<p>On the second term we do something similar: Note that the derivative acts on the first Jacobian matrix which is contracted on the second Jacobian matrix. Recall also that these matrices are inverse to one another and they are contracted, so they satisfy (<a href="#eq-e-jacinv" class="quarto-xref">10</a>). Now do a calculus trick (related to integration by parts): We take a derivative of this latter equation to get</p>
+<p><span class="math display">\[
 0=\frac {∂}{∂y^ν}\left( δ^μ_λ \right)
 =\frac {∂}{∂y^ν}\left( \frac {∂x^ρ}{∂y^λ} \frac {∂y^μ}{∂x^ρ}\right)
 =\frac {∂}{∂y^ν}\left( \frac {∂x^ρ}{∂y^λ} \right)\frac {∂y^μ}{∂x^ρ}
 +\frac {∂x^ρ}{∂y^λ} \frac {∂}{∂y^ν}\left( \frac {∂y^μ}{∂x^ρ}\right)
-\]</span> This implies that <span class="math display">\[
+\]</span></p>
+<p>This implies that</p>
+<p><span class="math display">\[
 \frac {∂}{∂y^ν}\left( \frac {∂x^ρ}{∂y^λ} \right)\frac {∂y^μ}{∂x^ρ} =
 -\frac {∂x^ρ}{∂y^λ} \frac {∂}{∂y^ν}\left( \frac {∂y^μ}{∂x^ρ}\right)
-\]</span> Taken together, this shows that the last two terms reduce to <span class="math display">\[
+\]</span></p>
+<p>Taken together, this shows that the last two terms reduce to</p>
+<p><span class="math display">\[
 \frac {∂}{∂y^ν} \left(\frac {∂y^μ}{∂x^σ} \right)v^σ(x)
     -  \frac {∂x^ρ}{∂y^λ} \frac {∂}{∂y^ν}\left(\frac {∂y^μ}{∂x^ρ}\right)
     \frac {∂y^λ}{∂x^σ}v^σ(x)
-\]</span> In the second term the first and last Jacobians are contracted on the <span class="math inline">\(\lambda\)</span> index, so they reduce to a Kronecker delta again. Thus, the non-covariant terms reduce to <span class="math display">\[
+\]</span></p>
+<p>In the second term the first and last Jacobians are contracted on the <span class="math inline">\(\lambda\)</span> index, so they reduce to a Kronecker delta again. Thus, the non-covariant terms reduce to</p>
+<p><span class="math display">\[
 \frac {∂}{∂y^ν} \left(\frac {∂y^μ}{∂x^σ} \right)v^σ(x)
     - \frac {∂}{∂y^ν}\left( \frac {∂y^μ}{∂x^σ}\right)v^σ(x) ≡ 0
 \]</span></p>
@@ -843,7 +926,8 @@ T_{μ₁ ... μ_p}^{ν₁ ... ν_q} (x) →
 <p><span class="math display">\[
 R^λ{}_{μνρ} v^ρ = ∇_μ ∇_ν v^λ - ∇_ν ∇_μ v^λ
 \]</span></p>
-<p>It is a tedious exercise to work out the details, but it is not hard to see that the structure of the Riemann tensor is <span class="math display">\[
+<p>It is a tedious exercise to work out the details, but it is not hard to see that the structure of the Riemann tensor is</p>
+<p><span class="math display">\[
 {\mathbf{Riem}}~ ∂Γ + Γ Γ
 \]</span></p>
 </section>
