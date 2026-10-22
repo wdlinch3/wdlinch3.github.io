@@ -23,6 +23,6 @@ Website routes: `/aa/ss/solar_system_1/`, `/aa/assignments/ss_solar_system_1.zip
 School routes: `https://astro2627.sites.tjhsst.edu/ss/solar_system_1/`, `https://astro2627.sites.tjhsst.edu/assignments/ss_solar_system_1.zip`.
 Class: `https://astro2627.sites.tjhsst.edu/ss/2026-2027/`.
 
-LOCAL PREPARATION ONLY. No push, publication, server update, or live verification is authorized for this run. Problem 9 science and its discussion are deliberately preserved pending separate review; the candidate must be regenerated after that review. Formatting-only changes were made there. Private run record: `/Users/wdlinch3/Documents/github/aa_class/aa_ss/source/ss_solar_system_1/workflow_runs/2026-10-22_release/record.md`.
+Publication authorized by William on 2026-10-22, with Problem 9 preserved as-is. William will advise students to defer Problem 9 or approach it skeptically. Its science remains deferred for a later revision and republication; this does not block the authorized current release. Formatting-only changes were made there. Deployment and anonymous verification status are recorded in the private run record. Private run record: `/Users/wdlinch3/Documents/github/aa_class/aa_ss/source/ss_solar_system_1/workflow_runs/2026-10-22_release/record.md`.
 
 The reading wraps the wide planetary table in Bootstrap’s existing `table-responsive` container for horizontal scrolling on mobile; table wording and values are unchanged.
