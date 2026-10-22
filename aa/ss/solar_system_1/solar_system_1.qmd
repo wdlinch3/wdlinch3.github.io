@@ -1,0 +1,93 @@
+---
+title: "Solar System I: Structure"
+format:
+  html:
+    theme: darkly
+    css: ../../../assets/css/aa_packet_theme.css
+    embed-resources: true
+    toc: true
+    toc-depth: 2
+    code-tools: false
+    output-file: index.html
+execute:
+  enabled: false
+---
+
+<nav class="packet-nav" aria-label="Packet navigation">
+<a href="/aa/ss/2026-2027/">AA:SS class page</a>
+<a href="/aa/assignments/ss_solar_system_1.zip">Download assignment (.zip)</a>
+<a href="/">Home</a>
+</nav>
+
+The solar system consists of the titular star, the 8 planets **Mercury**, **Venus**, **Earth**, **Mars**, **Jupiter**, **Saturn**, **Uranus**, and **Neptune**. In between Mars and Jupiter we find the **asteroid belt**, and beyond Neptune there is the **Kuiper belt**.
+
+> ### Problem 1
+>
+> The mean distance between the **Sun** and the Earth is approximately 1 AU. This is about 150 million kilometers. How many seconds does it take for the light emitted by the Sun to reach us?
+
+Table 6.1 on page 138 of the textbook has a table with information about the objects in the solar system. Part of it is reproduced here:
+
+::: {.table-responsive role="region" aria-label="Planetary data" tabindex="0"}
+
+|  | Mercury | Venus | Earth | Mars | Jupiter | Saturn | Uranus | Neptune |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| $M$ ($M_\oplus$) | 0.055 | 0.82 | 1 | 0.11 | 318 | 95 | 15 | 17 |
+| $R$ ($R_\oplus$) | 0.38 | 0.95 | 1 | 0.53 | 11.2 | 9.5 | 4.0 | 3.9 |
+| $\rho$  ($g/cm^3$) | 5.4 | 5.2 | 5.5 | 3.9 | 1.3 | 0.7 | 1.3 | 1.6 |
+| $a$ (AU) | 0.39 | 0.72 | 1 | 1.52 | 5.2 | 9.5 | 19.2 | 30.1 |
+| $e$ | 0.21 | 0.01 | 0.02 | 0.09 | 0.05 | 0.05 | 0.05 | 0.01 |
+| $P$ (yr) | 0.25 | 0.62 | 1 | 1.9 | 11.9 | 29.4 | 84 | 164 |
+
+:::
+
+>Table 1: Physical data of the planets relative to the Earth’s mass $M_\oplus=6.0\times 10^{24}\ kg$, radius $R_\oplus=6400\ km$, and orbital radius 1 AU $=$ $1.5\times 10^8\ km$.
+
+> ### Problem 2
+>
+> Make a scale model showing the distances of the planets from the Sun.
+
+> ### Problem 3
+>
+> Make a scale model of the sizes of the planets.
+
+> ### Problem 4
+>
+> Is it feasible to make a model that accurately represents the scales of the sizes and the distances simultaneously? If so, please make one. If not, why not?
+
+> ### Problem 5
+>
+> The 8 planets split into two groups using the physical features described in the table. Describe your splitting by referring explicitly to the concepts of size, mass, density $\rho$, and proximity to the Sun. The members of these two groups are referred to as **terrestrial** or **Jovian**. Explain why you think that is.
+
+The terrestrial planets have some further similarities and differences. Mars has a much thinner **atmosphere** than Earth, while Venus has a much thicker and hotter atmosphere. Mercury has only a tenuous **exosphere**. Among the planets, Earth uniquely has an oxygen-rich atmosphere and persistent bodies of liquid water on its surface. Earth and Mars have moons, but Mercury and Venus do not. Earth and Mercury have **magnetospheres** associated with their intrinsic magnetic fields, with Mercury’s field much weaker than Earth’s. Venus and Mars lack present-day global intrinsic magnetic fields, but both have induced magnetospheres. Earth and Mars spin at (almost) the same rate, but Mercury and Venus spin much more slowly, and Venus even spins in the opposite direction (**retrograde**).
+
+> ### Problem 6
+>
+> Add up the masses of all the terrestrial planets except Earth and compare the result to the mass of the Earth.
+
+> ### Problem 7
+>
+> Add up the masses of all the planets except Jupiter and compare it to the mass of Jupiter.
+
+> ### Problem 8
+>
+> By what factor is the mass of the Sun larger than the sum of the masses of all the planets? What percentage of the mass of the solar system is accounted for by the Sun alone?
+
+As you just calculated, 99.9% of the mass of the solar system resides in the Sun. The 8 planets orbiting the Sun are evenly split between the terrestrial planets (a.k.a. the **rocky planets**) and the Jovian planets (a.k.a. the **gas/ice giants**). The rocky planets have orbital semimajor axes ranging from about 0.39 to 1.52 AU. The giant planets inhabit the space between roughly 5 AU and 30 AU.
+
+## Asteroids
+
+Between Mars and Jupiter there is a region called the **main asteroid belt**, consisting of small rocky, metallic, or icy bodies called **asteroids**. It is an example of a **circumstellar disk**, although it should really be called a circumstellar donut because it is shaped like a [solid torus](https://en.wikipedia.org/wiki/Torus) around the Sun. (Circumstellar means “star-surrounding”.) This "disk" consists of millions of small asteroids separated on average by a distance of one million kilometers. (This means that contrary to sci-fi representations, a spaceship blasting through the belt has almost no chance of reaching an asteroid by accident.) By far the largest object in the asteroid belt is the dwarf planet **Ceres**, with a diameter of 950 km. The only other “large” asteroids in the belt are Vesta, Pallas, and Hygiea with diameters around 500 km.
+
+Beyond Neptune, there is another circumstellar disk called the **Kuiper belt**. It extends from around 30 AU out to a distance of around 50 AU. Whereas most members of the asteroid belt are rocky and/or metallic, bodies in the Kuiper belt contain rock and ices, including frozen water, methane, and ammonia. Larger Kuiper-belt objects include **Pluto**, Orcus, Haumea, Quaoar, and Makemake.
+
+The Kuiper belt objects are a subset of the **trans-Neptunian object**s (TNOs). Outside of the Kuiper belt we encounter the scattered disk objects, extreme trans-Neptunian objects, and finally the **Oort cloud object**s. The Oort cloud is a hypothetical spherical shell of icy planetesimals surrounding the Sun between radii of 2,000 to 200,000 AU that was proposed to explain the existence of comets with extremely elliptical and highly inclined orbits (*e.g.* Halley, Hale–Bopp, and the recent visitor [Tsuchinshan-ATLAS](https://en.wikipedia.org/wiki/C/2023_A3_\(Tsuchinshan%E2%80%93ATLAS\))). Such comets are eventually destroyed by their repeated encounters with the Sun, so there must be a large supply of them for us to continue to see them in our mature solar system.
+
+Jupiter's gravitational influence helped shape the asteroid belt and inhibit planetary growth there, although the belt's early history remains model-dependent. The mass currently in the belt is estimated to be about 3% of the mass of the Moon. As an illustrative assumption, suppose that 99.9% of the original mass in this region was removed from the belt during planetary formation.
+
+> ### Problem 9
+>
+> Let's use this to check my claim about the distance between asteroids in the belt. We'll model the belt as a solid [torus](https://en.wikipedia.org/wiki/Torus) with major radius $r_a=2.8\ AU$, and a minor radius $r_b=0.6\ AU$.
+>
+> a. Sketch a torus with major radius $r_a$ and minor radius $r_b\ll r_a$. Assuming everything in the belt is a fine uniform dust, find the density of this model for the belt.
+>
+> b. The material is not a fine uniform dust, but a bunch of macroscopic bodies of various sizes ranging from many small pebbles to a handful of objects $\sim 10\ km$ in diameter [(fig. 2 in Bottke *et al.* 2015)](https://www2.boulder.swri.edu/~bottke/Reprints/Bottke_2015_Asteroids_IV_701_Coll_Evol_Asteroid_Belt.pdf). The vast majority are small $\sim 1\ m$, and an analysis of the curve suggests there are just as many asteroids smaller than $\sim 6\ m$ as there are larger ones. Pretend, then, that the asteroids are all spheres of radius $3\ m$ and calculate the average separation of the asteroids. Take the average density of an asteroid to be $\rho = 3\ g/cm^3$, which is somewhat less than that of the Moon and Mars.

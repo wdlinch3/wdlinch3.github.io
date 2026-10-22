@@ -80,3 +80,8 @@ ss:
         download_url: "/aa/assignments/x_astrodynamics_2.zip"
         status: available
         description: "Potential and kinetic energy, gravitational forces from potential-energy slopes, conservation of mechanical energy, escape speed, and the Schwarzschild radius."
+      - title: "Solar System I: Structure"
+        url: "/aa/ss/solar_system_1/"
+        download_url: "/aa/assignments/ss_solar_system_1.zip"
+        status: available
+        description: "Planetary sizes, distances, and masses; terrestrial and giant planets; and the small-body populations of the solar system."
