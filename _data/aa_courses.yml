@@ -84,4 +84,4 @@ ss:
         url: "/aa/ss/solar_system_1/"
         download_url: "/aa/assignments/ss_solar_system_1.zip"
         status: available
-        description: "Planetary sizes, distances, and masses; terrestrial and giant planets; and the small-body populations of the solar system."
+        description: "Planetary sizes, distances, and masses; small-body populations; Pluto’s orbit; and Python comparisons of size, mass, surface gravity, and escape speed."
