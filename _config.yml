@@ -1,6 +1,8 @@
 title: William D. Linch III
 
 exclude:
+  - aa/x/astrodynamics_3/astrodynamics_3.qmd
+  - aa/x/astrodynamics_3/SOURCE.md
   - aa/ss/solar_system_1/solar_system_1.qmd
   - aa/ss/solar_system_1/SOURCE.md
   - aa/x/astrodynamics_2/astrodynamics_2.qmd
