@@ -15,7 +15,7 @@ title: Astronomy and Astrophysics at TJ
   <a href="{{ '/' | relative_url }}">Home</a>
   <a href="{{ '/teaching/' | relative_url }}">Teaching</a>
   <a href="{{ '/aa/' | relative_url }}">Advanced Astronomy</a>
-  <a href="https://activities.tjhsst.edu/astro/">Laboratory for Astronomy &amp; Astrophysics Research</a>
+  <a href="{{ site.data.astro_lab.source }}">Laboratory for Astronomy &amp; Astrophysics Research</a>
   <a href="https://activities.tjhsst.edu/astronomyclub/">Astronomy Club</a>
 </nav>
 
@@ -51,7 +51,7 @@ title: Astronomy and Astrophysics at TJ
       <section class="tree-branch">
         <h3>Senior Research</h3>
         <div class="tree-leaves">
-          <a href="https://activities.tjhsst.edu/astro/">Laboratory for Astronomy &amp; Astrophysics Research</a>
+          {% include astro_lab_links.html leaves=true %}
         </div>
       </section>
     </div>
