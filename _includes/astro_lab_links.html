@@ -7,3 +7,10 @@
     {% endif %}
   {% endunless %}
 {% endfor %}
+{% if site.lab_mirror %}
+  {% if include.leaves %}
+    <a href="{{ site.lab_mirror | relative_url }}">Astro Lab mirror on this site</a>
+  {% else %}
+    <li><a href="{{ site.lab_mirror | relative_url }}">Astro Lab mirror on this site</a></li>
+  {% endif %}
+{% endif %}
