@@ -1,0 +1,9 @@
+{% for link in site.data.astro_lab.links %}
+  {% unless include.compact and link.compact != true %}
+    {% if include.leaves %}
+      <a href="{{ link.url | escape }}">{{ link.title | escape }}</a>
+    {% else %}
+      <li><a href="{{ link.url | escape }}">{{ link.title | escape }}</a></li>
+    {% endif %}
+  {% endunless %}
+{% endfor %}
