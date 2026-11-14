@@ -1,0 +1,1458 @@
+{
+  "schema_version": 1,
+  "public_base": "https://wdlinch3.github.io/astro/",
+  "sources": {
+    "lab": {
+      "commit": "399c8fa9554800acc38637f6feb27f92f51a22a7",
+      "repository": "https://github.com/wdlinch3/astro_site"
+    },
+    "school": {
+      "commit": "58bc332aef6e9f389e7fff7c4e88bec5af7a7f1f",
+      "repository": "https://github.com/wdlinch3/astro2627",
+      "content_source_commit": "ab1b817b782b1056693f6eaa20e7c15bcd323caa"
+    }
+  },
+  "files": {
+    "2025-26/Final_paper/exomoon.pdf": {
+      "repository": "lab",
+      "path": "2025-26/Final_paper/exomoon.pdf",
+      "source_sha256": "77e92d9084d4e0a5f421495c092d2a54b13792a2a5f550ecdbad82e6f54fc707",
+      "sha256": "77e92d9084d4e0a5f421495c092d2a54b13792a2a5f550ecdbad82e6f54fc707"
+    },
+    "2025-26/Final_paper/pbh_formation.pdf": {
+      "repository": "lab",
+      "path": "2025-26/Final_paper/pbh_formation.pdf",
+      "source_sha256": "76e56ad84f57f218bc6d7966df886dd5b11467c6343880ed10a6aece3053b725",
+      "sha256": "76e56ad84f57f218bc6d7966df886dd5b11467c6343880ed10a6aece3053b725"
+    },
+    "2025-26/Final_paper/pbh_lrd.pdf": {
+      "repository": "lab",
+      "path": "2025-26/Final_paper/pbh_lrd.pdf",
+      "source_sha256": "b927982ac54cc91b745fbe99a358a446149cd15c627fadf609f973e32e35245c",
+      "sha256": "b927982ac54cc91b745fbe99a358a446149cd15c627fadf609f973e32e35245c"
+    },
+    "2025-26/Final_paper/pbh_seed_sim.pdf": {
+      "repository": "lab",
+      "path": "2025-26/Final_paper/pbh_seed_sim.pdf",
+      "source_sha256": "0f9bdf5cb30efdf631080ccda1b734a3a592def650ea752253a5288935f9fb10",
+      "sha256": "0f9bdf5cb30efdf631080ccda1b734a3a592def650ea752253a5288935f9fb10"
+    },
+    "2025-26/Final_paper/vsparc.pdf": {
+      "repository": "lab",
+      "path": "2025-26/Final_paper/vsparc.pdf",
+      "source_sha256": "7e38501f2394395943cd1d2a701181b808f3066f693d80efc1b411aeaefcc099",
+      "sha256": "7e38501f2394395943cd1d2a701181b808f3066f693d80efc1b411aeaefcc099"
+    },
+    "2025-26/Final_poster/exomoon.pdf": {
+      "repository": "lab",
+      "path": "2025-26/Final_poster/exomoon.pdf",
+      "source_sha256": "26bbbfffe3c0daf7a9501e22f7ee2541459c44832cea737b54597b1d8808852d",
+      "sha256": "26bbbfffe3c0daf7a9501e22f7ee2541459c44832cea737b54597b1d8808852d"
+    },
+    "2025-26/Final_poster/fermi_bubbles.png": {
+      "repository": "lab",
+      "path": "2025-26/Final_poster/fermi_bubbles.png",
+      "source_sha256": "249f42dcf520d7aaf94043e4757308cd6a5ad846cfec4cce0a9177495d1947dd",
+      "sha256": "249f42dcf520d7aaf94043e4757308cd6a5ad846cfec4cce0a9177495d1947dd"
+    },
+    "2025-26/Final_poster/pbh_lrd.pdf": {
+      "repository": "lab",
+      "path": "2025-26/Final_poster/pbh_lrd.pdf",
+      "source_sha256": "3a5f4dc99d3a3ecb983dd5dc7814b8d80d0511d30989468cde10f0ebd8f8c5a7",
+      "sha256": "3a5f4dc99d3a3ecb983dd5dc7814b8d80d0511d30989468cde10f0ebd8f8c5a7"
+    },
+    "2025-26/Final_poster/pbh_seed_sim.pdf": {
+      "repository": "lab",
+      "path": "2025-26/Final_poster/pbh_seed_sim.pdf",
+      "source_sha256": "c962c75850bc1471ff32e27125603aa6b08d19d3c5704b10655cc33c10ff962d",
+      "sha256": "c962c75850bc1471ff32e27125603aa6b08d19d3c5704b10655cc33c10ff962d"
+    },
+    "2025-26/Final_poster/spinni.pdf": {
+      "repository": "lab",
+      "path": "2025-26/Final_poster/spinni.pdf",
+      "source_sha256": "92642b33b3bf1b806c157e9b201a9906bd320b306b99604c31158f5e166c2022",
+      "sha256": "92642b33b3bf1b806c157e9b201a9906bd320b306b99604c31158f5e166c2022"
+    },
+    "2025-26/Final_poster/tumbleweed.pdf": {
+      "repository": "lab",
+      "path": "2025-26/Final_poster/tumbleweed.pdf",
+      "source_sha256": "ca8acfcf0bbf5a6fee2f3c8893bb68a407c3ee326cc9064c09091dfd3d200bfd",
+      "sha256": "ca8acfcf0bbf5a6fee2f3c8893bb68a407c3ee326cc9064c09091dfd3d200bfd"
+    },
+    "2025-26/Final_poster/vsparc.pdf": {
+      "repository": "lab",
+      "path": "2025-26/Final_poster/vsparc.pdf",
+      "source_sha256": "4fae647ce6105412433fc3b71af3afee8e259d2942727a51a29f490921071577",
+      "sha256": "4fae647ce6105412433fc3b71af3afee8e259d2942727a51a29f490921071577"
+    },
+    "2025-26/exomoon-wobble/index.html": {
+      "repository": "lab",
+      "path": "2025-26/exomoon-wobble/index.html",
+      "source_sha256": "4fe77fd58a592e5db52e7726ab1af2bac220e50728c5f09cc064869c069f6321",
+      "sha256": "691fe4412bfd36a72adea960dee04673799bc91670b8994bb4e69c8dd2ca9ca6"
+    },
+    "2025-26/fermi-bubbles/index.html": {
+      "repository": "lab",
+      "path": "2025-26/fermi-bubbles/index.html",
+      "source_sha256": "3587761482c4da1d09819bc0c3a565730a34cef11ac6157affebb78e9d5564ef",
+      "sha256": "d7c6591464a1c257a6f9e20f26e3949630a64db3c0b093fb93dce3da0e3b2bf8"
+    },
+    "2025-26/index.html": {
+      "repository": "lab",
+      "path": "2025-26/index.html",
+      "source_sha256": "34dfb4a6355e955b4bf22ad849ac45643d93937f1bd2935f708caac4771dd796",
+      "sha256": "96f80f817dcb4ca01952d13648b6f59177fa041b11ab98bb668af6a633e2f91e"
+    },
+    "2025-26/little-red-dots/index.html": {
+      "repository": "lab",
+      "path": "2025-26/little-red-dots/index.html",
+      "source_sha256": "afccea3f2891aadd61c639ad1bc107994d3580e7c159e2f7f701bea369ee52e0",
+      "sha256": "17f5ff3adfa7bce52869cdaefaaf981af2149f0e08315c3ba9b6446347f3d65c"
+    },
+    "2025-26/pbh-qcd-formation/index.html": {
+      "repository": "lab",
+      "path": "2025-26/pbh-qcd-formation/index.html",
+      "source_sha256": "d860834d63a57c441102b2775e52d6513780786f0ad79585d4465b09889359eb",
+      "sha256": "1395135f06c24b8e8d60ebf0e75720e2a0d7d25a5ff6b16638f100fb437ab3d9"
+    },
+    "2025-26/primordial-feedback-simulation/index.html": {
+      "repository": "lab",
+      "path": "2025-26/primordial-feedback-simulation/index.html",
+      "source_sha256": "0faf1a4bc98182fbde8dcdc199eb71c2afad9d3e9475450d0f1073880ae67d16",
+      "sha256": "4b6aad8c44410dcfb6b81410409dae94613cd63b3c1f472d1277c4615bd42cba"
+    },
+    "2025-26/spinni/index.html": {
+      "repository": "lab",
+      "path": "2025-26/spinni/index.html",
+      "source_sha256": "c58e3fe441dac0fb5201fcd2d4a7e31d7fe552185f578e4348768e444b519cb9",
+      "sha256": "c94aa986a7f2a0c6c298957bffbb450d3cbe7c07567780d137f22ce6866dd1bc"
+    },
+    "2025-26/tumbleweed-rover/index.html": {
+      "repository": "lab",
+      "path": "2025-26/tumbleweed-rover/index.html",
+      "source_sha256": "de52ac0672b817be6c18bec93315f4b96c7b09ce3bbadc9c26593929bd4504a3",
+      "sha256": "18512bc297acade54bd86bf2f05ec1e54483ea90341e68e9a61e77ce7ba6e346"
+    },
+    "2025-26/v-sparc/index.html": {
+      "repository": "lab",
+      "path": "2025-26/v-sparc/index.html",
+      "source_sha256": "f2fa7d42deaef407e4463fbee5491b694ef5c7da40c35f1bfeb0bb663f8a4a58",
+      "sha256": "6ff6fd25e42c2bdd8345740b7f3fd7840424ed7753ed412dc40e6483b1153eb3"
+    },
+    "about/index.html": {
+      "repository": "lab",
+      "path": "about/index.html",
+      "source_sha256": "26c56706761632af149e80f3e52a35ce4cbfc4bca9bafc267dff5db40cae0d44",
+      "sha256": "fe53a4ac2b9c8068d892373759cf158d693e4b254500e3d9e357dbc7e2cc3071"
+    },
+    "assets/countdown.js": {
+      "repository": "lab",
+      "path": "assets/countdown.js",
+      "source_sha256": "f4a44f35131e1463e5b34088b1dfe6f42111a639ea9cccb90360e3fdd26a6ef3",
+      "sha256": "f4a44f35131e1463e5b34088b1dfe6f42111a639ea9cccb90360e3fdd26a6ef3"
+    },
+    "assets/site.css": {
+      "repository": "lab",
+      "path": "assets/site.css",
+      "source_sha256": "9b06feb85664284b11715ea45a6e14fa2a868add4132426719e59ad66b8e2755",
+      "sha256": "9b06feb85664284b11715ea45a6e14fa2a868add4132426719e59ad66b8e2755"
+    },
+    "classes/astronomy-research/2026-2027/index.html": {
+      "repository": "lab",
+      "path": "classes/astronomy-research/2026-2027/index.html",
+      "source_sha256": "edc54c2bee60f3e5d24018d6a5ba8a88c38ec89d8ac6efb17a8b9f52951d2664",
+      "sha256": "8a1be19ea836c99f2d83949eb8f755445345885ebeab89f4d20e5370328ce357"
+    },
+    "classes/astronomy-research/2026-2027/journal-club/index.html": {
+      "repository": "lab",
+      "path": "classes/astronomy-research/2026-2027/journal-club/index.html",
+      "source_sha256": "faadebe308ffdf6a92c7cdfbb527e6e36e0baac83f936fc316de62394f94feaa",
+      "sha256": "408ed057e7d0419238b682a07e38ad405c3a4adaba718190f997dac20afd0849"
+    },
+    "contact/index.html": {
+      "repository": "lab",
+      "path": "contact/index.html",
+      "source_sha256": "2aecdd87448dc738564d337efbb7314fe250b2c511dd44c7bc1614892a4f75d9",
+      "sha256": "8696f61453a6203020f243e3d87b343dd80d18e8a430b69b90cd792ff7bb2927"
+    },
+    "index.html": {
+      "repository": "lab",
+      "path": "index.html",
+      "source_sha256": "40b0168113454c821b250b8ab17dbc7b40142e82d92a685aae6e8402e40606af",
+      "sha256": "6b17d754420ae507bdafb4c694a1eef434562f8006da65e8c73ba8e1ee5be114"
+    },
+    "labs/index.html": {
+      "repository": "lab",
+      "path": "labs/index.html",
+      "source_sha256": "246202bcf9a9f7cacaf5f745f1fa16eaba6bb73ad85174bddbf39ddd0aedf3bc",
+      "sha256": "008f835c59078070b613990a3902a514ebd89eca03f0fca877a74da50903c7b4"
+    },
+    "minicourses/index.html": {
+      "repository": "lab",
+      "path": "minicourses/index.html",
+      "source_sha256": "98861aaec18a139cb46a2602a594128ef5600f17c91c6722459ec259b56dce22",
+      "sha256": "a5693a4f7bfdb9cb654d78e6e4adb2158eda0e8b260045443db76caf698e30b6"
+    },
+    "partners/index.html": {
+      "repository": "lab",
+      "path": "partners/index.html",
+      "source_sha256": "8309119147723d09d4ac9a394ef41205500fd584367e27168859c99fadd77bcc",
+      "sha256": "f825478f1bc0bf0ed109636eb32d5a73c06085f850ddc7ca1a3b3768fd0ea625"
+    },
+    "research/featured/coronal_field_modeling_redacted.pdf": {
+      "repository": "lab",
+      "path": "research/featured/coronal_field_modeling_redacted.pdf",
+      "source_sha256": "be1d54691264b6c56bf7458401321d88ba6545370f0ff86b7566eb0b23fa51db",
+      "sha256": "be1d54691264b6c56bf7458401321d88ba6545370f0ff86b7566eb0b23fa51db"
+    },
+    "research/index.html": {
+      "repository": "lab",
+      "path": "research/index.html",
+      "source_sha256": "2366291a4fc718d105026edb2c43573d9d40593858f5d02c9fe9ec830ba26c32",
+      "sha256": "b5bd21b1ab91865e4b2bb38d130778482e9899267c849678c14417bddd91a894"
+    },
+    "school/assets/css/aa_packet_theme.css": {
+      "repository": "school",
+      "path": "assets/css/aa_packet_theme.css",
+      "source_sha256": "15ee51de020c11dd3faa06faa86bcbb2ae4b5199ab65946a4db5d4c4cf157dc2",
+      "sha256": "15ee51de020c11dd3faa06faa86bcbb2ae4b5199ab65946a4db5d4c4cf157dc2"
+    },
+    "school/teaching/minicourses/materials/gauge_theory_1/assets/ab_holonomy.png": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/gauge_theory_1/assets/ab_holonomy.png",
+      "source_sha256": "731a4febf4513308719ccfceabf5457c63a34f76b4ea1737b035716618334853",
+      "sha256": "731a4febf4513308719ccfceabf5457c63a34f76b4ea1737b035716618334853"
+    },
+    "school/teaching/minicourses/materials/gauge_theory_1/assets/monopole_patches.png": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/gauge_theory_1/assets/monopole_patches.png",
+      "source_sha256": "b42e346e55d99cb17671e53ec91f19ab1eb78e222b246636d62db47ffc398713",
+      "sha256": "b42e346e55d99cb17671e53ec91f19ab1eb78e222b246636d62db47ffc398713"
+    },
+    "school/teaching/minicourses/materials/gauge_theory_1/gauge_theory_1.html": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/gauge_theory_1/gauge_theory_1.html",
+      "source_sha256": "dd5205156cf72acedf2b981ffbd3e02540bc5fe202e0e9c6681eb2bf1ec98996",
+      "sha256": "094f82b2aff259ed668f20cf4941dcb0a9a081eb860ee62f1fd0a1bdffab2ba1"
+    },
+    "school/teaching/minicourses/materials/gauge_theory_1/gauge_theory_1.pdf": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/gauge_theory_1/gauge_theory_1.pdf",
+      "source_sha256": "b29f49c41584f276e5da49511575b2165b30aaf262cda6ec33ea310315e51b0b",
+      "sha256": "b29f49c41584f276e5da49511575b2165b30aaf262cda6ec33ea310315e51b0b"
+    },
+    "school/teaching/minicourses/materials/gauge_theory_1/gauge_theory_1_files/libs/bootstrap/bootstrap-580f59859ddf617fe2e58b4aca1d3752.min.css": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/gauge_theory_1/gauge_theory_1_files/libs/bootstrap/bootstrap-580f59859ddf617fe2e58b4aca1d3752.min.css",
+      "source_sha256": "d2f4b415a72446cd22df7b417b96c35f39bfdf0852bafcc7d60da745a515be15",
+      "sha256": "d2f4b415a72446cd22df7b417b96c35f39bfdf0852bafcc7d60da745a515be15"
+    },
+    "school/teaching/minicourses/materials/gauge_theory_1/gauge_theory_1_files/libs/bootstrap/bootstrap-icons.css": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/gauge_theory_1/gauge_theory_1_files/libs/bootstrap/bootstrap-icons.css",
+      "source_sha256": "3a727a8193260bde9485e5db3e703241415a6a394713ebb03d8ce3a8a9d50340",
+      "sha256": "a6a9bb33a340be62a07c4e73c8ed3b1c611ca752776659cfbe79545ce402f76d"
+    },
+    "school/teaching/minicourses/materials/gauge_theory_1/gauge_theory_1_files/libs/bootstrap/bootstrap-icons.woff": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/gauge_theory_1/gauge_theory_1_files/libs/bootstrap/bootstrap-icons.woff",
+      "source_sha256": "f55513b7b591cb84a3b87ff0e34ea24d4831d6fedc22e54b911ca64b5b544a15",
+      "sha256": "f55513b7b591cb84a3b87ff0e34ea24d4831d6fedc22e54b911ca64b5b544a15"
+    },
+    "school/teaching/minicourses/materials/gauge_theory_1/gauge_theory_1_files/libs/bootstrap/bootstrap.min.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/gauge_theory_1/gauge_theory_1_files/libs/bootstrap/bootstrap.min.js",
+      "source_sha256": "b522dbf32b52ed7cd8633aabea91ff034af5c187578e9efa862b5bd795a7325f",
+      "sha256": "b522dbf32b52ed7cd8633aabea91ff034af5c187578e9efa862b5bd795a7325f"
+    },
+    "school/teaching/minicourses/materials/gauge_theory_1/gauge_theory_1_files/libs/clipboard/clipboard.min.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/gauge_theory_1/gauge_theory_1_files/libs/clipboard/clipboard.min.js",
+      "source_sha256": "82edf26934430790b6b335b7cba525dc9bcc02485db979136ec2983da217408b",
+      "sha256": "82edf26934430790b6b335b7cba525dc9bcc02485db979136ec2983da217408b"
+    },
+    "school/teaching/minicourses/materials/gauge_theory_1/gauge_theory_1_files/libs/quarto-html/anchor.min.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/gauge_theory_1/gauge_theory_1_files/libs/quarto-html/anchor.min.js",
+      "source_sha256": "772d463c6323a5196d4509187674b6a497862ac809a31adaa0d9ddc2b2e21ef1",
+      "sha256": "772d463c6323a5196d4509187674b6a497862ac809a31adaa0d9ddc2b2e21ef1"
+    },
+    "school/teaching/minicourses/materials/gauge_theory_1/gauge_theory_1_files/libs/quarto-html/popper.min.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/gauge_theory_1/gauge_theory_1_files/libs/quarto-html/popper.min.js",
+      "source_sha256": "11c54c39539b620d616d921aa290cf636ea70c943183eacfdd79265dca6e3e3f",
+      "sha256": "11c54c39539b620d616d921aa290cf636ea70c943183eacfdd79265dca6e3e3f"
+    },
+    "school/teaching/minicourses/materials/gauge_theory_1/gauge_theory_1_files/libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/gauge_theory_1/gauge_theory_1_files/libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css",
+      "source_sha256": "fd4039f710aa61e30f8dc648240fa91b4579047ed2814447c2d64c6f37de4451",
+      "sha256": "fd4039f710aa61e30f8dc648240fa91b4579047ed2814447c2d64c6f37de4451"
+    },
+    "school/teaching/minicourses/materials/gauge_theory_1/gauge_theory_1_files/libs/quarto-html/quarto.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/gauge_theory_1/gauge_theory_1_files/libs/quarto-html/quarto.js",
+      "source_sha256": "4ecb60f215d96b2af0fe9d985c71e32863b1c993a64725a416ac18b5991c59c6",
+      "sha256": "4ecb60f215d96b2af0fe9d985c71e32863b1c993a64725a416ac18b5991c59c6"
+    },
+    "school/teaching/minicourses/materials/gauge_theory_1/gauge_theory_1_files/libs/quarto-html/tabsets/tabsets.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/gauge_theory_1/gauge_theory_1_files/libs/quarto-html/tabsets/tabsets.js",
+      "source_sha256": "a9c226bf70e82eaf5476f619cecfb70b4446b87ce4d1634d6404b0b2ba006d15",
+      "sha256": "a9c226bf70e82eaf5476f619cecfb70b4446b87ce4d1634d6404b0b2ba006d15"
+    },
+    "school/teaching/minicourses/materials/gauge_theory_1/gauge_theory_1_files/libs/quarto-html/tippy.css": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/gauge_theory_1/gauge_theory_1_files/libs/quarto-html/tippy.css",
+      "source_sha256": "a1ae07b34b7c57774fd2f92a88a9b47dfe77d89262b7db5176b7932d8e29c467",
+      "sha256": "a1ae07b34b7c57774fd2f92a88a9b47dfe77d89262b7db5176b7932d8e29c467"
+    },
+    "school/teaching/minicourses/materials/gauge_theory_1/gauge_theory_1_files/libs/quarto-html/tippy.umd.min.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/gauge_theory_1/gauge_theory_1_files/libs/quarto-html/tippy.umd.min.js",
+      "source_sha256": "98324eb7433f974d6418ae15c97232fe8761507cec99a48bac2437c396952c09",
+      "sha256": "98324eb7433f974d6418ae15c97232fe8761507cec99a48bac2437c396952c09"
+    },
+    "school/teaching/minicourses/materials/groups/Groups.pdf": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/groups/Groups.pdf",
+      "source_sha256": "d20fcdd86b3f8f2accc6f03fd9a88166b3ae83b468a5479854fbfee0c4385386",
+      "sha256": "d20fcdd86b3f8f2accc6f03fd9a88166b3ae83b468a5479854fbfee0c4385386"
+    },
+    "school/teaching/minicourses/materials/groups/groups.html": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/groups/groups.html",
+      "source_sha256": "4e39c598b5fb8597f146c27ad6dc2d392ea9a44a8d04c058d4b066fd27179953",
+      "sha256": "1cb4f896e48d53d1705b6d7e4b20f23f103667a59aad0993d6725c55859f38e0"
+    },
+    "school/teaching/minicourses/materials/groups/groups_files/libs/bootstrap/bootstrap-580f59859ddf617fe2e58b4aca1d3752.min.css": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/groups/groups_files/libs/bootstrap/bootstrap-580f59859ddf617fe2e58b4aca1d3752.min.css",
+      "source_sha256": "d2f4b415a72446cd22df7b417b96c35f39bfdf0852bafcc7d60da745a515be15",
+      "sha256": "d2f4b415a72446cd22df7b417b96c35f39bfdf0852bafcc7d60da745a515be15"
+    },
+    "school/teaching/minicourses/materials/groups/groups_files/libs/bootstrap/bootstrap-icons.css": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/groups/groups_files/libs/bootstrap/bootstrap-icons.css",
+      "source_sha256": "3a727a8193260bde9485e5db3e703241415a6a394713ebb03d8ce3a8a9d50340",
+      "sha256": "a6a9bb33a340be62a07c4e73c8ed3b1c611ca752776659cfbe79545ce402f76d"
+    },
+    "school/teaching/minicourses/materials/groups/groups_files/libs/bootstrap/bootstrap-icons.woff": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/groups/groups_files/libs/bootstrap/bootstrap-icons.woff",
+      "source_sha256": "f55513b7b591cb84a3b87ff0e34ea24d4831d6fedc22e54b911ca64b5b544a15",
+      "sha256": "f55513b7b591cb84a3b87ff0e34ea24d4831d6fedc22e54b911ca64b5b544a15"
+    },
+    "school/teaching/minicourses/materials/groups/groups_files/libs/bootstrap/bootstrap.min.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/groups/groups_files/libs/bootstrap/bootstrap.min.js",
+      "source_sha256": "b522dbf32b52ed7cd8633aabea91ff034af5c187578e9efa862b5bd795a7325f",
+      "sha256": "b522dbf32b52ed7cd8633aabea91ff034af5c187578e9efa862b5bd795a7325f"
+    },
+    "school/teaching/minicourses/materials/groups/groups_files/libs/clipboard/clipboard.min.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/groups/groups_files/libs/clipboard/clipboard.min.js",
+      "source_sha256": "82edf26934430790b6b335b7cba525dc9bcc02485db979136ec2983da217408b",
+      "sha256": "82edf26934430790b6b335b7cba525dc9bcc02485db979136ec2983da217408b"
+    },
+    "school/teaching/minicourses/materials/groups/groups_files/libs/quarto-html/anchor.min.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/groups/groups_files/libs/quarto-html/anchor.min.js",
+      "source_sha256": "772d463c6323a5196d4509187674b6a497862ac809a31adaa0d9ddc2b2e21ef1",
+      "sha256": "772d463c6323a5196d4509187674b6a497862ac809a31adaa0d9ddc2b2e21ef1"
+    },
+    "school/teaching/minicourses/materials/groups/groups_files/libs/quarto-html/popper.min.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/groups/groups_files/libs/quarto-html/popper.min.js",
+      "source_sha256": "11c54c39539b620d616d921aa290cf636ea70c943183eacfdd79265dca6e3e3f",
+      "sha256": "11c54c39539b620d616d921aa290cf636ea70c943183eacfdd79265dca6e3e3f"
+    },
+    "school/teaching/minicourses/materials/groups/groups_files/libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/groups/groups_files/libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css",
+      "source_sha256": "fd4039f710aa61e30f8dc648240fa91b4579047ed2814447c2d64c6f37de4451",
+      "sha256": "fd4039f710aa61e30f8dc648240fa91b4579047ed2814447c2d64c6f37de4451"
+    },
+    "school/teaching/minicourses/materials/groups/groups_files/libs/quarto-html/quarto.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/groups/groups_files/libs/quarto-html/quarto.js",
+      "source_sha256": "4ecb60f215d96b2af0fe9d985c71e32863b1c993a64725a416ac18b5991c59c6",
+      "sha256": "4ecb60f215d96b2af0fe9d985c71e32863b1c993a64725a416ac18b5991c59c6"
+    },
+    "school/teaching/minicourses/materials/groups/groups_files/libs/quarto-html/tabsets/tabsets.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/groups/groups_files/libs/quarto-html/tabsets/tabsets.js",
+      "source_sha256": "a9c226bf70e82eaf5476f619cecfb70b4446b87ce4d1634d6404b0b2ba006d15",
+      "sha256": "a9c226bf70e82eaf5476f619cecfb70b4446b87ce4d1634d6404b0b2ba006d15"
+    },
+    "school/teaching/minicourses/materials/groups/groups_files/libs/quarto-html/tippy.css": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/groups/groups_files/libs/quarto-html/tippy.css",
+      "source_sha256": "a1ae07b34b7c57774fd2f92a88a9b47dfe77d89262b7db5176b7932d8e29c467",
+      "sha256": "a1ae07b34b7c57774fd2f92a88a9b47dfe77d89262b7db5176b7932d8e29c467"
+    },
+    "school/teaching/minicourses/materials/groups/groups_files/libs/quarto-html/tippy.umd.min.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/groups/groups_files/libs/quarto-html/tippy.umd.min.js",
+      "source_sha256": "98324eb7433f974d6418ae15c97232fe8761507cec99a48bac2437c396952c09",
+      "sha256": "98324eb7433f974d6418ae15c97232fe8761507cec99a48bac2437c396952c09"
+    },
+    "school/teaching/minicourses/materials/linear_algebra/sturm_liouville.html": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/linear_algebra/sturm_liouville.html",
+      "source_sha256": "cc25d273046c38f823d298cee7409e866dae2441c546725cda0497321b8a2247",
+      "sha256": "6a848c88d70d784b976225f2918c8ffc32c726456161b241e68f33a886572972"
+    },
+    "school/teaching/minicourses/materials/linear_algebra/sturm_liouville.pdf": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/linear_algebra/sturm_liouville.pdf",
+      "source_sha256": "666f3d59c868257c6978635c6b47f41d8ba14abbd3685fd537b4422a71685e2c",
+      "sha256": "666f3d59c868257c6978635c6b47f41d8ba14abbd3685fd537b4422a71685e2c"
+    },
+    "school/teaching/minicourses/materials/linear_algebra/sturm_liouville_files/libs/bootstrap/bootstrap-580f59859ddf617fe2e58b4aca1d3752.min.css": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/linear_algebra/sturm_liouville_files/libs/bootstrap/bootstrap-580f59859ddf617fe2e58b4aca1d3752.min.css",
+      "source_sha256": "d2f4b415a72446cd22df7b417b96c35f39bfdf0852bafcc7d60da745a515be15",
+      "sha256": "d2f4b415a72446cd22df7b417b96c35f39bfdf0852bafcc7d60da745a515be15"
+    },
+    "school/teaching/minicourses/materials/linear_algebra/sturm_liouville_files/libs/bootstrap/bootstrap-icons.css": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/linear_algebra/sturm_liouville_files/libs/bootstrap/bootstrap-icons.css",
+      "source_sha256": "3a727a8193260bde9485e5db3e703241415a6a394713ebb03d8ce3a8a9d50340",
+      "sha256": "a6a9bb33a340be62a07c4e73c8ed3b1c611ca752776659cfbe79545ce402f76d"
+    },
+    "school/teaching/minicourses/materials/linear_algebra/sturm_liouville_files/libs/bootstrap/bootstrap-icons.woff": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/linear_algebra/sturm_liouville_files/libs/bootstrap/bootstrap-icons.woff",
+      "source_sha256": "f55513b7b591cb84a3b87ff0e34ea24d4831d6fedc22e54b911ca64b5b544a15",
+      "sha256": "f55513b7b591cb84a3b87ff0e34ea24d4831d6fedc22e54b911ca64b5b544a15"
+    },
+    "school/teaching/minicourses/materials/linear_algebra/sturm_liouville_files/libs/bootstrap/bootstrap.min.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/linear_algebra/sturm_liouville_files/libs/bootstrap/bootstrap.min.js",
+      "source_sha256": "b522dbf32b52ed7cd8633aabea91ff034af5c187578e9efa862b5bd795a7325f",
+      "sha256": "b522dbf32b52ed7cd8633aabea91ff034af5c187578e9efa862b5bd795a7325f"
+    },
+    "school/teaching/minicourses/materials/linear_algebra/sturm_liouville_files/libs/clipboard/clipboard.min.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/linear_algebra/sturm_liouville_files/libs/clipboard/clipboard.min.js",
+      "source_sha256": "82edf26934430790b6b335b7cba525dc9bcc02485db979136ec2983da217408b",
+      "sha256": "82edf26934430790b6b335b7cba525dc9bcc02485db979136ec2983da217408b"
+    },
+    "school/teaching/minicourses/materials/linear_algebra/sturm_liouville_files/libs/quarto-html/anchor.min.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/linear_algebra/sturm_liouville_files/libs/quarto-html/anchor.min.js",
+      "source_sha256": "772d463c6323a5196d4509187674b6a497862ac809a31adaa0d9ddc2b2e21ef1",
+      "sha256": "772d463c6323a5196d4509187674b6a497862ac809a31adaa0d9ddc2b2e21ef1"
+    },
+    "school/teaching/minicourses/materials/linear_algebra/sturm_liouville_files/libs/quarto-html/popper.min.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/linear_algebra/sturm_liouville_files/libs/quarto-html/popper.min.js",
+      "source_sha256": "11c54c39539b620d616d921aa290cf636ea70c943183eacfdd79265dca6e3e3f",
+      "sha256": "11c54c39539b620d616d921aa290cf636ea70c943183eacfdd79265dca6e3e3f"
+    },
+    "school/teaching/minicourses/materials/linear_algebra/sturm_liouville_files/libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/linear_algebra/sturm_liouville_files/libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css",
+      "source_sha256": "fd4039f710aa61e30f8dc648240fa91b4579047ed2814447c2d64c6f37de4451",
+      "sha256": "fd4039f710aa61e30f8dc648240fa91b4579047ed2814447c2d64c6f37de4451"
+    },
+    "school/teaching/minicourses/materials/linear_algebra/sturm_liouville_files/libs/quarto-html/quarto.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/linear_algebra/sturm_liouville_files/libs/quarto-html/quarto.js",
+      "source_sha256": "4ecb60f215d96b2af0fe9d985c71e32863b1c993a64725a416ac18b5991c59c6",
+      "sha256": "4ecb60f215d96b2af0fe9d985c71e32863b1c993a64725a416ac18b5991c59c6"
+    },
+    "school/teaching/minicourses/materials/linear_algebra/sturm_liouville_files/libs/quarto-html/tabsets/tabsets.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/linear_algebra/sturm_liouville_files/libs/quarto-html/tabsets/tabsets.js",
+      "source_sha256": "a9c226bf70e82eaf5476f619cecfb70b4446b87ce4d1634d6404b0b2ba006d15",
+      "sha256": "a9c226bf70e82eaf5476f619cecfb70b4446b87ce4d1634d6404b0b2ba006d15"
+    },
+    "school/teaching/minicourses/materials/linear_algebra/sturm_liouville_files/libs/quarto-html/tippy.css": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/linear_algebra/sturm_liouville_files/libs/quarto-html/tippy.css",
+      "source_sha256": "a1ae07b34b7c57774fd2f92a88a9b47dfe77d89262b7db5176b7932d8e29c467",
+      "sha256": "a1ae07b34b7c57774fd2f92a88a9b47dfe77d89262b7db5176b7932d8e29c467"
+    },
+    "school/teaching/minicourses/materials/linear_algebra/sturm_liouville_files/libs/quarto-html/tippy.umd.min.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/linear_algebra/sturm_liouville_files/libs/quarto-html/tippy.umd.min.js",
+      "source_sha256": "98324eb7433f974d6418ae15c97232fe8761507cec99a48bac2437c396952c09",
+      "sha256": "98324eb7433f974d6418ae15c97232fe8761507cec99a48bac2437c396952c09"
+    },
+    "school/teaching/minicourses/materials/qm_to_em/qm_to_em.html": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/qm_to_em/qm_to_em.html",
+      "source_sha256": "31c706f3b9ddfdda18757b249920b3164bf8951ae6c36ce1d610935c53f4b5b3",
+      "sha256": "8e8134ce0d1f46afc6d334d3ca6c8a8f6726f107e64a4cb183c17a59635f3369"
+    },
+    "school/teaching/minicourses/materials/qm_to_em/qm_to_em.pdf": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/qm_to_em/qm_to_em.pdf",
+      "source_sha256": "956f985c067421864ea5e0264fd36550a0664e4247dcc3a038f9e2b24924de25",
+      "sha256": "956f985c067421864ea5e0264fd36550a0664e4247dcc3a038f9e2b24924de25"
+    },
+    "school/teaching/minicourses/materials/qm_to_em/qm_to_em_files/libs/bootstrap/bootstrap-580f59859ddf617fe2e58b4aca1d3752.min.css": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/qm_to_em/qm_to_em_files/libs/bootstrap/bootstrap-580f59859ddf617fe2e58b4aca1d3752.min.css",
+      "source_sha256": "d2f4b415a72446cd22df7b417b96c35f39bfdf0852bafcc7d60da745a515be15",
+      "sha256": "d2f4b415a72446cd22df7b417b96c35f39bfdf0852bafcc7d60da745a515be15"
+    },
+    "school/teaching/minicourses/materials/qm_to_em/qm_to_em_files/libs/bootstrap/bootstrap-icons.css": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/qm_to_em/qm_to_em_files/libs/bootstrap/bootstrap-icons.css",
+      "source_sha256": "3a727a8193260bde9485e5db3e703241415a6a394713ebb03d8ce3a8a9d50340",
+      "sha256": "a6a9bb33a340be62a07c4e73c8ed3b1c611ca752776659cfbe79545ce402f76d"
+    },
+    "school/teaching/minicourses/materials/qm_to_em/qm_to_em_files/libs/bootstrap/bootstrap-icons.woff": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/qm_to_em/qm_to_em_files/libs/bootstrap/bootstrap-icons.woff",
+      "source_sha256": "f55513b7b591cb84a3b87ff0e34ea24d4831d6fedc22e54b911ca64b5b544a15",
+      "sha256": "f55513b7b591cb84a3b87ff0e34ea24d4831d6fedc22e54b911ca64b5b544a15"
+    },
+    "school/teaching/minicourses/materials/qm_to_em/qm_to_em_files/libs/bootstrap/bootstrap.min.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/qm_to_em/qm_to_em_files/libs/bootstrap/bootstrap.min.js",
+      "source_sha256": "b522dbf32b52ed7cd8633aabea91ff034af5c187578e9efa862b5bd795a7325f",
+      "sha256": "b522dbf32b52ed7cd8633aabea91ff034af5c187578e9efa862b5bd795a7325f"
+    },
+    "school/teaching/minicourses/materials/qm_to_em/qm_to_em_files/libs/clipboard/clipboard.min.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/qm_to_em/qm_to_em_files/libs/clipboard/clipboard.min.js",
+      "source_sha256": "82edf26934430790b6b335b7cba525dc9bcc02485db979136ec2983da217408b",
+      "sha256": "82edf26934430790b6b335b7cba525dc9bcc02485db979136ec2983da217408b"
+    },
+    "school/teaching/minicourses/materials/qm_to_em/qm_to_em_files/libs/quarto-html/anchor.min.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/qm_to_em/qm_to_em_files/libs/quarto-html/anchor.min.js",
+      "source_sha256": "772d463c6323a5196d4509187674b6a497862ac809a31adaa0d9ddc2b2e21ef1",
+      "sha256": "772d463c6323a5196d4509187674b6a497862ac809a31adaa0d9ddc2b2e21ef1"
+    },
+    "school/teaching/minicourses/materials/qm_to_em/qm_to_em_files/libs/quarto-html/popper.min.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/qm_to_em/qm_to_em_files/libs/quarto-html/popper.min.js",
+      "source_sha256": "11c54c39539b620d616d921aa290cf636ea70c943183eacfdd79265dca6e3e3f",
+      "sha256": "11c54c39539b620d616d921aa290cf636ea70c943183eacfdd79265dca6e3e3f"
+    },
+    "school/teaching/minicourses/materials/qm_to_em/qm_to_em_files/libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/qm_to_em/qm_to_em_files/libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css",
+      "source_sha256": "fd4039f710aa61e30f8dc648240fa91b4579047ed2814447c2d64c6f37de4451",
+      "sha256": "fd4039f710aa61e30f8dc648240fa91b4579047ed2814447c2d64c6f37de4451"
+    },
+    "school/teaching/minicourses/materials/qm_to_em/qm_to_em_files/libs/quarto-html/quarto.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/qm_to_em/qm_to_em_files/libs/quarto-html/quarto.js",
+      "source_sha256": "4ecb60f215d96b2af0fe9d985c71e32863b1c993a64725a416ac18b5991c59c6",
+      "sha256": "4ecb60f215d96b2af0fe9d985c71e32863b1c993a64725a416ac18b5991c59c6"
+    },
+    "school/teaching/minicourses/materials/qm_to_em/qm_to_em_files/libs/quarto-html/tabsets/tabsets.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/qm_to_em/qm_to_em_files/libs/quarto-html/tabsets/tabsets.js",
+      "source_sha256": "a9c226bf70e82eaf5476f619cecfb70b4446b87ce4d1634d6404b0b2ba006d15",
+      "sha256": "a9c226bf70e82eaf5476f619cecfb70b4446b87ce4d1634d6404b0b2ba006d15"
+    },
+    "school/teaching/minicourses/materials/qm_to_em/qm_to_em_files/libs/quarto-html/tippy.css": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/qm_to_em/qm_to_em_files/libs/quarto-html/tippy.css",
+      "source_sha256": "a1ae07b34b7c57774fd2f92a88a9b47dfe77d89262b7db5176b7932d8e29c467",
+      "sha256": "a1ae07b34b7c57774fd2f92a88a9b47dfe77d89262b7db5176b7932d8e29c467"
+    },
+    "school/teaching/minicourses/materials/qm_to_em/qm_to_em_files/libs/quarto-html/tippy.umd.min.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/qm_to_em/qm_to_em_files/libs/quarto-html/tippy.umd.min.js",
+      "source_sha256": "98324eb7433f974d6418ae15c97232fe8761507cec99a48bac2437c396952c09",
+      "sha256": "98324eb7433f974d6418ae15c97232fe8761507cec99a48bac2437c396952c09"
+    },
+    "school/teaching/minicourses/materials/relativity/em_forms/em_forms.html": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/relativity/em_forms/em_forms.html",
+      "source_sha256": "ae8e33af95e25edfa2a9287b105f08d65dc4ebc2201acd6ce20d42c3cad44312",
+      "sha256": "328c7cb500bb5b868d76df817038b0f09b8526f21416d9db95239da17364131c"
+    },
+    "school/teaching/minicourses/materials/relativity/em_forms/em_forms.pdf": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/relativity/em_forms/em_forms.pdf",
+      "source_sha256": "e355d9dd3e6e2735829e9d469b6a2342a859845c9c4a520281b6b5bfc4bddedf",
+      "sha256": "e355d9dd3e6e2735829e9d469b6a2342a859845c9c4a520281b6b5bfc4bddedf"
+    },
+    "school/teaching/minicourses/materials/relativity/em_forms/em_forms_files/libs/bootstrap/bootstrap-580f59859ddf617fe2e58b4aca1d3752.min.css": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/relativity/em_forms/em_forms_files/libs/bootstrap/bootstrap-580f59859ddf617fe2e58b4aca1d3752.min.css",
+      "source_sha256": "d2f4b415a72446cd22df7b417b96c35f39bfdf0852bafcc7d60da745a515be15",
+      "sha256": "d2f4b415a72446cd22df7b417b96c35f39bfdf0852bafcc7d60da745a515be15"
+    },
+    "school/teaching/minicourses/materials/relativity/em_forms/em_forms_files/libs/bootstrap/bootstrap-icons.css": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/relativity/em_forms/em_forms_files/libs/bootstrap/bootstrap-icons.css",
+      "source_sha256": "3a727a8193260bde9485e5db3e703241415a6a394713ebb03d8ce3a8a9d50340",
+      "sha256": "a6a9bb33a340be62a07c4e73c8ed3b1c611ca752776659cfbe79545ce402f76d"
+    },
+    "school/teaching/minicourses/materials/relativity/em_forms/em_forms_files/libs/bootstrap/bootstrap-icons.woff": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/relativity/em_forms/em_forms_files/libs/bootstrap/bootstrap-icons.woff",
+      "source_sha256": "f55513b7b591cb84a3b87ff0e34ea24d4831d6fedc22e54b911ca64b5b544a15",
+      "sha256": "f55513b7b591cb84a3b87ff0e34ea24d4831d6fedc22e54b911ca64b5b544a15"
+    },
+    "school/teaching/minicourses/materials/relativity/em_forms/em_forms_files/libs/bootstrap/bootstrap.min.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/relativity/em_forms/em_forms_files/libs/bootstrap/bootstrap.min.js",
+      "source_sha256": "b522dbf32b52ed7cd8633aabea91ff034af5c187578e9efa862b5bd795a7325f",
+      "sha256": "b522dbf32b52ed7cd8633aabea91ff034af5c187578e9efa862b5bd795a7325f"
+    },
+    "school/teaching/minicourses/materials/relativity/em_forms/em_forms_files/libs/clipboard/clipboard.min.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/relativity/em_forms/em_forms_files/libs/clipboard/clipboard.min.js",
+      "source_sha256": "82edf26934430790b6b335b7cba525dc9bcc02485db979136ec2983da217408b",
+      "sha256": "82edf26934430790b6b335b7cba525dc9bcc02485db979136ec2983da217408b"
+    },
+    "school/teaching/minicourses/materials/relativity/em_forms/em_forms_files/libs/quarto-html/anchor.min.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/relativity/em_forms/em_forms_files/libs/quarto-html/anchor.min.js",
+      "source_sha256": "772d463c6323a5196d4509187674b6a497862ac809a31adaa0d9ddc2b2e21ef1",
+      "sha256": "772d463c6323a5196d4509187674b6a497862ac809a31adaa0d9ddc2b2e21ef1"
+    },
+    "school/teaching/minicourses/materials/relativity/em_forms/em_forms_files/libs/quarto-html/popper.min.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/relativity/em_forms/em_forms_files/libs/quarto-html/popper.min.js",
+      "source_sha256": "11c54c39539b620d616d921aa290cf636ea70c943183eacfdd79265dca6e3e3f",
+      "sha256": "11c54c39539b620d616d921aa290cf636ea70c943183eacfdd79265dca6e3e3f"
+    },
+    "school/teaching/minicourses/materials/relativity/em_forms/em_forms_files/libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/relativity/em_forms/em_forms_files/libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css",
+      "source_sha256": "fd4039f710aa61e30f8dc648240fa91b4579047ed2814447c2d64c6f37de4451",
+      "sha256": "fd4039f710aa61e30f8dc648240fa91b4579047ed2814447c2d64c6f37de4451"
+    },
+    "school/teaching/minicourses/materials/relativity/em_forms/em_forms_files/libs/quarto-html/quarto.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/relativity/em_forms/em_forms_files/libs/quarto-html/quarto.js",
+      "source_sha256": "4ecb60f215d96b2af0fe9d985c71e32863b1c993a64725a416ac18b5991c59c6",
+      "sha256": "4ecb60f215d96b2af0fe9d985c71e32863b1c993a64725a416ac18b5991c59c6"
+    },
+    "school/teaching/minicourses/materials/relativity/em_forms/em_forms_files/libs/quarto-html/tabsets/tabsets.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/relativity/em_forms/em_forms_files/libs/quarto-html/tabsets/tabsets.js",
+      "source_sha256": "a9c226bf70e82eaf5476f619cecfb70b4446b87ce4d1634d6404b0b2ba006d15",
+      "sha256": "a9c226bf70e82eaf5476f619cecfb70b4446b87ce4d1634d6404b0b2ba006d15"
+    },
+    "school/teaching/minicourses/materials/relativity/em_forms/em_forms_files/libs/quarto-html/tippy.css": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/relativity/em_forms/em_forms_files/libs/quarto-html/tippy.css",
+      "source_sha256": "a1ae07b34b7c57774fd2f92a88a9b47dfe77d89262b7db5176b7932d8e29c467",
+      "sha256": "a1ae07b34b7c57774fd2f92a88a9b47dfe77d89262b7db5176b7932d8e29c467"
+    },
+    "school/teaching/minicourses/materials/relativity/em_forms/em_forms_files/libs/quarto-html/tippy.umd.min.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/relativity/em_forms/em_forms_files/libs/quarto-html/tippy.umd.min.js",
+      "source_sha256": "98324eb7433f974d6418ae15c97232fe8761507cec99a48bac2437c396952c09",
+      "sha256": "98324eb7433f974d6418ae15c97232fe8761507cec99a48bac2437c396952c09"
+    },
+    "school/teaching/minicourses/materials/relativity/gr/GR.pdf": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/relativity/gr/GR.pdf",
+      "source_sha256": "bde2df91c6254d16bcc8937e625f350bbb57ac72e4ac7bf89f608ff31345dc1f",
+      "sha256": "bde2df91c6254d16bcc8937e625f350bbb57ac72e4ac7bf89f608ff31345dc1f"
+    },
+    "school/teaching/minicourses/materials/relativity/gr/general_relativity.html": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/relativity/gr/general_relativity.html",
+      "source_sha256": "c4a8cc0dac8cd64293160a76b4235bde3740682fc2275efb85f9ed8592c97a94",
+      "sha256": "fef3d6482fd60addae0618060252baf3a252f472d8a7a3178a0dc38d0910fa75"
+    },
+    "school/teaching/minicourses/materials/relativity/gr/general_relativity.pdf": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/relativity/gr/general_relativity.pdf",
+      "source_sha256": "7e41b796a37c6913fe7e31d775372f03364f2ef32942cd786b3706b71cafefb0",
+      "sha256": "7e41b796a37c6913fe7e31d775372f03364f2ef32942cd786b3706b71cafefb0"
+    },
+    "school/teaching/minicourses/materials/relativity/gr/general_relativity_files/libs/bootstrap/bootstrap-580f59859ddf617fe2e58b4aca1d3752.min.css": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/relativity/gr/general_relativity_files/libs/bootstrap/bootstrap-580f59859ddf617fe2e58b4aca1d3752.min.css",
+      "source_sha256": "d2f4b415a72446cd22df7b417b96c35f39bfdf0852bafcc7d60da745a515be15",
+      "sha256": "d2f4b415a72446cd22df7b417b96c35f39bfdf0852bafcc7d60da745a515be15"
+    },
+    "school/teaching/minicourses/materials/relativity/gr/general_relativity_files/libs/bootstrap/bootstrap-icons.css": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/relativity/gr/general_relativity_files/libs/bootstrap/bootstrap-icons.css",
+      "source_sha256": "3a727a8193260bde9485e5db3e703241415a6a394713ebb03d8ce3a8a9d50340",
+      "sha256": "a6a9bb33a340be62a07c4e73c8ed3b1c611ca752776659cfbe79545ce402f76d"
+    },
+    "school/teaching/minicourses/materials/relativity/gr/general_relativity_files/libs/bootstrap/bootstrap-icons.woff": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/relativity/gr/general_relativity_files/libs/bootstrap/bootstrap-icons.woff",
+      "source_sha256": "f55513b7b591cb84a3b87ff0e34ea24d4831d6fedc22e54b911ca64b5b544a15",
+      "sha256": "f55513b7b591cb84a3b87ff0e34ea24d4831d6fedc22e54b911ca64b5b544a15"
+    },
+    "school/teaching/minicourses/materials/relativity/gr/general_relativity_files/libs/bootstrap/bootstrap.min.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/relativity/gr/general_relativity_files/libs/bootstrap/bootstrap.min.js",
+      "source_sha256": "b522dbf32b52ed7cd8633aabea91ff034af5c187578e9efa862b5bd795a7325f",
+      "sha256": "b522dbf32b52ed7cd8633aabea91ff034af5c187578e9efa862b5bd795a7325f"
+    },
+    "school/teaching/minicourses/materials/relativity/gr/general_relativity_files/libs/clipboard/clipboard.min.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/relativity/gr/general_relativity_files/libs/clipboard/clipboard.min.js",
+      "source_sha256": "82edf26934430790b6b335b7cba525dc9bcc02485db979136ec2983da217408b",
+      "sha256": "82edf26934430790b6b335b7cba525dc9bcc02485db979136ec2983da217408b"
+    },
+    "school/teaching/minicourses/materials/relativity/gr/general_relativity_files/libs/quarto-html/anchor.min.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/relativity/gr/general_relativity_files/libs/quarto-html/anchor.min.js",
+      "source_sha256": "772d463c6323a5196d4509187674b6a497862ac809a31adaa0d9ddc2b2e21ef1",
+      "sha256": "772d463c6323a5196d4509187674b6a497862ac809a31adaa0d9ddc2b2e21ef1"
+    },
+    "school/teaching/minicourses/materials/relativity/gr/general_relativity_files/libs/quarto-html/popper.min.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/relativity/gr/general_relativity_files/libs/quarto-html/popper.min.js",
+      "source_sha256": "11c54c39539b620d616d921aa290cf636ea70c943183eacfdd79265dca6e3e3f",
+      "sha256": "11c54c39539b620d616d921aa290cf636ea70c943183eacfdd79265dca6e3e3f"
+    },
+    "school/teaching/minicourses/materials/relativity/gr/general_relativity_files/libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/relativity/gr/general_relativity_files/libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css",
+      "source_sha256": "fd4039f710aa61e30f8dc648240fa91b4579047ed2814447c2d64c6f37de4451",
+      "sha256": "fd4039f710aa61e30f8dc648240fa91b4579047ed2814447c2d64c6f37de4451"
+    },
+    "school/teaching/minicourses/materials/relativity/gr/general_relativity_files/libs/quarto-html/quarto.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/relativity/gr/general_relativity_files/libs/quarto-html/quarto.js",
+      "source_sha256": "4ecb60f215d96b2af0fe9d985c71e32863b1c993a64725a416ac18b5991c59c6",
+      "sha256": "4ecb60f215d96b2af0fe9d985c71e32863b1c993a64725a416ac18b5991c59c6"
+    },
+    "school/teaching/minicourses/materials/relativity/gr/general_relativity_files/libs/quarto-html/tabsets/tabsets.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/relativity/gr/general_relativity_files/libs/quarto-html/tabsets/tabsets.js",
+      "source_sha256": "a9c226bf70e82eaf5476f619cecfb70b4446b87ce4d1634d6404b0b2ba006d15",
+      "sha256": "a9c226bf70e82eaf5476f619cecfb70b4446b87ce4d1634d6404b0b2ba006d15"
+    },
+    "school/teaching/minicourses/materials/relativity/gr/general_relativity_files/libs/quarto-html/tippy.css": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/relativity/gr/general_relativity_files/libs/quarto-html/tippy.css",
+      "source_sha256": "a1ae07b34b7c57774fd2f92a88a9b47dfe77d89262b7db5176b7932d8e29c467",
+      "sha256": "a1ae07b34b7c57774fd2f92a88a9b47dfe77d89262b7db5176b7932d8e29c467"
+    },
+    "school/teaching/minicourses/materials/relativity/gr/general_relativity_files/libs/quarto-html/tippy.umd.min.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/relativity/gr/general_relativity_files/libs/quarto-html/tippy.umd.min.js",
+      "source_sha256": "98324eb7433f974d6418ae15c97232fe8761507cec99a48bac2437c396952c09",
+      "sha256": "98324eb7433f974d6418ae15c97232fe8761507cec99a48bac2437c396952c09"
+    },
+    "school/teaching/minicourses/materials/renormalization_packet/assets/cross_section_universal.png": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/renormalization_packet/assets/cross_section_universal.png",
+      "source_sha256": "446b4c4898658d72985b0f1a9b54c776cd5c575ac84b39f8a557fc2cf871ed94",
+      "sha256": "446b4c4898658d72985b0f1a9b54c776cd5c575ac84b39f8a557fc2cf871ed94"
+    },
+    "school/teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student_v3.html": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student_v3.html",
+      "source_sha256": "bf8dbbf0b9c809433be752d3115b2e20b7fd4226a5e09eeb806ee775d3fbe50c",
+      "sha256": "de9b819e872ec463d4d88ae72aba8d3af5a66c791162bc7f74d34807c88a5e45"
+    },
+    "school/teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student_v3.pdf": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student_v3.pdf",
+      "source_sha256": "9d05ae8b6283fa8f86e801cf9b90eaedf1a95427b86387b171c1b1dbaa1c72ef",
+      "sha256": "9d05ae8b6283fa8f86e801cf9b90eaedf1a95427b86387b171c1b1dbaa1c72ef"
+    },
+    "school/teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student_v3_files/libs/bootstrap/bootstrap-580f59859ddf617fe2e58b4aca1d3752.min.css": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student_v3_files/libs/bootstrap/bootstrap-580f59859ddf617fe2e58b4aca1d3752.min.css",
+      "source_sha256": "d2f4b415a72446cd22df7b417b96c35f39bfdf0852bafcc7d60da745a515be15",
+      "sha256": "d2f4b415a72446cd22df7b417b96c35f39bfdf0852bafcc7d60da745a515be15"
+    },
+    "school/teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student_v3_files/libs/bootstrap/bootstrap-icons.css": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student_v3_files/libs/bootstrap/bootstrap-icons.css",
+      "source_sha256": "3a727a8193260bde9485e5db3e703241415a6a394713ebb03d8ce3a8a9d50340",
+      "sha256": "a6a9bb33a340be62a07c4e73c8ed3b1c611ca752776659cfbe79545ce402f76d"
+    },
+    "school/teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student_v3_files/libs/bootstrap/bootstrap-icons.woff": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student_v3_files/libs/bootstrap/bootstrap-icons.woff",
+      "source_sha256": "f55513b7b591cb84a3b87ff0e34ea24d4831d6fedc22e54b911ca64b5b544a15",
+      "sha256": "f55513b7b591cb84a3b87ff0e34ea24d4831d6fedc22e54b911ca64b5b544a15"
+    },
+    "school/teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student_v3_files/libs/bootstrap/bootstrap.min.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student_v3_files/libs/bootstrap/bootstrap.min.js",
+      "source_sha256": "b522dbf32b52ed7cd8633aabea91ff034af5c187578e9efa862b5bd795a7325f",
+      "sha256": "b522dbf32b52ed7cd8633aabea91ff034af5c187578e9efa862b5bd795a7325f"
+    },
+    "school/teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student_v3_files/libs/clipboard/clipboard.min.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student_v3_files/libs/clipboard/clipboard.min.js",
+      "source_sha256": "82edf26934430790b6b335b7cba525dc9bcc02485db979136ec2983da217408b",
+      "sha256": "82edf26934430790b6b335b7cba525dc9bcc02485db979136ec2983da217408b"
+    },
+    "school/teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student_v3_files/libs/quarto-html/anchor.min.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student_v3_files/libs/quarto-html/anchor.min.js",
+      "source_sha256": "772d463c6323a5196d4509187674b6a497862ac809a31adaa0d9ddc2b2e21ef1",
+      "sha256": "772d463c6323a5196d4509187674b6a497862ac809a31adaa0d9ddc2b2e21ef1"
+    },
+    "school/teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student_v3_files/libs/quarto-html/popper.min.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student_v3_files/libs/quarto-html/popper.min.js",
+      "source_sha256": "11c54c39539b620d616d921aa290cf636ea70c943183eacfdd79265dca6e3e3f",
+      "sha256": "11c54c39539b620d616d921aa290cf636ea70c943183eacfdd79265dca6e3e3f"
+    },
+    "school/teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student_v3_files/libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student_v3_files/libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css",
+      "source_sha256": "fd4039f710aa61e30f8dc648240fa91b4579047ed2814447c2d64c6f37de4451",
+      "sha256": "fd4039f710aa61e30f8dc648240fa91b4579047ed2814447c2d64c6f37de4451"
+    },
+    "school/teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student_v3_files/libs/quarto-html/quarto.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student_v3_files/libs/quarto-html/quarto.js",
+      "source_sha256": "4ecb60f215d96b2af0fe9d985c71e32863b1c993a64725a416ac18b5991c59c6",
+      "sha256": "4ecb60f215d96b2af0fe9d985c71e32863b1c993a64725a416ac18b5991c59c6"
+    },
+    "school/teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student_v3_files/libs/quarto-html/tabsets/tabsets.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student_v3_files/libs/quarto-html/tabsets/tabsets.js",
+      "source_sha256": "a9c226bf70e82eaf5476f619cecfb70b4446b87ce4d1634d6404b0b2ba006d15",
+      "sha256": "a9c226bf70e82eaf5476f619cecfb70b4446b87ce4d1634d6404b0b2ba006d15"
+    },
+    "school/teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student_v3_files/libs/quarto-html/tippy.css": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student_v3_files/libs/quarto-html/tippy.css",
+      "source_sha256": "a1ae07b34b7c57774fd2f92a88a9b47dfe77d89262b7db5176b7932d8e29c467",
+      "sha256": "a1ae07b34b7c57774fd2f92a88a9b47dfe77d89262b7db5176b7932d8e29c467"
+    },
+    "school/teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student_v3_files/libs/quarto-html/tippy.umd.min.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student_v3_files/libs/quarto-html/tippy.umd.min.js",
+      "source_sha256": "98324eb7433f974d6418ae15c97232fe8761507cec99a48bac2437c396952c09",
+      "sha256": "98324eb7433f974d6418ae15c97232fe8761507cec99a48bac2437c396952c09"
+    },
+    "school/teaching/minicourses/materials/time_translations/time_translations.html": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/time_translations/time_translations.html",
+      "source_sha256": "7bd75fa7b5af9501cf24de28ada88dba84cc32c3d463a41a003cd6b8029c2fa3",
+      "sha256": "d35d495d1bc819d780c694e3513e53f077c4678053fad80a9d1842b0cad70796"
+    },
+    "school/teaching/minicourses/materials/time_translations/time_translations.pdf": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/time_translations/time_translations.pdf",
+      "source_sha256": "bd613c4168ee7e92079f010bdaefff81cdb5275370a49ef45a6cbc2ba282792c",
+      "sha256": "bd613c4168ee7e92079f010bdaefff81cdb5275370a49ef45a6cbc2ba282792c"
+    },
+    "school/teaching/minicourses/materials/time_translations/time_translations_files/libs/bootstrap/bootstrap-580f59859ddf617fe2e58b4aca1d3752.min.css": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/time_translations/time_translations_files/libs/bootstrap/bootstrap-580f59859ddf617fe2e58b4aca1d3752.min.css",
+      "source_sha256": "d2f4b415a72446cd22df7b417b96c35f39bfdf0852bafcc7d60da745a515be15",
+      "sha256": "d2f4b415a72446cd22df7b417b96c35f39bfdf0852bafcc7d60da745a515be15"
+    },
+    "school/teaching/minicourses/materials/time_translations/time_translations_files/libs/bootstrap/bootstrap-icons.css": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/time_translations/time_translations_files/libs/bootstrap/bootstrap-icons.css",
+      "source_sha256": "3a727a8193260bde9485e5db3e703241415a6a394713ebb03d8ce3a8a9d50340",
+      "sha256": "a6a9bb33a340be62a07c4e73c8ed3b1c611ca752776659cfbe79545ce402f76d"
+    },
+    "school/teaching/minicourses/materials/time_translations/time_translations_files/libs/bootstrap/bootstrap-icons.woff": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/time_translations/time_translations_files/libs/bootstrap/bootstrap-icons.woff",
+      "source_sha256": "f55513b7b591cb84a3b87ff0e34ea24d4831d6fedc22e54b911ca64b5b544a15",
+      "sha256": "f55513b7b591cb84a3b87ff0e34ea24d4831d6fedc22e54b911ca64b5b544a15"
+    },
+    "school/teaching/minicourses/materials/time_translations/time_translations_files/libs/bootstrap/bootstrap.min.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/time_translations/time_translations_files/libs/bootstrap/bootstrap.min.js",
+      "source_sha256": "b522dbf32b52ed7cd8633aabea91ff034af5c187578e9efa862b5bd795a7325f",
+      "sha256": "b522dbf32b52ed7cd8633aabea91ff034af5c187578e9efa862b5bd795a7325f"
+    },
+    "school/teaching/minicourses/materials/time_translations/time_translations_files/libs/clipboard/clipboard.min.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/time_translations/time_translations_files/libs/clipboard/clipboard.min.js",
+      "source_sha256": "82edf26934430790b6b335b7cba525dc9bcc02485db979136ec2983da217408b",
+      "sha256": "82edf26934430790b6b335b7cba525dc9bcc02485db979136ec2983da217408b"
+    },
+    "school/teaching/minicourses/materials/time_translations/time_translations_files/libs/quarto-html/anchor.min.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/time_translations/time_translations_files/libs/quarto-html/anchor.min.js",
+      "source_sha256": "772d463c6323a5196d4509187674b6a497862ac809a31adaa0d9ddc2b2e21ef1",
+      "sha256": "772d463c6323a5196d4509187674b6a497862ac809a31adaa0d9ddc2b2e21ef1"
+    },
+    "school/teaching/minicourses/materials/time_translations/time_translations_files/libs/quarto-html/popper.min.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/time_translations/time_translations_files/libs/quarto-html/popper.min.js",
+      "source_sha256": "11c54c39539b620d616d921aa290cf636ea70c943183eacfdd79265dca6e3e3f",
+      "sha256": "11c54c39539b620d616d921aa290cf636ea70c943183eacfdd79265dca6e3e3f"
+    },
+    "school/teaching/minicourses/materials/time_translations/time_translations_files/libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/time_translations/time_translations_files/libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css",
+      "source_sha256": "fd4039f710aa61e30f8dc648240fa91b4579047ed2814447c2d64c6f37de4451",
+      "sha256": "fd4039f710aa61e30f8dc648240fa91b4579047ed2814447c2d64c6f37de4451"
+    },
+    "school/teaching/minicourses/materials/time_translations/time_translations_files/libs/quarto-html/quarto.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/time_translations/time_translations_files/libs/quarto-html/quarto.js",
+      "source_sha256": "4ecb60f215d96b2af0fe9d985c71e32863b1c993a64725a416ac18b5991c59c6",
+      "sha256": "4ecb60f215d96b2af0fe9d985c71e32863b1c993a64725a416ac18b5991c59c6"
+    },
+    "school/teaching/minicourses/materials/time_translations/time_translations_files/libs/quarto-html/tabsets/tabsets.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/time_translations/time_translations_files/libs/quarto-html/tabsets/tabsets.js",
+      "source_sha256": "a9c226bf70e82eaf5476f619cecfb70b4446b87ce4d1634d6404b0b2ba006d15",
+      "sha256": "a9c226bf70e82eaf5476f619cecfb70b4446b87ce4d1634d6404b0b2ba006d15"
+    },
+    "school/teaching/minicourses/materials/time_translations/time_translations_files/libs/quarto-html/tippy.css": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/time_translations/time_translations_files/libs/quarto-html/tippy.css",
+      "source_sha256": "a1ae07b34b7c57774fd2f92a88a9b47dfe77d89262b7db5176b7932d8e29c467",
+      "sha256": "a1ae07b34b7c57774fd2f92a88a9b47dfe77d89262b7db5176b7932d8e29c467"
+    },
+    "school/teaching/minicourses/materials/time_translations/time_translations_files/libs/quarto-html/tippy.umd.min.js": {
+      "repository": "school",
+      "path": "teaching/minicourses/materials/time_translations/time_translations_files/libs/quarto-html/tippy.umd.min.js",
+      "source_sha256": "98324eb7433f974d6418ae15c97232fe8761507cec99a48bac2437c396952c09",
+      "sha256": "98324eb7433f974d6418ae15c97232fe8761507cec99a48bac2437c396952c09"
+    }
+  },
+  "personal_course_link_mappings": {
+    "https://astro2627.sites.tjhsst.edu/": "https://wdlinch3.github.io/aa/",
+    "https://astro2627.sites.tjhsst.edu/ss/2026-2027/": "https://wdlinch3.github.io/aa/ss/2026-2027/"
+  },
+  "external_dependencies": [
+    {
+      "url": "https://activities.tjhsst.edu/astronomyclub/",
+      "kind": "navigation",
+      "pages": [
+        "2025-26/exomoon-wobble/index.html",
+        "2025-26/fermi-bubbles/index.html",
+        "2025-26/index.html",
+        "2025-26/little-red-dots/index.html",
+        "2025-26/pbh-qcd-formation/index.html",
+        "2025-26/primordial-feedback-simulation/index.html",
+        "2025-26/spinni/index.html",
+        "2025-26/tumbleweed-rover/index.html",
+        "2025-26/v-sparc/index.html",
+        "about/index.html",
+        "classes/astronomy-research/2026-2027/index.html",
+        "classes/astronomy-research/2026-2027/journal-club/index.html",
+        "contact/index.html",
+        "index.html",
+        "labs/index.html",
+        "minicourses/index.html",
+        "partners/index.html",
+        "research/index.html"
+      ]
+    },
+    {
+      "url": "https://activities.tjhsst.edu/astroteam/",
+      "kind": "navigation",
+      "pages": [
+        "2025-26/exomoon-wobble/index.html",
+        "2025-26/fermi-bubbles/index.html",
+        "2025-26/index.html",
+        "2025-26/little-red-dots/index.html",
+        "2025-26/pbh-qcd-formation/index.html",
+        "2025-26/primordial-feedback-simulation/index.html",
+        "2025-26/spinni/index.html",
+        "2025-26/tumbleweed-rover/index.html",
+        "2025-26/v-sparc/index.html",
+        "about/index.html",
+        "classes/astronomy-research/2026-2027/index.html",
+        "classes/astronomy-research/2026-2027/journal-club/index.html",
+        "contact/index.html",
+        "index.html",
+        "labs/index.html",
+        "minicourses/index.html",
+        "partners/index.html",
+        "research/index.html"
+      ]
+    },
+    {
+      "url": "https://activities.tjhsst.edu/tjstar/presentations/?category=astro",
+      "kind": "navigation",
+      "pages": [
+        "index.html",
+        "research/index.html"
+      ]
+    },
+    {
+      "url": "https://activities.tjhsst.edu/tjstar/presentations/?category=astro&q=Fermi%20Bubbles",
+      "kind": "navigation",
+      "pages": [
+        "2025-26/fermi-bubbles/index.html",
+        "2025-26/index.html",
+        "index.html"
+      ]
+    },
+    {
+      "url": "https://activities.tjhsst.edu/tjstar/presentations/?category=astro&q=SPINNI",
+      "kind": "navigation",
+      "pages": [
+        "2025-26/index.html",
+        "2025-26/spinni/index.html"
+      ]
+    },
+    {
+      "url": "https://activities.tjhsst.edu/tjstar/presentations/?category=astro&q=Tumbleweed%20Rover",
+      "kind": "navigation",
+      "pages": [
+        "2025-26/index.html",
+        "2025-26/tumbleweed-rover/index.html"
+      ]
+    },
+    {
+      "url": "https://activities.tjhsst.edu/tjstar/presentations/?category=astro&q=V-SPARC",
+      "kind": "navigation",
+      "pages": [
+        "2025-26/index.html",
+        "2025-26/v-sparc/index.html",
+        "index.html"
+      ]
+    },
+    {
+      "url": "https://activities.tjhsst.edu/tjstar/presentations/?q=Co-Evolutions&category=astro",
+      "kind": "navigation",
+      "pages": [
+        "2025-26/index.html",
+        "2025-26/primordial-feedback-simulation/index.html"
+      ]
+    },
+    {
+      "url": "https://activities.tjhsst.edu/tjstar/presentations/?q=Exomoon-Induced&category=astro",
+      "kind": "navigation",
+      "pages": [
+        "2025-26/exomoon-wobble/index.html",
+        "2025-26/index.html",
+        "index.html"
+      ]
+    },
+    {
+      "url": "https://activities.tjhsst.edu/tjstar/presentations/?q=Little+Red+Dots&category=astro",
+      "kind": "navigation",
+      "pages": [
+        "2025-26/index.html",
+        "2025-26/little-red-dots/index.html"
+      ]
+    },
+    {
+      "url": "https://activities.tjhsst.edu/tjstar/presentations/?q=QCD-like&category=astro",
+      "kind": "navigation",
+      "pages": [
+        "2025-26/index.html",
+        "2025-26/pbh-qcd-formation/index.html"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/archive/astro-ph",
+      "kind": "navigation",
+      "pages": [
+        "classes/astronomy-research/2026-2027/index.html"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/search/?searchtype=author&query=Linch%2C+W+D",
+      "kind": "navigation",
+      "pages": [
+        "contact/index.html"
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js",
+      "kind": "runtime",
+      "pages": [
+        "school/teaching/minicourses/materials/gauge_theory_1/gauge_theory_1.html",
+        "school/teaching/minicourses/materials/groups/groups.html",
+        "school/teaching/minicourses/materials/linear_algebra/sturm_liouville.html",
+        "school/teaching/minicourses/materials/qm_to_em/qm_to_em.html",
+        "school/teaching/minicourses/materials/relativity/em_forms/em_forms.html",
+        "school/teaching/minicourses/materials/relativity/gr/general_relativity.html",
+        "school/teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student_v3.html",
+        "school/teaching/minicourses/materials/time_translations/time_translations.html"
+      ]
+    },
+    {
+      "url": "https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6",
+      "kind": "runtime",
+      "pages": [
+        "school/teaching/minicourses/materials/gauge_theory_1/gauge_theory_1.html",
+        "school/teaching/minicourses/materials/groups/groups.html",
+        "school/teaching/minicourses/materials/linear_algebra/sturm_liouville.html",
+        "school/teaching/minicourses/materials/qm_to_em/qm_to_em.html",
+        "school/teaching/minicourses/materials/relativity/em_forms/em_forms.html",
+        "school/teaching/minicourses/materials/relativity/gr/general_relativity.html",
+        "school/teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student_v3.html",
+        "school/teaching/minicourses/materials/time_translations/time_translations.html"
+      ]
+    },
+    {
+      "url": "https://desmos.com",
+      "kind": "navigation",
+      "pages": [
+        "school/teaching/minicourses/materials/relativity/gr/general_relativity.html"
+      ]
+    },
+    {
+      "url": "https://docs.google.com/document/d/1YcyYk6gVUqBkF9YF0_uPVQqrT2nN-WpI483ASUhTh-U/edit?tab=t.0",
+      "kind": "navigation",
+      "pages": [
+        "classes/astronomy-research/2026-2027/index.html"
+      ]
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Aharonov%E2%80%93Bohm_effect",
+      "kind": "navigation",
+      "pages": [
+        "school/teaching/minicourses/materials/qm_to_em/qm_to_em.html"
+      ]
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Asymptotic_freedom",
+      "kind": "navigation",
+      "pages": [
+        "school/teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student_v3.html"
+      ]
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Bessel_function",
+      "kind": "navigation",
+      "pages": [
+        "school/teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student_v3.html"
+      ]
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Beta_function_(physics)",
+      "kind": "navigation",
+      "pages": [
+        "school/teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student_v3.html"
+      ]
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Canonical_quantization",
+      "kind": "navigation",
+      "pages": [
+        "school/teaching/minicourses/materials/time_translations/time_translations.html"
+      ]
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Conformal_anomaly",
+      "kind": "navigation",
+      "pages": [
+        "school/teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student_v3.html"
+      ]
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Cross_section_(physics)",
+      "kind": "navigation",
+      "pages": [
+        "school/teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student_v3.html"
+      ]
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Differential_form",
+      "kind": "navigation",
+      "pages": [
+        "school/teaching/minicourses/materials/qm_to_em/qm_to_em.html"
+      ]
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Dimensional_transmutation",
+      "kind": "navigation",
+      "pages": [
+        "school/teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student_v3.html"
+      ]
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Electromagnetic_tensor",
+      "kind": "navigation",
+      "pages": [
+        "school/teaching/minicourses/materials/qm_to_em/qm_to_em.html"
+      ]
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Gauge_theory",
+      "kind": "navigation",
+      "pages": [
+        "school/teaching/minicourses/materials/qm_to_em/qm_to_em.html"
+      ]
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Gram\u2013Schmidt_process",
+      "kind": "navigation",
+      "pages": [
+        "school/teaching/minicourses/materials/linear_algebra/sturm_liouville.html"
+      ]
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Green%27s_function",
+      "kind": "navigation",
+      "pages": [
+        "school/teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student_v3.html"
+      ]
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Hamiltonian_mechanics",
+      "kind": "navigation",
+      "pages": [
+        "school/teaching/minicourses/materials/time_translations/time_translations.html"
+      ]
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Hodge_star_operator",
+      "kind": "navigation",
+      "pages": [
+        "school/teaching/minicourses/materials/qm_to_em/qm_to_em.html"
+      ]
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Legendre_transformation",
+      "kind": "navigation",
+      "pages": [
+        "school/teaching/minicourses/materials/time_translations/time_translations.html"
+      ]
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Lie_algebra",
+      "kind": "navigation",
+      "pages": [
+        "school/teaching/minicourses/materials/time_translations/time_translations.html"
+      ]
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Lippmann%E2%80%93Schwinger_equation",
+      "kind": "navigation",
+      "pages": [
+        "school/teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student_v3.html"
+      ]
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Phase_space",
+      "kind": "navigation",
+      "pages": [
+        "school/teaching/minicourses/materials/time_translations/time_translations.html"
+      ]
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Poincar\u00e9\u2013Birkhoff\u2013Witt_theorem",
+      "kind": "navigation",
+      "pages": [
+        "school/teaching/minicourses/materials/groups/groups.html"
+      ]
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Poisson_bracket",
+      "kind": "navigation",
+      "pages": [
+        "school/teaching/minicourses/materials/time_translations/time_translations.html"
+      ]
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Renormalization_group",
+      "kind": "navigation",
+      "pages": [
+        "school/teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student_v3.html"
+      ]
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Universal_enveloping_algebra",
+      "kind": "navigation",
+      "pages": [
+        "school/teaching/minicourses/materials/groups/groups.html"
+      ]
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Whitney_embedding_theorem",
+      "kind": "navigation",
+      "pages": [
+        "school/teaching/minicourses/materials/groups/groups.html"
+      ]
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Wu%E2%80%93Yang_dictionary",
+      "kind": "navigation",
+      "pages": [
+        "school/teaching/minicourses/materials/gauge_theory_1/gauge_theory_1.html"
+      ]
+    },
+    {
+      "url": "https://github.com/wdlinch3",
+      "kind": "navigation",
+      "pages": [
+        "contact/index.html"
+      ]
+    },
+    {
+      "url": "https://inspirehep.net/authors/1019804",
+      "kind": "navigation",
+      "pages": [
+        "contact/index.html"
+      ]
+    },
+    {
+      "url": "https://lms.fcps.edu/course/8496409907/materials",
+      "kind": "navigation",
+      "pages": [
+        "classes/astronomy-research/2026-2027/index.html"
+      ]
+    },
+    {
+      "url": "https://orcid.org/0000-0003-2631-4465",
+      "kind": "navigation",
+      "pages": [
+        "contact/index.html"
+      ]
+    },
+    {
+      "url": "https://qlab.sites.tjhsst.edu/",
+      "kind": "navigation",
+      "pages": [
+        "labs/index.html"
+      ]
+    },
+    {
+      "url": "https://tjhsst.fcps.edu/",
+      "kind": "navigation",
+      "pages": [
+        "2025-26/exomoon-wobble/index.html",
+        "2025-26/fermi-bubbles/index.html",
+        "2025-26/index.html",
+        "2025-26/little-red-dots/index.html",
+        "2025-26/pbh-qcd-formation/index.html",
+        "2025-26/primordial-feedback-simulation/index.html",
+        "2025-26/spinni/index.html",
+        "2025-26/tumbleweed-rover/index.html",
+        "2025-26/v-sparc/index.html",
+        "about/index.html",
+        "classes/astronomy-research/2026-2027/index.html",
+        "classes/astronomy-research/2026-2027/journal-club/index.html",
+        "contact/index.html",
+        "index.html",
+        "labs/index.html",
+        "minicourses/index.html",
+        "partners/index.html",
+        "research/index.html"
+      ]
+    },
+    {
+      "url": "https://tjhsst.fcps.edu/academics/research-program",
+      "kind": "navigation",
+      "pages": [
+        "labs/index.html"
+      ]
+    },
+    {
+      "url": "https://tjhsst.fcps.edu/academics/researchpracticumprogram",
+      "kind": "navigation",
+      "pages": [
+        "labs/index.html",
+        "partners/index.html"
+      ]
+    },
+    {
+      "url": "https://tjpartnershipfund.org/",
+      "kind": "navigation",
+      "pages": [
+        "partners/index.html"
+      ]
+    },
+    {
+      "url": "https://ui.adsabs.harvard.edu/",
+      "kind": "navigation",
+      "pages": [
+        "classes/astronomy-research/2026-2027/index.html"
+      ]
+    },
+    {
+      "url": "https://wdlinch3.github.io/",
+      "kind": "navigation",
+      "pages": [
+        "contact/index.html"
+      ]
+    },
+    {
+      "url": "https://wdlinch3.github.io/aa/",
+      "kind": "personal_course_navigation",
+      "pages": [
+        "school/teaching/minicourses/materials/gauge_theory_1/gauge_theory_1.html",
+        "school/teaching/minicourses/materials/groups/groups.html",
+        "school/teaching/minicourses/materials/linear_algebra/sturm_liouville.html",
+        "school/teaching/minicourses/materials/qm_to_em/qm_to_em.html",
+        "school/teaching/minicourses/materials/relativity/em_forms/em_forms.html",
+        "school/teaching/minicourses/materials/relativity/gr/general_relativity.html",
+        "school/teaching/minicourses/materials/renormalization_packet/renormalization_without_qft_student_v3.html",
+        "school/teaching/minicourses/materials/time_translations/time_translations.html"
+      ]
+    },
+    {
+      "url": "https://wdlinch3.github.io/aa/ss/2026-2027/",
+      "kind": "personal_course_navigation",
+      "pages": [
+        "2025-26/exomoon-wobble/index.html",
+        "2025-26/fermi-bubbles/index.html",
+        "2025-26/index.html",
+        "2025-26/little-red-dots/index.html",
+        "2025-26/pbh-qcd-formation/index.html",
+        "2025-26/primordial-feedback-simulation/index.html",
+        "2025-26/spinni/index.html",
+        "2025-26/tumbleweed-rover/index.html",
+        "2025-26/v-sparc/index.html",
+        "about/index.html",
+        "classes/astronomy-research/2026-2027/index.html",
+        "classes/astronomy-research/2026-2027/journal-club/index.html",
+        "contact/index.html",
+        "index.html",
+        "labs/index.html",
+        "minicourses/index.html",
+        "partners/index.html",
+        "research/index.html"
+      ]
+    },
+    {
+      "url": "https://wdlinch3.github.io/about/cv/",
+      "kind": "navigation",
+      "pages": [
+        "contact/index.html"
+      ]
+    },
+    {
+      "url": "https://www.georgetown.edu/",
+      "kind": "navigation",
+      "pages": [
+        "partners/index.html"
+      ]
+    },
+    {
+      "url": "https://www.gmu.edu/",
+      "kind": "navigation",
+      "pages": [
+        "partners/index.html"
+      ]
+    },
+    {
+      "url": "https://www.jhuapl.edu/",
+      "kind": "navigation",
+      "pages": [
+        "partners/index.html"
+      ]
+    },
+    {
+      "url": "https://www.nature.com/articles/s41586-026-10846-4",
+      "kind": "navigation",
+      "pages": [
+        "classes/astronomy-research/2026-2027/journal-club/index.html"
+      ]
+    },
+    {
+      "url": "https://www.nrl.navy.mil/",
+      "kind": "navigation",
+      "pages": [
+        "partners/index.html"
+      ]
+    }
+  ],
+  "scope": "Committed generated lab pages and their public dependencies; optional allowlisted minicourses. No private sources or remote-only files.",
+  "limitations": [
+    "External navigation and CDN runtime dependencies remain listed below.",
+    "JavaScript-created requests are not inferred; this is not an offline edition.",
+    "School/Director-only changes cannot be recovered from Git and require a separate live/source comparison."
+  ]
+}

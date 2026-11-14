@@ -1,4 +1,5 @@
 title: William D. Linch III
+lab_mirror: /astro/
 
 exclude:
   - aa/x/astrodynamics_3/astrodynamics_3.qmd
