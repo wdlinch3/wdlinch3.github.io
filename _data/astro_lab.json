@@ -1,0 +1,55 @@
+{
+  "source": "https://activities.tjhsst.edu/astro/",
+  "source_manifest": "astro_site/data/site.json",
+  "source_sha256": "4c91509b8549a86d7ea1fa51670801a225e926b7328028c0314e181160d2b359",
+  "links": [
+    {
+      "id": "home",
+      "title": "Astro Lab",
+      "url": "https://activities.tjhsst.edu/astro/index.html",
+      "compact": true
+    },
+    {
+      "id": "research_class",
+      "title": "Astronomy Research 2026–27",
+      "url": "https://activities.tjhsst.edu/astro/classes/astronomy-research/2026-2027/index.html",
+      "compact": true
+    },
+    {
+      "id": "research",
+      "title": "Research archive",
+      "url": "https://activities.tjhsst.edu/astro/research/index.html",
+      "compact": true
+    },
+    {
+      "id": "minicourses",
+      "title": "Lab minicourse catalog",
+      "url": "https://activities.tjhsst.edu/astro/minicourses/index.html",
+      "compact": true
+    },
+    {
+      "id": "about",
+      "title": "How the lab works",
+      "url": "https://activities.tjhsst.edu/astro/about/index.html",
+      "compact": false
+    },
+    {
+      "id": "partners",
+      "title": "Partners",
+      "url": "https://activities.tjhsst.edu/astro/partners/index.html",
+      "compact": false
+    },
+    {
+      "id": "labs",
+      "title": "TJ Labs",
+      "url": "https://activities.tjhsst.edu/astro/labs/index.html",
+      "compact": false
+    },
+    {
+      "id": "contact",
+      "title": "Contact the lab",
+      "url": "https://activities.tjhsst.edu/astro/contact/index.html",
+      "compact": false
+    }
+  ]
+}
