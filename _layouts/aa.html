@@ -1,7 +1,4 @@
-{% if site.school_site and page.objectives_page %}
-{% include aa_class_shell.html %}
-{% else %}
-<!DOCTYPE html>
+{% if site.school_site and page.objectives_page %}{% include aa_class_shell.html %}{% else %}<!DOCTYPE html>
 <html lang="en">
 <head>    
 {% assign main_bg_theme = site.data.background_themes.main %}
@@ -73,5 +70,4 @@
   </main>
 </body>
 </html>
-
 {% endif %}
