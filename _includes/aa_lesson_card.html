@@ -1,0 +1,14 @@
+{%- assign card = include.card -%}
+<section class="aa-lesson-card{% unless card.url %} aa-lesson-card-pending{% endunless %}">
+  <span class="aa-card-status">{% if card.url %}Available now{% else %}Coming soon{% endif %}</span>
+  <{{ include.heading | default: 'h3' }}>{{ card.title }}</{{ include.heading | default: 'h3' }}>
+  {% if card.description %}<p>{{ card.description }}</p>{% endif %}
+  {% if card.url %}
+  <div class="aa-lesson-actions">
+    <a href="{{ card.url | relative_url }}">Read online</a>
+    {% if card.objectives_id %}<a href="{{ '/aa/objectives/' | append: card.objectives_id | append: '/' | relative_url }}">Learning objectives</a>{% endif %}
+    {% if card.download_url %}<a href="{{ card.download_url | relative_url }}">Download assignment (.zip)</a>{% endif %}
+    {% for resource in card.resources %}<a href="{{ resource.url }}"{% if resource.new_tab %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ resource.label }}</a>{% endfor %}
+  </div>
+  {% endif %}
+</section>
