@@ -2,7 +2,6 @@
 title: "AA:SS 2026–2027"
 layout: aa_ss_class
 ---
-
 {% assign current_class = site.data.aa_courses.ss.current %}
 
 <p class="aa-eyebrow">Advanced Astronomy · {{ current_class.school_year }}</p>
@@ -31,7 +30,6 @@ layout: aa_ss_class
 {%- endfor %}
   </ul>
 </nav>
-
 {% if current_class.objectives %}
 <section class="aa-lesson-card" aria-labelledby="learning-objectives-title">
   <h2 id="learning-objectives-title">{{ current_class.objectives.title }}</h2>
@@ -39,7 +37,6 @@ layout: aa_ss_class
   <div class="aa-lesson-actions"><a href="{{ current_class.objectives.url | relative_url }}">{{ current_class.objectives.label }}</a></div>
 </section>
 {% endif %}
-
 {% if current_class.textbook %}
 <section class="aa-lesson-card" aria-labelledby="course-textbook-title">
   <h2 id="course-textbook-title">{{ current_class.textbook.title }}</h2>
@@ -51,7 +48,6 @@ layout: aa_ss_class
   </div>
 </section>
 {% endif %}
-
 {% if current_class.software_help %}
   <h2>{{ current_class.software_help.title }}</h2>
 
@@ -79,20 +75,20 @@ layout: aa_ss_class
 {%- if lesson.parts %}
   <section class="aa-lesson-group aa-lesson-group-{{ lesson.parts.size }}" aria-labelledby="lesson-group-{{ forloop.index }}">
     <h3 id="lesson-group-{{ forloop.index }}">{{ lesson.title }}</h3>
-    {% if lesson.description %}<p>{{ lesson.description }}</p>{% endif %}
+{% if lesson.description %}<p>{{ lesson.description }}</p>{% endif %}
     <div class="aa-lesson-group-grid">
-    {%- for part in lesson.parts %}
-      {% include aa_lesson_card.html card=part heading='h4' %}
-    {%- endfor %}
+{%- for part in lesson.parts %}
+{% include aa_lesson_card.html card=part heading='h4' %}
+{%- endfor %}
     </div>
-    {% if lesson.resources %}<div class="aa-lesson-actions">
-    {%- for resource in lesson.resources %}
+{% if lesson.resources %}<div class="aa-lesson-actions">
+{%- for resource in lesson.resources %}
       <a href="{{ resource.url }}"{% if resource.new_tab %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ resource.label }}</a>
-    {%- endfor %}
+{%- endfor %}
     </div>{% endif %}
   </section>
 {%- else %}
-  {% include aa_lesson_card.html card=lesson %}
+{% include aa_lesson_card.html card=lesson %}
 {%- endif %}
 {%- endfor %}
 </div>
