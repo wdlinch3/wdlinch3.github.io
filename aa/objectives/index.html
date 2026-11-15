@@ -13,7 +13,7 @@ page_css: /assets/css/aa_objectives.css
 {% if entry.published %}
 {% assign table_url = entry.html_url %}
 {% if site.school_site %}{% assign table_url = entry.class_html_url %}{% endif %}
-  <li><a href="{{ table_url | relative_url }}">{{ entry.course }} — complete objectives (tables)</a></li>
+  <li><a href="{{ table_url | relative_url }}">{{ entry.course }} — complete objectives (tables)</a> · <a href="{{ entry.pdf_url | relative_url }}">PDF</a><br><small>Up to date on {{ entry.updated_on | date: "%B %-d, %Y" }}; subject to change</small></li>
 {% endif %}
 {% endfor %}
 </ul>

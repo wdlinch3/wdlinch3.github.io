@@ -20,5 +20,5 @@ for entry in yaml.safe_load((site/'_data/aa_vlos.yml').read_text()):
  include=site/'_includes/objective_tables'/f"{entry['id']}.html";include.parent.mkdir(exist_ok=True)
  include.write_text('{% raw %}\n'+content+'\n{% endraw %}\n')
  target=site/entry['class_html_url'].strip('/')/'index.html';target.parent.mkdir(parents=True,exist_ok=True)
- target.write_text('---\nlayout: aa_ss_class\nobjectives_page: true\ntitle: "'+entry['course']+' — Complete learning objectives"\n---\n<nav class="objective-nav" aria-label="Objectives navigation"><a href="{{ \'/aa/ss/2026-2027/\' | relative_url }}">Class page</a><a href="{{ \'/aa/objectives/\' | relative_url }}">Complete course objectives</a></nav>\n{% include objective_tables/'+entry['id']+'.html %}\n')
+ target.write_text('---\nlayout: aa_ss_class\nobjectives_page: true\ntitle: "'+entry['course']+' — Complete learning objectives"\n---\n<nav class="objective-nav" aria-label="Objectives navigation"><a href="{{ \'/aa/ss/2026-2027/\' | relative_url }}">Class page</a><a href="{{ \'/aa/objectives/\' | relative_url }}">Complete course objectives</a><a href="'+entry['pdf_url']+'">Download PDF</a></nav>\n{% include objective_tables/'+entry['id']+'.html %}\n')
  print(entry['id'],len(main.select('tbody tr')),'table rows copied faithfully')
