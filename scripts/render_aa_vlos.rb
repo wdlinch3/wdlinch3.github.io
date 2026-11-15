@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 require "fileutils"
+require "date"
 require "pathname"
 require "tmpdir"
 require "yaml"
@@ -34,19 +35,26 @@ entries.each do |entry|
     temporary_source = temporary.join("document.qmd")
     FileUtils.cp(source, temporary_source)
     FileUtils.cp(css, temporary.join("standards_table.css"))
+    stamp = "Up to date on #{Date.iso8601(entry.fetch('updated_on')).strftime('%B %-d, %Y')}; subject to change"
+    metadata = temporary.join("publication.yml")
+    metadata.write({"subtitle" => stamp}.to_yaml)
+    public_header = temporary.join("header.html")
+    public_header.write(header_path.read.sub('</nav>', "<span aria-hidden=\"true\"> · </span><a href=\"#{entry.fetch('pdf_url')}\">Download PDF</a></nav>"))
 
     html_command = [
       quarto, "render", temporary_source.basename.to_s,
       "--to", "html",
       "--output", "index.html",
       "--embed-resources",
-      "--include-before-body=#{header_path}"
+      "--include-before-body=#{public_header}",
+      "--metadata-file=#{metadata}"
     ]
 
     pdf_command = [
       quarto, "render", temporary_source.basename.to_s,
       "--to", "pdf",
-      "--output", pdf_name
+      "--output", pdf_name,
+      "--metadata-file=#{metadata}"
     ]
 
     tex_cache = temporary.join("tex-cache")
