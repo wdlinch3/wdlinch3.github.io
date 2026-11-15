@@ -36,9 +36,6 @@ for pid,packet in manifest.items():
  assert selected and not selected-catalog.keys(),(pid,selected-catalog.keys())
  resolved[pid]={**packet,'codes':[c for c in catalog if c in selected]}
  target=site/'aa/objectives'/pid; target.mkdir(parents=True,exist_ok=True)
- (target/'index.html').write_text('---\nlayout: aa_objectives\ncompact: true\npage_css: /assets/css/aa_objectives.css\nobjective_packet: '+pid+'\ntitle: '+json.dumps(packet['title']+' — Learning objectives',ensure_ascii=False)+'\n---\n')
-for course,entry in courses.items():
- target=site/'aa/objectives'/course; target.mkdir(parents=True,exist_ok=True)
- (target/'index.html').write_text('---\nlayout: aa_objectives\ncompact: true\npage_css: /assets/css/aa_objectives.css\nobjective_course: '+course+'\ntitle: '+json.dumps(entry['title']+' — Complete objectives')+'\n---\n')
+ (target/'index.html').write_text('---\nlayout: aa_objectives\nobjectives_page: true\ncompact: true\npage_css: /assets/css/aa_objectives.css\nobjective_packet: '+pid+'\ntitle: '+json.dumps(packet['title']+' — Learning objectives',ensure_ascii=False)+'\n---\n')
 (site/'_data/aa_objectives.json').write_text(json.dumps({'catalog':catalog,'courses':courses,'packets':resolved,'provenance':provenance},indent=2,ensure_ascii=False)+'\n')
 print(f'{len(catalog)} unique objectives; {len(resolved)} packet pages; {len(courses)} complete course pages')

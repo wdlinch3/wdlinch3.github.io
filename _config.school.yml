@@ -1,0 +1,2 @@
+# Director rendering profile. Personal-site builds use _config.yml alone.
+school_site: true
