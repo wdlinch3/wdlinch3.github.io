@@ -1,0 +1,8 @@
+.objective-nav { display: flex; flex-wrap: wrap; gap: .7rem 1.2rem; margin-bottom: 2rem; }
+.objective-list { padding-left: 1.4rem; }
+.objective-list > li { padding: .7rem 0; border-bottom: 1px solid var(--border, #364250); }
+.objective-list p { margin: .25rem 0 .5rem; }
+.objective-list details { font-size: .85rem; color: var(--muted, #b6c1cd); }
+.objective-list summary { cursor: pointer; }
+.objective-list code { overflow-wrap: anywhere; }
+.aa-content { min-width: 0; }

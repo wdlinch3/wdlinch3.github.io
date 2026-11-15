@@ -1,0 +1,1473 @@
+{
+  "catalog": {
+    "aa.x.euclidean_geometry.triangles.010": {
+      "section": "Geometry (shared AA:X prerequisite)",
+      "topic": "Triangles",
+      "text": "use sines, cosines, tangents, and Pythagoras’ Theorem to solve right triangles quantitatively."
+    },
+    "aa.x.euclidean_geometry.triangles.020": {
+      "section": "Geometry (shared AA:X prerequisite)",
+      "topic": "Triangles",
+      "text": "identify which geometric tool is appropriate in a given applied problem."
+    },
+    "aa.x.euclidean_geometry.triangles.030": {
+      "section": "Geometry (shared AA:X prerequisite)",
+      "topic": "Triangles",
+      "text": "apply right-triangle geometry to real astronomical estimation problems involving lengths, distances, and angles."
+    },
+    "aa.x.euclidean_geometry.triangles.040": {
+      "section": "Geometry (shared AA:X prerequisite)",
+      "topic": "Triangles",
+      "text": "use geometric arguments to explain special values of sine, cosine, and tangent, the relation between tangent and sine/cosine, and the relations between complementary angles."
+    },
+    "aa.x.euclidean_geometry.radians.010": {
+      "section": "Geometry (shared AA:X prerequisite)",
+      "topic": "Radians",
+      "text": "explain what a radian measures geometrically."
+    },
+    "aa.x.euclidean_geometry.radians.020": {
+      "section": "Geometry (shared AA:X prerequisite)",
+      "topic": "Radians",
+      "text": "use radians to determine arc lengths and related quantities."
+    },
+    "aa.x.euclidean_geometry.units.010": {
+      "section": "Geometry (shared AA:X prerequisite)",
+      "topic": "Units",
+      "text": "convert among decimal degrees, degrees–arcminutes–arcseconds, and radians."
+    },
+    "aa.x.euclidean_geometry.units.020": {
+      "section": "Geometry (shared AA:X prerequisite)",
+      "topic": "Units",
+      "text": "define parsecs (pc) and astronomical units (au), and convert among those units and meters."
+    },
+    "aa.x.euclidean_geometry.parallax.010": {
+      "section": "Geometry (shared AA:X prerequisite)",
+      "topic": "Parallax",
+      "text": "use a diagram of annual stellar parallax to distinguish the total apparent shift from the parallactic angle and the full observing baseline from the one-au baseline in the right triangle, and use this geometry to determine distance."
+    },
+    "aa.x.euclidean_geometry.parallax.020": {
+      "section": "Geometry (shared AA:X prerequisite)",
+      "topic": "Parallax",
+      "text": "relate astronomical distances to light-travel times and express those times in appropriate units."
+    },
+    "aa.x.euclidean_geometry.small_angles.010": {
+      "section": "Geometry (shared AA:X prerequisite)",
+      "topic": "Small-angle approximations",
+      "text": "derive an exact angular size from right-triangle geometry and compare it with the arc-length approximation for the same object."
+    },
+    "aa.x.euclidean_geometry.small_angles.020": {
+      "section": "Geometry (shared AA:X prerequisite)",
+      "topic": "Small-angle approximations",
+      "text": "explain geometrically why a short arc approaches its chord and why sine, the angle in radians, and tangent approach one another for small angles."
+    },
+    "aa.x.euclidean_geometry.small_angles.030": {
+      "section": "Geometry (shared AA:X prerequisite)",
+      "topic": "Small-angle approximations",
+      "text": "calculate percentage discrepancies between exact and approximate results and determine whether a small-angle approximation meets a stated accuracy requirement."
+    },
+    "aa.x.euclidean_geometry.uncertainties.010": {
+      "section": "Geometry (shared AA:X prerequisite)",
+      "topic": "Measurement uncertainty",
+      "text": "use the bounds on a measured angle to estimate the resulting interval in an inferred length, and distinguish that uncertainty interval from the percentage discrepancy relative to a reference value."
+    },
+    "aa.ss.celestial_sphere.diurnal_motion.010": {
+      "section": "Celestial Sphere, Prominent Stars, Constellations",
+      "topic": "Diurnal motion / rotation / revolution",
+      "text": "explain what diurnal motion is."
+    },
+    "aa.ss.celestial_sphere.diurnal_motion.020": {
+      "section": "Celestial Sphere, Prominent Stars, Constellations",
+      "topic": "Diurnal motion / rotation / revolution",
+      "text": "clearly distinguish rotation from revolution."
+    },
+    "aa.ss.celestial_sphere.diurnal_motion.030": {
+      "section": "Celestial Sphere, Prominent Stars, Constellations",
+      "topic": "Diurnal motion / rotation / revolution",
+      "text": "explain what prograde and retrograde motion are."
+    },
+    "aa.ss.celestial_sphere.diurnal_motion.040": {
+      "section": "Celestial Sphere, Prominent Stars, Constellations",
+      "topic": "Diurnal motion / rotation / revolution",
+      "text": "explain that the orbital motion of the major Solar System bodies is generally prograde."
+    },
+    "aa.ss.celestial_sphere.diurnal_motion.050": {
+      "section": "Celestial Sphere, Prominent Stars, Constellations",
+      "topic": "Diurnal motion / rotation / revolution",
+      "text": "explain that the rotational motion of most major Solar System bodies is generally prograde."
+    },
+    "aa.ss.celestial_sphere.diurnal_motion.060": {
+      "section": "Celestial Sphere, Prominent Stars, Constellations",
+      "topic": "Diurnal motion / rotation / revolution",
+      "text": "use my understanding of these motions to predict the phase and sky position of the Moon from given observational information."
+    },
+    "aa.ss.celestial_sphere.diurnal_motion.070": {
+      "section": "Celestial Sphere, Prominent Stars, Constellations",
+      "topic": "Diurnal motion / rotation / revolution",
+      "text": "explain what it means for the Moon to be tidally locked to the Earth, and relate this to its rotation and revolution."
+    },
+    "aa.ss.celestial_sphere.ecliptic_seasons.010": {
+      "section": "Celestial Sphere, Prominent Stars, Constellations",
+      "topic": "Ecliptic / equator / seasons",
+      "text": "explain what the ecliptic and ecliptic plane are."
+    },
+    "aa.ss.celestial_sphere.ecliptic_seasons.020": {
+      "section": "Celestial Sphere, Prominent Stars, Constellations",
+      "topic": "Ecliptic / equator / seasons",
+      "text": "explain what the Earth’s equatorial plane is."
+    },
+    "aa.ss.celestial_sphere.ecliptic_seasons.030": {
+      "section": "Celestial Sphere, Prominent Stars, Constellations",
+      "topic": "Ecliptic / equator / seasons",
+      "text": "relate seasonal observations to the inclination of the Earth’s rotation axis."
+    },
+    "aa.ss.celestial_sphere.ecliptic_seasons.040": {
+      "section": "Celestial Sphere, Prominent Stars, Constellations",
+      "topic": "Ecliptic / equator / seasons",
+      "text": "explain why summers are warm and winters are cold."
+    },
+    "aa.ss.celestial_sphere.ecliptic_seasons.050": {
+      "section": "Celestial Sphere, Prominent Stars, Constellations",
+      "topic": "Ecliptic / equator / seasons",
+      "text": "explain what the equinoxes and solstices are, when they occur, and where the Earth is in its orbit when they occur."
+    },
+    "aa.ss.celestial_sphere.ecliptic_seasons.060": {
+      "section": "Celestial Sphere, Prominent Stars, Constellations",
+      "topic": "Ecliptic / equator / seasons",
+      "text": "relate the Sun’s changing declination and daily path to its rising and setting directions, noon altitude, and length of daylight at a specified observing latitude and season."
+    },
+    "aa.ss.celestial_sphere.ecliptic_seasons.070": {
+      "section": "Celestial Sphere, Prominent Stars, Constellations",
+      "topic": "Ecliptic / equator / seasons",
+      "text": "describe an analemma as the pattern of the Sun’s positions observed at the same clock time over a year."
+    },
+    "aa.ss.celestial_sphere.eclipses.010": {
+      "section": "Celestial Sphere, Prominent Stars, Constellations",
+      "topic": "Eclipses",
+      "text": "give geometric explanations of solar and lunar eclipses."
+    },
+    "aa.ss.celestial_sphere.eclipses.020": {
+      "section": "Celestial Sphere, Prominent Stars, Constellations",
+      "topic": "Eclipses",
+      "text": "explain what is happening physically when solar and lunar eclipses occur."
+    },
+    "aa.ss.celestial_sphere.eclipses.030": {
+      "section": "Celestial Sphere, Prominent Stars, Constellations",
+      "topic": "Eclipses",
+      "text": "explain when eclipses can occur and when they cannot."
+    },
+    "aa.ss.celestial_sphere.eclipses.040": {
+      "section": "Celestial Sphere, Prominent Stars, Constellations",
+      "topic": "Eclipses",
+      "text": "explain the phases of the Moon during eclipses."
+    },
+    "aa.ss.celestial_sphere.eclipses.050": {
+      "section": "Celestial Sphere, Prominent Stars, Constellations",
+      "topic": "Eclipses",
+      "text": "determine the maximum lengths of eclipses."
+    },
+    "aa.ss.celestial_sphere.coordinates.010": {
+      "section": "Celestial Sphere, Prominent Stars, Constellations",
+      "topic": "Celestial coordinates",
+      "text": "explain position on Earth in terms of latitude and longitude."
+    },
+    "aa.ss.celestial_sphere.coordinates.020": {
+      "section": "Celestial Sphere, Prominent Stars, Constellations",
+      "topic": "Celestial coordinates",
+      "text": "explain the horizontal coordinate system using altitude and azimuth, identify the horizon and zenith, and state the reference direction and sense in which azimuth is measured."
+    },
+    "aa.ss.celestial_sphere.coordinates.030": {
+      "section": "Celestial Sphere, Prominent Stars, Constellations",
+      "topic": "Celestial coordinates",
+      "text": "locate specific objects in the sky using an appropriate coordinate system."
+    },
+    "aa.ss.celestial_sphere.coordinates.040": {
+      "section": "Celestial Sphere, Prominent Stars, Constellations",
+      "topic": "Celestial coordinates",
+      "text": "define right ascension and declination using the celestial equator, celestial poles, and vernal-equinox direction, and interpret their units and coordinate grids."
+    },
+    "aa.ss.celestial_sphere.coordinates.050": {
+      "section": "Celestial Sphere, Prominent Stars, Constellations",
+      "topic": "Celestial coordinates",
+      "text": "explain how horizontal coordinates depend on observing location and time, and how the equatorial grid moves relative to the horizon as Earth rotates."
+    },
+    "aa.ss.celestial_sphere.coordinates.060": {
+      "section": "Celestial Sphere, Prominent Stars, Constellations",
+      "topic": "Celestial coordinates",
+      "text": "derive and apply the relation between latitude, solar declination, and the Sun’s altitude at local solar noon, including equinox and solstice cases."
+    },
+    "aa.ss.celestial_sphere.coordinates.070": {
+      "section": "Celestial Sphere, Prominent Stars, Constellations",
+      "topic": "Celestial coordinates",
+      "text": "convert geographic coordinates between decimal and degrees–arcminutes–arcseconds form, and calculate surface distances from central angles along great-circle arcs on a spherical Earth."
+    },
+    "aa.ss.celestial_sphere.observations.010": {
+      "section": "Celestial Sphere, Prominent Stars, Constellations",
+      "topic": "Observation and instruments",
+      "text": "construct and use a simple altitude-measuring instrument, estimate and justify its angular uncertainty, and explain how its design could be improved."
+    },
+    "aa.ss.celestial_sphere.observations.020": {
+      "section": "Celestial Sphere, Prominent Stars, Constellations",
+      "topic": "Observation and instruments",
+      "text": "record an object’s altitude and azimuth with the observing location and date/time, and use a chart or sky map for the same observing conditions to support an identification."
+    },
+    "aa.ss.celestial_sphere.observations.030": {
+      "section": "Celestial Sphere, Prominent Stars, Constellations",
+      "topic": "Observation and instruments",
+      "text": "compare coordinate estimates or measurements with a reference and assess whether their differences are consistent with the claimed uncertainty."
+    },
+    "aa.ss.celestial_sphere.star_charts.010": {
+      "section": "Celestial Sphere, Prominent Stars, Constellations",
+      "topic": "Star charts and constellations",
+      "text": "distinguish a constellation from an asterism and use recognizable star patterns and coordinate grids to locate objects, including Polaris and the neighborhood of the equatorial coordinate origin."
+    },
+    "aa.ss.celestial_sphere.star_charts.020": {
+      "section": "Celestial Sphere, Prominent Stars, Constellations",
+      "topic": "Star charts and constellations",
+      "text": "trace the Sun’s annual path through the zodiacal constellations on a star chart."
+    },
+    "aa.ss.celestial_sphere.star_charts.030": {
+      "section": "Celestial Sphere, Prominent Stars, Constellations",
+      "topic": "Star charts and constellations",
+      "text": "construct a planisphere appropriate to an observing latitude and use its date/time settings and horizon window to locate visible star patterns."
+    },
+    "aa.ss.celestial_sphere.astranatomy.010": {
+      "section": "Celestial Sphere, Prominent Stars, Constellations",
+      "topic": "Astranatomy",
+      "text": "calibrate the angular sizes of my own finger, fist, and outstretched hand from measured widths and eye-to-hand distances, and explain their use for rough observation."
+    },
+    "aa.ss.celestial_sphere.astranatomy.020": {
+      "section": "Celestial Sphere, Prominent Stars, Constellations",
+      "topic": "Astranatomy",
+      "text": "estimate angular sizes of objects and angular distances on the celestial sphere."
+    },
+    "aa.ss.celestial_sphere.precession_nutation.010": {
+      "section": "Celestial Sphere, Prominent Stars, Constellations",
+      "topic": "Precession / nutation",
+      "text": "explain what precession and nutation are."
+    },
+    "aa.ss.celestial_sphere.precession_nutation.020": {
+      "section": "Celestial Sphere, Prominent Stars, Constellations",
+      "topic": "Precession / nutation",
+      "text": "explain the influence of the Moon on the Earth’s precession."
+    },
+    "aa.ss.aristarchus.history.010": {
+      "section": "Aristarchus of Samos",
+      "topic": "History",
+      "text": "explain who Aristarchus was and what he believed about the Sun, planets, and stars."
+    },
+    "aa.ss.aristarchus.history.020": {
+      "section": "Aristarchus of Samos",
+      "topic": "History",
+      "text": "explain some of the reasons Aristarchus’ model was rejected by his contemporaries, including arguments involving parallax, wind, and the motion of objects on Earth."
+    },
+    "aa.ss.aristarchus.sun_earth_moon.010": {
+      "section": "Aristarchus of Samos",
+      "topic": "Sun–Earth–Moon",
+      "text": "apply Aristarchus’ logic to modern observations to determine relative sizes of the Sun, Earth, and Moon."
+    },
+    "aa.ss.aristarchus.sun_earth_moon.020": {
+      "section": "Aristarchus of Samos",
+      "topic": "Sun–Earth–Moon",
+      "text": "apply Aristarchus’ logic to modern observations to determine relative sizes of the Sun–Earth and Earth–Moon distances."
+    },
+    "aa.ss.aristarchus.sun_earth_moon.030": {
+      "section": "Aristarchus of Samos",
+      "topic": "Sun–Earth–Moon",
+      "text": "apply Eratosthenes’ method to modern observations to determine the size of the Earth."
+    },
+    "aa.ss.kepler.copernicus.010": {
+      "section": "Kepler’s Laws",
+      "topic": "Copernicus",
+      "text": "explain that Copernicus openly argued that the Earth and other known planets orbit the Sun."
+    },
+    "aa.ss.kepler.copernicus.020": {
+      "section": "Kepler’s Laws",
+      "topic": "Copernicus",
+      "text": "explain why the Copernican model did not automatically outperform the Ptolemaic model while both still used circular orbits."
+    },
+    "aa.ss.kepler.copernicus.030": {
+      "section": "Kepler’s Laws",
+      "topic": "Copernicus",
+      "text": "state that Copernicus calculated the orbital periods of the planets."
+    },
+    "aa.ss.kepler.tycho_kepler.010": {
+      "section": "Kepler’s Laws",
+      "topic": "Tycho / Kepler",
+      "text": "explain who Tycho Brahe and Johannes Kepler were."
+    },
+    "aa.ss.kepler.tycho_kepler.020": {
+      "section": "Kepler’s Laws",
+      "topic": "Tycho / Kepler",
+      "text": "give a rough explanation of how Kepler used Tycho’s data and Copernican ideas to obtain his first two laws."
+    },
+    "aa.ss.kepler.tycho_kepler.030": {
+      "section": "Kepler’s Laws",
+      "topic": "Tycho / Kepler",
+      "text": "explain Kepler’s First Law and how it corrected the chief geometric flaw in the Copernican model."
+    },
+    "aa.ss.kepler.tycho_kepler.040": {
+      "section": "Kepler’s Laws",
+      "topic": "Tycho / Kepler",
+      "text": "explain Kepler’s Second Law."
+    },
+    "aa.ss.kepler.ellipses.010": {
+      "section": "Kepler’s Laws",
+      "topic": "Ellipses",
+      "text": "construct ellipses geometrically."
+    },
+    "aa.ss.kepler.ellipses.020": {
+      "section": "Kepler’s Laws",
+      "topic": "Ellipses",
+      "text": "represent the same ellipse in Cartesian, parametric, and focus-centered polar forms, keeping track of the origin and angle convention."
+    },
+    "aa.ss.kepler.ellipses.030": {
+      "section": "Kepler’s Laws",
+      "topic": "Ellipses",
+      "text": "relate semi-major axis, semi-minor axis, focal distance, eccentricity, periapsis, and apoapsis, and calculate these quantities from one another."
+    },
+    "aa.ss.kepler.conics.010": {
+      "section": "Kepler’s Laws",
+      "topic": "Conic sections",
+      "text": "use a cone-and-plane model to distinguish circles, ellipses, parabolas, and hyperbolas and explain how the cutting plane determines the section."
+    },
+    "aa.ss.kepler.applications.010": {
+      "section": "Kepler’s Laws",
+      "topic": "Applications of Kepler’s Laws",
+      "text": "state Kepler’s First Law."
+    },
+    "aa.ss.kepler.applications.020": {
+      "section": "Kepler’s Laws",
+      "topic": "Applications of Kepler’s Laws",
+      "text": "explain Kepler’s Second Law in terms of motion on an ellipse and relate it to a conservation law, namely angular momentum."
+    },
+    "aa.ss.kepler.applications.030": {
+      "section": "Kepler’s Laws",
+      "topic": "Applications of Kepler’s Laws",
+      "text": "explain what Kepler’s Second Law means for orbital speed near perihelion and aphelion."
+    },
+    "aa.ss.kepler.applications.040": {
+      "section": "Kepler’s Laws",
+      "topic": "Applications of Kepler’s Laws",
+      "text": "apply Kepler’s Third Law to predict orbital periods or orbital radii from a table of known values."
+    },
+    "aa.ss.kepler.applications.050": {
+      "section": "Kepler’s Laws",
+      "topic": "Applications of Kepler’s Laws",
+      "text": "generalize Kepler’s Third Law to other systems, such as the Galilean moons, and explain what changes and why."
+    },
+    "aa.ss.solar_system1.features_structure.010": {
+      "section": "Solar System I",
+      "topic": "Features / structure",
+      "text": "describe the gross features of the Solar System in terms of the Sun, the four terrestrial planets, the four giant planets, the main asteroid belt, the Kuiper belt, and the Oort cloud."
+    },
+    "aa.ss.solar_system1.features_structure.020": {
+      "section": "Solar System I",
+      "topic": "Features / structure",
+      "text": "compare the sizes of the Sun and planets qualitatively, and interpret scale models or diagrams to recognize plausible and implausible relative sizes."
+    },
+    "aa.ss.solar_system1.features_structure.030": {
+      "section": "Solar System I",
+      "topic": "Features / structure",
+      "text": "compare planetary distances and gaps qualitatively, recognize the uneven spacing of the planets, and evaluate scale models, including the practical limitations of showing body sizes and orbital distances on the same scale."
+    },
+    "aa.ss.solar_system1.planetary_comparisons.010": {
+      "section": "Solar System I",
+      "topic": "Planetary comparisons",
+      "text": "use mass, size, mean density, and distance data to distinguish terrestrial and giant planets, and identify the gas-giant and ice-giant subdivisions."
+    },
+    "aa.ss.solar_system1.planetary_comparisons.020": {
+      "section": "Solar System I",
+      "topic": "Planetary comparisons",
+      "text": "calculate and interpret mass ratios and mass fractions to describe how Solar System mass is distributed among the Sun and planets."
+    },
+    "aa.ss.solar_system1.planetary_comparisons.030": {
+      "section": "Solar System I",
+      "topic": "Planetary comparisons",
+      "text": "use spherical volume scaling and mean density to explain why diameter ratios and mass ratios differ, and why similarly sized bodies can have different masses and surface gravities."
+    },
+    "aa.ss.solar_system2.formation_theory.010": {
+      "section": "Solar System II",
+      "topic": "Formation theory",
+      "text": "explain nebular theory in terms of interstellar matter (ISM), giant molecular clouds (GMCs), dust, radiative cooling, Jeans instability, cloud collapse and fragmentation, angular momentum, spin-up, flattening, frictional heating, the T Tauri phase, and gas expulsion."
+    },
+    "aa.ss.solar_system2.formation_theory.020": {
+      "section": "Solar System II",
+      "topic": "Formation theory",
+      "text": "explain qualitatively what angular momentum is and how its conservation leads to spin-up and flattening of the protoplanetary disk."
+    },
+    "aa.ss.solar_system2.formation_theory.030": {
+      "section": "Solar System II",
+      "topic": "Formation theory",
+      "text": "explain what accretion is and how planetesimals form."
+    },
+    "aa.ss.solar_system2.formation_theory.040": {
+      "section": "Solar System II",
+      "topic": "Formation theory",
+      "text": "explain how heating of the collapsing protostellar bulge contributed to planetary differentiation."
+    },
+    "aa.ss.solar_system2.formation_theory.050": {
+      "section": "Solar System II",
+      "topic": "Formation theory",
+      "text": "explain what the asteroid belt is and why it exists."
+    },
+    "aa.ss.solar_system2.formation_theory.060": {
+      "section": "Solar System II",
+      "topic": "Formation theory",
+      "text": "explain the roles of the gas giants in the formation of the Kuiper belt and Oort cloud."
+    },
+    "aa.ss.solar_system2.formation_theory.070": {
+      "section": "Solar System II",
+      "topic": "Formation theory",
+      "text": "describe with proper vocabulary what is happening in numerical simulations of GMC collapse and fragmentation."
+    },
+    "aa.ss.solar_system2.formation_theory.080": {
+      "section": "Solar System II",
+      "topic": "Formation theory",
+      "text": "describe the temperature profile of the proto-solar system, identify the ice line, describe the formation of refractory materials, and use this to explain planetary differentiation."
+    },
+    "aa.ss.solar_system2.formation_theory.090": {
+      "section": "Solar System II",
+      "topic": "Formation theory",
+      "text": "describe gravitational assists by appealing to conservation of linear momentum, and relate them both to space travel and to Solar System structure."
+    },
+    "aa.ss.solar_system3.quantitative.010": {
+      "section": "Solar System III",
+      "topic": "Quantitatively",
+      "text": "apply the Virial Theorem to determine conditions for the stability of a warm, self-gravitating molecular cloud and the onset of Jeans instability."
+    },
+    "aa.ss.solar_system3.quantitative.020": {
+      "section": "Solar System III",
+      "topic": "Quantitatively",
+      "text": "calculate the Jeans mass $M_J$ or critical temperature $T_c$ from thermodynamic stability arguments for a cloud fragment."
+    },
+    "aa.ss.solar_system3.quantitative.030": {
+      "section": "Solar System III",
+      "topic": "Quantitatively",
+      "text": "calculate the free-fall time $t_{\\mathrm{ff}}$ for the collapse of a giant molecular cloud from its initial density."
+    },
+    "aa.ss.solar_system3.quantitative.040": {
+      "section": "Solar System III",
+      "topic": "Quantitatively",
+      "text": "calculate how the temperature of the central region increases as a function of the size of a collapsing cloud."
+    },
+    "aa.ss.solar_system3.quantitative.050": {
+      "section": "Solar System III",
+      "topic": "Quantitatively",
+      "text": "construct a realistic model of the temperature profile of the proto-solar system and identify the ice line."
+    },
+    "aa.ss.solar_system3.quantitative.060": {
+      "section": "Solar System III",
+      "topic": "Quantitatively",
+      "text": "calculate the change in velocity, $\\Delta v$, of a small body in a one-dimensional gravitational assist."
+    },
+    "aa.ss.sol.structure.010": {
+      "section": "Sol",
+      "topic": "Structure",
+      "text": "describe the Sun in terms of its total mass, radius, density, luminosity, and general observational character."
+    },
+    "aa.ss.sol.structure.020": {
+      "section": "Sol",
+      "topic": "Structure",
+      "text": "describe the structure of the Sun in terms of the core, radiation zone, convection zone, photosphere, chromosphere, and corona."
+    },
+    "aa.ss.sol.structure.030": {
+      "section": "Sol",
+      "topic": "Structure",
+      "text": "describe the Sun’s temperature structure and differential rotation."
+    },
+    "aa.ss.sol.structure.040": {
+      "section": "Sol",
+      "topic": "Structure",
+      "text": "explain hydrostatic equilibrium and zonal flow in the context of the Sun."
+    },
+    "aa.ss.sol.solar_wind_weather.010": {
+      "section": "Sol",
+      "topic": "Solar wind / weather",
+      "text": "describe the basics of radiation using the Planck curve, Wien’s Law, and the Stefan–Boltzmann law."
+    },
+    "aa.ss.sol.solar_wind_weather.020": {
+      "section": "Sol",
+      "topic": "Solar wind / weather",
+      "text": "calculate the Sun’s surface gravity, escape speed, luminosity, and surface temperature."
+    },
+    "aa.ss.sol.solar_wind_weather.030": {
+      "section": "Sol",
+      "topic": "Solar wind / weather",
+      "text": "use those physical quantities to reason about solar mass loss."
+    },
+    "aa.ss.sol.solar_wind_weather.040": {
+      "section": "Sol",
+      "topic": "Solar wind / weather",
+      "text": "describe the Sun’s magnetic field and its implications for polarity, sunspots, and the solar cycle."
+    },
+    "aa.ss.sol.solar_wind_weather.050": {
+      "section": "Sol",
+      "topic": "Solar wind / weather",
+      "text": "describe solar flares, coronal mass ejections (CMEs), and space weather, including the hazards they pose for Earth."
+    },
+    "aa.ss.sol.fusion.010": {
+      "section": "Sol",
+      "topic": "Fusion",
+      "text": "describe how energy is generated in the core using basic nuclear particle physics, the mass–energy relation, and the proton–proton chain."
+    },
+    "aa.ss.sol.fusion.020": {
+      "section": "Sol",
+      "topic": "Fusion",
+      "text": "identify the roles of protons, neutrons, electrons, neutrinos, and nuclei in solar fusion processes."
+    },
+    "aa.ss.sol.fusion.030": {
+      "section": "Sol",
+      "topic": "Fusion",
+      "text": "calculate the rate of solar energy generation in an appropriate simplified model."
+    },
+    "aa.ss.jupiter1.bulk_properties_rotation.010": {
+      "section": "Jupiter I",
+      "topic": "Bulk properties / rotation",
+      "text": "describe Jupiter in terms of its total mass, size relative to Earth and the Sun, average density, and the implications of that density for composition."
+    },
+    "aa.ss.jupiter1.bulk_properties_rotation.020": {
+      "section": "Jupiter I",
+      "topic": "Bulk properties / rotation",
+      "text": "describe Jupiter’s rapid rotation rate and its major observational consequences."
+    },
+    "aa.ss.jupiter1.bulk_properties_rotation.030": {
+      "section": "Jupiter I",
+      "topic": "Bulk properties / rotation",
+      "text": "estimate and compare Jupiter’s surface gravity and equatorial rotation speed using order-of-magnitude and scaling arguments."
+    },
+    "aa.ss.jupiter1.rotating_frames.010": {
+      "section": "Jupiter I",
+      "topic": "Rotating frames",
+      "text": "describe the Coriolis pseudo-force and how it gives rise to zonal flow."
+    },
+    "aa.ss.jupiter1.rotating_frames.020": {
+      "section": "Jupiter I",
+      "topic": "Rotating frames",
+      "text": "describe the centrifugal pseudo-force and how it relates to flattening and oblateness."
+    },
+    "aa.ss.jupiter1.rotating_frames.030": {
+      "section": "Jupiter I",
+      "topic": "Rotating frames",
+      "text": "use the right-hand rule to determine the directions of relevant pseudo-forces in a rotating frame."
+    },
+    "aa.ss.jupiter1.atmosphere_weather.010": {
+      "section": "Jupiter I",
+      "topic": "Atmosphere / weather",
+      "text": "describe the gross features of Jupiter’s atmosphere in terms of bright zones, dark belts, large-scale storms, east–west zonal flows, and differential rotation."
+    },
+    "aa.ss.jupiter1.atmosphere_weather.020": {
+      "section": "Jupiter I",
+      "topic": "Atmosphere / weather",
+      "text": "explain how rapid rotation and pseudo-forces organize atmospheric motion and lead to alternating bands with opposite flow directions."
+    },
+    "aa.ss.jupiter1.atmosphere_weather.030": {
+      "section": "Jupiter I",
+      "topic": "Atmosphere / weather",
+      "text": "identify the role of the Coriolis pseudo-force in shaping Jupiter’s banded structure and large-scale atmospheric circulation."
+    },
+    "aa.ss.jupiter1.interior_structure.010": {
+      "section": "Jupiter I",
+      "topic": "Interior / composition",
+      "text": "describe what is and is not understood about the interior structure of Jupiter."
+    },
+    "aa.ss.jupiter1.interior_structure.020": {
+      "section": "Jupiter I",
+      "topic": "Interior / composition",
+      "text": "describe Jupiter’s internal structure qualitatively, including outer gaseous layers, deeper fluid regions, and a dilute or uncertain core."
+    },
+    "aa.ss.jupiter1.interior_structure.030": {
+      "section": "Jupiter I",
+      "topic": "Interior / composition",
+      "text": "describe what a phase diagram represents and use the phases of hydrogen to draw conclusions about Jupiter’s interior."
+    },
+    "aa.ss.jupiter1.interior_structure.040": {
+      "section": "Jupiter I",
+      "topic": "Interior / composition",
+      "text": "explain why hydrogen is expected to behave like a metal at depth in Jupiter because of the extremely high pressures there."
+    },
+    "aa.ss.jupiter1.interior_structure.050": {
+      "section": "Jupiter I",
+      "topic": "Interior / composition",
+      "text": "explain why Jupiter radiates more energy than it receives from the Sun, and relate this to Kelvin–Helmholtz contraction and the slow release of gravitational energy."
+    },
+    "aa.ss.jupiter1.magnetosphere.010": {
+      "section": "Jupiter I",
+      "topic": "Magnetosphere",
+      "text": "describe the origin of Jupiter’s strong magnetic field in terms of rapid rotation and electrically conducting material in the deep interior."
+    },
+    "aa.ss.jupiter1.magnetosphere.020": {
+      "section": "Jupiter I",
+      "topic": "Magnetosphere",
+      "text": "describe the scale and significance of Jupiter’s magnetosphere, including trapped charged particles, radio emission, and the radiation environment near the moons."
+    },
+    "aa.ss.jupiter2.moons_rings.010": {
+      "section": "Jupiter II",
+      "topic": "Moons and rings",
+      "text": "identify the Galilean moons Io, Europa, Ganymede, and Callisto."
+    },
+    "aa.ss.jupiter2.moons_rings.020": {
+      "section": "Jupiter II",
+      "topic": "Moons and rings",
+      "text": "explain what orbital resonance is and how it applies to the Galilean moons."
+    },
+    "aa.ss.jupiter2.moons_rings.030": {
+      "section": "Jupiter II",
+      "topic": "Moons and rings",
+      "text": "describe the Amalthean group—Metis, Adrastea, Amalthea, and Thebe—and locate them relative to Jupiter, its rings, and the Galilean moons."
+    },
+    "aa.ss.jupiter2.moons_rings.040": {
+      "section": "Jupiter II",
+      "topic": "Moons and rings",
+      "text": "describe Jupiter’s moon-and-ring system in terms of its major subdivisions and the relationships among rings, inner moons, and Galilean moons."
+    },
+    "aa.ss.jupiter2.moons_rings.050": {
+      "section": "Jupiter II",
+      "topic": "Moons and rings",
+      "text": "describe the Galilean moons as a system, including their relative sizes, densities, orbital distances, and the trend of decreasing density with increasing distance from Jupiter."
+    },
+    "aa.ss.jupiter2.moons_rings.060": {
+      "section": "Jupiter II",
+      "topic": "Moons and rings",
+      "text": "explain the analogy between the Galilean system and a “mini solar system.”"
+    },
+    "aa.ss.jupiter2.moons_rings.070": {
+      "section": "Jupiter II",
+      "topic": "Moons and rings",
+      "text": "describe how the moons interact with Jupiter through gravity, tides, resonance, and the magnetic-field environment."
+    },
+    "aa.ss.jupiter2.rotating_frames_pseudo_forces.010": {
+      "section": "Jupiter II",
+      "topic": "Rotating frames / pseudo-forces",
+      "text": "describe motion in a rotating reference frame in terms of centrifugal and Coriolis pseudo-forces."
+    },
+    "aa.ss.jupiter2.rotating_frames_pseudo_forces.020": {
+      "section": "Jupiter II",
+      "topic": "Rotating frames / pseudo-forces",
+      "text": "determine when pseudo-forces must be included and when they should not."
+    },
+    "aa.ss.jupiter2.rotating_frames_pseudo_forces.030": {
+      "section": "Jupiter II",
+      "topic": "Rotating frames / pseudo-forces",
+      "text": "describe and identify the five Lagrange points of a two-body system and explain how they relate to Jupiter’s Trojan asteroids."
+    },
+    "aa.ss.jupiter2.rotating_frames_pseudo_forces.040": {
+      "section": "Jupiter II",
+      "topic": "Rotating frames / pseudo-forces",
+      "text": "analyze the stability of Lagrange points, including the distinction between unstable, absolutely stable, and dynamically stable equilibrium points."
+    },
+    "aa.ss.jupiter2.rotating_frames_pseudo_forces.050": {
+      "section": "Jupiter II",
+      "topic": "Rotating frames / pseudo-forces",
+      "text": "predict qualitatively the motion of objects displaced slightly from the neighborhood of a Lagrange point."
+    },
+    "aa.x.spectroscopy.electricity.010": {
+      "section": "Spectroscopy",
+      "topic": "Electricity",
+      "text": "explain and model the phenomena described by Coulomb’s Law qualitatively, including inverse-square behavior and comparison to gravitation."
+    },
+    "aa.x.spectroscopy.electricity.020": {
+      "section": "Spectroscopy",
+      "topic": "Electricity",
+      "text": "calculate electric forces and accelerations in simple Coulomb-law problems."
+    },
+    "aa.x.spectroscopy.electricity.030": {
+      "section": "Spectroscopy",
+      "topic": "Electricity",
+      "text": "describe and use electric field lines qualitatively."
+    },
+    "aa.x.spectroscopy.electricity.040": {
+      "section": "Spectroscopy",
+      "topic": "Electricity",
+      "text": "define the fine-structure constant as a dimensionless quantity built from fundamental constants."
+    },
+    "aa.x.spectroscopy.photoelectric_effect.010": {
+      "section": "Spectroscopy",
+      "topic": "Photoelectric effect",
+      "text": "explain the photoelectric effect and why it implies that light cannot be understood purely as a classical wave."
+    },
+    "aa.x.spectroscopy.photoelectric_effect.020": {
+      "section": "Spectroscopy",
+      "topic": "Photoelectric effect",
+      "text": "state and use Einstein’s relation for photon energy in terms of frequency."
+    },
+    "aa.x.spectroscopy.hydrogen_atom.010": {
+      "section": "Spectroscopy",
+      "topic": "Hydrogen atom",
+      "text": "write de Broglie’s relation, explain what it means, and use it quantitatively."
+    },
+    "aa.x.spectroscopy.hydrogen_atom.020": {
+      "section": "Spectroscopy",
+      "topic": "Hydrogen atom",
+      "text": "explain Bohr’s picture of the hydrogen atom in light of de Broglie and Einstein."
+    },
+    "aa.x.spectroscopy.hydrogen_atom.030": {
+      "section": "Spectroscopy",
+      "topic": "Hydrogen atom",
+      "text": "identify and use the ground-state energy of hydrogen and explain why the spectrum is discrete."
+    },
+    "aa.x.spectroscopy.hydrogen_atom.040": {
+      "section": "Spectroscopy",
+      "topic": "Hydrogen atom",
+      "text": "express major hydrogen-atom quantities such as the ground-state energy, Bohr radius, and electron speed in terms of the fine-structure constant."
+    },
+    "aa.x.spectroscopy.hydrogen_atom.050": {
+      "section": "Spectroscopy",
+      "topic": "Hydrogen atom",
+      "text": "identify major hydrogen transitions and explain what is special about the familiar hydrogen line series."
+    },
+    "aa.x.spectroscopy.quantum_mechanics.010": {
+      "section": "Spectroscopy",
+      "topic": "Quantum mechanics",
+      "text": "explain the wave function as a probability-amplitude object and describe the role of the Schrödinger equation and stationary states in the modern picture of the atom."
+    },
+    "aa.x.spectroscopy.quantum_mechanics.020": {
+      "section": "Spectroscopy",
+      "topic": "Quantum mechanics",
+      "text": "connect the modern quantum picture to the semi-classical one by relating de Broglie ideas, momentum and wave number, and transitions between atomic energy levels."
+    },
+    "aa.x.spectroscopy.atomic_spectroscopy.010": {
+      "section": "Spectroscopy",
+      "topic": "Spectroscopy",
+      "text": "explain the Rydberg formula and use it to calculate wavelengths associated with hydrogen transitions."
+    },
+    "aa.x.spectroscopy.atomic_spectroscopy.020": {
+      "section": "Spectroscopy",
+      "topic": "Spectroscopy",
+      "text": "explain emission and absorption spectra, and explain Kirchhoff’s laws in terms of transitions between atomic energy levels."
+    },
+    "aa.x.spectroscopy.atomic_spectroscopy.030": {
+      "section": "Spectroscopy",
+      "topic": "Spectroscopy",
+      "text": "explain what the Bohr magneton is and use it in simple calculations."
+    },
+    "aa.x.spectroscopy.atomic_spectroscopy.040": {
+      "section": "Spectroscopy",
+      "topic": "Spectroscopy",
+      "text": "explain degeneracy and how it is lifted by a magnetic field in the Zeeman effect."
+    },
+    "aa.x.spectroscopy.atomic_spectroscopy.050": {
+      "section": "Spectroscopy",
+      "topic": "Spectroscopy",
+      "text": "describe line broadening, identify major broadening mechanisms, and explain what they reveal about temperature, pressure, and magnetic field."
+    },
+    "aa.x.spectroscopy.atomic_spectroscopy.060": {
+      "section": "Spectroscopy",
+      "topic": "Spectroscopy",
+      "text": "explain why molecular rotational and vibrational modes lead to additional spectral lines and extend this logic to new spectra when an allowed energy pattern is given."
+    },
+    "aa.x.waves_light.sho.010": {
+      "section": "Waves and Light",
+      "topic": "Simple harmonic oscillation",
+      "text": "explain simple harmonic motion, period, frequency, wavelength, and their angular versions."
+    },
+    "aa.x.waves_light.sho.020": {
+      "section": "Waves and Light",
+      "topic": "Simple harmonic oscillation",
+      "text": "connect simple harmonic oscillation to plane-wave propagation."
+    },
+    "aa.x.waves_light.sho.030": {
+      "section": "Waves and Light",
+      "topic": "Simple harmonic oscillation",
+      "text": "explain wave propagation in terms of transverse vs. longitudinal motion, dispersion relation, and wave speed."
+    },
+    "aa.x.waves_light.sho.040": {
+      "section": "Waves and Light",
+      "topic": "Simple harmonic oscillation",
+      "text": "describe a plane wave quantitatively in terms of amplitude, angular frequency, wave number, and phase."
+    },
+    "aa.x.waves_light.spectrum.010": {
+      "section": "Waves and Light",
+      "topic": "Spectrum and spectral classification",
+      "text": "distinguish the major regions of the electromagnetic spectrum and state the approximate wavelength range visible to the human eye."
+    },
+    "aa.x.waves_light.doppler.010": {
+      "section": "Waves and Light",
+      "topic": "Doppler",
+      "text": "describe the Doppler shift quantitatively and explain its origin."
+    },
+    "aa.x.waves_light.doppler.020": {
+      "section": "Waves and Light",
+      "topic": "Doppler",
+      "text": "interpret redshift and blueshift quantitatively and apply Doppler shifts to spectroscopic lines in order to determine radial motion."
+    },
+    "aa.x.waves_light.optics.010": {
+      "section": "Waves and Light",
+      "topic": "Optics",
+      "text": "describe reflection, transmission, refraction, diffraction, interference, and superposition at a conceptual level."
+    },
+    "aa.x.waves_light.optics.020": {
+      "section": "Waves and Light",
+      "topic": "Optics",
+      "text": "use Snell’s law of refraction."
+    },
+    "aa.x.waves_light.optics.030": {
+      "section": "Waves and Light",
+      "topic": "Optics",
+      "text": "explain Huygens’ principle and its role in diffraction."
+    },
+    "aa.x.waves_light.optics.040": {
+      "section": "Waves and Light",
+      "topic": "Optics",
+      "text": "explain resolution, diffraction limitation, the Airy disk, and Rayleigh’s criterion."
+    },
+    "aa.x.waves_light.optics.050": {
+      "section": "Waves and Light",
+      "topic": "Optics",
+      "text": "describe the role of aperture and the primary objective in telescopy and use diffraction arguments to estimate the aperture required to resolve an astronomical target."
+    },
+    "aa.x.dimensional_analysis.uncertainties.010": {
+      "section": "Dimensional Analysis",
+      "topic": "(In)significant figures and uncertainties",
+      "text": "understand the size of uncertainties and represent physical values accordingly."
+    },
+    "aa.x.dimensional_analysis.uncertainties.020": {
+      "section": "Dimensional Analysis",
+      "topic": "(In)significant figures and uncertainties",
+      "text": "round to a reasonable number of figures when the uncertainty is not stated or is unknown."
+    },
+    "aa.x.dimensional_analysis.units.010": {
+      "section": "Dimensional Analysis",
+      "topic": "Dimensions vs. units",
+      "text": "distinguish dimensions such as length, mass, and time from units such as meters, kilograms, and seconds."
+    },
+    "aa.x.dimensional_analysis.units.020": {
+      "section": "Dimensional Analysis",
+      "topic": "Dimensions vs. units",
+      "text": "convert between common units and choose reasonable units for very large or very small quantities."
+    },
+    "aa.x.dimensional_analysis.prefixes.010": {
+      "section": "Dimensional Analysis",
+      "topic": "SI, dex, metric prefixes",
+      "text": "convert to and from SI units and interpret decimal exponents."
+    },
+    "aa.x.dimensional_analysis.prefixes.020": {
+      "section": "Dimensional Analysis",
+      "topic": "SI, dex, metric prefixes",
+      "text": "interpret common metric prefixes across a wide range of scales."
+    },
+    "aa.x.dimensional_analysis.quantities.010": {
+      "section": "Dimensional Analysis",
+      "topic": "Physical quantities",
+      "text": "explain the meaning of fundamental dynamical quantities such as mass, distance, time, velocity, momentum, acceleration, force, energy, and power."
+    },
+    "aa.x.dimensional_analysis.quantities.020": {
+      "section": "Dimensional Analysis",
+      "topic": "Physical quantities",
+      "text": "explain the distinction between mass and weight."
+    },
+    "aa.x.dimensional_analysis.quantities.030": {
+      "section": "Dimensional Analysis",
+      "topic": "Physical quantities",
+      "text": "determine dimensions and SI units of major dynamical quantities and convert between SI and common astronomical units."
+    },
+    "aa.x.dimensional_analysis.constants.010": {
+      "section": "Dimensional Analysis",
+      "topic": "Fundamental constants",
+      "text": "explain the meaning of the constants G, h, and c and determine their dimensions."
+    },
+    "aa.x.dimensional_analysis.constants.020": {
+      "section": "Dimensional Analysis",
+      "topic": "Fundamental constants",
+      "text": "use dimensional analysis to check or guess formulae involving fundamental constants."
+    },
+    "aa.x.dimensional_analysis.applied.010": {
+      "section": "Dimensional Analysis",
+      "topic": "Applied dimensional analysis",
+      "text": "distinguish proportionality from equality and explain why dimensional analysis cannot determine a dimensionless numerical coefficient."
+    },
+    "aa.x.dimensional_analysis.applied.020": {
+      "section": "Dimensional Analysis",
+      "topic": "Applied dimensional analysis",
+      "text": "use dimensional analysis to check equations and construct plausible relations from specified physical quantities, stating the assumptions involved."
+    },
+    "aa.x.dimensional_analysis.applied.030": {
+      "section": "Dimensional Analysis",
+      "topic": "Applied dimensional analysis",
+      "text": "use dimensional analysis to build physical intuition about the structure and timescales of familiar and unfamiliar systems."
+    },
+    "aa.x.dimensional_analysis.applied.040": {
+      "section": "Dimensional Analysis",
+      "topic": "Applied dimensional analysis",
+      "text": "identify dimensionless combinations and explain why an unknown function of such a combination can remain undetermined by dimensional analysis."
+    },
+    "aa.x.astrodynamics.n1.010": {
+      "section": "Astrodynamics",
+      "topic": "Newton’s First Law",
+      "text": "explain what an inertial frame is and why it matters."
+    },
+    "aa.x.astrodynamics.n1.020": {
+      "section": "Astrodynamics",
+      "topic": "Newton’s First Law",
+      "text": "use conservation of linear momentum in simple before-and-after situations."
+    },
+    "aa.x.astrodynamics.n2.010": {
+      "section": "Astrodynamics",
+      "topic": "Newton’s Second Law",
+      "text": "recognize that Newton’s Second Law holds only in inertial frames."
+    },
+    "aa.x.astrodynamics.n2.020": {
+      "section": "Astrodynamics",
+      "topic": "Newton’s Second Law",
+      "text": "recognize and use Newton’s Second Law in multiple equivalent forms."
+    },
+    "aa.x.astrodynamics.n3.010": {
+      "section": "Astrodynamics",
+      "topic": "Newton’s Third Law",
+      "text": "explain Newton’s Third Law and use it in simple problems."
+    },
+    "aa.x.astrodynamics.gravity.010": {
+      "section": "Astrodynamics",
+      "topic": "Newton’s Law of Universal Gravitation",
+      "text": "identify Newton’s law of gravitation, explain its functional form, and determine the dimensions of Newton’s constant."
+    },
+    "aa.x.astrodynamics.gravity.020": {
+      "section": "Astrodynamics",
+      "topic": "Newton’s Law of Universal Gravitation",
+      "text": "distinguish altitude above a body’s surface from distance to its center, calculate gravitational acceleration at either location, and explain orbiting astronauts’ apparent weightlessness as shared free fall."
+    },
+    "aa.x.astrodynamics.gravity.030": {
+      "section": "Astrodynamics",
+      "topic": "Newton’s Law of Universal Gravitation",
+      "text": "determine the standard gravitational parameter $GM$ from orbital measurements, infer mass when $G$ is supplied, and explain why $GM$ can be known more precisely than either factor separately."
+    },
+    "aa.x.astrodynamics.ucm.010": {
+      "section": "Astrodynamics",
+      "topic": "Uniform circular motion",
+      "text": "explain the directions and magnitudes of velocity and acceleration in uniform circular motion."
+    },
+    "aa.x.astrodynamics.ucm.020": {
+      "section": "Astrodynamics",
+      "topic": "Uniform circular motion",
+      "text": "solve for speed, period, or radius given the other two."
+    },
+    "aa.x.astrodynamics.ucm.030": {
+      "section": "Astrodynamics",
+      "topic": "Uniform circular motion",
+      "text": "state and use the centripetal acceleration in circular-orbit problems."
+    },
+    "aa.x.astrodynamics.energy.010": {
+      "section": "Astrodynamics",
+      "topic": "Energy",
+      "text": "calculate and compare kinetic, gravitational potential, and mechanical energy, including their dimensions, signs, and dependence on mass, speed, and separation."
+    },
+    "aa.x.astrodynamics.energy.020": {
+      "section": "Astrodynamics",
+      "topic": "Energy",
+      "text": "use conservation of mechanical energy in gravitational problems, state the assumptions under which it applies, and explain why changing the zero of potential energy does not change physical predictions."
+    },
+    "aa.x.astrodynamics.energy.030": {
+      "section": "Astrodynamics",
+      "topic": "Energy",
+      "text": "state the Virial Theorem, derive and use the kinetic–potential energy relation for a circular gravitational orbit, and distinguish this instantaneous relation from the orbit-averaged relation for a bound elliptical orbit."
+    },
+    "aa.x.astrodynamics.energy.040": {
+      "section": "Astrodynamics",
+      "topic": "Energy",
+      "text": "interpret the two-body problem using total mass, reduced mass, and relative separation, and translate the relative orbit into the bodies’ orbits about their common barycenter."
+    },
+    "aa.x.astrodynamics.energy.050": {
+      "section": "Astrodynamics",
+      "topic": "Energy",
+      "text": "interpret the slope of a potential-energy graph qualitatively to determine the direction and compare the strength of the associated force."
+    },
+    "aa.x.astrodynamics.energy.060": {
+      "section": "Astrodynamics",
+      "topic": "Energy",
+      "text": "compare circular-orbit and escape speeds at the same distance, and use energy reasoning to determine whether escape is possible under specified assumptions."
+    },
+    "aa.x.astrodynamics.angular_motion.010": {
+      "section": "Astrodynamics",
+      "topic": "Angular motion",
+      "text": "relate angular position, angular speed, period, and tangential speed in circular motion, and distinguish radial from tangential motion."
+    },
+    "aa.x.astrodynamics.angular_motion.020": {
+      "section": "Astrodynamics",
+      "topic": "Angular motion",
+      "text": "explain qualitatively how the location and direction of an applied force affect its tendency to change rotational motion, relate net torque to changes in angular momentum, and use simple perpendicular-force and distance comparisons."
+    },
+    "aa.x.astrodynamics.angular_motion.030": {
+      "section": "Astrodynamics",
+      "topic": "Angular motion",
+      "text": "use dimensional reasoning to identify the mass and size dependence of rotational inertia, and apply scaling relations for specified mass distributions."
+    },
+    "aa.x.astrodynamics.angular_motion.040": {
+      "section": "Astrodynamics",
+      "topic": "Angular motion",
+      "text": "use conservation of angular momentum to predict changes in angular speed when rotational inertia changes, stating the assumptions about external torque and mass distribution."
+    },
+    "aa.x.astrodynamics.angular_motion.050": {
+      "section": "Astrodynamics",
+      "topic": "Angular motion",
+      "text": "apply conservation of angular momentum to compare motion at the apsides of an orbit, distinguishing angular speed from tangential speed."
+    },
+    "aa.x.astrodynamics.combinations.010": {
+      "section": "Astrodynamics",
+      "topic": "Combinations",
+      "text": "combine Newton’s laws to derive gravitational field strength, orbital speed, Newton’s version of Kepler’s Third Law, and escape speed."
+    },
+    "aa.x.astrodynamics.combinations.020": {
+      "section": "Astrodynamics",
+      "topic": "Combinations",
+      "text": "solve the resulting relations for any of the main dynamical variables."
+    },
+    "aa.x.astrodynamics.combinations.030": {
+      "section": "Astrodynamics",
+      "topic": "Combinations",
+      "text": "apply these relations numerically to determine mass, distance, speed, acceleration, gravitational field, orbital speed, or escape speed."
+    },
+    "aa.x.astrodynamics.combinations.040": {
+      "section": "Astrodynamics",
+      "topic": "Combinations",
+      "text": "distinguish geosynchronous from geostationary orbits and explain the period, direction, orbital shape, and plane required for a satellite to remain above one fixed point on Earth."
+    },
+    "aa.x.astrodynamics.center_of_mass.010": {
+      "section": "Astrodynamics",
+      "topic": "Center of mass",
+      "text": "produce and use a formula for the center of mass of two massive bodies."
+    },
+    "aa.x.astrodynamics.center_of_mass.020": {
+      "section": "Astrodynamics",
+      "topic": "Center of mass",
+      "text": "calculate the center of mass in appropriate units and express its location relative to the radii of the bodies involved."
+    }
+  },
+  "courses": {
+    "ss": {
+      "title": "Solar System",
+      "codes": [
+        "aa.x.euclidean_geometry.triangles.010",
+        "aa.x.euclidean_geometry.triangles.020",
+        "aa.x.euclidean_geometry.triangles.030",
+        "aa.x.euclidean_geometry.triangles.040",
+        "aa.x.euclidean_geometry.radians.010",
+        "aa.x.euclidean_geometry.radians.020",
+        "aa.x.euclidean_geometry.units.010",
+        "aa.x.euclidean_geometry.units.020",
+        "aa.x.euclidean_geometry.parallax.010",
+        "aa.x.euclidean_geometry.parallax.020",
+        "aa.x.euclidean_geometry.small_angles.010",
+        "aa.x.euclidean_geometry.small_angles.020",
+        "aa.x.euclidean_geometry.small_angles.030",
+        "aa.x.euclidean_geometry.uncertainties.010",
+        "aa.ss.celestial_sphere.diurnal_motion.010",
+        "aa.ss.celestial_sphere.diurnal_motion.020",
+        "aa.ss.celestial_sphere.diurnal_motion.030",
+        "aa.ss.celestial_sphere.diurnal_motion.040",
+        "aa.ss.celestial_sphere.diurnal_motion.050",
+        "aa.ss.celestial_sphere.diurnal_motion.060",
+        "aa.ss.celestial_sphere.diurnal_motion.070",
+        "aa.ss.celestial_sphere.ecliptic_seasons.010",
+        "aa.ss.celestial_sphere.ecliptic_seasons.020",
+        "aa.ss.celestial_sphere.ecliptic_seasons.030",
+        "aa.ss.celestial_sphere.ecliptic_seasons.040",
+        "aa.ss.celestial_sphere.ecliptic_seasons.050",
+        "aa.ss.celestial_sphere.ecliptic_seasons.060",
+        "aa.ss.celestial_sphere.ecliptic_seasons.070",
+        "aa.ss.celestial_sphere.eclipses.010",
+        "aa.ss.celestial_sphere.eclipses.020",
+        "aa.ss.celestial_sphere.eclipses.030",
+        "aa.ss.celestial_sphere.eclipses.040",
+        "aa.ss.celestial_sphere.eclipses.050",
+        "aa.ss.celestial_sphere.coordinates.010",
+        "aa.ss.celestial_sphere.coordinates.020",
+        "aa.ss.celestial_sphere.coordinates.030",
+        "aa.ss.celestial_sphere.coordinates.040",
+        "aa.ss.celestial_sphere.coordinates.050",
+        "aa.ss.celestial_sphere.coordinates.060",
+        "aa.ss.celestial_sphere.coordinates.070",
+        "aa.ss.celestial_sphere.observations.010",
+        "aa.ss.celestial_sphere.observations.020",
+        "aa.ss.celestial_sphere.observations.030",
+        "aa.ss.celestial_sphere.star_charts.010",
+        "aa.ss.celestial_sphere.star_charts.020",
+        "aa.ss.celestial_sphere.star_charts.030",
+        "aa.ss.celestial_sphere.astranatomy.010",
+        "aa.ss.celestial_sphere.astranatomy.020",
+        "aa.ss.celestial_sphere.precession_nutation.010",
+        "aa.ss.celestial_sphere.precession_nutation.020",
+        "aa.ss.aristarchus.history.010",
+        "aa.ss.aristarchus.history.020",
+        "aa.ss.aristarchus.sun_earth_moon.010",
+        "aa.ss.aristarchus.sun_earth_moon.020",
+        "aa.ss.aristarchus.sun_earth_moon.030",
+        "aa.ss.kepler.copernicus.010",
+        "aa.ss.kepler.copernicus.020",
+        "aa.ss.kepler.copernicus.030",
+        "aa.ss.kepler.tycho_kepler.010",
+        "aa.ss.kepler.tycho_kepler.020",
+        "aa.ss.kepler.tycho_kepler.030",
+        "aa.ss.kepler.tycho_kepler.040",
+        "aa.ss.kepler.ellipses.010",
+        "aa.ss.kepler.ellipses.020",
+        "aa.ss.kepler.ellipses.030",
+        "aa.ss.kepler.conics.010",
+        "aa.ss.kepler.applications.010",
+        "aa.ss.kepler.applications.020",
+        "aa.ss.kepler.applications.030",
+        "aa.ss.kepler.applications.040",
+        "aa.ss.kepler.applications.050",
+        "aa.ss.solar_system1.features_structure.010",
+        "aa.ss.solar_system1.features_structure.020",
+        "aa.ss.solar_system1.features_structure.030",
+        "aa.ss.solar_system1.planetary_comparisons.010",
+        "aa.ss.solar_system1.planetary_comparisons.020",
+        "aa.ss.solar_system1.planetary_comparisons.030",
+        "aa.ss.solar_system2.formation_theory.010",
+        "aa.ss.solar_system2.formation_theory.020",
+        "aa.ss.solar_system2.formation_theory.030",
+        "aa.ss.solar_system2.formation_theory.040",
+        "aa.ss.solar_system2.formation_theory.050",
+        "aa.ss.solar_system2.formation_theory.060",
+        "aa.ss.solar_system2.formation_theory.070",
+        "aa.ss.solar_system2.formation_theory.080",
+        "aa.ss.solar_system2.formation_theory.090",
+        "aa.ss.solar_system3.quantitative.010",
+        "aa.ss.solar_system3.quantitative.020",
+        "aa.ss.solar_system3.quantitative.030",
+        "aa.ss.solar_system3.quantitative.040",
+        "aa.ss.solar_system3.quantitative.050",
+        "aa.ss.solar_system3.quantitative.060",
+        "aa.ss.sol.structure.010",
+        "aa.ss.sol.structure.020",
+        "aa.ss.sol.structure.030",
+        "aa.ss.sol.structure.040",
+        "aa.ss.sol.solar_wind_weather.010",
+        "aa.ss.sol.solar_wind_weather.020",
+        "aa.ss.sol.solar_wind_weather.030",
+        "aa.ss.sol.solar_wind_weather.040",
+        "aa.ss.sol.solar_wind_weather.050",
+        "aa.ss.sol.fusion.010",
+        "aa.ss.sol.fusion.020",
+        "aa.ss.sol.fusion.030",
+        "aa.ss.jupiter1.bulk_properties_rotation.010",
+        "aa.ss.jupiter1.bulk_properties_rotation.020",
+        "aa.ss.jupiter1.bulk_properties_rotation.030",
+        "aa.ss.jupiter1.rotating_frames.010",
+        "aa.ss.jupiter1.rotating_frames.020",
+        "aa.ss.jupiter1.rotating_frames.030",
+        "aa.ss.jupiter1.atmosphere_weather.010",
+        "aa.ss.jupiter1.atmosphere_weather.020",
+        "aa.ss.jupiter1.atmosphere_weather.030",
+        "aa.ss.jupiter1.interior_structure.010",
+        "aa.ss.jupiter1.interior_structure.020",
+        "aa.ss.jupiter1.interior_structure.030",
+        "aa.ss.jupiter1.interior_structure.040",
+        "aa.ss.jupiter1.interior_structure.050",
+        "aa.ss.jupiter1.magnetosphere.010",
+        "aa.ss.jupiter1.magnetosphere.020",
+        "aa.ss.jupiter2.moons_rings.010",
+        "aa.ss.jupiter2.moons_rings.020",
+        "aa.ss.jupiter2.moons_rings.030",
+        "aa.ss.jupiter2.moons_rings.040",
+        "aa.ss.jupiter2.moons_rings.050",
+        "aa.ss.jupiter2.moons_rings.060",
+        "aa.ss.jupiter2.moons_rings.070",
+        "aa.ss.jupiter2.rotating_frames_pseudo_forces.010",
+        "aa.ss.jupiter2.rotating_frames_pseudo_forces.020",
+        "aa.ss.jupiter2.rotating_frames_pseudo_forces.030",
+        "aa.ss.jupiter2.rotating_frames_pseudo_forces.040",
+        "aa.ss.jupiter2.rotating_frames_pseudo_forces.050"
+      ]
+    },
+    "x": {
+      "title": "Shared mathematics and physics",
+      "codes": [
+        "aa.x.euclidean_geometry.triangles.010",
+        "aa.x.euclidean_geometry.triangles.020",
+        "aa.x.euclidean_geometry.triangles.030",
+        "aa.x.euclidean_geometry.triangles.040",
+        "aa.x.euclidean_geometry.radians.010",
+        "aa.x.euclidean_geometry.radians.020",
+        "aa.x.euclidean_geometry.units.010",
+        "aa.x.euclidean_geometry.units.020",
+        "aa.x.euclidean_geometry.parallax.010",
+        "aa.x.euclidean_geometry.parallax.020",
+        "aa.x.euclidean_geometry.small_angles.010",
+        "aa.x.euclidean_geometry.small_angles.020",
+        "aa.x.euclidean_geometry.small_angles.030",
+        "aa.x.euclidean_geometry.uncertainties.010",
+        "aa.x.spectroscopy.electricity.010",
+        "aa.x.spectroscopy.electricity.020",
+        "aa.x.spectroscopy.electricity.030",
+        "aa.x.spectroscopy.electricity.040",
+        "aa.x.spectroscopy.photoelectric_effect.010",
+        "aa.x.spectroscopy.photoelectric_effect.020",
+        "aa.x.spectroscopy.hydrogen_atom.010",
+        "aa.x.spectroscopy.hydrogen_atom.020",
+        "aa.x.spectroscopy.hydrogen_atom.030",
+        "aa.x.spectroscopy.hydrogen_atom.040",
+        "aa.x.spectroscopy.hydrogen_atom.050",
+        "aa.x.spectroscopy.quantum_mechanics.010",
+        "aa.x.spectroscopy.quantum_mechanics.020",
+        "aa.x.spectroscopy.atomic_spectroscopy.010",
+        "aa.x.spectroscopy.atomic_spectroscopy.020",
+        "aa.x.spectroscopy.atomic_spectroscopy.030",
+        "aa.x.spectroscopy.atomic_spectroscopy.040",
+        "aa.x.spectroscopy.atomic_spectroscopy.050",
+        "aa.x.spectroscopy.atomic_spectroscopy.060",
+        "aa.x.waves_light.sho.010",
+        "aa.x.waves_light.sho.020",
+        "aa.x.waves_light.sho.030",
+        "aa.x.waves_light.sho.040",
+        "aa.x.waves_light.spectrum.010",
+        "aa.x.waves_light.doppler.010",
+        "aa.x.waves_light.doppler.020",
+        "aa.x.waves_light.optics.010",
+        "aa.x.waves_light.optics.020",
+        "aa.x.waves_light.optics.030",
+        "aa.x.waves_light.optics.040",
+        "aa.x.waves_light.optics.050",
+        "aa.x.dimensional_analysis.uncertainties.010",
+        "aa.x.dimensional_analysis.uncertainties.020",
+        "aa.x.dimensional_analysis.units.010",
+        "aa.x.dimensional_analysis.units.020",
+        "aa.x.dimensional_analysis.prefixes.010",
+        "aa.x.dimensional_analysis.prefixes.020",
+        "aa.x.dimensional_analysis.quantities.010",
+        "aa.x.dimensional_analysis.quantities.020",
+        "aa.x.dimensional_analysis.quantities.030",
+        "aa.x.dimensional_analysis.constants.010",
+        "aa.x.dimensional_analysis.constants.020",
+        "aa.x.dimensional_analysis.applied.010",
+        "aa.x.dimensional_analysis.applied.020",
+        "aa.x.dimensional_analysis.applied.030",
+        "aa.x.dimensional_analysis.applied.040",
+        "aa.x.astrodynamics.n1.010",
+        "aa.x.astrodynamics.n1.020",
+        "aa.x.astrodynamics.n2.010",
+        "aa.x.astrodynamics.n2.020",
+        "aa.x.astrodynamics.n3.010",
+        "aa.x.astrodynamics.gravity.010",
+        "aa.x.astrodynamics.gravity.020",
+        "aa.x.astrodynamics.gravity.030",
+        "aa.x.astrodynamics.ucm.010",
+        "aa.x.astrodynamics.ucm.020",
+        "aa.x.astrodynamics.ucm.030",
+        "aa.x.astrodynamics.energy.010",
+        "aa.x.astrodynamics.energy.020",
+        "aa.x.astrodynamics.energy.030",
+        "aa.x.astrodynamics.energy.040",
+        "aa.x.astrodynamics.energy.050",
+        "aa.x.astrodynamics.energy.060",
+        "aa.x.astrodynamics.angular_motion.010",
+        "aa.x.astrodynamics.angular_motion.020",
+        "aa.x.astrodynamics.angular_motion.030",
+        "aa.x.astrodynamics.angular_motion.040",
+        "aa.x.astrodynamics.angular_motion.050",
+        "aa.x.astrodynamics.combinations.010",
+        "aa.x.astrodynamics.combinations.020",
+        "aa.x.astrodynamics.combinations.030",
+        "aa.x.astrodynamics.combinations.040",
+        "aa.x.astrodynamics.center_of_mass.010",
+        "aa.x.astrodynamics.center_of_mass.020"
+      ]
+    }
+  },
+  "packets": {
+    "x_geometry": {
+      "prefixes": [
+        "aa.x.euclidean_geometry."
+      ],
+      "title": "Geometry",
+      "reading_url": "/aa/x/geometry/",
+      "codes": [
+        "aa.x.euclidean_geometry.triangles.010",
+        "aa.x.euclidean_geometry.triangles.020",
+        "aa.x.euclidean_geometry.triangles.030",
+        "aa.x.euclidean_geometry.triangles.040",
+        "aa.x.euclidean_geometry.radians.010",
+        "aa.x.euclidean_geometry.radians.020",
+        "aa.x.euclidean_geometry.units.010",
+        "aa.x.euclidean_geometry.units.020",
+        "aa.x.euclidean_geometry.parallax.010",
+        "aa.x.euclidean_geometry.parallax.020",
+        "aa.x.euclidean_geometry.small_angles.010",
+        "aa.x.euclidean_geometry.small_angles.020",
+        "aa.x.euclidean_geometry.small_angles.030",
+        "aa.x.euclidean_geometry.uncertainties.010"
+      ]
+    },
+    "ss_celestial_sphere1": {
+      "codes": [
+        "aa.ss.celestial_sphere.coordinates.010",
+        "aa.ss.celestial_sphere.coordinates.020",
+        "aa.ss.celestial_sphere.coordinates.030",
+        "aa.ss.celestial_sphere.coordinates.070",
+        "aa.ss.celestial_sphere.observations.010",
+        "aa.ss.celestial_sphere.observations.020",
+        "aa.ss.celestial_sphere.observations.030",
+        "aa.ss.celestial_sphere.star_charts.010",
+        "aa.ss.celestial_sphere.astranatomy.010",
+        "aa.ss.celestial_sphere.astranatomy.020"
+      ],
+      "title": "Celestial Navigation — Part I",
+      "reading_url": "/aa/ss/2026-2027/celestial-navigation/part-1/"
+    },
+    "ss_celestial_sphere2": {
+      "codes": [
+        "aa.ss.celestial_sphere.diurnal_motion.010",
+        "aa.ss.celestial_sphere.diurnal_motion.020",
+        "aa.ss.celestial_sphere.ecliptic_seasons.010",
+        "aa.ss.celestial_sphere.ecliptic_seasons.020",
+        "aa.ss.celestial_sphere.ecliptic_seasons.030",
+        "aa.ss.celestial_sphere.ecliptic_seasons.050",
+        "aa.ss.celestial_sphere.ecliptic_seasons.060",
+        "aa.ss.celestial_sphere.ecliptic_seasons.070",
+        "aa.ss.celestial_sphere.coordinates.030",
+        "aa.ss.celestial_sphere.coordinates.040",
+        "aa.ss.celestial_sphere.coordinates.050",
+        "aa.ss.celestial_sphere.coordinates.060",
+        "aa.ss.celestial_sphere.observations.020",
+        "aa.ss.celestial_sphere.star_charts.010",
+        "aa.ss.celestial_sphere.star_charts.020",
+        "aa.ss.celestial_sphere.star_charts.030"
+      ],
+      "title": "Celestial Navigation — Part II",
+      "reading_url": "/aa/ss/2026-2027/celestial-navigation/part-2/"
+    },
+    "ss_aristarchus": {
+      "prefixes": [
+        "aa.ss.aristarchus."
+      ],
+      "title": "Aristarchus",
+      "reading_url": "/aa/ss/aristarchus/",
+      "codes": [
+        "aa.ss.aristarchus.history.010",
+        "aa.ss.aristarchus.history.020",
+        "aa.ss.aristarchus.sun_earth_moon.010",
+        "aa.ss.aristarchus.sun_earth_moon.020",
+        "aa.ss.aristarchus.sun_earth_moon.030"
+      ]
+    },
+    "x_dimensional_analysis": {
+      "prefixes": [
+        "aa.x.dimensional_analysis."
+      ],
+      "title": "Dimensional Analysis",
+      "reading_url": "/aa/x/dimensional_analysis/",
+      "codes": [
+        "aa.x.dimensional_analysis.uncertainties.010",
+        "aa.x.dimensional_analysis.uncertainties.020",
+        "aa.x.dimensional_analysis.units.010",
+        "aa.x.dimensional_analysis.units.020",
+        "aa.x.dimensional_analysis.prefixes.010",
+        "aa.x.dimensional_analysis.prefixes.020",
+        "aa.x.dimensional_analysis.quantities.010",
+        "aa.x.dimensional_analysis.quantities.020",
+        "aa.x.dimensional_analysis.quantities.030",
+        "aa.x.dimensional_analysis.constants.010",
+        "aa.x.dimensional_analysis.constants.020",
+        "aa.x.dimensional_analysis.applied.010",
+        "aa.x.dimensional_analysis.applied.020",
+        "aa.x.dimensional_analysis.applied.030",
+        "aa.x.dimensional_analysis.applied.040"
+      ]
+    },
+    "ss_kepler1": {
+      "codes": [
+        "aa.ss.kepler.ellipses.010",
+        "aa.ss.kepler.ellipses.020",
+        "aa.ss.kepler.ellipses.030",
+        "aa.ss.kepler.conics.010",
+        "aa.ss.kepler.applications.010"
+      ],
+      "title": "Kepler’s Laws (Part I)",
+      "reading_url": "/aa/ss/kepler1/"
+    },
+    "x_astrodynamics_1": {
+      "prefixes": [
+        "aa.x.astrodynamics.n1.",
+        "aa.x.astrodynamics.n2.",
+        "aa.x.astrodynamics.n3.",
+        "aa.x.astrodynamics.gravity.",
+        "aa.x.astrodynamics.ucm.",
+        "aa.x.astrodynamics.combinations."
+      ],
+      "codes": [
+        "aa.ss.kepler.applications.040",
+        "aa.ss.kepler.applications.050",
+        "aa.x.astrodynamics.n1.010",
+        "aa.x.astrodynamics.n1.020",
+        "aa.x.astrodynamics.n2.010",
+        "aa.x.astrodynamics.n2.020",
+        "aa.x.astrodynamics.n3.010",
+        "aa.x.astrodynamics.gravity.010",
+        "aa.x.astrodynamics.gravity.020",
+        "aa.x.astrodynamics.gravity.030",
+        "aa.x.astrodynamics.ucm.010",
+        "aa.x.astrodynamics.ucm.020",
+        "aa.x.astrodynamics.ucm.030",
+        "aa.x.astrodynamics.combinations.010",
+        "aa.x.astrodynamics.combinations.020",
+        "aa.x.astrodynamics.combinations.030",
+        "aa.x.astrodynamics.combinations.040"
+      ],
+      "title": "Astrodynamics (Part I)",
+      "reading_url": "/aa/x/astrodynamics_1/"
+    },
+    "x_astrodynamics_2": {
+      "codes": [
+        "aa.x.astrodynamics.energy.010",
+        "aa.x.astrodynamics.energy.020",
+        "aa.x.astrodynamics.energy.030",
+        "aa.x.astrodynamics.energy.050",
+        "aa.x.astrodynamics.energy.060",
+        "aa.x.astrodynamics.combinations.010",
+        "aa.x.astrodynamics.combinations.020",
+        "aa.x.astrodynamics.combinations.030"
+      ],
+      "title": "Astrodynamics (Part II)",
+      "reading_url": "/aa/x/astrodynamics_2/"
+    },
+    "x_astrodynamics_3": {
+      "prefixes": [
+        "aa.x.astrodynamics.center_of_mass.",
+        "aa.x.astrodynamics.angular_motion."
+      ],
+      "codes": [
+        "aa.ss.kepler.applications.020",
+        "aa.ss.kepler.applications.030",
+        "aa.ss.kepler.applications.050",
+        "aa.x.astrodynamics.energy.040",
+        "aa.x.astrodynamics.angular_motion.010",
+        "aa.x.astrodynamics.angular_motion.020",
+        "aa.x.astrodynamics.angular_motion.030",
+        "aa.x.astrodynamics.angular_motion.040",
+        "aa.x.astrodynamics.angular_motion.050",
+        "aa.x.astrodynamics.center_of_mass.010",
+        "aa.x.astrodynamics.center_of_mass.020"
+      ],
+      "title": "Astrodynamics (Part III)",
+      "reading_url": "/aa/x/astrodynamics_3/"
+    },
+    "ss_solar_system_1": {
+      "prefixes": [
+        "aa.ss.solar_system1."
+      ],
+      "codes": [
+        "aa.x.euclidean_geometry.units.020",
+        "aa.x.euclidean_geometry.parallax.020",
+        "aa.ss.solar_system1.features_structure.010",
+        "aa.ss.solar_system1.features_structure.020",
+        "aa.ss.solar_system1.features_structure.030",
+        "aa.ss.solar_system1.planetary_comparisons.010",
+        "aa.ss.solar_system1.planetary_comparisons.020",
+        "aa.ss.solar_system1.planetary_comparisons.030",
+        "aa.x.astrodynamics.gravity.020",
+        "aa.x.astrodynamics.energy.060"
+      ],
+      "title": "Solar System I: Structure",
+      "reading_url": "/aa/ss/solar_system_1/"
+    }
+  },
+  "provenance": {
+    "ss": {
+      "source": "support-files/aa@tj_general_info/vlo/vlo_aa_ss.qmd",
+      "sha256": "d16d702a867faf0282ff139eb95667762e1e542302a9a0259d7d580b56c81c1b"
+    },
+    "x": {
+      "source": "support-files/aa@tj_general_info/vlo/vlo_aa_x.qmd",
+      "sha256": "8a10ecfb28d351f696a6ba2004793ce315cb1078fd2fb06b7d2464e24cbc8043"
+    }
+  }
+}

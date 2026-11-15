@@ -1,0 +1,104 @@
+x_geometry:
+  prefixes:
+  - aa.x.euclidean_geometry.
+  title: Geometry
+  reading_url: /aa/x/geometry/
+ss_celestial_sphere1:
+  codes:
+  - aa.ss.celestial_sphere.coordinates.010
+  - aa.ss.celestial_sphere.coordinates.020
+  - aa.ss.celestial_sphere.coordinates.030
+  - aa.ss.celestial_sphere.coordinates.070
+  - aa.ss.celestial_sphere.observations.010
+  - aa.ss.celestial_sphere.observations.020
+  - aa.ss.celestial_sphere.observations.030
+  - aa.ss.celestial_sphere.astranatomy.010
+  - aa.ss.celestial_sphere.astranatomy.020
+  - aa.ss.celestial_sphere.star_charts.010
+  title: Celestial Navigation — Part I
+  reading_url: /aa/ss/2026-2027/celestial-navigation/part-1/
+ss_celestial_sphere2:
+  codes:
+  - aa.ss.celestial_sphere.diurnal_motion.010
+  - aa.ss.celestial_sphere.diurnal_motion.020
+  - aa.ss.celestial_sphere.ecliptic_seasons.010
+  - aa.ss.celestial_sphere.ecliptic_seasons.020
+  - aa.ss.celestial_sphere.ecliptic_seasons.030
+  - aa.ss.celestial_sphere.ecliptic_seasons.050
+  - aa.ss.celestial_sphere.ecliptic_seasons.060
+  - aa.ss.celestial_sphere.ecliptic_seasons.070
+  - aa.ss.celestial_sphere.coordinates.030
+  - aa.ss.celestial_sphere.coordinates.040
+  - aa.ss.celestial_sphere.coordinates.050
+  - aa.ss.celestial_sphere.coordinates.060
+  - aa.ss.celestial_sphere.observations.020
+  - aa.ss.celestial_sphere.star_charts.010
+  - aa.ss.celestial_sphere.star_charts.020
+  - aa.ss.celestial_sphere.star_charts.030
+  title: Celestial Navigation — Part II
+  reading_url: /aa/ss/2026-2027/celestial-navigation/part-2/
+ss_aristarchus:
+  prefixes:
+  - aa.ss.aristarchus.
+  title: Aristarchus
+  reading_url: /aa/ss/aristarchus/
+x_dimensional_analysis:
+  prefixes:
+  - aa.x.dimensional_analysis.
+  title: Dimensional Analysis
+  reading_url: /aa/x/dimensional_analysis/
+ss_kepler1:
+  codes:
+  - aa.ss.kepler.ellipses.010
+  - aa.ss.kepler.ellipses.020
+  - aa.ss.kepler.ellipses.030
+  - aa.ss.kepler.conics.010
+  - aa.ss.kepler.applications.010
+  title: Kepler’s Laws (Part I)
+  reading_url: /aa/ss/kepler1/
+x_astrodynamics_1:
+  prefixes:
+  - aa.x.astrodynamics.n1.
+  - aa.x.astrodynamics.n2.
+  - aa.x.astrodynamics.n3.
+  - aa.x.astrodynamics.gravity.
+  - aa.x.astrodynamics.ucm.
+  - aa.x.astrodynamics.combinations.
+  codes:
+  - aa.ss.kepler.applications.040
+  - aa.ss.kepler.applications.050
+  title: Astrodynamics (Part I)
+  reading_url: /aa/x/astrodynamics_1/
+x_astrodynamics_2:
+  codes:
+  - aa.x.astrodynamics.energy.010
+  - aa.x.astrodynamics.energy.020
+  - aa.x.astrodynamics.energy.030
+  - aa.x.astrodynamics.energy.050
+  - aa.x.astrodynamics.energy.060
+  - aa.x.astrodynamics.combinations.010
+  - aa.x.astrodynamics.combinations.020
+  - aa.x.astrodynamics.combinations.030
+  title: Astrodynamics (Part II)
+  reading_url: /aa/x/astrodynamics_2/
+x_astrodynamics_3:
+  prefixes:
+  - aa.x.astrodynamics.center_of_mass.
+  - aa.x.astrodynamics.angular_motion.
+  codes:
+  - aa.x.astrodynamics.energy.040
+  - aa.ss.kepler.applications.020
+  - aa.ss.kepler.applications.030
+  - aa.ss.kepler.applications.050
+  title: Astrodynamics (Part III)
+  reading_url: /aa/x/astrodynamics_3/
+ss_solar_system_1:
+  prefixes:
+  - aa.ss.solar_system1.
+  codes:
+  - aa.x.astrodynamics.gravity.020
+  - aa.x.astrodynamics.energy.060
+  - aa.x.euclidean_geometry.units.020
+  - aa.x.euclidean_geometry.parallax.020
+  title: 'Solar System I: Structure'
+  reading_url: /aa/ss/solar_system_1/

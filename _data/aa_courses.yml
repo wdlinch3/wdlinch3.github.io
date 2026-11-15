@@ -13,6 +13,11 @@ ss:
         url: "https://activities.tjhsst.edu/astroteam/"
       - title: William D. Linch III
         url: "https://activities.tjhsst.edu/astro/contact/index.html"
+    objectives:
+      title: Learning objectives
+      url: /aa/objectives/
+      label: Complete course objectives
+      description: "Use the objectives on each packet card to guide your work. The complete collection includes Solar System and shared mathematics and physics objectives."
     textbook:
       title: "Course textbook: Astronomy 2e"
       publisher: "OpenStax"
@@ -31,6 +36,7 @@ ss:
       - title: Geometry
         url: "/aa/x/geometry/"
         download_url: "/aa/assignments/x_geometry.zip"
+        objectives_id: x_geometry
         status: available
         description: "Triangles, radians, parallax, small-angle reasoning, and an interactive radians laboratory."
         resources:
@@ -44,9 +50,11 @@ ss:
           - label: Part I
             url: "/aa/ss/2026-2027/celestial-navigation/part-1/"
             download_url: "/aa/assignments/ss_celestial_sphere1.zip"
+            objectives_id: ss_celestial_sphere1
           - label: Part II
             url: "/aa/ss/2026-2027/celestial-navigation/part-2/"
             download_url: "/aa/assignments/ss_celestial_sphere2.zip"
+            objectives_id: ss_celestial_sphere2
         resources:
           - label: Celestial sphere demo
             url: "https://linked-view-celestial-sphere.wdlinch3.chatgpt.site/"
@@ -54,16 +62,19 @@ ss:
       - title: Aristarchus
         url: "/aa/ss/aristarchus/"
         download_url: "/aa/assignments/ss_aristarchus.zip"
+        objectives_id: ss_aristarchus
         status: available
         description: "Relative sizes and distances in the Sun–Earth–Moon system, followed by Eratosthenes’ measurement of Earth."
       - title: Dimensional Analysis
         url: "/aa/x/dimensional_analysis/"
         download_url: "/aa/assignments/x_dimensional_analysis.zip"
+        objectives_id: x_dimensional_analysis
         status: available
         description: "Dimensions and units, scaling relations, and applications to gravity, oscillations, and planetary orbits."
       - title: "Kepler’s Laws (Part I)"
         url: "/aa/ss/kepler1/"
         download_url: "/aa/assignments/ss_kepler1.zip"
+        objectives_id: ss_kepler1
         status: available
         description: "Kepler’s laws, geometric and algebraic constructions of ellipses, eccentricity, apsides, and conic sections."
         resources:
@@ -73,20 +84,24 @@ ss:
       - title: "Astrodynamics (Part I)"
         url: "/aa/x/astrodynamics_1/"
         download_url: "/aa/assignments/x_astrodynamics_1.zip"
+        objectives_id: x_astrodynamics_1
         status: available
         description: "Newton’s laws, circular motion, gravitation, orbital speeds and periods, and measuring celestial masses."
       - title: "Astrodynamics (Part II)"
         url: "/aa/x/astrodynamics_2/"
         download_url: "/aa/assignments/x_astrodynamics_2.zip"
+        objectives_id: x_astrodynamics_2
         status: available
         description: "Potential and kinetic energy, gravitational forces from potential-energy slopes, conservation of mechanical energy, escape speed, and the Schwarzschild radius."
       - title: "Astrodynamics (Part III)"
         url: "/aa/x/astrodynamics_3/"
         download_url: "/aa/assignments/x_astrodynamics_3.zip"
+        objectives_id: x_astrodynamics_3
         status: available
         description: "Center of mass, reduced mass and two-body motion, angular momentum, rotational inertia, and torque."
       - title: "Solar System I: Structure"
         url: "/aa/ss/solar_system_1/"
         download_url: "/aa/assignments/ss_solar_system_1.zip"
+        objectives_id: ss_solar_system_1
         status: available
         description: "Planetary sizes, distances, and masses; small-body populations; Pluto’s orbit; and Python comparisons of size, mass, surface gravity, and escape speed."

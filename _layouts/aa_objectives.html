@@ -1,0 +1,42 @@
+---
+layout: aa
+compact: true
+page_css: /assets/css/aa_objectives.css
+---
+{% assign collection = site.data.aa_objectives %}
+{% if page.objective_packet %}
+{% assign objectives = collection.packets[page.objective_packet] %}
+{% else %}
+{% assign objectives = collection.courses[page.objective_course] %}
+{% endif %}
+<nav class="objective-nav" aria-label="Objectives navigation">
+  <a href="{{ '/aa/ss/2026-2027/' | relative_url }}">Class page</a>
+{% if objectives.reading_url %}
+  <a href="{{ objectives.reading_url | relative_url }}">Packet reading</a>
+{% endif %}
+  <a href="{{ '/aa/objectives/' | relative_url }}">Complete course objectives</a>
+</nav>
+<p class="small">Advanced Astronomy · Learning objectives</p>
+<h1>{{ objectives.title }}</h1>
+{% if page.objective_packet %}
+<p>Use these objectives to guide your work on this packet and its related lessons. Some objectives recur across packets. Test scope is specified separately.</p>
+{% else %}
+<p>The complete {{ objectives.title | downcase }} collection, including topics developed later in the course. Test scope is specified separately.</p>
+{% endif %}
+<p><strong>I am able to…</strong></p>
+{% assign previous_section = '' %}
+{% if page.objective_packet %}<ul class="objective-list">{% endif %}
+{% for code in objectives.codes %}
+{% assign objective = collection.catalog[code] %}
+{% if page.objective_course and objective.section != previous_section %}
+{% unless previous_section == '' %}</ul>{% endunless %}
+<h2>{{ objective.section }}</h2>
+<ul class="objective-list">
+{% assign previous_section = objective.section %}
+{% endif %}
+  <li id="{{ code | replace: '.', '-' }}">
+    <div>{{ objective.text | markdownify }}</div>
+    <details><summary>Objective reference</summary><p>{{ objective.section }} · {{ objective.topic }}<br><code>{{ code }}</code></p></details>
+  </li>
+{% endfor %}
+</ul>
