@@ -1,7 +1,11 @@
 ---
-layout: aa_objectives
+layout: aa
 compact: true
-page_css: /assets/css/aa_objectives.css
-objective_course: ss
-title: "Solar System \u2014 Complete objectives"
+objectives_page: true
+title: Complete learning objectives
 ---
+{% assign entry = site.data.aa_vlos | where: "id", "ss" | first %}
+{% assign destination = entry.html_url %}
+{% if site.school_site %}{% assign destination = entry.class_html_url %}{% endif %}
+<meta http-equiv="refresh" content="0;url={{ destination | relative_url }}">
+<p><a href="{{ destination | relative_url }}">Open the complete {{ entry.course }} objectives table</a>.</p>

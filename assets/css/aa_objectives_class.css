@@ -1,0 +1,15 @@
+.class-shell { min-width: 0; }
+.objective-nav { margin-top: 1rem; }
+.objective-list { max-width: 80ch; }
+.aa-vlo-table-scroll { overflow-x: auto; max-width: 100%; margin: 1.2rem 0 2rem; }
+.aa-vlo-table-scroll table { border-collapse: collapse; width: 100%; min-width: 42rem; font-size: .95rem; }
+.aa-vlo-table-scroll th, .aa-vlo-table-scroll td { padding: .7rem .85rem; border: 1px solid #304357; text-align: left; vertical-align: top; }
+.aa-vlo-table-scroll th { background: #10283f; color: #f0f5fa; }
+.aa-vlo-table-scroll tr:nth-child(even) { background: rgba(18, 42, 64, .45); }
+.aa-vlo-table-scroll td:nth-child(2) { min-width: 24rem; }
+.aa-vlo-table-scroll code { overflow-wrap: anywhere; }
+.class-shell h2 { margin-top: 2rem; }
+.class-shell .anchorjs-link { display: none; }
+
+.class-shell section.level1 > h1 { font-size: 2rem; margin-top: 2rem; }
+.objective-sections { display: flex; flex-wrap: wrap; gap: .6rem 1.2rem; margin: 1rem 0 2rem; }

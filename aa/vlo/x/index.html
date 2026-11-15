@@ -2365,7 +2365,7 @@ min-width: 42rem;
 <nav aria-label="Advanced Astronomy learning-objective navigation" style="margin: 0 0 1.5rem; padding: 0.75rem 1rem; border: 1px solid rgba(255,255,255,0.2); border-radius: 0.5rem; background: rgba(255,255,255,0.04);">
   <a href="/aa/">Advanced Astronomy</a>
   <span aria-hidden="true"> · </span>
-  <a href="/aa/vlo/">Learning objectives</a>
+  <a href="/aa/objectives/">Complete course objectives</a>
 </nav>
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -2827,6 +2827,7 @@ min-width: 42rem;
 <section id="astrodynamics" class="level2">
 <h2 data-anchor-id="astrodynamics">Astrodynamics</h2>
 <p><strong>Assessment scope for AA:SS (2026–2027):</strong> Objectives remain grouped by physical topic. Unit 2 uses Dimensional Analysis and Astrodynamics I, together with OpenStax Astronomy 2e sections 3.1, 3.3, 3.4, and 3.5. Qualitative descriptions of orbital motion, escape speed, and gravity assists from that reading are included; angular-momentum explanations, energy calculations, and escape-speed derivations are deferred to Unit 3. Unit-specific assessment lists will identify the VLOs, or components of broader VLOs, being tested. Students must understand uniform circular motion and use <span class="math inline">\(a_c=v^2/r\)</span>, but will not be tested on deriving that formula. The energy and other later objectives remain part of the course; their presence here does not place them on the Unit 2 test.</p>
+<p><strong>Unit 3 assessment clarification (2026-11-05):</strong> Circular-orbit energy applications are included. The Virial Theorem motivates later work; the distinction between instantaneous and orbit-averaged relations is not required for Unit 3 assessment. Invariance under changing the zero of potential energy is background, not a separate assessment target. The broader course objectives below remain available for later units.</p>
 <div class="aa-vlo-table-scroll" role="region" aria-label="Scrollable learning-objectives table" tabindex="0"><table class="caption-top table">
 <colgroup>
 <col style="width: 20%">
@@ -2898,50 +2899,85 @@ min-width: 42rem;
 </tr>
 <tr class="even">
 <td>Energy</td>
-<td>… state the dimensions of energy and identify common forms such as kinetic and gravitational potential energy.</td>
+<td>… calculate and compare kinetic, gravitational potential, and mechanical energy, including their dimensions, signs, and dependence on mass, speed, and separation.</td>
 <td><code>energy.010</code></td>
 </tr>
 <tr class="odd">
 <td></td>
-<td>… explain that energy is conserved and use energy conservation in simple problems.</td>
+<td>… use conservation of mechanical energy in gravitational problems, state the assumptions under which it applies, and explain why changing the zero of potential energy does not change physical predictions.</td>
 <td><code>energy.020</code></td>
 </tr>
 <tr class="even">
 <td></td>
-<td>… state the Virial Theorem and apply it in simple settings.</td>
+<td>… state the Virial Theorem, derive and use the kinetic–potential energy relation for a circular gravitational orbit, and distinguish this instantaneous relation from the orbit-averaged relation for a bound elliptical orbit.</td>
 <td><code>energy.030</code></td>
 </tr>
 <tr class="odd">
 <td></td>
-<td>… explain how the two-body problem reduces to an effective one-body problem about the center of mass.</td>
+<td>… interpret the two-body problem using total mass, reduced mass, and relative separation, and translate the relative orbit into the bodies’ orbits about their common barycenter.</td>
 <td><code>energy.040</code></td>
 </tr>
 <tr class="even">
+<td></td>
+<td>… interpret the slope of a potential-energy graph qualitatively to determine the direction and compare the strength of the associated force.</td>
+<td><code>energy.050</code></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>… compare circular-orbit and escape speeds at the same distance, and use energy reasoning to determine whether escape is possible under specified assumptions.</td>
+<td><code>energy.060</code></td>
+</tr>
+<tr class="even">
+<td>Angular motion</td>
+<td>… relate angular position, angular speed, period, and tangential speed in circular motion, and distinguish radial from tangential motion.</td>
+<td><code>angular_motion.010</code></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>… explain qualitatively how the location and direction of an applied force affect its tendency to change rotational motion, relate net torque to changes in angular momentum, and use simple perpendicular-force and distance comparisons.</td>
+<td><code>angular_motion.020</code></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>… use dimensional reasoning to identify the mass and size dependence of rotational inertia, and apply scaling relations for specified mass distributions.</td>
+<td><code>angular_motion.030</code></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>… use conservation of angular momentum to predict changes in angular speed when rotational inertia changes, stating the assumptions about external torque and mass distribution.</td>
+<td><code>angular_motion.040</code></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>… apply conservation of angular momentum to compare motion at the apsides of an orbit, distinguishing angular speed from tangential speed.</td>
+<td><code>angular_motion.050</code></td>
+</tr>
+<tr class="odd">
 <td>Combinations</td>
 <td>… combine Newton’s laws to derive gravitational field strength, orbital speed, Newton’s version of Kepler’s Third Law, and escape speed.</td>
 <td><code>combinations.010</code></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td></td>
 <td>… solve the resulting relations for any of the main dynamical variables.</td>
 <td><code>combinations.020</code></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td></td>
 <td>… apply these relations numerically to determine mass, distance, speed, acceleration, gravitational field, orbital speed, or escape speed.</td>
 <td><code>combinations.030</code></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td></td>
 <td>… distinguish geosynchronous from geostationary orbits and explain the period, direction, orbital shape, and plane required for a satellite to remain above one fixed point on Earth.</td>
 <td><code>combinations.040</code></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Center of mass</td>
 <td>… produce and use a formula for the center of mass of two massive bodies.</td>
 <td><code>center_of_mass.010</code></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td></td>
 <td>… calculate the center of mass in appropriate units and express its location relative to the radii of the bodies involved.</td>
 <td><code>center_of_mass.020</code></td>

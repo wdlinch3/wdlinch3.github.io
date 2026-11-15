@@ -6,7 +6,8 @@ require "tmpdir"
 require "yaml"
 
 site_root = Pathname.new(__dir__).parent.expand_path
-workspace_root = site_root.parent
+workspace_root = Pathname.new(ENV.fetch("AA_WORKSPACE_ROOT", site_root.parent.to_s))
+html_only = ARGV.delete("--html-only")
 manifest_path = site_root.join("_data", "aa_vlos.yml")
 header_path = site_root.join("_includes", "aa_vlo_document_header.html")
 quarto = ENV.fetch("QUARTO_BIN", "/Applications/quarto/bin/quarto")
@@ -56,7 +57,9 @@ entries.each do |entry|
     }
 
     abort "HTML render failed for #{entry.fetch('course')}" unless system(*html_command, chdir: temporary_directory)
-    abort "PDF render failed for #{entry.fetch('course')}" unless system(tex_environment, *pdf_command, chdir: temporary_directory)
+    unless html_only
+      abort "PDF render failed for #{entry.fetch('course')}" unless system(tex_environment, *pdf_command, chdir: temporary_directory)
+    end
 
     html_path = temporary.join("index.html")
     html = html_path.read
@@ -65,7 +68,7 @@ entries.each do |entry|
     html_path.write(html)
 
     FileUtils.cp(html_path, destination.join("index.html"))
-    FileUtils.cp(temporary.join(pdf_name), destination.join(pdf_name))
+    FileUtils.cp(temporary.join(pdf_name), destination.join(pdf_name)) unless html_only
   end
 
   html_output = destination.join("index.html")
@@ -73,5 +76,5 @@ entries.each do |entry|
   abort "Missing rendered HTML: #{html_output}" unless html_output.file?
   abort "Missing rendered PDF: #{pdf_output}" unless pdf_output.file?
 
-  puts "Rendered #{entry.fetch('course')}: #{html_output.relative_path_from(site_root)} and #{pdf_output.relative_path_from(site_root)}"
+  puts "Rendered #{entry.fetch('course')}: #{html_output.relative_path_from(site_root)}#{html_only ? ' (HTML only)' : " and #{pdf_output.relative_path_from(site_root)}"}"
 end

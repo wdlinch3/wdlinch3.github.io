@@ -1,5 +1,6 @@
 ---
 layout: aa
+objectives_page: true
 compact: true
 title: Complete course objectives
 page_css: /assets/css/aa_objectives.css
@@ -8,8 +9,12 @@ page_css: /assets/css/aa_objectives.css
 <h1>Complete course objectives</h1>
 <p>Learning objectives for Advanced Astronomy: Solar System and the shared mathematics and physics used across the course. These collections include topics developed later; test scope is specified separately.</p>
 <ul>
-{% for entry in site.data.aa_objectives.courses %}
-  <li><a href="{{ '/aa/objectives/' | append: entry[0] | append: '/' | relative_url }}">{{ entry[1].title }} — complete objectives</a></li>
+{% for entry in site.data.aa_vlos %}
+{% if entry.published %}
+{% assign table_url = entry.html_url %}
+{% if site.school_site %}{% assign table_url = entry.class_html_url %}{% endif %}
+  <li><a href="{{ table_url | relative_url }}">{{ entry.course }} — complete objectives (tables)</a></li>
+{% endif %}
 {% endfor %}
 </ul>
 <h2>Objectives by packet</h2>

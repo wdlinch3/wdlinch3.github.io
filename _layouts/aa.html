@@ -1,3 +1,6 @@
+{% if site.school_site and page.objectives_page %}
+{% include aa_class_shell.html %}
+{% else %}
 <!DOCTYPE html>
 <html lang="en">
 <head>    
@@ -70,3 +73,5 @@
   </main>
 </body>
 </html>
+
+{% endif %}
