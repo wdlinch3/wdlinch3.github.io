@@ -1,0 +1,8 @@
+/* Avoid trapping Quarto's sticky sidebar in an overflow scroll container. */
+html, body { overflow-x: clip !important; }
+#TOC ul { display: block !important; height: auto !important; }
+#TOC { max-height: calc(100vh - 3rem); overflow-y: auto; }
+
+@media (min-width: 992px) {
+  #quarto-margin-sidebar { position: sticky; top: 1.5rem; align-self: start; }
+}
