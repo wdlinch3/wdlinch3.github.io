@@ -6,7 +6,8 @@ format:
     css: ../../../assets/css/aa_packet_theme.css
     embed-resources: true
     toc: true
-    toc-depth: 2
+    toc-depth: 3
+    toc-expand: true
     code-tools: false
     output-file: index.html
 execute:
@@ -37,7 +38,7 @@ Let’s step through the ingredients and the physics one concept at a time.
 
 The space between stars is not entirely empty. Stars can have their own versions of solar systems. The planetary regions of these systems are relatively modest in extent compared to the distances between neighboring stars; distant reservoirs such as our Oort cloud extend much farther.\
 
-> ### Problem 1
+> ### Problem 1 {.unlisted}
 >
 > `ss_solar_system_1` found that the Sun contains nearly all the mass of our solar system. Let's start with the material available to build it. In a sample of cloud gas, 91 of every 100 nuclei are hydrogen and 9 are helium. Take one hydrogen nucleus as one mass unit and one helium nucleus as four. Ignore dust and electron masses in this estimate.
 >
@@ -62,7 +63,7 @@ Jupiter gathered gas from this same solar nebula. In the atmosphere sampled by t
 An enormous molecular cloud is called a **giant molecular cloud**, or **GMC**. For the following bounds exercise, use these illustrative ranges: diameters of 15–600 lightyears and masses of $10^4$–$10^7 M_\odot$. These are illustrative ranges, not a claim that every combination of endpoints occurs in nature; catalogs and definitions give different limits.\
 The size of the GMC and its mass are related by the **mass density** (*e.g.*, for a spherical cloud of radius $R$ and mass $M$, $\rho=\frac{3M}{4\pi R^3}$). We will use uniform balls to calculate mean densities. A real cloud is clumpy and filamentary, so the mean need not describe any particular region inside it.
 
-> ### Problem 2
+> ### Problem 2 {.unlisted}
 >
 > a. Begin with the quoted ranges of GMC masses and diameters. Which pairing of endpoints gives the lowest possible mean density? Which gives the highest? Give your reasoning before calculating. Remember to convert diameter to radius.
 >
@@ -90,7 +91,7 @@ $$
 
 Here $k_B$ is Boltzmann's constant, which we will discuss below. For a fixed gas mass, $\mu$ tells us how many particles share the translational energy. It is a mass per particle, rather than a mass per degree of freedom. Molecules can also have rotational and vibrational degrees of freedom; those do not enter this translational-energy formula. Free electrons count as particles even though they contribute very little mass.
 
-> ### Problem 3
+> ### Problem 3 {.unlisted}
 >
 > a. Use the limits in Problem 2 to estimate the number of nucleons in a GMC. Which earlier mass comparison lets you do this?
 >
@@ -118,7 +119,7 @@ The dimensions should look familiar. The factor $3/5$ accounts for assembling th
 
 As the cloud shrinks, its material becomes more tightly bound. The gravitational potential energy decreases, and that decrease supplies energy that can go into motion or leave as radiation. In the next problem, keep track of the distinction between the cloud's negative potential energy and the positive amount of energy released. We will return to where that released energy goes when we follow the gas as it contracts.
 
-> ### Problem 4
+> ### Problem 4 {.unlisted}
 >
 > a. Check the dimensions and explain the negative sign. Calculate $U$ for the whole cloud in Problem 2c.
 >
@@ -166,7 +167,7 @@ Random thermal motions produce gas pressure. When pressure is greater inside a c
 
 Our next question is whether the gas is hot enough to provide the support this particular cloud needs. We will calculate the temperature required for balance, then compare it with the cloud's actual temperature. Keep those two temperatures distinct: calculating a required temperature does not tell us that the cloud actually has it. If the actual temperature is lower, thermal pressure alone cannot hold the cloud up.
 
-> ### Problem 5
+> ### Problem 5 {.unlisted}
 >
 > Use the virial balance to estimate the temperature needed for thermal support in our model cloud. First express your result in terms of gas mass $M$, radius $R$, and particle count $N$. Then use Problem 3 to write it in terms of $\mu$.
 >
@@ -186,7 +187,7 @@ You know the escape-energy scale $GMm/R$ from Astrodynamics II. The characterist
 
 Rather than specify a radius, let us describe the gas by its mean density. Eliminating the radius from the thermal-support estimate gives a characteristic mass scale, called the **Jeans mass**. Let's find it.
 
-> ### Problem 6: The Jeans Scaling
+> ### Problem 6: The Jeans Scaling {.unlisted}
 >
 > a. Begin with the order-of-magnitude balance $k_BT\sim G\mu m_pM/R$ from Problem 5, dropping the numerical coefficient. Use $\rho\sim M/R^3$ to eliminate $R$, and solve for the characteristic mass $M_J$ in terms of $T$, $\rho$, and $\mu$. Keep $G$, $k_B$, and $m_p$ in your expression.
 >
@@ -208,7 +209,7 @@ Think of the Jeans mass as an approximate dividing line for a region under speci
 
 The whole cloud and a small region inside it need not fall on the same side of their respective dividing lines. Let's apply the calculation at both scales, rather than assume that everything inside a contracting cloud must collapse separately.
 
-> ### Problem 7
+> ### Problem 7 {.unlisted}
 >
 > In Problem 2c, we considered a cloud with mass $10^5 M_\odot$ and mean density $2.02\times10^{-22}$ g/cm³, and an interior region with mass $10^3 M_\odot$ and mean density $2.02\times10^{-21}$ g/cm³. Use these rounded densities here. Take both regions to be at 10 K, with the cold composition from Problem 3c, $\mu\approx2.33$.
 >
@@ -226,7 +227,7 @@ How quickly can a region collapse under its own gravity? Imagine releasing an in
 
 Pressure does not adjust everywhere at once. A compression is communicated through the gas at the sound speed. Comparing the time for that disturbance to cross a patch with the patch's gravitational timescale tells us whether pressure can respond across it before gravity substantially changes it. This gives a physical reason to care about the timescale, beyond estimating how long we would have to wait.
 
-> ### Problem 8
+> ### Problem 8 {.unlisted}
 >
 > a. Estimate the gravitational timescale from $G$ and the mean density $\rho$. For the two regions in Problem 2c, predict the ratio of the times and then check it numerically. Use coefficient one for your dimensional estimate.
 >
@@ -242,7 +243,7 @@ Keep this distinction between the mean density and a small departure from the me
 
 The [STARFORGE project](https://starforge.space/) simulates the evolution of star-forming clouds.
 
-> ### Problem 9
+> ### Problem 9 {.unlisted}
 >
 > Watch this [simulation of a molecular cloud](https://www.youtube.com/watch?v=8nCW7419FyU). Describe features you notice. Choose one and explain how it relates to our cloud model, distinguishing what you can see from what you infer. Identify something the simulation shows that our calculation does not explain, and formulate a question about it.
 
@@ -252,7 +253,7 @@ We have seen that increasing density lowers the Jeans mass if temperature stays 
 
 In the next problem, the gas mass stays fixed; the Jeans mass is the changing comparison scale. Follow their ratio to see whether the same gas becomes more or less strongly dominated by gravity. The two histories are alternatives, so compare each final state with the same starting point.
 
-> ### Problem 10
+> ### Problem 10 {.unlisted}
 >
 > Follow a fixed mass of gas as it contracts. Keep its composition, and therefore $\mu$, unchanged. Use the same coefficient in the Jeans-mass formula throughout, so that it cancels when you take ratios.
 >
