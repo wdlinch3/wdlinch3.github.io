@@ -2251,8 +2251,7 @@ return 0===self.Set.length&&2===e.size&&"Symbol"in self&&"iterator"in self.Symbo
 return"test"===t.get(e)&&!1===t["delete"](0)}return!1}catch(a){return!1}})()
 )) {!function(e){var t=Symbol("undef"),r=function a(){if(!(this instanceof a))throw new TypeError('Constructor WeakMap requires "new"');var e=OrdinaryCreateFromConstructor(this,a.prototype,{_keys:[],_values:[],_es6WeakMap:!0}),t=arguments.length>0?arguments[0]:undefined;if(null===t||t===undefined)return e;var r=Get(e,"set");if(!IsCallable(r))throw new TypeError("WeakMap.prototype.set is not a function");try{for(var o=GetIterator(t);;){var p=IteratorStep(o);if(!1===p)return e;var n=IteratorValue(p);if("object"!==Type(n))try{throw new TypeError("Iterator value "+n+" is not an entry object")}catch(s){return IteratorClose(o,s)}try{var i=Get(n,"0"),l=Get(n,"1");Call(r,e,[i,l])}catch(u){return IteratorClose(o,u)}}}catch(u){if(Array.isArray(t)||"[object Arguments]"===Object.prototype.toString.call(t)||t.callee){var y,c=t.length;for(y=0;y<c;y++)i=t[y][0],l=t[y][1],Call(r,e,[i,l])}}return e};Object.defineProperty(r,"prototype",{configurable:!1,enumerable:!1,writable:!1,value:{}}),CreateMethodProperty(r.prototype,"constructor",r),CreateMethodProperty(r.prototype,"delete",function(e){var r=this;if("object"!==Type(r))throw new TypeError("Method WeakMap.prototype.clear called on incompatible receiver "+Object.prototype.toString.call(r));if(!0!==r._es6WeakMap)throw new TypeError("Method WeakMap.prototype.clear called on incompatible receiver "+Object.prototype.toString.call(r));var o=r._keys;if("object"!==Type(e))return!1;for(var a=0;a<o.length;a++)if(r._keys[a]!==t&&SameValue(r._keys[a],e))return this._keys[a]=t,this._values[a]=t,this._size=--this._size,!0;return!1}),CreateMethodProperty(r.prototype,"get",function p(e){var r=this;if("object"!==Type(r))throw new TypeError("Method WeakMap.prototype.get called on incompatible receiver "+Object.prototype.toString.call(r));if(!0!==r._es6WeakMap)throw new TypeError("Method WeakMap.prototype.get called on incompatible receiver "+Object.prototype.toString.call(r));var o=r._keys;if("object"!==Type(e))return undefined;for(var a=0;a<o.length;a++)if(r._keys[a]!==t&&SameValue(r._keys[a],e))return r._values[a];return undefined}),CreateMethodProperty(r.prototype,"has",function n(e){var r=this;if("object"!=typeof r)throw new TypeError("Method WeakMap.prototype.has called on incompatible receiver "+Object.prototype.toString.call(r));if(!0!==r._es6WeakMap)throw new TypeError("Method WeakMap.prototype.has called on incompatible receiver "+Object.prototype.toString.call(r));var o=r._keys;if("object"!==Type(e))return!1;for(var a=0;a<o.length;a++)if(r._keys[a]!==t&&SameValue(r._keys[a],e))return!0;return!1}),CreateMethodProperty(r.prototype,"set",function i(e,r){var o=this;if("object"!==Type(o))throw new TypeError("Method WeakMap.prototype.set called on incompatible receiver "+Object.prototype.toString.call(o));if(!0!==o._es6WeakMap)throw new TypeError("Method WeakMap.prototype.set called on incompatible receiver "+Object.prototype.toString.call(o));var a=o._keys;if("object"!==Type(e))throw new TypeError("Invalid value used as weak map key");for(var p=0;p<a.length;p++)if(o._keys[p]!==t&&SameValue(o._keys[p],e))return o._values[p]=r,o;var n={"[[Key]]":e,"[[Value]]":r};return o._keys.push(n["[[Key]]"]),o._values.push(n["[[Value]]"]),o}),Object.defineProperty(r.prototype,Symbol.toStringTag,{configurable:!0,enumerable:!1,writable:!1,value:"WeakMap"}),"name"in r||Object.defineProperty(r,"name",{configurable:!0,enumerable:!1,writable:!1,value:"WeakMap"});try{CreateMethodProperty(e,"WeakMap",r)}catch(o){e.WeakMap=r}}(self);}if (!((function(e){try{if(Object.prototype.hasOwnProperty.call(e,"WeakSet")&&0===e.WeakSet.length){var t={},r=new e.WeakSet([t])
 return r.has(t)&&!1===r["delete"](0)}return!1}catch(a){return!1}})(self)
-)) {!function(e){var t=Symbol("undef"),r=function a(){if(!(this instanceof a))throw new TypeError('Constructor WeakSet requires "new"');var e=OrdinaryCreateFromConstructor(this,a.prototype,{_values:[],_size:0,_es6WeakSet:!0}),t=arguments.length>0?arguments[0]:undefined;if(null===t||t===undefined)return e;var r=Get(e,"add");if(!IsCallable(r))throw new TypeError("WeakSet.prototype.add is not a function");try{for(var o=GetIterator(t);;){var n=IteratorStep(o);if(!1===n)return e;var l=IteratorValue(n);try{Call(r,e,[l])}catch(c){return IteratorClose(o,c)}}}catch(c){if(IsArray(t)||"[object Arguments]"===Object.prototype.toString.call(t)||t.callee){var p,i=t.length;for(p=0;p<i;p++)Call(r,e,[t[p]])}}return e};Object.defineProperty(r,"prototype",{configurable:!1,enumerable:!1,writable:!1,value:{}}),CreateMethodProperty(r.prototype,"add",function n(e){var r=this;if("object"!==Type(r))throw new TypeError("Method WeakSet.prototype.add called on incompatible receiver "+Object.prototype.toString.call(r));if(!0!==r._es6WeakSet)throw new TypeError("Method WeakSet.prototype.add called on incompatible receiver "+Object.prototype.toString.call(r));if("object"!==Type(e))throw new TypeError("Invalid value used in weak set");for(var o=r._values,a=0;a<o.length;a++){var n=o[a];if(n!==t&&SameValueZero(n,e))return r}return r._values.push(e),r}),CreateMethodProperty(r.prototype,"constructor",r),CreateMethodProperty(r.prototype,"delete",function(e){var r=this;if("object"!==Type(r))throw new TypeError("Method WeakSet.prototype.delete called on incompatible receiver "+Object.prototype.toString.call(r));if(!0!==r._es6WeakSet)throw new TypeError("Method WeakSet.prototype.delete called on incompatible receiver "+Object.prototype.toString.call(r));if("object"!==Type(e))return!1;for(var o=r._values,a=0;a<o.length;a++){var n=o[a];if(n!==t&&SameValueZero(n,e))return o[a]=t,!0}return!1}),CreateMethodProperty(r.prototype,"has",function l(e){var r=this;if("object"!==Type(r))throw new TypeError("Method WeakSet.prototype.has called on incompatible receiver "+Object.prototype.toString.call(r));if(!0!==r._es6WeakSet)throw new TypeError("Method WeakSet.prototype.has called on incompatible receiver "+Object.prototype.toString.call(r));var o=r._values;if("object"!==Type(e))return!1;for(var a=0;a<o.length;a++){var n=o[a];if(n!==t&&SameValueZero(n,e))return!0}return!1}),"name"in r||Object.defineProperty(r,"name",{configurable:!0,enumerable:!1,writable:!1,value:"WeakSet"});try{CreateMethodProperty(e,"WeakSet",r)}catch(o){e.WeakSet=r}}(self);}function TrimString(e,u){var r=RequireObjectCoercible(e),t=ToString(r),n=/[\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF]+/.source;if("start"===u)var p=String.prototype.replace.call(t,new RegExp("^"+n,"g"),"");else p="end"===u?String.prototype.replace.call(t,new RegExp(n+"$","g"),""):String.prototype.replace.call(t,new RegExp("^"+n+"|"+n+"$","g"),"");return p}if (!("trim"in String.prototype&&function(){var r="​
-᠎"
+)) {!function(e){var t=Symbol("undef"),r=function a(){if(!(this instanceof a))throw new TypeError('Constructor WeakSet requires "new"');var e=OrdinaryCreateFromConstructor(this,a.prototype,{_values:[],_size:0,_es6WeakSet:!0}),t=arguments.length>0?arguments[0]:undefined;if(null===t||t===undefined)return e;var r=Get(e,"add");if(!IsCallable(r))throw new TypeError("WeakSet.prototype.add is not a function");try{for(var o=GetIterator(t);;){var n=IteratorStep(o);if(!1===n)return e;var l=IteratorValue(n);try{Call(r,e,[l])}catch(c){return IteratorClose(o,c)}}}catch(c){if(IsArray(t)||"[object Arguments]"===Object.prototype.toString.call(t)||t.callee){var p,i=t.length;for(p=0;p<i;p++)Call(r,e,[t[p]])}}return e};Object.defineProperty(r,"prototype",{configurable:!1,enumerable:!1,writable:!1,value:{}}),CreateMethodProperty(r.prototype,"add",function n(e){var r=this;if("object"!==Type(r))throw new TypeError("Method WeakSet.prototype.add called on incompatible receiver "+Object.prototype.toString.call(r));if(!0!==r._es6WeakSet)throw new TypeError("Method WeakSet.prototype.add called on incompatible receiver "+Object.prototype.toString.call(r));if("object"!==Type(e))throw new TypeError("Invalid value used in weak set");for(var o=r._values,a=0;a<o.length;a++){var n=o[a];if(n!==t&&SameValueZero(n,e))return r}return r._values.push(e),r}),CreateMethodProperty(r.prototype,"constructor",r),CreateMethodProperty(r.prototype,"delete",function(e){var r=this;if("object"!==Type(r))throw new TypeError("Method WeakSet.prototype.delete called on incompatible receiver "+Object.prototype.toString.call(r));if(!0!==r._es6WeakSet)throw new TypeError("Method WeakSet.prototype.delete called on incompatible receiver "+Object.prototype.toString.call(r));if("object"!==Type(e))return!1;for(var o=r._values,a=0;a<o.length;a++){var n=o[a];if(n!==t&&SameValueZero(n,e))return o[a]=t,!0}return!1}),CreateMethodProperty(r.prototype,"has",function l(e){var r=this;if("object"!==Type(r))throw new TypeError("Method WeakSet.prototype.has called on incompatible receiver "+Object.prototype.toString.call(r));if(!0!==r._es6WeakSet)throw new TypeError("Method WeakSet.prototype.has called on incompatible receiver "+Object.prototype.toString.call(r));var o=r._values;if("object"!==Type(e))return!1;for(var a=0;a<o.length;a++){var n=o[a];if(n!==t&&SameValueZero(n,e))return!0}return!1}),"name"in r||Object.defineProperty(r,"name",{configurable:!0,enumerable:!1,writable:!1,value:"WeakSet"});try{CreateMethodProperty(e,"WeakSet",r)}catch(o){e.WeakSet=r}}(self);}function TrimString(e,u){var r=RequireObjectCoercible(e),t=ToString(r),n=/[\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF]+/.source;if("start"===u)var p=String.prototype.replace.call(t,new RegExp("^"+n,"g"),"");else p="end"===u?String.prototype.replace.call(t,new RegExp(n+"$","g"),""):String.prototype.replace.call(t,new RegExp("^"+n+"|"+n+"$","g"),"");return p}if (!("trim"in String.prototype&&function(){var r="​᠎"
 return!"\t\n\x0B\f\r                　\u2028\u2029\ufeff".trim()&&r.trim()===r}()
 )) {CreateMethodProperty(String.prototype,"trim",function t(){"use strict";var t=this;return TrimString(t,"start+end")});}if (!("parseFloat"in Number&&1/parseFloat("\t\n\x0B\f\r                　\u2028\u2029\ufeff-0")==-Infinity
 )) {!function(r,t){var a=function o(t){var a=String(t).trim(),e=r(a);return 0===e&&"-"==a.charAt(0)?-0:e};try{CreateMethodProperty(t,"parseFloat",a)}catch(e){t.parseFloat=a}CreateMethodProperty(Number,"parseFloat",t.parseFloat)}(parseFloat,this);}if (!("parseInt"in Number&&8===Number.parseInt("08")
@@ -2264,7 +2263,7 @@ return!"\t\n\x0B\f\r                　\u2028\u2029
 )) {"Symbol"in self&&"iterator"in Symbol&&"function"==typeof Array.prototype[Symbol.iterator]?CreateMethodProperty(Array.prototype,"values",Array.prototype[Symbol.iterator]):CreateMethodProperty(Array.prototype,"values",function r(){var r=ToObject(this);return new ArrayIterator(r,"value")});}if (!("Symbol"in self&&"iterator"in self.Symbol&&!!Array.prototype[self.Symbol.iterator]
 )) {CreateMethodProperty(Array.prototype,Symbol.iterator,Array.prototype.values);}var StringIterator=function(){var t=function(e){if(!(this instanceof t))return new t(e);e=String(e),Iterator.call(this,e),Object.defineProperty(this,"__length__",{value:e.length,configurable:!1,enumerable:!1,writable:!1})};return Object.setPrototypeOf&&Object.setPrototypeOf(t,Iterator),t.prototype=Object.create(Iterator.prototype,{constructor:{value:t,configurable:!0,enumerable:!1,writable:!0},_next:{value:function(){if(this.__list__)return this.__nextIndex__<this.__length__?this.__nextIndex__++:void this._unBind()},configurable:!0,enumerable:!1,writable:!0},_resolve:{value:function(t){var e,r=this.__list__[t];return this.__nextIndex__===this.__length__?r:(e=r.charCodeAt(0),e>=55296&&e<=56319?r+this.__list__[this.__nextIndex__++]:r)},configurable:!0,enumerable:!1,writable:!0},toString:{value:function(){return"[object String Iterator]"},configurable:!0,enumerable:!1,writable:!0}}),t}();if (!("Symbol"in self&&"iterator"in self.Symbol&&!!String.prototype[self.Symbol.iterator]
 )) {CreateMethodProperty(String.prototype,Symbol.iterator,function(){var r=RequireObjectCoercible(this),t=ToString(r);return new StringIterator(t)});}})('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});</script>
-
+  
   <script>
     (function () {
       var script = document.createElement("script");
@@ -2404,7 +2403,7 @@ margin-left: 0;
 <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
   <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
-
+   
   <ul class="collapse">
   <li><a href="#interstellar-matter-nebulae-and-molecular-clouds" id="toc-interstellar-matter-nebulae-and-molecular-clouds" class="nav-link active" data-scroll-target="#interstellar-matter-nebulae-and-molecular-clouds">Interstellar Matter, Nebulae, and Molecular Clouds</a></li>
   <li><a href="#gravity-and-thermal-support" id="toc-gravity-and-thermal-support" class="nav-link" data-scroll-target="#gravity-and-thermal-support">Gravity and Thermal Support</a>
@@ -2412,6 +2411,7 @@ margin-left: 0;
   <li><a href="#cloud-fragmentation" id="toc-cloud-fragmentation" class="nav-link" data-scroll-target="#cloud-fragmentation">Cloud Fragmentation</a></li>
   <li><a href="#does-fragmentation-continue-indefinitely" id="toc-does-fragmentation-continue-indefinitely" class="nav-link" data-scroll-target="#does-fragmentation-continue-indefinitely">Does Fragmentation Continue Indefinitely?</a></li>
   <li><a href="#from-a-fragment-to-a-system" id="toc-from-a-fragment-to-a-system" class="nav-link" data-scroll-target="#from-a-fragment-to-a-system">From a Fragment to a System</a></li>
+  <li><a href="#supplemental-material" id="toc-supplemental-material" class="nav-link" data-scroll-target="#supplemental-material">Supplemental Material</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -2427,11 +2427,11 @@ margin-left: 0;
 
 <div class="quarto-title-meta">
 
-
-
-
+    
+  
+    
   </div>
-
+  
 
 
 </header>
@@ -2482,7 +2482,7 @@ margin-left: 0;
 </div>
 <p>The solar system formed in a <strong>molecular cloud</strong>. Their cold gas is often at temperatures of 10–20 K. Densities vary enormously between the cloud as a whole and its dense interior regions. Take dust to be about 1% of the cloud’s mass. How closely does the gas in Problem 1 resemble the material that formed our solar system? If we count only hydrogen and helium nuclei in the <strong>solar nebula</strong>, we estimate that about 91 out of every 100 were hydrogen and 9 were helium. By mass, the solar nebula was about 71% hydrogen, 27% helium, and 1.5% heavier elements. Problem 1 counts only hydrogen and helium, so its mass percentages use a slightly different denominator.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
 <p>Jupiter gathered gas from this same solar nebula. In the atmosphere sampled by the <a href="https://doi.org/10.1029/98JE00695">Galileo probe</a>, roughly 86 of every 100 gas particles were hydrogen <em>molecules</em> and 14 were helium atoms. Each H<sub>2</sub> molecule contains two hydrogen nuclei, so counting nuclei instead gives about 8 helium nuclei per 100 hydrogen and helium nuclei—close to the 9 in Problem 1.</p>
-<p>An enormous molecular cloud is called a <strong>giant molecular cloud</strong>, or <strong>GMC</strong>. For the following bounds exercise, use the broad ranges from our original model: diameters of 15–600 lightyears and masses of <span class="math inline">\(10^4\)</span>–<span class="math inline">\(10^7 M_\odot\)</span>. These are illustrative ranges, not a claim that every combination of endpoints occurs in nature; catalogs and definitions give different limits.<br>
+<p>An enormous molecular cloud is called a <strong>giant molecular cloud</strong>, or <strong>GMC</strong>. For the following bounds exercise, use these illustrative ranges: diameters of 15–600 lightyears and masses of <span class="math inline">\(10^4\)</span>–<span class="math inline">\(10^7 M_\odot\)</span>. These are illustrative ranges, not a claim that every combination of endpoints occurs in nature; catalogs and definitions give different limits.<br>
 The size of the GMC and its mass are related by the <strong>mass density</strong> (<em>e.g.</em>, for a spherical cloud of radius <span class="math inline">\(R\)</span> and mass <span class="math inline">\(M\)</span>, <span class="math inline">\(\rho=\frac{3M}{4\pi R^3}\)</span>). We will use uniform balls to calculate mean densities. A real cloud is clumpy and filamentary, so the mean need not describe any particular region inside it.</p>
 <blockquote class="blockquote">
 <h3 id="problem-2" class="anchored">Problem 2</h3>
@@ -2513,11 +2513,13 @@ K_{\rm th}=\frac32 Nk_BT=\frac32\frac{M}{\mu m_p}k_BT.
 <section id="gravity-and-thermal-support" class="level1">
 <h1>Gravity and Thermal Support</h1>
 <p>In this section, we will explore the possibility that the solar system formed from the collapse of part of a molecular cloud. For definiteness, continue with the model cloud and interior region in Problem 2c.</p>
+<p>What could make this gas collect into a star? Gravity pulls the material together, while gas pressure can help hold it up. We will first look at the energy released when the cloud contracts, then ask whether its thermal motions provide enough support to prevent that contraction. These are related questions, but the energy calculation alone will not settle the support question.</p>
 <p>In Astrodynamics II we studied the gravitational potential energy of one body in the field of another. A cloud also has gravitational potential energy because its particles attract one another. For a uniform sphere (a ball of uniform density), with zero energy when all its material is dispersed infinitely far apart,</p>
 <p><span class="math display">\[
 U=-\frac35\frac{GM^2}{R}.
 \]</span></p>
-<p>The dimensions should look familiar. The factor <span class="math inline">\(3/5\)</span> accounts for assembling the sphere a shell at a time. The optional explanation after Problem 4 shows where it comes from.</p>
+<p>The dimensions should look familiar. The factor <span class="math inline">\(3/5\)</span> accounts for assembling the sphere a shell at a time. The supplemental material at the end shows where it comes from.</p>
+<p>As the cloud shrinks, its material becomes more tightly bound. The gravitational potential energy decreases, and that decrease supplies energy that can go into motion or leave as radiation. In the next problem, keep track of the distinction between the cloud’s negative potential energy and the positive amount of energy released. We will return to where that released energy goes when we follow the gas as it contracts.</p>
 <blockquote class="blockquote">
 <h3 id="problem-4" class="anchored">Problem 4</h3>
 <ol type="a">
@@ -2526,8 +2528,114 @@ U=-\frac35\frac{GM^2}{R}.
 <li><p>Does this calculation alone tell you how much of the released energy heats the gas and how much leaves as radiation? Explain.</p></li>
 </ol>
 </blockquote>
-<section id="optional-where-does-the-35-come-from" class="level3">
-<h3 class="anchored" data-anchor-id="optional-where-does-the-35-come-from">Optional: Where Does the <span class="math inline">\(3/5\)</span> Come From?</h3>
+<p>Problem 4 gives us an energy budget for contraction. It does not yet tell us whether the cloud will contract in the first place. To address that, we need to compare gravity with the motions that can support the cloud. The virial theorem gives us a way to make that comparison without following every particle separately.</p>
+<section id="the-virial-theorem" class="level3">
+<h3 class="anchored" data-anchor-id="the-virial-theorem">The Virial Theorem</h3>
+<p>In Astrodynamics II, you showed that for the ISS in a circular orbit around the Earth, the kinetic energy <span class="math inline">\(K\)</span> and potential energy <span class="math inline">\(U\)</span> satisfy <span class="math inline">\(K=-U/2\)</span>. Along an elliptical orbit, the energies vary; the relation holds for their averages over a complete orbit.</p>
+<p>The <strong>virial theorem</strong> relates average kinetic energy to the forces binding a system. Even when the individual motions are too complicated to calculate, we can still learn something about the system as a whole. We’ll use the gravitational form here. Other forces lead to related expressions.</p>
+<p>For a gravitationally bound system with no sustained overall contraction or expansion, and with other contributions negligible, the time-averaged energies obey</p>
+<p><span class="math display">\[
+2\langle K\rangle+\langle U\rangle=0.
+\]</span></p>
+<p>Our cloud may be collapsing, so we cannot simply declare that it obeys this equilibrium relation throughout its motion. We can use the balance to estimate how much random thermal motion would be needed for support. For this first model, neglect rotation, magnetic fields, turbulent motions, and pressure applied by the surroundings.</p>
+</section>
+<section id="instability-of-a-molecular-cloud" class="level3">
+<h3 class="anchored" data-anchor-id="instability-of-a-molecular-cloud">(In)Stability of a Molecular Cloud</h3>
+<p>In chemistry, we (will) learn that the total translational kinetic energy of an ideal gas is related to its temperature by</p>
+<p><span class="math display">\[
+K_{\rm th}=\frac32 Nk_BT.
+\]</span></p>
+<p>Here <span class="math inline">\(k_B\)</span> is <strong>Boltzmann’s constant</strong>, <span class="math inline">\(T\)</span> is the temperature, and <span class="math inline">\(N\)</span> is the number of freely moving gas particles. In SI units, <span class="math inline">\(k_B\approx1.38\times10^{-23}\ \mathrm{J/K}\)</span>. Boltzmann’s constant converts a temperature into a characteristic energy per particle. The temperature itself is not the total energy of the cloud.</p>
+<p>If you have taken chemistry, you may recognize the same conversion per mole: <span class="math inline">\(R_{\rm gas}=N_Ak_B\)</span>, where <span class="math inline">\(N_A=6.0\times 10^{23}\)</span> denotes Avogadro’s number. We will work per particle, and reserve <span class="math inline">\(R\)</span> for a radius.</p>
+<p>Random thermal motions produce gas pressure. When pressure is greater inside a cloud than outside, the resulting outward force can oppose gravity. This is what we mean by <strong>thermal support</strong>. The particles do not all have to move outward for the gas to exert an outward pressure force.</p>
+<p>Our next question is whether the gas is hot enough to provide the support this particular cloud needs. We will calculate the temperature required for balance, then compare it with the cloud’s actual temperature. Keep those two temperatures distinct: calculating a required temperature does not tell us that the cloud actually has it. If the actual temperature is lower, thermal pressure alone cannot hold the cloud up.</p>
+<blockquote class="blockquote">
+<h3 id="problem-5" class="anchored">Problem 5</h3>
+<p>Use the virial balance to estimate the temperature needed for thermal support in our model cloud. First express your result in terms of gas mass <span class="math inline">\(M\)</span>, radius <span class="math inline">\(R\)</span>, and particle count <span class="math inline">\(N\)</span>. Then use Problem 3 to write it in terms of <span class="math inline">\(\mu\)</span>.</p>
+<ol type="a">
+<li><p>Keep the coefficient <span class="math inline">\(3/5\)</span> in the uniform sphere’s gravitational energy. What coefficient appears in your expression for the balance temperature?</p></li>
+<li><p>At the same mass and radius, would the required temperature be higher or lower for a larger <span class="math inline">\(\mu\)</span>? Explain.</p></li>
+<li><p>Calculate the balance temperature for the whole cloud and the interior region in Problem 2c, using the cold composition. Compare with 10 K. What does the comparison tell us about thermal support in this model? What does it leave out?</p></li>
+</ol>
+</blockquote>
+</section>
+<section id="jeans-instability" class="level3">
+<h3 class="anchored" data-anchor-id="jeans-instability">Jeans Instability</h3>
+<p>For our adopted cloud and interior region, the required balance temperatures are higher than 10 K. Thermal pressure alone therefore cannot hold either region up. In our simple model, gravity wins and the gas contracts. We would need additional support to change that conclusion.</p>
+<p>So far, we have asked how hot a cloud of a given mass and radius must be to support itself. We can turn the question around: at a given temperature, density, and composition, how much mass can a region contain before thermal pressure is insufficient to hold it up?</p>
+<p>You know the escape-energy scale <span class="math inline">\(GMm/R\)</span> from Astrodynamics II. The characteristic thermal energy <span class="math inline">\(k_BT\)</span> can be compared with this gravitational energy scale. Following one escaping particle and testing the support of an entire cloud are different questions, but they involve the same gravitational well.</p>
+<p>Rather than specify a radius, let us describe the gas by its mean density. Eliminating the radius from the thermal-support estimate gives a characteristic mass scale, called the <strong>Jeans mass</strong>. Let’s find it.</p>
+<blockquote class="blockquote">
+<h3 id="problem-6-the-jeans-scaling" class="anchored">Problem 6: The Jeans Scaling</h3>
+<ol type="a">
+<li><p>Begin with the order-of-magnitude balance <span class="math inline">\(k_BT\sim G\mu m_pM/R\)</span> from Problem 5, dropping the numerical coefficient. Use <span class="math inline">\(\rho\sim M/R^3\)</span> to eliminate <span class="math inline">\(R\)</span>, and solve for the characteristic mass <span class="math inline">\(M_J\)</span> in terms of <span class="math inline">\(T\)</span>, <span class="math inline">\(\rho\)</span>, and <span class="math inline">\(\mu\)</span>. Keep <span class="math inline">\(G\)</span>, <span class="math inline">\(k_B\)</span>, and <span class="math inline">\(m_p\)</span> in your expression.</p></li>
+<li><p>At fixed temperature and composition, what happens to this mass scale when the density increases tenfold? Explain what this suggests about the masses of regions that could become unstable as a cloud grows denser.</p></li>
+</ol>
+</blockquote>
+<p>The scaling you just derived is</p>
+<p><span class="math display">\[
+M_J\sim\left(\frac{k_BT}{G\mu m_p}\right)^{3/2}\frac1{\sqrt{\rho}}.
+\]</span></p>
+<p>Different idealized stability models give different numerical coefficients; for the following order-of-magnitude comparison, use coefficient one. Do not confuse this convention with the coefficient retained in Problem 5. A region well above this mass lacks sufficient thermal support in our simple model. A value close to the threshold would require a more careful calculation.</p>
+<p>Think of the Jeans mass as an approximate dividing line for a region under specified conditions. Compare the mass actually present with the Jeans mass calculated for that region’s gas. A mass well above the dividing line has too little thermal support against its own gravity; a mass well below it is not expected to collapse under its own gravity in this model.</p>
+<p>The whole cloud and a small region inside it need not fall on the same side of their respective dividing lines. Let’s apply the calculation at both scales, rather than assume that everything inside a contracting cloud must collapse separately.</p>
+<blockquote class="blockquote">
+<h3 id="problem-7" class="anchored">Problem 7</h3>
+<p>In Problem 2c, we considered a cloud with mass <span class="math inline">\(10^5 M_\odot\)</span> and mean density <span class="math inline">\(2.02\times10^{-22}\)</span> g/cm³, and an interior region with mass <span class="math inline">\(10^3 M_\odot\)</span> and mean density <span class="math inline">\(2.02\times10^{-21}\)</span> g/cm³. Use these rounded densities here. Take both regions to be at 10 K, with the cold composition from Problem 3c, <span class="math inline">\(\mu\approx2.33\)</span>.</p>
+<ol type="a">
+<li><p>Predict the ratio of their Jeans masses before calculating. Which region has the smaller threshold?</p></li>
+<li><p>Calculate the Jeans mass for each. Compare each region’s actual mass with its own threshold. What can you infer about thermal support in this model?</p></li>
+<li><p>Suppose someone concludes that every small region will collapse separately because the whole cloud exceeds its Jeans mass. Test the claim using a parcel with the interior region’s density and temperature but only one tenth of its Jeans mass. What information is lost when you assign the properties of the whole cloud to every part?</p></li>
+</ol>
+</blockquote>
+</section>
+<section id="cloud-fragmentation" class="level2">
+<h2 class="anchored" data-anchor-id="cloud-fragmentation">Cloud Fragmentation</h2>
+<p>The last problem separates two possibilities: a parcel can be carried inward as part of a contracting cloud, or it can contract around a center of its own. To understand how separate fragments develop, we need to ask how quickly gravity acts and how quickly pressure can respond.</p>
+<p>How quickly can a region collapse under its own gravity? Imagine releasing an initially uniform sphere from rest and neglecting pressure for this calculation. Its collapse time is called the <strong>free-fall time</strong>. Let’s estimate it by dimensional analysis.</p>
+<p>Pressure does not adjust everywhere at once. A compression is communicated through the gas at the sound speed. Comparing the time for that disturbance to cross a patch with the patch’s gravitational timescale tells us whether pressure can respond across it before gravity substantially changes it. This gives a physical reason to care about the timescale, beyond estimating how long we would have to wait.</p>
+<blockquote class="blockquote">
+<h3 id="problem-8" class="anchored">Problem 8</h3>
+<ol type="a">
+<li><p>Estimate the gravitational timescale from <span class="math inline">\(G\)</span> and the mean density <span class="math inline">\(\rho\)</span>. For the two regions in Problem 2c, predict the ratio of the times and then check it numerically. Use coefficient one for your dimensional estimate.</p></li>
+<li><p>In a patch of size <span class="math inline">\(\ell\)</span>, a pressure disturbance travels at the sound speed <span class="math inline">\(c_s\)</span>. Estimate its crossing time. Suppose gravity takes less time than this. What does that imply about the ability of pressure to smooth a density enhancement across the patch?</p></li>
+</ol>
+</blockquote>
+<p>The timescale comparison suggests that denser patches can contract faster than their surroundings, provided pressure cannot smooth them out quickly enough. But first, let’s be clear about what happens in the perfectly uniform cloud we used for our estimate. A cloud becoming denser everywhere is not yet an explanation of how it breaks into separate pieces.</p>
+<p>Imagine two concentric shells in our initially uniform sphere. A shell twice as far from the center encloses eight times as much mass. By <a href="https://en.wikipedia.org/wiki/Shell_theorem">Newton’s shell theorem</a>, the material outside either shell exerts no net force on it. The outer shell therefore starts with twice the inward acceleration: eight times the enclosed mass divided by four times the squared distance. It also has twice as far to fall. If every radius shrinks by the same fraction, the enclosed masses stay the same and the acceleration ratio stays two. The shells can keep contracting together. The whole sphere grows denser while its density stays uniform from place to place.</p>
+<p>Where, then, would a <em>separate</em> fragment come from? Real clouds already have denser patches. Compare the time <span class="math inline">\(\ell/c_s\)</span> for a pressure disturbance to cross a patch of size <span class="math inline">\(\ell\)</span> at sound speed <span class="math inline">\(c_s\)</span> with its gravitational time, <span class="math inline">\(1/\sqrt{G\rho}\)</span>. If gravity acts more quickly than pressure can respond across the patch, its density can grow relative to its surroundings. At roughly constant temperature, increasing density also lowers the Jeans mass. Several sufficiently massive patches can thus contract around their own centers. This is <strong>fragmentation</strong>.</p>
+<p>Keep this distinction between the mean density and a small departure from the mean in mind. In AA: Universe we’ll return to it when we study the small temperature variations in the cosmic microwave background.</p>
+<p>The <a href="https://starforge.space/">STARFORGE project</a> simulates the evolution of star-forming clouds.</p>
+<blockquote class="blockquote">
+<h3 id="problem-9" class="anchored">Problem 9</h3>
+<p>Watch this <a href="https://www.youtube.com/watch?v=8nCW7419FyU">simulation of a molecular cloud</a>. Describe features you notice. Choose one and explain how it relates to our cloud model, distinguishing what you can see from what you infer. Identify something the simulation shows that our calculation does not explain, and formulate a question about it.</p>
+</blockquote>
+</section>
+<section id="does-fragmentation-continue-indefinitely" class="level2">
+<h2 class="anchored" data-anchor-id="does-fragmentation-continue-indefinitely">Does Fragmentation Continue Indefinitely?</h2>
+<p>We have seen that increasing density lowers the Jeans mass if temperature stays fixed, allowing smaller regions to begin contracting too. But why should the temperature stay fixed? Gravity does work on the contracting gas. If that energy stays in the gas as thermal energy, it raises the temperature and strengthens thermal support. If the gas can radiate energy away quickly enough, it can keep contracting without heating up as much. Whether fragmentation can continue therefore depends on how effectively the gas loses energy. Let’s compare two possible histories for the same gas.</p>
+<p>In the next problem, the gas mass stays fixed; the Jeans mass is the changing comparison scale. Follow their ratio to see whether the same gas becomes more or less strongly dominated by gravity. The two histories are alternatives, so compare each final state with the same starting point.</p>
+<blockquote class="blockquote">
+<h3 id="problem-10" class="anchored">Problem 10</h3>
+<p>Follow a fixed mass of gas as it contracts. Keep its composition, and therefore <span class="math inline">\(\mu\)</span>, unchanged. Use the same coefficient in the Jeans-mass formula throughout, so that it cancels when you take ratios.</p>
+<ol type="a">
+<li><p>Use your result from Problem 6 to express <span class="math inline">\(M_{J,f}/M_{J,i}\)</span> in terms of the temperature ratio <span class="math inline">\(T_f/T_i\)</span> and the density ratio <span class="math inline">\(\rho_f/\rho_i\)</span>.</p></li>
+<li><p>First suppose the density increases by a factor of 100 while the temperature stays constant. By what factor does the Jeans mass change? What happens to the ratio of the fixed gas mass to its Jeans mass? Explain why smaller masses could now become gravitationally unstable.</p></li>
+<li><p>Consider a second possible history starting from the same initial state. The density again increases by a factor of 100, but this time the temperature increases by a factor of 10. Does the Jeans mass increase or decrease? Compare the result with (b). Does this change alone tell you that the contracting region must stop collapsing?</p></li>
+<li><p>Explain why the ability to radiate energy away matters for fragmentation. What additional information would you need to decide whether a particular region breaks into smaller objects? Finish by identifying the question about the gas that we must carry into our study of the protosun.</p></li>
+</ol>
+</blockquote>
+</section>
+<section id="from-a-fragment-to-a-system" class="level2">
+<h2 class="anchored" data-anchor-id="from-a-fragment-to-a-system">From a Fragment to a System</h2>
+<p>The final comparison gives us a reason to keep track of both density and temperature. Cooling allows contraction to proceed without as much heating; when the gas retains more of the released energy, thermal support becomes more important. Increasing density alone is therefore not enough to predict how far fragmentation will continue.</p>
+<p>Each sufficiently massive, contracting region can develop its own dense center; fragmentation can also produce multiple stars. Our solar system formed within one such environment. An entire GMC does not become one Sun.</p>
+<p>We will now focus on the material that became the <strong>protosun</strong> and its surrounding disk. The last problem gives us a reason to follow its heating and cooling: they help determine how the contraction proceeds and whether smaller regions can continue to fragment. In Solar System III, we will follow that energy as the central object and disk develop together.</p>
+</section>
+<section id="supplemental-material" class="level2">
+<h2 class="anchored" data-anchor-id="supplemental-material">Supplemental Material</h2>
+<section id="where-does-the-35-come-from" class="level3">
+<h3 class="anchored" data-anchor-id="where-does-the-35-come-from">Where Does the <span class="math inline">\(3/5\)</span> Come From?</h3>
 <p>Imagine assembling our ball by bringing material in from very far away, where we have chosen the gravitational potential energy to be zero. Build it from the center outward, adding one thin spherical shell at a time. When a shell of mass <span class="math inline">\(dm\)</span> reaches radius <span class="math inline">\(r\)</span>, it feels the attraction of the mass <span class="math inline">\(M(r)\)</span> already assembled inside it. Its contribution to the potential energy is</p>
 <p><span class="math display">\[
 dU=-\frac{GM(r)}{r}\,dm.
@@ -2546,97 +2654,6 @@ U = -\int\frac{GM(r)}{r}\,dm
 \]</span></p>
 <p>The last step uses <span class="math inline">\(M=4\pi\rho R^3/3\)</span>. The coefficient <span class="math inline">\(3/5\)</span> is specific to a ball of uniform density; a different radial density profile gives a different coefficient.</p>
 </section>
-<section id="the-virial-theorem" class="level3">
-<h3 class="anchored" data-anchor-id="the-virial-theorem">The Virial Theorem</h3>
-<p>In Astrodynamics II, you showed that for the ISS in a circular orbit around the Earth, the kinetic energy <span class="math inline">\(K\)</span> and potential energy <span class="math inline">\(U\)</span> satisfy <span class="math inline">\(K=-U/2\)</span>. Along an elliptical orbit, the energies vary; the relation holds for their averages over a complete orbit.</p>
-<p>The <strong>virial theorem</strong> relates average kinetic energy to the forces binding a system. Even when the individual motions are too complicated to calculate, we can still learn something about the system as a whole. We’ll use the gravitational form here. Other forces lead to related expressions.</p>
-<p>For a gravitationally bound system with no sustained overall contraction or expansion, and with other contributions negligible, the time-averaged energies obey</p>
-<p><span class="math display">\[
-2\langle K\rangle+\langle U\rangle=0.
-\]</span></p>
-<p>Our cloud may be collapsing, so we cannot simply declare that it obeys this equilibrium relation throughout its motion. We can use the balance to estimate how much random thermal motion would be needed for support. For this first model, neglect rotation, magnetic fields, turbulent motions, and pressure applied by the surroundings.</p>
-</section>
-<section id="instability-of-a-molecular-cloud" class="level3">
-<h3 class="anchored" data-anchor-id="instability-of-a-molecular-cloud">(In)Stability of a Molecular Cloud</h3>
-<p>In chemistry, we (will) learn that the total translational kinetic energy of an ideal gas is related to its temperature by</p>
-<p><span class="math display">\[
-K_{\rm th}=\frac32 Nk_BT.
-\]</span></p>
-<p>Here <span class="math inline">\(k_B\)</span> is <strong>Boltzmann’s constant</strong>, <span class="math inline">\(T\)</span> is the temperature, and <span class="math inline">\(N\)</span> is the number of freely moving gas particles. In SI units, <span class="math inline">\(k_B\approx1.38\times10^{-23}\ \mathrm{J/K}\)</span>. Boltzmann’s constant converts a temperature into a characteristic energy per particle. The temperature itself is not the total energy of the cloud.</p>
-<p>If you have taken chemistry, you may recognize the same conversion per mole: <span class="math inline">\(R_{\rm gas}=N_Ak_B\)</span>. We will work per particle, and reserve <span class="math inline">\(R\)</span> for a radius.</p>
-<blockquote class="blockquote">
-<h3 id="problem-5" class="anchored">Problem 5</h3>
-<p>Use the virial balance to estimate the temperature needed for thermal support in our model cloud. First express your result in terms of gas mass <span class="math inline">\(M\)</span>, radius <span class="math inline">\(R\)</span>, and particle count <span class="math inline">\(N\)</span>. Then use Problem 3 to write it in terms of <span class="math inline">\(\mu\)</span>.</p>
-<ol type="a">
-<li><p>Keep the coefficient <span class="math inline">\(3/5\)</span> in the uniform sphere’s gravitational energy. What coefficient appears in your expression for the balance temperature?</p></li>
-<li><p>At the same mass and radius, would the required temperature be higher or lower for a larger <span class="math inline">\(\mu\)</span>? Explain.</p></li>
-<li><p>Calculate the balance temperature for the whole cloud and the interior region in Problem 2c, using the cold composition. Compare with 10 K. What does the comparison tell us about thermal support in this model? What does it leave out?</p></li>
-</ol>
-</blockquote>
-</section>
-<section id="jeans-instability" class="level3">
-<h3 class="anchored" data-anchor-id="jeans-instability">Jeans Instability</h3>
-<p>You know the escape-energy scale <span class="math inline">\(GMm/R\)</span> from Astrodynamics II. The characteristic thermal energy <span class="math inline">\(k_BT\)</span> can be compared with this gravitational energy scale. Following one escaping particle and testing the support of an entire cloud are different questions, but they involve the same gravitational well.</p>
-<p>Rather than specify a radius, let us describe the gas by its mean density. Eliminating the radius from the thermal-support estimate gives a characteristic mass scale, called the <strong>Jeans mass</strong>. Let’s find it.</p>
-<blockquote class="blockquote">
-<h3 id="problem-6-the-jeans-scaling" class="anchored">Problem 6: The Jeans Scaling</h3>
-<ol type="a">
-<li><p>Begin with the order-of-magnitude balance <span class="math inline">\(k_BT\sim G\mu m_pM/R\)</span> from Problem 5, dropping the numerical coefficient. Use <span class="math inline">\(\rho\sim M/R^3\)</span> to eliminate <span class="math inline">\(R\)</span>, and solve for the characteristic mass <span class="math inline">\(M_J\)</span> in terms of <span class="math inline">\(T\)</span>, <span class="math inline">\(\rho\)</span>, and <span class="math inline">\(\mu\)</span>. Keep <span class="math inline">\(G\)</span>, <span class="math inline">\(k_B\)</span>, and <span class="math inline">\(m_p\)</span> in your expression.</p></li>
-<li><p>At fixed temperature and composition, what happens to this mass scale when the density increases tenfold? Explain what this suggests about the masses of regions that could become unstable as a cloud grows denser.</p></li>
-</ol>
-</blockquote>
-<p>The scaling you just derived is</p>
-<p><span class="math display">\[
-M_J\sim\left(\frac{k_BT}{G\mu m_p}\right)^{3/2}\frac1{\sqrt{\rho}}.
-\]</span></p>
-<p>Different idealized stability models give different numerical coefficients; for the following order-of-magnitude comparison, use coefficient one. Do not confuse this convention with the coefficient retained in Problem 5. A region well above this mass lacks sufficient thermal support in our simple model. A value close to the threshold would require a more careful calculation.</p>
-<blockquote class="blockquote">
-<h3 id="problem-7" class="anchored">Problem 7</h3>
-<p>Use the model cloud and its interior region from Problem 2c. Take both to be at 10 K with the cold composition from Problem 3c.</p>
-<ol type="a">
-<li><p>Predict the ratio of their Jeans masses before calculating. Which region has the smaller threshold?</p></li>
-<li><p>Calculate the Jeans mass for each. Compare each region’s actual mass with its own threshold. What can you infer about thermal support in this model?</p></li>
-<li><p>Suppose someone concludes that every small region will collapse separately because the whole cloud exceeds its Jeans mass. Test the claim using a parcel with the interior region’s density and temperature but only one tenth of its Jeans mass. What information is lost when you assign the properties of the whole cloud to every part?</p></li>
-</ol>
-</blockquote>
-</section>
-<section id="cloud-fragmentation" class="level2">
-<h2 class="anchored" data-anchor-id="cloud-fragmentation">Cloud Fragmentation</h2>
-<p>How quickly can a region collapse under its own gravity? Imagine releasing an initially uniform sphere from rest and neglecting pressure for this calculation. Its collapse time is called the <strong>free-fall time</strong>. Let’s estimate it by dimensional analysis.</p>
-<blockquote class="blockquote">
-<h3 id="problem-8" class="anchored">Problem 8</h3>
-<ol type="a">
-<li><p>Estimate the gravitational timescale from <span class="math inline">\(G\)</span> and the mean density <span class="math inline">\(\rho\)</span>. For the two regions in Problem 2c, predict the ratio of the times and then check it numerically. Use coefficient one for your dimensional estimate.</p></li>
-<li><p>In a patch of size <span class="math inline">\(\ell\)</span>, a pressure disturbance travels at the sound speed <span class="math inline">\(c_s\)</span>. Estimate its crossing time. Suppose gravity takes less time than this. What does that imply about the ability of pressure to smooth a density enhancement across the patch?</p></li>
-</ol>
-</blockquote>
-<p>Imagine two concentric shells in our initially uniform sphere. A shell twice as far from the center encloses eight times as much mass. By Newton’s shell theorem, the material outside either shell exerts no net force on it. The outer shell therefore starts with twice the inward acceleration: eight times the enclosed mass divided by four times the squared distance. It also has twice as far to fall. If every radius shrinks by the same fraction, the enclosed masses stay the same and the acceleration ratio stays two. The shells can keep contracting together. The whole sphere grows denser while its density stays uniform from place to place.</p>
-<p>Where, then, would a <em>separate</em> fragment come from? Real clouds already have denser patches. Compare the time <span class="math inline">\(\ell/c_s\)</span> for a pressure disturbance to cross a patch of size <span class="math inline">\(\ell\)</span> at sound speed <span class="math inline">\(c_s\)</span> with its gravitational time, <span class="math inline">\(1/\sqrt{G\rho}\)</span>. If gravity acts more quickly than pressure can respond across the patch, its density can grow relative to its surroundings. At roughly constant temperature, increasing density also lowers the Jeans mass. Several sufficiently massive patches can thus contract around their own centers. This is <strong>fragmentation</strong>.</p>
-<p>Keep this distinction between the mean density and a small departure from the mean in mind. In AA: Universe we’ll return to it when we study the small temperature variations in the cosmic microwave background.</p>
-<p>The <a href="https://starforge.space/">STARFORGE project</a> simulates the evolution of star-forming clouds.</p>
-<blockquote class="blockquote">
-<h3 id="problem-9" class="anchored">Problem 9</h3>
-<p>Watch this <a href="https://www.youtube.com/watch?v=8nCW7419FyU">simulation of a molecular cloud</a>. Describe features you notice. Choose one and explain how it relates to our cloud model, distinguishing what you can see from what you infer. Identify something the simulation shows that our calculation does not explain, and formulate a question about it.</p>
-</blockquote>
-</section>
-<section id="does-fragmentation-continue-indefinitely" class="level2">
-<h2 class="anchored" data-anchor-id="does-fragmentation-continue-indefinitely">Does Fragmentation Continue Indefinitely?</h2>
-<p>We have seen that increasing density lowers the Jeans mass if temperature stays fixed. But why should the temperature stay fixed? Gravity does work on the contracting gas. Whether that energy can escape as radiation affects the temperature, and therefore the next stage of fragmentation. Let’s compare two possible histories for the same gas.</p>
-<blockquote class="blockquote">
-<h3 id="problem-10" class="anchored">Problem 10</h3>
-<p>Follow a fixed mass of gas as it contracts. Keep its composition, and therefore <span class="math inline">\(\mu\)</span>, unchanged. Use the same coefficient in the Jeans-mass formula throughout, so that it cancels when you take ratios.</p>
-<ol type="a">
-<li><p>Use your result from Problem 6 to express <span class="math inline">\(M_{J,f}/M_{J,i}\)</span> in terms of the temperature ratio <span class="math inline">\(T_f/T_i\)</span> and the density ratio <span class="math inline">\(\rho_f/\rho_i\)</span>.</p></li>
-<li><p>First suppose the density increases by a factor of 100 while the temperature stays constant. By what factor does the Jeans mass change? What happens to the ratio of the fixed gas mass to its Jeans mass? Explain why smaller masses could now become gravitationally unstable.</p></li>
-<li><p>Consider a second possible history starting from the same initial state. The density again increases by a factor of 100, but this time the temperature increases by a factor of 10. Does the Jeans mass increase or decrease? Compare the result with (b). Does this change alone tell you that the contracting region must stop collapsing?</p></li>
-<li><p>Explain why the ability to radiate energy away matters for fragmentation. What additional information would you need to decide whether a particular region breaks into smaller objects? Finish by identifying the question about the gas that we must carry into our study of the protosun.</p></li>
-</ol>
-</blockquote>
-</section>
-<section id="from-a-fragment-to-a-system" class="level2">
-<h2 class="anchored" data-anchor-id="from-a-fragment-to-a-system">From a Fragment to a System</h2>
-<p>Each sufficiently massive, contracting region can develop its own dense center; fragmentation can also produce multiple stars. Our solar system formed within one such environment. An entire GMC does not become one Sun.</p>
-<p>We will now focus on the material that became the <strong>protosun</strong> and its surrounding disk. The last problem gives us a reason to follow its heating and cooling: they help determine how the contraction proceeds and whether smaller regions can continue to fragment. In Solar System III, we will follow that energy as the central object and disk develop together.</p>
 </section>
 </section>
 
@@ -2660,7 +2677,7 @@ M_J\sim\left(\frac{k_BT}{G\mu m_p}\right)^{3/2}\frac1{\sqrt{\rho}}.
     anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
-        if (clz.startsWith('code-annotation-')) {
+        if (clz.startsWith('code-annotation-')) {                     
           return true;
         }
       }
@@ -2680,11 +2697,11 @@ M_J\sim\left(\frac{k_BT}{G\mu m_p}\right)^{3/2}\frac1{\sqrt{\rho}}.
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
         button.setAttribute("data-bs-title", "Copied!");
-        tooltip = new bootstrap.Tooltip(button,
-          { trigger: "manual",
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
             customClass: "code-copy-button-tooltip",
             offset: [0, -8]});
-        tooltip.show();
+        tooltip.show();    
       }
       setTimeout(function() {
         if (tooltip) {
@@ -2761,7 +2778,7 @@ M_J\sim\left(\frac{k_BT}{G\mu m_p}\right)^{3/2}\frac1{\sqrt{\rho}}.
       if (onUntriggerFn) {
         config.onUntrigger = onUntriggerFn;
       }
-      window.tippy(el, config);
+      window.tippy(el, config); 
     }
     const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
     for (var i=0; i<noterefs.length; i++) {
@@ -2836,7 +2853,7 @@ M_J\sim\left(\frac{k_BT}{G\mu m_p}\right)^{3/2}\frac1{\sqrt{\rho}}.
       tippyHover(xref, undefined, function(instance) {
         instance.disable();
         let url = xref.getAttribute('href');
-        let hash = undefined;
+        let hash = undefined; 
         if (url.startsWith('#')) {
           hash = url;
         } else {
@@ -2864,7 +2881,7 @@ M_J\sim\left(\frac{k_BT}{G\mu m_p}\right)^{3/2}\frac1{\sqrt{\rho}}.
               if (note !== null) {
                 const html = processXRef(id, note);
                 instance.setContent(html);
-              }
+              } 
             }).finally(() => {
               instance.enable();
               instance.show();
@@ -2888,7 +2905,7 @@ M_J\sim\left(\frac{k_BT}{G\mu m_p}\right)^{3/2}\frac1{\sqrt{\rho}}.
               }
               const html = processXRef(null, note);
               instance.setContent(html);
-            }
+            } 
           }).finally(() => {
             instance.enable();
             instance.show();
@@ -2928,7 +2945,7 @@ M_J\sim\left(\frac{k_BT}{G\mu m_p}\right)^{3/2}\frac1{\sqrt{\rho}}.
               height = bottom - top;
             }
             if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it
+              // cook up a div (if necessary) and position it 
               let div = window.document.getElementById("code-annotation-line-highlight");
               if (div === null) {
                 div = window.document.createElement("div");
