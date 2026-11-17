@@ -110,3 +110,8 @@ ss:
         objectives_id: ss_solar_system_1
         status: available
         description: "Planetary sizes, distances, and masses; small-body populations; Pluto’s orbit; and Python comparisons of size, mass, surface gravity, and escape speed."
+      - title: "Solar System II: Origins — Clouds and Collapse"
+        url: "/aa/ss/solar_system_2/"
+        download_url: "/aa/assignments/ss_solar_system_2.zip"
+        status: available
+        description: "Molecular clouds, gravitational binding and the virial theorem, Jeans mass, collapse timescales, and the role of cooling in fragmentation."
