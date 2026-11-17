@@ -10,7 +10,8 @@
 
 html,
 body {
-  overflow-x: hidden;
+  /* Clip horizontal spill without creating a scroll container that traps sticky TOCs. */
+  overflow-x: clip;
 }
 
 body {

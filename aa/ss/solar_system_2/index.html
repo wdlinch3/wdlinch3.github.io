@@ -2312,7 +2312,8 @@ color-scheme: dark;
 }
 html,
 body {
-overflow-x: hidden;
+
+overflow-x: clip;
 }
 body {
 background: var(--packet-bg);
@@ -2401,17 +2402,23 @@ margin-left: 0;
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
 <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-  <nav id="TOC" role="doc-toc" class="toc-active">
+  <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
     <h2 id="toc-title">Table of contents</h2>
    
-  <ul class="collapse">
+  <ul>
   <li><a href="#interstellar-matter-nebulae-and-molecular-clouds" id="toc-interstellar-matter-nebulae-and-molecular-clouds" class="nav-link active" data-scroll-target="#interstellar-matter-nebulae-and-molecular-clouds">Interstellar Matter, Nebulae, and Molecular Clouds</a></li>
   <li><a href="#gravity-and-thermal-support" id="toc-gravity-and-thermal-support" class="nav-link" data-scroll-target="#gravity-and-thermal-support">Gravity and Thermal Support</a>
   <ul class="collapse">
+  <li><a href="#the-virial-theorem" id="toc-the-virial-theorem" class="nav-link" data-scroll-target="#the-virial-theorem">The Virial Theorem</a></li>
+  <li><a href="#instability-of-a-molecular-cloud" id="toc-instability-of-a-molecular-cloud" class="nav-link" data-scroll-target="#instability-of-a-molecular-cloud">(In)Stability of a Molecular Cloud</a></li>
+  <li><a href="#jeans-instability" id="toc-jeans-instability" class="nav-link" data-scroll-target="#jeans-instability">Jeans Instability</a></li>
   <li><a href="#cloud-fragmentation" id="toc-cloud-fragmentation" class="nav-link" data-scroll-target="#cloud-fragmentation">Cloud Fragmentation</a></li>
   <li><a href="#does-fragmentation-continue-indefinitely" id="toc-does-fragmentation-continue-indefinitely" class="nav-link" data-scroll-target="#does-fragmentation-continue-indefinitely">Does Fragmentation Continue Indefinitely?</a></li>
   <li><a href="#from-a-fragment-to-a-system" id="toc-from-a-fragment-to-a-system" class="nav-link" data-scroll-target="#from-a-fragment-to-a-system">From a Fragment to a System</a></li>
-  <li><a href="#supplemental-material" id="toc-supplemental-material" class="nav-link" data-scroll-target="#supplemental-material">Supplemental Material</a></li>
+  <li><a href="#supplemental-material" id="toc-supplemental-material" class="nav-link" data-scroll-target="#supplemental-material">Supplemental Material</a>
+  <ul class="collapse">
+  <li><a href="#where-does-the-35-come-from" id="toc-where-does-the-35-come-from" class="nav-link" data-scroll-target="#where-does-the-35-come-from">Where Does the <span class="math inline">\(3/5\)</span> Come From?</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -2458,7 +2465,7 @@ margin-left: 0;
 <p>The space between stars is not entirely empty. Stars can have their own versions of solar systems. The planetary regions of these systems are relatively modest in extent compared to the distances between neighboring stars; distant reservoirs such as our Oort cloud extend much farther.<br>
 </p>
 <blockquote class="blockquote">
-<h3 id="problem-1" class="anchored" data-anchor-id="interstellar-matter-nebulae-and-molecular-clouds">Problem 1</h3>
+<h3 id="problem-1" class="unlisted anchored" data-anchor-id="interstellar-matter-nebulae-and-molecular-clouds">Problem 1</h3>
 <p><code>ss_solar_system_1</code> found that the Sun contains nearly all the mass of our solar system. Let’s start with the material available to build it. In a sample of cloud gas, 91 of every 100 nuclei are hydrogen and 9 are helium. Take one hydrogen nucleus as one mass unit and one helium nucleus as four. Ignore dust and electron masses in this estimate.</p>
 <ol type="a">
 <li><p>How much mass do the 91 hydrogen nuclei contribute? How much do the 9 helium nuclei contribute? Use those masses to find the percentage of the total gas mass contributed by each element.</p></li>
@@ -2485,7 +2492,7 @@ margin-left: 0;
 <p>An enormous molecular cloud is called a <strong>giant molecular cloud</strong>, or <strong>GMC</strong>. For the following bounds exercise, use these illustrative ranges: diameters of 15–600 lightyears and masses of <span class="math inline">\(10^4\)</span>–<span class="math inline">\(10^7 M_\odot\)</span>. These are illustrative ranges, not a claim that every combination of endpoints occurs in nature; catalogs and definitions give different limits.<br>
 The size of the GMC and its mass are related by the <strong>mass density</strong> (<em>e.g.</em>, for a spherical cloud of radius <span class="math inline">\(R\)</span> and mass <span class="math inline">\(M\)</span>, <span class="math inline">\(\rho=\frac{3M}{4\pi R^3}\)</span>). We will use uniform balls to calculate mean densities. A real cloud is clumpy and filamentary, so the mean need not describe any particular region inside it.</p>
 <blockquote class="blockquote">
-<h3 id="problem-2" class="anchored">Problem 2</h3>
+<h3 id="problem-2" class="unlisted anchored">Problem 2</h3>
 <ol type="a">
 <li><p>Begin with the quoted ranges of GMC masses and diameters. Which pairing of endpoints gives the lowest possible mean density? Which gives the highest? Give your reasoning before calculating. Remember to convert diameter to radius.</p></li>
 <li><p>Now pair small mass with small diameter and large mass with large diameter. Calculate both densities using the same function. Would the ranges alone tell us which pairings actually occur in nature?</p></li>
@@ -2502,7 +2509,7 @@ K_{\rm th}=\frac32 Nk_BT=\frac32\frac{M}{\mu m_p}k_BT.
 \]</span></p>
 <p>Here <span class="math inline">\(k_B\)</span> is Boltzmann’s constant, which we will discuss below. For a fixed gas mass, <span class="math inline">\(\mu\)</span> tells us how many particles share the translational energy. It is a mass per particle, rather than a mass per degree of freedom. Molecules can also have rotational and vibrational degrees of freedom; those do not enter this translational-energy formula. Free electrons count as particles even though they contribute very little mass.</p>
 <blockquote class="blockquote">
-<h3 id="problem-3" class="anchored">Problem 3</h3>
+<h3 id="problem-3" class="unlisted anchored">Problem 3</h3>
 <ol type="a">
 <li><p>Use the limits in Problem 2 to estimate the number of nucleons in a GMC. Which earlier mass comparison lets you do this?</p></li>
 <li><p>For thermal motion we need the number of freely moving gas particles, <span class="math inline">\(N\)</span>. Use <span class="math inline">\(M/N=\mu m_p\)</span>, where <span class="math inline">\(M\)</span> is the total gas mass and <span class="math inline">\(m_p\)</span> is the proton mass. Take two hydrogen nuclei. Count the moving particles when they form one molecule, when they are separate neutral atoms, and when they are fully ionized. What is <span class="math inline">\(\mu\)</span> in each case? Count the electrons when they move freely.</p></li>
@@ -2521,7 +2528,7 @@ U=-\frac35\frac{GM^2}{R}.
 <p>The dimensions should look familiar. The factor <span class="math inline">\(3/5\)</span> accounts for assembling the sphere a shell at a time. The supplemental material at the end shows where it comes from.</p>
 <p>As the cloud shrinks, its material becomes more tightly bound. The gravitational potential energy decreases, and that decrease supplies energy that can go into motion or leave as radiation. In the next problem, keep track of the distinction between the cloud’s negative potential energy and the positive amount of energy released. We will return to where that released energy goes when we follow the gas as it contracts.</p>
 <blockquote class="blockquote">
-<h3 id="problem-4" class="anchored">Problem 4</h3>
+<h3 id="problem-4" class="unlisted anchored">Problem 4</h3>
 <ol type="a">
 <li><p>Check the dimensions and explain the negative sign. Calculate <span class="math inline">\(U\)</span> for the whole cloud in Problem 2c.</p></li>
 <li><p>Suppose the same mass contracts to half its original radius while remaining a uniform sphere. Find <span class="math inline">\(U_f/U_i\)</span> and the positive amount of gravitational energy released, <span class="math inline">\(U_i-U_f\)</span>. Does the gravitational potential energy increase or decrease?</p></li>
@@ -2550,7 +2557,7 @@ K_{\rm th}=\frac32 Nk_BT.
 <p>Random thermal motions produce gas pressure. When pressure is greater inside a cloud than outside, the resulting outward force can oppose gravity. This is what we mean by <strong>thermal support</strong>. The particles do not all have to move outward for the gas to exert an outward pressure force.</p>
 <p>Our next question is whether the gas is hot enough to provide the support this particular cloud needs. We will calculate the temperature required for balance, then compare it with the cloud’s actual temperature. Keep those two temperatures distinct: calculating a required temperature does not tell us that the cloud actually has it. If the actual temperature is lower, thermal pressure alone cannot hold the cloud up.</p>
 <blockquote class="blockquote">
-<h3 id="problem-5" class="anchored">Problem 5</h3>
+<h3 id="problem-5" class="unlisted anchored">Problem 5</h3>
 <p>Use the virial balance to estimate the temperature needed for thermal support in our model cloud. First express your result in terms of gas mass <span class="math inline">\(M\)</span>, radius <span class="math inline">\(R\)</span>, and particle count <span class="math inline">\(N\)</span>. Then use Problem 3 to write it in terms of <span class="math inline">\(\mu\)</span>.</p>
 <ol type="a">
 <li><p>Keep the coefficient <span class="math inline">\(3/5\)</span> in the uniform sphere’s gravitational energy. What coefficient appears in your expression for the balance temperature?</p></li>
@@ -2566,7 +2573,7 @@ K_{\rm th}=\frac32 Nk_BT.
 <p>You know the escape-energy scale <span class="math inline">\(GMm/R\)</span> from Astrodynamics II. The characteristic thermal energy <span class="math inline">\(k_BT\)</span> can be compared with this gravitational energy scale. Following one escaping particle and testing the support of an entire cloud are different questions, but they involve the same gravitational well.</p>
 <p>Rather than specify a radius, let us describe the gas by its mean density. Eliminating the radius from the thermal-support estimate gives a characteristic mass scale, called the <strong>Jeans mass</strong>. Let’s find it.</p>
 <blockquote class="blockquote">
-<h3 id="problem-6-the-jeans-scaling" class="anchored">Problem 6: The Jeans Scaling</h3>
+<h3 id="problem-6-the-jeans-scaling" class="unlisted anchored">Problem 6: The Jeans Scaling</h3>
 <ol type="a">
 <li><p>Begin with the order-of-magnitude balance <span class="math inline">\(k_BT\sim G\mu m_pM/R\)</span> from Problem 5, dropping the numerical coefficient. Use <span class="math inline">\(\rho\sim M/R^3\)</span> to eliminate <span class="math inline">\(R\)</span>, and solve for the characteristic mass <span class="math inline">\(M_J\)</span> in terms of <span class="math inline">\(T\)</span>, <span class="math inline">\(\rho\)</span>, and <span class="math inline">\(\mu\)</span>. Keep <span class="math inline">\(G\)</span>, <span class="math inline">\(k_B\)</span>, and <span class="math inline">\(m_p\)</span> in your expression.</p></li>
 <li><p>At fixed temperature and composition, what happens to this mass scale when the density increases tenfold? Explain what this suggests about the masses of regions that could become unstable as a cloud grows denser.</p></li>
@@ -2580,7 +2587,7 @@ M_J\sim\left(\frac{k_BT}{G\mu m_p}\right)^{3/2}\frac1{\sqrt{\rho}}.
 <p>Think of the Jeans mass as an approximate dividing line for a region under specified conditions. Compare the mass actually present with the Jeans mass calculated for that region’s gas. A mass well above the dividing line has too little thermal support against its own gravity; a mass well below it is not expected to collapse under its own gravity in this model.</p>
 <p>The whole cloud and a small region inside it need not fall on the same side of their respective dividing lines. Let’s apply the calculation at both scales, rather than assume that everything inside a contracting cloud must collapse separately.</p>
 <blockquote class="blockquote">
-<h3 id="problem-7" class="anchored">Problem 7</h3>
+<h3 id="problem-7" class="unlisted anchored">Problem 7</h3>
 <p>In Problem 2c, we considered a cloud with mass <span class="math inline">\(10^5 M_\odot\)</span> and mean density <span class="math inline">\(2.02\times10^{-22}\)</span> g/cm³, and an interior region with mass <span class="math inline">\(10^3 M_\odot\)</span> and mean density <span class="math inline">\(2.02\times10^{-21}\)</span> g/cm³. Use these rounded densities here. Take both regions to be at 10 K, with the cold composition from Problem 3c, <span class="math inline">\(\mu\approx2.33\)</span>.</p>
 <ol type="a">
 <li><p>Predict the ratio of their Jeans masses before calculating. Which region has the smaller threshold?</p></li>
@@ -2595,7 +2602,7 @@ M_J\sim\left(\frac{k_BT}{G\mu m_p}\right)^{3/2}\frac1{\sqrt{\rho}}.
 <p>How quickly can a region collapse under its own gravity? Imagine releasing an initially uniform sphere from rest and neglecting pressure for this calculation. Its collapse time is called the <strong>free-fall time</strong>. Let’s estimate it by dimensional analysis.</p>
 <p>Pressure does not adjust everywhere at once. A compression is communicated through the gas at the sound speed. Comparing the time for that disturbance to cross a patch with the patch’s gravitational timescale tells us whether pressure can respond across it before gravity substantially changes it. This gives a physical reason to care about the timescale, beyond estimating how long we would have to wait.</p>
 <blockquote class="blockquote">
-<h3 id="problem-8" class="anchored">Problem 8</h3>
+<h3 id="problem-8" class="unlisted anchored">Problem 8</h3>
 <ol type="a">
 <li><p>Estimate the gravitational timescale from <span class="math inline">\(G\)</span> and the mean density <span class="math inline">\(\rho\)</span>. For the two regions in Problem 2c, predict the ratio of the times and then check it numerically. Use coefficient one for your dimensional estimate.</p></li>
 <li><p>In a patch of size <span class="math inline">\(\ell\)</span>, a pressure disturbance travels at the sound speed <span class="math inline">\(c_s\)</span>. Estimate its crossing time. Suppose gravity takes less time than this. What does that imply about the ability of pressure to smooth a density enhancement across the patch?</p></li>
@@ -2607,7 +2614,7 @@ M_J\sim\left(\frac{k_BT}{G\mu m_p}\right)^{3/2}\frac1{\sqrt{\rho}}.
 <p>Keep this distinction between the mean density and a small departure from the mean in mind. In AA: Universe we’ll return to it when we study the small temperature variations in the cosmic microwave background.</p>
 <p>The <a href="https://starforge.space/">STARFORGE project</a> simulates the evolution of star-forming clouds.</p>
 <blockquote class="blockquote">
-<h3 id="problem-9" class="anchored">Problem 9</h3>
+<h3 id="problem-9" class="unlisted anchored">Problem 9</h3>
 <p>Watch this <a href="https://www.youtube.com/watch?v=8nCW7419FyU">simulation of a molecular cloud</a>. Describe features you notice. Choose one and explain how it relates to our cloud model, distinguishing what you can see from what you infer. Identify something the simulation shows that our calculation does not explain, and formulate a question about it.</p>
 </blockquote>
 </section>
@@ -2616,7 +2623,7 @@ M_J\sim\left(\frac{k_BT}{G\mu m_p}\right)^{3/2}\frac1{\sqrt{\rho}}.
 <p>We have seen that increasing density lowers the Jeans mass if temperature stays fixed, allowing smaller regions to begin contracting too. But why should the temperature stay fixed? Gravity does work on the contracting gas. If that energy stays in the gas as thermal energy, it raises the temperature and strengthens thermal support. If the gas can radiate energy away quickly enough, it can keep contracting without heating up as much. Whether fragmentation can continue therefore depends on how effectively the gas loses energy. Let’s compare two possible histories for the same gas.</p>
 <p>In the next problem, the gas mass stays fixed; the Jeans mass is the changing comparison scale. Follow their ratio to see whether the same gas becomes more or less strongly dominated by gravity. The two histories are alternatives, so compare each final state with the same starting point.</p>
 <blockquote class="blockquote">
-<h3 id="problem-10" class="anchored">Problem 10</h3>
+<h3 id="problem-10" class="unlisted anchored">Problem 10</h3>
 <p>Follow a fixed mass of gas as it contracts. Keep its composition, and therefore <span class="math inline">\(\mu\)</span>, unchanged. Use the same coefficient in the Jeans-mass formula throughout, so that it cancels when you take ratios.</p>
 <ol type="a">
 <li><p>Use your result from Problem 6 to express <span class="math inline">\(M_{J,f}/M_{J,i}\)</span> in terms of the temperature ratio <span class="math inline">\(T_f/T_i\)</span> and the density ratio <span class="math inline">\(\rho_f/\rho_i\)</span>.</p></li>
